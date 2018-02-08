@@ -73,6 +73,7 @@
             this.ribbonPageGroupKhoLe = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupTongHop = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBarMain = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.barBtnTonThucTe = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,9 +106,10 @@
             this.barButtonTonKhoLe,
             this.barButtonNguonNhap,
             this.barButtonTongHopBC,
-            this.barButtonTHXuatKho});
+            this.barButtonTHXuatKho,
+            this.barBtnTonThucTe});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControlMain.MaxItemId = 37;
+            this.ribbonControlMain.MaxItemId = 38;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.barLinkSkin);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -427,6 +429,7 @@
             this.ribbonPageGroupBaoCao.ItemLinks.Add(this.barTonKho);
             this.ribbonPageGroupBaoCao.ItemLinks.Add(this.barButtonNguonNhap);
             this.ribbonPageGroupBaoCao.ItemLinks.Add(this.barButtonTHXuatKho);
+            this.ribbonPageGroupBaoCao.ItemLinks.Add(this.barBtnTonThucTe);
             this.ribbonPageGroupBaoCao.Name = "ribbonPageGroupBaoCao";
             this.ribbonPageGroupBaoCao.ShowCaptionButton = false;
             this.ribbonPageGroupBaoCao.Text = "Dược";
@@ -453,6 +456,14 @@
             this.ribbonStatusBarMain.Name = "ribbonStatusBarMain";
             this.ribbonStatusBarMain.Ribbon = this.ribbonControlMain;
             this.ribbonStatusBarMain.Size = new System.Drawing.Size(1290, 31);
+            // 
+            // barBtnTonThucTe
+            // 
+            this.barBtnTonThucTe.Caption = "Tồn thực tế";
+            this.barBtnTonThucTe.Id = 37;
+            this.barBtnTonThucTe.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barBtnTonThucTe.ImageOptions.Image")));
+            this.barBtnTonThucTe.Name = "barBtnTonThucTe";
+            this.barBtnTonThucTe.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnTonThucTe_ItemClick);
             // 
             // FrmMain
             // 
@@ -524,5 +535,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonTongHopBC;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupTongHop;
         private DevExpress.XtraBars.BarButtonItem barButtonTHXuatKho;
+        private DevExpress.XtraBars.BarButtonItem barBtnTonThucTe;
     }
 }

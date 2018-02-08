@@ -42,6 +42,7 @@
     <Reference Include="DevExpress.Printing.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.RichEdit.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Sparkline.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.SpellChecker.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v17.2.Wizard, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -55,6 +56,7 @@
     <Reference Include="DevExpress.Utils.v17.2.UI, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v17.2.Extensions, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraSpellChecker.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -79,6 +81,12 @@
     </Compile>
     <Compile Include="FrmBCTonKho.Designer.cs">
       <DependentUpon>FrmBCTonKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBCTonThucTe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBCTonThucTe.Designer.cs">
+      <DependentUpon>FrmBCTonThucTe.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmNguonNhap.cs">
       <SubType>Form</SubType>
@@ -110,6 +118,12 @@
     </Compile>
     <Compile Include="RptBaoCaoNhapXuat.Designer.cs">
       <DependentUpon>RptBaoCaoNhapXuat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptBCTonThucTe.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptBCTonThucTe.Designer.cs">
+      <DependentUpon>RptBCTonThucTe.cs</DependentUpon>
     </Compile>
     <Compile Include="RptKiemKe.cs">
       <SubType>Component</SubType>
@@ -191,6 +205,9 @@
     <EmbeddedResource Include="FrmBCTonKho.resx">
       <DependentUpon>FrmBCTonKho.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmBCTonThucTe.resx">
+      <DependentUpon>FrmBCTonThucTe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmNguonNhap.resx">
       <DependentUpon>FrmNguonNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,6 +223,9 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="RptBaoCaoNhapXuat.resx">
       <DependentUpon>RptBaoCaoNhapXuat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptBCTonThucTe.resx">
+      <DependentUpon>RptBCTonThucTe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptKiemKe.resx">
       <DependentUpon>RptKiemKe.cs</DependentUpon>

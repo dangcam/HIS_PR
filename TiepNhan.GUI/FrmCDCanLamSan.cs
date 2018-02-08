@@ -91,6 +91,9 @@ namespace TiepNhan.GUI
         }
         private void LuuCanLamSan(bool inPhieu = false)
         {
+            string chuanDoan = "";
+            string yeuCau = "";
+            int i = 1;
             foreach(DataRowView dr in data)
             {
                 if (Utils.ToBoolean(dr["Chon"]))
@@ -101,12 +104,18 @@ namespace TiepNhan.GUI
                     khambenh.YeuCau = dr["YeuCau"].ToString();
                     khambenh.NgayChiDinh = dr["NgayChiDinh"].ToString();
                     string err = null;
-                    if(khambenh.SpCDCanLamSan(ref err, "UPDATE") && inPhieu)
+                    if(khambenh.SpCDCanLamSan(ref err, "UPDATE"))
                     {
                         // in phiếu
-                        TaoPhieu(dr);
+                        chuanDoan += khambenh.ChuanDoan+", ";
+                        yeuCau += i+". "+dr["Ten"].ToString() + ": " + khambenh.YeuCau + "\n";
+                        i++;
                     }
                 }
+            }
+            if(inPhieu)
+            {
+                TaoPhieu(chuanDoan,yeuCau);
             }
         }
 
@@ -114,19 +123,19 @@ namespace TiepNhan.GUI
         {
             LuuCanLamSan(true);
         }
-        private void TaoPhieu(DataRowView dr)
+        private void TaoPhieu(string chuanDoan,string yeuCau)
         {
             RptPhieuYeuCau rpt = new RptPhieuYeuCau();
             rpt.lblHoTen.Text = this.HoTen;
             rpt.lblNamSinh.Text = this.NamSinh;
             rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
-            rpt.lblMauSo.Text = "MS:" + dr["MauSo"] + "/BV-01";
+            //rpt.lblMauSo.Text = "MS:" + dr["MauSo"] + "/BV-01";
             rpt.lblDiaChi.Text = this.DiaChi;
             rpt.lblSoThe.Text = this.TheBHYT;
-            rpt.lblChuanDoan.Text = khambenh.ChuanDoan;
-            rpt.lblYeuCau.Text = khambenh.YeuCau;
+            rpt.lblChuanDoan.Text = chuanDoan;//khambenh.ChuanDoan;
+            rpt.xrRTYeuCau.Text = yeuCau;//khambenh.YeuCau;
             rpt.lblNgayThang.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
-            rpt.lblTenPhieu.Text = "PHIẾU " + dr["Ten"].ToString().ToUpper();
+            //rpt.lblTenPhieu.Text= "PHIẾU " + dr["Ten"].ToString().ToUpper();
             //rpt.lblTenBacSi.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(dr["MaBS"]);
             rpt.lblTenBacSi.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
             rpt.CreateDocument();

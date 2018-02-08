@@ -64,7 +64,15 @@ namespace KhamBenh.DAL
             return db.ExcuteQuery("Select * From DonThuocChiTiet Where MaLK ='" + MaLK + "' ",
                 CommandType.Text, null);
         }
-
+        public string GetMaBacSi()
+        {
+            DataTable data = db.ExcuteQuery("Select Top 1 MaBacSi From DonThuocChiTiet Where MaLK ='" + MaLK + "' ", CommandType.Text, null);
+            if(data!=null && data.Rows.Count>0)
+            {
+                return data.Rows[0][0].ToString();
+            }
+            return "";
+        }
         public DataTable DSTiepNhan(string ngayVao, int phong)
         {
             return db.ExcuteQuery("Select MaLK,MaBN,HoTen,NgaySinh,GioiTinh,DiaChi,MaThe,MaDKBD,TheTu,TheDen," +
@@ -81,6 +89,18 @@ namespace KhamBenh.DAL
                 "And MaCoSoKCB = '"+AppConfig.CoSoKCB+"'",
                 CommandType.Text, null);
         }
+        public DataTable DSChiTietThuoc(string maKhoa, DateTime tuNgay, DateTime denNgay)
+        {
+            return db.ExcuteQuery("Select STTNgay,HoTen,SUBSTRING(NgaySinh, Len(NgaySinh)-3, 4) as NgaySinh," +
+                                    "MaThe,CONVERT(VARCHAR(10),NgayYLenh,103) as NgayThanhToan,MaBenh,TenThuoc,SoLuong " +
+                                    "from ThongTinBNChiTiet,DonThuocChiTiet " +
+                                    "where ThongTinBNChiTiet.MaLK = DonThuocChiTiet.MaLK " +
+                                    "And MaCoSoKCB='" + AppConfig.CoSoKCB + "' and ThongTinBNChiTiet.MaKhoa = '" + maKhoa + "' " +
+                                    "And (convert(date,NgayYLenh) between convert(date,'" + tuNgay + "') and convert(date,'" + denNgay + "')) " +
+                                    "order by STTNgay",
+                CommandType.Text, null);
+
+        }
         public DataTable CountSoLuongBN(string sql)
         {
             return db.ExcuteQuery(sql,
@@ -88,13 +108,13 @@ namespace KhamBenh.DAL
         }
         public DataTable DSCoSoKCB()
         {
-            return db.ExcuteQuery("Select Ma_CS,Ten_CS From CoSoKCB ",
+            return db.ExcuteQuery("Select Ma_CS,Ten_CS From CoSoKCB",
                 CommandType.Text, null);
         }
         public DataTable DSBacSi()
         {
             return db.ExcuteQuery("Select Ma_BS, Ten_NV From NhanVien Where TinhTrang=1 And CoSoKCB = '"
-                +AppConfig.CoSoKCB+"' And LEN(Ma_BS) > 0",
+                +AppConfig.CoSoKCB+ "' And LEN(Ma_BS) > 0 Order By Ten_NV DESC",
                 CommandType.Text, null);
         }
         public DataTable DSLichSuPhanMem(string MaBN, string HoTen, int GioiTinh)

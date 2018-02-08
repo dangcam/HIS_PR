@@ -944,7 +944,7 @@ namespace TiepNhan.GUI
                 if (frm.ShowDialog(this) == DialogResult.OK)
                 {
                     lookUpMaKhoa.EditValue = frm.MaKhoa;
-                    ChuyenPhong(0);
+                    ChuyenPhong(0,false);
                 }
             }
         }

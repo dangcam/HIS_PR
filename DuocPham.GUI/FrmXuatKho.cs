@@ -151,7 +151,14 @@ namespace DuocPham.GUI
                     dr["DonGiaBHYT"] = Utils.ToDecimal( drview["DonGiaBHYT"]);
                     dr["DonGiaBV"] =Utils.ToDecimal( drview["DonGiaBV"]);
                     dr["HetHan"] = drview["HetHan"].ToString ();
-                    dr["ThanhTien"] = Utils.ToDecimal (txtSoLuong.Text) * Utils.ToDecimal (drview["DonGiaBV"]);
+                    if (checkGiaBV.Checked|| Utils.ToDecimal(drview["DonGiaBHYT"])==0)
+                    {
+                        dr["ThanhTien"] = Utils.ToDecimal(txtSoLuong.Text) * Utils.ToDecimal(drview["DonGiaBV"]);
+                    }
+                    else
+                    {
+                        dr["ThanhTien"] = Utils.ToDecimal(txtSoLuong.Text) * Utils.ToDecimal(drview["DonGiaBHYT"]);
+                    }
                     dr["LoaiVatTu"] = drview["LoaiVatTu"].ToString ();
                     dr["DonViTinh"] = drview["DonViTinh"].ToString ();
                     dr.EndEdit();
@@ -165,7 +172,7 @@ namespace DuocPham.GUI
         private void btnThem_Click (object sender, EventArgs e)
         {
             them = true;
-
+            checkGiaBV.Checked = true;
             txtSoPhieu.Text = "0";
             txtTKCo.Text = "";
             dateNgayXuat.EditValue = DateTime.Now;
@@ -339,7 +346,7 @@ namespace DuocPham.GUI
             dsLoaiVatTu.Clear ();
             XRTableRow row;
             XRTableCell cell;
-            int stt = 0;
+            int stt = 1;
             foreach (DataRowView drview in (gridViewDS.DataSource as DataView))
             {
                 row = new XRTableRow ();
@@ -431,6 +438,29 @@ namespace DuocPham.GUI
             {
                 (gridControlDS.DataSource as DataView).Delete (gridViewDS.GetFocusedDataSourceRowIndex ());
             }
+            else
+            {
+                // tiến hành xóa, cập nhật lại kho nhập
+                DialogResult traloi;
+                string err = "";
+                traloi = XtraMessageBox.Show("Chắc chắn bạn muốn xóa mục này?", "Trả lời",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (traloi == DialogResult.Yes)
+                {
+                    DataRow dr = gridViewDS.GetFocusedDataRow();
+                    xuatkho.MaVatTu = dr["MaVatTu"].ToString();
+                    xuatkho.SoPhieuNhap = Utils.ToInt(dr["SoPhieuNhap"]);
+                    if (xuatkho.SpXoaPhieuNhapChiTiet(ref err))
+                    {
+                        // cập nhật được mới xóa nha-> ok
+                        (gridControlDS.DataSource as DataView).Delete(gridViewDS.GetFocusedDataSourceRowIndex());
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         private void txtNguoiNhan_Leave (object sender, EventArgs e)
@@ -483,6 +513,22 @@ namespace DuocPham.GUI
             if (e.KeyChar == 13)
             {
                 lookUpMaVatTu.Focus();
+            }
+        }
+
+        private void checkGiaBV_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkGiaBV.Checked)
+            {
+                checkGiaBHYT.Checked = false;
+            }
+        }
+
+        private void checkGiaBHYT_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkGiaBHYT.Checked)
+            {
+                checkGiaBV.Checked = false;
             }
         }
     }

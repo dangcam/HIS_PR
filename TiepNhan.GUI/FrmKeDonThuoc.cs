@@ -65,10 +65,10 @@ namespace TiepNhan.GUI
             txtTenBenh.Text = null;
             lookUpMaKhoa.ItemIndex = 0;
             this.ActiveControl = lookUpMaBenh;
-            if(lookUpBacSi.ItemIndex <0)
-            {
-                lookUpBacSi.ItemIndex = 0;
-            }
+            //if(lookUpBacSi.ItemIndex <0)
+            //{
+            //    lookUpBacSi.ItemIndex = 0;
+            //}
             txtHoTen.Text = this.HoTen;
             lblHanThe.Text = "Hạn thẻ BHYT còn: " + (Utils.ToDateTime(this.TheDen) - DateTime.Now).Days + " ngày";
             dateYLenh.DateTime = DateTime.Now;
@@ -420,6 +420,12 @@ namespace TiepNhan.GUI
             {
                 XtraMessageBox.Show("Chưa chọn bệnh chính!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 lookUpMaBenh.Focus();
+                return;
+            }
+            if(string.IsNullOrEmpty(Utils.ToString(lookUpBacSi.EditValue)))
+            {
+                XtraMessageBox.Show("Chưa chọn bác sĩ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                lookUpBacSi.Focus();
                 return;
             }
             string err = "";

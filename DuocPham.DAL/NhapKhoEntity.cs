@@ -22,6 +22,7 @@ namespace DuocPham.DAL
         public string TKNo { get; set; }
         public DateTime NgayNhap { get; set; }
         public string NhaCungCap { get; set; }
+        public string IDNhaCC { get; set; }
         public string NguoiGiaoHang { get; set; }
         public string KhoNhap { get; set; }
         public string NguoiNhan { get; set; }
@@ -95,7 +96,7 @@ namespace DuocPham.DAL
         }
         public DataTable DSVatTu()
         {
-            return db.ExcuteQuery("Select MaBV,TenVatTu,DonViTinh,SoDK,GiaBHYT,LoaiVatTu From VatTu Where TinhTrang = 1",
+            return db.ExcuteQuery("Select MaBV,TenVatTu,DonViTinh,SoDK,GiaBHYT,LoaiVatTu,HamLuong,TinhTrang From VatTu",
                 CommandType.Text, null);
         }
         public DataTable DSVatTu (string loaiVatTu, string khoTra)
@@ -124,7 +125,8 @@ namespace DuocPham.DAL
                 new SqlParameter ("@NoiDung", NoiDung),
                 new SqlParameter ("@NguoiTao", NguoiTao),
                 new SqlParameter ("@NgayCapNhat", NgayCapNhat.ToString("MM/dd/yyyy")),
-                new SqlParameter ("@NguoiCapNhat", NguoiCapNhat));
+                new SqlParameter ("@NguoiCapNhat", NguoiCapNhat),
+                new SqlParameter("@IDNhaCC", IDNhaCC));
                 this.SoPhieu = int.Parse (outSoPhieu.Value.ToString ());
             return f;
         }

@@ -44,7 +44,7 @@ namespace DuocPham.GUI
 
             lookUpNhaCungCap.Properties.DataSource = nhapkho.DSNhaCungCap ();
             lookUpNhaCungCap.Properties.DisplayMember = "Ten";
-            lookUpNhaCungCap.Properties.ValueMember = "Ten";
+            lookUpNhaCungCap.Properties.ValueMember = "ID";
 
             lookUpNguoiNhan.Properties.DataSource = nhapkho.DSNguoiNhan ();
             lookUpNguoiNhan.Properties.DisplayMember = "Ten_NV";
@@ -158,7 +158,8 @@ namespace DuocPham.GUI
             nhapkho.SoHoaDon = txtSoHoaDon.Text;
             nhapkho.TKNo = txtTKNo.Text;
             nhapkho.NgayNhap = dateNgayNhap.DateTime;
-            nhapkho.NhaCungCap = lookUpNhaCungCap.EditValue.ToString ();
+            nhapkho.IDNhaCC = lookUpNhaCungCap.EditValue.ToString ();
+            nhapkho.NhaCungCap = lookUpNhaCungCap.Properties.GetDisplayValueByKeyValue(lookUpNhaCungCap.EditValue).ToString();
             nhapkho.NguoiGiaoHang = txtNguoiGiaoHang.Text;
             nhapkho.KhoNhap = lookUpKhoNhap.EditValue.ToString ();
             nhapkho.NguoiNhan = lookUpNguoiNhan.EditValue.ToString();
@@ -298,69 +299,72 @@ namespace DuocPham.GUI
         {
             if (e.KeyChar == 13)
             {
-                if (lookUpMaVatTu.EditValue == null)
-                {
-                    XtraMessageBox.Show ("Chưa chọn mã vật tư!");
-                    lookUpMaVatTu.Focus ();
-                    return;
-                }
-                if (txtSoLuongQD.Text.Length == 0 || txtSoLuongQD.Text == "0")
-                {
-                    XtraMessageBox.Show ("Nhập số lượng!");
-                    txtSoLuongQD.Focus ();
-                    return;
-                }
-                if (dateHetHan.DateTime < DateTime.Now)
-                {
-                    XtraMessageBox.Show ("Hạn dùng phải lớn hơn ngày hiện tại!");
-                    dateHetHan.Focus ();
-                    return;
-                }
-                if (txtSoLuong.Text.Length == 0)
-                {
-                    txtSoLuong.Text = "0";
-                }
-                if (gridControlDS.DataSource is DataView && btnLuu.Enabled)
-                {
-                    DataRow[] drv = (gridViewDS.DataSource as DataView).
-                        Table.Select ("MaVatTu = '" + lookUpMaVatTu.EditValue.ToString () + "' And SoLo = '"+txtSoLo.Text+"'");
-                    if (drv.Length != 0)
-                    {
-                        XtraMessageBox.Show ("Vật tư đã được chọn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    DataRowView dr = (gridControlDS.DataSource as DataView).AddNew ();
-                    dr["MaVatTu"] = lookUpMaVatTu.EditValue;
-                    dr["TenVatTu"] = txtTenVatTu.Text;
-                    dr["SoDangKy"] = txtSoDangKy.Text;
-                    dr["SoLuong"] = txtSoLuong.Text;
-                    dr["SoLuongQuyDoi"] = txtSoLuongQD.Text;
-                    dr["SoLuongDung"] = 0;
-                    dr["DonGiaBHYT"] =Utils.ToDecimal( txtGiaBHYT.Text);
-                    dr["DonGiaBV"] =Utils.ToDecimal( txtGiaBV.Text);
-                    dr["SoLo"] = txtSoLo.Text;
-                    dr["HetHan"] = dateHetHan.DateTime;
-                    dr["ThanhTien"] = Utils.ToDecimal( txtThanhTien.Text);
-                    dr["LoaiVatTu"] = txtTKNo.Text.Length >4 ? txtTKNo.Text.Substring (3, 2): txtTKNo.Text.Substring(3, 1);
-                    dr.EndEdit();
-
-                    lookUpMaVatTu.EditValue = null;
-                    txtTenVatTu.Text = "";
-                    txtSoDangKy.Text = "";
-                    txtSoLuong.Text = "0";
-                    txtSoLuongQD.Text = "0";
-                    txtGiaBHYT.Text = "0";
-                    txtGiaBV.Text = "0";
-                    txtSoLo.Text = "0";
-                    dateHetHan.EditValue = null;
-                    txtThanhTien.Text = "0";
-                    txtVAT.Text = "0";
-                    
-                    lookUpMaVatTu.Focus();
-                }
+                txtVAT.Focus();
             }
         }
+        private void Enter_Thuoc()
+        {
+            if (lookUpMaVatTu.EditValue == null)
+            {
+                XtraMessageBox.Show("Chưa chọn mã vật tư!");
+                lookUpMaVatTu.Focus();
+                return;
+            }
+            if (txtSoLuongQD.Text.Length == 0 || txtSoLuongQD.Text == "0")
+            {
+                XtraMessageBox.Show("Nhập số lượng!");
+                txtSoLuongQD.Focus();
+                return;
+            }
+            if (dateHetHan.DateTime < DateTime.Now)
+            {
+                XtraMessageBox.Show("Hạn dùng phải lớn hơn ngày hiện tại!");
+                dateHetHan.Focus();
+                return;
+            }
+            if (txtSoLuong.Text.Length == 0)
+            {
+                txtSoLuong.Text = "0";
+            }
+            if (gridControlDS.DataSource is DataView && btnLuu.Enabled)
+            {
+                DataRow[] drv = (gridViewDS.DataSource as DataView).
+                    Table.Select("MaVatTu = '" + lookUpMaVatTu.EditValue.ToString() + "' And SoLo = '" + txtSoLo.Text + "'");
+                if (drv.Length != 0)
+                {
+                    XtraMessageBox.Show("Vật tư đã được chọn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                DataRowView dr = (gridControlDS.DataSource as DataView).AddNew();
+                dr["MaVatTu"] = lookUpMaVatTu.EditValue;
+                dr["TenVatTu"] = txtTenVatTu.Text;
+                dr["SoDangKy"] = txtSoDangKy.Text;
+                dr["SoLuong"] = txtSoLuong.Text;
+                dr["SoLuongQuyDoi"] = txtSoLuongQD.Text;
+                dr["SoLuongDung"] = 0;
+                dr["DonGiaBHYT"] = Utils.ToDecimal(txtGiaBHYT.Text);
+                dr["DonGiaBV"] = Utils.ToDecimal(txtGiaBV.Text);
+                dr["SoLo"] = txtSoLo.Text;
+                dr["HetHan"] = dateHetHan.DateTime;
+                dr["ThanhTien"] = Math.Round(Utils.ToDecimal(txtThanhTien.Text));
+                dr["LoaiVatTu"] = txtTKNo.Text.Length > 4 ? txtTKNo.Text.Substring(3, 2) : txtTKNo.Text.Substring(3, 1);
+                dr.EndEdit();
 
+                lookUpMaVatTu.EditValue = null;
+                txtTenVatTu.Text = "";
+                txtSoDangKy.Text = "";
+                txtSoLuong.Text = "0";
+                txtSoLuongQD.Text = "0";
+                txtGiaBHYT.Text = "0";
+                txtGiaBV.Text = "0";
+                txtSoLo.Text = "0";
+                dateHetHan.EditValue = null;
+                txtThanhTien.Text = "0";
+                txtVAT.Text = "0";
+                txtTyLe.Text = "0";
+                lookUpMaVatTu.Focus();
+            }
+        }
         private void gridViewDS_CellValueChanged (object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             if(e.Column.FieldName == "SoLuongQuyDoi")
@@ -418,7 +422,7 @@ namespace DuocPham.GUI
                 txtTKNo.Text = dr["TKNo"].ToString ();
                 txtSoHoaDon.Text = dr["SoHoaDon"].ToString ();
                 dateNgayNhap.DateTime = DateTime.Parse (dr["NgayNhap"].ToString ());
-                lookUpNhaCungCap.EditValue = dr["NhaCungCap"].ToString ();
+                lookUpNhaCungCap.EditValue = dr["IDNhaCC"].ToString ();
                 txtNguoiGiaoHang.Text = dr["NguoiGiaoHang"].ToString ();
                 lookUpKhoNhap.EditValue = dr["KhoNhap"].ToString ();
                 lookUpNguoiNhan.EditValue = dr["NguoiNhan"].ToString ();
@@ -431,7 +435,7 @@ namespace DuocPham.GUI
                 Enabled_Xoa ();
                 Enabled_Luu ();
                 // danh sách
-                lookUpMaVatTu.Properties.DataSource = dtVatTu.Select ("LoaiVatTu = '"+ txtTKNo.Text.Substring(3, txtTKNo.Text.Length - 3) + "'").CopyToDataTable(); // data vật tư dataVatTu.Select
+                lookUpMaVatTu.Properties.DataSource = dtVatTu.Select ("LoaiVatTu = '"+ txtTKNo.Text.Substring(3, txtTKNo.Text.Length - 3) + "' and TinhTrang = 1").CopyToDataTable(); // data vật tư dataVatTu.Select
                 nhapkho.SoPhieu = int.Parse (txtSoPhieu.Text);
                 dtPhieu = nhapkho.DSPhieuVatTu ();
                 dsVatTu.Clear ();
@@ -443,7 +447,7 @@ namespace DuocPham.GUI
                     // lấy tên vật tư từ mã vật tư, từ lookUpMaVatTu (thay bằng data vật tư) dataVatTu.Select
                 }
                 gridControlDS.DataSource = dtPhieu.AsDataView ();
-                txtTongTien.Text = (dtPhieu.Compute("SUM(ThanhTien)", "").ToString());
+                txtTongTien.EditValue = Utils.ToDecimal((dtPhieu.Compute("SUM(ThanhTien)", "")));
                 btnIn.Enabled = true;
             }
 
@@ -455,7 +459,7 @@ namespace DuocPham.GUI
             {
                 try
                 {
-                    lookUpMaVatTu.Properties.DataSource = dtVatTu.Select("LoaiVatTu = '" + txtTKNo.Text.Substring(3, txtTKNo.Text.Length - 3) + "'").CopyToDataTable();
+                    lookUpMaVatTu.Properties.DataSource = dtVatTu.Select("LoaiVatTu = '" + txtTKNo.Text.Substring(3, txtTKNo.Text.Length - 3) + "' and TinhTrang = 1").CopyToDataTable();
                     //nhapkho.DSVatTu (txtTKNo.Text.Substring (3, txtTKNo.Text.Length-3));// dataVatTu.Select
                 }
                 catch { }
@@ -475,7 +479,8 @@ namespace DuocPham.GUI
             rpt.lblNgayNhap.Text = "Ngày "+dateNgayNhap.DateTime.Day+" tháng "
                 +dateNgayNhap.DateTime.Month+" năm "+dateNgayNhap.DateTime.Year;
             rpt.lblNguoiGiaoHang.Text = txtNguoiGiaoHang.Text;
-            rpt.lblNhaCungCap.Text = lookUpNhaCungCap.EditValue.ToString()+ ". Hóa đơn số: "+txtSoHoaDon.Text;
+            rpt.lblNhaCungCap.Text =lookUpNhaCungCap.Properties.GetDisplayValueByKeyValue( lookUpNhaCungCap.EditValue).ToString()
+                + ". Hóa đơn số: "+txtSoHoaDon.Text;
             rpt.lblNoiDungNhap.Text = txtNoiDung.Text;
             rpt.lblNhapKho.Text = lookUpKhoNhap.Properties.GetDisplayValueByKeyValue(lookUpKhoNhap.EditValue).ToString();
             rpt.lblNgayIn.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
@@ -484,7 +489,7 @@ namespace DuocPham.GUI
             dsLoaiVatTu.Clear ();
             XRTableRow row;
             XRTableCell cell;
-            int stt = 0;
+            int stt = 1;
             foreach(DataRowView drview in (gridViewDS.DataSource as DataView))
             {
                 row = new XRTableRow ();
@@ -534,7 +539,7 @@ namespace DuocPham.GUI
 
                 this.thanhTien += Utils.ToDecimal (drview["ThanhTien"].ToString ());
                 cell = new XRTableCell ();
-                cell.Text = Utils.ToString (drview["ThanhTien"].ToString (),null, "0,0.00");
+                cell.Text = Utils.ToString (drview["ThanhTien"].ToString (),null, "0,0");
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
                 cell.WidthF = 96;
@@ -590,7 +595,7 @@ namespace DuocPham.GUI
                     txtThanhTien_EditValueChanged(null,null);
                     this.txtThanhTien.EditValueChanged += new System.EventHandler(this.txtThanhTien_EditValueChanged);
                 }
-                txtThanhTien_KeyPress (null, e);
+                Enter_Thuoc();
             }
         }
 
@@ -609,7 +614,7 @@ namespace DuocPham.GUI
         {
             if (dtPhieu != null)
             {
-                txtTongTien.Text = (dtPhieu.Compute("SUM(ThanhTien)", "").ToString());
+                txtTongTien.EditValue =Utils.ToDecimal( (dtPhieu.Compute("SUM(ThanhTien)", "")));
             }
         }
 

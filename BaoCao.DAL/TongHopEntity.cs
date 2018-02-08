@@ -51,11 +51,12 @@ namespace BaoCao.DAL
         public DataTable DSSoLuongThuoc(string maKhoa, DateTime tuNgay, DateTime denNgay)
         {
             return db.ExcuteQuery("select ROW_NUMBER() OVER (ORDER By TenThuoc) as STT," +
-                "MaVatTu,TenThuoc,DonViTinh,SUM(SoLuong) as SoLuong " +
-                "from DonThuocChiTiet,(select MaLK from ThongTinBNChiTiet where MaCoSoKCB='" + AppConfig.CoSoKCB + "') as ThongTin " +
+                "MaVatTu,TenThuoc,DonViTinh,SUM(SoLuong) as SoLuong,TT " +
+                "from DonThuocChiTiet,(select MaLK,(CASE WHEN NgayThanhToan is null THEN 0 ELSE 1 END) AS TT " +
+                "from ThongTinBNChiTiet where MaCoSoKCB='" + AppConfig.CoSoKCB + "') as ThongTin " +
                 "where ThongTin.MaLK = DonThuocChiTiet.MaLK and MaKhoa = '" + maKhoa + "' " +
                 "and(convert(date,NgayYLenh) between convert(date,'" + tuNgay + "') and convert(date,'" + denNgay + "')) " +
-                " group by MaVatTu,TenThuoc,DonViTinh",
+                " group by MaVatTu,TenThuoc,DonViTinh,TT",
                 CommandType.Text, null);
 
         }
@@ -90,8 +91,8 @@ namespace BaoCao.DAL
         public DataTable DSBenhNhan(string maKhoa, DateTime tuNgay, DateTime denNgay)
         {
             return db.ExcuteQuery("select ROW_NUMBER() OVER (ORDER By MaBN) as STT," +
-                "MaBN,HoTen,NgaySinh,MucHuong,TienBNCCT,NgayThanhToan " +
-                "from ThongTinBNChiTiet where TienBNCCT > 0 " +
+                "MaBN,HoTen,NgaySinh,MucHuong,(TienBNCCT+TienBNTT) as TienBNCCT,NgayThanhToan " +
+                "from ThongTinBNChiTiet where (TienBNCCT+TienBNTT) > 0 " +
                 "and MaKhoa = '" + maKhoa + "' "+
                 "and(convert(date,NgayThanhToan) between convert(date,'" + tuNgay + "') and convert(date,'" + denNgay + "'))",
                 CommandType.Text, null);

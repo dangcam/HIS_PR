@@ -23,16 +23,28 @@ namespace BaoCao.DAL
             return db.ExcuteQuery ("Select Ma,Ten From LoaiVattu Where TinhTrang = 1 ",
                 CommandType.Text, null);
         }
+        public DataTable DSLoaiVatTuChon()
+        {
+            return db.ExcuteQuery("Select Ma,Ten,CONVERT(bit,1) as Chon From LoaiVatTu Where TinhTrang = 1",
+                CommandType.Text, null);
+        }
+        public DataTable DSTonKhoThuc(string sql)
+        {
+            return db.ExcuteQuery("Select *,(SLTonDau*DonGia) as GTTonDau,(SLNhap*DonGia) as GTNhap, " +
+                "(SLXuatTrong*DonGia) as GTXuat,(SLTonCuoi*DonGia) as GTTonCuoi " +
+                "From BaoCaoTonThuc('" + TuNgay.ToString("MM/dd/yyyy") + "','" + DenNgay.ToString("MM/dd/yyyy") + "') Where "+sql,
+                CommandType.Text, null);
+        }
         public DataTable DSVatTu ()
         {
             string sql = "";
             if (LoaiVatTu == null)
             {
-                sql = "Select *,((GTT+GTN)/(SLT + SLN)) AS DonGia,((SLT + SLN) - SLX) AS SoLuongTon, ((GTT+GTN)-GTX) AS GiaTriTon From BaoCaoNhapXuat('" + TuNgay.ToString("MM/dd/yyyy") + "','" + DenNgay.ToString("MM/dd/yyyy") + "') ORDER BY MaBV ASC";
+                sql = "Select *,((GTT+GTN)/(SLT + SLN)) AS DonGia,((SLT + SLN) - SLX) AS SoLuongTon,CASE WHEN ((SLT + SLN) - SLX) = 0 THEN 0 ELSE ((GTT+GTN)-GTX) END AS GiaTriTon From BaoCaoNhapXuat('" + TuNgay.ToString("MM/dd/yyyy") + "','" + DenNgay.ToString("MM/dd/yyyy") + "') ORDER BY MaBV ASC";
             }
             else
             {
-                sql = "Select *,((GTT+GTN)/(SLT + SLN)) AS DonGia,((SLT + SLN) - SLX) AS SoLuongTon, ((GTT+GTN)-GTX) AS GiaTriTon From BaoCaoNhapXuat('" + TuNgay.ToString("MM/dd/yyyy") + "','" + DenNgay.ToString("MM/dd/yyyy") + "') WHERE LoaiVatTu = '"+LoaiVatTu+"'";
+                sql = "Select *,((GTT+GTN)/(SLT + SLN)) AS DonGia,((SLT + SLN) - SLX) AS SoLuongTon,CASE WHEN ((SLT + SLN) - SLX) = 0 THEN 0 ELSE ((GTT+GTN)-GTX) END AS GiaTriTon From BaoCaoNhapXuat('" + TuNgay.ToString("MM/dd/yyyy") + "','" + DenNgay.ToString("MM/dd/yyyy") + "') WHERE LoaiVatTu = '"+LoaiVatTu+"'";
             }
             return db.ExcuteQuery (sql,
                 CommandType.Text, null);

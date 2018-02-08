@@ -262,18 +262,18 @@ namespace KhamBenh.DAL
                 new SqlParameter("@MaVatTu", MaVatTu),
                 new SqlParameter("@TyLe", TyLe));
         }
-        // tạo XML
+        // tạo XML 
         public DataTable DSThuoc(string maLK)
         {
             return db.ExcuteQuery("SELECT ROW_NUMBER() OVER(ORDER BY MaVatTu) STT," +
                 "MaLK,MaVatTu,MaThuoc,MaNhom,TenThuoc,DonViTinh,HamLuong,MaDuongDung," +
-                "LieuDung,SoDK,TTinThau,PhamVi,SoLuong,DonGia,TyLe,SUM(ThanhTien) as ThanhTien,MucHuong," +
+                "LieuDung,SoDK,TTinThau,PhamVi,SUM(SoLuong) as SoLuong,DonGia,TyLe,SUM(ThanhTien) as ThanhTien,MucHuong," +
                 "SUM(TienNguonKhac) as TienNguonKhac,SUM(TienBNTT) as TienBNTT,SUM(TienBHTT) as TienBHTT," +
                 "SUM(TienBNCCT) as TienBNCCT,SUM(TienNgoaiDS) as TienNgoaiDS," +
                 "MaKhoa,MaBacSi,NgayYLenh,MaPTTT " +
                 "FROM HIS_PR.dbo.DonThuocChiTiet Where MaLK='" + maLK + "' " +
                 "GROUP BY MaLK,MaVatTu,MaThuoc,MaNhom,TenThuoc,DonViTinh,HamLuong,MaDuongDung,LieuDung,SoDK," +
-                "TTinThau,PhamVi,SoLuong,DonGia,TyLe,MucHuong,MaKhoa,MaBacSi,NgayYLenh,MaPTTT", CommandType.Text, null);
+                "TTinThau,PhamVi,DonGia,TyLe,MucHuong,MaKhoa,MaBacSi,NgayYLenh,MaPTTT", CommandType.Text, null);
         }
         public DataTable DSHoSoCanLamSan(string maLK)
         {

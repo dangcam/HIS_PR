@@ -112,7 +112,7 @@ namespace DuocPham.GUI
             }
             XRTableRow row;
             XRTableCell cell;
-            int stt = 0;
+            int stt = 1;
             decimal soluong = 0;
             foreach (DataRowView drview in (gridViewCT.DataSource as DataView))
             {
@@ -246,7 +246,7 @@ namespace DuocPham.GUI
             dsLoaiVatTu.Clear ();
             XRTableRow row;
             XRTableCell cell;
-            int stt = 0;
+            int stt = 1;
             foreach (DataRowView drview in (gridViewCT.DataSource as DataView))
             {
                 row = new XRTableRow ();
@@ -321,7 +321,7 @@ namespace DuocPham.GUI
             row.Cells.Add (cell);
             rpt.xrTable.Rows.Add (row);
 
-            rpt.lblTongTien.Text = Utils.ChuyenSo (this.thanhTien.ToString ());
+            rpt.lblTongTien.Text = Utils.ChuyenSo (this.thanhTien.ToString().Split('.')[0]);
             rpt.lblTKCo.Text = "";
             foreach (string loai in dsLoaiVatTu)
             {

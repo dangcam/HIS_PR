@@ -215,7 +215,7 @@ namespace BaoCao.GUI
             }
             else if(cbLoaiBaoCao.SelectedIndex ==5)
             {
-                //Tổng hợp thuốc
+                //Tổng hợp số lượng thuốc
                 dataTongHop = tongHop.DSSoLuongThuoc(maKhoa, tuNgay, denNgay);
                 RptSoLuongThuoc rpt = new RptSoLuongThuoc();
                 rpt.xrlblCoSo.Text = AppConfig.CoSoKCB;

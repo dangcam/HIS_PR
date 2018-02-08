@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RptPhieuYeuCau));
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.lblTenBacSi = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel14 = new DevExpress.XtraReports.UI.XRLabel();
@@ -36,8 +37,6 @@
             this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
             this.lblYeuCauTieuDe = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.lblYeuCau = new DevExpress.XtraReports.UI.XRTableCell();
             this.lblChuanDoan = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel19 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel18 = new DevExpress.XtraReports.UI.XRLabel();
@@ -60,12 +59,15 @@
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
+            this.xrRTYeuCau = new DevExpress.XtraReports.UI.XRRichText();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrRTYeuCau)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrRTYeuCau,
             this.lblTenBacSi,
             this.xrLabel14,
             this.lblNgayThang,
@@ -152,9 +154,8 @@
             this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 175F);
             this.xrTable1.Name = "xrTable1";
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
-            this.xrTableRow1,
-            this.xrTableRow2});
-            this.xrTable1.SizeF = new System.Drawing.SizeF(768F, 215F);
+            this.xrTableRow1});
+            this.xrTable1.SizeF = new System.Drawing.SizeF(768F, 30F);
             this.xrTable1.StylePriority.UseBorders = false;
             // 
             // xrTableRow1
@@ -173,22 +174,6 @@
             this.lblYeuCauTieuDe.Text = "YÊU CẦU CẬN LÂM SÀN";
             this.lblYeuCauTieuDe.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.lblYeuCauTieuDe.Weight = 3D;
-            // 
-            // xrTableRow2
-            // 
-            this.xrTableRow2.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.lblYeuCau});
-            this.xrTableRow2.Name = "xrTableRow2";
-            this.xrTableRow2.Weight = 6.166666666666667D;
-            // 
-            // lblYeuCau
-            // 
-            this.lblYeuCau.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYeuCau.Name = "lblYeuCau";
-            this.lblYeuCau.StylePriority.UseFont = false;
-            this.lblYeuCau.StylePriority.UseTextAlignment = false;
-            this.lblYeuCau.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.lblYeuCau.Weight = 3D;
             // 
             // lblChuanDoan
             // 
@@ -444,6 +429,20 @@
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
+            // xrRTYeuCau
+            // 
+            this.xrRTYeuCau.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrRTYeuCau.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrRTYeuCau.LocationFloat = new DevExpress.Utils.PointFloat(0F, 205F);
+            this.xrRTYeuCau.Name = "xrRTYeuCau";
+            this.xrRTYeuCau.Padding = new DevExpress.XtraPrinting.PaddingInfo(10, 10, 10, 10, 100F);
+            this.xrRTYeuCau.SerializableRtfString = resources.GetString("xrRTYeuCau.SerializableRtfString");
+            this.xrRTYeuCau.SizeF = new System.Drawing.SizeF(768F, 180F);
+            this.xrRTYeuCau.StylePriority.UseBorders = false;
+            this.xrRTYeuCau.StylePriority.UseFont = false;
+            this.xrRTYeuCau.StylePriority.UsePadding = false;
+            // 
             // RptPhieuYeuCau
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -457,6 +456,7 @@
             this.PaperKind = System.Drawing.Printing.PaperKind.A5;
             this.Version = "17.2";
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrRTYeuCau)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -475,7 +475,6 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel11;
         private DevExpress.XtraReports.UI.XRTable xrTable1;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow1;
-        private DevExpress.XtraReports.UI.XRTableRow xrTableRow2;
         public DevExpress.XtraReports.UI.XRLabel lblChuanDoan;
         private DevExpress.XtraReports.UI.XRLabel xrLabel19;
         private DevExpress.XtraReports.UI.XRLabel xrLabel18;
@@ -490,10 +489,10 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel9;
         private DevExpress.XtraReports.UI.XRLabel xrLabel8;
         public DevExpress.XtraReports.UI.XRLabel lblMauSo;
-        public DevExpress.XtraReports.UI.XRTableCell lblYeuCau;
         public DevExpress.XtraReports.UI.XRLabel lblNgayThang;
         public DevExpress.XtraReports.UI.XRLabel lblTenBacSi;
         private DevExpress.XtraReports.UI.XRTableCell lblYeuCauTieuDe;
         public DevExpress.XtraReports.UI.XRLabel lblTenPhieu;
+        public DevExpress.XtraReports.UI.XRRichText xrRTYeuCau;
     }
 }

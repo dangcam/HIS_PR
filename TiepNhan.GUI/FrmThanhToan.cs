@@ -43,7 +43,7 @@ namespace TiepNhan.GUI
             dataChiTiet.Columns.Add("MaDichVu", typeof(string));
             dataChiTiet.Columns.Add("TenDichVu", typeof(string));
             dataChiTiet.Columns.Add("DonViTinh", typeof(string));
-            dataChiTiet.Columns.Add("SoLuong", typeof(string));
+            dataChiTiet.Columns.Add("SoLuong", typeof(int));
             dataChiTiet.Columns.Add("DonGia", typeof(decimal));
             dataChiTiet.Columns.Add("ThanhTien", typeof(decimal));
             dataChiTiet.Columns.Add("TenNhom", typeof(string));
@@ -134,7 +134,7 @@ namespace TiepNhan.GUI
 
                     checkCoThe.Checked = true;
                     this.txtTheBHYT.EditValueChanged -= new System.EventHandler(this.txtTheBHYT_EditValueChanged);
-                    txtTheBHYT.Text = dr["MaThe"].ToString();
+                    txtTheBHYT.Text = dr["MaThe"].ToString().Trim();
                     this.txtTheBHYT.EditValueChanged += new System.EventHandler(this.txtTheBHYT_EditValueChanged);
                     txtTheTu.Text = Utils.ToDateTime(dr["TheTu"].ToString()).ToString("dd/MM/yyyy");
                     txtTheDen.Text = Utils.ToDateTime(dr["TheDen"].ToString()).ToString("dd/MM/yyyy");
@@ -375,7 +375,7 @@ namespace TiepNhan.GUI
                 if (checkCoThe.Checked)
                 {
                     thanhtoan.CoThe = true;
-                    thanhtoan.MaThe = txtTheBHYT.Text;
+                    thanhtoan.MaThe = txtTheBHYT.Text.Trim();
                     thanhtoan.TheTu = Utils.ToDateTime(txtTheTu.Text, "dd/MM/yyyy");
                     thanhtoan.TheDen = Utils.ToDateTime(txtTheDen.Text, "dd/MM/yyyy");
                     thanhtoan.MaDKBD = txtMaCoSoDKKCB.Text;
@@ -751,7 +751,33 @@ namespace TiepNhan.GUI
             }
             rpt.xrLabelNgayLapHD2.Text = rpt.xrLabelNgayLapHD1.Text;
             // chèn dữ liệu
-            DataRow[] dataRow = dataChiTiet.Select("", "Mau01,Mau02 ASC");
+            //DataRow[] dataRow = dataChiTiet.Select("", "Mau01,Mau02 ASC");
+            DataTable dataTable = dataChiTiet.AsEnumerable()
+                .GroupBy(r => new { col1 = r["MaDichVu"],
+                    col2 = r["TenDichVu"],
+                    col3 = r["DonViTinh"],
+                    col4 = r["DonGia"],
+                    col5 = r["TenNhom"],
+                    col6 = r["Mau01"],
+                    col7 = r["Mau02"],
+                    col8 = r["TyLe"]
+                })
+                .Select(g =>
+                {
+                    DataRow dtrow = dataChiTiet.NewRow();
+                    dtrow["MaDichVu"] = g.Key.col1;
+                    dtrow["TenDichVu"] = g.Key.col2;
+                    dtrow["DonViTinh"] = g.Key.col3;
+                    dtrow["SoLuong"] = g.Sum(r => r.Field<int>("SoLuong"));
+                    dtrow["DonGia"] = g.Key.col4;
+                    dtrow["ThanhTien"] = g.Sum(r => r.Field<decimal>("ThanhTien"));
+                    dtrow["TenNhom"] = g.Key.col5;
+                    dtrow["Mau01"] = g.Key.col6;
+                    dtrow["Mau02"] = g.Key.col7;
+                    dtrow["TyLe"] = g.Key.col8;
+                    return dtrow;
+                }).CopyToDataTable();
+            DataRow[] dataRow = dataTable.Select("", "Mau01,Mau02 ASC");
             string tennhom = null;
             XRTableRow row = new XRTableRow();
             XRTableCell cell = new XRTableCell();

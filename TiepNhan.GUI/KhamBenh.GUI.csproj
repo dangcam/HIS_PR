@@ -388,6 +388,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BaoCao.GUI\BaoCao.GUI.csproj">
+      <Project>{EC5BF0F4-A414-45D2-A4C6-7C698F26324A}</Project>
+      <Name>BaoCao.GUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core.DAL\Core.DAL.csproj">
       <Project>{c6e86929-31e5-41e4-99de-e25f3fadb210}</Project>
       <Name>Core.DAL</Name>

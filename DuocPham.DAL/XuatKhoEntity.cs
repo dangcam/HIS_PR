@@ -51,7 +51,7 @@ namespace DuocPham.DAL
         }
         public DataTable DSVatTu (string loaiVatTu)
         {
-            return db.ExcuteQuery ("Select * From DSVatTu('"+loaiVatTu+"','"+KhoXuat+ "') ORDER BY SoPhieu ASC",
+            return db.ExcuteQuery ("Select * From DSVatTu('"+loaiVatTu+"','"+KhoXuat+ "') ORDER BY MaVatTu ASC",
                 CommandType.Text, null);
         }
         public DataTable DSPhieu (DateTime tuNgay, DateTime denNgay)
@@ -103,6 +103,14 @@ namespace DuocPham.DAL
                 new SqlParameter ("@HetHan", HetHan.ToString("MM/dd/yyyy")),
                 new SqlParameter ("@ThanhTien", ThanhTien),
                 new SqlParameter ("@LoaiVatTu", LoaiVatTu));
+        }
+        public bool SpXoaPhieuNhapChiTiet(ref string err)
+        {
+            return db.MyExecuteNonQuery("SpXoaPhieuXuatChiTiet",
+                CommandType.StoredProcedure, ref err,
+                new SqlParameter("@SoPhieu", SoPhieu),
+                new SqlParameter("@SoPhieuNhap", SoPhieuNhap),
+                new SqlParameter("@MaVatTu", MaVatTu));
         }
     }
 }

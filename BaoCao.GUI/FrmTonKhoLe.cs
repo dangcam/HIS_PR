@@ -42,7 +42,7 @@ namespace BaoCao.GUI
         private void btnTim_Click(object sender, EventArgs e)
         {
             DataRow[] dr = dtLoaiVatTu.Select("Chon = 1", "");
-            maKho = lookUpKho.EditValue.ToString(); ;
+            maKho = lookUpKho.EditValue.ToString();
             if (dr.Length>0)
             {
                 string sql = "";

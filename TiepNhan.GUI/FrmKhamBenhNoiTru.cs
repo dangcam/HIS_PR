@@ -1,6 +1,9 @@
-﻿using Core.DAL;
+﻿using BaoCao.GUI;
+using Core.DAL;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
+using DevExpress.XtraSplashScreen;
 using KhamBenh.DAL;
 using System;
 using System.Collections.Generic;
@@ -22,6 +25,7 @@ namespace TiepNhan.GUI
         private string maBenhChinh = null;
         DataTable dtBenh;
         DataTable dataCoSo;
+        string maBacSi;
         public FrmKhamBenhNoiTru()
         {
             InitializeComponent();
@@ -60,6 +64,9 @@ namespace TiepNhan.GUI
         private void LoadDataChiTiet()
         {
             khambenh.MaLK = drThongTin["MaLK"].ToString();
+            // lấy mã bệnh
+            maBacSi = khambenh.GetMaBacSi();
+            lookUpBacSi.EditValue = maBacSi;
             gridControlThuoc.DataSource = khambenh.DSThuocChiTiet();
             gridControlDVKT.DataSource = khambenh.DSDichVuChiTiet();
             gridControlVTYT.DataSource = khambenh.DSVatTuChiTiet();
@@ -116,8 +123,12 @@ namespace TiepNhan.GUI
 
         private void btnNhapHoSo_Click(object sender, EventArgs e)
         {
-            drThongTin  = gridView.GetFocusedDataRow();
-            if(drThongTin != null)
+            NhapHoSo();
+        }
+        private void NhapHoSo()
+        {
+            drThongTin = gridView.GetFocusedDataRow();
+            if (drThongTin != null)
             {
                 xtraTabControl.SelectedTabPageIndex = 1;
                 txtHoTen.Text = drThongTin["HoTen"].ToString();
@@ -138,7 +149,6 @@ namespace TiepNhan.GUI
                 LoadDataChiTiet();
             }
         }
-
         private void gridView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             if (e.Column.Name == "GioiTinh")
@@ -387,7 +397,8 @@ namespace TiepNhan.GUI
                 frm.MaThe = drThongTin["MaThe"].ToString();
                 frm.TenBenh = txtTenBenh.Text;
                 frm.TheTu = drThongTin["TheTu"].ToString();
-                frm.TheDen = drThongTin["TheDen"].ToString(); 
+                frm.TheDen = drThongTin["TheDen"].ToString();
+                frm.STTNgay = drThongTin["STTNgay"].ToString();
                 frm.TenBacSi = lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue).ToString();
                 try
                 {
@@ -411,6 +422,30 @@ namespace TiepNhan.GUI
                 frm.ShowDialog();
                 LoadDataChiTiet();
             }
+        }
+
+        private void gridView_DoubleClick(object sender, EventArgs e)
+        {
+            NhapHoSo();
+        }
+
+        private void btnInDSThuoc_Click(object sender, EventArgs e)
+        {
+            SplashScreenManager.ShowForm(typeof(WaitFormLoad));
+            // chi tiết thuốc
+            
+            DataTable dataTongHop = khambenh.DSChiTietThuoc(lookUpKhoa.EditValue.ToString(), dateTuNgay.DateTime, dateDenNgay.DateTime);
+            RptTongHopChiTietThuoc rpt = new RptTongHopChiTietThuoc();
+            rpt.xrlblCoSo.Text = AppConfig.CoSoKCB;
+            rpt.xrlblTuNgayDenNgay.Text = "Từ ngày " + dateTuNgay.DateTime.ToString("dd/MM/yyyy") +
+                " đến ngày " + dateDenNgay.DateTime.ToString("dd/MM/yyyy");
+            rpt.xrlblKhoa.Text = lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();
+            //rpt.xrlblNgayLap.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            //rpt.DataSource = dataTongHop;
+            rpt.xrPivotGrid.DataSource = dataTongHop;
+            rpt.CreateDocument();
+            rpt.ShowPreviewDialog();
+            SplashScreenManager.CloseForm();
         }
     }
 }

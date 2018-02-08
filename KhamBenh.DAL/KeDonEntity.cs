@@ -55,7 +55,7 @@ namespace KhamBenh.DAL
         public DataTable DSBacSi()
         {
             return db.ExcuteQuery("Select Ma_BS, Ten_NV From NhanVien Where TinhTrang=1 And CoSoKCB = '"
-                + AppConfig.CoSoKCB + "' And LEN(Ma_BS) > 0",
+                + AppConfig.CoSoKCB + "' And LEN(Ma_BS) > 0 Order by Ten_NV DESC",
                 CommandType.Text, null);
         }
         public DataTable DSBenh()
@@ -90,7 +90,7 @@ namespace KhamBenh.DAL
         public DataTable DSThuoc()
         {
             return db.ExcuteQuery("Select MaVatTu, MaThuoc, TenThuoc, HamLuong, DonViTinh, DonGia,MaDuongDung, "
-                + "LieuDung, SUM(SoLuong) as SoLuong, SUM(ThanhTien) as ThanhTien,SoDK,TTinThau,NgayYLenh,TyLe "
+                + "LieuDung, SUM(SoLuong) as SoLuong, SUM(ThanhTien) as ThanhTien,SoDK,TTinThau,NgayYLenh,convert(varchar(10), NgayYLenh, 103) as NhomYLenh,TyLe "
                 + "From DonThuocChiTiet Where MaLK = '"+MaLK+"' GROUP BY MaVatTu, MaThuoc,MaDuongDung, "
                 + "TenThuoc, HamLuong, DonViTinh, DonGia, LieuDung,SoDK,TTinThau,NgayYLenh,TyLe",
                 CommandType.Text, null);

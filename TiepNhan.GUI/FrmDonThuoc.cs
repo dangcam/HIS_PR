@@ -47,6 +47,7 @@ namespace TiepNhan.GUI
         public string TheDen { get; set; }
         public string TenCoSo { get; set; }
         public string NoiDangKy { get; set; }
+        public string STTNgay { get; set; }
         private void FrmDonThuoc_Load(object sender, EventArgs e)
         {
             dateNgayYLenh.DateTime = DateTime.Now;
@@ -57,9 +58,10 @@ namespace TiepNhan.GUI
             listThuoc = new Dictionary<string, int>();
             dvThuoc = kedon.DSThuoc().AsDataView();
             gridControlThuoc.DataSource = dvThuoc;
+            gridViewThuoc.ExpandAllGroups();
             foreach (DataRowView drv in dvThuoc)
             {
-                listThuoc.Add(drv["MaVatTu"].ToString(), 1);
+                listThuoc.Add(drv["MaVatTu"]+"|"+ drv["NhomYLenh"], 1);
             }
             cbLoaiThuoc.SelectedIndex = 0;
         }
@@ -94,7 +96,7 @@ namespace TiepNhan.GUI
             {
                 DataRowView dr = (lookUpThuoc.EditValue as DataRowView);
                 //kiểm tra số lượng tồn thuốc
-                if (listThuoc.ContainsKey(dr["MaVatTu"].ToString()))
+                if (listThuoc.ContainsKey(dr["MaVatTu"] + "|" + dateNgayYLenh.DateTime.ToString("dd/MM/yyyy")))
                 {
                     XtraMessageBox.Show(Library.ThuocDaDuocChon, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     lookUpThuoc.Focus();
@@ -107,7 +109,7 @@ namespace TiepNhan.GUI
                     return;
                 }
                 // 2: thuốc mới đc thêm vào, 1 thuốc đã có
-                listThuoc.Add(dr["MaVatTu"].ToString(), 2);
+                listThuoc.Add(dr["MaVatTu"] + "|" + dateNgayYLenh.DateTime.ToString("dd/MM/yyyy"), 2);
                 DataRowView drvNew = (gridControlThuoc.DataSource as DataView).AddNew();
                 drvNew["MaVatTu"] = dr["MaVatTu"];
                 drvNew["MaThuoc"] = dr["MaHoatChat"];
@@ -120,6 +122,7 @@ namespace TiepNhan.GUI
                 drvNew["LieuDung"] = "Ngày " + dicDuongDung[dr["MaDuongDung"].ToString()].ToLower()
                     + " " + txtNgayUong.Value + " lần, lần " + txtLanUong.Value + " " + dr["DonViTinh"].ToString().ToLower();
                 drvNew["NgayYLenh"] = dateNgayYLenh.DateTime;
+                drvNew["NhomYLenh"] = dateNgayYLenh.DateTime.ToString("dd/MM/yyyy");
                 drvNew["MaDuongDung"] = dr["MaDuongDung"];
                 drvNew["SoDK"] = dr["SoDK"];
                 if (cbLoaiThuoc.SelectedIndex == 0)
@@ -155,23 +158,24 @@ namespace TiepNhan.GUI
             int index = gridViewThuoc.GetFocusedDataSourceRowIndex();
             if (index > -1)
             {
+
                 DataRow dr = dvThuoc.ToTable().Rows[index];
-                if (listThuoc[dr["MaVatTu"].ToString()] == 1)
+                if (listThuoc[dr["MaVatTu"] + "|" + dr["NhomYLenh"]] == 1)
                 {
                     string err = "";
                     // tiến hành xóa trong csdl, listThuoc
                     kedon.MaVatTu = dr["MaVatTu"].ToString();
-                    kedon.NgayYLenh = DateTime.Now;
-                    if (!kedon.SpKeDonThuoc(ref err, "DELETE"))
+                    kedon.NgayYLenh = Utils.ToDateTime(dr["NhomYLenh"].ToString(),"dd/MM/yyyy");
+                    if (!kedon.SpKeDonThuoc(ref err, "DELETE_NoiTru"))
                     {
                         XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        listThuoc[dr["MaVatTu"].ToString()] = 0;
+                        listThuoc[dr["MaVatTu"] + "|" + dr["NhomYLenh"]] = 0;
                     }
                     else
-                        listThuoc.Remove(dr["MaVatTu"].ToString());
+                        listThuoc.Remove(dr["MaVatTu"] + "|" + dr["NhomYLenh"]);
                 }
                 else
-                    listThuoc.Remove(dr["MaVatTu"].ToString());
+                    listThuoc.Remove(dr["MaVatTu"] + "|" + dr["NhomYLenh"]);
                 (gridControlThuoc.DataSource as DataView).Delete(index);
             }
         }
@@ -202,7 +206,8 @@ namespace TiepNhan.GUI
         private void btnIn_Click(object sender, EventArgs e)
         {
             LuuDon();
-            InDon();
+            //InDon();
+            TaoDonThuocA4();
         }
         private void LuuDon()
         {
@@ -216,9 +221,9 @@ namespace TiepNhan.GUI
                 {
                     err = "";
                     // tiến hành xóa trong csdl, listThuoc
-                    kedon.MaVatTu = key;
-                    kedon.NgayYLenh = DateTime.Now;
-                    if (!kedon.SpKeDonThuoc(ref err, "DELETE"))
+                    kedon.MaVatTu = key.Split('|')[0];
+                    kedon.NgayYLenh =Utils.ToDateTime(key.Split('|')[0],"dd/MM/yyyy");
+                    if (!kedon.SpKeDonThuoc(ref err, "DELETE_NoiTru"))
                     {
                         XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -250,7 +255,7 @@ namespace TiepNhan.GUI
                 kedon.MaBacSi = this.MaBacSi;
                 kedon.NgayYLenh = Utils.ToDateTime(drv["NgayYLenh"].ToString());
                 kedon.MaPTTT = 0;
-                if (listThuoc[drv["MaVatTu"].ToString()] == 1)
+                if (listThuoc[drv["MaVatTu"] + "|" + drv["NhomYLenh"]] == 1)
                 {
                     //lưu lại đường dùng, không lưu lại số lượng
                     if (!kedon.SpKeDonThuoc(ref err, "UPDATE"))
@@ -269,7 +274,7 @@ namespace TiepNhan.GUI
                         // insert ngoài danh mục
                         if (kedon.SpKeDonThuoc(ref err, "INSERT_NgoaiDM"))
                         {
-                            listThuoc[drv["MaVatTu"].ToString()] = 1;// đã có nếu lưu thành công
+                            listThuoc[drv["MaVatTu"] + "|" + drv["NhomYLenh"]] = 1;// đã có nếu lưu thành công
                         }
                         else
                         {
@@ -281,7 +286,7 @@ namespace TiepNhan.GUI
                         // insert thuốc danh mục
                         if (kedon.SpKeDonThuoc(ref err, "INSERT"))
                         {
-                            listThuoc[drv["MaVatTu"].ToString()] = 1;// đã có nếu lưu thành công
+                            listThuoc[drv["MaVatTu"] + "|" + drv["NhomYLenh"]] = 1;// đã có nếu lưu thành công
                         }
                         else
                         {
@@ -338,7 +343,71 @@ namespace TiepNhan.GUI
             rpt.CreateDocument();
             rpt.ShowPreviewDialog();
         }
+        private void TaoDonThuocA4()
+        {
+            RptDonThuocA4 rpt = new RptDonThuocA4();
+            rpt.lblCoSo.Text = this.TenCoSo.ToUpper();
+            rpt.xrlblSoHoSo.Text = "Số hồ sơ:" + STTNgay;
+            rpt.lblHoTen.Text = this.HoTen;
+            rpt.lblNamSinh.Text = this.NgaySinh;
+            rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
+            rpt.lblDiaChi.Text = this.DiaChi;
+            //rpt.lblCoSo.Text = this.TenCoSo.ToUpper();
+            rpt.xrlblSoHoSo1.Text = "Số hồ sơ:" + STTNgay;
+            rpt.lblHoTen1.Text = this.HoTen;
+            rpt.lblNamSinh1.Text = this.NgaySinh;
+            rpt.lblGioiTinh1.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
+            rpt.lblDiaChi1.Text = this.DiaChi;
+            //
+            if (!string.IsNullOrEmpty(this.MaThe))
+            {
+                rpt.lblSoThe.Text = this.MaThe;
+                rpt.lblNoiDangKyKCB.Text = this.NoiDangKy;
+                rpt.lblHanSuDung.Text = Utils.ToDateTime(TheTu).ToString("dd/MM/yyyy") + " - "
+                    + Utils.ToDateTime(TheDen).ToString("dd/MM/yyyy");
+                //
+                rpt.lblSoThe1.Text = this.MaThe;
+                rpt.lblNoiDangKyKCB1.Text = this.NoiDangKy;
+                rpt.lblHanSuDung1.Text = Utils.ToDateTime(TheTu).ToString("dd/MM/yyyy") + " - "
+                    + Utils.ToDateTime(TheDen).ToString("dd/MM/yyyy");
+            }
+            rpt.lblTenBenh.Text = this.TenBenh;
+            rpt.lblBacSi.Text = this.TenBacSi;
+            rpt.lblNgayKeDon.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            //
+            rpt.lblTenBenh1.Text = this.TenBenh;
+            rpt.lblBacSi1.Text = this.TenBacSi;
+            rpt.lblNgayKeDon1.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            //
+            DataTable dtThuoc = dvThuoc.ToTable();
+            dtThuoc.Columns.Add("STT", typeof(string));
+            int i = 1;
+            foreach (DataRow dr in dtThuoc.Rows)
+            {
+                dr["STT"] = i + ")";
+                i++;
+                string hamLuong = dr["HamLuong"].ToString();
+                int index = 0;
+                int space = hamLuong.Length;
+                while (index > -1 && hamLuong.Length > 15)
+                {
+                    index = hamLuong.IndexOf(' ', index + 1);
+                    if (index > 15 || index == -1)
+                    {
+                        index = -1;
+                    }
+                    else
+                    {
+                        space = index;
+                    }
+                }
+                dr["HamLuong"] = hamLuong.Substring(0, space);
+            }
 
+            rpt.DataSource = dtThuoc;
+            rpt.CreateDocument();
+            rpt.ShowPreviewDialog();
+        }
         private void cbLoaiThuoc_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cbLoaiThuoc.SelectedIndex ==0)

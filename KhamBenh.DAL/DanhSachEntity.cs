@@ -15,24 +15,25 @@ namespace KhamBenh.DAL
         {
             db = new Connection();
         }
-        public DataTable DSBenhNhan(DateTime tuNgay, DateTime denNgay)
+        public DataTable DSBenhNhan(string maKhoa,DateTime tuNgay, DateTime denNgay)
         {
             return db.ExcuteQuery("Select *,(~DaGui) as Chon,ROW_NUMBER() OVER(ORDER BY STTNgay) STT " +
                 "From ThongTinBNChiTiet " +
-                "Where CONVERT(Date,NgayThanhToan) between CONVERT(Date, '"+tuNgay+"') and CONVERT(Date, '"+denNgay+"')",
+                "Where CONVERT(Date,NgayThanhToan) between CONVERT(Date, '"+tuNgay+"') and CONVERT(Date, '"+denNgay+ "') " +
+                "And MaCoSoKCB = '" + AppConfig.CoSoKCB + "' And MaKhoa = '"+maKhoa+"'",
                 CommandType.Text, null);
         }
         public DataTable DSThuoc(string maLK)
         {
             return db.ExcuteQuery("SELECT ROW_NUMBER() OVER(ORDER BY MaVatTu) STT," +
                 "MaLK,MaVatTu,MaThuoc,MaNhom,TenThuoc,DonViTinh,HamLuong,MaDuongDung," +
-                "LieuDung,SoDK,TTinThau,PhamVi,SoLuong,DonGia,TyLe,SUM(ThanhTien) as ThanhTien,MucHuong," +
+                "LieuDung,SoDK,TTinThau,PhamVi,SUM(SoLuong) as SoLuong,DonGia,TyLe,SUM(ThanhTien) as ThanhTien,MucHuong," +
                 "SUM(TienNguonKhac) as TienNguonKhac,SUM(TienBNTT) as TienBNTT,SUM(TienBHTT) as TienBHTT," +
                 "SUM(TienBNCCT) as TienBNCCT,SUM(TienNgoaiDS) as TienNgoaiDS," +
                 "MaKhoa,MaBacSi,NgayYLenh,MaPTTT " +
                 "FROM HIS_PR.dbo.DonThuocChiTiet Where MaLK='"+maLK+"' " +
                 "GROUP BY MaLK,MaVatTu,MaThuoc,MaNhom,TenThuoc,DonViTinh,HamLuong,MaDuongDung,LieuDung,SoDK," +
-                "TTinThau,PhamVi,SoLuong,DonGia,TyLe,MucHuong,MaKhoa,MaBacSi,NgayYLenh,MaPTTT", CommandType.Text, null);
+                "TTinThau,PhamVi,DonGia,TyLe,MucHuong,MaKhoa,MaBacSi,NgayYLenh,MaPTTT", CommandType.Text, null);
         }
         public DataTable DSHoSoCanLamSan(string maLK)
         {
@@ -64,6 +65,13 @@ namespace KhamBenh.DAL
         {
             return db.BackUpOrRestore("Update ThongTinBNChiTiet Set DaGui = 1 Where MaLK = '" + MaLK + "'",
                 ref err);
+        }
+        public DataTable DSKhoaBan(int loaiPhong)
+        {
+            string sql = "";
+            sql = "EXEC SpGetKhoaBan '" + AppConfig.CoSoKCB + "'," + loaiPhong;
+            return db.ExcuteQuery(sql,
+                CommandType.Text, null);
         }
     }
 }

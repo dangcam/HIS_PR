@@ -28,14 +28,16 @@
         /// </summary>
         private void InitializeComponent ()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmYeuCauLinhThuoc));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.dateYeuCau = new DevExpress.XtraEditors.DateEdit();
+            this.cbNoiDung = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
             this.btnIn = new DevExpress.XtraEditors.SimpleButton();
@@ -72,6 +74,7 @@
             this.DonVi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.GiaBHYT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HetHan = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.HamLuong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -83,10 +86,14 @@
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateYeuCau.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateYeuCau.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbNoiDung.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnXoa)).BeginInit();
@@ -109,7 +116,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -130,6 +138,8 @@
             // 
             // layoutControl
             // 
+            this.layoutControl.Controls.Add(this.dateYeuCau);
+            this.layoutControl.Controls.Add(this.cbNoiDung);
             this.layoutControl.Controls.Add(this.btnThem);
             this.layoutControl.Controls.Add(this.btnLuu);
             this.layoutControl.Controls.Add(this.btnIn);
@@ -147,6 +157,46 @@
             this.layoutControl.Size = new System.Drawing.Size(776, 480);
             this.layoutControl.TabIndex = 1;
             this.layoutControl.Text = "layoutControl1";
+            // 
+            // dateYeuCau
+            // 
+            this.dateYeuCau.EditValue = null;
+            this.dateYeuCau.Location = new System.Drawing.Point(271, 64);
+            this.dateYeuCau.MenuManager = this.ribbonControl;
+            this.dateYeuCau.Name = "dateYeuCau";
+            this.dateYeuCau.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateYeuCau.Properties.Appearance.Options.UseFont = true;
+            this.dateYeuCau.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateYeuCau.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateYeuCau.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.dateYeuCau.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateYeuCau.Properties.EditFormat.FormatString = "dd/MM/yyyy";
+            this.dateYeuCau.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateYeuCau.Properties.Mask.EditMask = "dd/MM/yyyy";
+            this.dateYeuCau.Size = new System.Drawing.Size(91, 22);
+            this.dateYeuCau.StyleController = this.layoutControl;
+            this.dateYeuCau.TabIndex = 15;
+            // 
+            // cbNoiDung
+            // 
+            this.cbNoiDung.Location = new System.Drawing.Point(425, 64);
+            this.cbNoiDung.MenuManager = this.ribbonControl;
+            this.cbNoiDung.Name = "cbNoiDung";
+            this.cbNoiDung.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbNoiDung.Properties.Appearance.Options.UseFont = true;
+            this.cbNoiDung.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbNoiDung.Properties.AppearanceDropDown.Options.UseFont = true;
+            this.cbNoiDung.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbNoiDung.Properties.Items.AddRange(new object[] {
+            "Xuất thuốc điều trị BN BHYT",
+            "Xuất thuốc điều trị BN Dân",
+            "Xuất thuốc hướng thần gây nghiện"});
+            this.cbNoiDung.Size = new System.Drawing.Size(105, 22);
+            this.cbNoiDung.StyleController = this.layoutControl;
+            this.cbNoiDung.TabIndex = 14;
             // 
             // btnThem
             // 
@@ -235,9 +285,9 @@
             // btnXoa
             // 
             this.btnXoa.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.btnXoa.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.btnXoa.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnXoa_ButtonClick);
@@ -449,6 +499,7 @@
             this.lookUpLoaiVatTu.StyleController = this.layoutControl;
             this.lookUpLoaiVatTu.TabIndex = 6;
             this.lookUpLoaiVatTu.EditValueChanged += new System.EventHandler(this.lookUpLoaiVatTu_EditValueChanged);
+            this.lookUpLoaiVatTu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lookUpLoaiVatTu_KeyPress);
             // 
             // txtKhoNhan
             // 
@@ -481,13 +532,16 @@
             this.lookUpMaVatTu.Name = "lookUpMaVatTu";
             this.lookUpMaVatTu.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lookUpMaVatTu.Properties.Appearance.Options.UseFont = true;
+            this.lookUpMaVatTu.Properties.AutoHeight = false;
             this.lookUpMaVatTu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpMaVatTu.Properties.NullText = "";
+            this.lookUpMaVatTu.Properties.PopupFormMinSize = new System.Drawing.Size(600, 100);
             this.lookUpMaVatTu.Properties.PopupView = this.searchLookUpEdit1View;
             this.lookUpMaVatTu.Size = new System.Drawing.Size(317, 22);
             this.lookUpMaVatTu.StyleController = this.layoutControl;
             this.lookUpMaVatTu.TabIndex = 8;
+            this.lookUpMaVatTu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lookUpMaVatTu_KeyPress);
             // 
             // searchLookUpEdit1View
             // 
@@ -497,7 +551,8 @@
             this.SoLuongTon,
             this.DonVi,
             this.GiaBHYT,
-            this.HetHan});
+            this.HetHan,
+            this.HamLuong});
             this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
             this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
@@ -506,6 +561,8 @@
             // 
             // MaVatTu
             // 
+            this.MaVatTu.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaVatTu.AppearanceCell.Options.UseFont = true;
             this.MaVatTu.Caption = "Mã vật tư";
             this.MaVatTu.FieldName = "MaVatTu";
             this.MaVatTu.Name = "MaVatTu";
@@ -516,6 +573,8 @@
             // 
             // TenVatTu
             // 
+            this.TenVatTu.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TenVatTu.AppearanceCell.Options.UseFont = true;
             this.TenVatTu.Caption = "Tên vật tư";
             this.TenVatTu.FieldName = "TenVatTu";
             this.TenVatTu.Name = "TenVatTu";
@@ -527,6 +586,8 @@
             // 
             // SoLuongTon
             // 
+            this.SoLuongTon.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SoLuongTon.AppearanceCell.Options.UseFont = true;
             this.SoLuongTon.Caption = "Số lượng tồn";
             this.SoLuongTon.DisplayFormat.FormatString = "#,###";
             this.SoLuongTon.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
@@ -539,6 +600,8 @@
             // 
             // DonVi
             // 
+            this.DonVi.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DonVi.AppearanceCell.Options.UseFont = true;
             this.DonVi.Caption = "Đơn vị";
             this.DonVi.FieldName = "DonViTinh";
             this.DonVi.Name = "DonVi";
@@ -548,6 +611,8 @@
             // 
             // GiaBHYT
             // 
+            this.GiaBHYT.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GiaBHYT.AppearanceCell.Options.UseFont = true;
             this.GiaBHYT.Caption = "Giá BHYT";
             this.GiaBHYT.DisplayFormat.FormatString = "#,###";
             this.GiaBHYT.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
@@ -560,6 +625,8 @@
             // 
             // HetHan
             // 
+            this.HetHan.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HetHan.AppearanceCell.Options.UseFont = true;
             this.HetHan.Caption = "Hết hạn";
             this.HetHan.DisplayFormat.FormatString = "dd/MM/yyyy";
             this.HetHan.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
@@ -569,6 +636,16 @@
             this.HetHan.Visible = true;
             this.HetHan.VisibleIndex = 5;
             this.HetHan.Width = 50;
+            // 
+            // HamLuong
+            // 
+            this.HamLuong.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HamLuong.AppearanceCell.Options.UseFont = true;
+            this.HamLuong.Caption = "Hàm lượng";
+            this.HamLuong.FieldName = "HamLuong";
+            this.HamLuong.Name = "HamLuong";
+            this.HamLuong.Visible = true;
+            this.HamLuong.VisibleIndex = 6;
             // 
             // layoutControlGroup
             // 
@@ -585,7 +662,8 @@
             this.layoutControlItem8,
             this.layoutControlItem9,
             this.layoutControlItem10,
-            this.emptySpaceItem1});
+            this.layoutControlItem11,
+            this.layoutControlItem12});
             this.layoutControlGroup.Name = "layoutControlGroup";
             this.layoutControlGroup.Size = new System.Drawing.Size(776, 480);
             this.layoutControlGroup.TextVisible = false;
@@ -689,13 +767,23 @@
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
             // 
-            // emptySpaceItem1
+            // layoutControlItem11
             // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(200, 52);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(322, 27);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem11.Control = this.cbNoiDung;
+            this.layoutControlItem11.Location = new System.Drawing.Point(354, 52);
+            this.layoutControlItem11.Name = "layoutControlItem11";
+            this.layoutControlItem11.Size = new System.Drawing.Size(168, 27);
+            this.layoutControlItem11.Text = "Nội dung:";
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(56, 13);
+            // 
+            // layoutControlItem12
+            // 
+            this.layoutControlItem12.Control = this.dateYeuCau;
+            this.layoutControlItem12.Location = new System.Drawing.Point(200, 52);
+            this.layoutControlItem12.Name = "layoutControlItem12";
+            this.layoutControlItem12.Size = new System.Drawing.Size(154, 27);
+            this.layoutControlItem12.Text = "Ngày:";
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(56, 13);
             // 
             // FrmYeuCauLinhThuoc
             // 
@@ -713,6 +801,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dateYeuCau.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateYeuCau.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbNoiDung.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnXoa)).EndInit();
@@ -735,7 +826,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -767,7 +859,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraEditors.SearchLookUpEdit lookUpMaVatTu;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
         private DevExpress.XtraGrid.Columns.GridColumn MaVatTu;
@@ -793,5 +884,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn LoaiVatTu;
         private DevExpress.XtraGrid.Columns.GridColumn SoPhieuP;
         private DevExpress.XtraGrid.Columns.GridColumn NgayYC;
+        private DevExpress.XtraGrid.Columns.GridColumn HamLuong;
+        private DevExpress.XtraEditors.ComboBoxEdit cbNoiDung;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
+        private DevExpress.XtraEditors.DateEdit dateYeuCau;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
     }
 }

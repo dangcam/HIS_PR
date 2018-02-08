@@ -59,6 +59,7 @@
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.MaBV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TenVatTu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.HamLuong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtTyLe = new DevExpress.XtraEditors.TextEdit();
             this.gridControlDS = new DevExpress.XtraGrid.GridControl();
             this.gridViewDS = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -146,6 +147,7 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.DonViTinh = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
@@ -527,7 +529,9 @@
             // 
             this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.MaBV,
-            this.TenVatTu});
+            this.TenVatTu,
+            this.HamLuong,
+            this.DonViTinh});
             this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridView3.Name = "gridView3";
             this.gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
@@ -558,6 +562,16 @@
             this.TenVatTu.Visible = true;
             this.TenVatTu.VisibleIndex = 1;
             this.TenVatTu.Width = 344;
+            // 
+            // HamLuong
+            // 
+            this.HamLuong.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HamLuong.AppearanceCell.Options.UseFont = true;
+            this.HamLuong.Caption = "Hàm lượng";
+            this.HamLuong.FieldName = "HamLuong";
+            this.HamLuong.Name = "HamLuong";
+            this.HamLuong.Visible = true;
+            this.HamLuong.VisibleIndex = 2;
             // 
             // txtTyLe
             // 
@@ -765,7 +779,7 @@
             this.ThanhTien.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ThanhTien.AppearanceCell.Options.UseFont = true;
             this.ThanhTien.Caption = "Thành tiền";
-            this.ThanhTien.DisplayFormat.FormatString = "n2";
+            this.ThanhTien.DisplayFormat.FormatString = "n0";
             this.ThanhTien.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.ThanhTien.FieldName = "ThanhTien";
             this.ThanhTien.Name = "ThanhTien";
@@ -1100,6 +1114,8 @@
             this.txtTongTien.Name = "txtTongTien";
             this.txtTongTien.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTongTien.Properties.Appearance.Options.UseFont = true;
+            this.txtTongTien.Properties.Mask.EditMask = "n0";
+            this.txtTongTien.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtTongTien.Properties.ReadOnly = true;
             this.txtTongTien.Size = new System.Drawing.Size(125, 22);
             this.txtTongTien.StyleController = this.layoutControl1;
@@ -1609,6 +1625,16 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
+            // DonViTinh
+            // 
+            this.DonViTinh.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DonViTinh.AppearanceCell.Options.UseFont = true;
+            this.DonViTinh.Caption = "ĐVT";
+            this.DonViTinh.FieldName = "DonViTinh";
+            this.DonViTinh.Name = "DonViTinh";
+            this.DonViTinh.Visible = true;
+            this.DonViTinh.VisibleIndex = 3;
+            // 
             // FrmNhapKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1832,5 +1858,7 @@
         private DevExpress.XtraEditors.TextEdit txtTongTien;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
         private DevExpress.XtraGrid.Columns.GridColumn LoaiVatTu;
+        private DevExpress.XtraGrid.Columns.GridColumn HamLuong;
+        private DevExpress.XtraGrid.Columns.GridColumn DonViTinh;
     }
 }
