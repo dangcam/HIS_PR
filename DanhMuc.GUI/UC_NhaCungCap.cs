@@ -82,6 +82,7 @@ namespace DanhMuc.GUI
             txtTen.Text = "";
             txtMa.ReadOnly = false;
             txtMa.Text = "";
+            txtDiaChi.Text = "";
             them = true;
 
             Enabled_Luu ();
@@ -92,6 +93,7 @@ namespace DanhMuc.GUI
         {
             nhacungcap.Ten = txtTen.Text;
             nhacungcap.TinhTrang = checkTinhTrang.Checked;
+            nhacungcap.DiaChi = txtDiaChi.Text;
             string err = "";
             if (them)
             {
@@ -140,6 +142,7 @@ namespace DanhMuc.GUI
                 txtTen.Text = dr["Ten"].ToString ();
                 txtMa.Text = nhacungcap.ID;
                 checkTinhTrang.Checked = bool.Parse (dr["TinhTrang"].ToString ());
+                txtDiaChi.Text = dr["DiaChi"].ToString();
                 them = false;
                 txtMa.ReadOnly = true;
 
@@ -162,6 +165,7 @@ namespace DanhMuc.GUI
                         err = "";
                         nhacungcap.ID = dtRow[0].ToString();
                         nhacungcap.Ten = dtRow[1].ToString();
+                        nhacungcap.DiaChi = dtRow[2].ToString();
                         nhacungcap.TinhTrang = true;
 
                         if (!nhacungcap.ThemNhaCungCap(ref err))

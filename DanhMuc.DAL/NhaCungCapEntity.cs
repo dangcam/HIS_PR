@@ -31,6 +31,7 @@ namespace DanhMuc.DAL
             get;
             set;
         }
+        public string DiaChi { get; set; }
         public DataTable DSNhaCungCap ()
         {
             return db.ExcuteQuery ("Select * From NhaCungCap",
@@ -42,7 +43,8 @@ namespace DanhMuc.DAL
                 CommandType.StoredProcedure, ref err,
                 new SqlParameter("@ID", ID),
                 new SqlParameter ("@Ten", Ten),
-                new SqlParameter ("@TinhTrang", TinhTrang));
+                new SqlParameter ("@TinhTrang", TinhTrang),
+                new SqlParameter("@DiaChi", DiaChi));
         }
         public bool SuaNhaCungCap (ref string err)
         {
@@ -50,7 +52,8 @@ namespace DanhMuc.DAL
                 CommandType.StoredProcedure, ref err,
                 new SqlParameter ("@ID", ID),
                 new SqlParameter ("@Ten", Ten),
-                new SqlParameter ("@TinhTrang", TinhTrang));
+                new SqlParameter ("@TinhTrang", TinhTrang),
+                new SqlParameter("@DiaChi", DiaChi));
         }
         public bool XoaNhaCungCap (ref string err)
         {

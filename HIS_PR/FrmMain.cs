@@ -284,10 +284,12 @@ namespace HIS_PR
                     return;
                 }
             }
+            // hiện form
             SplashScreenManager.ShowForm(typeof(WaitFormLoad));
             FrmTiepNhan frmTiepNhan = new FrmTiepNhan();
             frmTiepNhan.MdiParent = this;
             frmTiepNhan.Show();
+            // tắt form
             SplashScreenManager.CloseForm();
         }
 

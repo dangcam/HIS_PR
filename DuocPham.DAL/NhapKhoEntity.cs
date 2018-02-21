@@ -61,12 +61,13 @@ namespace DuocPham.DAL
         }
         public DataTable DSNhaCungCap ()
         {
-            return db.ExcuteQuery ("Select ID,Ten From NhaCungCap Where TinhTrang = 1",
+            return db.ExcuteQuery ("Select ID,Ten,DiaChi From NhaCungCap Where TinhTrang = 1",
                 CommandType.Text, null);
         }
         public DataTable DSPhieuVatTu ()
         {
-            return db.ExcuteQuery ("Select *,'' as TenVatTu From PhieuNhapChiTiet Where SoPhieu = " + this.SoPhieu,
+            return db.ExcuteQuery ("Select ROW_NUMBER() OVER(ORDER BY MaVatTu) STT,*,'' as TenVatTu,'' as DonViTinh" +
+                " From PhieuNhapChiTiet Where SoPhieu = " + this.SoPhieu,
                 CommandType.Text, null);
         }
         public DataTable DSPhieuVatTuTra ()

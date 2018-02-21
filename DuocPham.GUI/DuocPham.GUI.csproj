@@ -102,6 +102,18 @@
       <DependentUpon>FrmYeuCauLinhThuoc.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RptBienBanGH.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptBienBanGH.Designer.cs">
+      <DependentUpon>RptBienBanGH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptBienBanNT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptBienBanNT.Designer.cs">
+      <DependentUpon>RptBienBanNT.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptPhieuLinhThuoc.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -138,6 +150,12 @@
       <DependentUpon>FrmYeuCauLinhThuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="RptBienBanGH.resx">
+      <DependentUpon>RptBienBanGH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptBienBanNT.resx">
+      <DependentUpon>RptBienBanNT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RptPhieuLinhThuoc.resx">
       <DependentUpon>RptPhieuLinhThuoc.cs</DependentUpon>
     </EmbeddedResource>

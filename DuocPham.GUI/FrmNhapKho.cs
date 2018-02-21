@@ -7,6 +7,7 @@ using DevExpress.XtraEditors;
 using System.Data;
 using System.Collections.Generic;
 using DevExpress.XtraReports.UI;
+using DevExpress.XtraSplashScreen;
 
 namespace DuocPham.GUI
 {
@@ -59,6 +60,8 @@ namespace DuocPham.GUI
             checkButton ();
             LoadData ();
             btnIn.Enabled = false;
+            btnBBGiaoHang.Enabled = false;
+            btnBBNghiemThu.Enabled = false;
         }
         private void LoadData ()
         {
@@ -130,6 +133,8 @@ namespace DuocPham.GUI
             txtTKNo.Focus ();
             Enabled_Luu ();
             btnIn.Enabled = false;
+            btnBBGiaoHang.Enabled = false;
+            btnBBNghiemThu.Enabled = false;
         }
         private bool checkInput()
         {
@@ -192,6 +197,8 @@ namespace DuocPham.GUI
                 XtraMessageBox.Show (err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             btnIn.Enabled = true;
+            btnBBGiaoHang.Enabled = true;
+            btnBBNghiemThu.Enabled = true;
         }
         private void LuuVatTu()
         {
@@ -442,13 +449,17 @@ namespace DuocPham.GUI
                 foreach(DataRow drow in dtPhieu.Rows)
                 {
                     dsVatTu.Add (drow["MaVatTu"].ToString ()+"|"+drow["SoLo"], false);
-                    drow["TenVatTu"] = dtVatTu.Select("MaBV = '" + drow["MaVatTu"].ToString() + "'")[0][1];
+                    DataRow drowVT = dtVatTu.Select("MaBV = '" + drow["MaVatTu"].ToString() + "'")[0];
+                    drow["TenVatTu"] = drowVT[1];
+                    drow["DonViTinh"] = drowVT[2];
                     //(lookUpMaVatTu.Properties.GetRowByKeyValue (drow["MaVatTu"].ToString ()) as DataRowView)[1];
                     // lấy tên vật tư từ mã vật tư, từ lookUpMaVatTu (thay bằng data vật tư) dataVatTu.Select
                 }
                 gridControlDS.DataSource = dtPhieu.AsDataView ();
                 txtTongTien.EditValue = Utils.ToDecimal((dtPhieu.Compute("SUM(ThanhTien)", "")));
                 btnIn.Enabled = true;
+                btnBBGiaoHang.Enabled = true;
+                btnBBNghiemThu.Enabled = true;
             }
 
         }
@@ -479,9 +490,14 @@ namespace DuocPham.GUI
             rpt.lblNgayNhap.Text = "Ngày "+dateNgayNhap.DateTime.Day+" tháng "
                 +dateNgayNhap.DateTime.Month+" năm "+dateNgayNhap.DateTime.Year;
             rpt.lblNguoiGiaoHang.Text = txtNguoiGiaoHang.Text;
-            rpt.lblNhaCungCap.Text =lookUpNhaCungCap.Properties.GetDisplayValueByKeyValue( lookUpNhaCungCap.EditValue).ToString()
-                + ". Hóa đơn số: "+txtSoHoaDon.Text;
-            rpt.lblNoiDungNhap.Text = txtNoiDung.Text;
+            try
+            {
+                rpt.lblNhaCungCap.Text = lookUpNhaCungCap.Properties.GetDisplayValueByKeyValue(lookUpNhaCungCap.EditValue).ToString()
+                    + ". Hóa đơn số: " + txtSoHoaDon.Text;
+                //Công Ty TNHH TM-DV Dược Phẩm Bình Phú. Hóa đơn số 0004153
+            }
+            catch { }
+            rpt.lblNoiDungNhap.Text = txtNoiDung.Text;//Nhập thuốc tháng 7 cty Bình Phú
             rpt.lblNhapKho.Text = lookUpKhoNhap.Properties.GetDisplayValueByKeyValue(lookUpKhoNhap.EditValue).ToString();
             rpt.lblNgayIn.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
 
@@ -744,6 +760,39 @@ namespace DuocPham.GUI
             {
                 lookUpMaVatTu.Focus();
             }
+        }
+
+        private void btnBBGiaoHang_Click(object sender, EventArgs e)
+        {
+            SplashScreenManager.ShowForm(typeof(WaitFormLoad));
+            RptBienBanGH rpt = new RptBienBanGH();
+            rpt.DataSource = dtPhieu;
+            try
+            {
+                rpt.xrlblHomNay.Text = "Hôm nay, ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year + ", chúng tôi gồm:";
+                rpt.xrlblBenA.Text = lookUpNhaCungCap.Properties.GetDisplayValueByKeyValue(lookUpNhaCungCap.EditValue).ToString().ToUpper();
+                rpt.xrlblDiaChiBenA.Text = (lookUpNhaCungCap.Properties.GetRowByKeyValue(lookUpNhaCungCap.EditValue) as DataRowView)["DiaChi"].ToString();
+            }
+            catch {
+                //SplashScreenManager.CloseForm();
+            }
+            rpt.CreateDocument();
+            rpt.ShowPreviewDialog();
+            SplashScreenManager.CloseForm();
+        }
+
+        private void btnBBNghiemThu_Click(object sender, EventArgs e)
+        {
+            SplashScreenManager.ShowForm(typeof(WaitFormLoad));
+            RptBienBanNT rpt = new RptBienBanNT();
+            rpt.xrlblTenCty.Text ="TÊN CTY: "+ lookUpNhaCungCap.Properties.GetDisplayValueByKeyValue(lookUpNhaCungCap.EditValue).ToString().ToUpper();
+            rpt.xrlblNgayThang.Text = "Ngày "+DateTime.Now.Day+" tháng "+DateTime.Now.Month+" năm "+DateTime.Now.Year;
+            rpt.xrlblSoHD.Text = txtSoHoaDon.Text;
+
+            rpt.DataSource = dtPhieu;
+            rpt.CreateDocument();
+            rpt.ShowPreviewDialog();
+            SplashScreenManager.CloseForm();
         }
     }
 }

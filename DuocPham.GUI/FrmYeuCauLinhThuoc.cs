@@ -324,7 +324,8 @@ namespace DuocPham.GUI
             rpt.lblNgayXuat.Text = "Ngày " + linhthuoc.NgayXuat.Day + " tháng "
                 + linhthuoc.NgayXuat.Month + " năm " + linhthuoc.NgayXuat.Year;
             rpt.lblKhoaNhan.Text = linhthuoc.TenKhoNhan;
-           rpt.lblNgayIn.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            rpt.lblNgayIn.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            rpt.xrlblNoiDung.Text = linhthuoc.NoiDung;
             DataRow drow = linhthuoc.MauPhieu();
             if (drow != null)
             {
