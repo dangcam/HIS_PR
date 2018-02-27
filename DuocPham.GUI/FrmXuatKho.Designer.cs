@@ -104,6 +104,7 @@
             this.HetHan = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoLo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HamLuong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -125,7 +126,6 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.DVT = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
@@ -1075,6 +1075,16 @@
             this.HamLuong.Visible = true;
             this.HamLuong.VisibleIndex = 6;
             // 
+            // DVT
+            // 
+            this.DVT.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DVT.AppearanceCell.Options.UseFont = true;
+            this.DVT.Caption = "ĐVT";
+            this.DVT.FieldName = "DonViTinh";
+            this.DVT.Name = "DVT";
+            this.DVT.Visible = true;
+            this.DVT.VisibleIndex = 7;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -1289,16 +1299,6 @@
             this.layoutControlItem3.Size = new System.Drawing.Size(959, 297);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
-            // 
-            // DVT
-            // 
-            this.DVT.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DVT.AppearanceCell.Options.UseFont = true;
-            this.DVT.Caption = "ĐVT";
-            this.DVT.FieldName = "DonViTinh";
-            this.DVT.Name = "DVT";
-            this.DVT.Visible = true;
-            this.DVT.VisibleIndex = 7;
             // 
             // FrmXuatKho
             // 

@@ -92,7 +92,8 @@
             "5. Tổng hợp viện phí",
             "6. Tổng hợp số lượng thuốc",
             "7. Số liệu mẫu 7980A",
-            "8. Tổng hợp chi tiết thuốc"});
+            "8. Tổng hợp chi tiết thuốc",
+            "9. Xuất excel số lượng vật tư"});
             this.cbLoaiBaoCao.Size = new System.Drawing.Size(320, 22);
             this.cbLoaiBaoCao.TabIndex = 0;
             // 

@@ -50,15 +50,19 @@ namespace BaoCao.DAL
         }
         public DataTable DSSoLuongThuoc(string maKhoa, DateTime tuNgay, DateTime denNgay)
         {
-            return db.ExcuteQuery("select ROW_NUMBER() OVER (ORDER By TenThuoc) as STT," +
-                "MaVatTu,TenThuoc,DonViTinh,SUM(SoLuong) as SoLuong,TT " +
+            return db.ExcuteQuery("select ROW_NUMBER() OVER (ORDER By TenThuoc) as STT,DonGia, " +
+                "MaVatTu,TenThuoc,DonViTinh,SUM(SoLuong) as SoLuong,TT,SUM(ThanhTien) as ThanhTien  " +
                 "from DonThuocChiTiet,(select MaLK,(CASE WHEN NgayThanhToan is null THEN 0 ELSE 1 END) AS TT " +
                 "from ThongTinBNChiTiet where MaCoSoKCB='" + AppConfig.CoSoKCB + "') as ThongTin " +
                 "where ThongTin.MaLK = DonThuocChiTiet.MaLK and MaKhoa = '" + maKhoa + "' " +
                 "and(convert(date,NgayYLenh) between convert(date,'" + tuNgay + "') and convert(date,'" + denNgay + "')) " +
-                " group by MaVatTu,TenThuoc,DonViTinh,TT",
+                " group by MaVatTu,TenThuoc,DonViTinh,DonGia,TT",
                 CommandType.Text, null);
-
+        }
+        public DataTable DSSoLuongVatTu(string maKhoa, DateTime tuNgay, DateTime denNgay)
+        {
+            return db.ExcuteQuery("Select *,(SoLuong*DonGia) as ThanhTien from XuatExcel('" + tuNgay + "','" + denNgay + "','" + maKhoa + "','" + AppConfig.CoSoKCB + "') order by LoaiVatTu,NgayYLenh,MaBV",
+                CommandType.Text, null);
         }
         public DataTable DSVatTu(string maKhoa, DateTime tuNgay, DateTime denNgay)
         {
