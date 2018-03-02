@@ -19,6 +19,7 @@ namespace BaoCao.GUI
     {
         TongHopEntity tongHop;
         DataTable dataTongHop;
+        Dictionary<string, string> maVatTu = new Dictionary<string, string>();
         public FrmTongHopBaoCao()
         {
             InitializeComponent();
@@ -43,6 +44,7 @@ namespace BaoCao.GUI
             lookUpKhoa.ItemIndex = 0;
             cbQuy.SelectedIndex = (DateTime.Now.Month+5) / 3-2;
             cbThoiGian.SelectedIndex = 0;
+            maVatTu = tongHop.DSMaVatTu().AsEnumerable().ToDictionary(row=>row["MaBV"].ToString(),row=>row["MaCu"].ToString());
         }
         private void cbThoiGian_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -216,7 +218,7 @@ namespace BaoCao.GUI
             else if(cbLoaiBaoCao.SelectedIndex ==5)
             {
                 //Tổng hợp số lượng thuốc
-                
+                dataTongHop = tongHop.DSSoLuongThuoc(maKhoa, tuNgay, denNgay);
                 RptSoLuongThuoc rpt = new RptSoLuongThuoc();
                 rpt.xrlblCoSo.Text = AppConfig.CoSoKCB;
                 rpt.xrlblTuNgayDenNgay.Text = "Từ ngày " + tuNgay.ToString("dd/MM/yyyy") +
@@ -256,10 +258,25 @@ namespace BaoCao.GUI
                 rpt.CreateDocument();
                 rpt.ShowPreviewDialog();
             }
-            else
+            else if (cbLoaiBaoCao.SelectedIndex == 8)
             {
+                // xuất excel sang phần mềm kế toán
                 dataTongHop = tongHop.DSSoLuongVatTu(maKhoa, tuNgay, denNgay);
                 XuatExcel(dataTongHop);           
+            }
+            else
+            {
+                // tổng hợp viện phí dân
+                RptTongHopVienPhi rpt = new RptTongHopVienPhi();
+                dataTongHop = tongHop.DSVienPhiDan(maKhoa, tuNgay, denNgay);
+                rpt.xrlblCoSo.Text = AppConfig.CoSoKCB;
+                rpt.xrlblTuNgayDenNgay.Text = "Từ ngày " + tuNgay.ToString("dd/MM/yyyy") +
+                    " đến ngày " + denNgay.ToString("dd/MM/yyyy");
+                rpt.xrlblKhoa.Text = lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();
+                rpt.xrlblNgayLap.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+                rpt.DataSource = dataTongHop;
+                rpt.CreateDocument();
+                rpt.ShowPreviewDialog();
             }
 
             SplashScreenManager.CloseForm();
@@ -347,57 +364,76 @@ namespace BaoCao.GUI
             cl15.Value2 = "DiaChi";
             cl15.ColumnWidth = 30.0;
 
-            Microsoft.Office.Interop.Excel.Range rowHead = oSheet.get_Range("A1", "O1");
+            Microsoft.Office.Interop.Excel.Range cl16 = oSheet.get_Range("P1", "P1");
+            cl16.Value2 = "ThangHoachToan";
+            cl16.ColumnWidth = 30.0;
+
+            Microsoft.Office.Interop.Excel.Range cl17 = oSheet.get_Range("Q1", "Q1");
+            cl17.Value2 = "MaDTPNNo";
+            cl17.ColumnWidth = 30.0;
+
+            Microsoft.Office.Interop.Excel.Range rowHead = oSheet.get_Range("A1", "Q1");
             rowHead.Font.Bold = true;
             rowHead.Font.Color = ConsoleColor.Red;
             rowHead.Interior.Color = 20;
             // Kẻ viền
             rowHead.Borders.LineStyle = Microsoft.Office.Interop.Excel.Constants.xlSolid;
             // Thiết lập màu nền
-            rowHead.Interior.ColorIndex = 15;
+            rowHead.Interior.ColorIndex = 17;
             rowHead.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
 
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
 
-            object[,] arr = new object[dataTable.Rows.Count, 15];// dataTable.Columns.Count];
+            object[,] arr = new object[dataTable.Rows.Count, 17];// dataTable.Columns.Count];
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
+            int soctu = 94;
+            string ngayYLenh="";
             for (int r = 0; r < dataTable.Rows.Count; r++)
             {
+              
                 DataRow dr = dataTable.Rows[r];
+                if (ngayYLenh != dr["NgayYLenh"].ToString())
+                {
+                    ngayYLenh = dr["NgayYLenh"].ToString();
+                    soctu++;
+                }
                 arr[r, 0] = "PXK";//MaCTu
-                arr[r, 1] = "";// dr[""];//SoCTu
-                arr[r, 2] = Utils.ToDateTime(dr["NgayYLenh"].ToString()).ToString("dd/MM/yy");//NgayCTu
-                arr[r, 3] = "Xuất kho " + lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue);//dr[""];//DienGiai
+                arr[r, 1] = soctu;// dr[""];//SoCTu
+                arr[r, 2] = Utils.ToDateTime(dr["NgayYLenh"].ToString()).ToString("dd/MM/yy")+"";//NgayCTu
+                arr[r, 3] = "Xuất thuốc điều trị BN " + ((lookUpKhoa.EditValue.Equals("K01_13")) ? "Ngoại trú" : "Nội Trú")+ " ngày "+
+                    Utils.ToDateTime(dr["NgayYLenh"].ToString()).ToString("dd/MM"); ;//dr[""];//DienGiai
                 arr[r, 4] = (lookUpKhoa.EditValue.Equals("K01_13"))? "161":"141";// dr[""];//MaTKNo Ngoại trú: 161, Nội trú: 141
                 arr[r, 5] = "156"+ dr["LoaiVatTu"];//MaTKCo
                 arr[r, 6] = "";//dr[""];//MaVTHHNo
-                arr[r, 7] = dr["MaBV"];//MaVTHHCo
+                arr[r, 7] = maVatTu[dr["MaBV"].ToString()];//MaVTHHCo
                 arr[r, 8] = dr["TenVatTu"];//TenHangHoa
                 arr[r, 9] = dr["DonViTinh"];//DonViTinh
                 arr[r, 10] = dr["SoLuong"];//SoLuong
                 arr[r, 11] = dr["DonGia"];//VNDDonGia
                 arr[r, 12] = dr["ThanhTien"];//VNDThanhTien
-                arr[r, 13] = "";// dr[""];//KhachHang
-                arr[r, 14] = lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();// dr[""];//DiaChi
+                arr[r, 13] = "NGUYỄN THỊ MAI";// dr[""];//KhachHang
+                arr[r, 14] = "KHOA DƯỢC";// lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();// dr[""];//DiaChi
+                arr[r, 15] = "2";// tháng
+                arr[r, 16] = "NGT";// ngoại trú
 
-                //Thiết lập vùng điền dữ liệu
-                int rowStart = 2;
-                int columnStart = 1;
-
-                int rowEnd = rowStart + dataTable.Rows.Count - 1;
-                int columnEnd = 15;// dataTable.Columns.Count;
-
-                // Ô bắt đầu điền dữ liệu
-                Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
-                // Ô kết thúc điền dữ liệu
-                Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
-                // Lấy về vùng điền dữ liệu
-                Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
-
-                //Điền dữ liệu vào vùng đã thiết lập
-                range.Value2 = arr;
             }
+            //Thiết lập vùng điền dữ liệu
+            int rowStart = 2;
+            int columnStart = 1;
+
+            int rowEnd = rowStart + dataTable.Rows.Count - 1;
+            int columnEnd = 17;// dataTable.Columns.Count;
+
+            // Ô bắt đầu điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
+            // Ô kết thúc điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
+            // Lấy về vùng điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
+
+            //Điền dữ liệu vào vùng đã thiết lập
+            range.Value2 = arr;
         }
         private void btnDong_Click(object sender, EventArgs e)
         {

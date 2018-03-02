@@ -435,7 +435,6 @@ namespace DuocPham.GUI
                 lookUpNguoiNhan.EditValue = dr["NguoiNhan"].ToString ();
                 txtNoiDung.Text = dr["NoiDung"].ToString ();
                 txtSoPhieu.Text = dr["SoPhieu"].ToString ();
-
                 nhapkho.NguoiTao = dr["NguoiTao"].ToString ();
 
                 them = false;

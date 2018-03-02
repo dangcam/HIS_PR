@@ -39,6 +39,11 @@ namespace DuocPham.DAL
         public DateTime HetHan { get; set; }
         public decimal ThanhTien { get; set; }
         public string LoaiVatTu { get; set; }
+        public DataTable DSMaVatTu()
+        {
+            return db.ExcuteQuery("Select * from MaVatTu",
+                CommandType.Text, null);
+        }
         public DataTable DSKhoXuat ()
         {
             return db.ExcuteQuery ("Select MaKhoa,TenKhoa From KhoaBan Where TinhTrang = 1 And KhoVatTu = 1 And LoaiKho = 1",
@@ -62,6 +67,11 @@ namespace DuocPham.DAL
         public DataTable DSPhieuVatTu ()
         {
             return db.ExcuteQuery ("Select * From PhieuXuatChiTiet,(select MaBV,TenVatTu,DonViTinh from VatTu) as VT Where VT.MaBV = PhieuXuatChiTiet.MaVatTu and SoPhieu = " + this.SoPhieu,
+                CommandType.Text, null);
+        }
+        public DataTable DSPhieuVatTu(int soPhieu)
+        {
+            return db.ExcuteQuery("Select * From PhieuXuatChiTiet,(select MaBV,TenVatTu,DonViTinh from VatTu) as VT Where VT.MaBV = PhieuXuatChiTiet.MaVatTu and SoPhieu = " + soPhieu,
                 CommandType.Text, null);
         }
         public bool SpThemPhieuXuat (ref string err)

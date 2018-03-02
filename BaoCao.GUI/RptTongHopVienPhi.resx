@@ -117,4 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="xrTableCell43.ExpressionBindings" xml:space="preserve">
+    <value>IsNull(Sum([1]), ToDecimal(0))+
+IsNull(Sum([2]), ToDecimal(0))+
+IsNull(Sum([3]), ToDecimal(0))+
+IsNull(Sum([4]), ToDecimal(0))+
+IsNull(Sum([5]), ToDecimal(0))+
+IsNull(Sum([7]), ToDecimal(0))+
+IsNull(Sum([8]), ToDecimal(0))+
+IsNull(Sum([8]), ToDecimal(0))+
+IsNull(Sum([9]), ToDecimal(0))+
+IsNull(Sum([10]), ToDecimal(0))+
+IsNull(Sum([12]), ToDecimal(0))+
+IsNull(Sum([13]), ToDecimal(0))+
+IsNull(Sum([15]), ToDecimal(0))</value>
+  </data>
 </root>

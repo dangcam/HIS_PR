@@ -4,13 +4,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
 using DuocPham.DAL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DuocPham.GUI
@@ -380,6 +374,20 @@ namespace DuocPham.GUI
 
                 gridControlDS.DataSource = nhapkho.DSPhieuVatTuTra ().AsDataView ();
                 btnIn.Enabled = true;
+            }
+        }
+
+        private void checkTraNhaCC_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkTraNhaCC.Checked)// Khoa trả khoa Duoc, khoa nhận nhà cung cấp
+            {
+                lookUpKhoNhan.Properties.DataSource = nhapkho.DSTraNhaCungCap();
+                lookUpKhoaTra.Properties.DataSource = nhapkho.DSKho();
+            }
+            else
+            {
+                lookUpKhoNhan.Properties.DataSource = nhapkho.DSKho();
+                lookUpKhoaTra.Properties.DataSource = nhapkho.DSKhoTra();
             }
         }
     }

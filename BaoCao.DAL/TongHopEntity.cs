@@ -61,7 +61,12 @@ namespace BaoCao.DAL
         }
         public DataTable DSSoLuongVatTu(string maKhoa, DateTime tuNgay, DateTime denNgay)
         {
-            return db.ExcuteQuery("Select *,(SoLuong*DonGia) as ThanhTien from XuatExcel('" + tuNgay + "','" + denNgay + "','" + maKhoa + "','" + AppConfig.CoSoKCB + "') order by LoaiVatTu,NgayYLenh,MaBV",
+            return db.ExcuteQuery("Select *,(SoLuong*DonGia) as ThanhTien from XuatExcel('" + tuNgay + "','" + denNgay + "','" + maKhoa + "','" + AppConfig.CoSoKCB + "') order by NgayYLenh,MaBV",
+                CommandType.Text, null);
+        }
+        public DataTable DSMaVatTu()
+        {
+            return db.ExcuteQuery("Select * from MaVatTu",
                 CommandType.Text, null);
         }
         public DataTable DSVatTu(string maKhoa, DateTime tuNgay, DateTime denNgay)
@@ -105,6 +110,13 @@ namespace BaoCao.DAL
         {
             string sql = "";
             sql = "EXEC SpgetVienPhi '"+maKhoa+"','" + AppConfig.CoSoKCB + "','"+tuNgay+"','"+denNgay+"'";
+            return db.ExcuteQuery(sql,
+                CommandType.Text, null);
+        }
+        public DataTable DSVienPhiDan(string maKhoa, DateTime tuNgay, DateTime denNgay)
+        {
+            string sql = "";
+            sql = "EXEC SpgetVienPhiDan '" + maKhoa + "','" + AppConfig.CoSoKCB + "','" + tuNgay + "','" + denNgay + "'";
             return db.ExcuteQuery(sql,
                 CommandType.Text, null);
         }

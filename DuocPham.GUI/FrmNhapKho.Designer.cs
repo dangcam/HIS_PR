@@ -154,6 +154,7 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.NoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
@@ -319,7 +320,8 @@
             this.PSoPhieu,
             this.PSoHoaDon,
             this.PNhaCungCap,
-            this.PNgayNhap});
+            this.PNgayNhap,
+            this.NoiDung});
             this.gridViewPhieu.GridControl = this.gridControlPhieu;
             this.gridViewPhieu.Name = "gridViewPhieu";
             this.gridViewPhieu.OptionsView.ShowAutoFilterRow = true;
@@ -1712,6 +1714,12 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
+            // NoiDung
+            // 
+            this.NoiDung.Caption = "NoiDung";
+            this.NoiDung.FieldName = "NoiDung";
+            this.NoiDung.Name = "NoiDung";
+            // 
             // FrmNhapKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1946,5 +1954,6 @@
         private DevExpress.XtraEditors.SimpleButton btnBBNghiemThu;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraGrid.Columns.GridColumn DiaChi;
+        private DevExpress.XtraGrid.Columns.GridColumn NoiDung;
     }
 }

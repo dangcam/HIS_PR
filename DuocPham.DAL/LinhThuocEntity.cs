@@ -102,6 +102,11 @@ namespace DuocPham.DAL
             return db.ExcuteQuery ("Select * From PhieuXuat Where KhoNhan ='"+KhoNhan+"' and PheDuyet = 0",
                 CommandType.Text, null);
         }
+        public DataTable DSNV()
+        {
+            return db.ExcuteQuery("Select * From NguoiLinh Where MaKhoa ='" + KhoNhan + "'",
+                CommandType.Text, null);
+        }
         public DataRow MauPhieu()
         {
             DataTable dt = db.ExcuteQuery("Select * From LoaiVatTu Where Ma ='" + TKCo.Replace("156","") + "' ",

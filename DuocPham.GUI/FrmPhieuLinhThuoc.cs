@@ -104,6 +104,7 @@ namespace DuocPham.GUI
                 + dateNgayXuat.DateTime.Month + " năm " + dateNgayXuat.DateTime.Year;
             rpt.lblKhoaNhan.Text = lookUpKhoaBan.GetDisplayValueByKeyValue (dr["KhoNhan"]).ToString ();
             rpt.lblNgayIn.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            rpt.xrlblNguoiLinh.Text = dr["NguoiNhan"].ToString();
             DataRow drow = linhthuoc.MauPhieu();
             if(drow!=null)
             {
@@ -287,7 +288,7 @@ namespace DuocPham.GUI
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();
-                cell.Text = decimal.Parse (drview["DonGiaBHYT"].ToString ()).ToString ("0,0", elGR);
+                cell.Text = Utils.ToDecimal(drview["DonGiaBHYT"]).ToString ("0,0", elGR);
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
                 cell.WidthF = 80;

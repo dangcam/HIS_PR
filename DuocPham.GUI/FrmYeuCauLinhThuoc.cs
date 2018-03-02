@@ -54,6 +54,12 @@ namespace DuocPham.GUI
             LoadData ();
             btnIn.Enabled = false;
             btnLuu.Enabled = false;
+            cbNguoiLinh.Properties.Items.Clear();
+            DataTable dataNV = linhthuoc.DSNV();
+            foreach(DataRow dr in dataNV.Rows)
+            {
+                cbNguoiLinh.Properties.Items.Add(dr["TenNV"]);
+            }
         }
         private void LoadData()
         {
@@ -105,15 +111,15 @@ namespace DuocPham.GUI
             linhthuoc.NgayXuat = DateTime.Now;
             linhthuoc.NgayCapNhat = DateTime.Now;
             linhthuoc.PheDuyet = false;
-            linhthuoc.NguoiNhan = linhthuoc.LayNguoiNhan ();
+            //linhthuoc.NguoiNhan = linhthuoc.LayNguoiNhan ();
             linhthuoc.NoiDung = "Khoa yêu cầu phát thuốc.";
-
             gridControlDS.DataSource = linhthuoc.DSPhieuVatTu ().AsDataView ();
 
             lookUpMaVatTu.Focus ();
             Enabled_Luu ();
             btnIn.Enabled = false;
             dateYeuCau.DateTime = DateTime.Now;
+            cbNguoiLinh.SelectedItem = 0;
         }
 
         private void btnLuu_Click (object sender, EventArgs e)
@@ -132,6 +138,7 @@ namespace DuocPham.GUI
             linhthuoc.NgayXuat = dateYeuCau.DateTime;
             linhthuoc.TKCo = "156" + lookUpLoaiVatTu.EditValue;
             linhthuoc.NoiDung = Utils.ToString(cbNoiDung.EditValue);
+            linhthuoc.NguoiNhan = Utils.ToString(cbNguoiLinh.EditValue);
             string err = "";
             DialogResult traloi;
             traloi = XtraMessageBox.Show ("Chắc chắn bạn muốn lưu, những thông tin này sẽ không được chỉnh sửa?", "Trả lời",
@@ -307,6 +314,9 @@ namespace DuocPham.GUI
                 linhthuoc.NguoiNhan = dr["NguoiNhan"].ToString ();
                 linhthuoc.NoiDung = dr["NoiDung"].ToString ();
 
+                cbNoiDung.EditValue = dr["NoiDung"];
+                cbNguoiLinh.EditValue = linhthuoc.NguoiNhan;
+
                 them = false;
                 Enabled_Luu ();
 
@@ -326,6 +336,7 @@ namespace DuocPham.GUI
             rpt.lblKhoaNhan.Text = linhthuoc.TenKhoNhan;
             rpt.lblNgayIn.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
             rpt.xrlblNoiDung.Text = linhthuoc.NoiDung;
+            rpt.xrlblNguoiLinh.Text = cbNguoiLinh.EditValue.ToString();
             DataRow drow = linhthuoc.MauPhieu();
             if (drow != null)
             {
