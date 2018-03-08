@@ -173,58 +173,58 @@ namespace DuocPham.GUI
                 stt++;
                 rpt.xrTable.Rows.Add (row);
             }
-            row = new XRTableRow ();
+            //row = new XRTableRow ();
 
-            cell = new XRTableCell ();
-            cell.Text = "";
-            cell.Font = font;
-            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            cell.WidthF = 40;
-            row.Cells.Add (cell);
+            //cell = new XRTableCell ();
+            //cell.Text = "";
+            //cell.Font = font;
+            //cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            //cell.WidthF = 40;
+            //row.Cells.Add (cell);
 
-            cell = new XRTableCell ();
-            cell.Text = "";
-            cell.Font = font;
-            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            cell.WidthF = 80;
-            row.Cells.Add (cell);
+            //cell = new XRTableCell ();
+            //cell.Text = "";
+            //cell.Font = font;
+            //cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            //cell.WidthF = 80;
+            //row.Cells.Add (cell);
 
-            cell = new XRTableCell ();
-            cell.Text = "Cộng khoản:";
-            cell.Font = fontB;
-            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            cell.WidthF = 348;
-            row.Cells.Add (cell);
+            //cell = new XRTableCell ();
+            //cell.Text = "Cộng khoản:";
+            //cell.Font = fontB;
+            //cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            //cell.WidthF = 348;
+            //row.Cells.Add (cell);
 
-            cell = new XRTableCell ();
-            cell.Text = "";
-            cell.Font = font;
-            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            cell.WidthF = 50;
-            row.Cells.Add (cell);
+            //cell = new XRTableCell ();
+            //cell.Text = "";
+            //cell.Font = font;
+            //cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            //cell.WidthF = 50;
+            //row.Cells.Add (cell);
 
-            cell = new XRTableCell ();
-            cell.Text = soluong.ToString ("0,0", elGR);
-            cell.Font = fontB;
-            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            cell.WidthF = 70;
-            row.Cells.Add (cell);
+            //cell = new XRTableCell ();
+            //cell.Text = soluong.ToString ("0,0", elGR);
+            //cell.Font = fontB;
+            //cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            //cell.WidthF = 70;
+            //row.Cells.Add (cell);
 
-            cell = new XRTableCell ();
-            cell.Text = soluong.ToString ("0,0", elGR);
-            cell.Font = fontB;
-            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            cell.WidthF = 70;
-            row.Cells.Add (cell);
+            //cell = new XRTableCell ();
+            //cell.Text = soluong.ToString ("0,0", elGR);
+            //cell.Font = fontB;
+            //cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            //cell.WidthF = 70;
+            //row.Cells.Add (cell);
 
-            cell = new XRTableCell ();
-            cell.Text = "";
-            cell.Font = font;
-            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            cell.WidthF = 108;
-            row.Cells.Add (cell);
+            //cell = new XRTableCell ();
+            //cell.Text = "";
+            //cell.Font = font;
+            //cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            //cell.WidthF = 108;
+            //row.Cells.Add (cell);
 
-            rpt.xrTable.Rows.Add (row);
+            //rpt.xrTable.Rows.Add (row);
 
             rpt.CreateDocument ();
             rpt.ShowPreviewDialog ();

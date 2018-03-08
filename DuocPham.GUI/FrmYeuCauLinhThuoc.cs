@@ -157,8 +157,12 @@ namespace DuocPham.GUI
                 else
                 {
                     linhthuoc.NguoiCapNhat = AppConfig.MaNV;
-                    LuuVatTu();
-                    LoadData();
+                    linhthuoc.NgayCapNhat = DateTime.Now;
+                    if (linhthuoc.SpSuaPhieuXuat(ref err))
+                    { 
+                        LuuVatTu();
+                        LoadData();
+                    }
                 }
                 if (!string.IsNullOrEmpty (err))
                 {
@@ -316,6 +320,8 @@ namespace DuocPham.GUI
 
                 cbNoiDung.EditValue = dr["NoiDung"];
                 cbNguoiLinh.EditValue = linhthuoc.NguoiNhan;
+                dateYeuCau.DateTime = linhthuoc.NgayXuat;
+                lookUpLoaiVatTu.EditValue = linhthuoc.TKCo.Replace("156", "");
 
                 them = false;
                 Enabled_Luu ();
@@ -336,7 +342,7 @@ namespace DuocPham.GUI
             rpt.lblKhoaNhan.Text = linhthuoc.TenKhoNhan;
             rpt.lblNgayIn.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
             rpt.xrlblNoiDung.Text = linhthuoc.NoiDung;
-            rpt.xrlblNguoiLinh.Text = cbNguoiLinh.EditValue.ToString();
+            rpt.xrlblNguoiLinh.Text = Utils.ToString(cbNguoiLinh.EditValue);
             DataRow drow = linhthuoc.MauPhieu();
             if (drow != null)
             {
@@ -405,58 +411,58 @@ namespace DuocPham.GUI
                 stt++;
                 rpt.xrTable.Rows.Add (row);
             }
-            row = new XRTableRow ();
+            //row = new XRTableRow ();
    
-            cell = new XRTableCell ();
-            cell.Text = "";
-            cell.Font = font;
-            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            cell.WidthF = 40;
-            row.Cells.Add (cell);
+            //cell = new XRTableCell ();
+            //cell.Text = "";
+            //cell.Font = font;
+            //cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            //cell.WidthF = 40;
+            //row.Cells.Add (cell);
 
-            cell = new XRTableCell ();
-            cell.Text = "";
-            cell.Font = font;
-            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            cell.WidthF = 80;
-            row.Cells.Add (cell);
+            //cell = new XRTableCell ();
+            //cell.Text = "";
+            //cell.Font = font;
+            //cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            //cell.WidthF = 80;
+            //row.Cells.Add (cell);
 
-            cell = new XRTableCell ();
-            cell.Text = "Cộng khoản:";
-            cell.Font = fontB;
-            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            cell.WidthF = 348;
-            row.Cells.Add (cell);
+            //cell = new XRTableCell ();
+            //cell.Text = "Cộng khoản:";
+            //cell.Font = fontB;
+            //cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            //cell.WidthF = 348;
+            //row.Cells.Add (cell);
 
-            cell = new XRTableCell ();
-            cell.Text = "";
-            cell.Font = font;
-            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            cell.WidthF = 50;
-            row.Cells.Add (cell);
+            //cell = new XRTableCell ();
+            //cell.Text = "";
+            //cell.Font = font;
+            //cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            //cell.WidthF = 50;
+            //row.Cells.Add (cell);
 
-            cell = new XRTableCell ();
-            cell.Text = soluong.ToString ("0,0", elGR);
-            cell.Font = fontB;
-            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            cell.WidthF = 70;
-            row.Cells.Add (cell);
+            //cell = new XRTableCell ();
+            //cell.Text = soluong.ToString ("0,0", elGR);
+            //cell.Font = fontB;
+            //cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            //cell.WidthF = 70;
+            //row.Cells.Add (cell);
 
-            cell = new XRTableCell ();
-            cell.Text = soluong.ToString ("0,0", elGR);
-            cell.Font = fontB;
-            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            cell.WidthF = 70;
-            row.Cells.Add (cell);
+            //cell = new XRTableCell ();
+            //cell.Text = soluong.ToString ("0,0", elGR);
+            //cell.Font = fontB;
+            //cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            //cell.WidthF = 70;
+            //row.Cells.Add (cell);
 
-            cell = new XRTableCell ();
-            cell.Text = "";
-            cell.Font = font;
-            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            cell.WidthF = 108;
-            row.Cells.Add (cell);
+            //cell = new XRTableCell ();
+            //cell.Text = "";
+            //cell.Font = font;
+            //cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            //cell.WidthF = 108;
+            //row.Cells.Add (cell);
 
-            rpt.xrTable.Rows.Add (row);
+            //rpt.xrTable.Rows.Add (row);
 
             rpt.CreateDocument ();
             rpt.ShowPreviewDialog ();

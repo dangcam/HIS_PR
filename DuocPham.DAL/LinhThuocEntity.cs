@@ -145,6 +145,22 @@ namespace DuocPham.DAL
             this.SoPhieu = int.Parse (outSoPhieu.Value.ToString ());
             return f;
         }
+        public bool SpSuaPhieuXuat(ref string err)
+        {
+            return db.MyExecuteNonQuery("SpSuaPhieuXuat",
+                CommandType.StoredProcedure, ref err,
+                 new SqlParameter("@SoPhieu", SoPhieu),
+                new SqlParameter("@TKCo", TKCo),
+                new SqlParameter("@NgayXuat", NgayXuat.ToString("MM/dd/yyyy")),
+                new SqlParameter("@KhoXuat", KhoXuat),
+                new SqlParameter("@KhoNhan", KhoNhan),
+                new SqlParameter("@NguoiNhan", NguoiNhan),
+                new SqlParameter("@NoiDung", NoiDung),
+                new SqlParameter("@PheDuyet", PheDuyet),
+                new SqlParameter("@NguoiTao", NguoiTao),
+                new SqlParameter("@NgayCapNhat", NgayCapNhat.ToString("MM/dd/yyyy")),
+                new SqlParameter("@NguoiCapNhat", NguoiCapNhat));
+        }
         public bool SpThemPhieuNhapChiTiet (ref string err)
         {
             return db.MyExecuteNonQuery ("SpThemPhieuXuatChiTiet",

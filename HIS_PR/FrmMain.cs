@@ -457,5 +457,11 @@ namespace HIS_PR
             frmBCTonThucTe.MdiParent = this;
             frmBCTonThucTe.Show();
         }
+
+        private void barBtnXuatExcel_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FrmXuatExcel frm = new FrmXuatExcel();
+            frm.ShowDialog();
+        }
     }
 }

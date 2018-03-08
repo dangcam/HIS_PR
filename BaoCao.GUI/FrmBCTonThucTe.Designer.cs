@@ -34,6 +34,9 @@
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.gridControlLoaiVT = new DevExpress.XtraGrid.GridControl();
             this.gridViewLoaiVT = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.Ma = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Ten = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Chon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
@@ -71,9 +74,6 @@
             this.layctrlThang = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.Ma = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Ten = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Chon = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).BeginInit();
             this.splitContainerControl.SuspendLayout();
@@ -169,6 +169,40 @@
             this.gridViewLoaiVT.GridControl = this.gridControlLoaiVT;
             this.gridViewLoaiVT.Name = "gridViewLoaiVT";
             this.gridViewLoaiVT.OptionsView.ShowGroupPanel = false;
+            // 
+            // Ma
+            // 
+            this.Ma.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Ma.AppearanceCell.Options.UseFont = true;
+            this.Ma.Caption = "Mã TK";
+            this.Ma.FieldName = "Ma";
+            this.Ma.Name = "Ma";
+            this.Ma.Visible = true;
+            this.Ma.VisibleIndex = 0;
+            this.Ma.Width = 30;
+            // 
+            // Ten
+            // 
+            this.Ten.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Ten.AppearanceCell.Options.UseFont = true;
+            this.Ten.Caption = "Tên tài khoản";
+            this.Ten.FieldName = "Ten";
+            this.Ten.Name = "Ten";
+            this.Ten.Visible = true;
+            this.Ten.VisibleIndex = 1;
+            this.Ten.Width = 109;
+            // 
+            // Chon
+            // 
+            this.Chon.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Chon.AppearanceCell.Options.UseFont = true;
+            this.Chon.Caption = "#";
+            this.Chon.FieldName = "Chon";
+            this.Chon.Name = "Chon";
+            this.Chon.OptionsColumn.FixedWidth = true;
+            this.Chon.Visible = true;
+            this.Chon.VisibleIndex = 2;
+            this.Chon.Width = 25;
             // 
             // layoutControlGroup1
             // 
@@ -369,6 +403,7 @@
             this.gridView.GridControl = this.gridControl;
             this.gridView.GroupCount = 1;
             this.gridView.Name = "gridView";
+            this.gridView.OptionsFind.AlwaysVisible = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.LoaiVatTu, DevExpress.Data.ColumnSortOrder.Ascending)});
@@ -679,40 +714,6 @@
             this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
-            // 
-            // Ma
-            // 
-            this.Ma.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Ma.AppearanceCell.Options.UseFont = true;
-            this.Ma.Caption = "Mã TK";
-            this.Ma.FieldName = "Ma";
-            this.Ma.Name = "Ma";
-            this.Ma.Visible = true;
-            this.Ma.VisibleIndex = 0;
-            this.Ma.Width = 30;
-            // 
-            // Ten
-            // 
-            this.Ten.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Ten.AppearanceCell.Options.UseFont = true;
-            this.Ten.Caption = "Tên tài khoản";
-            this.Ten.FieldName = "Ten";
-            this.Ten.Name = "Ten";
-            this.Ten.Visible = true;
-            this.Ten.VisibleIndex = 1;
-            this.Ten.Width = 109;
-            // 
-            // Chon
-            // 
-            this.Chon.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Chon.AppearanceCell.Options.UseFont = true;
-            this.Chon.Caption = "#";
-            this.Chon.FieldName = "Chon";
-            this.Chon.Name = "Chon";
-            this.Chon.OptionsColumn.FixedWidth = true;
-            this.Chon.Visible = true;
-            this.Chon.VisibleIndex = 2;
-            this.Chon.Width = 25;
             // 
             // FrmBCTonThucTe
             // 

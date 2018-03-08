@@ -342,6 +342,9 @@ namespace DuocPham.GUI
                     XtraMessageBox.Show("Vật tư đã được chọn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                DataRow drowVT = dtVatTu.Select("MaBV = '" + lookUpMaVatTu.EditValue.ToString() + "'")[0];
+                //drow["TenVatTu"] = drowVT[1];
+                
                 DataRowView dr = (gridControlDS.DataSource as DataView).AddNew();
                 dr["MaVatTu"] = lookUpMaVatTu.EditValue;
                 dr["TenVatTu"] = txtTenVatTu.Text;
@@ -355,6 +358,7 @@ namespace DuocPham.GUI
                 dr["HetHan"] = dateHetHan.DateTime;
                 dr["ThanhTien"] = Math.Round(Utils.ToDecimal(txtThanhTien.Text));
                 dr["LoaiVatTu"] = txtTKNo.Text.Length > 4 ? txtTKNo.Text.Substring(3, 2) : txtTKNo.Text.Substring(3, 1);
+                dr["DonViTinh"] = drowVT[2];
                 dr.EndEdit();
 
                 lookUpMaVatTu.EditValue = null;

@@ -74,6 +74,18 @@ namespace DuocPham.DAL
             return db.ExcuteQuery("Select * From PhieuXuatChiTiet,(select MaBV,TenVatTu,DonViTinh from VatTu) as VT Where VT.MaBV = PhieuXuatChiTiet.MaVatTu and SoPhieu = " + soPhieu,
                 CommandType.Text, null);
         }
+        public DataTable DSXuatExcel(DateTime tuNgay,DateTime denNgay, string maKhoa)
+        {
+            return db.ExcuteQuery("Select * From XuatExcelXuat('"+tuNgay+"','"+denNgay+"','"+maKhoa+"')",
+                CommandType.Text, null);
+        }
+        public DataTable DSKhoaBan(int loaiPhong)
+        {
+            string sql = "";
+            sql = "EXEC SpGetKhoaBan '" + AppConfig.CoSoKCB + "'," + loaiPhong;
+            return db.ExcuteQuery(sql,
+                CommandType.Text, null);
+        }
         public bool SpThemPhieuXuat (ref string err)
         {
             SqlParameter outSoPhieu = new SqlParameter ();
