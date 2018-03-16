@@ -61,7 +61,8 @@ namespace BaoCao.DAL
         }
         public DataTable DSSoLuongVatTu(string maKhoa, DateTime tuNgay, DateTime denNgay)
         {
-            return db.ExcuteQuery("Select *,(SoLuong*DonGia) as ThanhTien from XuatExcel('" + tuNgay + "','" + denNgay + "','" + maKhoa + "','" + AppConfig.CoSoKCB + "') order by NgayYLenh,MaBV",
+            return db.ExcuteQuery("Select *,(SoLuong*DonGia) as ThanhTien from XuatExcel('" + 
+                tuNgay.ToString("MM/dd/yyyy") + "','" + denNgay.ToString("MM/dd/yyyy") + "','" + maKhoa + "','" + AppConfig.CoSoKCB + "') order by NgayYLenh,MaBV",
                 CommandType.Text, null);
         }
         public DataTable DSMaVatTu()

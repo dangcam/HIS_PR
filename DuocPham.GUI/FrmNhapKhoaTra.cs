@@ -377,18 +377,5 @@ namespace DuocPham.GUI
             }
         }
 
-        private void checkTraNhaCC_CheckedChanged(object sender, EventArgs e)
-        {
-            if(checkTraNhaCC.Checked)// Khoa trả khoa Duoc, khoa nhận nhà cung cấp
-            {
-                lookUpKhoNhan.Properties.DataSource = nhapkho.DSTraNhaCungCap();
-                lookUpKhoaTra.Properties.DataSource = nhapkho.DSKho();
-            }
-            else
-            {
-                lookUpKhoNhan.Properties.DataSource = nhapkho.DSKho();
-                lookUpKhoaTra.Properties.DataSource = nhapkho.DSKhoTra();
-            }
-        }
     }
 }

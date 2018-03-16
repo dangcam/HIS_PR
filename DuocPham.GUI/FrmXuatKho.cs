@@ -32,6 +32,7 @@ namespace DuocPham.GUI
         System.Drawing.Font fontB = new System.Drawing.Font ("Times New Roman", 11, System.Drawing.FontStyle.Bold);
         System.Drawing.Font font = new System.Drawing.Font ("Times New Roman", 11);
         Dictionary<string, string> maVatTu = new Dictionary<string, string>();
+        DataTable dataKhoLe, dataNhaCC;
         public FrmXuatKho ()
         {
             InitializeComponent ();
@@ -43,18 +44,23 @@ namespace DuocPham.GUI
             base.OnLoad (e);
             this.WindowState = FormWindowState.Maximized;
         }
-        private void FrmXuatKho_Load (object sender, EventArgs e)
+        private void FrmXuatKho_Load(object sender, EventArgs e)
         {
-            lookUpKhoXuat.Properties.DataSource = xuatkho.DSKhoXuat ();
+
+            dataNhaCC = xuatkho.DSTraNhaCungCap();
+
+            dataKhoLe = xuatkho.DSKhoNhan();
+
+            lookUpKhoXuat.Properties.DataSource = xuatkho.DSKhoXuat();
             lookUpKhoXuat.Properties.ValueMember = "MaKhoa";
             lookUpKhoXuat.Properties.DisplayMember = "TenKhoa";
             lookUpKhoXuat.EditValue = "70013";
 
-            repLookUpEditKhoNhan.DataSource = xuatkho.DSKhoNhan();
+            repLookUpEditKhoNhan.DataSource = dataKhoLe;
             repLookUpEditKhoNhan.ValueMember = "MaKhoa";
             repLookUpEditKhoNhan.DisplayMember = "TenKhoa";
 
-            lookUpKhoNhan.Properties.DataSource = xuatkho.DSKhoNhan ();
+            lookUpKhoNhan.Properties.DataSource = xuatkho.DSKhoNhan();
             lookUpKhoNhan.Properties.ValueMember = "MaKhoa";
             lookUpKhoNhan.Properties.DisplayMember = "TenKhoa";
 
@@ -63,8 +69,8 @@ namespace DuocPham.GUI
             dateTuNgay.EditValue = DateTime.Now;
             dateDenNgay.EditValue = DateTime.Now;
 
-            checkButton ();
-            LoadData ();
+            checkButton();
+            LoadData();
             btnIn.Enabled = false;
         }
         private void LoadData ()
@@ -255,7 +261,9 @@ namespace DuocPham.GUI
                 }
                 else
                 {
+                    // cập nhật giá
                     xuatkho.NguoiCapNhat = AppConfig.MaNV;
+                    LuuVatTu();
                 }
                 if (!string.IsNullOrEmpty (err))
                 {
@@ -287,7 +295,11 @@ namespace DuocPham.GUI
                 if(them)
                 {
                     xuatkho.SpThemPhieuNhapChiTiet (ref err);// insert vào số lô, 
-                    //fffgfg;// tạo lỗi để nhớ
+                    
+                }
+                else
+                {
+                    xuatkho.SpSuaPhieuNhapChiTiet(ref err);
                 }
                 if (!string.IsNullOrEmpty (err))
                 {
@@ -316,6 +328,14 @@ namespace DuocPham.GUI
             dr = gridView.GetDataRow (e.RowHandle);
             if (dr != null)
             {
+                if(dataKhoLe.Select("MaKHoa = '"+ dr["KhoNhan"] + "'").Length>0)
+                {
+                    checkTraNhaCC.Checked = false;
+                }
+                else
+                {
+                    checkTraNhaCC.Checked = true;
+                }
                 txtSoPhieu.Text = dr["SoPhieu"].ToString ();
                 txtTKCo.Text = dr["TKCo"].ToString ();
                 dateNgayXuat.DateTime = DateTime.Parse(dr["NgayXuat"].ToString ());
@@ -326,8 +346,8 @@ namespace DuocPham.GUI
 
                 them = false;
                 //Enabled_Xoa ();
-                //Enabled_Luu ();
-                btnLuu.Enabled = false;
+                Enabled_Luu ();
+                //btnLuu.Enabled = false;
 
                 btnIn.Enabled = true;
                 // danh sách
@@ -429,9 +449,9 @@ namespace DuocPham.GUI
                 cell.WidthF = 80;
                 row.Cells.Add (cell);
 
-                this.thanhTien += soLuong * donGia;
+                this.thanhTien += Utils.ToDecimal(drview["ThanhTien"]); //soLuong * donGia;
                 cell = new XRTableCell ();
-                cell.Text = Utils.ToString (thanhTien);
+                cell.Text = Utils.ToString (Utils.ToDecimal(drview["ThanhTien"]));
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
                 cell.WidthF = 96;
@@ -681,11 +701,11 @@ namespace DuocPham.GUI
 
             object[,] arr = new object[drows.Length * 40, 17];//object[drows.Length * 30, 15];// dataTable.Columns.Count];
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
-            int soctu = 110;
+            int soctu = Utils.ToInt(txtSoCTu.Text);
             int dem = 0;
             foreach (DataRow drow in drows)
             {
-                soctu++;
+               
                 DataTable dataTable = xuatkho.DSPhieuVatTu(Utils.ToInt(drow["SoPhieu"]));
                 for (int r = 0; r < dataTable.Rows.Count; r++)
                 {
@@ -720,6 +740,7 @@ namespace DuocPham.GUI
                     arr[dem, 16] = "BVDK";//
                     dem++;
                 }
+                soctu++;
             }
             //Thiết lập vùng điền dữ liệu
             int rowStart = 2;
@@ -737,6 +758,18 @@ namespace DuocPham.GUI
 
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
+        }
+
+        private void checkTraNhaCC_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkTraNhaCC.Checked)// Khoa trả khoa Duoc, khoa nhận nhà cung cấp
+            {
+                lookUpKhoNhan.Properties.DataSource = dataNhaCC;
+            }
+            else
+            {
+                lookUpKhoNhan.Properties.DataSource = dataKhoLe;
+            }
         }
     }
 }

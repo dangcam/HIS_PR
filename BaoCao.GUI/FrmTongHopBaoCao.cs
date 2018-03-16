@@ -387,7 +387,7 @@ namespace BaoCao.GUI
 
             object[,] arr = new object[dataTable.Rows.Count, 17];// dataTable.Columns.Count];
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
-            int soctu = 94;
+            int soctu = Utils.ToInt(txtSoCTu.Text);
             string ngayYLenh="";
             for (int r = 0; r < dataTable.Rows.Count; r++)
             {
@@ -410,8 +410,8 @@ namespace BaoCao.GUI
                 arr[r, 8] = dr["TenVatTu"];//TenHangHoa
                 arr[r, 9] = dr["DonViTinh"];//DonViTinh
                 arr[r, 10] = dr["SoLuong"];//SoLuong
-                arr[r, 11] = dr["DonGia"];//VNDDonGia
-                arr[r, 12] = dr["ThanhTien"];//VNDThanhTien
+                arr[r, 11] = Math.Round(Utils.ToDecimal(dr["DonGia"]),2); //dr["DonGia"];//VNDDonGia
+                arr[r, 12] = Math.Round(Utils.ToDecimal(dr["ThanhTien"]));//VNDThanhTien
                 arr[r, 13] = "NGUYỄN THỊ MAI";// dr[""];//KhachHang
                 arr[r, 14] = "KHOA DƯỢC";// lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();// dr[""];//DiaChi
                 arr[r, 15] = "2";// tháng

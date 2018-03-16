@@ -154,7 +154,7 @@ namespace DuocPham.GUI
                 arr[r, 0] = "PXK";//MaCTu
                 arr[r, 1] = soctu;// dr[""];//SoCTu
                 arr[r, 2] = dateDenNgay.DateTime.ToString("dd/MM/yy") + "";//NgayCTu
-                arr[r, 3] = dr["NoiDung"] + " " + ((lookUpKhoa.EditValue.Equals("K19_13")) ? "Khoa Ngoại" : "Khoa Nội") + " ngày " +
+                arr[r, 3] = dr["NoiDung"] + " " + ((lookUpKhoa.EditValue.Equals("K19_13")) ? "Khoa Ngoại" : "Khoa Nội") + " từ ngày " +
                         dateTuNgay.DateTime.ToString("dd/MM")+"-"+ dateDenNgay.DateTime.ToString("dd/MM"); //dr[""];//DienGiai
                 arr[r, 4] = (lookUpKhoa.EditValue.Equals("K01_13")) ? "161" : "141";// dr[""];//MaTKNo Ngoại trú: 161, Nội trú: 141
                 arr[r, 5] = "156" + dr["LoaiVatTu"];//MaTKCo
@@ -170,8 +170,8 @@ namespace DuocPham.GUI
                 arr[r, 8] = dr["TenVatTu"];//TenHangHoa
                 arr[r, 9] = dr["DonViTinh"];//DonViTinh
                 arr[r, 10] = dr["SoLuong"];//SoLuong
-                arr[r, 11] = dr["DonGia"];//VNDDonGia
-                arr[r, 12] = dr["ThanhTien"];//VNDThanhTien
+                arr[r, 11] = Math.Round(Utils.ToDecimal(dr["DonGia"]),2);//VNDDonGia
+                arr[r, 12] = Math.Round(Utils.ToDecimal(dr["ThanhTien"]));//VNDThanhTien
                 arr[r, 13] = ((lookUpKhoa.EditValue.Equals("K19_13")) ? "LÊ THỊ THẢO LY" : "NGUYỄN TIẾN DŨNG"); ;// dr[""];//KhachHang
                 arr[r, 14] = lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue);
                 // lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();// dr[""];//DiaChi

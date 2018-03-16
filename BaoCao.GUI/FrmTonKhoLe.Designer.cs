@@ -170,6 +170,7 @@
             this.gridView.GridControl = this.gridControl;
             this.gridView.GroupCount = 1;
             this.gridView.Name = "gridView";
+            this.gridView.OptionsFind.AlwaysVisible = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.TenLoaiVT, DevExpress.Data.ColumnSortOrder.Ascending)});

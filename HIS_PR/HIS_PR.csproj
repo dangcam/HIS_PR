@@ -152,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Large-Home-Drugstore.ico" />
+    <None Include="Resources\Home-icon.png" />
     <None Include="Resources\store-arrow-icon.png" />
     <None Include="Resources\user-settings-icon.png" />
     <None Include="Resources\category-icon.png" />

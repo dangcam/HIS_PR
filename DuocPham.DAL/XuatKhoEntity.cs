@@ -54,6 +54,11 @@ namespace DuocPham.DAL
             return db.ExcuteQuery ("Select MaKhoa,TenKhoa From KhoaBan Where TinhTrang = 1 And KhoVatTu = 1 And LoaiKho = 2",
                 CommandType.Text, null);
         }
+        public DataTable DSTraNhaCungCap()
+        {
+            return db.ExcuteQuery("Select ID as MaKhoa,Ten as TenKhoa,DiaChi From NhaCungCap Where TinhTrang = 1 ",
+                CommandType.Text, null);
+        }
         public DataTable DSVatTu (string loaiVatTu)
         {
             return db.ExcuteQuery ("Select * From DSVatTu('"+loaiVatTu+"','"+KhoXuat+ "') ORDER BY MaVatTu ASC",
@@ -76,7 +81,7 @@ namespace DuocPham.DAL
         }
         public DataTable DSXuatExcel(DateTime tuNgay,DateTime denNgay, string maKhoa)
         {
-            return db.ExcuteQuery("Select * From XuatExcelXuat('"+tuNgay+"','"+denNgay+"','"+maKhoa+"')",
+            return db.ExcuteQuery("Select * From XuatExcelXuat('"+tuNgay.ToString("MM/dd/yyyy") + "','"+denNgay.ToString("MM/dd/yyyy") + "','"+maKhoa+"')",
                 CommandType.Text, null);
         }
         public DataTable DSKhoaBan(int loaiPhong)
@@ -125,6 +130,17 @@ namespace DuocPham.DAL
                 new SqlParameter ("@HetHan", HetHan.ToString("MM/dd/yyyy")),
                 new SqlParameter ("@ThanhTien", ThanhTien),
                 new SqlParameter ("@LoaiVatTu", LoaiVatTu));
+        }
+        public bool SpSuaPhieuNhapChiTiet(ref string err)
+        {
+            return db.MyExecuteNonQuery("SpSuaPhieuXuatChiTiet",
+                CommandType.StoredProcedure, ref err,
+                new SqlParameter("@SoPhieu", SoPhieu),
+                new SqlParameter("@SoPhieuNhap", SoPhieuNhap),
+                new SqlParameter("@MaVatTu", MaVatTu),
+                new SqlParameter("@DonGiaBHYT", DonGiaBHYT),
+                new SqlParameter("@DonGiaBV", DonGiaBV),
+                new SqlParameter("@ThanhTien", ThanhTien));
         }
         public bool SpXoaPhieuNhapChiTiet(ref string err)
         {

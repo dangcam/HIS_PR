@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent ()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmYeuCauLinhThuoc));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.cbNguoiLinh = new DevExpress.XtraEditors.ComboBoxEdit();
             this.dateYeuCau = new DevExpress.XtraEditors.DateEdit();
             this.cbNoiDung = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
@@ -88,11 +89,11 @@
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.cbNguoiLinh = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbNguoiLinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateYeuCau.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateYeuCau.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbNoiDung.Properties)).BeginInit();
@@ -120,7 +121,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbNguoiLinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             this.SuspendLayout();
             // 
@@ -163,6 +163,21 @@
             this.layoutControl.TabIndex = 1;
             this.layoutControl.Text = "layoutControl1";
             // 
+            // cbNguoiLinh
+            // 
+            this.cbNguoiLinh.Location = new System.Drawing.Point(357, 64);
+            this.cbNguoiLinh.MenuManager = this.ribbonControl;
+            this.cbNguoiLinh.Name = "cbNguoiLinh";
+            this.cbNguoiLinh.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbNguoiLinh.Properties.Appearance.Options.UseFont = true;
+            this.cbNguoiLinh.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbNguoiLinh.Properties.AppearanceDropDown.Options.UseFont = true;
+            this.cbNguoiLinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbNguoiLinh.Size = new System.Drawing.Size(50, 22);
+            this.cbNguoiLinh.StyleController = this.layoutControl;
+            this.cbNguoiLinh.TabIndex = 16;
+            // 
             // dateYeuCau
             // 
             this.dateYeuCau.EditValue = null;
@@ -200,7 +215,14 @@
             "Xuất thuốc điều trị BN BHYT (ngoài giờ)",
             "Xuất thuốc điều trị BN Dân",
             "Xuất thuốc điều trị BN Dân (ngoài giờ)",
-            "Xuất thuốc hướng thần gây nghiện"});
+            "Xuất thuốc hướng thần gây nghiện",
+            "Xuất hóa chất vật tư xét nghiệm",
+            "Xuất hóa chất vật tư  tiêu hao xét nghiệm",
+            "Xuất phim X-Quang",
+            "Xuất vật tư tiêu hao phòng phám",
+            "Xuất biểu mẫu giấy tờ phòng khám",
+            "Xuất thuốc phục vụ chuyên khoa răng",
+            "Xuất thuốc nội soi"});
             this.cbNoiDung.Size = new System.Drawing.Size(60, 22);
             this.cbNoiDung.StyleController = this.layoutControl;
             this.cbNoiDung.TabIndex = 14;
@@ -292,9 +314,9 @@
             // btnXoa
             // 
             this.btnXoa.AutoHeight = false;
-            editorButtonImageOptions5.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions5.Image")));
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.btnXoa.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.btnXoa.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnXoa_ButtonClick);
@@ -793,21 +815,6 @@
             this.layoutControlItem12.Text = "Ngày:";
             this.layoutControlItem12.TextSize = new System.Drawing.Size(56, 13);
             // 
-            // cbNguoiLinh
-            // 
-            this.cbNguoiLinh.Location = new System.Drawing.Point(357, 64);
-            this.cbNguoiLinh.MenuManager = this.ribbonControl;
-            this.cbNguoiLinh.Name = "cbNguoiLinh";
-            this.cbNguoiLinh.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbNguoiLinh.Properties.Appearance.Options.UseFont = true;
-            this.cbNguoiLinh.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbNguoiLinh.Properties.AppearanceDropDown.Options.UseFont = true;
-            this.cbNguoiLinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbNguoiLinh.Size = new System.Drawing.Size(50, 22);
-            this.cbNguoiLinh.StyleController = this.layoutControl;
-            this.cbNguoiLinh.TabIndex = 16;
-            // 
             // layoutControlItem13
             // 
             this.layoutControlItem13.Control = this.cbNguoiLinh;
@@ -833,6 +840,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cbNguoiLinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateYeuCau.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateYeuCau.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbNoiDung.Properties)).EndInit();
@@ -860,7 +868,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbNguoiLinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

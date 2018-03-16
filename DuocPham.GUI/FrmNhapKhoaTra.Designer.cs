@@ -53,7 +53,6 @@
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
-            this.checkTraNhaCC = new DevExpress.XtraEditors.CheckEdit();
             this.lookUpKhoNhan = new DevExpress.XtraEditors.LookUpEdit();
             this.gridControlDS = new DevExpress.XtraGrid.GridControl();
             this.gridViewDS = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -107,7 +106,6 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroupMain = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -133,7 +131,6 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkTraNhaCC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpKhoNhan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDS)).BeginInit();
@@ -164,7 +161,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -394,7 +390,6 @@
             // 
             // layoutControl2
             // 
-            this.layoutControl2.Controls.Add(this.checkTraNhaCC);
             this.layoutControl2.Controls.Add(this.lookUpKhoNhan);
             this.layoutControl2.Controls.Add(this.gridControlDS);
             this.layoutControl2.Controls.Add(this.txtSoLuong);
@@ -415,17 +410,6 @@
             this.layoutControl2.Size = new System.Drawing.Size(589, 440);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
-            // 
-            // checkTraNhaCC
-            // 
-            this.checkTraNhaCC.Location = new System.Drawing.Point(12, 90);
-            this.checkTraNhaCC.MenuManager = this.ribbonControl;
-            this.checkTraNhaCC.Name = "checkTraNhaCC";
-            this.checkTraNhaCC.Properties.Caption = "Trả nhà cung cấp";
-            this.checkTraNhaCC.Size = new System.Drawing.Size(186, 19);
-            this.checkTraNhaCC.StyleController = this.layoutControl2;
-            this.checkTraNhaCC.TabIndex = 17;
-            this.checkTraNhaCC.CheckedChanged += new System.EventHandler(this.checkTraNhaCC_CheckedChanged);
             // 
             // lookUpKhoNhan
             // 
@@ -917,8 +901,7 @@
             this.emptySpaceItem3,
             this.layoutControlItem3,
             this.layoutControlItem19,
-            this.layoutControlItem10,
-            this.layoutControlItem20});
+            this.layoutControlItem10});
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Size = new System.Drawing.Size(589, 440);
             this.layoutControlGroup2.TextVisible = false;
@@ -935,9 +918,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(190, 78);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 78);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(190, 31);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(380, 31);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem9
@@ -1068,15 +1051,6 @@
             this.layoutControlItem10.Text = "Ngày nhập:";
             this.layoutControlItem10.TextSize = new System.Drawing.Size(56, 13);
             // 
-            // layoutControlItem20
-            // 
-            this.layoutControlItem20.Control = this.checkTraNhaCC;
-            this.layoutControlItem20.Location = new System.Drawing.Point(0, 78);
-            this.layoutControlItem20.Name = "layoutControlItem20";
-            this.layoutControlItem20.Size = new System.Drawing.Size(190, 31);
-            this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem20.TextVisible = false;
-            // 
             // layoutControlGroupMain
             // 
             this.layoutControlGroupMain.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -1141,7 +1115,6 @@
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.checkTraNhaCC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpKhoNhan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDS)).EndInit();
@@ -1172,7 +1145,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
@@ -1258,7 +1230,5 @@
         private DevExpress.XtraGrid.Columns.GridColumn ThanhTien;
         private DevExpress.XtraGrid.Columns.GridColumn LoaiVatTu;
         private DevExpress.XtraGrid.Columns.GridColumn DonViTinhDS;
-        private DevExpress.XtraEditors.CheckEdit checkTraNhaCC;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem20;
     }
 }

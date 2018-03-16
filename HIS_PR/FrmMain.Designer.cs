@@ -56,6 +56,7 @@
             this.barButtonTongHopBC = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonTHXuatKho = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnTonThucTe = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtnXuatExcel = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageHeThong = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupHeThong = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageTiepNhan = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -74,7 +75,6 @@
             this.ribbonPageGroupKhoLe = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupTongHop = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBarMain = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.barBtnXuatExcel = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,7 +111,7 @@
             this.barBtnTonThucTe,
             this.barBtnXuatExcel});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControlMain.MaxItemId = 39;
+            this.ribbonControlMain.MaxItemId = 40;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.barLinkSkin);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -332,6 +332,14 @@
             this.barBtnTonThucTe.Name = "barBtnTonThucTe";
             this.barBtnTonThucTe.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnTonThucTe_ItemClick);
             // 
+            // barBtnXuatExcel
+            // 
+            this.barBtnXuatExcel.Caption = "Xuất Excel";
+            this.barBtnXuatExcel.Id = 38;
+            this.barBtnXuatExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barBtnXuatExcel.ImageOptions.Image")));
+            this.barBtnXuatExcel.Name = "barBtnXuatExcel";
+            this.barBtnXuatExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnXuatExcel_ItemClick);
+            // 
             // ribbonPageHeThong
             // 
             this.ribbonPageHeThong.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -467,14 +475,6 @@
             this.ribbonStatusBarMain.Name = "ribbonStatusBarMain";
             this.ribbonStatusBarMain.Ribbon = this.ribbonControlMain;
             this.ribbonStatusBarMain.Size = new System.Drawing.Size(1290, 31);
-            // 
-            // barBtnXuatExcel
-            // 
-            this.barBtnXuatExcel.Caption = "Xuất Excel";
-            this.barBtnXuatExcel.Id = 38;
-            this.barBtnXuatExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barBtnXuatExcel.ImageOptions.Image")));
-            this.barBtnXuatExcel.Name = "barBtnXuatExcel";
-            this.barBtnXuatExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnXuatExcel_ItemClick);
             // 
             // FrmMain
             // 
