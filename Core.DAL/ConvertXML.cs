@@ -184,7 +184,7 @@ namespace Core.DAL
             tonghop.AppendChild(element);
 
             element = doc.CreateElement("MA_CSKCB");
-            element.AppendChild(doc.CreateTextNode(dataRow["MaCoSoKCB"].ToString()));
+            element.AppendChild(doc.CreateTextNode("70013"));//dataRow["MaCoSoKCB"].ToString())
             tonghop.AppendChild(element);
 
             element = doc.CreateElement("MA_KHUVUC");

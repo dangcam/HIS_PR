@@ -71,6 +71,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmChiTietVatTu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChiTietVatTu.Designer.cs">
+      <DependentUpon>FrmChiTietVatTu.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmNhapKho.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmChiTietVatTu.resx">
+      <DependentUpon>FrmChiTietVatTu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmNhapKho.resx">
       <DependentUpon>FrmNhapKho.cs</DependentUpon>
     </EmbeddedResource>

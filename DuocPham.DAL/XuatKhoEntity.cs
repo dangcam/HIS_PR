@@ -64,6 +64,11 @@ namespace DuocPham.DAL
             return db.ExcuteQuery ("Select * From DSVatTu('"+loaiVatTu+"','"+KhoXuat+ "') ORDER BY MaVatTu ASC",
                 CommandType.Text, null);
         }
+        public DataTable ChiTietVatTu(int thang,int nam)
+        {
+            return db.ExcuteQuery("Select * From ChiTietVatTu('" + thang + "','" + nam + "') ORDER BY NgayNhapXuat ASC",
+                CommandType.Text, null);
+        }
         public DataTable DSPhieu (DateTime tuNgay, DateTime denNgay)
         {
             return db.ExcuteQuery ("Select * From PhieuXuat Where NgayXuat BETWEEN CAST('" + tuNgay.ToString("MM/dd/yyyy") + "' as DATE) AND CAST('" + denNgay.ToString("MM/dd/yyyy") + "' as DATE)",

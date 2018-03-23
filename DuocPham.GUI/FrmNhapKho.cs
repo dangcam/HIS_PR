@@ -344,8 +344,16 @@ namespace DuocPham.GUI
                 }
                 DataRow drowVT = dtVatTu.Select("MaBV = '" + lookUpMaVatTu.EditValue.ToString() + "'")[0];
                 //drow["TenVatTu"] = drowVT[1];
-                
+
+                int stt = 0;
+                try
+                {
+                    stt = Utils.ToInt(dtPhieu.Rows[dtPhieu.Rows.Count - 1]["STT"]);
+                }
+                catch { }
+
                 DataRowView dr = (gridControlDS.DataSource as DataView).AddNew();
+                dr["STT"] = stt + 1;
                 dr["MaVatTu"] = lookUpMaVatTu.EditValue;
                 dr["TenVatTu"] = txtTenVatTu.Text;
                 dr["SoDangKy"] = txtSoDangKy.Text;
@@ -473,6 +481,7 @@ namespace DuocPham.GUI
             {
                 try
                 {
+                    dtVatTu = nhapkho.DSVatTu();
                     lookUpMaVatTu.Properties.DataSource = dtVatTu.Select("LoaiVatTu = '" + txtTKNo.Text.Substring(3, txtTKNo.Text.Length - 3) + "' and TinhTrang = 1").CopyToDataTable();
                     //nhapkho.DSVatTu (txtTKNo.Text.Substring (3, txtTKNo.Text.Length-3));// dataVatTu.Select
                 }
@@ -500,6 +509,7 @@ namespace DuocPham.GUI
                 //Công Ty TNHH TM-DV Dược Phẩm Bình Phú. Hóa đơn số 0004153
             }
             catch { }
+            rpt.xrlblNguoiGiaoHang.Text = txtNguoiGiaoHang.Text;
             rpt.lblNoiDungNhap.Text = txtNoiDung.Text;//Nhập thuốc tháng 7 cty Bình Phú
             rpt.lblNhapKho.Text = lookUpKhoNhap.Properties.GetDisplayValueByKeyValue(lookUpKhoNhap.EditValue).ToString();
             rpt.lblNgayIn.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;

@@ -86,12 +86,12 @@ namespace DuocPham.DAL
         {
             return db.ExcuteQuery ("Select * From PhieuNhap Where (NgayNhap BETWEEN CAST('" +tuNgay.ToString("MM/dd/yyyy") + "' as DATE) " +
                 "AND CAST('" +denNgay.ToString("MM/dd/yyyy") + "' as DATE))"+
-                " AND NhaCungCap NOT IN (Select TenKhoa From KhoaBan) ",
+                " --AND NhaCungCap NOT IN (Select TenKhoa From KhoaBan) ",
                 CommandType.Text, null);
         }
         public DataTable DSPhieuTra (DateTime tuNgay, DateTime denNgay)
         {
-            return db.ExcuteQuery ("Select * From PhieuNhap Where (NgayNhap BETWEEN CAST('" + tuNgay + "' as DATE) AND CAST('" + denNgay + "' as DATE))" +
+            return db.ExcuteQuery ("Select * From PhieuNhap Where (NgayNhap BETWEEN CAST('" + tuNgay.ToString("MM/dd/yyyy") + "' as DATE) AND CAST('" + denNgay.ToString("MM/dd/yyyy") + "' as DATE))" +
                 " AND NhaCungCap IN (Select TenKhoa From KhoaBan) ",
                 CommandType.Text, null);
         }

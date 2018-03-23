@@ -45,6 +45,7 @@
             this.lookUpKhoa = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.txtSoCTu = new DevExpress.XtraEditors.TextEdit();
+            this.checkCoSoCon = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbLoaiBaoCao.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbThang.Properties)).BeginInit();
@@ -57,6 +58,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbQuy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoCTu.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkCoSoCon.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -249,7 +251,7 @@
             this.btnTongHop.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTongHop.Appearance.Options.UseFont = true;
             this.btnTongHop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnTongHop.ImageOptions.Image")));
-            this.btnTongHop.Location = new System.Drawing.Point(230, 138);
+            this.btnTongHop.Location = new System.Drawing.Point(130, 168);
             this.btnTongHop.Name = "btnTongHop";
             this.btnTongHop.Size = new System.Drawing.Size(80, 25);
             this.btnTongHop.TabIndex = 15;
@@ -261,7 +263,7 @@
             this.btnDong.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDong.Appearance.Options.UseFont = true;
             this.btnDong.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.ImageOptions.Image")));
-            this.btnDong.Location = new System.Drawing.Point(320, 138);
+            this.btnDong.Location = new System.Drawing.Point(220, 168);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(80, 25);
             this.btnDong.TabIndex = 15;
@@ -304,11 +306,21 @@
             this.txtSoCTu.Size = new System.Drawing.Size(120, 22);
             this.txtSoCTu.TabIndex = 19;
             // 
+            // checkCoSoCon
+            // 
+            this.checkCoSoCon.Location = new System.Drawing.Point(220, 137);
+            this.checkCoSoCon.MenuManager = this.ribbonControl;
+            this.checkCoSoCon.Name = "checkCoSoCon";
+            this.checkCoSoCon.Properties.Caption = "Bao gồm cơ sở con";
+            this.checkCoSoCon.Size = new System.Drawing.Size(190, 19);
+            this.checkCoSoCon.TabIndex = 21;
+            // 
             // FrmTongHopBaoCao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 175);
+            this.ClientSize = new System.Drawing.Size(430, 205);
+            this.Controls.Add(this.checkCoSoCon);
             this.Controls.Add(this.txtSoCTu);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.lookUpKhoa);
@@ -346,6 +358,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbQuy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoCTu.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkCoSoCon.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -369,5 +382,6 @@
         private DevExpress.XtraEditors.LookUpEdit lookUpKhoa;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit txtSoCTu;
+        private DevExpress.XtraEditors.CheckEdit checkCoSoCon;
     }
 }

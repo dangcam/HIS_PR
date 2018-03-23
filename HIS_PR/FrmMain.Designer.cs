@@ -75,6 +75,7 @@
             this.ribbonPageGroupKhoLe = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupTongHop = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBarMain = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.barChiTietVatTu = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,9 +110,10 @@
             this.barButtonTongHopBC,
             this.barButtonTHXuatKho,
             this.barBtnTonThucTe,
-            this.barBtnXuatExcel});
+            this.barBtnXuatExcel,
+            this.barChiTietVatTu});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControlMain.MaxItemId = 40;
+            this.ribbonControlMain.MaxItemId = 41;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.barLinkSkin);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -426,6 +428,7 @@
             this.ribbonPageGroupNhapChuyenKho.ItemLinks.Add(this.barButtonNhapKhaTra);
             this.ribbonPageGroupNhapChuyenKho.ItemLinks.Add(this.barButtonPLinhThuoc);
             this.ribbonPageGroupNhapChuyenKho.ItemLinks.Add(this.barBtnXuatExcel);
+            this.ribbonPageGroupNhapChuyenKho.ItemLinks.Add(this.barChiTietVatTu);
             this.ribbonPageGroupNhapChuyenKho.Name = "ribbonPageGroupNhapChuyenKho";
             // 
             // ribbonPageGroupQuanLyDuoc
@@ -475,6 +478,14 @@
             this.ribbonStatusBarMain.Name = "ribbonStatusBarMain";
             this.ribbonStatusBarMain.Ribbon = this.ribbonControlMain;
             this.ribbonStatusBarMain.Size = new System.Drawing.Size(1290, 31);
+            // 
+            // barChiTietVatTu
+            // 
+            this.barChiTietVatTu.Caption = "Chi Tiết Vật Tư";
+            this.barChiTietVatTu.Id = 40;
+            this.barChiTietVatTu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barChiTietVatTu.ImageOptions.Image")));
+            this.barChiTietVatTu.Name = "barChiTietVatTu";
+            this.barChiTietVatTu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barChiTietVatTu_ItemClick);
             // 
             // FrmMain
             // 
@@ -548,5 +559,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonTHXuatKho;
         private DevExpress.XtraBars.BarButtonItem barBtnTonThucTe;
         private DevExpress.XtraBars.BarButtonItem barBtnXuatExcel;
+        private DevExpress.XtraBars.BarButtonItem barChiTietVatTu;
     }
 }

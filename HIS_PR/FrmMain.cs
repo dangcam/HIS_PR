@@ -463,5 +463,21 @@ namespace HIS_PR
             FrmXuatExcel frm = new FrmXuatExcel();
             frm.ShowDialog();
         }
+
+        private void barChiTietVatTu_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            foreach (Form frm in this.MdiChildren)
+            {
+                if (frm.GetType() == typeof(FrmChiTietVatTu))
+                {
+                    frm.Activate();
+                    frm.WindowState = FormWindowState.Maximized;
+                    return;
+                }
+            }
+            FrmChiTietVatTu frmVatTuChiTiet = new FrmChiTietVatTu();
+            frmVatTuChiTiet.MdiParent = this;
+            frmVatTuChiTiet.Show();
+        }
     }
 }

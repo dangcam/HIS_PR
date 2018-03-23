@@ -92,6 +92,14 @@ namespace BaoCao.GUI
         {
             SplashScreenManager.ShowForm(typeof(WaitFormLoad));
             string maKhoa = lookUpKhoa.EditValue.ToString();
+            if(checkCoSoCon.Checked)
+            {
+                maKhoa = lookUpKhoa.EditValue.ToString().Split('_')[0];
+                //maKhoa = maKhoa + "_13' or MaKhoa = '"+maKhoa+ "_74' or MaKhoa = '" + maKhoa + "_75' or MaKhoa = '"
+                //    + maKhoa + "_76' or MaKhoa = '" + maKhoa + "_77' or MaKhoa = '" + maKhoa+"_78";
+                maKhoa = maKhoa + "_13','" + maKhoa + "_74','" + maKhoa + "_75','"
+                    + maKhoa + "_76','" + maKhoa + "_77','" + maKhoa + "_78";
+            }
             DateTime tuNgay, denNgay;
             if (cbThoiGian.SelectedIndex == 0)
             {

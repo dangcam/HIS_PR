@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHoSoBenhNhan));
             this.layoutControlMain = new DevExpress.XtraLayout.LayoutControl();
+            this.btnInDon = new DevExpress.XtraEditors.SimpleButton();
             this.lookUpKhoa = new DevExpress.XtraEditors.LookUpEdit();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.lblTinhTrang = new DevExpress.XtraEditors.LabelControl();
@@ -66,7 +67,6 @@
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnInDon = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
@@ -112,6 +112,19 @@
             this.layoutControlMain.TabIndex = 0;
             this.layoutControlMain.Text = "layoutControl1";
             // 
+            // btnInDon
+            // 
+            this.btnInDon.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInDon.Appearance.Options.UseFont = true;
+            this.btnInDon.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnInDon.ImageOptions.Image")));
+            this.btnInDon.Location = new System.Drawing.Point(823, 349);
+            this.btnInDon.Name = "btnInDon";
+            this.btnInDon.Size = new System.Drawing.Size(99, 23);
+            this.btnInDon.StyleController = this.layoutControlMain;
+            this.btnInDon.TabIndex = 11;
+            this.btnInDon.Text = "In đơn thuốc";
+            this.btnInDon.Click += new System.EventHandler(this.btnInDon_Click);
+            // 
             // lookUpKhoa
             // 
             this.lookUpKhoa.Location = new System.Drawing.Point(43, 12);
@@ -124,7 +137,7 @@
             this.lookUpKhoa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpKhoa.Properties.NullText = "";
-            this.lookUpKhoa.Size = new System.Drawing.Size(74, 22);
+            this.lookUpKhoa.Size = new System.Drawing.Size(100, 22);
             this.lookUpKhoa.StyleController = this.layoutControlMain;
             this.lookUpKhoa.TabIndex = 10;
             // 
@@ -173,7 +186,7 @@
             this.btnTim.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTim.Appearance.Options.UseFont = true;
             this.btnTim.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnTim.ImageOptions.Image")));
-            this.btnTim.Location = new System.Drawing.Point(417, 12);
+            this.btnTim.Location = new System.Drawing.Point(505, 12);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(50, 23);
             this.btnTim.StyleController = this.layoutControlMain;
@@ -184,7 +197,7 @@
             // dateDenNgay
             // 
             this.dateDenNgay.EditValue = null;
-            this.dateDenNgay.Location = new System.Drawing.Point(348, 12);
+            this.dateDenNgay.Location = new System.Drawing.Point(405, 12);
             this.dateDenNgay.MenuManager = this.ribbonControl;
             this.dateDenNgay.Name = "dateDenNgay";
             this.dateDenNgay.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -198,14 +211,14 @@
             this.dateDenNgay.Properties.EditFormat.FormatString = "dd/MM/yyyy";
             this.dateDenNgay.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dateDenNgay.Properties.Mask.EditMask = "dd/MM/yyyy";
-            this.dateDenNgay.Size = new System.Drawing.Size(65, 22);
+            this.dateDenNgay.Size = new System.Drawing.Size(96, 22);
             this.dateDenNgay.StyleController = this.layoutControlMain;
             this.dateDenNgay.TabIndex = 6;
             // 
             // dateTuNgay
             // 
             this.dateTuNgay.EditValue = null;
-            this.dateTuNgay.Location = new System.Drawing.Point(226, 12);
+            this.dateTuNgay.Location = new System.Drawing.Point(252, 12);
             this.dateTuNgay.MenuManager = this.ribbonControl;
             this.dateTuNgay.Name = "dateTuNgay";
             this.dateTuNgay.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -219,7 +232,7 @@
             this.dateTuNgay.Properties.EditFormat.FormatString = "dd/MM/yyyy";
             this.dateTuNgay.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dateTuNgay.Properties.Mask.EditMask = "dd/MM/yyyy";
-            this.dateTuNgay.Size = new System.Drawing.Size(64, 22);
+            this.dateTuNgay.Size = new System.Drawing.Size(95, 22);
             this.dateTuNgay.StyleController = this.layoutControlMain;
             this.dateTuNgay.TabIndex = 5;
             // 
@@ -489,9 +502,12 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.dateTuNgay;
-            this.layoutControlItem2.Location = new System.Drawing.Point(109, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(135, 0);
+            this.layoutControlItem2.MaxSize = new System.Drawing.Size(204, 26);
+            this.layoutControlItem2.MinSize = new System.Drawing.Size(204, 26);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(173, 27);
+            this.layoutControlItem2.Size = new System.Drawing.Size(204, 27);
+            this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem2.Text = "Thanh toán từ ngày:";
             this.layoutControlItem2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(100, 13);
@@ -500,9 +516,12 @@
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.dateDenNgay;
-            this.layoutControlItem3.Location = new System.Drawing.Point(282, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(339, 0);
+            this.layoutControlItem3.MaxSize = new System.Drawing.Size(154, 26);
+            this.layoutControlItem3.MinSize = new System.Drawing.Size(154, 26);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(123, 27);
+            this.layoutControlItem3.Size = new System.Drawing.Size(154, 27);
+            this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem3.Text = "đến ngày:";
             this.layoutControlItem3.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.layoutControlItem3.TextSize = new System.Drawing.Size(49, 13);
@@ -511,18 +530,21 @@
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.btnTim;
-            this.layoutControlItem4.Location = new System.Drawing.Point(405, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(493, 0);
+            this.layoutControlItem4.MaxSize = new System.Drawing.Size(54, 27);
+            this.layoutControlItem4.MinSize = new System.Drawing.Size(54, 27);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(54, 27);
+            this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(459, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(547, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(282, 27);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(194, 27);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem5
@@ -559,22 +581,9 @@
             this.layoutControlItem7.Control = this.lookUpKhoa;
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(109, 27);
+            this.layoutControlItem7.Size = new System.Drawing.Size(135, 27);
             this.layoutControlItem7.Text = "Khoa:";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(28, 13);
-            // 
-            // btnInDon
-            // 
-            this.btnInDon.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInDon.Appearance.Options.UseFont = true;
-            this.btnInDon.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnInDon.ImageOptions.Image")));
-            this.btnInDon.Location = new System.Drawing.Point(823, 349);
-            this.btnInDon.Name = "btnInDon";
-            this.btnInDon.Size = new System.Drawing.Size(99, 23);
-            this.btnInDon.StyleController = this.layoutControlMain;
-            this.btnInDon.TabIndex = 11;
-            this.btnInDon.Text = "In đơn thuốc";
-            this.btnInDon.Click += new System.EventHandler(this.btnInDon_Click);
             // 
             // layoutControlItem8
             // 

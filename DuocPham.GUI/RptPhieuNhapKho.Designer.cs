@@ -82,12 +82,20 @@
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
+            this.xrLabel25 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel26 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel27 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrlblNguoiGiaoHang = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrlblNguoiGiaoHang,
+            this.xrLabel25,
+            this.xrLabel26,
+            this.xrLabel27,
             this.xrLabel23,
             this.xrLabel24,
             this.xrLabel21,
@@ -123,7 +131,7 @@
             this.xrLabel3,
             this.xrLabel2,
             this.xrLabel1});
-            this.Detail.HeightF = 398.9583F;
+            this.Detail.HeightF = 500F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -538,11 +546,13 @@
             // lblSoPhieu
             // 
             this.lblSoPhieu.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSoPhieu.ForeColor = System.Drawing.Color.Transparent;
             this.lblSoPhieu.LocationFloat = new DevExpress.Utils.PointFloat(642.0834F, 68.99999F);
             this.lblSoPhieu.Name = "lblSoPhieu";
             this.lblSoPhieu.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.lblSoPhieu.SizeF = new System.Drawing.SizeF(123.9166F, 23F);
             this.lblSoPhieu.StylePriority.UseFont = false;
+            this.lblSoPhieu.StylePriority.UseForeColor = false;
             this.lblSoPhieu.StylePriority.UseTextAlignment = false;
             this.lblSoPhieu.Text = "100";
             this.lblSoPhieu.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
@@ -673,6 +683,53 @@
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
+            // xrLabel25
+            // 
+            this.xrLabel25.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel25.LocationFloat = new DevExpress.Utils.PointFloat(462F, 445F);
+            this.xrLabel25.Name = "xrLabel25";
+            this.xrLabel25.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel25.SizeF = new System.Drawing.SizeF(150F, 23F);
+            this.xrLabel25.StylePriority.UseFont = false;
+            this.xrLabel25.StylePriority.UseTextAlignment = false;
+            this.xrLabel25.Text = "Cao Thị Tâm";
+            this.xrLabel25.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // xrLabel26
+            // 
+            this.xrLabel26.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel26.LocationFloat = new DevExpress.Utils.PointFloat(322F, 445F);
+            this.xrLabel26.Name = "xrLabel26";
+            this.xrLabel26.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel26.SizeF = new System.Drawing.SizeF(140F, 23F);
+            this.xrLabel26.StylePriority.UseFont = false;
+            this.xrLabel26.StylePriority.UseTextAlignment = false;
+            this.xrLabel26.Text = "Lê Thị Thùy Dương";
+            this.xrLabel26.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // xrLabel27
+            // 
+            this.xrLabel27.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel27.LocationFloat = new DevExpress.Utils.PointFloat(0F, 445F);
+            this.xrLabel27.Name = "xrLabel27";
+            this.xrLabel27.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel27.SizeF = new System.Drawing.SizeF(150F, 23F);
+            this.xrLabel27.StylePriority.UseFont = false;
+            this.xrLabel27.StylePriority.UseTextAlignment = false;
+            this.xrLabel27.Text = "Nguyễn Thị Nga";
+            this.xrLabel27.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // xrlblNguoiGiaoHang
+            // 
+            this.xrlblNguoiGiaoHang.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrlblNguoiGiaoHang.LocationFloat = new DevExpress.Utils.PointFloat(150F, 445F);
+            this.xrlblNguoiGiaoHang.Name = "xrlblNguoiGiaoHang";
+            this.xrlblNguoiGiaoHang.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrlblNguoiGiaoHang.SizeF = new System.Drawing.SizeF(172F, 23F);
+            this.xrlblNguoiGiaoHang.StylePriority.UseFont = false;
+            this.xrlblNguoiGiaoHang.StylePriority.UseTextAlignment = false;
+            this.xrlblNguoiGiaoHang.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
             // RptPhieuNhapKho
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -746,5 +803,9 @@
         public DevExpress.XtraReports.UI.XRLabel lblNgayNhap;
         public DevExpress.XtraReports.UI.XRLabel lblNgayIn;
         public DevExpress.XtraReports.UI.XRLabel lblTongTien;
+        public DevExpress.XtraReports.UI.XRLabel xrlblNguoiGiaoHang;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel25;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel26;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel27;
     }
 }

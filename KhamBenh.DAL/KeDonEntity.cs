@@ -54,9 +54,11 @@ namespace KhamBenh.DAL
         public int TTrantT { get; set; }
         public DataTable DSBacSi()
         {
-            return db.ExcuteQuery("Select Ma_BS, Ten_NV From NhanVien Where TinhTrang=1 And CoSoKCB = '"
-                + AppConfig.CoSoKCB + "' And LEN(Ma_BS) > 0 Order by Ten_NV DESC",
+            return db.ExcuteQuery("Select Ma_BS, Ten_NV From NhanVien Where TinhTrang=1 And LEN(Ma_BS) > 0 Order by Ten_NV DESC",
                 CommandType.Text, null);
+            //return db.ExcuteQuery("Select Ma_BS, Ten_NV From NhanVien Where TinhTrang=1 And CoSoKCB = '"
+            //    + AppConfig.CoSoKCB + "' And LEN(Ma_BS) > 0 Order by Ten_NV DESC",
+            //    CommandType.Text, null);
         }
         public DataTable DSBenh()
         {
