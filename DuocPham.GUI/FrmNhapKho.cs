@@ -1,13 +1,14 @@
 ﻿using DevExpress.XtraBars.Ribbon;
-using DuocPham.DAL;
-using System;
-using System.Windows.Forms;
 using Core.DAL;
 using DevExpress.XtraEditors;
-using System.Data;
-using System.Collections.Generic;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraSplashScreen;
+using DuocPham.DAL;
+using System.Collections.Generic;
+using System.Data;
+using System.Windows.Forms;
+using System;
+using System.Linq;
 
 namespace DuocPham.GUI
 {
@@ -25,10 +26,12 @@ namespace DuocPham.GUI
         decimal thanhTien = 0;
         System.Drawing.Font fontB = new System.Drawing.Font ("Times New Roman", 11, System.Drawing.FontStyle.Bold);
         System.Drawing.Font font = new System.Drawing.Font ("Times New Roman", 11);
+        Dictionary<string, string> maVatTu = new Dictionary<string, string>();
         public FrmNhapKho ()
         {
             InitializeComponent ();
             nhapkho = new NhapKhoEntity ();
+            maVatTu = nhapkho.DSMaVatTu().AsEnumerable().ToDictionary(row => row["MaBV"].ToString(), row => row["MaCu"].ToString());
         }
         protected override void OnLoad (EventArgs e)
         {
@@ -124,6 +127,7 @@ namespace DuocPham.GUI
             lookUpKhoNhap.EditValue = "";
             lookUpNguoiNhan.EditValue = "";
             txtNoiDung.Text = "";
+            lookUpKhoNhap.EditValue = "70013";
 
             nhapkho.SoPhieu = 0;
             dtPhieu = nhapkho.DSPhieuVatTu ();
@@ -541,7 +545,7 @@ namespace DuocPham.GUI
                 cell.Text = drview["TenVatTu"].ToString ();
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-                cell.WidthF = 300;
+                cell.WidthF = 280;
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();
@@ -549,14 +553,14 @@ namespace DuocPham.GUI
                 //(lookUpMaVatTu.Properties.GetRowByKeyValue (drview["MaVatTu"].ToString ()) as DataRowView)[2].ToString ();
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-                cell.WidthF = 70;
+                cell.WidthF = 100;
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();
                 cell.Text = Utils.ToString (drview["SoLuongQuyDoi"].ToString ());
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-                cell.WidthF = 80;
+                cell.WidthF = 70;
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();
@@ -806,6 +810,182 @@ namespace DuocPham.GUI
             rpt.CreateDocument();
             rpt.ShowPreviewDialog();
             SplashScreenManager.CloseForm();
+        }
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            // xuất phiếu nhập vào phần mềm kế toán
+            SplashScreenManager.ShowForm(typeof(WaitFormLoad));
+            DataRow[] dr = (gridControlPhieu.DataSource as DataTable).Select("Chon = 1", "");
+            XuatExcel(dr);
+            SplashScreenManager.CloseForm();
+        }
+        private void XuatExcel(DataRow[] drows)
+        {
+            // Tạo các đối tượng Excel
+            Microsoft.Office.Interop.Excel.Application oExcel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbooks oBooks;
+            Microsoft.Office.Interop.Excel.Sheets oSheets;
+            Microsoft.Office.Interop.Excel.Workbook oBook;
+            Microsoft.Office.Interop.Excel.Worksheet oSheet;
+
+            //Tạo mới một Excel WorkBook 
+            oExcel.Visible = true;
+            oExcel.DisplayAlerts = false;
+            oExcel.Application.SheetsInNewWorkbook = 1;
+            oBooks = oExcel.Workbooks;
+
+            oBook = (Microsoft.Office.Interop.Excel.Workbook)(oExcel.Workbooks.Add(Type.Missing));
+            oSheets = oBook.Worksheets;
+            oSheet = (Microsoft.Office.Interop.Excel.Worksheet)oSheets.get_Item(1);
+            oSheet.Name = "XuatKho";
+
+            // Tạo tiêu đề cột 
+            Microsoft.Office.Interop.Excel.Range cl1 = oSheet.get_Range("A1", "A1");
+            cl1.Value2 = "MaCTu";
+            cl1.ColumnWidth = 10.0;
+            cl1.Font.Color = ConsoleColor.Red;
+
+            Microsoft.Office.Interop.Excel.Range cl2 = oSheet.get_Range("B1", "B1");
+            cl2.Value2 = "SoCTu";
+            cl2.ColumnWidth = 10.0;
+
+            Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C1", "C1");
+            cl3.Value2 = "NgayCTu";
+            cl3.NumberFormat = "dd/MM/yyyy";
+            cl3.ColumnWidth = 15.0;
+
+            Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D1", "D1");
+            cl4.Value2 = "DienGiai";
+            cl4.ColumnWidth = 25.0;
+
+            Microsoft.Office.Interop.Excel.Range cl5 = oSheet.get_Range("E1", "E1");
+            cl5.Value2 = "MaTKNo";
+            cl5.ColumnWidth = 10.0;
+
+            Microsoft.Office.Interop.Excel.Range cl6 = oSheet.get_Range("F1", "F1");
+            cl6.Value2 = "MaTKCo";
+            cl6.ColumnWidth = 10.0;
+
+            Microsoft.Office.Interop.Excel.Range cl7 = oSheet.get_Range("G1", "G1");
+            cl7.Value2 = "MaVTHHNo";
+            cl7.ColumnWidth = 10.0;
+
+            Microsoft.Office.Interop.Excel.Range cl8 = oSheet.get_Range("H1", "H1");
+            cl8.Value2 = "MaVTHHCo";
+            cl8.ColumnWidth = 10.0;
+
+            Microsoft.Office.Interop.Excel.Range cl9 = oSheet.get_Range("I1", "I1");
+            cl9.Value2 = "TenHangHoa";
+            cl9.ColumnWidth = 25.0;
+
+            Microsoft.Office.Interop.Excel.Range cl10 = oSheet.get_Range("J1", "J1");
+            cl10.Value2 = "DonViTinh";
+            cl10.ColumnWidth = 10.0;
+
+            Microsoft.Office.Interop.Excel.Range cl11 = oSheet.get_Range("K1", "K1");
+            cl11.Value2 = "SoLuong";
+            cl11.ColumnWidth = 10.0;
+
+            Microsoft.Office.Interop.Excel.Range cl12 = oSheet.get_Range("L1", "L1");
+            cl12.Value2 = "VNDDonGia";
+            cl12.ColumnWidth = 15.0;
+
+            Microsoft.Office.Interop.Excel.Range cl13 = oSheet.get_Range("M1", "M1");
+            cl13.Value2 = "VNDThanhTien";
+            cl13.ColumnWidth = 20.0;
+
+            Microsoft.Office.Interop.Excel.Range cl14 = oSheet.get_Range("N1", "N1");
+            cl14.Value2 = "KhachHang";
+            cl14.ColumnWidth = 10.0;
+
+            Microsoft.Office.Interop.Excel.Range cl15 = oSheet.get_Range("O1", "O1");
+            cl15.Value2 = "DiaChi";
+            cl15.ColumnWidth = 30.0;
+
+
+            Microsoft.Office.Interop.Excel.Range cl16 = oSheet.get_Range("P1", "P1");
+            cl16.Value2 = "ThangHoachToan";
+            cl16.ColumnWidth = 30.0;
+
+            Microsoft.Office.Interop.Excel.Range cl17 = oSheet.get_Range("Q1", "Q1");
+            cl17.Value2 = "MaDTPNCo";
+            cl17.ColumnWidth = 30.0;
+
+            Microsoft.Office.Interop.Excel.Range cl18 = oSheet.get_Range("R1", "R1");
+            cl18.Value2 = "TenKH";
+            cl18.ColumnWidth = 30.0;
+
+            Microsoft.Office.Interop.Excel.Range rowHead = oSheet.get_Range("A1", "R1");
+            rowHead.Font.Bold = true;
+            rowHead.Font.Color = ConsoleColor.Red;
+            rowHead.Interior.Color = 20;
+            // Kẻ viền
+            rowHead.Borders.LineStyle = Microsoft.Office.Interop.Excel.Constants.xlSolid;
+            // Thiết lập màu nền
+            rowHead.Interior.ColorIndex = 18;
+            rowHead.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
+            // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
+
+            object[,] arr = new object[drows.Length * 50, 18];//object[drows.Length * 30, 15];// dataTable.Columns.Count];
+            //Chuyển dữ liệu từ DataTable vào mảng đối tượng
+            int soctu = Utils.ToInt(txtSoCT.Text);
+            int dem = 0;
+            foreach (DataRow drow in drows)
+            {
+
+                DataTable dataTable = nhapkho.DSPhieuVatTu(Utils.ToInt(drow["SoPhieu"]));
+                for (int r = 0; r < dataTable.Rows.Count; r++)
+                {
+
+                    DataRow dr = dataTable.Rows[r];
+                    arr[dem, 0] = "PNKBV";//MaCTu
+                    arr[dem, 1] = soctu;// dr[""];//SoCTu
+                    arr[dem, 2] = Utils.ToDateTime(drow["NgayNhap"].ToString()).ToString("dd/MM/yy") + "";//NgayCT
+                    arr[dem, 3] = drow["NoiDung"] ; //dr[""];//DienGiai
+                    arr[dem, 4] = "156" + dr["LoaiVatTu"];// dr[""];//MaTKNo 
+                    arr[dem, 5] = "331";//MaTKCo
+                    arr[dem, 7] = "";//dr[""];//MaVTHHNo
+                    if (maVatTu.ContainsKey(dr["MaBV"].ToString()))
+                    {
+                        arr[dem, 6] = maVatTu[dr["MaBV"].ToString()];//MaVTHHCo
+                    }
+                    else
+                    {
+                        arr[dem, 6] = dr["MaBV"];//MaVTHHCo
+                    }
+                    arr[dem, 8] = dr["TenVatTu"];//TenHangHoa
+                    arr[dem, 9] = dr["DonViTinh"];//DonViTinh
+                    arr[dem, 10] = dr["SoLuongQuyDoi"];//SoLuong
+                    arr[dem, 11] = dr["DonGiaBV"];//VNDDonGia
+                    arr[dem, 12] = Utils.ToInt(dr["SoLuongQuyDoi"]) * Utils.ToDecimal(dr["DonGiaBV"]);//dr["ThanhTien"];//VNDThanhTien
+                    arr[dem, 13] = "Lý Văn Thép";//drow["NguoiNhan"];//KhachHang
+                    arr[dem, 14] = "BV";//drow["NhaCungCap"];// lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();// dr[""];//DiaChi
+                    arr[dem, 15] = Utils.ToDateTime(drow["NgayNhap"].ToString()).Month;//
+                    arr[dem, 16] = drow["IDNhaCC"];//MaDTPNCo
+                    arr[dem, 17] = drow["NhaCungCap"];//TenKH
+                    dem++;
+                }
+                soctu++;
+            }
+            //Thiết lập vùng điền dữ liệu
+            int rowStart = 2;
+            int columnStart = 1;
+
+            int rowEnd = rowStart + dem;
+            int columnEnd = 18;// dataTable.Columns.Count;
+
+            // Ô bắt đầu điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];
+            // Ô kết thúc điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range c2 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, columnEnd];
+            // Lấy về vùng điền dữ liệu
+            Microsoft.Office.Interop.Excel.Range range = oSheet.get_Range(c1, c2);
+
+            //Điền dữ liệu vào vùng đã thiết lập
+            range.Value2 = arr;
         }
     }
 }

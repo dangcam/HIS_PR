@@ -270,21 +270,21 @@ namespace DuocPham.GUI
                 cell.Text = drview["TenVatTu"].ToString ();
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-                cell.WidthF = 300;
+                cell.WidthF = 280;
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();
                 cell.Text = drview["DonViTinh"].ToString ();
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-                cell.WidthF = 70;
+                cell.WidthF = 100;
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();
                 cell.Text = decimal.Parse (drview["SoLuong"].ToString ()).ToString ("0,0", elGR);
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-                cell.WidthF = 80;
+                cell.WidthF = 70;
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();

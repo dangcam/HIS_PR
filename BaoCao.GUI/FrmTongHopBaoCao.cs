@@ -395,7 +395,7 @@ namespace BaoCao.GUI
 
             object[,] arr = new object[dataTable.Rows.Count, 17];// dataTable.Columns.Count];
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
-            int soctu = Utils.ToInt(txtSoCTu.Text);
+            int soctu = Utils.ToInt(txtSoCTu.Text)-1;
             string ngayYLenh="";
             for (int r = 0; r < dataTable.Rows.Count; r++)
             {
@@ -422,7 +422,7 @@ namespace BaoCao.GUI
                 arr[r, 12] = Math.Round(Utils.ToDecimal(dr["ThanhTien"]));//VNDThanhTien
                 arr[r, 13] = "NGUYỄN THỊ MAI";// dr[""];//KhachHang
                 arr[r, 14] = "KHOA DƯỢC";// lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();// dr[""];//DiaChi
-                arr[r, 15] = "2";// tháng
+                arr[r, 15] = Utils.ToDateTime(dr["NgayYLenh"].ToString()).Month;// tháng
                 arr[r, 16] = "NGT";// ngoại trú
 
             }
@@ -442,6 +442,12 @@ namespace BaoCao.GUI
 
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
+
+            ////
+            //Microsoft.Office.Interop.Excel.Range c3 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, 3];
+            //Microsoft.Office.Interop.Excel.Range c4 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowEnd, 3];
+            //Microsoft.Office.Interop.Excel.Range rg = oSheet.get_Range(c3, c4);
+            //rg.NumberFormat = "dd/MM/yyyy";
         }
         private void btnDong_Click(object sender, EventArgs e)
         {

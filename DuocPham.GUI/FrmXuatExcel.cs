@@ -67,6 +67,7 @@ namespace DuocPham.GUI
 
             Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C1", "C1");
             cl3.Value2 = "NgayCTu";
+            cl3.NumberFormat = "dd/MM/yyyy";
             cl3.ColumnWidth = 15.0;
 
             Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D1", "D1");
@@ -175,7 +176,7 @@ namespace DuocPham.GUI
                 arr[r, 13] = ((lookUpKhoa.EditValue.Equals("K19_13")) ? "LÊ THỊ THẢO LY" : "NGUYỄN TIẾN DŨNG"); ;// dr[""];//KhachHang
                 arr[r, 14] = lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue);
                 // lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();// dr[""];//DiaChi
-                arr[r, 15] = "2";// tháng
+                arr[r, 15] = dateDenNgay.DateTime.Month;// tháng
                 arr[r, 16] = "BVPR";// ngoại trú
 
             }

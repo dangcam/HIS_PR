@@ -412,14 +412,14 @@ namespace DuocPham.GUI
                 cell.Text = drview["TenVatTu"].ToString ();
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-                cell.WidthF = 300;
+                cell.WidthF = 280;
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();
                 cell.Text = drview["DonViTinh"].ToString();
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-                cell.WidthF = 70;
+                cell.WidthF = 100;
                 row.Cells.Add (cell);
 
                 soLuong = Utils.ToInt(drview["SoLuong"]);
@@ -427,7 +427,7 @@ namespace DuocPham.GUI
                 cell.Text = Utils.ToString (drview["SoLuong"].ToString ());
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-                cell.WidthF = 80;
+                cell.WidthF = 70;
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();
@@ -591,7 +591,7 @@ namespace DuocPham.GUI
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
             SplashScreenManager.ShowForm(typeof(WaitFormLoad));
-            DataRow[] dr = dataPhieu.Select("PheDuyet = 1", "");
+            DataRow[] dr = dataPhieu.Select("Chon = 1", "");
             XuatExcel(dr);
             SplashScreenManager.CloseForm();
         }
@@ -628,6 +628,7 @@ namespace DuocPham.GUI
             Microsoft.Office.Interop.Excel.Range cl3 = oSheet.get_Range("C1", "C1");
             cl3.Value2 = "NgayCTu";
             cl3.ColumnWidth = 15.0;
+            cl3.NumberFormat = "dd/MM/yyyy";
 
             Microsoft.Office.Interop.Excel.Range cl4 = oSheet.get_Range("D1", "D1");
             cl4.Value2 = "DienGiai";
@@ -686,7 +687,7 @@ namespace DuocPham.GUI
             cl17.Value2 = "MaDTPNNo";
             cl17.ColumnWidth = 30.0;
 
-            Microsoft.Office.Interop.Excel.Range rowHead = oSheet.get_Range("A1", "O1");
+            Microsoft.Office.Interop.Excel.Range rowHead = oSheet.get_Range("A1", "Q1");
             rowHead.Font.Bold = true;
             rowHead.Font.Color = ConsoleColor.Red;
             rowHead.Interior.Color = 20;
@@ -714,10 +715,10 @@ namespace DuocPham.GUI
                     arr[dem, 0] = "PXK";//MaCTu
                     arr[dem, 1] = soctu;// dr[""];//SoCTu
                     arr[dem, 2] = Utils.ToDateTime(drow["NgayXuat"].ToString()).ToString("dd/MM/yy")+"";//NgayCTu
-                    //
-                    
-                    arr[dem, 3] = drow ["NoiDung"]+" "+((drow["KhoNhan"].Equals("K19_13")) ? "Khoa Ngoại" : "Khoa Nội") + " ngày " +
-                        Utils.ToDateTime(drow["NgayXuat"].ToString()).ToString("dd/MM"); //dr[""];//DienGiai
+                                                                                                        //
+
+                    arr[dem, 3] = drow["NoiDung"];// +" "+((drow["KhoNhan"].Equals("K19_13")) ? "Khoa Ngoại" : "Khoa Nội") + " ngày " +
+                    //    Utils.ToDateTime(drow["NgayXuat"].ToString()).ToString("dd/MM"); //dr[""];//DienGiai
                     arr[dem, 4] = (drow["KhoNhan"].Equals("K01_13")) ? "161" : "141";// dr[""];//MaTKNo Ngoại trú: 161, Nội trú: 141
                     arr[dem, 5] = "156" + dr["LoaiVatTu"];//MaTKCo
                     arr[dem, 6] = "";//dr[""];//MaVTHHNo
@@ -736,8 +737,9 @@ namespace DuocPham.GUI
                     arr[dem, 12] = Utils.ToInt(dr["SoLuong"]) * Utils.ToDecimal(dr["DonGiaBV"]);//dr["ThanhTien"];//VNDThanhTien
                     arr[dem, 13] = ((drow["KhoNhan"].Equals("K19_13")) ? "LÊ THỊ THẢO LY" : "NGUYỄN TIẾN DŨNG");//drow["NguoiNhan"];//KhachHang
                     arr[dem, 14] = lookUpKhoNhan.Properties.GetDisplayValueByKeyValue(drow["KhoNhan"]);// lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();// dr[""];//DiaChi
-                    arr[dem, 15] = "2";//
+                    arr[dem, 15] = Utils.ToDateTime(drow["NgayXuat"].ToString()).Month;//
                     arr[dem, 16] = "BVDK";//
+                    //TenKH
                     dem++;
                 }
                 soctu++;

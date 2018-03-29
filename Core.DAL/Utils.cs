@@ -33,18 +33,18 @@ namespace Core.DAL
         }
         public static bool ThemHoatDong(string noidung, string err =null)
         {
-            return true;
-            //if (db == null)
-            //{
-            //    db = new Connection();
-            //}
-            //return db.MyExecuteNonQuery("SpThemHoatDong",
-            //    CommandType.StoredProcedure, ref err,
-            //    new SqlParameter("@Ma_NV", AppConfig.MaNV),
-            //    new SqlParameter("@Ten_May", Environment.MachineName),
-            //    new SqlParameter("@NguoiDung", Environment.UserName),
-            //    new SqlParameter("@Ngay", DateTime.Now),
-            //    new SqlParameter("@HoatDong", noidung));
+            //return true;
+            if (db == null)
+            {
+                db = new Connection();
+            }
+            return db.MyExecuteNonQuery("SpThemHoatDong",
+                CommandType.StoredProcedure, ref err,
+                new SqlParameter("@Ma_NV", AppConfig.MaNV),
+                new SqlParameter("@Ten_May", Environment.MachineName),
+                new SqlParameter("@NguoiDung", Environment.UserName),
+                new SqlParameter("@Ngay", DateTime.Now),
+                new SqlParameter("@HoatDong", noidung));
         }
         public static string GetQuyen(string MaCN)
         {

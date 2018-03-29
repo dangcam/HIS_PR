@@ -71,7 +71,7 @@ namespace DuocPham.DAL
         }
         public DataTable DSPhieu (DateTime tuNgay, DateTime denNgay)
         {
-            return db.ExcuteQuery ("Select * From PhieuXuat Where NgayXuat BETWEEN CAST('" + tuNgay.ToString("MM/dd/yyyy") + "' as DATE) AND CAST('" + denNgay.ToString("MM/dd/yyyy") + "' as DATE)",
+            return db.ExcuteQuery ("Select *,CONVERT(bit,0) as Chon From PhieuXuat Where NgayXuat BETWEEN CAST('" + tuNgay.ToString("MM/dd/yyyy") + "' as DATE) AND CAST('" + denNgay.ToString("MM/dd/yyyy") + "' as DATE)",
                 CommandType.Text, null);
         }
         public DataTable DSPhieuVatTu ()

@@ -44,6 +44,11 @@ namespace DuocPham.DAL
         public string LoaiVatTu { get; set; }
         public int SoPhieuXuat { get; set; }
         public int SoPhieuNhap { get; set; }
+        public DataTable DSMaVatTu()
+        {
+            return db.ExcuteQuery("Select * from MaVatTu",
+                CommandType.Text, null);
+        }
         public DataTable DSKho ()
         {
             return db.ExcuteQuery ("Select MaKhoa,TenKhoa From KhoaBan Where TinhTrang = 1 And KhoVatTu = 1 And LoaiKho = 1",
@@ -75,6 +80,12 @@ namespace DuocPham.DAL
                 " From PhieuNhapChiTiet Where SoPhieu = " + this.SoPhieu,
                 CommandType.Text, null);
         }
+        public DataTable DSPhieuVatTu(int SoPhieu)
+        {
+            return db.ExcuteQuery("Select * From PhieuNhapChiTiet,(select MaBV,TenVatTu,DonViTinh from VatTu) as " +
+                "VT Where VT.MaBV = PhieuNhapChiTiet.MaVatTu and SoPhieu = " + SoPhieu,
+                CommandType.Text, null);
+        }
         public DataTable DSPhieuVatTuTra ()
         {
             return db.ExcuteQuery ("Select *,(CASE WHEN SoLo IS NULL THEN 0 ELSE CAST(LEFT(SoLo,7)AS INT) END) AS SoPhieuXuat,"
@@ -84,7 +95,7 @@ namespace DuocPham.DAL
         }
         public DataTable DSPhieu (DateTime tuNgay, DateTime denNgay)
         {
-            return db.ExcuteQuery ("Select * From PhieuNhap Where (NgayNhap BETWEEN CAST('" +tuNgay.ToString("MM/dd/yyyy") + "' as DATE) " +
+            return db.ExcuteQuery ("Select *,Convert(bit,0) as Chon From PhieuNhap Where (NgayNhap BETWEEN CAST('" +tuNgay.ToString("MM/dd/yyyy") + "' as DATE) " +
                 "AND CAST('" +denNgay.ToString("MM/dd/yyyy") + "' as DATE))"+
                 " --AND NhaCungCap NOT IN (Select TenKhoa From KhoaBan) ",
                 CommandType.Text, null);

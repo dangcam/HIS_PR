@@ -49,6 +49,11 @@ namespace DuocPham.GUI
             lookUpLoaiVatTu.Properties.DisplayMember = "Ten";
             lookUpLoaiVatTu.Properties.ValueMember = "Ma";
             lookUpMaVatTu.Properties.DisplayMember = "TenVatTu";
+            cbNoiDung.Properties.Items.Clear();
+            foreach (DataRow dr in linhthuoc.DSNoiDung().Rows)
+            {
+                cbNoiDung.Properties.Items.Add(dr["NoiDung"]);
+            }
             cbNoiDung.SelectedIndex = 0;
             checkButton ();
             LoadData ();
@@ -120,6 +125,7 @@ namespace DuocPham.GUI
             btnIn.Enabled = false;
             dateYeuCau.DateTime = DateTime.Now;
             cbNguoiLinh.SelectedItem = 0;
+            cbNoiDung.SelectedIndex = 0;
         }
 
         private void btnLuu_Click (object sender, EventArgs e)

@@ -33,6 +33,20 @@
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.MaBV = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TenVatTu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DonViTinh = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.LoaiVatTu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.GiaBHYT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DonGia = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.NoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.KhoNhan = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.NhaCungCap = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.NgayNhapXuat = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SoPhieu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SoHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ChiTiet = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnXem = new DevExpress.XtraEditors.SimpleButton();
             this.cbNam = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cbThang = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -42,20 +56,6 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.MaBV = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TenVatTu = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.DonViTinh = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.LoaiVatTu = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.GiaBHYT = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.NoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.KhoNhan = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.NhaCungCap = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.NgayNhapXuat = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SoPhieu = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.DonGia = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SoHoaDon = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ChiTiet = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
@@ -131,6 +131,8 @@
             this.ChiTiet});
             this.gridView.GridControl = this.gridControl;
             this.gridView.GroupCount = 2;
+            this.gridView.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", null, "(Tổng = {0:#,###})")});
             this.gridView.Name = "gridView";
             this.gridView.OptionsFind.AlwaysVisible = true;
             this.gridView.OptionsView.ShowAutoFilterRow = true;
@@ -138,6 +140,168 @@
             this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.MaBV, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.ChiTiet, DevExpress.Data.ColumnSortOrder.Ascending)});
+            // 
+            // MaBV
+            // 
+            this.MaBV.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaBV.AppearanceCell.Options.UseFont = true;
+            this.MaBV.Caption = "Mã vật tư";
+            this.MaBV.FieldName = "MaBV";
+            this.MaBV.Name = "MaBV";
+            this.MaBV.Visible = true;
+            this.MaBV.VisibleIndex = 0;
+            this.MaBV.Width = 62;
+            // 
+            // TenVatTu
+            // 
+            this.TenVatTu.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TenVatTu.AppearanceCell.Options.UseFont = true;
+            this.TenVatTu.Caption = "Tên vật tư";
+            this.TenVatTu.FieldName = "TenVatTu";
+            this.TenVatTu.Name = "TenVatTu";
+            this.TenVatTu.Visible = true;
+            this.TenVatTu.VisibleIndex = 0;
+            this.TenVatTu.Width = 184;
+            // 
+            // DonViTinh
+            // 
+            this.DonViTinh.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DonViTinh.AppearanceCell.Options.UseFont = true;
+            this.DonViTinh.Caption = "Đơn vị";
+            this.DonViTinh.FieldName = "DonViTinh";
+            this.DonViTinh.Name = "DonViTinh";
+            this.DonViTinh.Visible = true;
+            this.DonViTinh.VisibleIndex = 1;
+            this.DonViTinh.Width = 49;
+            // 
+            // LoaiVatTu
+            // 
+            this.LoaiVatTu.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoaiVatTu.AppearanceCell.Options.UseFont = true;
+            this.LoaiVatTu.Caption = "Loại VT";
+            this.LoaiVatTu.FieldName = "LoaiVatTu";
+            this.LoaiVatTu.Name = "LoaiVatTu";
+            this.LoaiVatTu.Visible = true;
+            this.LoaiVatTu.VisibleIndex = 2;
+            this.LoaiVatTu.Width = 43;
+            // 
+            // SoLuong
+            // 
+            this.SoLuong.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SoLuong.AppearanceCell.Options.UseFont = true;
+            this.SoLuong.Caption = "Số lượng";
+            this.SoLuong.DisplayFormat.FormatString = "#,###";
+            this.SoLuong.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.SoLuong.FieldName = "SoLuong";
+            this.SoLuong.Name = "SoLuong";
+            this.SoLuong.Visible = true;
+            this.SoLuong.VisibleIndex = 3;
+            this.SoLuong.Width = 65;
+            // 
+            // GiaBHYT
+            // 
+            this.GiaBHYT.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GiaBHYT.AppearanceCell.Options.UseFont = true;
+            this.GiaBHYT.Caption = "Giá BHYT";
+            this.GiaBHYT.DisplayFormat.FormatString = "#,###";
+            this.GiaBHYT.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.GiaBHYT.FieldName = "GiaBHYT";
+            this.GiaBHYT.Name = "GiaBHYT";
+            this.GiaBHYT.Visible = true;
+            this.GiaBHYT.VisibleIndex = 4;
+            this.GiaBHYT.Width = 71;
+            // 
+            // DonGia
+            // 
+            this.DonGia.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DonGia.AppearanceCell.Options.UseFont = true;
+            this.DonGia.Caption = "Đơn giá";
+            this.DonGia.DisplayFormat.FormatString = "#,###";
+            this.DonGia.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.DonGia.FieldName = "DonGia";
+            this.DonGia.Name = "DonGia";
+            this.DonGia.Visible = true;
+            this.DonGia.VisibleIndex = 5;
+            this.DonGia.Width = 68;
+            // 
+            // NoiDung
+            // 
+            this.NoiDung.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NoiDung.AppearanceCell.Options.UseFont = true;
+            this.NoiDung.Caption = "Nội dung";
+            this.NoiDung.FieldName = "NoiDung";
+            this.NoiDung.Name = "NoiDung";
+            this.NoiDung.Visible = true;
+            this.NoiDung.VisibleIndex = 6;
+            this.NoiDung.Width = 138;
+            // 
+            // KhoNhan
+            // 
+            this.KhoNhan.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KhoNhan.AppearanceCell.Options.UseFont = true;
+            this.KhoNhan.Caption = "Kho nhận";
+            this.KhoNhan.FieldName = "KhoNhan";
+            this.KhoNhan.Name = "KhoNhan";
+            this.KhoNhan.Visible = true;
+            this.KhoNhan.VisibleIndex = 7;
+            this.KhoNhan.Width = 104;
+            // 
+            // NhaCungCap
+            // 
+            this.NhaCungCap.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NhaCungCap.AppearanceCell.Options.UseFont = true;
+            this.NhaCungCap.Caption = "Nhà cung cấp";
+            this.NhaCungCap.FieldName = "NhaCungCap";
+            this.NhaCungCap.Name = "NhaCungCap";
+            this.NhaCungCap.Visible = true;
+            this.NhaCungCap.VisibleIndex = 8;
+            this.NhaCungCap.Width = 137;
+            // 
+            // NgayNhapXuat
+            // 
+            this.NgayNhapXuat.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NgayNhapXuat.AppearanceCell.Options.UseFont = true;
+            this.NgayNhapXuat.Caption = "Ngày nhập xuất";
+            this.NgayNhapXuat.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.NgayNhapXuat.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.NgayNhapXuat.FieldName = "NgayNhapXuat";
+            this.NgayNhapXuat.Name = "NgayNhapXuat";
+            this.NgayNhapXuat.Visible = true;
+            this.NgayNhapXuat.VisibleIndex = 9;
+            this.NgayNhapXuat.Width = 90;
+            // 
+            // SoPhieu
+            // 
+            this.SoPhieu.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SoPhieu.AppearanceCell.Options.UseFont = true;
+            this.SoPhieu.Caption = "Số phiếu";
+            this.SoPhieu.FieldName = "SoPhieu";
+            this.SoPhieu.Name = "SoPhieu";
+            this.SoPhieu.Visible = true;
+            this.SoPhieu.VisibleIndex = 10;
+            this.SoPhieu.Width = 74;
+            // 
+            // SoHoaDon
+            // 
+            this.SoHoaDon.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SoHoaDon.AppearanceCell.Options.UseFont = true;
+            this.SoHoaDon.Caption = "Số hóa đơn";
+            this.SoHoaDon.FieldName = "SoHoaDon";
+            this.SoHoaDon.Name = "SoHoaDon";
+            this.SoHoaDon.Visible = true;
+            this.SoHoaDon.VisibleIndex = 11;
+            this.SoHoaDon.Width = 55;
+            // 
+            // ChiTiet
+            // 
+            this.ChiTiet.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChiTiet.AppearanceCell.Options.UseFont = true;
+            this.ChiTiet.Caption = "Chi tiết";
+            this.ChiTiet.FieldName = "ChiTiet";
+            this.ChiTiet.Name = "ChiTiet";
+            this.ChiTiet.Visible = true;
+            this.ChiTiet.VisibleIndex = 12;
+            this.ChiTiet.Width = 20;
             // 
             // btnXem
             // 
@@ -252,158 +416,6 @@
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(791, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // MaBV
-            // 
-            this.MaBV.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaBV.AppearanceCell.Options.UseFont = true;
-            this.MaBV.Caption = "Mã vật tư";
-            this.MaBV.FieldName = "MaBV";
-            this.MaBV.Name = "MaBV";
-            this.MaBV.Visible = true;
-            this.MaBV.VisibleIndex = 0;
-            this.MaBV.Width = 62;
-            // 
-            // TenVatTu
-            // 
-            this.TenVatTu.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TenVatTu.AppearanceCell.Options.UseFont = true;
-            this.TenVatTu.Caption = "Tên vật tư";
-            this.TenVatTu.FieldName = "TenVatTu";
-            this.TenVatTu.Name = "TenVatTu";
-            this.TenVatTu.Visible = true;
-            this.TenVatTu.VisibleIndex = 0;
-            // 
-            // DonViTinh
-            // 
-            this.DonViTinh.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DonViTinh.AppearanceCell.Options.UseFont = true;
-            this.DonViTinh.Caption = "Đơn vị";
-            this.DonViTinh.FieldName = "DonViTinh";
-            this.DonViTinh.Name = "DonViTinh";
-            this.DonViTinh.Visible = true;
-            this.DonViTinh.VisibleIndex = 1;
-            // 
-            // LoaiVatTu
-            // 
-            this.LoaiVatTu.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoaiVatTu.AppearanceCell.Options.UseFont = true;
-            this.LoaiVatTu.Caption = "Loại VT";
-            this.LoaiVatTu.FieldName = "LoaiVatTu";
-            this.LoaiVatTu.Name = "LoaiVatTu";
-            this.LoaiVatTu.Visible = true;
-            this.LoaiVatTu.VisibleIndex = 2;
-            // 
-            // GiaBHYT
-            // 
-            this.GiaBHYT.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GiaBHYT.AppearanceCell.Options.UseFont = true;
-            this.GiaBHYT.Caption = "Giá BHYT";
-            this.GiaBHYT.DisplayFormat.FormatString = "#,###";
-            this.GiaBHYT.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.GiaBHYT.FieldName = "GiaBHYT";
-            this.GiaBHYT.Name = "GiaBHYT";
-            this.GiaBHYT.Visible = true;
-            this.GiaBHYT.VisibleIndex = 4;
-            // 
-            // NoiDung
-            // 
-            this.NoiDung.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NoiDung.AppearanceCell.Options.UseFont = true;
-            this.NoiDung.Caption = "Nội dung";
-            this.NoiDung.FieldName = "NoiDung";
-            this.NoiDung.Name = "NoiDung";
-            this.NoiDung.Visible = true;
-            this.NoiDung.VisibleIndex = 6;
-            // 
-            // SoLuong
-            // 
-            this.SoLuong.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SoLuong.AppearanceCell.Options.UseFont = true;
-            this.SoLuong.Caption = "Số lượng";
-            this.SoLuong.DisplayFormat.FormatString = "#,###";
-            this.SoLuong.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.SoLuong.FieldName = "SoLuong";
-            this.SoLuong.Name = "SoLuong";
-            this.SoLuong.Visible = true;
-            this.SoLuong.VisibleIndex = 3;
-            // 
-            // KhoNhan
-            // 
-            this.KhoNhan.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KhoNhan.AppearanceCell.Options.UseFont = true;
-            this.KhoNhan.Caption = "Kho nhận";
-            this.KhoNhan.FieldName = "KhoNhan";
-            this.KhoNhan.Name = "KhoNhan";
-            this.KhoNhan.Visible = true;
-            this.KhoNhan.VisibleIndex = 7;
-            // 
-            // NhaCungCap
-            // 
-            this.NhaCungCap.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NhaCungCap.AppearanceCell.Options.UseFont = true;
-            this.NhaCungCap.Caption = "Nhà cung cấp";
-            this.NhaCungCap.Name = "NhaCungCap";
-            this.NhaCungCap.Visible = true;
-            this.NhaCungCap.VisibleIndex = 8;
-            // 
-            // NgayNhapXuat
-            // 
-            this.NgayNhapXuat.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NgayNhapXuat.AppearanceCell.Options.UseFont = true;
-            this.NgayNhapXuat.Caption = "Ngày nhập xuất";
-            this.NgayNhapXuat.DisplayFormat.FormatString = "dd/MM/yyyy";
-            this.NgayNhapXuat.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.NgayNhapXuat.FieldName = "NgayNhapXuat";
-            this.NgayNhapXuat.Name = "NgayNhapXuat";
-            this.NgayNhapXuat.Visible = true;
-            this.NgayNhapXuat.VisibleIndex = 9;
-            this.NgayNhapXuat.Width = 90;
-            // 
-            // SoPhieu
-            // 
-            this.SoPhieu.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SoPhieu.AppearanceCell.Options.UseFont = true;
-            this.SoPhieu.Caption = "Số phiếu";
-            this.SoPhieu.FieldName = "SoPhieu";
-            this.SoPhieu.Name = "SoPhieu";
-            this.SoPhieu.Visible = true;
-            this.SoPhieu.VisibleIndex = 10;
-            this.SoPhieu.Width = 63;
-            // 
-            // DonGia
-            // 
-            this.DonGia.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DonGia.AppearanceCell.Options.UseFont = true;
-            this.DonGia.Caption = "Đơn giá";
-            this.DonGia.DisplayFormat.FormatString = "#,###";
-            this.DonGia.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.DonGia.FieldName = "DonGia";
-            this.DonGia.Name = "DonGia";
-            this.DonGia.Visible = true;
-            this.DonGia.VisibleIndex = 5;
-            // 
-            // SoHoaDon
-            // 
-            this.SoHoaDon.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SoHoaDon.AppearanceCell.Options.UseFont = true;
-            this.SoHoaDon.Caption = "Số hóa đơn";
-            this.SoHoaDon.FieldName = "SoHoaDon";
-            this.SoHoaDon.Name = "SoHoaDon";
-            this.SoHoaDon.Visible = true;
-            this.SoHoaDon.VisibleIndex = 11;
-            this.SoHoaDon.Width = 66;
-            // 
-            // ChiTiet
-            // 
-            this.ChiTiet.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChiTiet.AppearanceCell.Options.UseFont = true;
-            this.ChiTiet.Caption = "Chi tiết";
-            this.ChiTiet.FieldName = "ChiTiet";
-            this.ChiTiet.Name = "ChiTiet";
-            this.ChiTiet.Visible = true;
-            this.ChiTiet.VisibleIndex = 12;
-            this.ChiTiet.Width = 20;
             // 
             // FrmChiTietVatTu
             // 

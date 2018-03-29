@@ -82,6 +82,11 @@ namespace DuocPham.DAL
             return db.ExcuteQuery ("Select MaKhoa,TenKhoa From KhoaBan Where TinhTrang = 1 and KhoVatTu = 1",
                 CommandType.Text, null);
         }
+        public DataTable DSNoiDung()
+        {
+            return db.ExcuteQuery("Select* From NoiDung",
+                CommandType.Text, null);
+        }
         public DataTable DSLoaiVatTu ()
         {
             return db.ExcuteQuery ("Select * From LoaiVatTu Where TinhTrang = 1",
