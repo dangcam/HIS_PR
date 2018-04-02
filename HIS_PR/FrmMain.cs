@@ -320,6 +320,7 @@ namespace HIS_PR
 
         private void barButtonCanLamSan_ItemClick(object sender, ItemClickEventArgs e)
         {
+            
             foreach (Form frm in this.MdiChildren)
             {
                 if (frm.GetType() == typeof(FrmCanLamSan))
@@ -329,9 +330,11 @@ namespace HIS_PR
                     return;
                 }
             }
+            SplashScreenManager.ShowForm(typeof(WaitFormLoad));
             FrmCanLamSan frmCanLamSan = new FrmCanLamSan();
             frmCanLamSan.MdiParent = this;
             frmCanLamSan.Show();
+            SplashScreenManager.CloseForm();
         }
 
         private void barButtonNoiTru_ItemClick(object sender, ItemClickEventArgs e)

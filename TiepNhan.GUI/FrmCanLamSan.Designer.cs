@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCanLamSan));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.layoutControlMain = new DevExpress.XtraLayout.LayoutControl();
+            this.lookUpKhoa = new DevExpress.XtraEditors.LookUpEdit();
             this.checkTatCa = new DevExpress.XtraEditors.CheckEdit();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -67,11 +68,12 @@
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.lookUpKhoa = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.KhoaBan = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkTatCa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -88,7 +90,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,6 +126,25 @@
             this.layoutControlMain.Size = new System.Drawing.Size(790, 268);
             this.layoutControlMain.TabIndex = 1;
             this.layoutControlMain.Text = "layoutControl1";
+            // 
+            // lookUpKhoa
+            // 
+            this.lookUpKhoa.Location = new System.Drawing.Point(79, 12);
+            this.lookUpKhoa.MenuManager = this.ribbonControl;
+            this.lookUpKhoa.Name = "lookUpKhoa";
+            this.lookUpKhoa.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookUpKhoa.Properties.Appearance.Options.UseFont = true;
+            this.lookUpKhoa.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookUpKhoa.Properties.AppearanceDropDown.Options.UseFont = true;
+            this.lookUpKhoa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpKhoa.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaKhoa", "Phòng"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenKhoa", "Tên", 50, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.lookUpKhoa.Properties.NullText = "";
+            this.lookUpKhoa.Size = new System.Drawing.Size(87, 22);
+            this.lookUpKhoa.StyleController = this.layoutControlMain;
+            this.lookUpKhoa.TabIndex = 11;
             // 
             // checkTatCa
             // 
@@ -174,7 +194,8 @@
             this.MaKhoa,
             this.MaMay,
             this.NgayThanhToan,
-            this.DiaChi});
+            this.DiaChi,
+            this.KhoaBan});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsView.ShowAutoFilterRow = true;
@@ -515,25 +536,6 @@
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
-            // lookUpKhoa
-            // 
-            this.lookUpKhoa.Location = new System.Drawing.Point(79, 12);
-            this.lookUpKhoa.MenuManager = this.ribbonControl;
-            this.lookUpKhoa.Name = "lookUpKhoa";
-            this.lookUpKhoa.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpKhoa.Properties.Appearance.Options.UseFont = true;
-            this.lookUpKhoa.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpKhoa.Properties.AppearanceDropDown.Options.UseFont = true;
-            this.lookUpKhoa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpKhoa.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaKhoa", "Phòng"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenKhoa", "Tên", 50, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.lookUpKhoa.Properties.NullText = "";
-            this.lookUpKhoa.Size = new System.Drawing.Size(87, 22);
-            this.lookUpKhoa.StyleController = this.layoutControlMain;
-            this.lookUpKhoa.TabIndex = 11;
-            // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.lookUpKhoa;
@@ -542,6 +544,12 @@
             this.layoutControlItem8.Size = new System.Drawing.Size(158, 27);
             this.layoutControlItem8.Text = "Phòng:";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(64, 13);
+            // 
+            // KhoaBan
+            // 
+            this.KhoaBan.Caption = "KhoaBan";
+            this.KhoaBan.FieldName = "KhoaBan";
+            this.KhoaBan.Name = "KhoaBan";
             // 
             // FrmCanLamSan
             // 
@@ -559,6 +567,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).EndInit();
             this.layoutControlMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkTatCa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
@@ -575,7 +584,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -624,5 +632,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn DiaChi;
         private DevExpress.XtraEditors.LookUpEdit lookUpKhoa;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private DevExpress.XtraGrid.Columns.GridColumn KhoaBan;
     }
 }

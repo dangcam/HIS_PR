@@ -2,11 +2,13 @@
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
+using DevExpress.XtraSplashScreen;
 using KhamBenh.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using TiepNhan.GUI.MauSo;
 
 namespace TiepNhan.GUI
 {
@@ -16,10 +18,12 @@ namespace TiepNhan.GUI
         DataView dvDichVu;
         Dictionary<string, int> listDichVu;
         string ketQua;
+        FrmMauPhieu frmMauPhieu;
         public FrmKQCanLamSan()
         {
             InitializeComponent();
             canLamSan = new CanLamSanEntity();
+            frmMauPhieu = new FrmMauPhieu();
             lookUpMaKhoa.Properties.DataSource = canLamSan.DSKhoaBan(1);
             lookUpMaKhoa.Properties.ValueMember = "MaKhoa";
             lookUpMaKhoa.Properties.DisplayMember = "TenKhoa";
@@ -41,12 +45,13 @@ namespace TiepNhan.GUI
         public string GioiTinh { get; set; }
         public string SoThe { get; set; }
         public string DiaChi { get; set; }
+        public string MaKhoa { get; set; }
 
         private void FrmKQCanLamSan_Load(object sender, EventArgs e)
         {
             canLamSan.MaCLS = this.MaCSL;
             canLamSan.MaLK = this.MaLK;
-            lookUpMaKhoa.ItemIndex = 0;
+            lookUpMaKhoa.EditValue = MaKhoa;
             txtHoTen.Text = this.HoTen;
             txtCanLamSan.Text = this.TenCanLamSan;
             txtYeuCau.Text = this.YeuCau;
@@ -263,13 +268,30 @@ namespace TiepNhan.GUI
 
         private void btnLuuIn_Click(object sender, EventArgs e)
         {
+            SplashScreenManager.ShowForm(typeof(WaitFormLoad));
             LuuKetQua();
             InPhieu();
+            SplashScreenManager.CloseForm();
         }
         private void InPhieu()
         {
+            frmMauPhieu.HoTen = this.HoTen;
+            frmMauPhieu.NamSinh = this.NamSinh;
+            frmMauPhieu.GioiTinh = this.GioiTinh == "0" ? "Nam" : "Nữ";
+            frmMauPhieu.ChuanDoan = this.ChuanDoan;
+            frmMauPhieu.YeuCau = this.YeuCau;
+            frmMauPhieu.BSCD =Utils.ToString( lookUpBacSi.Properties.GetDisplayValueByKeyValue(this.MaBacSi));
+            frmMauPhieu.BSCK = Utils.ToString(lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue));
+            frmMauPhieu.MauSo = MauSo;
+            frmMauPhieu.DiaChi = DiaChi;
+            frmMauPhieu.SoThe = SoThe;
+            frmMauPhieu.MaKhoa = Utils.ToString(lookUpMaKhoa.Properties.GetDisplayValueByKeyValue(lookUpMaKhoa.EditValue));
+            frmMauPhieu.KetQua = ketQua;
             switch (MauSo)
             {
+                case "14":
+                    MauSo14();
+                    break;
                 case "19":
                     MauSo19();
                     break;
@@ -301,215 +323,242 @@ namespace TiepNhan.GUI
                     MauSo342();
                     break;
             }
+            frmMauPhieu.ShowDialog();
         }
         private void MauSo19()
         {
-            rptMauSo_19 rpt = new rptMauSo_19();
+            frmMauPhieu.MauFile = @"FileWord\19_Phieu-chieu-chup-X-quang.doc";
+            //rptMauSo_19 rpt = new rptMauSo_19();
 
-            rpt.lblHoTen.Text = this.HoTen;
-            rpt.lblNamSinh.Text = this.NamSinh;
-            rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
-            rpt.lblChuanDoan.Text = this.ChuanDoan;
-            rpt.lblYeuCau.Text = this.YeuCau;
-            rpt.lblNgay.Text = "Ngày " + DateTime.Now.Day + " tháng " +
-                DateTime.Now.Month + " năm " + DateTime.Now.Year;
-            rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
-            rpt.cellKetQua.Text = ketQua;
-            rpt.CreateDocument();
-            rpt.ShowPreviewDialog();
+            //rpt.lblHoTen.Text = this.HoTen;
+            //rpt.lblNamSinh.Text = this.NamSinh;
+            //rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
+            //rpt.lblChuanDoan.Text = this.ChuanDoan;
+            //rpt.lblYeuCau.Text = this.YeuCau;
+            //rpt.lblNgay.Text = "Ngày " + DateTime.Now.Day + " tháng " +
+            //    DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            //rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
+            //rpt.cellKetQua.Text = ketQua;
+            //rpt.CreateDocument();
+            //rpt.ShowPreviewDialog();
         }
         private void MauSo22()
         {
-            rptMauSo_22 rpt = new rptMauSo_22();
-            rpt.lblMauSo.Text = "MS: " + this.MauSo + "/BV-01";
-            rpt.lblHoTen.Text = this.HoTen;
-            rpt.lblNamSinh.Text = this.NamSinh;
-            rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
-            rpt.lblChuanDoan.Text = this.ChuanDoan;
-            rpt.lblYeuCau.Text = this.YeuCau;
-            rpt.lblNgay.Text = "Ngày " + DateTime.Now.Day + " tháng " +
-                DateTime.Now.Month + " năm " + DateTime.Now.Year;
-            rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
-            rpt.lblKetQua.Text = ketQua;
-            rpt.lblKhoa.Text = lookUpMaKhoa.Properties.GetDisplayValueByKeyValue(lookUpMaKhoa.EditValue).ToString();
-            rpt.CreateDocument();
-            rpt.ShowPreviewDialog();
+            frmMauPhieu.MauFile = @"FileWord\22_Phieu-sieu-am.doc";
+            //rptMauSo_22 rpt = new rptMauSo_22();
+            //rpt.lblMauSo.Text = "MS: " + this.MauSo + "/BV-01";
+            //rpt.lblHoTen.Text = this.HoTen;
+            //rpt.lblNamSinh.Text = this.NamSinh;
+            //rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
+            //rpt.lblChuanDoan.Text = this.ChuanDoan;
+            //rpt.lblYeuCau.Text = this.YeuCau;
+            //rpt.lblNgay.Text = "Ngày " + DateTime.Now.Day + " tháng " +
+            //    DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            //rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
+            //rpt.lblKetQua.Text = ketQua;
+            //rpt.lblKhoa.Text = lookUpMaKhoa.Properties.GetDisplayValueByKeyValue(lookUpMaKhoa.EditValue).ToString();
+            //rpt.CreateDocument();
+            //rpt.ShowPreviewDialog();
         }
         private void MauSo23()
         {
-            rptMauSo_23 rpt = new rptMauSo_23();
-            rpt.lblMauSo.Text = "MS: " + this.MauSo + "/BV-01";
-            rpt.lblHoTen.Text = this.HoTen;
-            rpt.lblNamSinh.Text = this.NamSinh;
-            rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
-            rpt.lblChuanDoan.Text = this.ChuanDoan;
-            rpt.lblYeuCau.Text = this.YeuCau;
-            rpt.lblNgay.Text = "Ngày " + DateTime.Now.Day + " tháng " +
-                DateTime.Now.Month + " năm " + DateTime.Now.Year;
-            rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
-            rpt.lblKetQua.Text = ketQua;
-            rpt.lblKhoa.Text = lookUpMaKhoa.Properties.GetDisplayValueByKeyValue(lookUpMaKhoa.EditValue).ToString();
-            rpt.CreateDocument();
-            rpt.ShowPreviewDialog();
+            frmMauPhieu.MauFile = @"FileWord\23_Phieu-dien-tim.doc";
+            //rptMauSo_23 rpt = new rptMauSo_23();
+            //rpt.lblMauSo.Text = "MS: " + this.MauSo + "/BV-01";
+            //rpt.lblHoTen.Text = this.HoTen;
+            //rpt.lblNamSinh.Text = this.NamSinh;
+            //rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
+            //rpt.lblChuanDoan.Text = this.ChuanDoan;
+            //rpt.lblYeuCau.Text = this.YeuCau;
+            //rpt.lblNgay.Text = "Ngày " + DateTime.Now.Day + " tháng " +
+            //    DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            //rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
+            //rpt.lblKetQua.Text = ketQua;
+            //rpt.lblKhoa.Text = lookUpMaKhoa.Properties.GetDisplayValueByKeyValue(lookUpMaKhoa.EditValue).ToString();
+            //rpt.CreateDocument();
+            //rpt.ShowPreviewDialog();
         }
         private void MauSo25()
         {
-            rptMauSo_25 rpt = new rptMauSo_25();
-            rpt.lblHoTenBS.Text = this.HoTen;
-            rpt.lblNamSinh.Text = this.NamSinh;
-            rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
-            rpt.lblChuanDoan.Text = this.ChuanDoan;
-            rpt.lblYeuCau.Text = this.YeuCau;
-            rpt.lblNgay.Text = "Ngày " + DateTime.Now.Day + " tháng " +
-                DateTime.Now.Month + " năm " + DateTime.Now.Year;
-            rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
-            rpt.lblKetQua.Text = ketQua;
-            rpt.CreateDocument();
-            rpt.ShowPreviewDialog();
+            frmMauPhieu.MauFile = @"FileWord\25_Phieu-noi-soi.doc";
+            //rptMauSo_25 rpt = new rptMauSo_25();
+            //rpt.lblHoTenBS.Text = this.HoTen;
+            //rpt.lblNamSinh.Text = this.NamSinh;
+            //rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
+            //rpt.lblChuanDoan.Text = this.ChuanDoan;
+            //rpt.lblYeuCau.Text = this.YeuCau;
+            //rpt.lblNgay.Text = "Ngày " + DateTime.Now.Day + " tháng " +
+            //    DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            //rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
+            //rpt.lblKetQua.Text = ketQua;
+            //rpt.CreateDocument();
+            //rpt.ShowPreviewDialog();
         }
         private void MauSo27()
         {
-            rptMauSo_27 rpt = new rptMauSo_27();
+            frmMauPhieu.MauFile = @"FileWord\27_Phieu-xet-nghiem.doc";
+            //rptMauSo_27 rpt = new rptMauSo_27();
 
-            rpt.lblHoTen.Text = this.HoTen;
-            rpt.lblNamSinh.Text = this.NamSinh;
-            rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
-            rpt.lblChuanDoan.Text = this.ChuanDoan;
-            rpt.lblYeuCau.Text = this.YeuCau;
-            rpt.lblNgay.Text = "Ngày " + DateTime.Now.Day + " tháng " +
-                DateTime.Now.Month + " năm " + DateTime.Now.Year;
-            rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
-            rpt.cellKetQua.Text = ketQua;
-            rpt.CreateDocument();
-            rpt.ShowPreviewDialog();
+            //rpt.lblHoTen.Text = this.HoTen;
+            //rpt.lblNamSinh.Text = this.NamSinh;
+            //rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
+            //rpt.lblChuanDoan.Text = this.ChuanDoan;
+            //rpt.lblYeuCau.Text = this.YeuCau;
+            //rpt.lblNgay.Text = "Ngày " + DateTime.Now.Day + " tháng " +
+            //    DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            //rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
+            //rpt.cellKetQua.Text = ketQua;
+            //rpt.CreateDocument();
+            //rpt.ShowPreviewDialog();
         }
         private void MauSo28()
         {
-            rptMauSo_28 rpt = new rptMauSo_28();
-            rpt.lblHoTen.Text = this.HoTen;
-            rpt.lblNamSinh.Text = this.NamSinh;
-            rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
-            rpt.lblChuanDoan.Text = this.ChuanDoan;
-            rpt.lblDiaChi.Text = this.DiaChi;
-            rpt.lblSoThe.Text = this.SoThe;
-            rpt.lblNgay.Text = DateTime.Now.Hour + " giờ " + DateTime.Now.Minute + " ngày " + DateTime.Now.Day + " tháng " +
-                DateTime.Now.Month + " năm " + DateTime.Now.Year;
-            rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
-            rpt.lblKhoa.Text = lookUpMaKhoa.Properties.GetDisplayValueByKeyValue(lookUpMaKhoa.EditValue).ToString();
+            frmMauPhieu.MauFile = @"FileWord\28_Phieu-xet-nghiem-huyet-hoc.doc";
+            //rptMauSo_28 rpt = new rptMauSo_28();
+            //rpt.lblHoTen.Text = this.HoTen;
+            //rpt.lblNamSinh.Text = this.NamSinh;
+            //rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
+            //rpt.lblChuanDoan.Text = this.ChuanDoan;
+            //rpt.lblDiaChi.Text = this.DiaChi;
+            //rpt.lblSoThe.Text = this.SoThe;
+            //rpt.lblNgay.Text = DateTime.Now.Hour + " giờ " + DateTime.Now.Minute + " ngày " + DateTime.Now.Day + " tháng " +
+            //    DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            //rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
+            //rpt.lblKhoa.Text = lookUpMaKhoa.Properties.GetDisplayValueByKeyValue(lookUpMaKhoa.EditValue).ToString();
             foreach (DataRowView drv in dvDichVu)
             {
                 switch (drv["MaDichVu"].ToString())
                 {
                     case "22.0138.1362":
-                        rpt.cellSotRet.Text = drv["GiaTri"].ToString();
+                        //rpt.cellSotRet.Text = drv["GiaTri"].ToString();
+                        frmMauPhieu.SotRet = drv["GiaTri"].ToString();
                         break;
                 }
             }
-                rpt.CreateDocument();
-            rpt.ShowPreviewDialog();
+            //    rpt.CreateDocument();
+            //rpt.ShowPreviewDialog();
         }
         private void MauSo33()
         {
-            rptMauSo_33 rpt = new rptMauSo_33();
-            rpt.lblHoTen.Text = this.HoTen;
-            rpt.lblNamSinh.Text = this.NamSinh;
-            rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
-            rpt.lblChuanDoan.Text = this.ChuanDoan;
-            rpt.lblDiaChi.Text = this.DiaChi;
-            rpt.lblSoThe.Text = this.SoThe;
-            rpt.lblNgay.Text = DateTime.Now.Hour + " giờ " + DateTime.Now.Minute + " ngày " + DateTime.Now.Day + " tháng " +
-                DateTime.Now.Month + " năm " + DateTime.Now.Year;
-            rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
-            rpt.lblKhoa.Text = lookUpMaKhoa.Properties.GetDisplayValueByKeyValue(lookUpMaKhoa.EditValue).ToString();
+            frmMauPhieu.MauFile = @"FileWord\33_Phieu-xet-nghiem-hoa-sinh-mau.doc";
+            //rptMauSo_33 rpt = new rptMauSo_33();
+            //rpt.lblHoTen.Text = this.HoTen;
+            //rpt.lblNamSinh.Text = this.NamSinh;
+            //rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
+            //rpt.lblChuanDoan.Text = this.ChuanDoan;
+            //rpt.lblDiaChi.Text = this.DiaChi;
+            //rpt.lblSoThe.Text = this.SoThe;
+            //rpt.lblNgay.Text = DateTime.Now.Hour + " giờ " + DateTime.Now.Minute + " ngày " + DateTime.Now.Day + " tháng " +
+            //    DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            //rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
+            //rpt.lblKhoa.Text = Utils.ToString(lookUpMaKhoa.Properties.GetDisplayValueByKeyValue(lookUpMaKhoa.EditValue));
             foreach (DataRowView dr in dvDichVu)
             {
                 switch (dr["MaDichVu"].ToString())
                 {
                     case "23.0166.1494":
-                        rpt.cellUre.Text = dr["GiaTri"].ToString();
+                        //rpt.cellUre.Text = dr["GiaTri"].ToString();
+                        frmMauPhieu.GTUre = dr["GiaTri"].ToString();
                         break;
                     case "23.0075.1494":
-                        rpt.cellGluco.Text = dr["GiaTri"].ToString();
+                        //rpt.cellGluco.Text = dr["GiaTri"].ToString();
+                        frmMauPhieu.GTGlu = dr["GiaTri"].ToString();
                         break;
                     case "23.0051.1494":
-                        rpt.cellCrea.Text = dr["GiaTri"].ToString();
+                        //rpt.cellCrea.Text = dr["GiaTri"].ToString();
+                        frmMauPhieu.GTCre = dr["GiaTri"].ToString();
                         break;
                     case "23.0003.1494":
-                        rpt.cellAcid.Text = dr["GiaTri"].ToString();
+                        //rpt.cellAcid.Text = dr["GiaTri"].ToString();
+                        frmMauPhieu.GTAci = dr["GiaTri"].ToString();
                         break;
                     case "23.0041.1506":
-                        rpt.cellCholes.Text = dr["GiaTri"].ToString();
+                        //rpt.cellCholes.Text = dr["GiaTri"].ToString();
+                        frmMauPhieu.GTCho = dr["GiaTri"].ToString();
                         break;
                     case "23.0158.1506":
-                        rpt.cellTrigly.Text = dr["GiaTri"].ToString();
+                        //rpt.cellTrigly.Text = dr["GiaTri"].ToString();
+                        frmMauPhieu.GTTri = dr["GiaTri"].ToString();
                         break;
                     case "23.0084.1506":
-                        rpt.cellHDL.Text = dr["GiaTri"].ToString();
+                        //rpt.cellHDL.Text = dr["GiaTri"].ToString();
+                        frmMauPhieu.GTHDL = dr["GiaTri"].ToString();
                         break;
                     case "23.0112.1506":
-                        rpt.cellLDL.Text = dr["GiaTri"].ToString();
+                        //rpt.cellLDL.Text = dr["GiaTri"].ToString();
+                        frmMauPhieu.GTLDL = dr["GiaTri"].ToString();
                         break;
                     case "23.0020.1493":
-                        rpt.cellAST.Text = dr["GiaTri"].ToString();
+                        //rpt.cellAST.Text = dr["GiaTri"].ToString();
+                        frmMauPhieu.GTAST = dr["GiaTri"].ToString();
                         break;
                     case "23.0019.1493":
-                        rpt.cellALT.Text = dr["GiaTri"].ToString();
+                        //rpt.cellALT.Text = dr["GiaTri"].ToString();
+                        frmMauPhieu.GTALT = dr["GiaTri"].ToString();
                         break;
                     case "23.0077.1518":
-                        rpt.cellGGT.Text = dr["GiaTri"].ToString();
+                        //rpt.cellGGT.Text = dr["GiaTri"].ToString();
+                        frmMauPhieu.GTGGT = dr["GiaTri"].ToString();
                         break;
                 }
             }
-            rpt.CreateDocument();
-            rpt.ShowPreviewDialog();
+            //rpt.CreateDocument();
+            //rpt.ShowPreviewDialog();
         }
         private void MauSo340()
         {
-            rptMauSo_340 rpt = new rptMauSo_340();
-            rpt.lblHoTen.Text = this.HoTen;
-            rpt.lblNamSinh.Text = this.NamSinh;
-            rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
-            rpt.lblChuanDoan.Text = this.ChuanDoan;
-            rpt.lblDiaChi.Text = this.DiaChi;
-            rpt.lblSoThe.Text = this.SoThe;
-            rpt.lblNgay.Text = DateTime.Now.Hour + " giờ " + DateTime.Now.Minute + " ngày " + DateTime.Now.Day + " tháng " +
-                DateTime.Now.Month + " năm " + DateTime.Now.Year;
-            rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
-            rpt.lblKhoa.Text = lookUpMaKhoa.Properties.GetDisplayValueByKeyValue(lookUpMaKhoa.EditValue).ToString();
-            rpt.CreateDocument();
-            rpt.ShowPreviewDialog();
+            frmMauPhieu.MauFile = @"FileWord\34_0Phieu-xet-nghiem-hoa-sinh-nuoc-tieu.doc";
+            //rptMauSo_340 rpt = new rptMauSo_340();
+            //rpt.lblHoTen.Text = this.HoTen;
+            //rpt.lblNamSinh.Text = this.NamSinh;
+            //rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
+            //rpt.lblChuanDoan.Text = this.ChuanDoan;
+            //rpt.lblDiaChi.Text = this.DiaChi;
+            //rpt.lblSoThe.Text = this.SoThe;
+            //rpt.lblNgay.Text = DateTime.Now.Hour + " giờ " + DateTime.Now.Minute + " ngày " + DateTime.Now.Day + " tháng " +
+            //    DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            //rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
+            //rpt.lblKhoa.Text = lookUpMaKhoa.Properties.GetDisplayValueByKeyValue(lookUpMaKhoa.EditValue).ToString();
+            //rpt.CreateDocument();
+            //rpt.ShowPreviewDialog();
         }
         private void MauSo341()
         {
-            rptMauSo_341 rpt = new rptMauSo_341();
-            rpt.lblHoTen.Text = this.HoTen;
-            rpt.lblNamSinh.Text = this.NamSinh;
-            rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
-            rpt.lblChuanDoan.Text = this.ChuanDoan;
-            rpt.lblDiaChi.Text = this.DiaChi;
-            rpt.lblSoThe.Text = this.SoThe;
-            rpt.lblNgay.Text = DateTime.Now.Hour + " giờ " + DateTime.Now.Minute + " ngày " + DateTime.Now.Day + " tháng " +
-                DateTime.Now.Month + " năm " + DateTime.Now.Year;
-            rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
-            rpt.lblKhoa.Text = lookUpMaKhoa.Properties.GetDisplayValueByKeyValue(lookUpMaKhoa.EditValue).ToString();
-            rpt.CreateDocument();
-            rpt.ShowPreviewDialog();
+            frmMauPhieu.MauFile = @"FileWord\34_1Phieu-xet-nghiem-phan.doc";
+            //rptMauSo_341 rpt = new rptMauSo_341();
+            //rpt.lblHoTen.Text = this.HoTen;
+            //rpt.lblNamSinh.Text = this.NamSinh;
+            //rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
+            //rpt.lblChuanDoan.Text = this.ChuanDoan;
+            //rpt.lblDiaChi.Text = this.DiaChi;
+            //rpt.lblSoThe.Text = this.SoThe;
+            //rpt.lblNgay.Text = DateTime.Now.Hour + " giờ " + DateTime.Now.Minute + " ngày " + DateTime.Now.Day + " tháng " +
+            //    DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            //rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
+            //rpt.lblKhoa.Text = lookUpMaKhoa.Properties.GetDisplayValueByKeyValue(lookUpMaKhoa.EditValue).ToString();
+            //rpt.CreateDocument();
+            //rpt.ShowPreviewDialog();
         }
         private void MauSo342()
         {
-            rptMauSo_342 rpt = new rptMauSo_342();
-            rpt.lblHoTen.Text = this.HoTen;
-            rpt.lblNamSinh.Text = this.NamSinh;
-            rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
-            rpt.lblChuanDoan.Text = this.ChuanDoan;
-            rpt.lblDiaChi.Text = this.DiaChi;
-            rpt.lblSoThe.Text = this.SoThe;
-            rpt.lblNgay.Text = DateTime.Now.Hour + " giờ " + DateTime.Now.Minute + " ngày " + DateTime.Now.Day + " tháng " +
-                DateTime.Now.Month + " năm " + DateTime.Now.Year;
-            rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
-            rpt.lblKhoa.Text = lookUpMaKhoa.Properties.GetDisplayValueByKeyValue(lookUpMaKhoa.EditValue).ToString();
-            rpt.CreateDocument();
-            rpt.ShowPreviewDialog();
+            frmMauPhieu.MauFile = @"FileWord\34_2Phieu-xet-nghiem-hoa-sinh-dich-choc-do.doc";
+            //rptMauSo_342 rpt = new rptMauSo_342();
+            //rpt.lblHoTen.Text = this.HoTen;
+            //rpt.lblNamSinh.Text = this.NamSinh;
+            //rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";
+            //rpt.lblChuanDoan.Text = this.ChuanDoan;
+            //rpt.lblDiaChi.Text = this.DiaChi;
+            //rpt.lblSoThe.Text = this.SoThe;
+            //rpt.lblNgay.Text = DateTime.Now.Hour + " giờ " + DateTime.Now.Minute + " ngày " + DateTime.Now.Day + " tháng " +
+            //    DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            //rpt.lblHoTenBS.Text = "Họ tên: " + lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue);
+            //rpt.lblKhoa.Text = lookUpMaKhoa.Properties.GetDisplayValueByKeyValue(lookUpMaKhoa.EditValue).ToString();
+            //rpt.CreateDocument();
+            //rpt.ShowPreviewDialog();
+        }
+        private void MauSo14()
+        {
+            frmMauPhieu.MauFile = @"FileWord\14_Phieu-phau-thuat-thu-thuat.doc";
         }
     }
 }

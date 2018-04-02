@@ -137,14 +137,14 @@ namespace DuocPham.GUI
                 cell.Text = drview["TenVatTu"].ToString ();
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-                cell.WidthF = 348;
+                cell.WidthF = 320;
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();
                 cell.Text = drview["DonViTinh"].ToString ();
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-                cell.WidthF = 50;
+                cell.WidthF = 78;
                 row.Cells.Add (cell);
 
                 decimal sl = decimal.Parse (drview["SoLuong"].ToString ());
@@ -322,7 +322,7 @@ namespace DuocPham.GUI
             row.Cells.Add (cell);
             rpt.xrTable.Rows.Add (row);
 
-            rpt.lblTongTien.Text = Utils.ChuyenSo (this.thanhTien.ToString().Split('.')[0]);
+            rpt.lblTongTien.Text = Utils.ChuyenSo (this.thanhTien.ToString().Replace(",",".").Split('.')[0]);
             rpt.lblTKCo.Text = "";
             foreach (string loai in dsLoaiVatTu)
             {

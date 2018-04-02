@@ -102,6 +102,7 @@ namespace TiepNhan.GUI
                 frmKQCanLamSan.GioiTinh = dr["GioiTinh"].ToString();
                 frmKQCanLamSan.SoThe = dr["MaThe"].ToString();
                 frmKQCanLamSan.DiaChi = dr["DiaChi"].ToString();
+                frmKQCanLamSan.MaKhoa = dr["KhoaBan"].ToString();
                 frmKQCanLamSan.ShowDialog();
                 LoadData();
             }

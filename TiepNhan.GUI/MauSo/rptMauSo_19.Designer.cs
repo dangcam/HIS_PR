@@ -71,7 +71,6 @@
             this.xrLabel8,
             this.lblHoTenBS,
             this.xrTable2});
-            this.Detail.Dpi = 100F;
             this.Detail.HeightF = 520F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
@@ -79,7 +78,6 @@
             // 
             // xrLabel2
             // 
-            this.xrLabel2.Dpi = 100F;
             this.xrLabel2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 84.37503F);
             this.xrLabel2.Name = "xrLabel2";
@@ -92,7 +90,6 @@
             // 
             // lblYeuCau
             // 
-            this.lblYeuCau.Dpi = 100F;
             this.lblYeuCau.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblYeuCau.LocationFloat = new DevExpress.Utils.PointFloat(80F, 84.37503F);
             this.lblYeuCau.Name = "lblYeuCau";
@@ -105,7 +102,6 @@
             // 
             // xrLabel1
             // 
-            this.xrLabel1.Dpi = 100F;
             this.xrLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 34.37503F);
             this.xrLabel1.Name = "xrLabel1";
@@ -118,7 +114,6 @@
             // 
             // xrLabel4
             // 
-            this.xrLabel4.Dpi = 100F;
             this.xrLabel4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(499.9999F, 34.37503F);
             this.xrLabel4.Name = "xrLabel4";
@@ -131,7 +126,6 @@
             // 
             // lblHoTen
             // 
-            this.lblHoTen.Dpi = 100F;
             this.lblHoTen.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHoTen.LocationFloat = new DevExpress.Utils.PointFloat(150F, 34.37503F);
             this.lblHoTen.Name = "lblHoTen";
@@ -144,7 +138,6 @@
             // 
             // lblNamSinh
             // 
-            this.lblNamSinh.Dpi = 100F;
             this.lblNamSinh.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNamSinh.LocationFloat = new DevExpress.Utils.PointFloat(580.0001F, 34.37503F);
             this.lblNamSinh.Name = "lblNamSinh";
@@ -157,7 +150,6 @@
             // 
             // lblGioiTinh
             // 
-            this.lblGioiTinh.Dpi = 100F;
             this.lblGioiTinh.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGioiTinh.LocationFloat = new DevExpress.Utils.PointFloat(675.0001F, 34.37503F);
             this.lblGioiTinh.Name = "lblGioiTinh";
@@ -170,7 +162,6 @@
             // 
             // xrLabel23
             // 
-            this.xrLabel23.Dpi = 100F;
             this.xrLabel23.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel23.LocationFloat = new DevExpress.Utils.PointFloat(0F, 59.37503F);
             this.xrLabel23.Name = "xrLabel23";
@@ -183,7 +174,6 @@
             // 
             // lblChuanDoan
             // 
-            this.lblChuanDoan.Dpi = 100F;
             this.lblChuanDoan.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChuanDoan.LocationFloat = new DevExpress.Utils.PointFloat(99.99982F, 59.37503F);
             this.lblChuanDoan.Name = "lblChuanDoan";
@@ -196,7 +186,6 @@
             // 
             // lblPhieu
             // 
-            this.lblPhieu.Dpi = 100F;
             this.lblPhieu.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhieu.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.lblPhieu.Name = "lblPhieu";
@@ -209,7 +198,6 @@
             // 
             // xrLabel19
             // 
-            this.xrLabel19.Dpi = 100F;
             this.xrLabel19.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel19.LocationFloat = new DevExpress.Utils.PointFloat(9.99999F, 403.75F);
             this.xrLabel19.Name = "xrLabel19";
@@ -222,7 +210,6 @@
             // 
             // lblNgay
             // 
-            this.lblNgay.Dpi = 100F;
             this.lblNgay.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNgay.LocationFloat = new DevExpress.Utils.PointFloat(507.7917F, 395.75F);
             this.lblNgay.Name = "lblNgay";
@@ -235,7 +222,6 @@
             // 
             // xrLabel8
             // 
-            this.xrLabel8.Dpi = 100F;
             this.xrLabel8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(530.0001F, 418.75F);
             this.xrLabel8.Name = "xrLabel8";
@@ -248,7 +234,6 @@
             // 
             // lblHoTenBS
             // 
-            this.lblHoTenBS.Dpi = 100F;
             this.lblHoTenBS.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHoTenBS.LocationFloat = new DevExpress.Utils.PointFloat(500F, 490.667F);
             this.lblHoTenBS.Name = "lblHoTenBS";
@@ -264,26 +249,23 @@
             this.xrTable2.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTable2.Dpi = 100F;
             this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(9.99999F, 115F);
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow3,
             this.xrTableRow4});
-            this.xrTable2.SizeF = new System.Drawing.SizeF(747F, 270.9302F);
+            this.xrTable2.SizeF = new System.Drawing.SizeF(747F, 270F);
             this.xrTable2.StylePriority.UseBorders = false;
             // 
             // xrTableRow3
             // 
             this.xrTableRow3.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
             this.xrTableCell3});
-            this.xrTableRow3.Dpi = 100F;
             this.xrTableRow3.Name = "xrTableRow3";
             this.xrTableRow3.Weight = 0.39876926072485436D;
             // 
             // xrTableCell3
             // 
-            this.xrTableCell3.Dpi = 100F;
             this.xrTableCell3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableCell3.Name = "xrTableCell3";
             this.xrTableCell3.StylePriority.UseFont = false;
@@ -296,13 +278,11 @@
             // 
             this.xrTableRow4.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
             this.cellKetQua});
-            this.xrTableRow4.Dpi = 100F;
             this.xrTableRow4.Name = "xrTableRow4";
             this.xrTableRow4.Weight = 4.7630773620100166D;
             // 
             // cellKetQua
             // 
-            this.cellKetQua.Dpi = 100F;
             this.cellKetQua.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cellKetQua.Name = "cellKetQua";
             this.cellKetQua.StylePriority.UseFont = false;
@@ -312,7 +292,6 @@
             // 
             // TopMargin
             // 
-            this.TopMargin.Dpi = 100F;
             this.TopMargin.HeightF = 30F;
             this.TopMargin.Name = "TopMargin";
             this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
@@ -320,7 +299,6 @@
             // 
             // BottomMargin
             // 
-            this.BottomMargin.Dpi = 100F;
             this.BottomMargin.HeightF = 30F;
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
@@ -337,7 +315,7 @@
             this.PageHeight = 583;
             this.PageWidth = 827;
             this.PaperKind = System.Drawing.Printing.PaperKind.A5;
-            this.Version = "16.2";
+            this.Version = "17.2";
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 

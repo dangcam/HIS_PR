@@ -47,7 +47,8 @@ namespace KhamBenh.DAL
         {
             return db.ExcuteQuery("Select CDCanLamSan.MaLK,MaCLS,MaBS,ChuanDoan,"
             + "YeuCau, NgayChiDinh, KetQua, HoTen, NgaySinh, GioiTinh,MaThe, "
-            + "Ten,MaNhom,MauSo,NhomCanLamSan.MaKhoa,MaMay,NgayThanhToan,DiaChi "
+            + "Ten,MaNhom,MauSo,NhomCanLamSan.MaKhoa,MaMay,NgayThanhToan,DiaChi, " 
+            + "ThongTinBNChiTiet.MaKhoa as KhoaBan "
             + "From CDCanLamSan, ThongTinBNChiTiet,NhomCanLamSan "
             + "Where CDCanLamSan.MaLK = ThongTinBNChiTiet.MaLK And NhomCanLamSan.Ma = CDCanLamSan.MaCLS "
             + "And NgayChiDinh = CONVERT(DATE,'"+ngayYLenh+ "') And NhomCanLamSan.MaKhoa = '"+maKhoa+ "' And MaCoSoKCB = '" + AppConfig.CoSoKCB + "'",

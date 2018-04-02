@@ -228,13 +228,13 @@
             // 
             this.xrTableCell3.Name = "xrTableCell3";
             this.xrTableCell3.Text = "Tên thuốc, hàm lượng";
-            this.xrTableCell3.Weight = 3.4799994530814988D;
+            this.xrTableCell3.Weight = 3.1999995019096152D;
             // 
             // xrTableCell4
             // 
             this.xrTableCell4.Name = "xrTableCell4";
             this.xrTableCell4.Text = "Đơn vị";
-            this.xrTableCell4.Weight = 0.49999989645823495D;
+            this.xrTableCell4.Weight = 0.77999984763011854D;
             // 
             // xrTableCell5
             // 

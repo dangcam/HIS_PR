@@ -381,14 +381,14 @@ namespace DuocPham.GUI
                 cell.Text = drview["TenVatTu"].ToString ();
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-                cell.WidthF = 348;
+                cell.WidthF = 320;
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();
                 cell.Text = drview["DonViTinh"].ToString ();
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-                cell.WidthF = 50;
+                cell.WidthF = 78;
                 row.Cells.Add (cell);
 
                 decimal sl = Utils.ToDecimal (drview["SoLuong"].ToString ());
