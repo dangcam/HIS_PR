@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,6 +54,20 @@ namespace BaoCao.DAL
         {
             string sql = "EXEC SpTongHopXuatKho " + loaiBC + " ," + thang1 + "," + thang2 + "," + thang3 + "," + year;
             return db.ExcuteQuery(sql,
+                CommandType.Text, null);
+        }
+        public bool XuLyTonKho(ref string err, int Thang,int Nam)
+        {
+            return db.MyExecuteNonQuery("SpXuLyTonKho",
+                CommandType.StoredProcedure, ref err,
+                new SqlParameter("@Thang", Thang),
+                new SqlParameter("@Nam", Nam));
+        }
+        public DataTable DSTonKhoThucLuyKe(string sql,int Thang,int Nam)
+        {
+            return db.ExcuteQuery("Select *,((GTTonDau+GTNhap) - (SLTonCuoi*DonGia))" +
+                " as GTXuat,(SLTonCuoi*DonGia) as GTTonCuoi " +
+                "From BaoCaoTonThucLuyKe('"+Thang+"','"+Nam+"','" + TuNgay.ToString("MM/dd/yyyy") + "','" + DenNgay.ToString("MM/dd/yyyy") + "') Where " + sql,
                 CommandType.Text, null);
         }
     }

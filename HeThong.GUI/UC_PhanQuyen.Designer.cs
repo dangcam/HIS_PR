@@ -237,6 +237,7 @@
             this.checkXem.Size = new System.Drawing.Size(120, 20);
             this.checkXem.StyleController = this.layoutControl;
             this.checkXem.TabIndex = 6;
+            this.checkXem.CheckedChanged += new System.EventHandler(this.checkXem_CheckedChanged);
             // 
             // lookUpChucNang
             // 
@@ -275,6 +276,7 @@
             this.MaQuyen});
             this.gridViewQuyen.GridControl = this.gridControlQuyen;
             this.gridViewQuyen.Name = "gridViewQuyen";
+            this.gridViewQuyen.OptionsFind.AlwaysVisible = true;
             this.gridViewQuyen.OptionsView.ShowGroupPanel = false;
             this.gridViewQuyen.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridViewQuyen_RowClick);
             // 

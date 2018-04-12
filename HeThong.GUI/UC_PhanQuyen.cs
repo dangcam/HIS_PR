@@ -242,5 +242,15 @@ namespace HeThong.GUI
                 Enabled_Luu ();
             }
         }
+
+        private void checkXem_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkXem.Checked == false)
+            {
+                checkThem.Checked = false;
+                checkXoa.Checked = false;
+                checkCapNhat.Checked = false;
+            }
+        }
     }
 }

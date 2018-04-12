@@ -44,6 +44,7 @@ namespace DuocPham.DAL
         public string LoaiVatTu { get; set; }
         public int SoPhieuXuat { get; set; }
         public int SoPhieuNhap { get; set; }
+        public int STT { get; set; }
         public DataTable DSMaVatTu()
         {
             return db.ExcuteQuery("Select * from MaVatTu",
@@ -76,8 +77,8 @@ namespace DuocPham.DAL
         }
         public DataTable DSPhieuVatTu ()
         {
-            return db.ExcuteQuery ("Select ROW_NUMBER() OVER(ORDER BY MaVatTu) STT,*,'' as TenVatTu,'' as DonViTinh" +
-                " From PhieuNhapChiTiet Where SoPhieu = " + this.SoPhieu,
+            return db.ExcuteQuery ("Select *,'' as TenVatTu,'' as DonViTinh" +
+                " From PhieuNhapChiTiet Where SoPhieu = " + this.SoPhieu+" Order By STT",
                 CommandType.Text, null);
         }
         public DataTable DSPhieuVatTu(int SoPhieu)
@@ -88,9 +89,8 @@ namespace DuocPham.DAL
         }
         public DataTable DSPhieuVatTuTra ()
         {
-            return db.ExcuteQuery ("Select *,(CASE WHEN SoLo IS NULL THEN 0 ELSE CAST(LEFT(SoLo,7)AS INT) END) AS SoPhieuXuat,"
-                + "(CASE WHEN SoLo IS NULL THEN 0 ELSE CAST(RIGHT(SoLo,7)AS INT) END) AS SoPhieuNhap "
-                + " From PhieuNhapChiTiet,(select MaBV,TenVatTu,DonViTinh from VatTu) as VT Where VT.MaBV=PhieuNhapChiTiet.MaVatTu AND SoPhieu = " + this.SoPhieu,
+            return db.ExcuteQuery ("Select * "
+                + " From PhieuTraChiTiet,(select MaBV,TenVatTu,DonViTinh from VatTu) as VT Where VT.MaBV=PhieuTraChiTiet.MaVatTu AND SoPhieuTra = " + this.SoPhieu,
                 CommandType.Text, null);
         }
         public DataTable DSPhieu (DateTime tuNgay, DateTime denNgay)
@@ -102,8 +102,8 @@ namespace DuocPham.DAL
         }
         public DataTable DSPhieuTra (DateTime tuNgay, DateTime denNgay)
         {
-            return db.ExcuteQuery ("Select * From PhieuNhap Where (NgayNhap BETWEEN CAST('" + tuNgay.ToString("MM/dd/yyyy") + "' as DATE) AND CAST('" + denNgay.ToString("MM/dd/yyyy") + "' as DATE))" +
-                " AND NhaCungCap IN (Select TenKhoa From KhoaBan) ",
+            return db.ExcuteQuery ("Select * From PhieuTra Where " +
+                "(NgayXuat BETWEEN CAST('" + tuNgay.ToString("MM/dd/yyyy") + "' as DATE) AND CAST('" + denNgay.ToString("MM/dd/yyyy") + "' as DATE))" ,
                 CommandType.Text, null);
         }
         public DataTable DSVatTu (string loaiVatTu)
@@ -147,6 +147,27 @@ namespace DuocPham.DAL
                 this.SoPhieu = int.Parse (outSoPhieu.Value.ToString ());
             return f;
         }
+        public bool SpPhieuTra(ref string err, string Action)
+        {
+            SqlParameter outSoPhieu = new SqlParameter();
+            outSoPhieu.SqlDbType = System.Data.SqlDbType.Int;
+            outSoPhieu.ParameterName = "@SoPhieu";
+            outSoPhieu.Value = SoPhieu;
+            outSoPhieu.Direction = ParameterDirection.InputOutput;
+            bool f = db.MyExecuteNonQuery("SpPhieuTra",
+                CommandType.StoredProcedure, ref err,
+                new SqlParameter("@Action", Action),
+                outSoPhieu,
+                new SqlParameter("@TKNo", TKNo),
+                new SqlParameter("@NgayXuat", NgayNhap.ToString("MM/dd/yyyy")),
+                new SqlParameter("@KhoXuat", NhaCungCap),
+                new SqlParameter("@KhoNhan", KhoNhap),
+                new SqlParameter("@NoiDung", NoiDung),
+                new SqlParameter("@NguoiTra", NguoiGiaoHang),
+                new SqlParameter("@MaNV", NguoiNhan));
+            this.SoPhieu = int.Parse(outSoPhieu.Value.ToString());
+            return f;
+        }
         public bool SpPhieuNhapXoa (ref string err)
         {
             return db.MyExecuteNonQuery ("SpPhieuNhap",
@@ -156,43 +177,38 @@ namespace DuocPham.DAL
         }
         public bool SpPhieuNhapChiTiet (ref string err, string Action)
         {
-            return db.MyExecuteNonQuery ("SpPhieuNhapChiTiet",
+            return db.MyExecuteNonQuery("SpPhieuNhapChiTiet",
                 CommandType.StoredProcedure, ref err,
-                new SqlParameter ("@Action", Action),
-                new SqlParameter ("@MaVatTu", MaVatTu),
-                new SqlParameter ("@SoPhieu", SoPhieu),
-                new SqlParameter ("@KhoNhap", KhoNhap),
-                new SqlParameter ("@SoDangKy", SoDangKy),
-                new SqlParameter ("@SoLuong", SoLuong),
-                new SqlParameter ("@SoLuongQuyDoi", SoLuongQuyDoi),
-                new SqlParameter ("@SoLuongDung", SoLuongDung),
-                new SqlParameter ("@DonGiaBHYT", DonGiaBHYT),
-                new SqlParameter ("@DonGiaBV", DonGiaBV),
-                new SqlParameter ("@SoLo", SoLo),
-                new SqlParameter ("@HetHan", HetHan.ToString("MM/dd/yyyy")),
-                new SqlParameter ("@ThanhTien", ThanhTien),
-                new SqlParameter ("@LoaiVatTu", LoaiVatTu));
+                new SqlParameter("@Action", Action),
+                new SqlParameter("@MaVatTu", MaVatTu),
+                new SqlParameter("@SoPhieu", SoPhieu),
+                new SqlParameter("@KhoNhap", KhoNhap),
+                new SqlParameter("@SoDangKy", SoDangKy),
+                new SqlParameter("@SoLuong", SoLuong),
+                new SqlParameter("@SoLuongQuyDoi", SoLuongQuyDoi),
+                new SqlParameter("@SoLuongDung", SoLuongDung),
+                new SqlParameter("@DonGiaBHYT", DonGiaBHYT),
+                new SqlParameter("@DonGiaBV", DonGiaBV),
+                new SqlParameter("@SoLo", SoLo),
+                new SqlParameter("@HetHan", HetHan.ToString("MM/dd/yyyy")),
+                new SqlParameter("@ThanhTien", ThanhTien),
+                new SqlParameter("@LoaiVatTu", LoaiVatTu),
+                new SqlParameter("@STT", STT));
         }
-        public bool SpPhieuNhapChiTietTra (ref string err, string Action)
+        public bool SpPhieuChiTietTra(ref string err, string Action)
         {
-            return db.MyExecuteNonQuery ("SpPhieuNhapChiTietTra",
+            return db.MyExecuteNonQuery("SpPhieuChiTietTra",
                 CommandType.StoredProcedure, ref err,
-                new SqlParameter ("@Action", Action),
-                new SqlParameter ("@MaVatTu", MaVatTu),
-                new SqlParameter ("@SoPhieu", SoPhieu),
-                new SqlParameter ("@KhoNhap", KhoNhap),
-                new SqlParameter ("@SoDangKy", SoDangKy),
-                new SqlParameter ("@SoLuong", SoLuong),
-                new SqlParameter ("@SoLuongQuyDoi", SoLuongQuyDoi),
-                new SqlParameter ("@SoLuongDung", SoLuongDung),
-                new SqlParameter ("@DonGiaBHYT", DonGiaBHYT),
-                new SqlParameter ("@DonGiaBV", DonGiaBV),
-                new SqlParameter ("@SoLo", SoLo),
-                new SqlParameter ("@HetHan", HetHan),
-                new SqlParameter ("@ThanhTien", ThanhTien),
-                new SqlParameter ("@LoaiVatTu", LoaiVatTu),
-                new SqlParameter ("@SoPhieuXuat", SoPhieuXuat),
-                new SqlParameter ("@SoPhieuNhap", SoPhieuNhap));
+                new SqlParameter("@Action", Action),
+                new SqlParameter("@SoPhieuTra", SoPhieu),
+                new SqlParameter("@SoPhieuXuat", SoPhieuXuat),
+                new SqlParameter("@SoPhieuNhap", SoPhieuNhap),
+                new SqlParameter("@MaVatTu", MaVatTu),
+                new SqlParameter("@SoLuong", SoLuong),
+                new SqlParameter("@DonGia", DonGiaBV),
+                new SqlParameter("@HetHan", HetHan),
+                new SqlParameter("@ThanhTien", ThanhTien),
+                new SqlParameter("@LoaiVatTu", LoaiVatTu));
         }
     }
 }

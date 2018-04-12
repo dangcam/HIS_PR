@@ -482,5 +482,21 @@ namespace HIS_PR
             frmVatTuChiTiet.MdiParent = this;
             frmVatTuChiTiet.Show();
         }
+
+        private void barBaoCaoTonKho_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            foreach (Form frm in this.MdiChildren)
+            {
+                if (frm.GetType() == typeof(FrmBaoCaoTonKho))
+                {
+                    frm.Activate();
+                    frm.WindowState = FormWindowState.Maximized;
+                    return;
+                }
+            }
+            FrmBaoCaoTonKho frmBaoCaoTonKho = new FrmBaoCaoTonKho();
+            frmBaoCaoTonKho.MdiParent = this;
+            frmBaoCaoTonKho.Show();
+        }
     }
 }

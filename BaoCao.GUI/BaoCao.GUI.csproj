@@ -70,6 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmBaoCaoTonKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBaoCaoTonKho.Designer.cs">
+      <DependentUpon>FrmBaoCaoTonKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmBCNhapXuat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +205,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmBaoCaoTonKho.resx">
+      <DependentUpon>FrmBaoCaoTonKho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmBCNhapXuat.resx">
       <DependentUpon>FrmBCNhapXuat.cs</DependentUpon>
     </EmbeddedResource>

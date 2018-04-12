@@ -103,7 +103,7 @@ namespace DuocPham.GUI
             rpt.lblNgayXuat.Text = "Ngày " + dateNgayXuat.DateTime.Day + " tháng "
                 + dateNgayXuat.DateTime.Month + " năm " + dateNgayXuat.DateTime.Year;
             rpt.lblKhoaNhan.Text = lookUpKhoaBan.GetDisplayValueByKeyValue (dr["KhoNhan"]).ToString ();
-            rpt.lblNgayIn.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            rpt.lblNgayIn.Text = rpt.lblNgayXuat.Text;// "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
             rpt.xrlblNguoiLinh.Text = dr["NguoiNhan"].ToString();
             DataRow drow = linhthuoc.MauPhieu();
             if(drow!=null)
@@ -241,7 +241,7 @@ namespace DuocPham.GUI
             rpt.lblKhoNhan.Text = lookUpKhoaBan.GetDisplayValueByKeyValue (dr["KhoNhan"]).ToString ();
             rpt.lblNoiDungXuat.Text = txtNoiDung.Text;
             rpt.lblKhoXuat.Text = lookUpKhoaBan.GetDisplayValueByKeyValue (dr["KhoXuat"]).ToString ();
-            rpt.lblNgayIn.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            rpt.lblNgayIn.Text = rpt.lblNgayXuat.Text;// "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
 
             this.thanhTien = 0;
             dsLoaiVatTu.Clear ();

@@ -88,7 +88,7 @@ namespace DuocPham.GUI
         private void btnThem_Click (object sender, EventArgs e)
         {
             dateNgayNhap.DateTime = DateTime.Now;
-            lookUpKhoaTra.ItemIndex = 0;
+            lookUpKhoaTra.EditValue = AppConfig.MaKhoa;
             txtSoPhieu.Text = "0";
 
             nhapkho.SoPhieu = 0;
@@ -132,13 +132,13 @@ namespace DuocPham.GUI
                         DataRowView dr = (gridControlDS.DataSource as DataView).AddNew ();
                         dr["MaVatTu"] = drview["MaVatTu"].ToString ();
                         dr["TenVatTu"] = drview["TenVatTu"].ToString ();
-                        dr["SoDangKy"] = drview["SoDangKy"].ToString ();
-                        dr["SoLuong"] = 0;
-                        dr["SoLuongQuyDoi"] = txtSoLuong.Text;
-                        dr["SoLuongDung"] = 0;
-                        dr["DonGiaBHYT"] = drview["DonGiaBHYT"].ToString ();
-                        dr["DonGiaBV"] = drview["DonGiaBV"].ToString ();
-                        dr["SoLo"] = drview["SoPhieu"].ToString ()+","+drview["SoPhieuNhap"].ToString ();
+                        //dr["SoDangKy"] = drview["SoDangKy"].ToString ();
+                        dr["SoLuong"] = txtSoLuong.Text;
+                        //dr["SoLuongQuyDoi"] = txtSoLuong.Text;
+                        //dr["SoLuongDung"] = 0;
+                        //dr["DonGiaBHYT"] = drview["DonGiaBHYT"].ToString ();
+                        dr["DonGia"] = drview["DonGiaBV"].ToString ();
+                        //dr["SoLo"] = drview["SoPhieu"].ToString ()+","+drview["SoPhieuNhap"].ToString ();
                         dr["HetHan"] = drview["HetHan"].ToString ();
                         dr["ThanhTien"] = Utils.ToDecimal (txtSoLuong.Text) * Utils.ToDecimal (drview["DonGiaBHYT"].ToString ());
                         dr["LoaiVatTu"] = drview["LoaiVatTu"].ToString ();
@@ -182,7 +182,7 @@ namespace DuocPham.GUI
             nhapkho.SoHoaDon = null;
             nhapkho.TKNo = txtTKNo.Text;
             nhapkho.NgayNhap = dateNgayNhap.DateTime;
-            nhapkho.NhaCungCap = lookUpKhoaTra.Properties.GetDisplayValueByKeyValue (lookUpKhoaTra.EditValue).ToString();
+            nhapkho.NhaCungCap =  (lookUpKhoaTra.EditValue).ToString();
             nhapkho.NguoiGiaoHang = txtNguoiTra.Text;
             nhapkho.KhoNhap = lookUpKhoNhan.EditValue.ToString ();
             nhapkho.NguoiNhan = AppConfig.MaNV;
@@ -193,7 +193,7 @@ namespace DuocPham.GUI
             if (them)
             {
                 nhapkho.NguoiTao = AppConfig.MaNV;
-                if (nhapkho.SpPhieuNhap (ref err, "INSERT"))
+                if (nhapkho.SpPhieuTra (ref err, "INSERT"))
                 {
                     txtSoPhieu.Text = nhapkho.SoPhieu.ToString ();
                     LuuVatTu ();
@@ -214,13 +214,13 @@ namespace DuocPham.GUI
             {
                 err = "";
                 nhapkho.MaVatTu = dr["MaVatTu"].ToString ();
-                nhapkho.SoDangKy = dr["SoDangKy"].ToString ();
+                //nhapkho.SoDangKy = dr["SoDangKy"].ToString ();
                 nhapkho.SoLuong = Utils.ToInt (dr["SoLuong"].ToString ());
-                nhapkho.SoLuongQuyDoi = Utils.ToInt (dr["SoLuongQuyDoi"].ToString ());
-                nhapkho.SoLuongDung = Utils.ToInt (dr["SoLuongDung"].ToString ());
-                nhapkho.DonGiaBHYT = Utils.ToDecimal (dr["DonGiaBHYT"].ToString ());
-                nhapkho.DonGiaBV = Utils.ToDecimal (dr["DonGiaBV"].ToString ());
-                nhapkho.SoLo = dr["SoLo"].ToString ();
+                //nhapkho.SoLuongQuyDoi = Utils.ToInt (dr["SoLuongQuyDoi"].ToString ());
+                //nhapkho.SoLuongDung = Utils.ToInt (dr["SoLuongDung"].ToString ());
+                //nhapkho.DonGiaBHYT = Utils.ToDecimal (dr["DonGiaBHYT"].ToString ());
+                nhapkho.DonGiaBV = Utils.ToDecimal (dr["DonGia"].ToString ());
+                //nhapkho.SoLo = dr["SoLo"].ToString ();
                 nhapkho.HetHan = DateTime.Parse (dr["HetHan"].ToString ());
                 nhapkho.ThanhTien = Utils.ToDecimal (dr["ThanhTien"].ToString ());
                 nhapkho.LoaiVatTu = dr["LoaiVatTu"].ToString ();
@@ -228,7 +228,7 @@ namespace DuocPham.GUI
                 nhapkho.SoPhieuXuat = Utils.ToInt (dr["SoPhieuXuat"].ToString ());
                 if (them)
                 {
-                    nhapkho.SpPhieuNhapChiTietTra (ref err, "INSERT");
+                    nhapkho.SpPhieuChiTietTra (ref err, "INSERT");
                 }
                 if (!string.IsNullOrEmpty (err))
                 {
@@ -304,14 +304,14 @@ namespace DuocPham.GUI
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();
-                cell.Text = Utils.ToString (drview["SoLuongQuyDoi"].ToString ());
+                cell.Text = Utils.ToString (drview["SoLuong"].ToString ());
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
                 cell.WidthF = 70;
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();
-                cell.Text = Utils.ToString (drview["DonGiaBHYT"].ToString ());
+                cell.Text = Utils.ToString (drview["DonGia"].ToString ());
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
                 cell.WidthF = 80;
@@ -344,7 +344,7 @@ namespace DuocPham.GUI
             row.Cells.Add (cell);
             rpt.xrTable.Rows.Add (row);
 
-            rpt.lblTongTien.Text = Utils.ChuyenSo (thanhTien.ToString ());
+            rpt.lblTongTien.Text = Utils.ChuyenSo (thanhTien.ToString ().Replace(',','.').Split('.')[0]);
             rpt.lblTKNo.Text = txtTKNo.Text;
 
 
@@ -358,14 +358,14 @@ namespace DuocPham.GUI
             if (dr != null)
             {
                 txtTKNo.Text = dr["TKNo"].ToString ();
-                dateNgayNhap.DateTime = DateTime.Parse (dr["NgayNhap"].ToString ());
-                lookUpKhoaTra.EditValue = (lookUpKhoaTra.Properties.GetDataSourceRowByDisplayValue( dr["NhaCungCap"].ToString ())as DataRowView)[0] ;
-                txtNguoiTra.Text = dr["NguoiGiaoHang"].ToString ();
-                lookUpKhoNhan.EditValue = dr["KhoNhap"].ToString ();
+                dateNgayNhap.DateTime = DateTime.Parse (dr["NgayXuat"].ToString ());
+                lookUpKhoaTra.EditValue = dr["KhoXuat"];
+                txtNguoiTra.Text = dr["NguoiTra"].ToString ();
+                lookUpKhoNhan.EditValue = dr["KhoNhan"].ToString ();
                 txtNoiDung.Text = dr["NoiDung"].ToString ();
                 txtSoPhieu.Text = dr["SoPhieu"].ToString ();
 
-                nhapkho.NguoiTao = dr["NguoiTao"].ToString ();
+                nhapkho.NguoiTao = dr["MaNV"].ToString ();
 
                 them = false;
                 // danh sách
@@ -377,5 +377,36 @@ namespace DuocPham.GUI
             }
         }
 
+        private void txtTKNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar==13)
+            {
+                txtNguoiTra.Focus();
+            }
+        }
+
+        private void txtNguoiTra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar==13)
+            {
+                txtNoiDung.Focus();
+            }
+        }
+
+        private void txtNoiDung_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar==13)
+            {
+                lookUpMaVatTu.Focus();
+            }
+        }
+
+        private void lookUpMaVatTu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar==13)
+            {
+                txtSoLuong.Focus();
+            }
+        }
     }
 }

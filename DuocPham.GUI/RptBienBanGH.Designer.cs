@@ -127,7 +127,7 @@
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TenVatTu]")});
             this.xrTableCell9.Name = "xrTableCell9";
             this.xrTableCell9.Text = "Tên vật tư, hàng hóa";
-            this.xrTableCell9.Weight = 2.8D;
+            this.xrTableCell9.Weight = 2.6999999999999997D;
             // 
             // xrTableCell10
             // 
@@ -135,7 +135,7 @@
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DonViTinh]")});
             this.xrTableCell10.Name = "xrTableCell10";
             this.xrTableCell10.Text = "Đơn vị tính";
-            this.xrTableCell10.Weight = 0.6D;
+            this.xrTableCell10.Weight = 0.79999999999999993D;
             // 
             // xrTableCell11
             // 
@@ -146,7 +146,7 @@
             this.xrTableCell11.Text = "Số lượng";
             this.xrTableCell11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell11.TextFormatString = "{0:#,###}";
-            this.xrTableCell11.Weight = 0.79999999999999993D;
+            this.xrTableCell11.Weight = 0.7D;
             // 
             // xrTableCell12
             // 
@@ -249,19 +249,19 @@
             // 
             this.xrTableCell2.Name = "xrTableCell2";
             this.xrTableCell2.Text = "Tên vật tư, hàng hóa";
-            this.xrTableCell2.Weight = 2.8D;
+            this.xrTableCell2.Weight = 2.6999999999999997D;
             // 
             // xrTableCell3
             // 
             this.xrTableCell3.Name = "xrTableCell3";
             this.xrTableCell3.Text = "Đơn vị tính";
-            this.xrTableCell3.Weight = 0.6D;
+            this.xrTableCell3.Weight = 0.79999999999999993D;
             // 
             // xrTableCell4
             // 
             this.xrTableCell4.Name = "xrTableCell4";
             this.xrTableCell4.Text = "Số lượng";
-            this.xrTableCell4.Weight = 0.79999999999999993D;
+            this.xrTableCell4.Weight = 0.7D;
             // 
             // xrTableCell5
             // 

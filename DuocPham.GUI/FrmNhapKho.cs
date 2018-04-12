@@ -128,6 +128,7 @@ namespace DuocPham.GUI
             lookUpNguoiNhan.EditValue = "";
             txtNoiDung.Text = "";
             lookUpKhoNhap.EditValue = "70013";
+            txtNoiDung.Text = "Nhập thuốc tháng "+ dateNgayNhap.DateTime.Month + " Cty ";
 
             nhapkho.SoPhieu = 0;
             dtPhieu = nhapkho.DSPhieuVatTu ();
@@ -222,6 +223,7 @@ namespace DuocPham.GUI
                 nhapkho.HetHan = DateTime.Parse (dr["HetHan"].ToString ());
                 nhapkho.ThanhTien = Utils.ToDecimal (dr["ThanhTien"].ToString ());
                 nhapkho.LoaiVatTu = dr["LoaiVatTu"].ToString ();
+                nhapkho.STT = Utils.ToInt(dr["STT"]);
                 if(them)
                 {
                     dsVatTu.Add(nhapkho.MaVatTu + "|" + nhapkho.SoLo, false);
@@ -522,13 +524,13 @@ namespace DuocPham.GUI
             dsLoaiVatTu.Clear ();
             XRTableRow row;
             XRTableCell cell;
-            int stt = 1;
+            
             foreach(DataRowView drview in (gridViewDS.DataSource as DataView))
             {
                 row = new XRTableRow ();
 
                 cell = new XRTableCell ();
-                cell.Text = stt.ToString();
+                cell.Text = drview["STT"].ToString();
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
                 cell.WidthF = 40;
@@ -578,7 +580,6 @@ namespace DuocPham.GUI
                 cell.WidthF = 96;
                 row.Cells.Add (cell);
 
-                stt++;
                 rpt.xrTable.Rows.Add (row);
                 dsLoaiVatTu.Add (drview["LoaiVatTu"].ToString ());
             }
@@ -960,7 +961,7 @@ namespace DuocPham.GUI
                     arr[dem, 9] = dr["DonViTinh"];//DonViTinh
                     arr[dem, 10] = dr["SoLuongQuyDoi"];//SoLuong
                     arr[dem, 11] = dr["DonGiaBV"];//VNDDonGia
-                    arr[dem, 12] = Utils.ToInt(dr["SoLuongQuyDoi"]) * Utils.ToDecimal(dr["DonGiaBV"]);//dr["ThanhTien"];//VNDThanhTien
+                    arr[dem, 12] = dr["ThanhTien"];//Utils.ToInt(dr["SoLuongQuyDoi"]) * Utils.ToDecimal(dr["DonGiaBV"]);////VNDThanhTien
                     arr[dem, 13] = "Lý Văn Thép";//drow["NguoiNhan"];//KhachHang
                     arr[dem, 14] = "BV";//drow["NhaCungCap"];// lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();// dr[""];//DiaChi
                     arr[dem, 15] = Utils.ToDateTime(drow["NgayNhap"].ToString()).Month;//

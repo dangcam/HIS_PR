@@ -61,7 +61,7 @@ namespace DuocPham.DAL
         }
         public DataTable DSVatTu (string loaiVatTu)
         {
-            return db.ExcuteQuery ("Select * From DSVatTu('"+loaiVatTu+"','"+KhoXuat+ "') ORDER BY MaVatTu ASC",
+            return db.ExcuteQuery ("Select * From DSVatTu('"+loaiVatTu+"','"+KhoXuat+ "')",
                 CommandType.Text, null);
         }
         public DataTable ChiTietVatTu(int thang,int nam)

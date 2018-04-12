@@ -19,6 +19,9 @@ namespace TiepNhan.GUI
         Dictionary<string, int> listDichVu;
         string ketQua;
         FrmMauPhieu frmMauPhieu;
+        //private static string pathfile = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
+        private static string filepath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+        string directory = System.IO.Path.GetDirectoryName(filepath);
         public FrmKQCanLamSan()
         {
             InitializeComponent();
@@ -327,7 +330,8 @@ namespace TiepNhan.GUI
         }
         private void MauSo19()
         {
-            frmMauPhieu.MauFile = @"FileWord\19_Phieu-chieu-chup-X-quang.doc";
+
+            frmMauPhieu.MauFile = directory+ "\\FileWord\\19_Phieu-chieu-chup-X-quang.doc";
             //rptMauSo_19 rpt = new rptMauSo_19();
 
             //rpt.lblHoTen.Text = this.HoTen;
@@ -344,7 +348,7 @@ namespace TiepNhan.GUI
         }
         private void MauSo22()
         {
-            frmMauPhieu.MauFile = @"FileWord\22_Phieu-sieu-am.doc";
+            frmMauPhieu.MauFile = directory + "\\FileWord\\22_Phieu-sieu-am.doc";
             //rptMauSo_22 rpt = new rptMauSo_22();
             //rpt.lblMauSo.Text = "MS: " + this.MauSo + "/BV-01";
             //rpt.lblHoTen.Text = this.HoTen;
@@ -362,7 +366,7 @@ namespace TiepNhan.GUI
         }
         private void MauSo23()
         {
-            frmMauPhieu.MauFile = @"FileWord\23_Phieu-dien-tim.doc";
+            frmMauPhieu.MauFile = directory + "\\FileWord\\23_Phieu-dien-tim.doc";
             //rptMauSo_23 rpt = new rptMauSo_23();
             //rpt.lblMauSo.Text = "MS: " + this.MauSo + "/BV-01";
             //rpt.lblHoTen.Text = this.HoTen;
@@ -380,7 +384,7 @@ namespace TiepNhan.GUI
         }
         private void MauSo25()
         {
-            frmMauPhieu.MauFile = @"FileWord\25_Phieu-noi-soi.doc";
+            frmMauPhieu.MauFile = directory + "\\FileWord\\25_Phieu-noi-soi.doc";
             //rptMauSo_25 rpt = new rptMauSo_25();
             //rpt.lblHoTenBS.Text = this.HoTen;
             //rpt.lblNamSinh.Text = this.NamSinh;
@@ -396,7 +400,7 @@ namespace TiepNhan.GUI
         }
         private void MauSo27()
         {
-            frmMauPhieu.MauFile = @"FileWord\27_Phieu-xet-nghiem.doc";
+            frmMauPhieu.MauFile = directory + "\\FileWord\\27_Phieu-xet-nghiem.doc";
             //rptMauSo_27 rpt = new rptMauSo_27();
 
             //rpt.lblHoTen.Text = this.HoTen;
@@ -413,7 +417,7 @@ namespace TiepNhan.GUI
         }
         private void MauSo28()
         {
-            frmMauPhieu.MauFile = @"FileWord\28_Phieu-xet-nghiem-huyet-hoc.doc";
+            frmMauPhieu.MauFile = directory + "\\FileWord\\28_Phieu-xet-nghiem-huyet-hoc.doc";
             //rptMauSo_28 rpt = new rptMauSo_28();
             //rpt.lblHoTen.Text = this.HoTen;
             //rpt.lblNamSinh.Text = this.NamSinh;
@@ -440,7 +444,7 @@ namespace TiepNhan.GUI
         }
         private void MauSo33()
         {
-            frmMauPhieu.MauFile = @"FileWord\33_Phieu-xet-nghiem-hoa-sinh-mau.doc";
+            frmMauPhieu.MauFile = directory + "\\FileWord\\33_Phieu-xet-nghiem-hoa-sinh-mau.doc";
             //rptMauSo_33 rpt = new rptMauSo_33();
             //rpt.lblHoTen.Text = this.HoTen;
             //rpt.lblNamSinh.Text = this.NamSinh;
@@ -507,7 +511,7 @@ namespace TiepNhan.GUI
         }
         private void MauSo340()
         {
-            frmMauPhieu.MauFile = @"FileWord\34_0Phieu-xet-nghiem-hoa-sinh-nuoc-tieu.doc";
+            frmMauPhieu.MauFile = directory + "\\FileWord\\34_0Phieu-xet-nghiem-hoa-sinh-nuoc-tieu.doc";
             //rptMauSo_340 rpt = new rptMauSo_340();
             //rpt.lblHoTen.Text = this.HoTen;
             //rpt.lblNamSinh.Text = this.NamSinh;
@@ -524,7 +528,7 @@ namespace TiepNhan.GUI
         }
         private void MauSo341()
         {
-            frmMauPhieu.MauFile = @"FileWord\34_1Phieu-xet-nghiem-phan.doc";
+            frmMauPhieu.MauFile = directory + "\\FileWord\\34_1Phieu-xet-nghiem-phan.doc";
             //rptMauSo_341 rpt = new rptMauSo_341();
             //rpt.lblHoTen.Text = this.HoTen;
             //rpt.lblNamSinh.Text = this.NamSinh;
@@ -541,7 +545,7 @@ namespace TiepNhan.GUI
         }
         private void MauSo342()
         {
-            frmMauPhieu.MauFile = @"FileWord\34_2Phieu-xet-nghiem-hoa-sinh-dich-choc-do.doc";
+            frmMauPhieu.MauFile = directory + "\\FileWord\\34_2Phieu-xet-nghiem-hoa-sinh-dich-choc-do.doc";
             //rptMauSo_342 rpt = new rptMauSo_342();
             //rpt.lblHoTen.Text = this.HoTen;
             //rpt.lblNamSinh.Text = this.NamSinh;
@@ -558,7 +562,7 @@ namespace TiepNhan.GUI
         }
         private void MauSo14()
         {
-            frmMauPhieu.MauFile = @"FileWord\14_Phieu-phau-thuat-thu-thuat.doc";
+            frmMauPhieu.MauFile = directory + "\\FileWord\\14_Phieu-phau-thuat-thu-thuat.doc";
         }
     }
 }

@@ -977,6 +977,7 @@
             this.lookUpKhoNhan.Size = new System.Drawing.Size(218, 22);
             this.lookUpKhoNhan.StyleController = this.layoutControl1;
             this.lookUpKhoNhan.TabIndex = 5;
+            this.lookUpKhoNhan.EditValueChanged += new System.EventHandler(this.lookUpKhoNhan_EditValueChanged);
             this.lookUpKhoNhan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lookUpKhoNhan_KeyPress);
             // 
             // gridView1

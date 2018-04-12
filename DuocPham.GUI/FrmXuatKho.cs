@@ -33,6 +33,7 @@ namespace DuocPham.GUI
         System.Drawing.Font font = new System.Drawing.Font ("Times New Roman", 11);
         Dictionary<string, string> maVatTu = new Dictionary<string, string>();
         DataTable dataKhoLe, dataNhaCC;
+        Dictionary<string, bool> dsVatTu = new Dictionary<string, bool>();
         public FrmXuatKho ()
         {
             InitializeComponent ();
@@ -177,6 +178,11 @@ namespace DuocPham.GUI
                     dr["LoaiVatTu"] = drview["LoaiVatTu"].ToString ();
                     dr["DonViTinh"] = drview["DonViTinh"].ToString ();
                     dr.EndEdit();
+                    if (them == false)
+                    {
+                        // chèn thêm vật tư
+                        dsVatTu.Add(drview["SoPhieu"] + "|" + drview["MaVatTu"], true);
+                    }
                     lookUpMaVatTu.EditValue = null;
                     txtSoLuong.Text = "";
                     lookUpMaVatTu.Focus();
@@ -187,6 +193,7 @@ namespace DuocPham.GUI
         private void btnThem_Click (object sender, EventArgs e)
         {
             them = true;
+            dsVatTu.Clear();
             checkGiaBV.Checked = true;
             txtSoPhieu.Text = "0";
             txtTKCo.Text = "";
@@ -269,7 +276,9 @@ namespace DuocPham.GUI
                 {
                     DevExpress.XtraEditors.XtraMessageBox.Show (err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                btnIn.Enabled = true;
+                //btnIn.Enabled = true;
+                them = false;
+                dsVatTu.Clear();
             }
         }
         private void LuuVatTu()
@@ -299,7 +308,14 @@ namespace DuocPham.GUI
                 }
                 else
                 {
-                    xuatkho.SpSuaPhieuNhapChiTiet(ref err);
+                    if (dsVatTu.ContainsKey(xuatkho.SoPhieuNhap + "|" + xuatkho.MaVatTu) &&
+                        dsVatTu[xuatkho.SoPhieuNhap + "|" + xuatkho.MaVatTu] == true)
+                    {
+                        // insert
+                        xuatkho.SpThemPhieuNhapChiTiet(ref err);
+                        dsVatTu[xuatkho.SoPhieuNhap + "|" + xuatkho.MaVatTu] = false;
+                    }
+                    //xuatkho.SpSuaPhieuNhapChiTiet(ref err);
                 }
                 if (!string.IsNullOrEmpty (err))
                 {
@@ -345,6 +361,7 @@ namespace DuocPham.GUI
                 txtNoiDung.Text = dr["NoiDung"].ToString ();
 
                 them = false;
+                dsVatTu.Clear();
                 //Enabled_Xoa ();
                 Enabled_Luu ();
                 //btnLuu.Enabled = false;
@@ -376,10 +393,10 @@ namespace DuocPham.GUI
             rpt.lblNgayXuat.Text = "Ngày " + dateNgayXuat.DateTime.Day + " tháng "
                 + dateNgayXuat.DateTime.Month + " năm " + dateNgayXuat.DateTime.Year;
             rpt.lblNguoiNhanHang.Text = txtNguoiNhan.Text;
-            rpt.lblKhoNhan.Text = lookUpKhoNhan.Properties.GetDisplayValueByKeyValue (lookUpKhoNhan.EditValue).ToString ();
+            rpt.lblKhoNhan.Text = lookUpKhoNhan.EditValue.ToString(); //lookUpKhoNhan.Properties.GetDisplayValueByKeyValue (lookUpKhoNhan.EditValue).ToString ();
             rpt.lblNoiDungXuat.Text = txtNoiDung.Text;
             rpt.lblKhoXuat.Text = lookUpKhoXuat.Properties.GetDisplayValueByKeyValue (lookUpKhoXuat.EditValue).ToString ();
-            rpt.lblNgayIn.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            rpt.lblNgayIn.Text = rpt.lblNgayXuat.Text;// "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
 
             this.thanhTien = 0;
             dsLoaiVatTu.Clear ();
@@ -506,6 +523,22 @@ namespace DuocPham.GUI
                     DataRow dr = gridViewDS.GetFocusedDataRow();
                     xuatkho.MaVatTu = dr["MaVatTu"].ToString();
                     xuatkho.SoPhieuNhap = Utils.ToInt(dr["SoPhieuNhap"]);
+                    //if (xuatkho.SpXoaPhieuNhapChiTiet(ref err))
+                    //{
+                    //    // cập nhật được mới xóa nha-> ok
+                    //    (gridControlDS.DataSource as DataView).Delete(gridViewDS.GetFocusedDataSourceRowIndex());
+                    //}
+                    //else
+                    //{
+                    //    XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
+                    //
+                    if (dsVatTu.ContainsKey(xuatkho.SoPhieuNhap + "|" + xuatkho.MaVatTu) &&
+                        dsVatTu[xuatkho.SoPhieuNhap + "|" + xuatkho.MaVatTu] == true)
+                    {
+                        (gridControlDS.DataSource as DataView).Delete(gridViewDS.GetFocusedDataSourceRowIndex());
+                    }
+                    else
                     if (xuatkho.SpXoaPhieuNhapChiTiet(ref err))
                     {
                         // cập nhật được mới xóa nha-> ok
@@ -515,6 +548,8 @@ namespace DuocPham.GUI
                     {
                         XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    if (dsVatTu.ContainsKey(xuatkho.SoPhieuNhap + "|" + xuatkho.MaVatTu))
+                        dsVatTu.Remove(xuatkho.SoPhieuNhap + "|" + xuatkho.MaVatTu);
                 }
             }
         }
@@ -760,6 +795,12 @@ namespace DuocPham.GUI
 
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
+        }
+
+        private void lookUpKhoNhan_EditValueChanged(object sender, EventArgs e)
+        {
+            if (lookUpKhoNhan.EditValue != null && !string.IsNullOrEmpty(lookUpKhoNhan.EditValue.ToString()))
+                txtNoiDung.Text = lookUpKhoNhan.Properties.GetDisplayValueByKeyValue(lookUpKhoNhan.EditValue).ToString();
         }
 
         private void checkTraNhaCC_CheckedChanged(object sender, EventArgs e)

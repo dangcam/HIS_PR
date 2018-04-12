@@ -693,7 +693,6 @@
             this.xrCellGTTonDau.Name = "xrCellGTTonDau";
             this.xrCellGTTonDau.StylePriority.UseFont = false;
             this.xrCellGTTonDau.StylePriority.UseTextAlignment = false;
-            this.xrCellGTTonDau.Text = "xrTableCell14";
             this.xrCellGTTonDau.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrCellGTTonDau.TextFormatString = "{0:#,###}";
             this.xrCellGTTonDau.Weight = 0.90000000000000013D;
@@ -711,7 +710,6 @@
             this.xrCellGTNhap.Name = "xrCellGTNhap";
             this.xrCellGTNhap.StylePriority.UseFont = false;
             this.xrCellGTNhap.StylePriority.UseTextAlignment = false;
-            this.xrCellGTNhap.Text = "xrTableCell31";
             this.xrCellGTNhap.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrCellGTNhap.TextFormatString = "{0:#,###}";
             this.xrCellGTNhap.Weight = 0.90000000000000013D;
@@ -729,7 +727,6 @@
             this.xrCellGTXuat.Name = "xrCellGTXuat";
             this.xrCellGTXuat.StylePriority.UseFont = false;
             this.xrCellGTXuat.StylePriority.UseTextAlignment = false;
-            this.xrCellGTXuat.Text = "xrTableCell33";
             this.xrCellGTXuat.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrCellGTXuat.TextFormatString = "{0:#,###}";
             this.xrCellGTXuat.Weight = 0.9D;
@@ -747,7 +744,6 @@
             this.xrCellGTTonCuoi.Name = "xrCellGTTonCuoi";
             this.xrCellGTTonCuoi.StylePriority.UseFont = false;
             this.xrCellGTTonCuoi.StylePriority.UseTextAlignment = false;
-            this.xrCellGTTonCuoi.Text = "xrTableCell35";
             this.xrCellGTTonCuoi.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrCellGTTonCuoi.TextFormatString = "{0:#,###}";
             this.xrCellGTTonCuoi.Weight = 0.89999999999999969D;
@@ -816,7 +812,6 @@
             this.xrTableCell38.Name = "xrTableCell38";
             this.xrTableCell38.StylePriority.UseFont = false;
             this.xrTableCell38.StylePriority.UseTextAlignment = false;
-            this.xrTableCell38.Text = "xrTableCell14";
             this.xrTableCell38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell38.TextFormatString = "{0:#,###}";
             this.xrTableCell38.Weight = 0.90000000000000013D;
@@ -834,7 +829,6 @@
             this.xrTableCell49.Name = "xrTableCell49";
             this.xrTableCell49.StylePriority.UseFont = false;
             this.xrTableCell49.StylePriority.UseTextAlignment = false;
-            this.xrTableCell49.Text = "xrTableCell31";
             this.xrTableCell49.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell49.TextFormatString = "{0:#,###}";
             this.xrTableCell49.Weight = 0.90000000000000013D;
@@ -852,7 +846,6 @@
             this.xrTableCell51.Name = "xrTableCell51";
             this.xrTableCell51.StylePriority.UseFont = false;
             this.xrTableCell51.StylePriority.UseTextAlignment = false;
-            this.xrTableCell51.Text = "xrTableCell33";
             this.xrTableCell51.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell51.TextFormatString = "{0:#,###}";
             this.xrTableCell51.Weight = 0.9D;
@@ -870,7 +863,6 @@
             this.xrTableCell53.Name = "xrTableCell53";
             this.xrTableCell53.StylePriority.UseFont = false;
             this.xrTableCell53.StylePriority.UseTextAlignment = false;
-            this.xrTableCell53.Text = "xrTableCell35";
             this.xrTableCell53.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell53.TextFormatString = "{0:#,###}";
             this.xrTableCell53.Weight = 0.89999999999999969D;

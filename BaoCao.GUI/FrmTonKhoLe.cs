@@ -1,4 +1,5 @@
 ﻿using BaoCao.DAL;
+using Core.DAL;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraReports.UI;
 using System;
@@ -36,7 +37,7 @@ namespace BaoCao.GUI
         private void FrmTonKhoLe_Load(object sender, EventArgs e)
         {
             gridControlNhom.DataSource = dtLoaiVatTu;
-            lookUpKho.ItemIndex = 0;
+            lookUpKho.EditValue = AppConfig.MaKhoa;
         }
 
         private void btnTim_Click(object sender, EventArgs e)
