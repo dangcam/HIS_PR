@@ -2,6 +2,7 @@
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
+using DevExpress.XtraSplashScreen;
 using DuocPham.DAL;
 using System;
 using System.Data;
@@ -35,9 +36,13 @@ namespace DuocPham.GUI
             lookUpKhoNhan.Properties.ValueMember = "MaKhoa";
             lookUpKhoNhan.ItemIndex = 0;
 
-            lookUpKhoaTra.Properties.DataSource = nhapkho.DSKhoTra ();
+            DataTable khoaTra = nhapkho.DSKhoTra();
+            lookUpKhoaTra.Properties.DataSource = khoaTra;
             lookUpKhoaTra.Properties.DisplayMember = "TenKhoa";
             lookUpKhoaTra.Properties.ValueMember = "MaKhoa";
+            repLookupKhoXuat.DataSource = khoaTra;
+            repLookupKhoXuat.DisplayMember = "TenKhoa";
+            repLookupKhoXuat.ValueMember = "MaKhoa";
 
             lookUpMaVatTu.Properties.DisplayMember = "TenVatTu";
 
@@ -147,7 +152,7 @@ namespace DuocPham.GUI
                         dr["SoPhieuNhap"] = drview["SoPhieuNhap"].ToString ();
                         dr.EndEdit();
                         txtSoLuong.Text = "0";
-
+                        lookUpMaVatTu.Focus();
                     }
                 }
                 else
@@ -177,34 +182,40 @@ namespace DuocPham.GUI
             {
                 return;
             }
-            string err = "";
-            nhapkho.SoPhieu = Utils.ToInt (txtSoPhieu.Text);
-            nhapkho.SoHoaDon = null;
-            nhapkho.TKNo = txtTKNo.Text;
-            nhapkho.NgayNhap = dateNgayNhap.DateTime;
-            nhapkho.NhaCungCap =  (lookUpKhoaTra.EditValue).ToString();
-            nhapkho.NguoiGiaoHang = txtNguoiTra.Text;
-            nhapkho.KhoNhap = lookUpKhoNhan.EditValue.ToString ();
-            nhapkho.NguoiNhan = AppConfig.MaNV;
-            nhapkho.NoiDung = txtNoiDung.Text;
+            DialogResult traloi;
+            traloi = XtraMessageBox.Show("Chắc chắn bạn muốn lưu?", "Trả lời",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (traloi == DialogResult.Yes)
+            {
+                string err = "";
+                nhapkho.SoPhieu = Utils.ToInt(txtSoPhieu.Text);
+                nhapkho.SoHoaDon = null;
+                nhapkho.TKNo = txtTKNo.Text;
+                nhapkho.NgayNhap = dateNgayNhap.DateTime;
+                nhapkho.NhaCungCap = (lookUpKhoaTra.EditValue).ToString();
+                nhapkho.NguoiGiaoHang = txtNguoiTra.Text;
+                nhapkho.KhoNhap = lookUpKhoNhan.EditValue.ToString();
+                nhapkho.NguoiNhan = AppConfig.MaNV;
+                nhapkho.NoiDung = txtNoiDung.Text;
 
-            nhapkho.NgayCapNhat = DateTime.Now;
-            err = "";
-            if (them)
-            {
-                nhapkho.NguoiTao = AppConfig.MaNV;
-                if (nhapkho.SpPhieuTra (ref err, "INSERT"))
+                nhapkho.NgayCapNhat = DateTime.Now;
+                err = "";
+                if (them)
                 {
-                    txtSoPhieu.Text = nhapkho.SoPhieu.ToString ();
-                    LuuVatTu ();
-                    LoadData ();
+                    nhapkho.NguoiTao = AppConfig.MaNV;
+                    if (nhapkho.SpPhieuTra(ref err, "INSERT"))
+                    {
+                        txtSoPhieu.Text = nhapkho.SoPhieu.ToString();
+                        LuuVatTu();
+                        LoadData();
+                    }
                 }
+                if (!string.IsNullOrEmpty(err))
+                {
+                    XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                btnIn.Enabled = true;
             }
-            if (!string.IsNullOrEmpty (err))
-            {
-                XtraMessageBox.Show (err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            btnIn.Enabled = true;
         }
         private void LuuVatTu ()
         {
@@ -238,7 +249,7 @@ namespace DuocPham.GUI
         }
         private void btnIn_Click (object sender, EventArgs e)
         {
-            inPhieuNhap ();
+            inPhieuTra ();
         }
 
         private void btnXoaVatTu_ButtonClick (object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -253,103 +264,117 @@ namespace DuocPham.GUI
         {
             gridControlPhieu.DataSource = nhapkho.DSPhieuTra (dateTuNgay.DateTime, dateDenNgay.DateTime);
         }
-        private void inPhieuNhap ()
+        private void inPhieuTra ()
         {
-            RptPhieuNhapKho rpt = new RptPhieuNhapKho ();
-            rpt.lblSoPhieu.Text = txtSoPhieu.Text;
-            rpt.lblTKNo.Text = "";
-            rpt.lblTKCo.Text = "331";
-            rpt.lblNgayNhap.Text = "Ngày " + dateNgayNhap.DateTime.Day + " tháng "
+            SplashScreenManager.ShowForm(typeof(WaitFormLoad));
+            RptPhieuTra rpt = new RptPhieuTra();
+            rpt.xrlblSoPhieu.Text = txtSoPhieu.Text;
+            rpt.xrlblNgayIn.Text = "Ngày " + dateNgayNhap.DateTime.Day + " tháng "
                 + dateNgayNhap.DateTime.Month + " năm " + dateNgayNhap.DateTime.Year;
-            rpt.lblNguoiGiaoHang.Text = txtNguoiTra.Text;
-            rpt.lblNhaCungCap.Text = lookUpKhoaTra.Properties.GetDisplayValueByKeyValue (lookUpKhoaTra.EditValue).ToString ();
-            rpt.lblNoiDungNhap.Text = txtNoiDung.Text;
-            rpt.lblNhapKho.Text = lookUpKhoNhan.Properties.GetDisplayValueByKeyValue (lookUpKhoNhan.EditValue).ToString ();
-            rpt.lblNgayIn.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            rpt.xrlblNgayThangNam.Text = rpt.xrlblNgayIn.Text;
+            rpt.xrlblNoiDung.Text = "Nội dung: "+ txtNoiDung.Text;
+            rpt.xrlblKhoa.Text = lookUpKhoaTra.Properties.GetDisplayValueByKeyValue(lookUpKhoaTra.EditValue).ToString();
+            rpt.xrlblNguoiTra.Text = txtNguoiTra.Text;
+            rpt.DataSource = (gridControlDS.DataSource as DataView);
+            rpt.CreateDocument();
+            rpt.ShowPreviewDialog();
 
-            XRTableRow row;
-            XRTableCell cell;
-            int stt = 0;
-            decimal thanhTien = 0;
-            foreach (DataRowView drview in (gridViewDS.DataSource as DataView))
-            {
-                row = new XRTableRow ();
+            SplashScreenManager.CloseForm();
+            //RptPhieuNhapKho rpt = new RptPhieuNhapKho ();
+            //rpt.lblSoPhieu.Text = txtSoPhieu.Text;
+            //rpt.lblTKNo.Text = "";
+            //rpt.lblTKCo.Text = "331";
+            //rpt.lblNgayNhap.Text = "Ngày " + dateNgayNhap.DateTime.Day + " tháng "
+            //    + dateNgayNhap.DateTime.Month + " năm " + dateNgayNhap.DateTime.Year;
+            //rpt.lblNguoiGiaoHang.Text = txtNguoiTra.Text;
+            //rpt.lblNhaCungCap.Text = lookUpKhoaTra.Properties.GetDisplayValueByKeyValue (lookUpKhoaTra.EditValue).ToString ();
+            //rpt.lblNoiDungNhap.Text = txtNoiDung.Text;
+            //rpt.lblNhapKho.Text = lookUpKhoNhan.Properties.GetDisplayValueByKeyValue (lookUpKhoNhan.EditValue).ToString ();
+            //rpt.xrlblNgayIn.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
 
-                cell = new XRTableCell ();
-                cell.Text = stt.ToString ();
-                cell.Font = font;
-                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-                cell.WidthF = 40;
-                row.Cells.Add (cell);
+            //XRTableRow row;
+            //XRTableCell cell;
+            //int stt = 0;
+            //decimal thanhTien = 0;
+            //foreach (DataRowView drview in (gridViewDS.DataSource as DataView))
+            //{
+            //    row = new XRTableRow ();
 
-                cell = new XRTableCell ();
-                cell.Text = drview["MaVatTu"].ToString ();
-                cell.Font = font;
-                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-                cell.WidthF = 100;
-                row.Cells.Add (cell);
+            //    cell = new XRTableCell ();
+            //    cell.Text = stt.ToString ();
+            //    cell.Font = font;
+            //    cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            //    cell.WidthF = 40;
+            //    row.Cells.Add (cell);
 
-                cell = new XRTableCell ();
-                cell.Text = drview["TenVatTu"].ToString ();
-                cell.Font = font;
-                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-                cell.WidthF = 280;
-                row.Cells.Add (cell);
+            //    cell = new XRTableCell ();
+            //    cell.Text = drview["MaVatTu"].ToString ();
+            //    cell.Font = font;
+            //    cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            //    cell.WidthF = 100;
+            //    row.Cells.Add (cell);
 
-                cell = new XRTableCell ();
-                cell.Text = drview["DonViTinh"].ToString ();
-                cell.Font = font;
-                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-                cell.WidthF = 100;
-                row.Cells.Add (cell);
+            //    cell = new XRTableCell ();
+            //    cell.Text = drview["TenVatTu"].ToString ();
+            //    cell.Font = font;
+            //    cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            //    cell.WidthF = 280;
+            //    row.Cells.Add (cell);
 
-                cell = new XRTableCell ();
-                cell.Text = Utils.ToString (drview["SoLuong"].ToString ());
-                cell.Font = font;
-                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-                cell.WidthF = 70;
-                row.Cells.Add (cell);
+            //    cell = new XRTableCell ();
+            //    cell.Text = drview["DonViTinh"].ToString ();
+            //    cell.Font = font;
+            //    cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            //    cell.WidthF = 100;
+            //    row.Cells.Add (cell);
 
-                cell = new XRTableCell ();
-                cell.Text = Utils.ToString (drview["DonGia"].ToString ());
-                cell.Font = font;
-                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-                cell.WidthF = 80;
-                row.Cells.Add (cell);
+            //    cell = new XRTableCell ();
+            //    cell.Text = Utils.ToString (drview["SoLuong"].ToString ());
+            //    cell.Font = font;
+            //    cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            //    cell.WidthF = 70;
+            //    row.Cells.Add (cell);
 
-                thanhTien += Utils.ToDecimal (drview["ThanhTien"].ToString ());
-                cell = new XRTableCell ();
-                cell.Text = Utils.ToString (drview["ThanhTien"].ToString ());
-                cell.Font = font;
-                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-                cell.WidthF = 96;
-                row.Cells.Add (cell);
+            //    cell = new XRTableCell ();
+            //    cell.Text = Utils.ToString (drview["DonGia"].ToString ());
+            //    cell.Font = font;
+            //    cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            //    cell.WidthF = 80;
+            //    row.Cells.Add (cell);
 
-                stt++;
-                rpt.xrTable.Rows.Add (row);
-            }
-            row = new XRTableRow ();
-            cell = new XRTableCell ();
-            cell.Text = "Tổng cộng";
-            cell.Font = font;
-            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            cell.WidthF = 670;
-            row.Cells.Add (cell);
+            //    thanhTien += Utils.ToDecimal (drview["ThanhTien"].ToString ());
+            //    cell = new XRTableCell ();
+            //    cell.Text = Utils.ToString (drview["ThanhTien"].ToString ());
+            //    cell.Font = font;
+            //    cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            //    cell.WidthF = 96;
+            //    row.Cells.Add (cell);
 
-            cell = new XRTableCell ();
-            cell.Text = Utils.ToString (thanhTien);
-            cell.Font = fontB;
-            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            cell.WidthF = 96;
-            row.Cells.Add (cell);
-            rpt.xrTable.Rows.Add (row);
+            //    stt++;
+            //    rpt.xrTable.Rows.Add (row);
+            //}
+            //row = new XRTableRow ();
+            //cell = new XRTableCell ();
+            //cell.Text = "Tổng cộng";
+            //cell.Font = font;
+            //cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            //cell.WidthF = 670;
+            //row.Cells.Add (cell);
 
-            rpt.lblTongTien.Text = Utils.ChuyenSo (thanhTien.ToString ().Replace(',','.').Split('.')[0]);
-            rpt.lblTKNo.Text = txtTKNo.Text;
+            //cell = new XRTableCell ();
+            //cell.Text = Utils.ToString (thanhTien);
+            //cell.Font = fontB;
+            //cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            //cell.WidthF = 96;
+            //row.Cells.Add (cell);
+            //rpt.xrTable.Rows.Add (row);
+
+            //rpt.lblTongTien.Text = Utils.ChuyenSo (thanhTien.ToString ().Replace(',','.').Split('.')[0]);
+            //rpt.lblTKNo.Text = txtTKNo.Text;
 
 
-            rpt.CreateDocument ();
-            rpt.ShowPreviewDialog ();
+            //rpt.CreateDocument ();
+            //rpt.ShowPreviewDialog ();
         }
 
         private void gridViewPhieu_RowClick (object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)

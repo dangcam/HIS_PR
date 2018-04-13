@@ -2,6 +2,7 @@
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
+using DevExpress.XtraSplashScreen;
 using DuocPham.DAL;
 using System;
 using System.Collections.Generic;
@@ -341,6 +342,7 @@ namespace DuocPham.GUI
         }
         private void inPhieuLinh ()
         {
+            SplashScreenManager.ShowForm(typeof(WaitFormLoad));
             RptPhieuLinhThuoc rpt = new RptPhieuLinhThuoc ();
             rpt.lblSoPhieu.Text = linhthuoc.SoPhieu.ToString();
             rpt.lblNgayXuat.Text = "Ngày " + linhthuoc.NgayXuat.Day + " tháng "
@@ -472,6 +474,7 @@ namespace DuocPham.GUI
 
             rpt.CreateDocument ();
             rpt.ShowPreviewDialog ();
+            SplashScreenManager.CloseForm();
         }
 
         private void lookUpLoaiVatTu_KeyPress(object sender, KeyPressEventArgs e)

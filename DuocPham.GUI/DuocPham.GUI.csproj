@@ -138,6 +138,12 @@
     <Compile Include="RptPhieuNhapKho.Designer.cs">
       <DependentUpon>RptPhieuNhapKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptPhieuTra.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptPhieuTra.Designer.cs">
+      <DependentUpon>RptPhieuTra.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptPhieuXuatKho.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptPhieuNhapKho.resx">
       <DependentUpon>RptPhieuNhapKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptPhieuTra.resx">
+      <DependentUpon>RptPhieuTra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptPhieuXuatKho.resx">
       <DependentUpon>RptPhieuXuatKho.cs</DependentUpon>
