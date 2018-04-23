@@ -99,6 +99,9 @@ namespace TiepNhan.GUI.MauSo
             ranges = snapControl.Document.FindAll("<BSCK>", SearchOptions.None);
             if (ranges.Length > 0)
                 this.snapControl.Document.Replace(ranges[0], BSCK);
+            ranges = snapControl.Document.FindAll("<GioThangNam>", SearchOptions.None);
+            if (ranges.Length > 0)
+                this.snapControl.Document.Replace(ranges[0], DateTime.Now.Hour +" giờ "+DateTime.Now.Minute+" phút, ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year);
             switch (MauSo)
             {
                 //case "19":

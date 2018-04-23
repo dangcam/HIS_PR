@@ -12,13 +12,13 @@ namespace DuocPham.GUI
     {
         public RptPhieuLinhThuoc ()
         {
-            SplashScreenManager.ShowForm(typeof(WaitFormLoad));
+           // SplashScreenManager.ShowForm(typeof(WaitFormLoad));
             InitializeComponent ();
         }
 
         private void RptPhieuLinhThuoc_ParametersRequestBeforeShow (object sender, DevExpress.XtraReports.Parameters.ParametersRequestEventArgs e)
         {
-            SplashScreenManager.CloseForm();
+           // SplashScreenManager.CloseForm();
         }
     }
 }

@@ -917,7 +917,23 @@ namespace DuocPham.GUI
             cl18.Value2 = "TenKH";
             cl18.ColumnWidth = 30.0;
 
-            Microsoft.Office.Interop.Excel.Range rowHead = oSheet.get_Range("A1", "R1");
+            Microsoft.Office.Interop.Excel.Range cl19 = oSheet.get_Range("S1", "S1");
+            cl19.Value2 = "SoHoaDon";
+            cl19.ColumnWidth = 30.0;
+
+            Microsoft.Office.Interop.Excel.Range cl20 = oSheet.get_Range("T1", "T1");
+            cl20.Value2 = "NgayHoaDon";
+            cl20.ColumnWidth = 30.0;
+
+            Microsoft.Office.Interop.Excel.Range cl21 = oSheet.get_Range("U1", "U1");
+            cl21.Value2 = "ThueSuat";
+            cl21.ColumnWidth = 30.0;
+
+            Microsoft.Office.Interop.Excel.Range cl22 = oSheet.get_Range("V1", "V1");
+            cl22.Value2 = "VNDTienThue";
+            cl22.ColumnWidth = 30.0;
+
+            Microsoft.Office.Interop.Excel.Range rowHead = oSheet.get_Range("A1", "V1");
             rowHead.Font.Bold = true;
             rowHead.Font.Color = ConsoleColor.Red;
             rowHead.Interior.Color = 20;
@@ -930,7 +946,7 @@ namespace DuocPham.GUI
             // Tạo mẳng đối tượng để lưu dữ toàn bồ dữ liệu trong DataTable,
             // vì dữ liệu được được gán vào các Cell trong Excel phải thông qua object thuần.
 
-            object[,] arr = new object[drows.Length * 50, 18];//object[drows.Length * 30, 15];// dataTable.Columns.Count];
+            object[,] arr = new object[drows.Length * 50, 22];//object[drows.Length * 30, 15];// dataTable.Columns.Count];
             //Chuyển dữ liệu từ DataTable vào mảng đối tượng
             int soctu = Utils.ToInt(txtSoCT.Text);
             int dem = 0;
@@ -967,6 +983,10 @@ namespace DuocPham.GUI
                     arr[dem, 15] = Utils.ToDateTime(drow["NgayNhap"].ToString()).Month;//
                     arr[dem, 16] = drow["IDNhaCC"];//MaDTPNCo
                     arr[dem, 17] = drow["NhaCungCap"];//TenKH
+                    arr[dem, 18] = drow["SoHoaDon"];//SoHoaDon
+                    arr[dem, 19] = arr[dem, 2];//NgayHoaDon
+                    arr[dem, 20] = 5;// drow["ThueSuat"];//ThueSuat
+                    arr[dem, 21] = Math.Round( 0.05m * Utils.ToDecimal(dr["ThanhTien"]));// drow["VNDTienThue"];//VNDTienThue
                     dem++;
                 }
                 soctu++;
@@ -976,7 +996,7 @@ namespace DuocPham.GUI
             int columnStart = 1;
 
             int rowEnd = rowStart + dem;
-            int columnEnd = 18;// dataTable.Columns.Count;
+            int columnEnd = 22;// dataTable.Columns.Count;
 
             // Ô bắt đầu điền dữ liệu
             Microsoft.Office.Interop.Excel.Range c1 = (Microsoft.Office.Interop.Excel.Range)oSheet.Cells[rowStart, columnStart];

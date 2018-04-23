@@ -346,7 +346,7 @@ namespace TiepNhan.GUI
         private void TaoDonThuocA4()
         {
             RptDonThuocA4 rpt = new RptDonThuocA4();
-            rpt.lblCoSo.Text = this.TenCoSo.ToUpper();
+            //rpt.lblCoSo.Text = this.TenCoSo.ToUpper();
             rpt.xrlblSoHoSo.Text = "Số hồ sơ:" + STTNgay;
             rpt.lblHoTen.Text = this.HoTen;
             rpt.lblNamSinh.Text = this.NgaySinh;

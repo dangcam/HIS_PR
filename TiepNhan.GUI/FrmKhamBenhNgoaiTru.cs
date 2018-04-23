@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TiepNhan.GUI.MauSo;
 
 namespace TiepNhan.GUI
 {
@@ -320,6 +321,22 @@ namespace TiepNhan.GUI
                         XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+                    // in phiếu chuyển tuyến
+                    SplashScreenManager.ShowForm(typeof(WaitFormLoad));
+                    FrmMauPhieu frmMauPhieu = new FrmMauPhieu();
+                    string filepath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                    string directory = System.IO.Path.GetDirectoryName(filepath);
+                    frmMauPhieu.MauFile = directory + "\\FileWord\\GIAY_CHUYEN_TUYEN.doc";
+
+                    frmMauPhieu.HoTen = dr["HoTen"].ToString();
+                    frmMauPhieu.NamSinh = dr["NgaySinh"].ToString();
+                    frmMauPhieu.GioiTinh = dr["GioiTinh"].ToString() == "0" ? "Nam" : "Nữ";
+                    frmMauPhieu.DiaChi = dr["DiaChi"].ToString();
+                    frmMauPhieu.SoThe = dr["MaThe"].ToString();
+
+                    frmMauPhieu.ShowDialog();
+                    SplashScreenManager.CloseForm();
+                    //
                     LoadData();
                 }
             }

@@ -27,6 +27,7 @@ namespace DuocPham.DAL
         public bool PheDuyet { get; set; }
         public string NguoiTao { get; set; }
         public DateTime NgayCapNhat { get; set; }
+        public string DiaChi { get; set; }
         public string NguoiCapNhat { get; set; }
         // phiếu xuất chi tiết
         public int SoPhieuNhap { get; set; }
@@ -49,6 +50,11 @@ namespace DuocPham.DAL
             return db.ExcuteQuery ("Select MaKhoa,TenKhoa From KhoaBan Where TinhTrang = 1 And KhoVatTu = 1 And LoaiKho = 1",
                 CommandType.Text, null);
         }
+        public DataTable DSKho()
+        {
+            return db.ExcuteQuery("Select MaKhoa,TenKhoa From KhoaBan Where TinhTrang = 1 And KhoVatTu = 1",
+                CommandType.Text, null);
+        }
         public DataTable DSKhoNhan ()
         {
             return db.ExcuteQuery ("Select MaKhoa,TenKhoa From KhoaBan Where TinhTrang = 1 And KhoVatTu = 1 And LoaiKho = 2",
@@ -67,6 +73,18 @@ namespace DuocPham.DAL
         public DataTable ChiTietVatTu(int thang,int nam)
         {
             return db.ExcuteQuery("Select * From ChiTietVatTu('" + thang + "','" + nam + "') ORDER BY NgayNhapXuat ASC",
+                CommandType.Text, null);
+        }
+        public DataTable ChiTietTheKho(string maVatTu,int thang, int nam)
+        {
+            int thangTruoc = thang - 1;
+            int namTruoc = nam;
+            if(thangTruoc<1)
+            {
+                thangTruoc = 12;
+                namTruoc--;
+            }
+            return db.ExcuteQuery("Select * From TheKho('"+maVatTu+"','" + thang + "','" + nam + "','" + thangTruoc + "','" + namTruoc + "') ORDER BY NgayNhapXuat ASC",
                 CommandType.Text, null);
         }
         public DataTable DSPhieu (DateTime tuNgay, DateTime denNgay)
@@ -103,23 +121,41 @@ namespace DuocPham.DAL
             outSoPhieu.ParameterName = "@SoPhieu";
             outSoPhieu.Value = SoPhieu;
             outSoPhieu.Direction = ParameterDirection.InputOutput;
-            bool f = db.MyExecuteNonQuery ("SpThemPhieuXuat",
+            bool f = db.MyExecuteNonQuery("SpThemPhieuXuat",
                 CommandType.StoredProcedure, ref err,
                 outSoPhieu,
-                new SqlParameter ("@TKCo", TKCo),
-                new SqlParameter ("@NgayXuat", NgayXuat.ToString("MM/dd/yyyy")),
-                new SqlParameter ("@KhoXuat", KhoXuat),
-                new SqlParameter ("@KhoNhan", KhoNhan),
-                new SqlParameter ("@NguoiNhan", NguoiNhan),
-                new SqlParameter ("@NoiDung", NoiDung),
-                new SqlParameter ("@PheDuyet", PheDuyet),
-                new SqlParameter ("@NguoiTao", NguoiTao),
-                new SqlParameter ("@NgayCapNhat", NgayCapNhat.ToString("MM/dd/yyyy")),
-                new SqlParameter ("@NguoiCapNhat", NguoiCapNhat));
+                new SqlParameter("@TKCo", TKCo),
+                new SqlParameter("@NgayXuat", NgayXuat.ToString("MM/dd/yyyy")),
+                new SqlParameter("@KhoXuat", KhoXuat),
+                new SqlParameter("@KhoNhan", KhoNhan),
+                new SqlParameter("@NguoiNhan", NguoiNhan),
+                new SqlParameter("@NoiDung", NoiDung),
+                new SqlParameter("@PheDuyet", PheDuyet),
+                new SqlParameter("@NguoiTao", NguoiTao),
+                new SqlParameter("@NgayCapNhat", NgayCapNhat.ToString("MM/dd/yyyy")),
+                new SqlParameter("@NguoiCapNhat", NguoiCapNhat),
+                new SqlParameter("@DiaChi", DiaChi));
             this.SoPhieu = int.Parse (outSoPhieu.Value.ToString ());
             return f;
         }
-        public bool SpThemPhieuNhapChiTiet (ref string err)
+        public bool SpSuaPhieuXuat(ref string err)
+        {
+            return db.MyExecuteNonQuery("SpSuaPhieuXuat",
+                CommandType.StoredProcedure, ref err,
+                new SqlParameter("@SoPhieu", SoPhieu),
+                new SqlParameter("@TKCo", TKCo),
+                new SqlParameter("@NgayXuat", NgayXuat.ToString("MM/dd/yyyy")),
+                new SqlParameter("@KhoXuat", KhoXuat),
+                new SqlParameter("@KhoNhan", KhoNhan),
+                new SqlParameter("@NguoiNhan", NguoiNhan),
+                new SqlParameter("@NoiDung", NoiDung),
+                new SqlParameter("@PheDuyet", PheDuyet),
+                new SqlParameter("@NguoiTao", NguoiTao),
+                new SqlParameter("@NgayCapNhat", NgayCapNhat.ToString("MM/dd/yyyy")),
+                new SqlParameter("@NguoiCapNhat", NguoiCapNhat),
+                new SqlParameter("@DiaChi", DiaChi));
+        }
+        public bool SpThemPhieuXuatChiTiet (ref string err)
         {
             return db.MyExecuteNonQuery ("SpThemPhieuXuatChiTiet",
                 CommandType.StoredProcedure, ref err,              
@@ -136,7 +172,7 @@ namespace DuocPham.DAL
                 new SqlParameter ("@ThanhTien", ThanhTien),
                 new SqlParameter ("@LoaiVatTu", LoaiVatTu));
         }
-        public bool SpSuaPhieuNhapChiTiet(ref string err)
+        public bool SpSuaPhieuXuatChiTiet(ref string err)
         {
             return db.MyExecuteNonQuery("SpSuaPhieuXuatChiTiet",
                 CommandType.StoredProcedure, ref err,
@@ -147,7 +183,7 @@ namespace DuocPham.DAL
                 new SqlParameter("@DonGiaBV", DonGiaBV),
                 new SqlParameter("@ThanhTien", ThanhTien));
         }
-        public bool SpXoaPhieuNhapChiTiet(ref string err)
+        public bool SpXoaPhieuXuatChiTiet(ref string err)
         {
             return db.MyExecuteNonQuery("SpXoaPhieuXuatChiTiet",
                 CommandType.StoredProcedure, ref err,

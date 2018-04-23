@@ -201,6 +201,7 @@ namespace DuocPham.GUI
             lookUpKhoNhan.EditValue = "";
             txtNguoiNhan.Text = "";
             txtNoiDung.Text = "";
+            txtDiaChi.Text = "";
 
             xuatkho.SoPhieu = 0;
             dtPhieu = xuatkho.DSPhieuVatTu ().AsDataView();
@@ -255,6 +256,7 @@ namespace DuocPham.GUI
                 xuatkho.NguoiNhan = txtNguoiNhan.Text;
                 xuatkho.NoiDung = txtNoiDung.Text;
                 xuatkho.NgayCapNhat = DateTime.Now;
+                xuatkho.DiaChi = txtDiaChi.Text;
                 string err = "";
                 if (them)
                 {
@@ -268,9 +270,12 @@ namespace DuocPham.GUI
                 }
                 else
                 {
-                    // cập nhật giá
-                    xuatkho.NguoiCapNhat = AppConfig.MaNV;
-                    LuuVatTu();
+                    if (xuatkho.SpSuaPhieuXuat(ref err))
+                    {
+                        // cập nhật giá
+                        xuatkho.NguoiCapNhat = AppConfig.MaNV;
+                        LuuVatTu();
+                    }
                 }
                 if (!string.IsNullOrEmpty (err))
                 {
@@ -303,7 +308,7 @@ namespace DuocPham.GUI
                 xuatkho.LoaiVatTu = drv["LoaiVatTu"].ToString ();
                 if(them)
                 {
-                    xuatkho.SpThemPhieuNhapChiTiet (ref err);// insert vào số lô, 
+                    xuatkho.SpThemPhieuXuatChiTiet (ref err);// insert vào số lô, 
                     
                 }
                 else
@@ -312,7 +317,7 @@ namespace DuocPham.GUI
                         dsVatTu[xuatkho.SoPhieuNhap + "|" + xuatkho.MaVatTu] == true)
                     {
                         // insert
-                        xuatkho.SpThemPhieuNhapChiTiet(ref err);
+                        xuatkho.SpThemPhieuXuatChiTiet(ref err);
                         dsVatTu[xuatkho.SoPhieuNhap + "|" + xuatkho.MaVatTu] = false;
                     }
                     //xuatkho.SpSuaPhieuNhapChiTiet(ref err);
@@ -359,7 +364,7 @@ namespace DuocPham.GUI
                 lookUpKhoXuat.EditValue = dr["khoXuat"].ToString ();
                 txtNguoiNhan.Text = dr["NguoiNhan"].ToString ();
                 txtNoiDung.Text = dr["NoiDung"].ToString ();
-
+                txtDiaChi.Text = dr["DiaChi"].ToString();
                 them = false;
                 dsVatTu.Clear();
                 //Enabled_Xoa ();
@@ -393,7 +398,7 @@ namespace DuocPham.GUI
             rpt.lblNgayXuat.Text = "Ngày " + dateNgayXuat.DateTime.Day + " tháng "
                 + dateNgayXuat.DateTime.Month + " năm " + dateNgayXuat.DateTime.Year;
             rpt.lblNguoiNhanHang.Text = txtNguoiNhan.Text;
-            rpt.lblKhoNhan.Text = lookUpKhoNhan.EditValue.ToString(); //lookUpKhoNhan.Properties.GetDisplayValueByKeyValue (lookUpKhoNhan.EditValue).ToString ();
+            rpt.lblKhoNhan.Text = txtDiaChi.Text; //lookUpKhoNhan.EditValue.ToString(); //lookUpKhoNhan.Properties.GetDisplayValueByKeyValue (lookUpKhoNhan.EditValue).ToString ();
             rpt.lblNoiDungXuat.Text = txtNoiDung.Text;
             rpt.lblKhoXuat.Text = lookUpKhoXuat.Properties.GetDisplayValueByKeyValue (lookUpKhoXuat.EditValue).ToString ();
             rpt.lblNgayIn.Text = rpt.lblNgayXuat.Text;// "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
@@ -435,7 +440,7 @@ namespace DuocPham.GUI
                 cell = new XRTableCell ();
                 cell.Text = drview["DonViTinh"].ToString();
                 cell.Font = font;
-                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
                 cell.WidthF = 100;
                 row.Cells.Add (cell);
 
@@ -539,7 +544,7 @@ namespace DuocPham.GUI
                         (gridControlDS.DataSource as DataView).Delete(gridViewDS.GetFocusedDataSourceRowIndex());
                     }
                     else
-                    if (xuatkho.SpXoaPhieuNhapChiTiet(ref err))
+                    if (xuatkho.SpXoaPhieuXuatChiTiet(ref err))
                     {
                         // cập nhật được mới xóa nha-> ok
                         (gridControlDS.DataSource as DataView).Delete(gridViewDS.GetFocusedDataSourceRowIndex());
@@ -595,7 +600,7 @@ namespace DuocPham.GUI
         {
             if (e.KeyChar == 13)
             {
-                txtNoiDung.Focus();
+                txtDiaChi.Focus();
             }
         }
 
@@ -770,7 +775,7 @@ namespace DuocPham.GUI
                     arr[dem, 10] = dr["SoLuong"];//SoLuong
                     arr[dem, 11] = dr["DonGiaBV"];//VNDDonGia
                     arr[dem, 12] = Utils.ToInt(dr["SoLuong"]) * Utils.ToDecimal(dr["DonGiaBV"]);//dr["ThanhTien"];//VNDThanhTien
-                    arr[dem, 13] = ((drow["KhoNhan"].Equals("K19_13")) ? "LÊ THỊ THẢO LY" : "NGUYỄN TIẾN DŨNG");//drow["NguoiNhan"];//KhachHang
+                    arr[dem, 13] = drow["NguoiNhan"];//((drow["KhoNhan"].Equals("K19_13")) ? "LÊ THỊ THẢO LY" : "NGUYỄN TIẾN DŨNG");//drow["NguoiNhan"];//KhachHang
                     arr[dem, 14] = lookUpKhoNhan.Properties.GetDisplayValueByKeyValue(drow["KhoNhan"]);// lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();// dr[""];//DiaChi
                     arr[dem, 15] = Utils.ToDateTime(drow["NgayXuat"].ToString()).Month;//
                     arr[dem, 16] = "BVDK";//
@@ -800,7 +805,18 @@ namespace DuocPham.GUI
         private void lookUpKhoNhan_EditValueChanged(object sender, EventArgs e)
         {
             if (lookUpKhoNhan.EditValue != null && !string.IsNullOrEmpty(lookUpKhoNhan.EditValue.ToString()))
+            {
                 txtNoiDung.Text = lookUpKhoNhan.Properties.GetDisplayValueByKeyValue(lookUpKhoNhan.EditValue).ToString();
+                txtDiaChi.Text = lookUpKhoNhan.EditValue.ToString();
+            }
+        }
+
+        private void txtDiaChi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar==13)
+            {
+                txtNoiDung.Focus();
+            }
         }
 
         private void checkTraNhaCC_CheckedChanged(object sender, EventArgs e)

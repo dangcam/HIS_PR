@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent ()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmXuatKho));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.layoutControlMain = new DevExpress.XtraLayout.LayoutControl();
             this.panelControlDanhSach = new DevExpress.XtraEditors.PanelControl();
@@ -133,6 +133,8 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtDiaChi = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem26 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
@@ -205,6 +207,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -303,9 +307,9 @@
             // repositoryItemButtonEdit
             // 
             this.repositoryItemButtonEdit.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.repositoryItemButtonEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit.Name = "repositoryItemButtonEdit";
             this.repositoryItemButtonEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEdit_ButtonClick);
@@ -705,6 +709,7 @@
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.txtDiaChi);
             this.layoutControl1.Controls.Add(this.checkTraNhaCC);
             this.layoutControl1.Controls.Add(this.txtSoCTu);
             this.layoutControl1.Controls.Add(this.btnXuatExcel);
@@ -853,12 +858,12 @@
             // 
             // txtNguoiNhan
             // 
-            this.txtNguoiNhan.Location = new System.Drawing.Point(358, 64);
+            this.txtNguoiNhan.Location = new System.Drawing.Point(346, 64);
             this.txtNguoiNhan.MenuManager = this.ribbonControl;
             this.txtNguoiNhan.Name = "txtNguoiNhan";
             this.txtNguoiNhan.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNguoiNhan.Properties.Appearance.Options.UseFont = true;
-            this.txtNguoiNhan.Size = new System.Drawing.Size(227, 22);
+            this.txtNguoiNhan.Size = new System.Drawing.Size(117, 22);
             this.txtNguoiNhan.StyleController = this.layoutControl1;
             this.txtNguoiNhan.TabIndex = 6;
             this.txtNguoiNhan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNguoiNhan_KeyPress);
@@ -974,7 +979,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpKhoNhan.Properties.NullText = "";
             this.lookUpKhoNhan.Properties.PopupView = this.gridView1;
-            this.lookUpKhoNhan.Size = new System.Drawing.Size(218, 22);
+            this.lookUpKhoNhan.Size = new System.Drawing.Size(206, 22);
             this.lookUpKhoNhan.StyleController = this.layoutControl1;
             this.lookUpKhoNhan.TabIndex = 5;
             this.lookUpKhoNhan.EditValueChanged += new System.EventHandler(this.lookUpKhoNhan_EditValueChanged);
@@ -1177,7 +1182,8 @@
             this.layoutControlItem23,
             this.emptySpaceItem2,
             this.layoutControlItem24,
-            this.layoutControlItem25});
+            this.layoutControlItem25,
+            this.layoutControlItem26});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(597, 188);
             this.layoutControlGroup1.TextVisible = false;
@@ -1223,16 +1229,16 @@
             this.layoutControlItem8.Control = this.lookUpKhoNhan;
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 52);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(284, 26);
+            this.layoutControlItem8.Size = new System.Drawing.Size(272, 26);
             this.layoutControlItem8.Text = "Kho nhận:";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(59, 13);
             // 
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.txtNguoiNhan;
-            this.layoutControlItem9.Location = new System.Drawing.Point(284, 52);
+            this.layoutControlItem9.Location = new System.Drawing.Point(272, 52);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(293, 26);
+            this.layoutControlItem9.Size = new System.Drawing.Size(183, 26);
             this.layoutControlItem9.Text = "Người nhận:";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(59, 13);
             // 
@@ -1394,6 +1400,27 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.Location = new System.Drawing.Point(529, 64);
+            this.txtDiaChi.MenuManager = this.ribbonControl;
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiaChi.Properties.Appearance.Options.UseFont = true;
+            this.txtDiaChi.Size = new System.Drawing.Size(56, 22);
+            this.txtDiaChi.StyleController = this.layoutControl1;
+            this.txtDiaChi.TabIndex = 18;
+            this.txtDiaChi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiaChi_KeyPress);
+            // 
+            // layoutControlItem26
+            // 
+            this.layoutControlItem26.Control = this.txtDiaChi;
+            this.layoutControlItem26.Location = new System.Drawing.Point(455, 52);
+            this.layoutControlItem26.Name = "layoutControlItem26";
+            this.layoutControlItem26.Size = new System.Drawing.Size(122, 26);
+            this.layoutControlItem26.Text = "Địa chỉ:";
+            this.layoutControlItem26.TextSize = new System.Drawing.Size(59, 13);
+            // 
             // FrmXuatKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1479,6 +1506,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1585,5 +1614,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem24;
         private DevExpress.XtraEditors.CheckEdit checkTraNhaCC;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem25;
+        private DevExpress.XtraEditors.TextEdit txtDiaChi;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem26;
     }
 }

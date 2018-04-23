@@ -141,6 +141,7 @@ namespace DanhMuc.GUI
             txtQuyCach.Text = null;
             txtNhomThau.Text = null;
             cbLoaiThau.SelectedIndex = 0;
+            
             Enabled_Luu ();
         }
 
@@ -193,7 +194,7 @@ namespace DanhMuc.GUI
             vattu.LoaiThuoc = cbLoaiThuoc.SelectedIndex.ToString();
             vattu.GiaBHYT = Utils.ToDecimal(txtGiaBHYT.Text);
             vattu.TinhTrang = checkHieuLuc.Checked;
-            vattu.GoiThau = lookUpGoiThau.EditValue.ToString();
+            vattu.GoiThau = Utils.ToString(lookUpGoiThau,"");
             vattu.LoaiThau = cbLoaiThau.SelectedIndex;
             vattu.NhomThau = txtNhomThau.Text;
             vattu.QuyCach = txtQuyCach.Text;

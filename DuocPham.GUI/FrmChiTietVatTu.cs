@@ -1,5 +1,6 @@
 ﻿using Core.DAL;
 using DevExpress.XtraBars.Ribbon;
+using DevExpress.XtraReports.UI;
 using DevExpress.XtraSplashScreen;
 using DuocPham.DAL;
 using System;
@@ -29,7 +30,10 @@ namespace DuocPham.GUI
         }
         private void FrmChiTietVatTu_Load(object sender, EventArgs e)
         {
-            for(int i = DateTime.Now.Year -5;i<DateTime.Now.Year+5;i++)
+            repLookUpEditKhoNhan.DataSource = xuatkho.DSKho(); ;
+            repLookUpEditKhoNhan.ValueMember = "MaKhoa";
+            repLookUpEditKhoNhan.DisplayMember = "TenKhoa";
+            for (int i = DateTime.Now.Year -5;i<DateTime.Now.Year+5;i++)
             {
                 cbNam.Properties.Items.Add(i);
             }
@@ -46,5 +50,32 @@ namespace DuocPham.GUI
             SplashScreenManager.CloseForm();
         }
 
+        private void btnInTheKho_Click(object sender, EventArgs e)
+        {
+            SplashScreenManager.ShowForm(typeof(WaitFormLoad));
+            // lấy số tồn đầu tháng
+            // tồn cuối  ( tồn đầu + nhập ) - xuất
+            DataRow dr = gridView.GetFocusedDataRow();
+            if (dr != null)
+            {
+
+                int nam = Utils.ToInt(cbNam.SelectedItem);
+                DataTable data = xuatkho.ChiTietTheKho(dr["MaVatTu"].ToString(),cbThang.SelectedIndex + 1, nam);
+                RptTheKho rpt = new RptTheKho();
+                rpt.xrlblThangNam.Text = "Tháng " + cbThang.SelectedIndex + 1 + " năm " + nam;
+                if(data.Rows.Count>0)
+                {
+                    rpt.xrlblDonVi.Text = data.Rows[0]["DonViTinh"].ToString();
+                    rpt.xrlblMaThuoc.Text = data.Rows[0]["MaBV"].ToString();
+                    rpt.xrlblTenVatTu.Text = data.Rows[0]["TenVatTu"].ToString();
+                    rpt.xrlblTonDau.Text = data.Rows[0]["SoLuongTonDau"].ToString();
+                    rpt.xrlblHamLuong.Text = data.Rows[0]["HamLuong"].ToString();
+                }
+                rpt.DataSource = data;
+                rpt.CreateDocument();
+                rpt.ShowPreviewDialog();
+            }
+            SplashScreenManager.CloseForm();
+        }
     }
 }

@@ -82,9 +82,11 @@ namespace KhamBenh.DAL
         }
         public DataTable DSBacSi()
         {
-            return db.ExcuteQuery("Select Ma_BS, Ten_NV From NhanVien Where TinhTrang=1 And CoSoKCB = '"
-                + AppConfig.CoSoKCB + "' And LEN(Ma_BS) > 0",
+            return db.ExcuteQuery("Select Ma_BS, Ten_NV From NhanVien Where TinhTrang=1 And LEN(Ma_BS) > 0 Order by Ten_NV DESC",
                 CommandType.Text, null);
+            //return db.ExcuteQuery("Select Ma_BS, Ten_NV From NhanVien Where TinhTrang=1 And CoSoKCB = '"
+            //    + AppConfig.CoSoKCB + "' And LEN(Ma_BS) > 0",
+            //    CommandType.Text, null);
         }
         public DataTable DSMucHuong()
         {
@@ -161,11 +163,18 @@ namespace KhamBenh.DAL
         {
             return db.ExcuteQuery("Select * From " +
                 "(Select Ma,Ten,DonGia,MaNhom " +
-                "From CongKham Where Ma_CS = '"+AppConfig.CoSoKCB+"' And TinhTrang =1) AS CK " +
+                "From CongKham Where TinhTrang =1) AS CK " +
                 "LEFT JOIN " +
                 "(Select MaDichVu,CONVERT(bit,1) as Chon From DichVuChiTiet Where MaLK ='" + this.MaLK + "' " +
                 "And MaNhom = 13) AS CKCT ON CKCT.MaDichVu = CK.Ma",
                 CommandType.Text, null);
+            //return db.ExcuteQuery("Select * From " +
+            //    "(Select Ma,Ten,DonGia,MaNhom " +
+            //    "From CongKham Where Ma_CS = '" + AppConfig.CoSoKCB + "' And TinhTrang =1) AS CK " +
+            //    "LEFT JOIN " +
+            //    "(Select MaDichVu,CONVERT(bit,1) as Chon From DichVuChiTiet Where MaLK ='" + this.MaLK + "' " +
+            //    "And MaNhom = 13) AS CKCT ON CKCT.MaDichVu = CK.Ma",
+            //    CommandType.Text, null);
         }
         public DataTable DSDichVuChiTiet()
         {

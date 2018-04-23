@@ -120,7 +120,7 @@ namespace DuocPham.GUI
             //linhthuoc.NguoiNhan = linhthuoc.LayNguoiNhan ();
             linhthuoc.NoiDung = "Khoa yêu cầu phát thuốc.";
             gridControlDS.DataSource = linhthuoc.DSPhieuVatTu ().AsDataView ();
-
+            cbNguoiLinh.SelectedIndex = 0;
             lookUpMaVatTu.Focus ();
             Enabled_Luu ();
             btnIn.Enabled = false;

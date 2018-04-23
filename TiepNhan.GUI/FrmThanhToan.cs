@@ -669,7 +669,12 @@ namespace TiepNhan.GUI
                 rpt.xrLabelMauSo.Text = "Mẫu số 01/BV";
                 mau = "Mau01";
             }
-            rpt.xrLabelKhoa.Text = lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();
+            if (lookUpKhoa.EditValue.ToString().Split('_')[0] == "K01")
+            {
+                rpt.xrLabelKhoa.Text = "Khoa Khám bệnh";
+            }
+            else
+                rpt.xrLabelKhoa.Text = lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();
             rpt.xrLabelMaSoBN.Text = txtMaBN.Text;
             rpt.xrLabelSoBenhAn.Text = txtSTTNgay.Text;
             rpt.xrLabelHoTen.Text = txtHoTen.Text;
@@ -677,7 +682,7 @@ namespace TiepNhan.GUI
             rpt.xrLabelNgaySinh.Text = txtNgaySinh.Text;
             rpt.xrLabelMaKCBBanDau.Text = txtMaCoSoDKKCB.Text;
             rpt.xrLabelKCBBanDau.Text = txtTenCoSoDKKCB.Text;
-            rpt.lblCosoKCB.Text = (lookUpNoiChuyenDen.Properties.GetDisplayValueByKeyValue(AppConfig.CoSoKCB)).ToString().ToUpper();
+            //rpt.lblCosoKCB.Text = (lookUpNoiChuyenDen.Properties.GetDisplayValueByKeyValue(AppConfig.CoSoKCB)).ToString().ToUpper();
             if (cbGioiTinh.SelectedIndex == 0)
             {
                 rpt.xrCheckBoxNu.Checked = false;

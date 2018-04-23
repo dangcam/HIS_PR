@@ -150,6 +150,12 @@
     <Compile Include="RptPhieuXuatKho.Designer.cs">
       <DependentUpon>RptPhieuXuatKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptTheKho.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTheKho.Designer.cs">
+      <DependentUpon>RptTheKho.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FrmChiTietVatTu.resx">
@@ -191,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptPhieuXuatKho.resx">
       <DependentUpon>RptPhieuXuatKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTheKho.resx">
+      <DependentUpon>RptTheKho.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

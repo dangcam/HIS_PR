@@ -276,7 +276,7 @@ namespace DuocPham.GUI
                 cell = new XRTableCell ();
                 cell.Text = drview["DonViTinh"].ToString ();
                 cell.Font = font;
-                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
                 cell.WidthF = 100;
                 row.Cells.Add (cell);
 
