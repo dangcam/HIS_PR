@@ -609,6 +609,35 @@ namespace TiepNhan.GUI
         {
             LuuHoSo(true);
         }
+
+        private void cbLoaiKCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbLoaiKCB.SelectedIndex==0)
+            {
+                btnCongKham.Enabled = true;
+                btnNgayGiuong.Enabled = false;
+            }
+            else
+            {
+                btnCongKham.Enabled = false;
+                btnNgayGiuong.Enabled = true;
+            }
+        }
+
+        private void btnNgayGiuong_Click(object sender, EventArgs e)
+        {
+            if (KiemTraBenhBacSi())
+            {
+                FrmGiuongBenh frm = new FrmGiuongBenh();
+                frm.MaLK = thanhtoan.MaLK;
+                frm.MaKhoa = Utils.ToString(lookUpKhoa.EditValue);
+                frm.MaBacSi = Utils.ToString(lookUpBacSi.EditValue);
+                frm.ShowDialog();
+                dataDichVu = thanhtoan.DSDichVuChiTiet();
+                LoadCongKham();
+            }
+        }
+
         private void TaoFileXML()
         {
             try

@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmKeDonThuoc));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.layoutControlMain = new DevExpress.XtraLayout.LayoutControl();
             this.gridControlDVKT = new DevExpress.XtraGrid.GridControl();
@@ -59,6 +59,7 @@
             this.SoLuongVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DonGiaVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThanhTienVT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TyLeVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnLuuIn = new DevExpress.XtraEditors.SimpleButton();
             this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
             this.lblHanThe = new DevExpress.XtraEditors.LabelControl();
@@ -76,6 +77,7 @@
             this.ThanhTien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LieuDung = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaDuongDung = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TyLeThuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnChon = new DevExpress.XtraEditors.SimpleButton();
             this.txtLanUong = new System.Windows.Forms.NumericUpDown();
             this.txtNgayUong = new System.Windows.Forms.NumericUpDown();
@@ -104,6 +106,7 @@
             this.DonViTinh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.GiaBHYT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoLuongTon = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TyLeTT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroupMain = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -126,9 +129,6 @@
             this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TyLeTT = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TyLeThuoc = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TyLeVT = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
@@ -356,9 +356,9 @@
             // repbtnXoaVT
             // 
             this.repbtnXoaVT.AutoHeight = false;
-            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.repbtnXoaVT.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repbtnXoaVT.Name = "repbtnXoaVT";
             this.repbtnXoaVT.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repbtnXoaVT.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repbtnXoaVT_ButtonClick);
@@ -438,6 +438,12 @@
             this.ThanhTienVT.Visible = true;
             this.ThanhTienVT.VisibleIndex = 6;
             this.ThanhTienVT.Width = 119;
+            // 
+            // TyLeVT
+            // 
+            this.TyLeVT.Caption = "TyLeVT";
+            this.TyLeVT.FieldName = "TyLe";
+            this.TyLeVT.Name = "TyLeVT";
             // 
             // btnLuuIn
             // 
@@ -520,9 +526,9 @@
             // repbtnXoaThuoc
             // 
             this.repbtnXoaThuoc.AutoHeight = false;
-            editorButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions4.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.repbtnXoaThuoc.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repbtnXoaThuoc.Name = "repbtnXoaThuoc";
             this.repbtnXoaThuoc.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repbtnXoaThuoc.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repbtnXoaThuoc_ButtonClick);
@@ -638,6 +644,12 @@
             this.MaDuongDung.Caption = "MaDuongDung";
             this.MaDuongDung.FieldName = "MaDuongDung";
             this.MaDuongDung.Name = "MaDuongDung";
+            // 
+            // TyLeThuoc
+            // 
+            this.TyLeThuoc.Caption = "TyLeThuoc";
+            this.TyLeThuoc.FieldName = "TyLe";
+            this.TyLeThuoc.Name = "TyLeThuoc";
             // 
             // btnChon
             // 
@@ -850,6 +862,8 @@
             this.lookUpMaBenh.Name = "lookUpMaBenh";
             this.lookUpMaBenh.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lookUpMaBenh.Properties.Appearance.Options.UseFont = true;
+            this.lookUpMaBenh.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookUpMaBenh.Properties.AppearanceDropDown.Options.UseFont = true;
             this.lookUpMaBenh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpMaBenh.Properties.NullText = "";
@@ -901,6 +915,8 @@
             this.lookUpMaBenhKhac.Name = "lookUpMaBenhKhac";
             this.lookUpMaBenhKhac.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lookUpMaBenhKhac.Properties.Appearance.Options.UseFont = true;
+            this.lookUpMaBenhKhac.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookUpMaBenhKhac.Properties.AppearanceDropDown.Options.UseFont = true;
             this.lookUpMaBenhKhac.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpMaBenhKhac.Properties.NullText = "";
@@ -1055,6 +1071,17 @@
             this.SoLuongTon.Visible = true;
             this.SoLuongTon.VisibleIndex = 6;
             this.SoLuongTon.Width = 28;
+            // 
+            // TyLeTT
+            // 
+            this.TyLeTT.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TyLeTT.AppearanceCell.Options.UseFont = true;
+            this.TyLeTT.Caption = "Tỷ lệ";
+            this.TyLeTT.FieldName = "TyLeTT";
+            this.TyLeTT.Name = "TyLeTT";
+            this.TyLeTT.Visible = true;
+            this.TyLeTT.VisibleIndex = 7;
+            this.TyLeTT.Width = 30;
             // 
             // layoutControlGroupMain
             // 
@@ -1273,29 +1300,6 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            // 
-            // TyLeTT
-            // 
-            this.TyLeTT.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TyLeTT.AppearanceCell.Options.UseFont = true;
-            this.TyLeTT.Caption = "Tỷ lệ";
-            this.TyLeTT.FieldName = "TyLeTT";
-            this.TyLeTT.Name = "TyLeTT";
-            this.TyLeTT.Visible = true;
-            this.TyLeTT.VisibleIndex = 7;
-            this.TyLeTT.Width = 30;
-            // 
-            // TyLeThuoc
-            // 
-            this.TyLeThuoc.Caption = "TyLeThuoc";
-            this.TyLeThuoc.FieldName = "TyLe";
-            this.TyLeThuoc.Name = "TyLeThuoc";
-            // 
-            // TyLeVT
-            // 
-            this.TyLeVT.Caption = "TyLeVT";
-            this.TyLeVT.FieldName = "TyLe";
-            this.TyLeVT.Name = "TyLeVT";
             // 
             // FrmKeDonThuoc
             // 

@@ -543,7 +543,7 @@ namespace Core.DAL
             giamdinh.AppendChild(thongtinDonVi);
 
             XmlElement element = doc.CreateElement("MACSKCB");
-            element.AppendChild(doc.CreateTextNode(AppConfig.CoSoKCB));
+            element.AppendChild(doc.CreateTextNode("70013"));//element.AppendChild(doc.CreateTextNode(AppConfig.CoSoKCB));
             thongtinDonVi.AppendChild(element);
 
             // THÔNG TIN HỒ SƠ

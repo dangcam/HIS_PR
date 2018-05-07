@@ -113,7 +113,7 @@
             this.pivotGridField1.Options.ShowCustomTotals = false;
             this.pivotGridField1.Options.ShowGrandTotal = false;
             this.pivotGridField1.Options.ShowTotals = false;
-            this.pivotGridField1.Width = 35;
+            this.pivotGridField1.Width = 30;
             // 
             // pivotGridField2
             // 
@@ -163,12 +163,14 @@
             this.pivotGridField5.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
             this.pivotGridField5.AreaIndex = 4;
             this.pivotGridField5.Caption = "Ngày TT";
+            this.pivotGridField5.CellFormat.FormatString = "dd/MM/yy HH";
+            this.pivotGridField5.CellFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.pivotGridField5.FieldName = "NgayThanhToan";
             this.pivotGridField5.Name = "pivotGridField5";
             this.pivotGridField5.Options.ShowCustomTotals = false;
             this.pivotGridField5.Options.ShowGrandTotal = false;
             this.pivotGridField5.Options.ShowTotals = false;
-            this.pivotGridField5.Width = 80;
+            this.pivotGridField5.Width = 90;
             // 
             // pivotGridField6
             // 
@@ -196,7 +198,7 @@
             this.pivotGridField7.Options.ShowCustomTotals = false;
             this.pivotGridField7.Options.ShowGrandTotal = false;
             this.pivotGridField7.Options.ShowTotals = false;
-            this.pivotGridField7.Width = 220;
+            this.pivotGridField7.Width = 215;
             // 
             // pivotGridField8
             // 

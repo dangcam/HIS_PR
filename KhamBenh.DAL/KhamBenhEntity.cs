@@ -59,6 +59,15 @@ namespace KhamBenh.DAL
                 " LEFT JOIN HoSoCanLamSan ON HoSoCanLamSan.MaDichVu = DV.MaDichVu",
                 CommandType.Text, null);
         }
+        public DataTable DSDichVuKyThuat()
+        {
+            return db.ExcuteQuery("Select DichVuChiTiet.MaDichVu,TenDichVu,GiaTri,MoTa,KetLuan,DonViTinh,SoLuong,DonGia," +
+                "ThanhTien,MaKhoa,MaGiuong,MaBacSi,NgayYLenh,DichVuChiTiet.NgayKQ " +
+                "From DichVuChiTiet,HoSoCanLamSan " +
+                "Where DichVuChiTiet.MaLK ='" + MaLK + "' And DichVuChiTiet.MaDichVu = HoSoCanLamSan.MaDichVu " +
+                "And HoSoCanLamSan.MaLK = '" + MaLK + "'",
+                CommandType.Text, null);
+        }
         public DataTable DSThuocChiTiet()
         {
             return db.ExcuteQuery("Select * From DonThuocChiTiet Where MaLK ='" + MaLK + "' ",
@@ -68,6 +77,16 @@ namespace KhamBenh.DAL
         {
             DataTable data = db.ExcuteQuery("Select Top 1 MaBacSi From DonThuocChiTiet Where MaLK ='" + MaLK + "' ", CommandType.Text, null);
             if(data!=null && data.Rows.Count>0)
+            {
+                return data.Rows[0][0].ToString();
+            }
+            data = db.ExcuteQuery("Select Top 1 MaBacSi From DichVuChiTiet Where MaLK ='" + MaLK + "' ", CommandType.Text, null);
+            if (data != null && data.Rows.Count > 0)
+            {
+                return data.Rows[0][0].ToString();
+            }
+            data = db.ExcuteQuery("Select Top 1 MaBacSi From VatTuChiTiet Where MaLK ='" + MaLK + "' ", CommandType.Text, null);
+            if (data != null && data.Rows.Count > 0)
             {
                 return data.Rows[0][0].ToString();
             }
@@ -89,14 +108,22 @@ namespace KhamBenh.DAL
                 "And MaCoSoKCB = '"+AppConfig.CoSoKCB+"'",
                 CommandType.Text, null);
         }
+        public DataTable DSBenhNhanNoiTru(string maKhoa)
+        {
+            return db.ExcuteQuery("Select * From ThongTinBNChiTiet Where MaLoaiKCB > 1 And MaKhoa = '" + maKhoa + "' " +
+                //"And NgayRa is NULL " +
+                "And MaCoSoKCB = '" + AppConfig.CoSoKCB + "'",
+                CommandType.Text, null);
+        }
         public DataTable DSChiTietThuoc(string maKhoa, DateTime tuNgay, DateTime denNgay)
         {
             return db.ExcuteQuery("Select STTNgay,HoTen,SUBSTRING(NgaySinh, Len(NgaySinh)-3, 4) as NgaySinh," +
-                                    "MaThe,CONVERT(VARCHAR(10),NgayYLenh,103) as NgayThanhToan,MaBenh,TenThuoc,SoLuong " +
+                                    "MaThe,CONVERT(VARCHAR,NgayYLenh,120) as NgayThanhToan,MaBenh,TenThuoc,SoLuong " +
                                     "from ThongTinBNChiTiet,DonThuocChiTiet " +
                                     "where ThongTinBNChiTiet.MaLK = DonThuocChiTiet.MaLK " +
                                     "And MaCoSoKCB='" + AppConfig.CoSoKCB + "' and ThongTinBNChiTiet.MaKhoa = '" + maKhoa + "' " +
                                     "And (convert(date,NgayYLenh) between convert(date,'" + tuNgay + "') and convert(date,'" + denNgay + "')) " +
+                                    "And ThongTinBNChiTiet.NgayRa is NULL " +
                                     "order by STTNgay",
                 CommandType.Text, null);
 

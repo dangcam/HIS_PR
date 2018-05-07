@@ -498,5 +498,11 @@ namespace HIS_PR
             frmBaoCaoTonKho.MdiParent = this;
             frmBaoCaoTonKho.Show();
         }
+
+        private void barButtonBKNhapThuoc_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FrmBangKeNhapThuoc frm = new FrmBangKeNhapThuoc();
+            frm.ShowDialog();
+        }
     }
 }

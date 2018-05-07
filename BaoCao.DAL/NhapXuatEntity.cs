@@ -19,6 +19,11 @@ namespace BaoCao.DAL
         public string LoaiVatTu { get; set; }
         public DateTime TuNgay { get; set; }
         public DateTime DenNgay { get; set; }
+        public DataTable DSNVKhoDuoc()
+        {
+            return db.ExcuteQuery("Select * From NVKhoaDuoc ",
+                CommandType.Text, null);
+        }
         public DataTable DSLoaiVatTu ()
         {
             return db.ExcuteQuery ("Select Ma,Ten From LoaiVattu Where TinhTrang = 1 ",

@@ -387,6 +387,7 @@ namespace DuocPham.GUI
                     checkGiaBHYT.Checked = true;
                 }
                 gridControlDS.DataSource = dtPhieu;
+                gridViewDS.ExpandAllGroups();
             }
         }
         private void inPhieuXuat ()
@@ -410,7 +411,9 @@ namespace DuocPham.GUI
             int stt = 1;
             int soLuong = 0;
             decimal donGia = 0;
-            foreach (DataRowView drview in (gridViewDS.DataSource as DataView))
+            xuatkho.SoPhieu = Utils.ToInt(txtSoPhieu.Text);
+            DataTable datads = xuatkho.DSPhieuVatTuIn();
+            foreach (DataRow drview in datads.Rows)
             {
                 soLuong = 0;
                 donGia = 0;
@@ -424,7 +427,7 @@ namespace DuocPham.GUI
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();
-                cell.Text = drview["MaVatTu"].ToString ();
+                cell.Text = drview["MaBV"].ToString ();
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
                 cell.WidthF = 100;

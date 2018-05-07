@@ -75,6 +75,14 @@ namespace DuocPham.DAL
             return db.ExcuteQuery ("Select ID,Ten,DiaChi From NhaCungCap Where TinhTrang = 1",
                 CommandType.Text, null);
         }
+        public DataTable BKNhapThuoc(int thang, int nam)
+        {
+            return db.ExcuteQuery("Select ROW_NUMBER() OVER(ORDER BY TenVatTu ASC) AS STT,MaVatTu,TenVatTu,DonViTinh,SoLuong,GiaBHYT, DonGiaBV,ThanhTien " +
+                "from (Select MaVatTu,SUM(SoLuongQuyDoi) as SoLuong,AVG(DonGiaBV) as DonGiaBV,SUM(ThanhTien) as ThanhTien from PhieuNhap,PhieuNhapChiTiet " +
+                "where PhieuNhap.SoPhieu = PhieuNhapChiTiet.SoPhieu and MONTH(NgayNhap) = "+thang+" And YEAR(NgayNhap) = "+nam+" Group by MaVatTu) as Nhap,VatTu " +
+                "Where Nhap.MaVatTu = VatTu.MaBV",
+                CommandType.Text, null);
+        }
         public DataTable DSPhieuVatTu ()
         {
             return db.ExcuteQuery ("Select *,'' as TenVatTu,'' as DonViTinh" +

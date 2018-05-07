@@ -614,7 +614,7 @@ namespace TiepNhan.GUI
                     return;
                 }
                 // Lấy thông tin thẻ nếu có trong csdl
-                // Hồ sơ bệnh án khám trong ngày
+                // Hồ sơ bệnh án khám trong ngày, kiểm tra lại nội trú
                 // Lấy mã bệnh nhân
                 tiepnhan.LayThongTinCoThe(txtTheBHYT.Text,
                         Utils.ToDateTime(txtNgayTN.Text, "dd/MM/yyyy").ToShortDateString());

@@ -54,6 +54,7 @@ namespace BaoCao.GUI
                 RptKiemKe rpt = new RptKiemKe();
                 rpt.xrlblNgayTonKho.Text = "Ngày "+DateTime.Now.Day+" tháng "+
                     DateTime.Now.Month+" năm "+DateTime.Now.Year;
+
                 rpt.xrlblNoiDung.Text = "Hôm nay "+ rpt.xrlblNgayTonKho.Text.ToLower() + " tại kho thuốc BVĐK Phú Riềng";
                 rpt.xrTable.Rows.Clear();
                 XRTableRow row;

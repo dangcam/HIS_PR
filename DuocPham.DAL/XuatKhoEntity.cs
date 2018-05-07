@@ -97,6 +97,15 @@ namespace DuocPham.DAL
             return db.ExcuteQuery ("Select * From PhieuXuatChiTiet,(select MaBV,TenVatTu,DonViTinh from VatTu) as VT Where VT.MaBV = PhieuXuatChiTiet.MaVatTu and SoPhieu = " + this.SoPhieu,
                 CommandType.Text, null);
         }
+        public DataTable DSPhieuVatTuIn()
+        {
+            return db.ExcuteQuery("Select MaBV,TenVatTu,DonViTinh,DonGiaBHYT,DonGiaBV,LoaiVatTu," +
+                "SUM(SoLuong) as SoLuong,SUM(ThanhTien) as ThanhTien " +
+                "From PhieuXuatChiTiet,(select MaBV,TenVatTu,DonViTinh from VatTu) as VT " +
+                "Where VT.MaBV = PhieuXuatChiTiet.MaVatTu and SoPhieu = " + this.SoPhieu+" " +
+                "Group By MaBV,TenVatTu,DonViTinh,DonGiaBHYT,DonGiaBV,LoaiVatTu",
+                CommandType.Text, null);
+        }
         public DataTable DSPhieuVatTu(int soPhieu)
         {
             return db.ExcuteQuery("Select * From PhieuXuatChiTiet,(select MaBV,TenVatTu,DonViTinh from VatTu) as VT Where VT.MaBV = PhieuXuatChiTiet.MaVatTu and SoPhieu = " + soPhieu,

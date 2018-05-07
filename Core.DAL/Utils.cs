@@ -654,7 +654,7 @@ namespace Core.DAL
                     // gửi hồ sơ 4210
                     string data = string.Format("token={0}&id_token={1}&username={2}&password={3}&loaiHoSo={4}&maTinh={5}&maCSKCB={6}",
                         phienLamViec.APIKey.access_token, phienLamViec.APIKey.id_token, AppConfig.UserLoginBHYT,
-                        Utils.ToMD5(AppConfig.PassWordBHYT),3, AppConfig.CoSoKCB.Substring(0,2),AppConfig.CoSoKCB);
+                        Utils.ToMD5(AppConfig.PassWordBHYT),3, AppConfig.CoSoKCB.Substring(0,2),"70013");
                     using (HttpResponseMessage response = await client.PostAsJsonAsync("api/egw/guiHoSoGiamDinh4210?" + data, fileHS))
                     {
                         if (response.IsSuccessStatusCode)

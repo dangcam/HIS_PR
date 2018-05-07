@@ -77,6 +77,7 @@
             this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             this.panelControlThongTin = new DevExpress.XtraEditors.PanelControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtDiaChi = new DevExpress.XtraEditors.TextEdit();
             this.checkTraNhaCC = new DevExpress.XtraEditors.CheckEdit();
             this.txtSoCTu = new DevExpress.XtraEditors.TextEdit();
             this.btnXuatExcel = new DevExpress.XtraEditors.SimpleButton();
@@ -129,12 +130,11 @@
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem25 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem26 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroupMain = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtDiaChi = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem26 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
@@ -167,6 +167,7 @@
             this.panelControlThongTin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkTraNhaCC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoCTu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkGiaBHYT.Properties)).BeginInit();
@@ -203,12 +204,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -291,9 +291,16 @@
             this.ThanhTien,
             this.LoaiVatTu});
             this.gridViewDS.GridControl = this.gridControlDS;
+            this.gridViewDS.GroupCount = 1;
+            this.gridViewDS.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ThanhTien", null, "(Thành tiền : {0:#,###})"),
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", null, "(Số lượng : {0:#,###})")});
             this.gridViewDS.Name = "gridViewDS";
+            this.gridViewDS.OptionsFind.AlwaysVisible = true;
             this.gridViewDS.OptionsView.ShowAutoFilterRow = true;
             this.gridViewDS.OptionsView.ShowGroupPanel = false;
+            this.gridViewDS.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.TenVatTuDS, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // btnXoaDS
             // 
@@ -302,7 +309,7 @@
             this.btnXoaDS.Name = "btnXoaDS";
             this.btnXoaDS.Visible = true;
             this.btnXoaDS.VisibleIndex = 0;
-            this.btnXoaDS.Width = 22;
+            this.btnXoaDS.Width = 41;
             // 
             // repositoryItemButtonEdit
             // 
@@ -375,7 +382,7 @@
             this.SoDangKy.Name = "SoDangKy";
             this.SoDangKy.OptionsColumn.AllowEdit = false;
             this.SoDangKy.Visible = true;
-            this.SoDangKy.VisibleIndex = 4;
+            this.SoDangKy.VisibleIndex = 3;
             this.SoDangKy.Width = 132;
             // 
             // DonViTinh
@@ -387,7 +394,7 @@
             this.DonViTinh.Name = "DonViTinh";
             this.DonViTinh.OptionsColumn.AllowEdit = false;
             this.DonViTinh.Visible = true;
-            this.DonViTinh.VisibleIndex = 5;
+            this.DonViTinh.VisibleIndex = 4;
             this.DonViTinh.Width = 63;
             // 
             // SoLuong
@@ -401,7 +408,7 @@
             this.SoLuong.Name = "SoLuong";
             this.SoLuong.OptionsColumn.AllowEdit = false;
             this.SoLuong.Visible = true;
-            this.SoLuong.VisibleIndex = 6;
+            this.SoLuong.VisibleIndex = 5;
             this.SoLuong.Width = 60;
             // 
             // SoLuongDung
@@ -422,7 +429,7 @@
             this.DonGiaBHYTDS.FieldName = "DonGiaBHYT";
             this.DonGiaBHYTDS.Name = "DonGiaBHYTDS";
             this.DonGiaBHYTDS.Visible = true;
-            this.DonGiaBHYTDS.VisibleIndex = 7;
+            this.DonGiaBHYTDS.VisibleIndex = 6;
             this.DonGiaBHYTDS.Width = 69;
             // 
             // DonGiaBV
@@ -435,7 +442,7 @@
             this.DonGiaBV.FieldName = "DonGiaBV";
             this.DonGiaBV.Name = "DonGiaBV";
             this.DonGiaBV.Visible = true;
-            this.DonGiaBV.VisibleIndex = 8;
+            this.DonGiaBV.VisibleIndex = 7;
             this.DonGiaBV.Width = 66;
             // 
             // HetHanDS
@@ -449,7 +456,7 @@
             this.HetHanDS.Name = "HetHanDS";
             this.HetHanDS.OptionsColumn.AllowEdit = false;
             this.HetHanDS.Visible = true;
-            this.HetHanDS.VisibleIndex = 9;
+            this.HetHanDS.VisibleIndex = 8;
             this.HetHanDS.Width = 62;
             // 
             // ThanhTien
@@ -462,7 +469,7 @@
             this.ThanhTien.FieldName = "ThanhTien";
             this.ThanhTien.Name = "ThanhTien";
             this.ThanhTien.Visible = true;
-            this.ThanhTien.VisibleIndex = 10;
+            this.ThanhTien.VisibleIndex = 9;
             this.ThanhTien.Width = 80;
             // 
             // LoaiVatTu
@@ -474,7 +481,7 @@
             this.LoaiVatTu.Name = "LoaiVatTu";
             this.LoaiVatTu.OptionsColumn.AllowEdit = false;
             this.LoaiVatTu.Visible = true;
-            this.LoaiVatTu.VisibleIndex = 11;
+            this.LoaiVatTu.VisibleIndex = 10;
             this.LoaiVatTu.Width = 67;
             // 
             // layoutControlGroup2
@@ -734,6 +741,18 @@
             this.layoutControl1.Size = new System.Drawing.Size(597, 188);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.Location = new System.Drawing.Point(529, 64);
+            this.txtDiaChi.MenuManager = this.ribbonControl;
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiaChi.Properties.Appearance.Options.UseFont = true;
+            this.txtDiaChi.Size = new System.Drawing.Size(56, 22);
+            this.txtDiaChi.StyleController = this.layoutControl1;
+            this.txtDiaChi.TabIndex = 18;
+            this.txtDiaChi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiaChi_KeyPress);
             // 
             // checkTraNhaCC
             // 
@@ -1361,6 +1380,15 @@
             this.layoutControlItem25.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem25.TextVisible = false;
             // 
+            // layoutControlItem26
+            // 
+            this.layoutControlItem26.Control = this.txtDiaChi;
+            this.layoutControlItem26.Location = new System.Drawing.Point(455, 52);
+            this.layoutControlItem26.Name = "layoutControlItem26";
+            this.layoutControlItem26.Size = new System.Drawing.Size(122, 26);
+            this.layoutControlItem26.Text = "Địa chỉ:";
+            this.layoutControlItem26.TextSize = new System.Drawing.Size(59, 13);
+            // 
             // layoutControlGroupMain
             // 
             this.layoutControlGroupMain.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -1399,27 +1427,6 @@
             this.layoutControlItem3.Size = new System.Drawing.Size(959, 297);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
-            // 
-            // txtDiaChi
-            // 
-            this.txtDiaChi.Location = new System.Drawing.Point(529, 64);
-            this.txtDiaChi.MenuManager = this.ribbonControl;
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiaChi.Properties.Appearance.Options.UseFont = true;
-            this.txtDiaChi.Size = new System.Drawing.Size(56, 22);
-            this.txtDiaChi.StyleController = this.layoutControl1;
-            this.txtDiaChi.TabIndex = 18;
-            this.txtDiaChi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiaChi_KeyPress);
-            // 
-            // layoutControlItem26
-            // 
-            this.layoutControlItem26.Control = this.txtDiaChi;
-            this.layoutControlItem26.Location = new System.Drawing.Point(455, 52);
-            this.layoutControlItem26.Name = "layoutControlItem26";
-            this.layoutControlItem26.Size = new System.Drawing.Size(122, 26);
-            this.layoutControlItem26.Text = "Địa chỉ:";
-            this.layoutControlItem26.TextSize = new System.Drawing.Size(59, 13);
             // 
             // FrmXuatKho
             // 
@@ -1466,6 +1473,7 @@
             this.panelControlThongTin.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkTraNhaCC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoCTu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkGiaBHYT.Properties)).EndInit();
@@ -1502,12 +1510,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

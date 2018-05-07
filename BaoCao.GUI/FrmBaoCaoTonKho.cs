@@ -20,6 +20,7 @@ namespace BaoCao.GUI
         DAL.NhapXuatEntity nhapxuat;
         DataTable dtLoaiVatTu;
         DataTable dataTonKho;
+        DataTable dataNV;
         public FrmBaoCaoTonKho()
         {
             InitializeComponent();
@@ -33,7 +34,8 @@ namespace BaoCao.GUI
         }
         private void FrmBaoCaoTonKho_Load(object sender, EventArgs e)
         {
-            for(int i = DateTime.Now.Year - 5;i<DateTime.Now.Year+5;i++)
+            dataNV = nhapxuat.DSNVKhoDuoc();
+            for (int i = DateTime.Now.Year - 5;i<DateTime.Now.Year+5;i++)
             {
                 cbNam.Properties.Items.Add(i);
                 cbNamXuLy.Properties.Items.Add(i);
@@ -157,6 +159,67 @@ namespace BaoCao.GUI
             rpt.CreateDocument();
             rpt.ShowPreviewDialog();
             SplashScreenManager.CloseForm();
+        }
+
+        private void btnKiemKe_Click(object sender, EventArgs e)
+        {
+            if (dataTonKho != null)
+            {
+                SplashScreenManager.ShowForm(typeof(WaitFormLoad));
+                //
+                System.Drawing.Font fontB = new System.Drawing.Font("Times New Roman", 11, System.Drawing.FontStyle.Bold);
+                RptKiemKe rpt = new RptKiemKe();
+                rpt.xrlblNgayTonKho.Text = "Ngày " + nhapxuat.DenNgay.Day + " tháng " +
+                    nhapxuat.DenNgay.Month + " năm " + nhapxuat.DenNgay.Year;
+                rpt.xrlblNoiDung.Text = "Hôm nay " + rpt.xrlblNgayTonKho.Text.ToLower() + " tại kho thuốc BVĐK Phú Riềng";
+                rpt.xrlblNgayKy.Text = rpt.xrlblNgayTonKho.Text;
+                rpt.xrTable.Rows.Clear();
+                XRTableRow row;
+                XRTableCell cell;
+                rpt.xrTableCell36.ExpressionBindings.Clear();
+                rpt.xrTableCell36.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SLTonCuoi]")});
+                rpt.xrTableCell2.ExpressionBindings.Clear();
+
+                rpt.DataSource = dataTonKho.Select("SLTonCuoi > 0","STT ASC").CopyToDataTable();
+                float UsablePageWidth = rpt.PageWidth - rpt.Margins.Left - rpt.Margins.Right;
+
+                float columnWitdh = UsablePageWidth / (dataNV.Rows.Count + 1);
+                rpt.xrTableNV.WidthF = columnWitdh;
+                int i = 2;
+                foreach (DataRow dr in dataNV.Rows)
+                {
+                    row = new XRTableRow();
+
+                    cell = new XRTableCell();
+                    cell.Text = dr["Id"] + ". " + dr["HoTen"];
+                    cell.WidthF = 200;
+                    row.Cells.Add(cell);
+                    cell = new XRTableCell();
+                    cell.Text = dr["ChucVu"].ToString();
+                    cell.WidthF = 200;
+                    row.Cells.Add(cell);
+
+                    rpt.xrTable.Rows.Add(row);
+                    rpt.xrTableNV.WidthF = columnWitdh * i;
+                    cell = new XRTableCell();
+                    cell.Text = dr["ChucVu"].ToString().ToUpper();
+                    cell.Font = fontB;
+                    cell.WidthF = columnWitdh;
+                    rpt.xrTableNV.Rows.FirstRow.Cells.Add(cell);
+                    cell = new XRTableCell();
+                    cell.Text = dr["HoTen"].ToString().Replace("Đ/c ", "");
+                    cell.WidthF = columnWitdh;
+                    rpt.xrTableNV.Rows.LastRow.Cells.Add(cell);
+
+                    i++;
+                }
+
+                rpt.CreateDocument();
+                rpt.ShowPreviewDialog();
+                //
+                SplashScreenManager.CloseForm();
+            }
         }
     }
 }

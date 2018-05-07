@@ -96,7 +96,7 @@ namespace TiepNhan.GUI
             {
                 DataRowView dr = (lookUpThuoc.EditValue as DataRowView);
                 //kiểm tra số lượng tồn thuốc
-                if (listThuoc.ContainsKey(dr["MaVatTu"] + "|" + dateNgayYLenh.DateTime.ToString("dd/MM/yyyy")))
+                if (listThuoc.ContainsKey(dr["MaVatTu"] + "|" + dateNgayYLenh.DateTime.ToString("yyyy-mm-dd hh:mm:ss")))
                 {
                     XtraMessageBox.Show(Library.ThuocDaDuocChon, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     lookUpThuoc.Focus();
@@ -109,7 +109,7 @@ namespace TiepNhan.GUI
                     return;
                 }
                 // 2: thuốc mới đc thêm vào, 1 thuốc đã có
-                listThuoc.Add(dr["MaVatTu"] + "|" + dateNgayYLenh.DateTime.ToString("dd/MM/yyyy"), 2);
+                listThuoc.Add(dr["MaVatTu"] + "|" + dateNgayYLenh.DateTime.ToString("yyyy-mm-dd hh:mm:ss"), 2);
                 DataRowView drvNew = (gridControlThuoc.DataSource as DataView).AddNew();
                 drvNew["MaVatTu"] = dr["MaVatTu"];
                 drvNew["MaThuoc"] = dr["MaHoatChat"];
@@ -122,7 +122,7 @@ namespace TiepNhan.GUI
                 drvNew["LieuDung"] = "Ngày " + dicDuongDung[dr["MaDuongDung"].ToString()].ToLower()
                     + " " + txtNgayUong.Value + " lần, lần " + txtLanUong.Value + " " + dr["DonViTinh"].ToString().ToLower();
                 drvNew["NgayYLenh"] = dateNgayYLenh.DateTime;
-                drvNew["NhomYLenh"] = dateNgayYLenh.DateTime.ToString("dd/MM/yyyy");
+                drvNew["NhomYLenh"] = dateNgayYLenh.DateTime.ToString("yyyy-mm-dd hh:mm:ss");
                 drvNew["MaDuongDung"] = dr["MaDuongDung"];
                 drvNew["SoDK"] = dr["SoDK"];
                 if (cbLoaiThuoc.SelectedIndex == 0)
@@ -165,11 +165,12 @@ namespace TiepNhan.GUI
                     string err = "";
                     // tiến hành xóa trong csdl, listThuoc
                     kedon.MaVatTu = dr["MaVatTu"].ToString();
-                    kedon.NgayYLenh = Utils.ToDateTime(dr["NhomYLenh"].ToString(),"dd/MM/yyyy");
+                    kedon.NgayYLenh = Utils.ToDateTime(dr["NhomYLenh"].ToString());
                     if (!kedon.SpKeDonThuoc(ref err, "DELETE_NoiTru"))
                     {
                         XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         listThuoc[dr["MaVatTu"] + "|" + dr["NhomYLenh"]] = 0;
+                        return;
                     }
                     else
                         listThuoc.Remove(dr["MaVatTu"] + "|" + dr["NhomYLenh"]);
@@ -222,7 +223,7 @@ namespace TiepNhan.GUI
                     err = "";
                     // tiến hành xóa trong csdl, listThuoc
                     kedon.MaVatTu = key.Split('|')[0];
-                    kedon.NgayYLenh =Utils.ToDateTime(key.Split('|')[0],"dd/MM/yyyy");
+                    kedon.NgayYLenh =Utils.ToDateTime(key.Split('|')[0], "yyyy-mm-dd hh:mm:ss");
                     if (!kedon.SpKeDonThuoc(ref err, "DELETE_NoiTru"))
                     {
                         XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);

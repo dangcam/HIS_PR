@@ -141,6 +141,7 @@
             // 
             // xrTable
             // 
+            this.xrTable.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dash;
             this.xrTable.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTable.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -149,6 +150,7 @@
             this.xrTable.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow2});
             this.xrTable.SizeF = new System.Drawing.SizeF(1108F, 25F);
+            this.xrTable.StylePriority.UseBorderDashStyle = false;
             this.xrTable.StylePriority.UseBorders = false;
             this.xrTable.StylePriority.UseFont = false;
             this.xrTable.StylePriority.UseTextAlignment = false;

@@ -54,22 +54,28 @@ namespace TiepNhan.GUI
             lookUpBacSi.ItemIndex = 0;
             lookUpKhoa.EditValue = AppConfig.MaKhoa;
             dateTuNgay.DateTime = dateDenNgay.DateTime = DateTime.Now;
-            LoadData();
+            LamMoiDS();
         }
         private void LoadData()
         {
             gridControl.DataSource = khambenh.DSBenhNhanNoiTru(dateTuNgay.DateTime.ToShortDateString(),
                 dateDenNgay.DateTime.ToShortDateString(),lookUpKhoa.EditValue.ToString());
         }
+        private void LamMoiDS()
+        {
+            gridControl.DataSource = khambenh.DSBenhNhanNoiTru(lookUpKhoa.EditValue.ToString());
+        }
         private void LoadDataChiTiet()
         {
             khambenh.MaLK = drThongTin["MaLK"].ToString();
             // lấy mã bệnh
             maBacSi = khambenh.GetMaBacSi();
-            lookUpBacSi.EditValue = maBacSi;
+            if (!string.IsNullOrEmpty(maBacSi))
+                lookUpBacSi.EditValue = maBacSi;
             gridControlThuoc.DataSource = khambenh.DSThuocChiTiet();
-            gridControlDVKT.DataSource = khambenh.DSDichVuChiTiet();
+            gridControlDVKT.DataSource = khambenh.DSDichVuKyThuat();//khambenh.DSDichVuChiTiet();
             gridControlVTYT.DataSource = khambenh.DSVatTuChiTiet();
+
         }
         private void xtraTabControl_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
@@ -200,7 +206,7 @@ namespace TiepNhan.GUI
                         XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    LoadData();
+                    LamMoiDS();
                 }
             }
         }
@@ -223,7 +229,7 @@ namespace TiepNhan.GUI
                         XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    LoadData();
+                    LamMoiDS();
                 }
             }
         }
@@ -446,6 +452,16 @@ namespace TiepNhan.GUI
             rpt.CreateDocument();
             rpt.ShowPreviewDialog();
             SplashScreenManager.CloseForm();
+        }
+
+        private void btnLamMoi_Click(object sender, EventArgs e)
+        {
+            NhapHoSo();
+        }
+
+        private void btnLamMoiDS_Click(object sender, EventArgs e)
+        {
+            LamMoiDS();
         }
     }
 }

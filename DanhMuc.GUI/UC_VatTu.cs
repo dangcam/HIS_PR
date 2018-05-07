@@ -194,7 +194,7 @@ namespace DanhMuc.GUI
             vattu.LoaiThuoc = cbLoaiThuoc.SelectedIndex.ToString();
             vattu.GiaBHYT = Utils.ToDecimal(txtGiaBHYT.Text);
             vattu.TinhTrang = checkHieuLuc.Checked;
-            vattu.GoiThau = Utils.ToString(lookUpGoiThau,"");
+            vattu.GoiThau = Utils.ToString(lookUpGoiThau.EditValue,"");
             vattu.LoaiThau = cbLoaiThau.SelectedIndex;
             vattu.NhomThau = txtNhomThau.Text;
             vattu.QuyCach = txtQuyCach.Text;
@@ -216,6 +216,10 @@ namespace DanhMuc.GUI
             if (!string.IsNullOrEmpty (err))
             {
                 XtraMessageBox.Show (err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                XtraMessageBox.Show("Đã lưu thành công!");
             }
         }
 

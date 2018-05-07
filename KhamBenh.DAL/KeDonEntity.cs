@@ -92,7 +92,7 @@ namespace KhamBenh.DAL
         public DataTable DSThuoc()
         {
             return db.ExcuteQuery("Select MaVatTu, MaThuoc, TenThuoc, HamLuong, DonViTinh, DonGia,MaDuongDung, "
-                + "LieuDung, SUM(SoLuong) as SoLuong, SUM(ThanhTien) as ThanhTien,SoDK,TTinThau,NgayYLenh,convert(varchar(10), NgayYLenh, 103) as NhomYLenh,TyLe "
+                + "LieuDung, SUM(SoLuong) as SoLuong, SUM(ThanhTien) as ThanhTien,SoDK,TTinThau,NgayYLenh,convert(varchar, NgayYLenh, 120) as NhomYLenh,TyLe "
                 + "From DonThuocChiTiet Where MaLK = '"+MaLK+"' GROUP BY MaVatTu, MaThuoc,MaDuongDung, "
                 + "TenThuoc, HamLuong, DonViTinh, DonGia, LieuDung,SoDK,TTinThau,NgayYLenh,TyLe",
                 CommandType.Text, null);
