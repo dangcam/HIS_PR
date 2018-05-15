@@ -43,13 +43,14 @@ namespace KhamBenh.DAL
         public DataTable DSVatTu(string maLK)
         {
             return db.ExcuteQuery("SELECT MaLK,ROW_NUMBER() OVER(ORDER BY MaVatTu) STT,'' as MaDichVu," +
-                "MaVT,MaNhom,GoiVTYT,TenVatTu,'' as TenDichVu,DonViTinh,PhamVi,SoLuong,DonGia,TTinThau," +
+                "(CASE WHEN LEN(MaVT)>0 Then MaVT ELSE MaVatTu END) as MaVT," +
+                "MaNhom,GoiVTYT,TenVatTu,'' as TenDichVu,DonViTinh,PhamVi,Sum(SoLuong) as SoLuong,DonGia,TTinThau," +
                 "TyLe,SUM(ThanhTien) as ThanhTien,TTrantT,MucHuong," +
                 "SUM(TienNguonKhac) as TienNguonKhac,SUM(TienBNTT) as TienBNTT,SUM(TienBHTT) as TienBHTT," +
                 "SUM(TienBNCCT) as TienBNCCT,SUM(TienNgoaiDS) as TienNgoaiDS," +
                 "MaKhoa,'' as MaGiuong,MaBacSi,NgayYLenh,NgayYLenh as NgayKQ,MaPTTT " +
                 "FROM VatTuChiTiet WHERE MaLK = '"+maLK+"' "+
-                "GROUP BY MaLK, MaVatTu, MaVT, MaNhom, GoiVTYT, TenVatTu, DonViTinh, PhamVi, SoLuong, DonGia," +
+                "GROUP BY MaLK, MaVatTu, MaVT, MaNhom, GoiVTYT, TenVatTu, DonViTinh, PhamVi, DonGia," +
                 "TTinThau, TyLe, TTrantT, MucHuong," +
                 "MaKhoa, MaBacSi, NgayYLenh, MaPTTT", CommandType.Text, null);
         }

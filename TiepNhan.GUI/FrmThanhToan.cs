@@ -173,7 +173,7 @@ namespace TiepNhan.GUI
                 lookUpTaiNan.EditValue = dr["MaTaiNan"];
                 dateNgayVao.DateTime = Utils.ToDateTime(dr["NgayVao"].ToString());
                 dateNgayRa.DateTime = Utils.ToDateTime(dr["NgayRa"].ToString());
-                txtSoNgayDTri.Text =Utils.ToInt( dr["SoNgayDieuTri"],(dateNgayRa.DateTime-dateNgayVao.DateTime).Days).ToString();
+                txtSoNgayDTri.Text = Utils.ToInt(dr["SoNgayDieuTri"], (dateNgayRa.DateTime - dateNgayVao.DateTime).Days + 1).ToString();
                 cbKQDieuTri.SelectedIndex = Utils.ToInt(dr["KetQuaDieuTri"],1) - 1;
                 cbTTRaVien.SelectedIndex = Utils.ToInt(dr["TinhTrangRaVien"],1) - 1;
                 if (cbKQDieuTri.SelectedIndex < 0)
@@ -638,6 +638,38 @@ namespace TiepNhan.GUI
             }
         }
 
+        private void btnDVKyThuat_Click(object sender, EventArgs e)
+        {
+            if (KiemTraBenhBacSi())
+            {
+                FrmDichVuChiTiet frm = new FrmDichVuChiTiet();
+                frm.MaLK = thanhtoan.MaLK;
+                frm.MaKhoa = lookUpKhoa.EditValue.ToString();
+                frm.MaBacSi = lookUpBacSi.EditValue.ToString();
+                frm.ShowDialog();
+                dataDichVu = thanhtoan.DSDichVuChiTiet();
+                //dataThuoc = thanhtoan.DSThuocChiTiet();
+                //dataVTYT = thanhtoan.DSVTYTChiTiet();
+                LoadCongKham();
+            }
+        }
+
+        private void btnVatTuYTe_Click(object sender, EventArgs e)
+        {
+            if (KiemTraBenhBacSi())
+            {
+                FrmVatTuChiTiet frm = new FrmVatTuChiTiet();
+                frm.MaLK = thanhtoan.MaLK;
+                frm.MaKhoa = lookUpKhoa.EditValue.ToString();
+                frm.MaBacSi = lookUpBacSi.EditValue.ToString();
+                frm.ShowDialog();
+                //dataDichVu = thanhtoan.DSDichVuChiTiet();
+                //dataThuoc = thanhtoan.DSThuocChiTiet();
+                dataVTYT = thanhtoan.DSVTYTChiTiet();
+                LoadCongKham();
+            }
+        }
+
         private void TaoFileXML()
         {
             try
@@ -1030,7 +1062,7 @@ namespace TiepNhan.GUI
             row.Cells.Add(cell);
 
             cell = new XRTableCell();
-            cell.Text = Utils.ToString(tienBNTT+tienNgoaiBH);
+            cell.Text = Utils.ToString(tongTien - tienBHTT);
             cell.Font = fontB;
             cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             cell.WidthF = 99;
@@ -1040,7 +1072,7 @@ namespace TiepNhan.GUI
 
             rpt.xrLabelChuTongTien.Text = Utils.ChuyenSo(String.Format("{0:0}", tongTien));
             rpt.xrLabelChuBHTT.Text = Utils.ChuyenSo(String.Format("{0:0}", tienBHTT));
-            rpt.xrLabelChuBNTT.Text = Utils.ChuyenSo(String.Format("{0:0}", tienBNTT+tienNgoaiBH));
+            rpt.xrLabelChuBNTT.Text = Utils.ChuyenSo(String.Format("{0:0}", tongTien - tienBHTT));
             //
             rpt.CreateDocument();
             if (view)

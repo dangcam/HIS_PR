@@ -216,6 +216,12 @@
     <Compile Include="UC_VatTu.Designer.cs">
       <DependentUpon>UC_VatTu.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_VatTuYTe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_VatTuYTe.Designer.cs">
+      <DependentUpon>UC_VatTuYTe.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FrmDanhMucCSKCB.resx">
@@ -272,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_VatTu.resx">
       <DependentUpon>UC_VatTu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_VatTuYTe.resx">
+      <DependentUpon>UC_VatTuYTe.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

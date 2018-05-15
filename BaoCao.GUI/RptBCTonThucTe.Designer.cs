@@ -124,6 +124,7 @@
             this.xrLabel20 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel19 = new DevExpress.XtraReports.UI.XRLabel();
             this.lblNgayLap = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLine1 = new DevExpress.XtraReports.UI.XRLine();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTableHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
@@ -133,17 +134,17 @@
             // Detail
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLine1,
             this.xrTable});
-            this.Detail.HeightF = 25F;
+            this.Detail.HeightF = 27F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
             // xrTable
             // 
-            this.xrTable.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dash;
-            this.xrTable.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrTable.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
+            this.xrTable.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrTable.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTable.LocationFloat = new DevExpress.Utils.PointFloat(0.5F, 0F);
             this.xrTable.Name = "xrTable";
@@ -1135,6 +1136,13 @@
             this.lblNgayLap.Text = "Ngày 08 tháng 08 năm 2017";
             this.lblNgayLap.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
+            // xrLine1
+            // 
+            this.xrLine1.LineStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+            this.xrLine1.LocationFloat = new DevExpress.Utils.PointFloat(1F, 25F);
+            this.xrLine1.Name = "xrLine1";
+            this.xrLine1.SizeF = new System.Drawing.SizeF(1106F, 2F);
+            // 
             // RptBCTonThucTe
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1257,5 +1265,6 @@
         public DevExpress.XtraReports.UI.XRTableCell xrCellGTNhap;
         public DevExpress.XtraReports.UI.XRTableCell xrCellGTXuat;
         public DevExpress.XtraReports.UI.XRTableCell xrCellGTTonCuoi;
+        private DevExpress.XtraReports.UI.XRLine xrLine1;
     }
 }

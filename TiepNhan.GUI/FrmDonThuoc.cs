@@ -118,7 +118,7 @@ namespace TiepNhan.GUI
                 drvNew["DonViTinh"] = dr["DonViTinh"];
                 drvNew["SoLuong"] = txtSoLuong.Value;
                 drvNew["DonGia"] = dr["GiaBHYT"];
-                drvNew["ThanhTien"] = Utils.ToDecimal(dr["GiaBHYT"].ToString()) * txtSoLuong.Value;
+                drvNew["ThanhTien"] = Utils.ToDouble(dr["GiaBHYT"].ToString()) *Utils.ToDouble( txtSoLuong.Value.ToString());
                 drvNew["LieuDung"] = "Ngày " + dicDuongDung[dr["MaDuongDung"].ToString()].ToLower()
                     + " " + txtNgayUong.Value + " lần, lần " + txtLanUong.Value + " " + dr["DonViTinh"].ToString().ToLower();
                 drvNew["NgayYLenh"] = dateNgayYLenh.DateTime;

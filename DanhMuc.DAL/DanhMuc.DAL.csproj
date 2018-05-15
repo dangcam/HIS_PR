@@ -93,6 +93,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThuocNgoaiDMEntity.cs" />
     <Compile Include="VatTuEntity.cs" />
+    <Compile Include="VatTuYTeEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core.DAL\Core.DAL.csproj">

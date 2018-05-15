@@ -13,7 +13,10 @@ namespace Core.DAL
 {
     public class Utils
     {
+        //<add key = "urldaotao" value="https://wsdt.baohiemxahoi.gov.vn" />
+        //<add key = "urlchinh" value="https://egw.baohiemxahoi.gov.vn" />
         // Thông tin Token
+        private static string url = "https://egw.baohiemxahoi.gov.vn";
         private static KQPhienLamViec phienLamViec = new KQPhienLamViec();
         //
         private static System.Globalization.CultureInfo elGR = System.Globalization.CultureInfo.CreateSpecificCulture("el-GR");
@@ -516,7 +519,7 @@ namespace Core.DAL
             {
                 try
                 {
-                    client.BaseAddress = new Uri("https://egw.baohiemxahoi.gov.vn/");
+                    client.BaseAddress = new Uri(url);
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                     if (phienLamViec == null ||
@@ -587,7 +590,7 @@ namespace Core.DAL
             {
                 try
                 {
-                    client.BaseAddress = new Uri("https://egw.baohiemxahoi.gov.vn/");
+                    client.BaseAddress = new Uri(url);
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                     // lấy phiên làm việc
@@ -640,7 +643,7 @@ namespace Core.DAL
             {
                 try
                 {
-                    client.BaseAddress = new Uri("https://egw.baohiemxahoi.gov.vn/");
+                    client.BaseAddress = new Uri(url);
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                     client.MaxResponseContentBufferSize = 2000005000L;
@@ -687,7 +690,7 @@ namespace Core.DAL
             {
                 try
                 {
-                    client.BaseAddress = new Uri("https://egw.baohiemxahoi.gov.vn/");
+                    client.BaseAddress = new Uri(url);
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                     string err = await GetToken();

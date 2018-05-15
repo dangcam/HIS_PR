@@ -51,6 +51,7 @@ namespace TiepNhan.GUI
         }
         private void FrmKhamBenhNoiTru_Load(object sender, EventArgs e)
         {
+            cbLoai.SelectedIndex = 1;
             lookUpBacSi.ItemIndex = 0;
             lookUpKhoa.EditValue = AppConfig.MaKhoa;
             dateTuNgay.DateTime = dateDenNgay.DateTime = DateTime.Now;
@@ -59,11 +60,11 @@ namespace TiepNhan.GUI
         private void LoadData()
         {
             gridControl.DataSource = khambenh.DSBenhNhanNoiTru(dateTuNgay.DateTime.ToShortDateString(),
-                dateDenNgay.DateTime.ToShortDateString(),lookUpKhoa.EditValue.ToString());
+                dateDenNgay.DateTime.ToShortDateString(),lookUpKhoa.EditValue.ToString(), cbLoai.SelectedIndex);
         }
         private void LamMoiDS()
         {
-            gridControl.DataSource = khambenh.DSBenhNhanNoiTru(lookUpKhoa.EditValue.ToString());
+            gridControl.DataSource = khambenh.DSBenhNhanNoiTru(lookUpKhoa.EditValue.ToString(),cbLoai.SelectedIndex);
         }
         private void LoadDataChiTiet()
         {

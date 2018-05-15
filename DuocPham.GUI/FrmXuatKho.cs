@@ -281,7 +281,7 @@ namespace DuocPham.GUI
                 {
                     DevExpress.XtraEditors.XtraMessageBox.Show (err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                //btnIn.Enabled = true;
+                btnIn.Enabled = true;
                 them = false;
                 dsVatTu.Clear();
             }

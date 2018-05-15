@@ -20,6 +20,7 @@ namespace DanhMuc.GUI
         UC_DVKT ucDVKT;
         UC_NhomCanLamSan ucNhomCanLamSan;
         UC_ThuocNgoaiDM ucThuocNgoaiDM;
+        UC_VatTuYTe ucVatTuYTe;
         public FrmDanhMucCSKCB ()
         {
             InitializeComponent ();
@@ -100,6 +101,17 @@ namespace DanhMuc.GUI
                 panelControl.Controls.Add(ucThuocNgoaiDM);
             }
             ucThuocNgoaiDM.BringToFront();
+        }
+
+        private void navBarVatTuYTe_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            if (!panelControl.Controls.Contains(ucVatTuYTe))
+            {
+                ucVatTuYTe = new UC_VatTuYTe();
+                ucVatTuYTe.Dock = DockStyle.Fill;
+                panelControl.Controls.Add(ucVatTuYTe);
+            }
+            ucVatTuYTe.BringToFront();
         }
     }
 }

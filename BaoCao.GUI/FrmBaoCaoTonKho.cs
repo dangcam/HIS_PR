@@ -221,5 +221,20 @@ namespace BaoCao.GUI
                 SplashScreenManager.CloseForm();
             }
         }
+
+        private void btnBangKe_Click(object sender, EventArgs e)
+        {
+            SplashScreenManager.ShowForm(typeof(WaitFormLoad));
+            RptBCTonThucTe rpt = new RptBCTonThucTe();
+            rpt.lblThoiGian.Text = nhapxuat.TuNgay.ToString("dd/MM/yy") + " đến " + nhapxuat.DenNgay.ToString("dd/MM/yy");
+            rpt.lblNgayLap.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            if (dataTonKho.Select("SLTonCuoi=0").Count() > 0)
+                rpt.DataSource = dataTonKho.Select("SLTonCuoi=0").CopyToDataTable();
+            else
+                rpt.DataSource = null;
+            rpt.CreateDocument();
+            rpt.ShowPreviewDialog();
+            SplashScreenManager.CloseForm();
+        }
     }
 }

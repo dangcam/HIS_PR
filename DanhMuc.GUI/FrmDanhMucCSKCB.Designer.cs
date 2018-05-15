@@ -37,8 +37,9 @@
             this.navBarCongKham = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarDVKT = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarNhomCanLamSan = new DevExpress.XtraNavBar.NavBarItem();
-            this.panelControl = new DevExpress.XtraEditors.PanelControl();
             this.navBarThuocNgoaiDM = new DevExpress.XtraNavBar.NavBarItem();
+            this.panelControl = new DevExpress.XtraEditors.PanelControl();
+            this.navBarVatTuYTe = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).BeginInit();
             this.splitContainerControl.SuspendLayout();
@@ -87,7 +88,8 @@
             this.navBarCongKham,
             this.navBarDVKT,
             this.navBarNhomCanLamSan,
-            this.navBarThuocNgoaiDM});
+            this.navBarThuocNgoaiDM,
+            this.navBarVatTuYTe});
             this.navBarControl.Location = new System.Drawing.Point(0, 0);
             this.navBarControl.Name = "navBarControl";
             this.navBarControl.OptionsNavPane.ExpandedWidth = 178;
@@ -105,7 +107,8 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarCongKham),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarDVKT),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarNhomCanLamSan),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarThuocNgoaiDM)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarThuocNgoaiDM),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarVatTuYTe)});
             this.navBarGroupDMCSKCB.Name = "navBarGroupDMCSKCB";
             // 
             // navBarGiuongBenh
@@ -136,6 +139,13 @@
             this.navBarNhomCanLamSan.Name = "navBarNhomCanLamSan";
             this.navBarNhomCanLamSan.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarNhomCanLamSan_LinkClicked);
             // 
+            // navBarThuocNgoaiDM
+            // 
+            this.navBarThuocNgoaiDM.Caption = "Thuốc ngoài danh mục";
+            this.navBarThuocNgoaiDM.ImageOptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarThuocNgoaiDM.ImageOptions.SmallImage")));
+            this.navBarThuocNgoaiDM.Name = "navBarThuocNgoaiDM";
+            this.navBarThuocNgoaiDM.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarThuocNgoaiDM_LinkClicked);
+            // 
             // panelControl
             // 
             this.panelControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -144,12 +154,12 @@
             this.panelControl.Size = new System.Drawing.Size(681, 456);
             this.panelControl.TabIndex = 0;
             // 
-            // navBarThuocNgoaiDM
+            // navBarVatTuYTe
             // 
-            this.navBarThuocNgoaiDM.Caption = "Thuốc ngoài danh mục";
-            this.navBarThuocNgoaiDM.ImageOptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarThuocNgoaiDM.ImageOptions.SmallImage")));
-            this.navBarThuocNgoaiDM.Name = "navBarThuocNgoaiDM";
-            this.navBarThuocNgoaiDM.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarThuocNgoaiDM_LinkClicked);
+            this.navBarVatTuYTe.Caption = "Vật tư y tế";
+            this.navBarVatTuYTe.ImageOptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarVatTuYTe.ImageOptions.SmallImage")));
+            this.navBarVatTuYTe.Name = "navBarVatTuYTe";
+            this.navBarVatTuYTe.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarVatTuYTe_LinkClicked);
             // 
             // FrmDanhMucCSKCB
             // 
@@ -186,5 +196,6 @@
         private DevExpress.XtraNavBar.NavBarItem navBarDVKT;
         private DevExpress.XtraNavBar.NavBarItem navBarNhomCanLamSan;
         private DevExpress.XtraNavBar.NavBarItem navBarThuocNgoaiDM;
+        private DevExpress.XtraNavBar.NavBarItem navBarVatTuYTe;
     }
 }

@@ -816,7 +816,6 @@ namespace TiepNhan.GUI
                 lblSoLuong.Text = data.Length.ToString();
             }
         }
-
         private void gridView_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             DataRow dr = gridView.GetDataRow(e.RowHandle);
@@ -966,6 +965,62 @@ namespace TiepNhan.GUI
                         ChuyenPhong(0);
                     }
                 }
+            }
+        }
+
+        private void btnSuaThongTin_Click(object sender, EventArgs e)
+        {
+            DataRow dr = gridViewDS.GetFocusedDataRow();
+            if (dr != null)
+            {
+                themMoi = false;
+                btnInLai.Enabled = true;
+                Enabled_Luu();
+                tiepnhan.MaLK = dr["MaLK"].ToString();
+                //
+                txtMaBN.Text = dr["MaBN"].ToString();
+                txtHoTen.Text = dr["HoTen"].ToString();
+                txtNgaySinh.Text = dr["NgaySinh"].ToString();
+                txtDiaChi.Text = dr["DiaChi"].ToString();
+                cbGioiTinh.SelectedIndex = Utils.ToInt(dr["GioiTinh"]);
+                txtSTTNgay.Text = dr["STTNgay"].ToString();
+                cbLyDoVaoVien.SelectedIndex = Utils.ToInt(dr["MaLyDoVaoVien"]) - 1;
+                int tinhTrang = Utils.ToInt(dr["TinhTrang"]);
+                checkUuTien.Checked = false;
+                checkCapCuu.Checked = false;
+                if (tinhTrang == 1)
+                    checkUuTien.Checked = true;
+                if (tinhTrang == 2)
+                    checkCapCuu.Checked = true;
+                txtCanNang.Text = dr["CanNang"].ToString();
+                lookUpTaiNan.EditValue = dr["MaTaiNan"];
+                lookUpNoiChuyenDen.EditValue = dr["MaNoiChuyenDen"];
+                checkBHYT.Checked = Utils.ToBoolean(dr["CoThe"]);
+                lookUpMaKhoa.EditValue = dr["MaKhoa"];
+                if (checkBHYT.Checked)
+                {
+                    this.txtTheBHYT.EditValueChanged -= new System.EventHandler(this.txtTheBHYT_EditValueChanged);
+                    txtTheBHYT.Text = dr["MaThe"].ToString();
+                    this.txtTheBHYT.EditValueChanged += new System.EventHandler(this.txtTheBHYT_EditValueChanged);
+                    txtTheTu.Text = Utils.ToDateTime(dr["TheTu"].ToString()).ToString("dd/MM/yyyy");
+                    txtTheDen.Text = Utils.ToDateTime(dr["TheDen"].ToString()).ToString("dd/MM/yyyy");
+                    txtTyLe.Text = dr["MucHuong"].ToString();
+                    txtMucHuong.Text = txtTheBHYT.Text.Substring(2, 1);
+                    cbKhuVuc.SelectedItem = dr["MaKhuVuc"];
+                    txtMaDKKCB.Text = dr["MaDKBD"].ToString();
+                    // lấy tên cơ sở
+                    object ten = lookUpNoiChuyenDen.Properties.GetDisplayValueByKeyValue(txtMaDKKCB.Text);
+                    if (ten != null)
+                        txtTenDKKCB.Text = ten.ToString();
+                    else
+                        txtTenDKKCB.Text = null;
+                    txtDu5Nam.Text = null;
+                    if (!string.IsNullOrEmpty(dr["MienCungCT"].ToString()))
+                    {
+                        txtDu5Nam.Text = Utils.ToDateTime(dr["MienCungCT"].ToString()).ToString("dd/MM/yyyy");
+                    }
+                }
+                xtraTabControl.SelectedTabPageIndex = 0;
             }
         }
 

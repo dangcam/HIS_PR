@@ -146,7 +146,7 @@ namespace DanhMuc.GUI
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if(txtMa.Text.Length>0)
+            if(txtMa.Text.Length<1)
             {
                 XtraMessageBox.Show("Nhập mã dịch vụ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

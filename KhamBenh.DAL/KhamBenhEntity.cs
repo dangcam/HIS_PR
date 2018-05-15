@@ -101,19 +101,45 @@ namespace KhamBenh.DAL
                 + ngayVao + "' AS DATE) And (Phong = "+phong+" Or "+phong+ " = 0) And MaCoSoKCB='"+AppConfig.CoSoKCB+"'  Order By STTNgay ASC",
                 CommandType.Text, null);
         }
-        public DataTable DSBenhNhanNoiTru(string tuNgay, string denNgay, string maKhoa)
+        public DataTable DSBenhNhanNoiTru(string tuNgay, string denNgay, string maKhoa,int loai)
         {
-            return db.ExcuteQuery("Select * From ThongTinBNChiTiet Where MaLoaiKCB > 1 And MaKhoa = '" + maKhoa + "' " +
-                "And CONVERT(Date,NgayVao) Between CONVERT(Date,'" + tuNgay + "') And CONVERT(Date,'" + denNgay + "') And NgayRa is NULL " +
+            if (loai == 0)
+                return db.ExcuteQuery("Select * From ThongTinBNChiTiet Where MaLoaiKCB > 1 And MaKhoa = '" + maKhoa + "' " +
+                "And CONVERT(Date,NgayVao) Between CONVERT(Date,'" + tuNgay + "') And CONVERT(Date,'" + denNgay + "') " +
                 "And MaCoSoKCB = '"+AppConfig.CoSoKCB+"'",
                 CommandType.Text, null);
+            else
+                if (loai == 1)
+                return db.ExcuteQuery("Select * From ThongTinBNChiTiet Where MaLoaiKCB > 1 And MaKhoa = '" + maKhoa + "' " +
+                "And CONVERT(Date,NgayVao) Between CONVERT(Date,'" + tuNgay + "') And CONVERT(Date,'" + denNgay + "') And NgayRa is NULL " +
+                "And MaCoSoKCB = '" + AppConfig.CoSoKCB + "'",
+                CommandType.Text, null);
+            else
+                return db.ExcuteQuery("Select * From ThongTinBNChiTiet Where MaLoaiKCB > 1 And MaKhoa = '" + maKhoa + "' " +
+                "And CONVERT(Date,NgayVao) Between CONVERT(Date,'" + tuNgay + "') And CONVERT(Date,'" + denNgay + "') And NgayRa is not NULL " +
+                "And MaCoSoKCB = '" + AppConfig.CoSoKCB + "'",
+                CommandType.Text, null);
+
         }
-        public DataTable DSBenhNhanNoiTru(string maKhoa)
+        public DataTable DSBenhNhanNoiTru(string maKhoa, int loai)
         {
+            if(loai==0)
             return db.ExcuteQuery("Select * From ThongTinBNChiTiet Where MaLoaiKCB > 1 And MaKhoa = '" + maKhoa + "' " +
                 //"And NgayRa is NULL " +
                 "And MaCoSoKCB = '" + AppConfig.CoSoKCB + "'",
                 CommandType.Text, null);
+            else
+                if(loai == 1)
+                return db.ExcuteQuery("Select * From ThongTinBNChiTiet Where MaLoaiKCB > 1 And MaKhoa = '" + maKhoa + "' " +
+                "And NgayRa is NULL " +
+                "And MaCoSoKCB = '" + AppConfig.CoSoKCB + "'",
+                CommandType.Text, null);
+            else
+                return db.ExcuteQuery("Select * From ThongTinBNChiTiet Where MaLoaiKCB > 1 And MaKhoa = '" + maKhoa + "' " +
+                "And NgayRa is not NULL " +
+                "And MaCoSoKCB = '" + AppConfig.CoSoKCB + "'",
+                CommandType.Text, null);
+
         }
         public DataTable DSChiTietThuoc(string maKhoa, DateTime tuNgay, DateTime denNgay)
         {

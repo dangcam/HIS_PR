@@ -118,7 +118,7 @@
             this.ribbonControl.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
-            this.ribbonControl.Size = new System.Drawing.Size(842, 30);
+            this.ribbonControl.Size = new System.Drawing.Size(842, 27);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
             // 
             // layoutControlMain
@@ -134,10 +134,10 @@
             this.layoutControlMain.Controls.Add(this.dateNgayYLenh);
             this.layoutControlMain.Controls.Add(this.lookUpDichVu);
             this.layoutControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControlMain.Location = new System.Drawing.Point(0, 30);
+            this.layoutControlMain.Location = new System.Drawing.Point(0, 27);
             this.layoutControlMain.Name = "layoutControlMain";
             this.layoutControlMain.Root = this.layoutControlGroupMain;
-            this.layoutControlMain.Size = new System.Drawing.Size(842, 366);
+            this.layoutControlMain.Size = new System.Drawing.Size(842, 369);
             this.layoutControlMain.TabIndex = 1;
             // 
             // gridControl
@@ -148,7 +148,7 @@
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repBtnXoa});
-            this.gridControl.Size = new System.Drawing.Size(818, 261);
+            this.gridControl.Size = new System.Drawing.Size(818, 264);
             this.gridControl.TabIndex = 10;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -349,6 +349,7 @@
             this.btnDong.StyleController = this.layoutControlMain;
             this.btnDong.TabIndex = 4;
             this.btnDong.Text = "Đóng";
+            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
             // txtKetLuan
             // 
@@ -538,7 +539,7 @@
             this.layoutControlItem9,
             this.layoutControlItem10});
             this.layoutControlGroupMain.Name = "Root";
-            this.layoutControlGroupMain.Size = new System.Drawing.Size(842, 366);
+            this.layoutControlGroupMain.Size = new System.Drawing.Size(842, 369);
             this.layoutControlGroupMain.TextVisible = false;
             // 
             // layoutControlItem1
@@ -582,7 +583,7 @@
             this.layoutControlItem7.Control = this.gridControl;
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 81);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(822, 265);
+            this.layoutControlItem7.Size = new System.Drawing.Size(822, 268);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 

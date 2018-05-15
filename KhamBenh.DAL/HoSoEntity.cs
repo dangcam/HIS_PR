@@ -58,12 +58,27 @@ namespace KhamBenh.DAL
         }
         public DataTable DSDichVuChiTiet()
         {
-            return db.ExcuteQuery("Select * From " +
-                "(Select MaLK,MaDichVu,MaNhom,TenDichVu,DonViTinh,SoLuong,DonGia," +
-                "ThanhTien,MaKhoa,MaGiuong,MaBacSi,NgayYLenh,NgayKQ" +
-                " From DichVuChiTiet Where MaLK ='" + MaLK + "' And MaNhom != 15 And MaNhom != 13) AS DV" +
-                " LEFT JOIN HoSoCanLamSan ON HoSoCanLamSan.MaDichVu = DV.MaDichVu",
+            return db.ExcuteQuery(" " +
+                "Select DichVuChiTiet.MaLK,DichVuChiTiet.MaDichVu,MaNhom,TenDichVu,DonViTinh,SoLuong,DonGia," +
+                "ThanhTien,MaKhoa,MaGiuong,MaBacSi,NgayYLenh,DichVuChiTiet.NgayKQ,GiaTri,MoTa,KetLuan,MaChiSo," +
+                "MaMay " +
+                " From DichVuChiTiet,HoSoCanLamSan Where DichVuChiTiet.MaLK ='" + MaLK + "' And MaNhom != 15 And MaNhom != 13 " +
+                " AND HoSoCanLamSan.MaDichVu = DichVuChiTiet.MaDichVu And HoSoCanLamSan.MaLK ='" + MaLK + "'",
                 CommandType.Text, null);
+
+            //return db.ExcuteQuery("Select * From " +
+            //    "(Select MaLK,MaDichVu,MaNhom,TenDichVu,DonViTinh,SoLuong,DonGia," +
+            //    "ThanhTien,MaKhoa,MaGiuong,MaBacSi,NgayYLenh,NgayKQ" +
+            //    " From DichVuChiTiet Where MaLK ='" + MaLK + "' And MaNhom != 15 And MaNhom != 13) AS DV" +
+            //    " LEFT JOIN HoSoCanLamSan ON HoSoCanLamSan.MaDichVu = DV.MaDichVu",
+            //    CommandType.Text, null);
+
+            //return db.ExcuteQuery("Select DichVuChiTiet.MaDichVu,TenDichVu,GiaTri,MoTa,KetLuan,DonViTinh,SoLuong,DonGia," +
+            //   "ThanhTien,MaKhoa,MaGiuong,MaBacSi,NgayYLenh,DichVuChiTiet.NgayKQ " +
+            //   "From DichVuChiTiet,HoSoCanLamSan " +
+            //   "Where DichVuChiTiet.MaLK ='" + MaLK + "' And DichVuChiTiet.MaDichVu = HoSoCanLamSan.MaDichVu " +
+            //   "And HoSoCanLamSan.MaLK = '" + MaLK + "'",
+            //   CommandType.Text, null);
         }
         public bool SpDichVuChiTiet(ref string err, string Action)
         {

@@ -85,8 +85,8 @@ namespace KhamBenh.DAL
         }
         public DataTable DSTiepNhan(string ngayBT, string ngayKT)
         {
-            return db.ExcuteQuery("Select MaLK,MaBN,HoTen,NgaySinh,GioiTinh,DiaChi,MaThe,MaDKBD,TheTu,TheDen," +
-                "TenBenh,MaBenh,MaLyDoVaoVien,MaNoiChuyenDen,NgayVao,NgayRa,KetQuaDieuTri," +
+            return db.ExcuteQuery("Select MaLK,MaBN,HoTen,NgaySinh,GioiTinh,DiaChi,MaThe,MaDKBD,TheTu,TheDen,MienCungCT," +
+                "TenBenh,MaBenh,MaLyDoVaoVien,MaNoiChuyenDen,MaTaiNan,NgayVao,NgayRa,KetQuaDieuTri," +
                 "TinhTrangRaVien,NgayThanhToan,MucHuong,MaLoaiKCB,MaKhoa,MaCoSoKCB,MaKhuVuc,CanNang,STTNgay," +
                 "STTPhong,Phong,TinhTrang,CoThe From ThongTinBNChiTiet Where CAST(NgayVao AS DATE) Between  CAST('"
                 + ngayBT + "' AS DATE) And  CAST('"+ ngayKT + "' AS DATE) And MaCoSoKCB = '" + AppConfig.CoSoKCB + "'  Order By STTNgay ASC",
