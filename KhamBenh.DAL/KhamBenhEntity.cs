@@ -73,6 +73,27 @@ namespace KhamBenh.DAL
             return db.ExcuteQuery("Select * From DonThuocChiTiet Where MaLK ='" + MaLK + "' ",
                 CommandType.Text, null);
         }
+        public DataTable DSThuocChiTietGroup()
+        {
+            return db.ExcuteQuery("Select TenThuoc,DonViTinh,Sum(SoLuong) as SoLuong," +
+                "ROW_NUMBER() OVER(ORDER BY TenThuoc) STT " +
+                "From DonThuocChiTiet Where MaLK ='" + MaLK + "' Group by TenThuoc,DonViTinh",
+                CommandType.Text, null);
+        }
+        public DataTable DSDichVuChiTietGroup()
+        {
+            return db.ExcuteQuery("Select TenDichVu,DonViTinh,Sum(SoLuong) as SoLuong," +
+                "ROW_NUMBER() OVER(ORDER BY TenDichVu) STT " +
+                "From DichVuChiTiet Where MaLK ='" + MaLK + "' Group by TenDichVu,DonViTinh",
+                CommandType.Text, null);
+        }
+        public DataTable DSVatTuChiTietGroup()
+        {
+            return db.ExcuteQuery("Select TenVatTu,DonViTinh,Sum(SoLuong) as SoLuong," +
+                "ROW_NUMBER() OVER(ORDER BY TenVatTu) STT " +
+                "From VatTuChiTiet Where MaLK ='" + MaLK + "' Group by TenVatTu,DonViTinh",
+                CommandType.Text, null);
+        }
         public string GetMaBacSi()
         {
             DataTable data = db.ExcuteQuery("Select Top 1 MaBacSi From DonThuocChiTiet Where MaLK ='" + MaLK + "' ", CommandType.Text, null);

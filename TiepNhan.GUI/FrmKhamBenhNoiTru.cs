@@ -464,5 +464,25 @@ namespace TiepNhan.GUI
         {
             LamMoiDS();
         }
+
+        private void btnPhieuDieuTri_Click(object sender, EventArgs e)
+        {
+            SplashScreenManager.ShowForm(typeof(WaitFormLoad));
+            RptPhieuDieuTri rpt = new RptPhieuDieuTri();
+            rpt.xrlblHoTen.Text = drThongTin["HoTen"].ToString();
+            rpt.xrlblDinhBenh.Text = drThongTin["TenBenh"].ToString();
+            rpt.xrlblGioiTinh.Text = (drThongTin["GioiTinh"].ToString() == "0")? "Nam" : "Nữ";
+            rpt.xrlblNamSinh.Text = drThongTin["NgaySinh"].ToString();
+            rpt.xrlblKhoa.Text = lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();
+
+            rpt.DetailReportThuoc.DataSource = khambenh.DSThuocChiTietGroup();
+            rpt.DetailReportVatTu.DataSource = khambenh.DSVatTuChiTietGroup();
+            rpt.DetailReportDichVu.DataSource = khambenh.DSDichVuChiTietGroup();
+
+            rpt.CreateDocument();
+            rpt.ShowPreviewDialog();
+
+            SplashScreenManager.CloseForm();
+        }
     }
 }

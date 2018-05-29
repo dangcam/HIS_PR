@@ -414,7 +414,10 @@ namespace BaoCao.GUI
                 arr[r, 4] = (lookUpKhoa.EditValue.Equals("K01_13"))? "161":"141";// dr[""];//MaTKNo Ngoại trú: 161, Nội trú: 141
                 arr[r, 5] = "156"+ dr["LoaiVatTu"];//MaTKCo
                 arr[r, 6] = "";//dr[""];//MaVTHHNo
-                arr[r, 7] = maVatTu[dr["MaBV"].ToString()];//MaVTHHCo
+                if (maVatTu.ContainsKey(dr["MaBV"].ToString()))
+                    arr[r, 7] = maVatTu[dr["MaBV"].ToString()];//MaVTHHCo
+                else
+                    arr[r, 7] = dr["MaBV"].ToString();
                 arr[r, 8] = dr["TenVatTu"];//TenHangHoa
                 arr[r, 9] = dr["DonViTinh"];//DonViTinh
                 arr[r, 10] = dr["SoLuong"];//SoLuong

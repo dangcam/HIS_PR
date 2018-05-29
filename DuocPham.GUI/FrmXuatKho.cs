@@ -306,7 +306,15 @@ namespace DuocPham.GUI
                 xuatkho.HetHan = DateTime.Parse (drv["HetHan"].ToString ());
                 xuatkho.ThanhTien = Utils.ToDecimal (drv["ThanhTien"].ToString ());
                 xuatkho.LoaiVatTu = drv["LoaiVatTu"].ToString ();
-                if(them)
+                if (checkGiaBV.Checked || xuatkho.DonGiaBHYT == 0)
+                {
+                    xuatkho.ThanhTien = xuatkho.SoLuong * xuatkho.DonGiaBV;                  
+                }
+                else
+                {
+                    xuatkho.ThanhTien = xuatkho.SoLuong * xuatkho.DonGiaBHYT;
+                }
+                if (them)
                 {
                     xuatkho.SpThemPhieuXuatChiTiet (ref err);// insert vào số lô, 
                     
@@ -320,7 +328,11 @@ namespace DuocPham.GUI
                         xuatkho.SpThemPhieuXuatChiTiet(ref err);
                         dsVatTu[xuatkho.SoPhieuNhap + "|" + xuatkho.MaVatTu] = false;
                     }
-                    //xuatkho.SpSuaPhieuNhapChiTiet(ref err);
+                    else
+                    {
+                        xuatkho.SpSuaPhieuXuatChiTiet(ref err);
+                        //xuatkho.SpSuaPhieuNhapChiTiet(ref err);
+                    }
                 }
                 if (!string.IsNullOrEmpty (err))
                 {
@@ -474,9 +486,9 @@ namespace DuocPham.GUI
                 cell.WidthF = 80;
                 row.Cells.Add (cell);
 
-                this.thanhTien += Utils.ToDecimal(drview["ThanhTien"]); //soLuong * donGia;
+                this.thanhTien += soLuong * donGia; //Utils.ToDecimal(drview["ThanhTien"]); //soLuong * donGia;
                 cell = new XRTableCell ();
-                cell.Text = Utils.ToString (Utils.ToDecimal(drview["ThanhTien"]));
+                cell.Text = Utils.ToString(soLuong * donGia);//Utils.ToDecimal(drview["ThanhTien"]));
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
                 cell.WidthF = 96;

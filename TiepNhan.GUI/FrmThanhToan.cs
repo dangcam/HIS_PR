@@ -402,7 +402,9 @@ namespace TiepNhan.GUI
                 }
                 thanhtoan.MaBenh = maBenh;
                 thanhtoan.TenBenh = txtTenBenh.Text;
+                
                 thanhtoan.NgayRa = dateNgayRa.DateTime;
+                thanhtoan.NgayVao = dateNgayVao.DateTime;
                 thanhtoan.SoNgayDieuTri = Utils.ToInt(txtSoNgayDTri.Text);
                 thanhtoan.KetQuaDieuTri = cbKQDieuTri.SelectedIndex + 1;
                 thanhtoan.TinhTrangRaVien = cbTTRaVien.SelectedIndex + 1;
@@ -612,16 +614,16 @@ namespace TiepNhan.GUI
 
         private void cbLoaiKCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbLoaiKCB.SelectedIndex==0)
-            {
-                btnCongKham.Enabled = true;
-                btnNgayGiuong.Enabled = false;
-            }
-            else
-            {
-                btnCongKham.Enabled = false;
-                btnNgayGiuong.Enabled = true;
-            }
+            //if(cbLoaiKCB.SelectedIndex==0)
+            //{
+            //    btnCongKham.Enabled = true;
+            //    btnNgayGiuong.Enabled = false;
+            //}
+            //else
+            //{
+            //    btnCongKham.Enabled = false;
+            //    btnNgayGiuong.Enabled = true;
+            //}
         }
 
         private void btnNgayGiuong_Click(object sender, EventArgs e)

@@ -6,7 +6,7 @@
   <Connection>
     <ServerName>192.168.1.40</ServerName>
     <Database>HIS_PR</Database>
-    <UserName>dangcam.pr</UserName>
+    <UserName>bvdk</UserName>
     <Password>123456</Password>
   </Connection>
   <Config>

@@ -109,6 +109,9 @@
             this.layoutControlItem25 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem26 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.checkKeDon = new DevExpress.XtraEditors.CheckEdit();
+            this.layoutControlItem28 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.KeDon = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNhomThau.Properties)).BeginInit();
@@ -165,10 +168,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkKeDon.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl
             // 
+            this.layoutControl.Controls.Add(this.checkKeDon);
             this.layoutControl.Controls.Add(this.txtNhomThau);
             this.layoutControl.Controls.Add(this.cbLoaiThau);
             this.layoutControl.Controls.Add(this.lookUpGoiThau);
@@ -400,7 +406,8 @@
             this.TinhTrang,
             this.NhomThau,
             this.LoaiThau,
-            this.GoiThau});
+            this.GoiThau,
+            this.KeDon});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsFind.AlwaysVisible = true;
@@ -622,7 +629,7 @@
             this.GiaBHYT.OptionsColumn.AllowEdit = false;
             this.GiaBHYT.OptionsColumn.FixedWidth = true;
             this.GiaBHYT.Visible = true;
-            this.GiaBHYT.VisibleIndex = 17;
+            this.GiaBHYT.VisibleIndex = 18;
             this.GiaBHYT.Width = 50;
             // 
             // TinhTrang
@@ -635,7 +642,7 @@
             this.TinhTrang.OptionsColumn.AllowEdit = false;
             this.TinhTrang.OptionsColumn.FixedWidth = true;
             this.TinhTrang.Visible = true;
-            this.TinhTrang.VisibleIndex = 18;
+            this.TinhTrang.VisibleIndex = 19;
             this.TinhTrang.Width = 25;
             // 
             // repositoryItemCheckEdit
@@ -895,7 +902,8 @@
             this.layoutControlItem12,
             this.layoutControlItem25,
             this.layoutControlItem26,
-            this.layoutControlItem27});
+            this.layoutControlItem27,
+            this.layoutControlItem28});
             this.layoutControlGroup.Name = "layoutControlGroup";
             this.layoutControlGroup.Size = new System.Drawing.Size(850, 500);
             this.layoutControlGroup.TextVisible = false;
@@ -1057,7 +1065,7 @@
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(570, 208);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(158, 27);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(79, 27);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem10
@@ -1171,6 +1179,35 @@
             this.layoutControlItem27.Text = "Nhóm thầu:";
             this.layoutControlItem27.TextSize = new System.Drawing.Size(74, 13);
             // 
+            // checkKeDon
+            // 
+            this.checkKeDon.Location = new System.Drawing.Point(661, 220);
+            this.checkKeDon.Name = "checkKeDon";
+            this.checkKeDon.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkKeDon.Properties.Appearance.Options.UseFont = true;
+            this.checkKeDon.Properties.Caption = "Kê Đơn";
+            this.checkKeDon.Size = new System.Drawing.Size(75, 19);
+            this.checkKeDon.StyleController = this.layoutControl;
+            this.checkKeDon.TabIndex = 28;
+            // 
+            // layoutControlItem28
+            // 
+            this.layoutControlItem28.Control = this.checkKeDon;
+            this.layoutControlItem28.Location = new System.Drawing.Point(649, 208);
+            this.layoutControlItem28.Name = "layoutControlItem28";
+            this.layoutControlItem28.Size = new System.Drawing.Size(79, 27);
+            this.layoutControlItem28.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem28.TextVisible = false;
+            // 
+            // KeDon
+            // 
+            this.KeDon.Caption = "KĐ";
+            this.KeDon.FieldName = "KeDon";
+            this.KeDon.Name = "KeDon";
+            this.KeDon.Visible = true;
+            this.KeDon.VisibleIndex = 17;
+            this.KeDon.Width = 30;
+            // 
             // UC_VatTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1235,6 +1272,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkKeDon.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1322,5 +1361,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn NhomThau;
         private DevExpress.XtraGrid.Columns.GridColumn LoaiThau;
         private DevExpress.XtraGrid.Columns.GridColumn GoiThau;
+        private DevExpress.XtraEditors.CheckEdit checkKeDon;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem28;
+        private DevExpress.XtraGrid.Columns.GridColumn KeDon;
     }
 }

@@ -173,7 +173,7 @@ namespace DuocPham.GUI
                 arr[r, 10] = dr["SoLuong"];//SoLuong
                 arr[r, 11] = Math.Round(Utils.ToDecimal(dr["DonGia"]),2);//VNDDonGia
                 arr[r, 12] = Math.Round(Utils.ToDecimal(dr["ThanhTien"]));//VNDThanhTien
-                arr[r, 13] = dr["NguoiNhan"];//((lookUpKhoa.EditValue.Equals("K19_13")) ? "LÊ THỊ THẢO LY" : "NGUYỄN TIẾN DŨNG"); ;// dr[""];//KhachHang
+                arr[r, 13] = ((lookUpKhoa.EditValue.Equals("K19_13")) ? "LÊ THANH THẮNG" : "NGUYỄN TIẾN DŨNG"); ;////dr["NguoiNhan"];//;//KhachHang
                 arr[r, 14] = lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue);
                 // lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();// dr[""];//DiaChi
                 arr[r, 15] = dateDenNgay.DateTime.Month;// tháng

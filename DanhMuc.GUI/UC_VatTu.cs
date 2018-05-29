@@ -141,7 +141,7 @@ namespace DanhMuc.GUI
             txtQuyCach.Text = null;
             txtNhomThau.Text = null;
             cbLoaiThau.SelectedIndex = 0;
-            
+            checkKeDon.Checked = true;
             Enabled_Luu ();
         }
 
@@ -198,6 +198,7 @@ namespace DanhMuc.GUI
             vattu.LoaiThau = cbLoaiThau.SelectedIndex;
             vattu.NhomThau = txtNhomThau.Text;
             vattu.QuyCach = txtQuyCach.Text;
+            vattu.KeDon = checkKeDon.Checked;
             string err = "";
             if (them)
             {
@@ -276,6 +277,7 @@ namespace DanhMuc.GUI
                 lookUpGoiThau.EditValue = dr["GoiThau"];
                 cbLoaiThau.SelectedIndex = Utils.ToInt(dr["LoaiThau"]);
                 txtNhomThau.Text = dr["NhomThau"].ToString();
+                checkKeDon.Checked = Utils.ToBoolean(dr["KeDon"]);
                 them = false;
 
                 vattu.MaBV = txtMaBV.Text;

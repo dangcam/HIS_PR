@@ -300,6 +300,12 @@
     <Compile Include="RptDonThuocA4.Designer.cs">
       <DependentUpon>RptDonThuocA4.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptPhieuDieuTri.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptPhieuDieuTri.Designer.cs">
+      <DependentUpon>RptPhieuDieuTri.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptPhieuYeuCau.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -408,6 +414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptDonThuocA4.resx">
       <DependentUpon>RptDonThuocA4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptPhieuDieuTri.resx">
+      <DependentUpon>RptPhieuDieuTri.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptPhieuYeuCau.resx">
       <DependentUpon>RptPhieuYeuCau.cs</DependentUpon>

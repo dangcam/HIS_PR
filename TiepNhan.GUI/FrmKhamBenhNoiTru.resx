@@ -159,6 +159,18 @@
         Cf7+lPMQUtla7Z/JUuN33gcvikpCVBUd29sAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="btnPhieuDieuTri.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAADXRFWHRUaXRsZQBXaXphcmQ7
+        ySU3BgAAATVJREFUOE+lk81Kw0AURoOv1Bdw5c6HKCiIPwh9ABcSxIUE1KUrdyriSsuAgmIUBBHcuBJ3
+        Ndg0VNuFiE3m897pJM4k0yB44Esmyb1nZkLiAfhXioHv+6iJ1OeG2cyxBAVS6sEv/DwIgpeyxOscNKco
+        MzJLuQ6jQYT4YkONTfQE32WJOpDgMTpZRhLu4vVoHnTNxRYsMENYgp1YLKF3voJ+2ELnsAmZjbjIiUsQ
+        xGIR/ZuWytvpgtpG9jXkwgqWgJqnKWlyuVoIeDXR8RyS621ayfjdmJQFm5R2V6ypmbttWsndHkT4gOdo
+        wIUVKlsYR6J3taVe4tntExdgdl04JU4B30w/P/B+v6+auJlxSSYKFPojqpPUCwxySZ5c8mcBM0lCVAWu
+        MGWJxhaYoSJXGhQWGD8TvB9sYiYvp9hqZQAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnLamMoi.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -170,7 +182,7 @@
         AAAASUVORK5CYII=
 </value>
   </data>
-  <data name="editorButtonImageOptions1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAddEVYdFRpdGxlAENsb3NlO0V4aXQ7QmFycztSaWJi
@@ -180,7 +192,7 @@
         DOqYeMHPrBSM6QNLooCecqpo4AAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="editorButtonImageOptions2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAddEVYdFRpdGxlAENsb3NlO0V4aXQ7QmFycztSaWJi

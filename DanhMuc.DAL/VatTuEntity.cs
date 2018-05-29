@@ -37,6 +37,7 @@ namespace DanhMuc.DAL
         public string GoiThau { get; set; }
         public string NhomThau { get; set; }
         public int LoaiThau { get; set; }
+        public bool KeDon { get; set; }
         public DataTable DSLoaiVatTu()
         {
             return db.ExcuteQuery("Select * From LoaiVatTu Where TinhTrang = 1",
@@ -102,7 +103,8 @@ namespace DanhMuc.DAL
                 new SqlParameter("@NhomThau", NhomThau),
                 new SqlParameter("@LoaiThau", LoaiThau),
                 new SqlParameter("@GiaBHYT", GiaBHYT),
-                new SqlParameter("@TinhTrang", TinhTrang));
+                new SqlParameter("@TinhTrang", TinhTrang),
+                new SqlParameter("@KeDon", KeDon));
         }
     }
 }
