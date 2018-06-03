@@ -484,5 +484,15 @@ namespace TiepNhan.GUI
 
             SplashScreenManager.CloseForm();
         }
+
+        private void lookUpKhoa_EditValueChanged(object sender, EventArgs e)
+        {
+            if(lookUpKhoa.EditValue.ToString() != AppConfig.MaKhoa)
+            {
+                XtraMessageBox.Show("Khoa bạn chọn không phù hợp với tài khoản, vui lòng chọn lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (AppConfig.LoginMaNV != "admin")
+                    lookUpKhoa.EditValue = AppConfig.MaKhoa;
+            }
+        }
     }
 }
