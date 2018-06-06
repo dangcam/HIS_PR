@@ -410,6 +410,7 @@ namespace Core.DAL
                                 sMessage = sMessage.Replace("\"", "").Replace("}", "").Replace("\\u003cb", "").Replace("\\u003c", "")
                                     .Replace("\\u0027", "").Replace("style=", "").Replace("color:", "").Replace("#0070C0", "").Replace("\\u003e", "")
                                     .Replace("/b", "");
+                                sMessage = sMessage.Replace("font-family:TNKeyUni-Arial", "");
                                 thongtin.Code = code;
                                 switch (code)
                                 {

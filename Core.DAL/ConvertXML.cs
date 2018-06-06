@@ -530,7 +530,7 @@ namespace Core.DAL
             //
             return doc;
         }
-        public static XmlDocument GIAMDINH(DanhSachHoSo danhSachHoSo)
+        public static XmlDocument GIAMDINH(DanhSachHoSo danhSachHoSo,DateTime NgayLap)
         {
             XmlDocument doc = new XmlDocument();
             XmlDeclaration xmlDeclaration = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
@@ -551,7 +551,7 @@ namespace Core.DAL
             giamdinh.AppendChild(thongtinHoSo);
 
             element = doc.CreateElement("NGAYLAP");
-            element.AppendChild(doc.CreateTextNode(DateTime.Now.ToString("yyyyMMdd")));
+            element.AppendChild(doc.CreateTextNode(NgayLap.ToString("yyyyMMdd")));
             thongtinHoSo.AppendChild(element);
 
             element = doc.CreateElement("SOLUONGHOSO");

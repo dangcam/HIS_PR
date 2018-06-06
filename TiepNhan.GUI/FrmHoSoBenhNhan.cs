@@ -104,7 +104,7 @@ namespace TiepNhan.GUI
             }
             if (danhSachHoSo.Count > 0)
             {
-                XmlDocument giamDinhHoSo = ConvertXML.GIAMDINH(danhSachHoSo);
+                XmlDocument giamDinhHoSo = ConvertXML.GIAMDINH(danhSachHoSo,dateDenNgay.DateTime);
                 //giamDinhHoSo.Save("Test.xml");
                 lblTinhTrang.Text = "Đang gửi...";
                 KQGuiHoSo kqGuiHoSo = await Utils.GuiHoSo4210(Utils.XmlToByte(giamDinhHoSo));

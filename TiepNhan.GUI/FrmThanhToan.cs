@@ -418,8 +418,8 @@ namespace TiepNhan.GUI
                 thanhtoan.TienBHTT = (thanhtoan.TongChi - tienbntt) * (mucHuong / 100m);
                 thanhtoan.TienNguonKhac = 0;
                 thanhtoan.TienNgoaiDS = 0;
-                thanhtoan.NamQT = DateTime.Now.ToString("yyyy");
-                thanhtoan.ThangQT = DateTime.Now.ToString("MM");
+                thanhtoan.NamQT = dateNgayTToan.DateTime.ToString("yyyy");
+                thanhtoan.ThangQT = dateNgayTToan.DateTime.ToString("MM");
                 thanhtoan.CanNang = Utils.ToFloat(txtCanNang.Text);
                 // cập nhật thông tin
                 if (!thanhtoan.SpThanhToan(ref err, "Update_TT"))
@@ -706,7 +706,7 @@ namespace TiepNhan.GUI
                 {
                     Directory.CreateDirectory(filePath);
                 }
-                XmlDocument giamDinhHoSo = ConvertXML.GIAMDINH(danhSachHoSo);
+                XmlDocument giamDinhHoSo = ConvertXML.GIAMDINH(danhSachHoSo,dateDenNgay.DateTime);
                 string name = txtTheBHYT.Text+"_"+ DateTime.Now.ToString("yyyyMMdd_HHmmss");
                 giamDinhHoSo.Save(filePath + "FileHS_" + name + ".xml");
             }
