@@ -574,7 +574,7 @@ namespace Core.DAL
                 }
             }
         }
-        public static async Task<ThongTinThe> LichSuKhamChuaBenhBHYT(ThongTinThe thongTinThe)
+        public static async Task<ThongTinLichSu> LichSuKhamChuaBenhBHYT(ThongTinThe thongTinThe)
         {
             IEnumerable<KeyValuePair<string, string>> queries = new List<KeyValuePair<string, string>>()
             {
@@ -589,6 +589,7 @@ namespace Core.DAL
             HttpContent quer = new FormUrlEncodedContent(queries);
             using (HttpClient client = new HttpClient())
             {
+                ThongTinLichSu thongTinLichSu = new ThongTinLichSu();
                 try
                 {
                     client.BaseAddress = new Uri(url);
@@ -598,9 +599,9 @@ namespace Core.DAL
                     string err = await GetToken();
                     if(!string.IsNullOrEmpty(err))
                     {
-                        thongTinThe.Code = "false";
-                        thongTinThe.ThongBao = err;
-                        return thongTinThe;
+                        thongTinLichSu.maKetQua = "false";
+                        thongTinLichSu.thongBao = err;
+                        return thongTinLichSu;
                     }
                     // lấy lịch sử KCB
                     string data = string.Format("token={0}&id_token={1}&username={2}&password={3}",phienLamViec.APIKey.access_token
@@ -611,29 +612,31 @@ namespace Core.DAL
                         {
                             using (HttpContent content = response.Content)
                             {
-                                string mycontent = await content.ReadAsStringAsync();
-                                mycontent = mycontent.Replace("\"", "");
-                                string ketqua = mycontent.Substring(0, mycontent.IndexOf("dsLichSuKCB"));
-                                string danhsach = mycontent.Substring(mycontent.IndexOf("dsLichSuKCB") + 11);
+                                //string mycontent = await content.ReadAsStringAsync();
+                                //mycontent = mycontent.Replace("\"", "");
+                                //string ketqua = mycontent.Substring(0, mycontent.IndexOf("dsLichSuKCB"));
+                                //string danhsach = mycontent.Substring(mycontent.IndexOf("dsLichSuKCB") + 11);
 
-                                thongTinThe.Code = ketqua.Split(',')[0].Split(':')[1]; ;
-                                thongTinThe.ThongBao = danhsach;
-                                return thongTinThe;
+                                //thongTinThe.Code = ketqua.Split(',')[0].Split(':')[1]; ;
+                                //thongTinThe.ThongBao = danhsach;
+                                //return thongTinThe;
+                                thongTinLichSu = await content.ReadAsAsync<ThongTinLichSu>();
+                                return thongTinLichSu;
                             }
                         }
                         else
                         {
-                            thongTinThe.ThongBao = Library.KetNoiCong + response.RequestMessage;
-                            thongTinThe.Code = "false";
-                            return thongTinThe;
+                            thongTinLichSu.thongBao = Library.KetNoiCong + response.RequestMessage;
+                            thongTinLichSu.maKetQua = "false";
+                            return thongTinLichSu;
                         }
                     }
                 }
                 catch(Exception e)
                 {
-                    thongTinThe.ThongBao = e.Message;
-                    thongTinThe.Code = "false";
-                    return thongTinThe;
+                    thongTinLichSu.thongBao = e.Message;
+                    thongTinLichSu.maKetQua = "false";
+                    return thongTinLichSu;
                 }
             }
         }

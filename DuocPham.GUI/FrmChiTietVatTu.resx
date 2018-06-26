@@ -118,6 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnThuocHuongThan.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAALXRFWHRUaXRsZQBDbGVhciBG
+        aWx0ZXI7RmlsdGVyO1JlbW92ZSBGaWx0ZXI7Q2xlYXIp9YwCAAAAjklEQVQ4T7WRyw2AIBBE7YkWuFqF
+        CQXYAb1ZhFXYwspsYIMr3xgPDwLMvBBYiOgTPFzHTjP8IvA61MCXBKMSZKSsBT0Jl0FLUJNIGfQEIJes
+        cU8YEYAkeJ1NC87NugAFDPKY49qNChBOpDIzKniUMkxPwK+vri1l7LcE8nWFskhY0EOX8nWxoAnByi9Y
+        dwPOOKwpF9yiIAAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnInTheKho.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m

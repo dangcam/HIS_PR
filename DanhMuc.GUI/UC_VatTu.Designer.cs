@@ -29,6 +29,7 @@
         private void InitializeComponent ()
         {
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.checkKeDon = new DevExpress.XtraEditors.CheckEdit();
             this.txtNhomThau = new DevExpress.XtraEditors.TextEdit();
             this.cbLoaiThau = new DevExpress.XtraEditors.ComboBoxEdit();
             this.lookUpGoiThau = new DevExpress.XtraEditors.LookUpEdit();
@@ -65,6 +66,7 @@
             this.NhomThau = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LoaiThau = new DevExpress.XtraGrid.Columns.GridColumn();
             this.GoiThau = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.KeDon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.checkHieuLuc = new DevExpress.XtraEditors.CheckEdit();
             this.lookUpNuocSX = new DevExpress.XtraEditors.LookUpEdit();
             this.cbLoaiThuoc = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -109,11 +111,10 @@
             this.layoutControlItem25 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem26 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.checkKeDon = new DevExpress.XtraEditors.CheckEdit();
             this.layoutControlItem28 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.KeDon = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkKeDon.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNhomThau.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbLoaiThau.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpGoiThau.Properties)).BeginInit();
@@ -168,7 +169,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkKeDon.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).BeginInit();
             this.SuspendLayout();
             // 
@@ -209,6 +209,17 @@
             this.layoutControl.Size = new System.Drawing.Size(850, 500);
             this.layoutControl.TabIndex = 0;
             this.layoutControl.Text = "layoutControl1";
+            // 
+            // checkKeDon
+            // 
+            this.checkKeDon.Location = new System.Drawing.Point(661, 220);
+            this.checkKeDon.Name = "checkKeDon";
+            this.checkKeDon.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkKeDon.Properties.Appearance.Options.UseFont = true;
+            this.checkKeDon.Properties.Caption = "Kê Đơn";
+            this.checkKeDon.Size = new System.Drawing.Size(75, 19);
+            this.checkKeDon.StyleController = this.layoutControl;
+            this.checkKeDon.TabIndex = 28;
             // 
             // txtNhomThau
             // 
@@ -680,6 +691,15 @@
             this.GoiThau.Visible = true;
             this.GoiThau.VisibleIndex = 16;
             // 
+            // KeDon
+            // 
+            this.KeDon.Caption = "KĐ";
+            this.KeDon.FieldName = "KeDon";
+            this.KeDon.Name = "KeDon";
+            this.KeDon.Visible = true;
+            this.KeDon.VisibleIndex = 17;
+            this.KeDon.Width = 30;
+            // 
             // checkHieuLuc
             // 
             this.checkHieuLuc.Location = new System.Drawing.Point(688, 194);
@@ -833,6 +853,7 @@
             // 
             this.lookUpNhomVatTu.Location = new System.Drawing.Point(89, 38);
             this.lookUpNhomVatTu.Name = "lookUpNhomVatTu";
+            this.lookUpNhomVatTu.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.lookUpNhomVatTu.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lookUpNhomVatTu.Properties.Appearance.Options.UseFont = true;
             this.lookUpNhomVatTu.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1179,17 +1200,6 @@
             this.layoutControlItem27.Text = "Nhóm thầu:";
             this.layoutControlItem27.TextSize = new System.Drawing.Size(74, 13);
             // 
-            // checkKeDon
-            // 
-            this.checkKeDon.Location = new System.Drawing.Point(661, 220);
-            this.checkKeDon.Name = "checkKeDon";
-            this.checkKeDon.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkKeDon.Properties.Appearance.Options.UseFont = true;
-            this.checkKeDon.Properties.Caption = "Kê Đơn";
-            this.checkKeDon.Size = new System.Drawing.Size(75, 19);
-            this.checkKeDon.StyleController = this.layoutControl;
-            this.checkKeDon.TabIndex = 28;
-            // 
             // layoutControlItem28
             // 
             this.layoutControlItem28.Control = this.checkKeDon;
@@ -1198,15 +1208,6 @@
             this.layoutControlItem28.Size = new System.Drawing.Size(79, 27);
             this.layoutControlItem28.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem28.TextVisible = false;
-            // 
-            // KeDon
-            // 
-            this.KeDon.Caption = "KĐ";
-            this.KeDon.FieldName = "KeDon";
-            this.KeDon.Name = "KeDon";
-            this.KeDon.Visible = true;
-            this.KeDon.VisibleIndex = 17;
-            this.KeDon.Width = 30;
             // 
             // UC_VatTu
             // 
@@ -1218,6 +1219,7 @@
             this.Load += new System.EventHandler(this.UC_VatTu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.checkKeDon.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNhomThau.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbLoaiThau.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpGoiThau.Properties)).EndInit();
@@ -1272,7 +1274,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkKeDon.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).EndInit();
             this.ResumeLayout(false);
 

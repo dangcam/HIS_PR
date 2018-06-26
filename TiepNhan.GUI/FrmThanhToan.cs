@@ -21,11 +21,12 @@ namespace TiepNhan.GUI
     public partial class FrmThanhToan : RibbonForm
     {
         ThanhToanEntity thanhtoan;
-        DataTable dataDanhSach, dataLoc, dataTinh, dataMucHuong;
+        DataTable dataDanhSach, dataLoc, dataTinh, dataMucHuong, dataCoso;
         string maBenh,maBenhKhac, maBacSi;
         int index = -1;
         DataTable dataDichVu, dataThuoc, dataCongKham, dataVTYT, dataChiTiet;
         FrmCongKham frmCongKham;
+        FrmLichSuKCB lichSuKCB;
         Dictionary<int, NhomChiPhi> nhomChiPhi = new Dictionary<int, NhomChiPhi>();
         decimal tienthuoc = 0, tiendichvu = 0, tienvattu = 0, tienbntt = 0;
         int mucHuong = 0;
@@ -39,6 +40,8 @@ namespace TiepNhan.GUI
             dataMucHuong = thanhtoan.DSMucHuong();
             dataChiTiet = new DataTable();
             frmCongKham = new FrmCongKham(thanhtoan);
+            dataCoso = thanhtoan.DSCoSoKCB();
+            lichSuKCB = new FrmLichSuKCB(dataCoso);
             // add column dataChiTiet
             dataChiTiet.Columns.Add("MaDichVu", typeof(string));
             dataChiTiet.Columns.Add("TenDichVu", typeof(string));
@@ -71,7 +74,7 @@ namespace TiepNhan.GUI
             lookUpTaiNan.Properties.DisplayMember = "Ten";
             lookUpTaiNan.Properties.ValueMember = "Ma";
 
-            lookUpNoiChuyenDen.Properties.DataSource = thanhtoan.DSCoSoKCB();
+            lookUpNoiChuyenDen.Properties.DataSource = dataCoso;
             lookUpNoiChuyenDen.Properties.ValueMember = "Ma_CS";
             lookUpNoiChuyenDen.Properties.DisplayMember = "Ten_CS";
 
@@ -1142,36 +1145,88 @@ namespace TiepNhan.GUI
 
         private async void btnKtraTT_ClickAsync(object sender, EventArgs e)
         {
-            if (KiemTraThongTinTiepNhan() == false)
-                return;
-            ThongTinThe thongtin = await Utils.KiemTraThongTuyen(txtTheBHYT.Text, txtHoTen.Text, txtNgaySinh.Text);
-            switch (thongtin.Code)
-            {
-                case "1":
-                    // chỉnh thông tin
+            //if (KiemTraThongTinTiepNhan() == false)
+            //    return;
+            //ThongTinThe thongtin = await Utils.KiemTraThongTuyen(txtTheBHYT.Text, txtHoTen.Text, txtNgaySinh.Text);
+            //switch (thongtin.Code)
+            //{
+            //    case "1":
+            //        // chỉnh thông tin
 
-                    txtHoTen.Text = thongtin.HoTen;
-                    txtNgaySinh.Text = thongtin.NgaySinh;
-                    cbGioiTinh.SelectedIndex = thongtin.GioiTinh;
-                    txtDiaChi.Text = thongtin.DiaChi;
-                    if (txtMaCoSoDKKCB.Text != thongtin.MaCoSoDKKCB)
+            //        txtHoTen.Text = thongtin.HoTen;
+            //        txtNgaySinh.Text = thongtin.NgaySinh;
+            //        cbGioiTinh.SelectedIndex = thongtin.GioiTinh;
+            //        txtDiaChi.Text = thongtin.DiaChi;
+            //        if (txtMaCoSoDKKCB.Text != thongtin.MaCoSoDKKCB)
+            //        {
+            //            txtMaCoSoDKKCB.Text = thongtin.MaCoSoDKKCB;
+            //            object ten = lookUpNoiChuyenDen.Properties.GetDisplayValueByKeyValue(thongtin.MaCoSoDKKCB);
+            //            if (ten != null)
+            //                txtTenCoSoDKKCB.Text = ten.ToString();
+            //            else
+            //                txtTenCoSoDKKCB.Text = null;
+            //        }
+            //        txtTheTu.Text = thongtin.TheTu;
+            //        txtTheDen.Text = thongtin.TheDen;
+            //        txtDu5Nam.Text = thongtin.Du5Nam;
+            //        btnCongKham.Focus();
+            //        break;
+            //    default:
+            //        XtraMessageBox.Show(thongtin.ThongBao.Replace(":", ""), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        break;
+            //}
+            SplashScreenManager.ShowForm(typeof(WaitFormLoad));
+            if (checkCoThe.Checked == true)
+            {
+                // Lấy danh sách lịch sử trên cổng (trên phần mềm nếu cổng lỗi)
+                if (KiemTraThongTinTiepNhan(true))
+                {
+                    ThongTinThe thongtin = new ThongTinThe();
+                    thongtin.MaBN = null;
+                    thongtin.MaThe = txtTheBHYT.Text;
+                    thongtin.HoTen = txtHoTen.Text;
+                    thongtin.NgaySinh = txtNgaySinh.Text;
+                    thongtin.GioiTinh = cbGioiTinh.SelectedIndex;
+                    thongtin.MaCoSoDKKCB = txtMaCoSoDKKCB.Text;
+                    thongtin.TheTu = txtTheTu.Text;
+                    thongtin.TheDen = txtTheDen.Text;
+                    ThongTinLichSu thongTinLichSu = await Utils.LichSuKhamChuaBenhBHYT(thongtin);
+                    if (thongTinLichSu.maKetQua == "false")
                     {
-                        txtMaCoSoDKKCB.Text = thongtin.MaCoSoDKKCB;
-                        object ten = lookUpNoiChuyenDen.Properties.GetDisplayValueByKeyValue(thongtin.MaCoSoDKKCB);
-                        if (ten != null)
-                            txtTenCoSoDKKCB.Text = ten.ToString();
-                        else
-                            txtTenCoSoDKKCB.Text = null;
+                        // lỗi hệ thống
+                        SplashScreenManager.CloseForm();
+                        XtraMessageBox.Show(thongtin.ThongBao, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
-                    txtTheTu.Text = thongtin.TheTu;
-                    txtTheDen.Text = thongtin.TheDen;
-                    txtDu5Nam.Text = thongtin.Du5Nam;
-                    btnCongKham.Focus();
-                    break;
-                default:
-                    XtraMessageBox.Show(thongtin.ThongBao.Replace(":", ""), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
+                    else
+                    {
+                        // hiện thông báo, lịch sử
+                        thongTinLichSu.ngaySinh = thongtin.NgaySinh;
+                        lichSuKCB.ThongTin = thongTinLichSu;
+                        lichSuKCB.ShowDialog();
+                        txtDiaChi.Text = thongTinLichSu.diaChi;// chỉ có thể cập nhật lại từng này
+                        txtDu5Nam.Text = thongTinLichSu.ngayDu5Nam;
+                        cbKhuVuc.SelectedItem = thongTinLichSu.maKV;
+                        txtTheTu.Text = thongTinLichSu.gtTheTu;
+                        txtTheDen.Text = thongTinLichSu.gtTheDen;
+                    }
+                }
             }
+            else
+            if (KiemTraThongTinTiepNhan())
+            {
+                // Lấy danh sách lịch sử từ phần mềm, dựa vào họ tên, ngày sinh, giới tính -> mã bệnh nhân
+                ThongTinLichSu thongtin = new ThongTinLichSu();
+                thongtin.MaBN = txtMaBN.Text;
+                thongtin.hoTen = txtHoTen.Text;
+                thongtin.ngaySinh = txtNgaySinh.Text;
+                thongtin.gioiTinh = cbGioiTinh.SelectedIndex == 0 ? "Nam" : "Nữ";
+                // lấy lịch sử
+                thongtin.LichSuPhanMem =thanhtoan.DSLichSuPhanMem(thongtin.MaBN, thongtin.hoTen, cbGioiTinh.SelectedIndex);
+                lichSuKCB.ThongTin = thongtin;
+                lichSuKCB.ShowDialog();
+            }
+            SplashScreenManager.CloseForm();
         }
 
         private void checkCoThe_CheckedChanged(object sender, EventArgs e)

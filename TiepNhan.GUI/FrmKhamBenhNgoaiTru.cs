@@ -236,10 +236,10 @@ namespace TiepNhan.GUI
                     thongtin.NgaySinh = dr["NgaySinh"].ToString();
                     thongtin.GioiTinh = Utils.ToInt(dr["GioiTinh"]);
                     thongtin.MaCoSoDKKCB = dr["MaDKBD"].ToString();
-                    thongtin.TheTu = dr["TheTu"].ToString(); ;
+                    thongtin.TheTu = dr["TheTu"].ToString(); 
                     thongtin.TheDen = dr["TheDen"].ToString();
-                    thongtin = await Utils.LichSuKhamChuaBenhBHYT(thongtin);
-                    if (thongtin.Code == "false")
+                    ThongTinLichSu thongTinLichSu = await Utils.LichSuKhamChuaBenhBHYT(thongtin);
+                    if (thongTinLichSu.maKetQua == "false")
                     {
                         // lỗi hệ thống
                         SplashScreenManager.CloseForm();
@@ -249,21 +249,22 @@ namespace TiepNhan.GUI
                     else
                     {
                         // hiện thông báo, lịch sử
-                        frmLichSuKCB.ThongTin = thongtin;
+                        thongTinLichSu.ngaySinh = thongtin.NgaySinh;
+                        frmLichSuKCB.ThongTin = thongTinLichSu;
                         frmLichSuKCB.ShowDialog();
                     }
                 }
                 else
                 {
                     // Lấy danh sách lịch sử từ phần mềm, dựa vào họ tên, ngày sinh, giới tính -> mã bệnh nhân
-                    ThongTinThe thongtin = new ThongTinThe();
+                    ThongTinLichSu thongtin = new ThongTinLichSu();
                     thongtin.MaBN = dr["MaBN"].ToString();
-                    thongtin.MaThe = null;
-                    thongtin.HoTen = dr["HoTen"].ToString();
-                    thongtin.NgaySinh = dr["NgaySinh"].ToString();
-                    thongtin.GioiTinh = Utils.ToInt(dr["GioiTinh"]);
+                    //thongtin.MaThe = null;
+                    thongtin.hoTen = dr["HoTen"].ToString();
+                    thongtin.ngaySinh = dr["NgaySinh"].ToString();
+                    thongtin.gioiTinh = Utils.ToInt(dr["GioiTinh"]) == 0 ? "Nam" : "Nữ";
                     // lấy lịch sử
-                    thongtin.LichSuPhanMem = khambenh.DSLichSuPhanMem(thongtin.MaBN, thongtin.HoTen, thongtin.GioiTinh);
+                    thongtin.LichSuPhanMem = khambenh.DSLichSuPhanMem(thongtin.MaBN, thongtin.hoTen, Utils.ToInt(dr["GioiTinh"]));
                     frmLichSuKCB.ThongTin = thongtin;
                     frmLichSuKCB.ShowDialog();
                 }

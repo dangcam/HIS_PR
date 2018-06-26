@@ -43,6 +43,7 @@
             this.DonGia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
             this.KhoNhan = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repLookUpEditKhoNhan = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.NhaCungCap = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NgayNhapXuat = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoPhieu = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -58,12 +59,14 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.repLookUpEditKhoNhan = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.btnThuocHuongThan = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditKhoNhan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbNam.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbThang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup)).BeginInit();
@@ -73,7 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditKhoNhan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -94,6 +97,7 @@
             // 
             // layoutControl
             // 
+            this.layoutControl.Controls.Add(this.btnThuocHuongThan);
             this.layoutControl.Controls.Add(this.btnInTheKho);
             this.layoutControl.Controls.Add(this.gridControl);
             this.layoutControl.Controls.Add(this.btnXem);
@@ -268,6 +272,13 @@
             this.KhoNhan.VisibleIndex = 7;
             this.KhoNhan.Width = 104;
             // 
+            // repLookUpEditKhoNhan
+            // 
+            this.repLookUpEditKhoNhan.AutoHeight = false;
+            this.repLookUpEditKhoNhan.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repLookUpEditKhoNhan.Name = "repLookUpEditKhoNhan";
+            // 
             // NhaCungCap
             // 
             this.NhaCungCap.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -327,10 +338,12 @@
             // 
             // btnXem
             // 
+            this.btnXem.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXem.Appearance.Options.UseFont = true;
             this.btnXem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXem.ImageOptions.Image")));
             this.btnXem.Location = new System.Drawing.Point(264, 12);
             this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(53, 22);
+            this.btnXem.Size = new System.Drawing.Size(54, 23);
             this.btnXem.StyleController = this.layoutControl;
             this.btnXem.TabIndex = 6;
             this.btnXem.Text = "Xem";
@@ -391,7 +404,8 @@
             this.layoutControlItem3,
             this.layoutControlItem4,
             this.emptySpaceItem1,
-            this.layoutControlItem5});
+            this.layoutControlItem5,
+            this.layoutControlItem6});
             this.layoutControlGroup.Name = "layoutControlGroup";
             this.layoutControlGroup.Size = new System.Drawing.Size(1120, 418);
             this.layoutControlGroup.TextVisible = false;
@@ -419,7 +433,7 @@
             this.layoutControlItem3.Control = this.btnXem;
             this.layoutControlItem3.Location = new System.Drawing.Point(252, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(57, 27);
+            this.layoutControlItem3.Size = new System.Drawing.Size(58, 27);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -437,7 +451,7 @@
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(309, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(702, 27);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(594, 27);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem5
@@ -449,12 +463,27 @@
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
-            // repLookUpEditKhoNhan
+            // btnThuocHuongThan
             // 
-            this.repLookUpEditKhoNhan.AutoHeight = false;
-            this.repLookUpEditKhoNhan.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repLookUpEditKhoNhan.Name = "repLookUpEditKhoNhan";
+            this.btnThuocHuongThan.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThuocHuongThan.Appearance.Options.UseFont = true;
+            this.btnThuocHuongThan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThuocHuongThan.ImageOptions.Image")));
+            this.btnThuocHuongThan.Location = new System.Drawing.Point(915, 12);
+            this.btnThuocHuongThan.Name = "btnThuocHuongThan";
+            this.btnThuocHuongThan.Size = new System.Drawing.Size(104, 23);
+            this.btnThuocHuongThan.StyleController = this.layoutControl;
+            this.btnThuocHuongThan.TabIndex = 9;
+            this.btnThuocHuongThan.Text = "Thuốc HT-NN";
+            this.btnThuocHuongThan.Click += new System.EventHandler(this.btnThuocHuongThan_Click);
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.btnThuocHuongThan;
+            this.layoutControlItem6.Location = new System.Drawing.Point(903, 0);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(108, 27);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
             // 
             // FrmChiTietVatTu
             // 
@@ -474,6 +503,7 @@
             this.layoutControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditKhoNhan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbNam.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbThang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup)).EndInit();
@@ -483,7 +513,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repLookUpEditKhoNhan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -521,5 +551,7 @@
         private DevExpress.XtraEditors.SimpleButton btnInTheKho;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repLookUpEditKhoNhan;
+        private DevExpress.XtraEditors.SimpleButton btnThuocHuongThan;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
     }
 }

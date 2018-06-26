@@ -71,6 +71,8 @@
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.xtraTabPageTT = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControlTT = new DevExpress.XtraLayout.LayoutControl();
+            this.btnVatTuYTe = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDVKyThuat = new DevExpress.XtraEditors.SimpleButton();
             this.btnNgayGiuong = new DevExpress.XtraEditors.SimpleButton();
             this.btnIn = new DevExpress.XtraEditors.SimpleButton();
             this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
@@ -176,9 +178,7 @@
             this.layoutControlItem53 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem54 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem55 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnDVKyThuat = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem56 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnVatTuYTe = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem57 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl)).BeginInit();
@@ -893,6 +893,32 @@
             this.layoutControlTT.TabIndex = 0;
             this.layoutControlTT.Text = "layoutControl1";
             // 
+            // btnVatTuYTe
+            // 
+            this.btnVatTuYTe.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVatTuYTe.Appearance.Options.UseFont = true;
+            this.btnVatTuYTe.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnVatTuYTe.ImageOptions.Image")));
+            this.btnVatTuYTe.Location = new System.Drawing.Point(1039, 142);
+            this.btnVatTuYTe.Name = "btnVatTuYTe";
+            this.btnVatTuYTe.Size = new System.Drawing.Size(76, 23);
+            this.btnVatTuYTe.StyleController = this.layoutControlTT;
+            this.btnVatTuYTe.TabIndex = 49;
+            this.btnVatTuYTe.Text = "VT Y Tế";
+            this.btnVatTuYTe.Click += new System.EventHandler(this.btnVatTuYTe_Click);
+            // 
+            // btnDVKyThuat
+            // 
+            this.btnDVKyThuat.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDVKyThuat.Appearance.Options.UseFont = true;
+            this.btnDVKyThuat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDVKyThuat.ImageOptions.Image")));
+            this.btnDVKyThuat.Location = new System.Drawing.Point(1119, 142);
+            this.btnDVKyThuat.Name = "btnDVKyThuat";
+            this.btnDVKyThuat.Size = new System.Drawing.Size(103, 23);
+            this.btnDVKyThuat.StyleController = this.layoutControlTT;
+            this.btnDVKyThuat.TabIndex = 48;
+            this.btnDVKyThuat.Text = "DV Kỹ Thuật";
+            this.btnDVKyThuat.Click += new System.EventHandler(this.btnDVKyThuat_Click);
+            // 
             // btnNgayGiuong
             // 
             this.btnNgayGiuong.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1176,7 +1202,7 @@
             // btnKtraTT
             // 
             this.btnKtraTT.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKtraTT.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.btnKtraTT.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnKtraTT.Appearance.Options.UseFont = true;
             this.btnKtraTT.Appearance.Options.UseForeColor = true;
             this.btnKtraTT.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnKtraTT.ImageOptions.Image")));
@@ -1185,7 +1211,7 @@
             this.btnKtraTT.Size = new System.Drawing.Size(150, 23);
             this.btnKtraTT.StyleController = this.layoutControlTT;
             this.btnKtraTT.TabIndex = 33;
-            this.btnKtraTT.Text = "Ktra thông tuyến";
+            this.btnKtraTT.Text = "Lịch sử KCB";
             this.btnKtraTT.Click += new System.EventHandler(this.btnKtraTT_ClickAsync);
             // 
             // cbLyDoVVien
@@ -2168,19 +2194,6 @@
             this.layoutControlItem55.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem55.TextVisible = false;
             // 
-            // btnDVKyThuat
-            // 
-            this.btnDVKyThuat.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDVKyThuat.Appearance.Options.UseFont = true;
-            this.btnDVKyThuat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDVKyThuat.ImageOptions.Image")));
-            this.btnDVKyThuat.Location = new System.Drawing.Point(1119, 142);
-            this.btnDVKyThuat.Name = "btnDVKyThuat";
-            this.btnDVKyThuat.Size = new System.Drawing.Size(103, 23);
-            this.btnDVKyThuat.StyleController = this.layoutControlTT;
-            this.btnDVKyThuat.TabIndex = 48;
-            this.btnDVKyThuat.Text = "DV Kỹ Thuật";
-            this.btnDVKyThuat.Click += new System.EventHandler(this.btnDVKyThuat_Click);
-            // 
             // layoutControlItem56
             // 
             this.layoutControlItem56.Control = this.btnDVKyThuat;
@@ -2189,19 +2202,6 @@
             this.layoutControlItem56.Size = new System.Drawing.Size(107, 27);
             this.layoutControlItem56.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem56.TextVisible = false;
-            // 
-            // btnVatTuYTe
-            // 
-            this.btnVatTuYTe.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVatTuYTe.Appearance.Options.UseFont = true;
-            this.btnVatTuYTe.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnVatTuYTe.ImageOptions.Image")));
-            this.btnVatTuYTe.Location = new System.Drawing.Point(1039, 142);
-            this.btnVatTuYTe.Name = "btnVatTuYTe";
-            this.btnVatTuYTe.Size = new System.Drawing.Size(76, 23);
-            this.btnVatTuYTe.StyleController = this.layoutControlTT;
-            this.btnVatTuYTe.TabIndex = 49;
-            this.btnVatTuYTe.Text = "VT Y Tế";
-            this.btnVatTuYTe.Click += new System.EventHandler(this.btnVatTuYTe_Click);
             // 
             // layoutControlItem57
             // 

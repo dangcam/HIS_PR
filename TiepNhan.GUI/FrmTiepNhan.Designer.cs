@@ -140,6 +140,7 @@ namespace TiepNhan.GUI
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.xtraTabPageDanhSach = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnSuaThongTin = new DevExpress.XtraEditors.SimpleButton();
             this.lblSoLuong = new DevExpress.XtraEditors.LabelControl();
             this.gridControlDS = new DevExpress.XtraGrid.GridControl();
             this.gridViewDS = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -178,7 +179,6 @@ namespace TiepNhan.GUI
             this.layoutControlItem38 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem45 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnSuaThongTin = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem47 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl)).BeginInit();
@@ -1632,6 +1632,19 @@ namespace TiepNhan.GUI
             this.layoutControl3.TabIndex = 0;
             this.layoutControl3.Text = "layoutControl3";
             // 
+            // btnSuaThongTin
+            // 
+            this.btnSuaThongTin.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuaThongTin.Appearance.Options.UseFont = true;
+            this.btnSuaThongTin.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSuaThongTin.ImageOptions.Image")));
+            this.btnSuaThongTin.Location = new System.Drawing.Point(1059, 12);
+            this.btnSuaThongTin.Name = "btnSuaThongTin";
+            this.btnSuaThongTin.Size = new System.Drawing.Size(113, 23);
+            this.btnSuaThongTin.StyleController = this.layoutControl3;
+            this.btnSuaThongTin.TabIndex = 16;
+            this.btnSuaThongTin.Text = "Sửa Thông Tin";
+            this.btnSuaThongTin.Click += new System.EventHandler(this.btnSuaThongTin_Click);
+            // 
             // lblSoLuong
             // 
             this.lblSoLuong.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2106,19 +2119,6 @@ namespace TiepNhan.GUI
             this.layoutControlItem45.Size = new System.Drawing.Size(63, 27);
             this.layoutControlItem45.Text = "Số lượng:";
             this.layoutControlItem45.TextSize = new System.Drawing.Size(49, 13);
-            // 
-            // btnSuaThongTin
-            // 
-            this.btnSuaThongTin.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuaThongTin.Appearance.Options.UseFont = true;
-            this.btnSuaThongTin.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSuaThongTin.ImageOptions.Image")));
-            this.btnSuaThongTin.Location = new System.Drawing.Point(1059, 12);
-            this.btnSuaThongTin.Name = "btnSuaThongTin";
-            this.btnSuaThongTin.Size = new System.Drawing.Size(113, 23);
-            this.btnSuaThongTin.StyleController = this.layoutControl3;
-            this.btnSuaThongTin.TabIndex = 16;
-            this.btnSuaThongTin.Text = "Sửa Thông Tin";
-            this.btnSuaThongTin.Click += new System.EventHandler(this.btnSuaThongTin_Click);
             // 
             // layoutControlItem47
             // 

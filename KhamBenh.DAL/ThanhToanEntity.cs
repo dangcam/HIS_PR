@@ -317,5 +317,16 @@ namespace KhamBenh.DAL
                 "MaKhoa,MaGiuong,MaBacSi,NgayYLenh,NgayKQ,MaPTTT " +
                 "FROM DichVuChiTiet Where MaLK = '" + maLK + "'", CommandType.Text, null);
         }
+        public DataTable DSLichSuPhanMem(string MaBN, string HoTen, int GioiTinh)
+        {
+            return db.ExcuteQuery("select MaLK as maHoSo,MaCoSoKCB as maCSKCB,"
+            + "NgayVao as tuNgay, NgayRa as denNgay, TenBenh as tenBenh, "
+            + "TinhTrangRaVien as tinhTrang, KetQuaDieuTri as kqDieuTri "
+            + "from ThongTinBNChiTiet "
+            + "where MaBN = '" + MaBN + "' "
+            + "or(dbo.ChangeVietnameseWord(N'" + HoTen + "') = dbo.ChangeVietnameseWord(HoTen) "
+            + "AND '01/11/1994' = NgaySinh AND GioiTinh = " + GioiTinh + ")",
+                CommandType.Text, null);
+        }
     }
 }

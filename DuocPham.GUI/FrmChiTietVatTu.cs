@@ -18,6 +18,7 @@ namespace DuocPham.GUI
     public partial class FrmChiTietVatTu : RibbonForm
     {
         XuatKhoEntity xuatkho;
+        DataTable data;
         public FrmChiTietVatTu()
         {
             InitializeComponent();
@@ -45,7 +46,8 @@ namespace DuocPham.GUI
         {
             SplashScreenManager.ShowForm(typeof(WaitFormLoad));
             int nam = Utils.ToInt(cbNam.SelectedItem);
-            gridControl.DataSource = xuatkho.ChiTietVatTu(cbThang.SelectedIndex + 1, nam);
+            data  =xuatkho.ChiTietVatTu(cbThang.SelectedIndex + 1, nam);
+            gridControl.DataSource = data;
             gridView.ExpandAllGroups();
             SplashScreenManager.CloseForm();
         }
@@ -70,12 +72,32 @@ namespace DuocPham.GUI
                     rpt.xrlblTenVatTu.Text = data.Rows[0]["TenVatTu"].ToString();
                     rpt.xrlblTonDau.Text = data.Rows[0]["SoLuongTonDau"].ToString();
                     rpt.xrlblHamLuong.Text = data.Rows[0]["HamLuong"].ToString();
+                    foreach(DataRow drow in data.Rows)
+                    {
+                        if(Utils.ToInt(drow["SoLuongNhap"])>0)
+                        {
+                            drow["NoiDung"] = drow["NhaCungCap"];
+                        }
+                        else
+                        {
+                            drow["NoiDung"] = repLookUpEditKhoNhan.GetDisplayValueByKeyValue(drow["KhoNhan"]);
+                        }
+                    }
                 }
+                
                 rpt.DataSource = data;
                 rpt.CreateDocument();
                 rpt.ShowPreviewDialog();
             }
             SplashScreenManager.CloseForm();
+        }
+
+        private void btnThuocHuongThan_Click(object sender, EventArgs e)
+        {
+            if(data !=null)
+            {
+                gridControl.DataSource= data.Select("NhomVatTu = '1.2'").CopyToDataTable();
+            }
         }
     }
 }

@@ -247,7 +247,7 @@ namespace DanhMuc.GUI
             {
                 vattu.NhomVatTu = (lookUpNhomVatTu.GetSelectedDataRow() as DataRowView)[0].ToString();
             }
-            LoadData ();
+            //LoadData ();
         }
 
         private void gridView_RowClick (object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)

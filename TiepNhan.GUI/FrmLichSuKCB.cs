@@ -15,7 +15,7 @@ namespace TiepNhan.GUI
 {
     public partial class FrmLichSuKCB : RibbonForm
     {
-        public ThongTinThe ThongTin = new ThongTinThe();
+        public ThongTinLichSu ThongTin = new ThongTinLichSu();
         FrmThongTinHoSo frmHoSo = new FrmThongTinHoSo();
 
         public FrmLichSuKCB(DataTable dataCoSo)
@@ -29,20 +29,14 @@ namespace TiepNhan.GUI
         private void FrmLichSuKCB_Load(object sender, EventArgs e)
         {
             gridControl.DataSource = null;
-            lblHoTen.Text = ThongTin.HoTen;
-            lblNamSinh.Text = ThongTin.NgaySinh;
-            if(ThongTin.GioiTinh ==0)
-            {
-                lblGioiTinh.Text = "Nam";
-            }
-            else
-            {
-                lblGioiTinh.Text = "Nữ";
-            }
+            lblHoTen.Text = ThongTin.hoTen;
+            lblNamSinh.Text = ThongTin.ngaySinh;
+            lblGioiTinh.Text = ThongTin.gioiTinh;
+                     
             // lịch sử theo cổng BHYT
             if(ThongTin.MaBN == null)
             {
-                switch (ThongTin.Code)
+                switch (ThongTin.maKetQua)
                 {
                     case "000":
                         this.lblThongTin.ForeColor = System.Drawing.Color.Blue;
@@ -133,14 +127,14 @@ namespace TiepNhan.GUI
                         lblThongTin.Text = "Trẻ em không xuất trình thẻ.";
                         break;
                     default:
-                        lblThongTin.Text = "Mã kết quả: " + ThongTin.Code;
+                        lblThongTin.Text = "Mã kết quả: " + ThongTin.maKetQua;
                         break;
                 }
-                if (ThongTin.ThongBao.IndexOf('[') > 0)
+                if (ThongTin.dsLichSuKCB !=null && ThongTin.dsLichSuKCB.Count > 0)
                 {
-                    ThongTin.ThongBao = ThongTin.ThongBao.Substring(ThongTin.ThongBao.IndexOf('['),
-                        ThongTin.ThongBao.IndexOf(']')).Replace("]", "").Replace("[", "");
-                    string[] danhsach = ThongTin.ThongBao.Split('}');
+                    //ThongTin.ThongBao = ThongTin.ThongBao.Substring(ThongTin.ThongBao.IndexOf('['),
+                    //    ThongTin.ThongBao.IndexOf(']')).Replace("]", "").Replace("[", "");
+                    //string[] danhsach = ThongTin.ThongBao.Split('}');
                     DataTable data = new DataTable();
                     data.Columns.Add("maHoSo", typeof(string));
                     data.Columns.Add("maCSKCB", typeof(string));
@@ -149,21 +143,19 @@ namespace TiepNhan.GUI
                     data.Columns.Add("tenBenh", typeof(string));
                     data.Columns.Add("tinhTrang", typeof(string));
                     data.Columns.Add("kqDieuTri", typeof(string));
-                    foreach (string hoso in danhsach)
+                    foreach (var hoso in ThongTin.dsLichSuKCB)
                     {
-                        if (hoso.Length > 0)
-                        {
-                            string[] dulieu = hoso.Replace("}", "").Replace("{", "").Split(',');
-                            DataRow dr = data.NewRow();
-                            foreach (string column in dulieu)
-                            {
-                                if (column.Split(':').Length > 1)
-                                {
-                                    dr[column.Split(':')[0]] = column.Split(':')[1];
-                                }
-                            }
-                            data.Rows.Add(dr);
-                        }
+
+                        //string[] dulieu = hoso.Replace("}", "").Replace("{", "").Split(',');
+                        DataRow dr = data.NewRow();
+                        dr["maHoSo"] = hoso.maHoSo;
+                        dr["maCSKCB"] = hoso.maCSKCB;
+                        dr["tuNgay"] = hoso.tuNgay;
+                        dr["denNgay"] = hoso.denNgay;
+                        dr["tenBenh"] = hoso.tenBenh;
+                        dr["tinhTrang"] = hoso.tinhTrang;
+                        dr["kqDieuTri"] = hoso.kqDieuTri;
+                        data.Rows.Add(dr);
                     }
                     gridControl.DataSource = data;
                 }

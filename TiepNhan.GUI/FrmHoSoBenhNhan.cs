@@ -60,7 +60,7 @@ namespace TiepNhan.GUI
         private void btnTim_Click(object sender, EventArgs e)
         {
             dataDanhSach = danhSach.DSBenhNhan(lookUpKhoa.EditValue.ToString()
-                ,dateTuNgay.DateTime, dateDenNgay.DateTime);
+                , dateTuNgay.DateTime, dateDenNgay.DateTime);
             gridControl.DataSource = dataDanhSach;
         }
 
@@ -71,8 +71,8 @@ namespace TiepNhan.GUI
             // tạo file gửi lên cổng và lưu 
             DataRow[] dr = (dataDanhSach).Select("Chon = True And CoThe = True", "");
             DanhSachHoSo danhSachHoSo = new DanhSachHoSo();
-            
-            for(int i=0;i<dr.Length;i++)
+
+            for (int i = 0; i < dr.Length; i++)
             {
                 //thêm _ vào Mã khoa, đúng dịnh dạng ngày vào ngày ra, thanh toán...
                 // dr xml 1, data thuoc xml 2, data vat tu dich vu xml3, data can lam san xml4 
@@ -82,7 +82,7 @@ namespace TiepNhan.GUI
                 //DateTime ngayTT = Utils.ToDateTime(dr[i]["NgayThanhToan"].ToString());
                 //
                 DataTable dataXML3 = danhSach.DSDichVu(maLK);
-                foreach(DataRow dtrow in danhSach.DSVatTu(maLK).Rows)
+                foreach (DataRow dtrow in danhSach.DSVatTu(maLK).Rows)
                 {
                     dataXML3.Rows.Add(dtrow.ItemArray);
                 }
@@ -104,7 +104,7 @@ namespace TiepNhan.GUI
             }
             if (danhSachHoSo.Count > 0)
             {
-                XmlDocument giamDinhHoSo = ConvertXML.GIAMDINH(danhSachHoSo,dateDenNgay.DateTime);
+                XmlDocument giamDinhHoSo = ConvertXML.GIAMDINH(danhSachHoSo, dateDenNgay.DateTime);
                 //giamDinhHoSo.Save("Test.xml");
                 lblTinhTrang.Text = "Đang gửi...";
                 KQGuiHoSo kqGuiHoSo = await Utils.GuiHoSo4210(Utils.XmlToByte(giamDinhHoSo));
@@ -135,7 +135,7 @@ namespace TiepNhan.GUI
                     {
                         Directory.CreateDirectory(filePath);
                     }
-                    giamDinhHoSo.Save(filePath + "FileHS_" +name+ ".xml");
+                    giamDinhHoSo.Save(filePath + "FileHS_" + name + ".xml");
                 }
                 catch (IOException ex)
                 {
@@ -149,11 +149,11 @@ namespace TiepNhan.GUI
         private void LuuGui(DataRow[] dr)
         {
             string err = "";
-            for(int i=0;i<dr.Length;i++)
+            for (int i = 0; i < dr.Length; i++)
             {
                 err = "";
-                if(!
-                danhSach.CapNhatDaGui(ref err,dr[i]["MaLK"].ToString()))
+                if (!
+                danhSach.CapNhatDaGui(ref err, dr[i]["MaLK"].ToString()))
                 {
                     XtraMessageBox.Show(err);
                 }
@@ -162,7 +162,7 @@ namespace TiepNhan.GUI
 
         private void btnInDon_Click(object sender, EventArgs e)
         {
-            TaoDonThuocA5();
+            TaoDonThuocA4();
         }
         private void TaoDonThuocA5()
         {
@@ -186,6 +186,73 @@ namespace TiepNhan.GUI
                 rpt.lblTenBenh.Text = dr["TenBenh"].ToString();
                 rpt.lblBacSi.Text = "";//
                 rpt.lblNgayKeDon.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+                DataTable dtThuoc = danhSach.DSThuoc(dr["MaLK"].ToString());
+                //int i = 1;
+                foreach (DataRow drrow in dtThuoc.Rows)
+                {
+                    //drrow["STT"]  += ")";
+                    //i++;
+                    string hamLuong = drrow["HamLuong"].ToString();
+                    int index = 0;
+                    int space = hamLuong.Length;
+                    while (index > -1 && hamLuong.Length > 15)
+                    {
+                        index = hamLuong.IndexOf(' ', index + 1);
+                        if (index > 15 || index == -1)
+                        {
+                            index = -1;
+                        }
+                        else
+                        {
+                            space = index;
+                        }
+                    }
+                    drrow["HamLuong"] = hamLuong.Substring(0, space);
+                }
+
+                rpt.DataSource = dtThuoc;
+                rpt.CreateDocument();
+                rpt.ShowPreviewDialog();
+            }
+        }
+        private void TaoDonThuocA4()
+        {
+            DataRow dr = gridView.GetFocusedDataRow();
+            if (dr != null)
+            {
+                RptDonThuocA4 rpt = new RptDonThuocA4();
+                rpt.lblCoSo.Text = dr["MaCoSoKCB"].ToString();
+                rpt.xrlblSoHoSo.Text = "Số hồ sơ:" + dr["STTNgay"];
+                rpt.lblHoTen.Text = dr["HoTen"].ToString();
+                rpt.lblNamSinh.Text = dr["NgaySinh"].ToString();
+                rpt.lblGioiTinh.Text = dr["GioiTinh"].ToString() == "0" ? "Nam" : "Nữ";
+                rpt.lblDiaChi.Text = dr["DiaChi"].ToString();
+                //
+                rpt.lblCoSo1.Text = dr["MaCoSoKCB"].ToString();
+                rpt.xrlblSoHoSo1.Text = "Số hồ sơ:" + dr["STTNgay"];
+                rpt.lblHoTen1.Text = dr["HoTen"].ToString();
+                rpt.lblNamSinh1.Text = dr["NgaySinh"].ToString();
+                rpt.lblGioiTinh1.Text = dr["GioiTinh"].ToString() == "0" ? "Nam" : "Nữ";
+                rpt.lblDiaChi1.Text = dr["DiaChi"].ToString();
+                if (!string.IsNullOrEmpty(dr["MaThe"].ToString()))
+                {
+                    rpt.lblSoThe.Text = dr["MaThe"].ToString();
+                    rpt.lblNoiDangKyKCB.Text = dr["MaDKBD"].ToString();
+                    rpt.lblHanSuDung.Text = Utils.ToDateTime(dr["TheTu"].ToString()).ToString("dd/MM/yyyy") + " - "
+                        + Utils.ToDateTime(dr["TheDen"].ToString()).ToString("dd/MM/yyyy");
+                    //
+                    rpt.lblSoThe1.Text = dr["MaThe"].ToString();
+                    rpt.lblNoiDangKyKCB1.Text = dr["MaDKBD"].ToString();
+                    rpt.lblHanSuDung1.Text = Utils.ToDateTime(dr["TheTu"].ToString()).ToString("dd/MM/yyyy") + " - "
+                        + Utils.ToDateTime(dr["TheDen"].ToString()).ToString("dd/MM/yyyy");
+                }
+                rpt.lblTenBenh.Text = dr["TenBenh"].ToString();
+                rpt.lblBacSi.Text = "";//
+                rpt.lblNgayKeDon.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+                //
+                rpt.lblTenBenh1.Text = dr["TenBenh"].ToString();
+                rpt.lblBacSi1.Text = "";//
+                rpt.lblNgayKeDon1.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
                 DataTable dtThuoc = danhSach.DSThuoc(dr["MaLK"].ToString());
                 //int i = 1;
                 foreach (DataRow drrow in dtThuoc.Rows)

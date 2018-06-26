@@ -821,8 +821,12 @@ namespace DuocPham.GUI
         {
             if (lookUpKhoNhan.EditValue != null && !string.IsNullOrEmpty(lookUpKhoNhan.EditValue.ToString()))
             {
-                txtNoiDung.Text = lookUpKhoNhan.Properties.GetDisplayValueByKeyValue(lookUpKhoNhan.EditValue).ToString();
-                txtDiaChi.Text = lookUpKhoNhan.EditValue.ToString();
+                try
+                {
+                    txtNoiDung.Text = lookUpKhoNhan.Properties.GetDisplayValueByKeyValue(lookUpKhoNhan.EditValue).ToString();
+                    txtDiaChi.Text = lookUpKhoNhan.EditValue.ToString();
+                }
+                catch { }
             }
         }
 

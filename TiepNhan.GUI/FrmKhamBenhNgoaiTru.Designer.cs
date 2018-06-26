@@ -106,7 +106,7 @@
             this.ribbonControl.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
-            this.ribbonControl.Size = new System.Drawing.Size(892, 30);
+            this.ribbonControl.Size = new System.Drawing.Size(892, 27);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
             // 
             // layoutControlMain
@@ -117,10 +117,10 @@
             this.layoutControlMain.Controls.Add(this.flowLayoutPanel3);
             this.layoutControlMain.Controls.Add(this.flowLayoutPanelSoLuong);
             this.layoutControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControlMain.Location = new System.Drawing.Point(0, 30);
+            this.layoutControlMain.Location = new System.Drawing.Point(0, 27);
             this.layoutControlMain.Name = "layoutControlMain";
             this.layoutControlMain.Root = this.layoutControlGroupMain;
-            this.layoutControlMain.Size = new System.Drawing.Size(892, 466);
+            this.layoutControlMain.Size = new System.Drawing.Size(892, 469);
             this.layoutControlMain.TabIndex = 1;
             // 
             // gridControl
@@ -129,7 +129,7 @@
             this.gridControl.MainView = this.gridView;
             this.gridControl.MenuManager = this.ribbonControl;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(868, 378);
+            this.gridControl.Size = new System.Drawing.Size(868, 381);
             this.gridControl.TabIndex = 15;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -335,7 +335,9 @@
             // btnLichSuKCB
             // 
             this.btnLichSuKCB.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLichSuKCB.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnLichSuKCB.Appearance.Options.UseFont = true;
+            this.btnLichSuKCB.Appearance.Options.UseForeColor = true;
             this.btnLichSuKCB.ImageOptions.ImageUri.Uri = "SwitchTimeScalesTo;Size16x16;Office2013";
             this.btnLichSuKCB.Location = new System.Drawing.Point(3, 3);
             this.btnLichSuKCB.Name = "btnLichSuKCB";
@@ -541,7 +543,7 @@
             this.layoutControlItem2,
             this.layoutControlItem3});
             this.layoutControlGroupMain.Name = "layoutControlGroupMain";
-            this.layoutControlGroupMain.Size = new System.Drawing.Size(892, 466);
+            this.layoutControlGroupMain.Size = new System.Drawing.Size(892, 469);
             this.layoutControlGroupMain.TextVisible = false;
             // 
             // layoutControlItem31
@@ -599,7 +601,7 @@
             this.layoutControlItem3.Control = this.gridControl;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 64);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(872, 382);
+            this.layoutControlItem3.Size = new System.Drawing.Size(872, 385);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 

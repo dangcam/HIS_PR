@@ -381,8 +381,8 @@ namespace TiepNhan.GUI
                     thongtin.MaCoSoDKKCB = txtMaDKKCB.Text;
                     thongtin.TheTu = txtTheTu.Text;
                     thongtin.TheDen = txtTheDen.Text;
-                    thongtin = await Utils.LichSuKhamChuaBenhBHYT(thongtin);
-                    if(thongtin.Code == "false")
+                    ThongTinLichSu thongTinLichSu = await Utils.LichSuKhamChuaBenhBHYT(thongtin);
+                    if(thongTinLichSu.maKetQua == "false")
                     {
                         // lỗi hệ thống
                         SplashScreenManager.CloseForm();
@@ -392,8 +392,14 @@ namespace TiepNhan.GUI
                     else
                     {
                         // hiện thông báo, lịch sử
-                        lichSuKCB.ThongTin = thongtin;
+                        thongTinLichSu.ngaySinh = thongtin.NgaySinh;
+                        lichSuKCB.ThongTin = thongTinLichSu;
                         lichSuKCB.ShowDialog();
+                        txtDiaChi.Text = thongTinLichSu.diaChi;// chỉ có thể cập nhật lại từng này
+                        txtDu5Nam.Text = thongTinLichSu.ngayDu5Nam;
+                        cbKhuVuc.SelectedItem = thongTinLichSu.maKV;
+                        txtTheTu.Text = thongTinLichSu.gtTheTu;
+                        txtTheDen.Text = thongTinLichSu.gtTheDen;
                     }
                 }
             }
@@ -401,12 +407,11 @@ namespace TiepNhan.GUI
             if(KiemTraThongTinTiepNhan())
             {
                 // Lấy danh sách lịch sử từ phần mềm, dựa vào họ tên, ngày sinh, giới tính -> mã bệnh nhân
-                ThongTinThe thongtin = new ThongTinThe();
+                ThongTinLichSu thongtin = new ThongTinLichSu();
                 thongtin.MaBN = txtMaBN.Text;
-                thongtin.MaThe = null;
-                thongtin.HoTen = txtHoTen.Text;
-                thongtin.NgaySinh = txtNgaySinh.Text;
-                thongtin.GioiTinh = cbGioiTinh.SelectedIndex;
+                thongtin.hoTen = txtHoTen.Text;
+                thongtin.ngaySinh = txtNgaySinh.Text;
+                thongtin.gioiTinh = cbGioiTinh.SelectedIndex == 0 ? "Nam" : "Nữ";
                 // lấy lịch sử
                 thongtin.LichSuPhanMem = tiepnhan.DSLichSuPhanMem();
                 lichSuKCB.ThongTin = thongtin;
