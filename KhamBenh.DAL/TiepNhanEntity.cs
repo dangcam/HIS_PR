@@ -98,9 +98,9 @@ namespace KhamBenh.DAL
             + "NgayVao as tuNgay, NgayRa as denNgay, TenBenh as tenBenh, "
             + "TinhTrangRaVien as tinhTrang, KetQuaDieuTri as kqDieuTri "
             + "from ThongTinBNChiTiet "
-            + "where MaBN = '"+MaBN+"' "
-            + "or(dbo.ChangeVietnameseWord(N'"+HoTen+"') = dbo.ChangeVietnameseWord(HoTen) "
-            + "AND '01/11/1994' = NgaySinh AND GioiTinh = "+GioiTinh+")",
+            + "where MaBN = '"+MaBN+"' ",
+            //+ "or(dbo.ChangeVietnameseWord(N'"+HoTen+"') = dbo.ChangeVietnameseWord(HoTen) "
+            //+ "AND '"+NgaySinh+"' = NgaySinh AND GioiTinh = "+GioiTinh+")",
                 CommandType.Text, null);
         }
         public bool SpThongTinBN(ref string err, string Action)

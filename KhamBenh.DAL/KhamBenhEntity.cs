@@ -191,15 +191,15 @@ namespace KhamBenh.DAL
                 +AppConfig.CoSoKCB+ "' And LEN(Ma_BS) > 0 Order By Ten_NV DESC",
                 CommandType.Text, null);
         }
-        public DataTable DSLichSuPhanMem(string MaBN, string HoTen, int GioiTinh)
+        public DataTable DSLichSuPhanMem(string MaBN, string HoTen, int GioiTinh, string NgaySinh)
         {
             return db.ExcuteQuery("select MaLK as maHoSo,MaCoSoKCB as maCSKCB,"
             + "NgayVao as tuNgay, NgayRa as denNgay, TenBenh as tenBenh, "
             + "TinhTrangRaVien as tinhTrang, KetQuaDieuTri as kqDieuTri "
             + "from ThongTinBNChiTiet "
-            + "where MaBN = '" + MaBN + "' "
-            + "or(dbo.ChangeVietnameseWord(N'" + HoTen + "') = dbo.ChangeVietnameseWord(HoTen) "
-            + "AND '01/11/1994' = NgaySinh AND GioiTinh = " + GioiTinh + ")",
+            + "where MaBN = '" + MaBN + "' ",
+            //+ "or(dbo.ChangeVietnameseWord(N'" + HoTen + "') = dbo.ChangeVietnameseWord(HoTen) "
+            //+ "AND '"+NgaySinh+"' = NgaySinh AND GioiTinh = " + GioiTinh + ")",
                 CommandType.Text, null);
         }
         public bool SpChuyenPhong(ref string err)

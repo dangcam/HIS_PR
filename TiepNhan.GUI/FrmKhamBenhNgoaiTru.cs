@@ -264,7 +264,7 @@ namespace TiepNhan.GUI
                     thongtin.ngaySinh = dr["NgaySinh"].ToString();
                     thongtin.gioiTinh = Utils.ToInt(dr["GioiTinh"]) == 0 ? "Nam" : "Nữ";
                     // lấy lịch sử
-                    thongtin.LichSuPhanMem = khambenh.DSLichSuPhanMem(thongtin.MaBN, thongtin.hoTen, Utils.ToInt(dr["GioiTinh"]));
+                    thongtin.LichSuPhanMem = khambenh.DSLichSuPhanMem(thongtin.MaBN, thongtin.hoTen, Utils.ToInt(dr["GioiTinh"]),thongtin.ngaySinh);
                     frmLichSuKCB.ThongTin = thongtin;
                     frmLichSuKCB.ShowDialog();
                 }

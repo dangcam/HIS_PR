@@ -14,7 +14,6 @@ namespace TiepNhan.GUI
 {
     public partial class FrmTiepNhan : RibbonForm
     {
-        
         TiepNhanEntity tiepnhan;
         DataTable dataCoso,dataTinh,dataMucHuong,dataDanhSach, dataDanhSach2;
         private bool themMoi = true;
@@ -22,6 +21,7 @@ namespace TiepNhan.GUI
         private List<int> listPhongKham = new List<int>();
         RptSoPhieu rptSoPhieu = new RptSoPhieu();
         private string quyen = "";
+        SplashScreenManager splashScreenManager;
         public FrmTiepNhan()
         {
             
@@ -69,7 +69,7 @@ namespace TiepNhan.GUI
             dataMucHuong = tiepnhan.DSMucHuong();
             dateTuNgay.DateTime = DateTime.Now;
             dateDenNgay.DateTime = DateTime.Now;
-            
+            splashScreenManager = new SplashScreenManager(this, typeof(WaitFormLoad), true, true);
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
@@ -366,58 +366,71 @@ namespace TiepNhan.GUI
 
         private async void btnLichSuKCB_Click(object sender, EventArgs e)
         {
-            SplashScreenManager.ShowForm(typeof(WaitFormLoad));
-            if (checkBHYT.Checked == true )
+            if (!splashScreenManager.IsSplashFormVisible)
             {
-                // Lấy danh sách lịch sử trên cổng (trên phần mềm nếu cổng lỗi)
-                if (KiemTraThongTinTiepNhan(true))
+                splashScreenManager.ShowWaitForm();
+
+                //   SplashScreenManager.ShowForm(this,typeof(WaitFormLoad),true,true);
+                if (checkBHYT.Checked == true)
                 {
-                    ThongTinThe thongtin = new ThongTinThe();
-                    thongtin.MaBN = null;
-                    thongtin.MaThe = txtTheBHYT.Text;
-                    thongtin.HoTen = txtHoTen.Text;
-                    thongtin.NgaySinh = txtNgaySinh.Text;
-                    thongtin.GioiTinh = cbGioiTinh.SelectedIndex;
-                    thongtin.MaCoSoDKKCB = txtMaDKKCB.Text;
-                    thongtin.TheTu = txtTheTu.Text;
-                    thongtin.TheDen = txtTheDen.Text;
-                    ThongTinLichSu thongTinLichSu = await Utils.LichSuKhamChuaBenhBHYT(thongtin);
-                    if(thongTinLichSu.maKetQua == "false")
+                    // Lấy danh sách lịch sử trên cổng (trên phần mềm nếu cổng lỗi)
+                    if (KiemTraThongTinTiepNhan(true))
                     {
-                        // lỗi hệ thống
-                        SplashScreenManager.CloseForm();
-                        XtraMessageBox.Show(thongtin.ThongBao, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    else
-                    {
-                        // hiện thông báo, lịch sử
-                        thongTinLichSu.ngaySinh = thongtin.NgaySinh;
-                        lichSuKCB.ThongTin = thongTinLichSu;
-                        lichSuKCB.ShowDialog();
-                        txtDiaChi.Text = thongTinLichSu.diaChi;// chỉ có thể cập nhật lại từng này
-                        txtDu5Nam.Text = thongTinLichSu.ngayDu5Nam;
-                        cbKhuVuc.SelectedItem = thongTinLichSu.maKV;
-                        txtTheTu.Text = thongTinLichSu.gtTheTu;
-                        txtTheDen.Text = thongTinLichSu.gtTheDen;
+                        ThongTinThe thongtin = new ThongTinThe();
+                        thongtin.MaBN = null;
+                        thongtin.MaThe = txtTheBHYT.Text;
+                        thongtin.HoTen = txtHoTen.Text;
+                        thongtin.NgaySinh = txtNgaySinh.Text;
+                        thongtin.GioiTinh = cbGioiTinh.SelectedIndex;
+                        thongtin.MaCoSoDKKCB = txtMaDKKCB.Text;
+                        thongtin.TheTu = txtTheTu.Text;
+                        thongtin.TheDen = txtTheDen.Text;
+                        ThongTinLichSu thongTinLichSu = await Utils.LichSuKhamChuaBenhBHYT(thongtin);
+                        if (thongTinLichSu.maKetQua == "false")
+                        {
+                            // lỗi hệ thống
+                            splashScreenManager.CloseWaitForm();
+                            XtraMessageBox.Show(thongtin.ThongBao, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
+                        {
+                            // hiện thông báo, lịch sử
+                            thongTinLichSu.ngaySinh = thongtin.NgaySinh;
+                            lichSuKCB.ThongTin = thongTinLichSu;
+                            lichSuKCB.ShowDialog();
+                            txtDiaChi.Text = thongTinLichSu.diaChi;// chỉ có thể cập nhật lại từng này
+                            txtDu5Nam.Text = thongTinLichSu.ngayDu5Nam;
+                            cbKhuVuc.SelectedItem = thongTinLichSu.maKV;
+                            txtTheTu.Text = thongTinLichSu.gtTheTu;
+                            txtTheDen.Text = thongTinLichSu.gtTheDen;
+                        }
                     }
                 }
+                else
+                if (KiemTraThongTinTiepNhan())
+                {
+                    // Lấy danh sách lịch sử từ phần mềm, dựa vào họ tên, ngày sinh, giới tính -> mã bệnh nhân
+                    ThongTinLichSu thongtin = new ThongTinLichSu();
+                    thongtin.MaBN = txtMaBN.Text;
+                    thongtin.hoTen = txtHoTen.Text;
+                    thongtin.ngaySinh = txtNgaySinh.Text;
+                    thongtin.gioiTinh = cbGioiTinh.SelectedIndex == 0 ? "Nam" : "Nữ";
+                    // lấy lịch sử
+                    tiepnhan.MaBN = thongtin.MaBN;
+                    tiepnhan.HoTen = thongtin.hoTen;
+                    tiepnhan.NgaySinh = thongtin.ngaySinh;
+                    tiepnhan.GioiTinh = cbGioiTinh.SelectedIndex;
+                    thongtin.LichSuPhanMem = tiepnhan.DSLichSuPhanMem();
+                    lichSuKCB.ThongTin = thongtin;
+                    lichSuKCB.ShowDialog();
+                }
             }
-            else
-            if(KiemTraThongTinTiepNhan())
+            if (splashScreenManager.IsSplashFormVisible)
             {
-                // Lấy danh sách lịch sử từ phần mềm, dựa vào họ tên, ngày sinh, giới tính -> mã bệnh nhân
-                ThongTinLichSu thongtin = new ThongTinLichSu();
-                thongtin.MaBN = txtMaBN.Text;
-                thongtin.hoTen = txtHoTen.Text;
-                thongtin.ngaySinh = txtNgaySinh.Text;
-                thongtin.gioiTinh = cbGioiTinh.SelectedIndex == 0 ? "Nam" : "Nữ";
-                // lấy lịch sử
-                thongtin.LichSuPhanMem = tiepnhan.DSLichSuPhanMem();
-                lichSuKCB.ThongTin = thongtin;
-                lichSuKCB.ShowDialog();
+                splashScreenManager.CloseWaitForm();
             }
-            SplashScreenManager.CloseForm();
+            //SplashScreenManager.CloseForm();
         }
 
         private void btnInLai_Click(object sender, EventArgs e)
