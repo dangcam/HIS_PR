@@ -161,6 +161,12 @@
     <Compile Include="RptTongHopBNTT.Designer.cs">
       <DependentUpon>RptTongHopBNTT.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptTongHopKeDonThuoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTongHopKeDonThuoc.Designer.cs">
+      <DependentUpon>RptTongHopKeDonThuoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptTongHopChiTietThuoc.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -250,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptTongHopBNTT.resx">
       <DependentUpon>RptTongHopBNTT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTongHopKeDonThuoc.resx">
+      <DependentUpon>RptTongHopKeDonThuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptTongHopChiTietThuoc.resx">
       <DependentUpon>RptTongHopChiTietThuoc.cs</DependentUpon>

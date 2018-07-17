@@ -134,7 +134,7 @@ namespace TiepNhan.GUI
         private void ResetForm()
         {
             checkBHYT.Checked = true;
-            txtNgayTN.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            txtNgayTN.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
             cbGioiTinh.SelectedIndex = 0;
             cbLyDoVaoVien.SelectedIndex = 0;
             lookUpTaiNan.ItemIndex = 0;
@@ -931,7 +931,7 @@ namespace TiepNhan.GUI
                     tiepnhan.TinhTrang = 1;
                 tiepnhan.MaNoiChuyenDen = Utils.ToString(lookUpNoiChuyenDen.EditValue);
                 tiepnhan.MaTaiNan = lookUpTaiNan.ItemIndex;
-                tiepnhan.NgayVao = DateTime.Now;
+                tiepnhan.NgayVao = Utils.ToDateTime( txtNgayTN.Text,"dd/MM/yyyy HH:mm");
                 tiepnhan.MaKhoa = Utils.ToString(lookUpMaKhoa.EditValue);// lúc xuất ra nhớ bỏ dấu _ file XML
                 tiepnhan.MaCoSoKCB = AppConfig.CoSoKCB;
                 tiepnhan.CanNang = Utils.ToDouble(txtCanNang.Text);
@@ -1000,6 +1000,7 @@ namespace TiepNhan.GUI
                 txtHoTen.Text = dr["HoTen"].ToString();
                 txtNgaySinh.Text = dr["NgaySinh"].ToString();
                 txtDiaChi.Text = dr["DiaChi"].ToString();
+                txtNgayTN.Text = Utils.ToDateTime(dr["NgayVao"].ToString()).ToString("dd/MM/yyyy HH:mm");
                 cbGioiTinh.SelectedIndex = Utils.ToInt(dr["GioiTinh"]);
                 txtSTTNgay.Text = dr["STTNgay"].ToString();
                 cbLyDoVaoVien.SelectedIndex = Utils.ToInt(dr["MaLyDoVaoVien"]) - 1;

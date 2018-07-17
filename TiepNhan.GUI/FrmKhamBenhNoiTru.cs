@@ -441,11 +441,11 @@ namespace TiepNhan.GUI
             SplashScreenManager.ShowForm(typeof(WaitFormLoad));
             // chi tiết thuốc
             
-            DataTable dataTongHop = khambenh.DSChiTietThuoc(lookUpKhoa.EditValue.ToString(), dateTuNgay.DateTime, dateDenNgay.DateTime);
-            RptTongHopChiTietThuoc rpt = new RptTongHopChiTietThuoc();
+            DataTable dataTongHop = khambenh.DSChiTietThuocAndGiuong(lookUpKhoa.EditValue.ToString(), dateTuNgay.DateTime, dateDenNgay.DateTime);
+            RptTongHopKeDonThuoc rpt = new RptTongHopKeDonThuoc();
             rpt.xrlblCoSo.Text = AppConfig.CoSoKCB;
-            rpt.xrlblTuNgayDenNgay.Text = "Từ ngày " + dateTuNgay.DateTime.ToString("dd/MM/yyyy") +
-                " đến ngày " + dateDenNgay.DateTime.ToString("dd/MM/yyyy");
+            rpt.xrlblTuNgayDenNgay.Text = "Từ ngày " + dateTuNgay.DateTime.ToString("dd/MM/yyyy HH:mm") +
+                " đến ngày " + dateDenNgay.DateTime.ToString("dd/MM/yyyy HH:mm");
             rpt.xrlblKhoa.Text = lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();
             //rpt.xrlblNgayLap.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
             //rpt.DataSource = dataTongHop;

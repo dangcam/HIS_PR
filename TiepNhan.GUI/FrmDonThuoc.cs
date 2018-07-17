@@ -76,8 +76,13 @@ namespace TiepNhan.GUI
         {
             if (e.KeyChar == 13)
                 txtNgayUong.Focus();
+                //txtLieuDung.Focus();
         }
-
+        private void txtLieuDung_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnChon.Focus();
+        }
         private void txtNgayUong_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -140,6 +145,7 @@ namespace TiepNhan.GUI
                 txtSoLuong.ResetText();
                 txtLanUong.ResetText();
                 txtNgayUong.ResetText();
+                //txtLieuDung.Text = "";
             }
         }
 
@@ -189,20 +195,20 @@ namespace TiepNhan.GUI
             }
         }
 
-        private void txtNgayUong_Enter(object sender, EventArgs e)
-        {
-            txtNgayUong.Select(0, txtSoLuong.Value.ToString().Length);
-        }
+        //private void txtNgayUong_Enter(object sender, EventArgs e)
+        //{
+        //    txtNgayUong.Select(0, txtSoLuong.Value.ToString().Length);
+        //}
 
         private void txtSoLuong_Enter(object sender, EventArgs e)
         {
             txtSoLuong.Select(0, txtSoLuong.Value.ToString().Length);
         }
 
-        private void txtLanUong_Enter(object sender, EventArgs e)
-        {
-            txtLanUong.Select(0, txtSoLuong.Value.ToString().Length);
-        }
+        //private void txtLanUong_Enter(object sender, EventArgs e)
+        //{
+        //    txtLanUong.Select(0, txtSoLuong.Value.ToString().Length);
+        //}
 
         private void btnIn_Click(object sender, EventArgs e)
         {
@@ -285,7 +291,7 @@ namespace TiepNhan.GUI
                     else
                     {
                         // insert thuốc danh mục
-                        if (kedon.SpKeDonThuoc(ref err, "INSERT"))
+                        if (kedon.SpKeDonThuoc(ref err, "INSERT_NgoaiDM"))// insert ngoài danh mục luôn, không trừ kho nữa, ứng phiếu tùm lum
                         {
                             listThuoc[drv["MaVatTu"] + "|" + drv["NhomYLenh"]] = 1;// đã có nếu lưu thành công
                         }
@@ -413,7 +419,7 @@ namespace TiepNhan.GUI
         {
             if(cbLoaiThuoc.SelectedIndex ==0)
             {
-                lookUpThuoc.Properties.DataSource = kedon.DSKeDon("1");
+                lookUpThuoc.Properties.DataSource = kedon.DSKeVatTuKhoChan("1");
             }
             else
             {

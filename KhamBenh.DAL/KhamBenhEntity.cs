@@ -165,12 +165,29 @@ namespace KhamBenh.DAL
         public DataTable DSChiTietThuoc(string maKhoa, DateTime tuNgay, DateTime denNgay)
         {
             return db.ExcuteQuery("Select STTNgay,HoTen,SUBSTRING(NgaySinh, Len(NgaySinh)-3, 4) as NgaySinh," +
-                                    "MaThe,CONVERT(VARCHAR,NgayYLenh,120) as NgayThanhToan,MaBenh,TenThuoc,SoLuong " +
+                                    "MaThe,CONVERT(VARCHAR,NgayYLenh,120) as NgayThanhToan,MaBenh,TenThuoc,SoLuong,LieuDung " +
                                     "from ThongTinBNChiTiet,DonThuocChiTiet " +
                                     "where ThongTinBNChiTiet.MaLK = DonThuocChiTiet.MaLK " +
                                     "And MaCoSoKCB='" + AppConfig.CoSoKCB + "' and ThongTinBNChiTiet.MaKhoa = '" + maKhoa + "' " +
-                                    "And (convert(date,NgayYLenh) between convert(date,'" + tuNgay + "') and convert(date,'" + denNgay + "')) " +
+                                    "And (NgayYLenh between '" + tuNgay + "' and '" + denNgay + "') " +
                                     "And ThongTinBNChiTiet.NgayRa is NULL " +
+                                    "order by STTNgay",
+                CommandType.Text, null);
+
+        }
+        public DataTable DSChiTietThuocAndGiuong(string maKhoa, DateTime tuNgay, DateTime denNgay)
+        {
+            return db.ExcuteQuery("Select * from " +
+                                    "(Select STTNgay,HoTen,SUBSTRING(NgaySinh, Len(NgaySinh)-3, 4) as NgaySinh,ThongTinBNChiTiet.MaLK," +
+                                    "MaThe,CONVERT(VARCHAR,NgayYLenh,120) as NgayThanhToan,MaBenh,TenThuoc,SoLuong,LieuDung " +
+                                    "from ThongTinBNChiTiet,DonThuocChiTiet " +
+                                    "where ThongTinBNChiTiet.MaLK = DonThuocChiTiet.MaLK " +
+                                    "And MaCoSoKCB='" + AppConfig.CoSoKCB + "' and ThongTinBNChiTiet.MaKhoa = '" + maKhoa + "' " +
+                                    "And (NgayYLenh between '" + tuNgay + "' and '" + denNgay + "') " +
+                                    "And ThongTinBNChiTiet.NgayRa is NULL " +
+                                    ") as Thuoc " +
+                                    "left outer join (Select MaLK,TenDichVu,MaGiuong from DichVuChiTiet where MaNhom=15) as Giuong " +
+                                    "on Thuoc.MaLK = Giuong.MaLK " +
                                     "order by STTNgay",
                 CommandType.Text, null);
 

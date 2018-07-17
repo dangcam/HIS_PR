@@ -15,10 +15,14 @@ namespace Core.DAL
         SqlConnection conn = null;
         SqlCommand comm = null;
         SqlDataAdapter da = null;
-        public Connection ()
+        public Connection(int timeout = 0)
         {
             conn = StringConnection.getNetwork ();
             comm = conn.CreateCommand ();
+            if(timeout>0)
+            {
+                comm.CommandTimeout = timeout;
+            }
         }
         public DataTable ExcuteQuery (string strSQL, CommandType ct, params SqlParameter[] p)
         {

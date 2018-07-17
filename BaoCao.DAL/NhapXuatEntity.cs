@@ -14,13 +14,13 @@ namespace BaoCao.DAL
         Connection db;
         public NhapXuatEntity()
         {
-            db = new Connection ();
+            db = new Connection (21600);
         }
         public string LoaiVatTu { get; set; }
         public DateTime TuNgay { get; set; }
         public DateTime DenNgay { get; set; }
         public DataTable DSNVKhoDuoc()
-        {
+        {    
             return db.ExcuteQuery("Select * From NVKhoaDuoc ",
                 CommandType.Text, null);
         }
