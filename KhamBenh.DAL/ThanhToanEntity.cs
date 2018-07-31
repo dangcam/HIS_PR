@@ -38,6 +38,7 @@ namespace KhamBenh.DAL
         public int SoNgayDieuTri { get; set; }
         public int KetQuaDieuTri { get; set; }
         public int TinhTrangRaVien { get; set; }
+        public int LyDoVaoVien { get; set; }
         public DateTime NgayThanhToan { get; set; }
         public decimal TienThuoc { get; set; }
         public decimal TienVTYT { get; set; }

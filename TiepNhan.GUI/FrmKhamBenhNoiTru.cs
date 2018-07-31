@@ -494,5 +494,27 @@ namespace TiepNhan.GUI
                     lookUpKhoa.EditValue = AppConfig.MaKhoa;
             }
         }
+
+        private void btnTHVatTu_Click(object sender, EventArgs e)
+        {
+            SplashScreenManager.ShowForm(typeof(WaitFormLoad));
+            RptTongHopKeVatTu rpt = new RptTongHopKeVatTu();
+            rpt.xrlblMaCoSo.Text = AppConfig.CoSoKCB;
+            rpt.xrlblTuNgayDenNgay.Text = "Từ ngày " + dateTuNgay.DateTime.ToString("dd/MM/yyyy HH:mm") +
+                " đến ngày " + dateDenNgay.DateTime.ToString("dd/MM/yyyy HH:mm");
+            rpt.xrlblKhoa.Text = lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();
+            rpt.DataSource = khambenh.DSTongHopKeVatTu(lookUpKhoa.EditValue.ToString(), dateTuNgay.DateTime, dateDenNgay.DateTime);
+            
+            rpt.CreateDocument();
+            rpt.ShowPreviewDialog();
+
+            SplashScreenManager.CloseForm();
+        }
+
+        private void btnNopHS_Click(object sender, EventArgs e)
+        {
+            FrmNopHoSo frmNopHoSo = new FrmNopHoSo();
+            frmNopHoSo.ShowDialog();
+        }
     }
 }

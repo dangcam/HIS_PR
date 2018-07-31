@@ -368,7 +368,7 @@ namespace TiepNhan.GUI
         private void LuuHoSo(bool inHoSo = false,bool xemHoSo = false)
         {
             // lưu 3 bảng, thông tin, vật tư, dịch vụ
-            if (KiemTraBenhBacSi())
+            if (KiemTraBenhBacSi() && KiemTraNgayVaoNgayRa())
             {
                 string err = "";
                 thanhtoan.HoTen = txtHoTen.Text;
@@ -405,7 +405,7 @@ namespace TiepNhan.GUI
                 }
                 thanhtoan.MaBenh = maBenh;
                 thanhtoan.TenBenh = txtTenBenh.Text;
-                
+                thanhtoan.LyDoVaoVien = cbLyDoVVien.SelectedIndex + 1;
                 thanhtoan.NgayRa = dateNgayRa.DateTime;
                 thanhtoan.NgayVao = dateNgayVao.DateTime;
                 thanhtoan.SoNgayDieuTri = Utils.ToInt(txtSoNgayDTri.Text);
@@ -649,7 +649,7 @@ namespace TiepNhan.GUI
             {
                 FrmDichVuChiTiet frm = new FrmDichVuChiTiet();
                 frm.MaLK = thanhtoan.MaLK;
-                frm.MaKhoa = lookUpKhoa.EditValue.ToString();
+                frm.MaKhoa = Utils.ToString(lookUpKhoa.EditValue);
                 frm.MaBacSi = lookUpBacSi.EditValue.ToString();
                 frm.ShowDialog();
                 dataDichVu = thanhtoan.DSDichVuChiTiet();
@@ -1106,7 +1106,16 @@ namespace TiepNhan.GUI
             }
             return true;
         }
-
+        private bool KiemTraNgayVaoNgayRa()
+        {
+            if(dateNgayVao.DateTime > dateNgayRa.DateTime)
+            {
+                XtraMessageBox.Show("Ngày vào không được lớn hơn ngày ra!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dateNgayRa.Focus();
+                return false;
+            }
+            return true;
+        }
         private void lookUpMaBenh_EditValueChanged(object sender, EventArgs e)
         {
             object dr = lookUpMaBenh.GetSelectedDataRow();

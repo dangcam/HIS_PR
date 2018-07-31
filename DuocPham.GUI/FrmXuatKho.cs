@@ -774,7 +774,7 @@ namespace DuocPham.GUI
 
                     arr[dem, 3] = drow["NoiDung"];// +" "+((drow["KhoNhan"].Equals("K19_13")) ? "Khoa Ngoại" : "Khoa Nội") + " ngày " +
                     //    Utils.ToDateTime(drow["NgayXuat"].ToString()).ToString("dd/MM"); //dr[""];//DienGiai
-                    arr[dem, 4] = (drow["KhoNhan"].Equals("K01_13")) ? "161" : "141";// dr[""];//MaTKNo Ngoại trú: 161, Nội trú: 141
+                    arr[dem, 4] = (drow["KhoNhan"].Equals("K01_13") || drow["KhoNhan"].Equals("KX")) ? "161" : "141";// dr[""];//MaTKNo Ngoại trú: 161, Nội trú: 141
                     arr[dem, 5] = "156" + dr["LoaiVatTu"];//MaTKCo
                     arr[dem, 6] = "";//dr[""];//MaVTHHNo
                     if (maVatTu.ContainsKey(dr["MaBV"].ToString()))
@@ -789,11 +789,11 @@ namespace DuocPham.GUI
                     arr[dem, 9] = dr["DonViTinh"];//DonViTinh
                     arr[dem, 10] = dr["SoLuong"];//SoLuong
                     arr[dem, 11] = dr["DonGiaBV"];//VNDDonGia
-                    arr[dem, 12] = Utils.ToInt(dr["SoLuong"]) * Utils.ToDecimal(dr["DonGiaBV"]);//dr["ThanhTien"];//VNDThanhTien
+                    arr[dem, 12] = Math.Round(Utils.ToInt(dr["SoLuong"]) * Utils.ToDecimal(dr["DonGiaBV"]));//dr["ThanhTien"];//VNDThanhTien
                     arr[dem, 13] = drow["NguoiNhan"];//((drow["KhoNhan"].Equals("K19_13")) ? "LÊ THỊ THẢO LY" : "NGUYỄN TIẾN DŨNG");//drow["NguoiNhan"];//KhachHang
                     arr[dem, 14] = lookUpKhoNhan.Properties.GetDisplayValueByKeyValue(drow["KhoNhan"]);// lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();// dr[""];//DiaChi
                     arr[dem, 15] = Utils.ToDateTime(drow["NgayXuat"].ToString()).Month;//
-                    arr[dem, 16] = "BVDK";//
+                    arr[dem, 16] = drow["KhoNhan"].ToString();//
                     //TenKH
                     dem++;
                 }

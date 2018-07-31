@@ -92,6 +92,11 @@ namespace DanhMuc.DAL
                 + "OR Ma_CS = '70075' OR Ma_CS = '70076' OR Ma_CS = '70077' OR Ma_CS = '70078'",
                 CommandType.Text, null);
         }
+        public DataTable DSKhoaBanCap(int cap)
+        {
+            return db.ExcuteQuery("Select MaKhoa as Ma_CS,TenKhoa as Ten_CS From KhoaBan where CapDo = " + cap + " and TinhTrang = 1",
+                CommandType.Text, null);
+        }
         public DataTable DSHocHamHocVi ()
         {
             return db.ExcuteQuery ("Select * From HocHamHocVi",

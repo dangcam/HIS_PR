@@ -128,7 +128,7 @@
             this.MaCS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TenCS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lookUpMaBenh = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridViewBenh = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.MaBenh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TenBenhLookup = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroupTT = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -253,7 +253,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUpNoiChuyenDen.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpMaBenh.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewBenh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupTT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
@@ -1684,21 +1684,23 @@
             this.lookUpMaBenh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpMaBenh.Properties.NullText = "";
-            this.lookUpMaBenh.Properties.PopupView = this.gridView1;
+            this.lookUpMaBenh.Properties.PopupView = this.gridViewBenh;
             this.lookUpMaBenh.Size = new System.Drawing.Size(114, 22);
             this.lookUpMaBenh.StyleController = this.layoutControlTT;
             this.lookUpMaBenh.TabIndex = 22;
             this.lookUpMaBenh.EditValueChanged += new System.EventHandler(this.lookUpMaBenh_EditValueChanged);
             // 
-            // gridView1
+            // gridViewBenh
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewBenh.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.MaBenh,
             this.TenBenhLookup});
-            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridViewBenh.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridViewBenh.Name = "gridViewBenh";
+            this.gridViewBenh.OptionsFind.AlwaysVisible = true;
+            this.gridViewBenh.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewBenh.OptionsView.ShowAutoFilterRow = true;
+            this.gridViewBenh.OptionsView.ShowGroupPanel = false;
             // 
             // MaBenh
             // 
@@ -2298,7 +2300,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUpNoiChuyenDen.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpMaBenh.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewBenh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupTT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
@@ -2458,7 +2460,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn MaCS;
         private DevExpress.XtraGrid.Columns.GridColumn TenCS;
         private DevExpress.XtraEditors.SearchLookUpEdit lookUpMaBenh;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewBenh;
         private DevExpress.XtraGrid.Columns.GridColumn MaBenh;
         private DevExpress.XtraGrid.Columns.GridColumn TenBenhLookup;
         private DevExpress.XtraEditors.SimpleButton btnKtraTT;

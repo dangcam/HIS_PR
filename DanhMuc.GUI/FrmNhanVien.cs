@@ -29,7 +29,7 @@ namespace DanhMuc.GUI
             lookUpChucVu.Properties.ValueMember = "Ma_CV";
             lookUpChucVu.ItemIndex = 0;
 
-            lookUpCoSoKCB.Properties.DataSource = nhanvien.DSCoSo ();
+            lookUpCoSoKCB.Properties.DataSource = nhanvien.DSKhoaBanCap(1);
             lookUpCoSoKCB.Properties.ValueMember = "Ma_CS";
             lookUpCoSoKCB.Properties.DisplayMember = "Ten_CS";
             lookUpCoSoKCB.ItemIndex = 0;

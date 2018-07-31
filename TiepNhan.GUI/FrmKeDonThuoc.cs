@@ -59,6 +59,7 @@ namespace TiepNhan.GUI
 
         private void FrmKeDonThuoc_Load(object sender, EventArgs e)
         {
+            lookUpMaBenh.EditValue = null;
             cbLoaiChiPhi.SelectedIndex = -1;
             maBenhChinh = null;
             txtMaBenhKhac.Text = null;

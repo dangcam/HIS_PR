@@ -279,7 +279,7 @@ namespace TiepNhan.GUI
                 tiepnhan.TinhTrang = 1;
             tiepnhan.MaNoiChuyenDen =Utils.ToString( lookUpNoiChuyenDen.EditValue);
             tiepnhan.MaTaiNan = lookUpTaiNan.ItemIndex;
-            tiepnhan.NgayVao = DateTime.Now;
+            tiepnhan.NgayVao = Utils.ToDateTime(txtNgayTN.Text, "dd/MM/yyyy HH:mm"); ;
             tiepnhan.MaKhoa = Utils.ToString(lookUpMaKhoa.EditValue);// lúc xuất ra nhớ bỏ dấu _ file XML
             tiepnhan.MaCoSoKCB = AppConfig.CoSoKCB;
             tiepnhan.CanNang = Utils.ToDouble(txtCanNang.Text);

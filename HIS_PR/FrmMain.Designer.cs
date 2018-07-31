@@ -59,6 +59,7 @@
             this.barBtnXuatExcel = new DevExpress.XtraBars.BarButtonItem();
             this.barChiTietVatTu = new DevExpress.XtraBars.BarButtonItem();
             this.barBaoCaoTonKho = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonBKNhapThuoc = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageHeThong = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupHeThong = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageTiepNhan = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -72,13 +73,13 @@
             this.ribbonPageDuocPham = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupNhapChuyenKho = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupQuanLyDuoc = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupBangKe = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageBaoCao = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupBaoCao = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupKhoLe = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupTongHop = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBarMain = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.ribbonPageGroupBangKe = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonBKNhapThuoc = new DevExpress.XtraBars.BarButtonItem();
+            this.barBITheoDoiRaVaoVie = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,9 +117,10 @@
             this.barBtnXuatExcel,
             this.barChiTietVatTu,
             this.barBaoCaoTonKho,
-            this.barButtonBKNhapThuoc});
+            this.barButtonBKNhapThuoc,
+            this.barBITheoDoiRaVaoVie});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControlMain.MaxItemId = 43;
+            this.ribbonControlMain.MaxItemId = 44;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.barLinkSkin);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -363,6 +365,14 @@
             this.barBaoCaoTonKho.Name = "barBaoCaoTonKho";
             this.barBaoCaoTonKho.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBaoCaoTonKho_ItemClick);
             // 
+            // barButtonBKNhapThuoc
+            // 
+            this.barButtonBKNhapThuoc.Caption = "Bảng Kê Nhập Thuốc";
+            this.barButtonBKNhapThuoc.Id = 42;
+            this.barButtonBKNhapThuoc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonBKNhapThuoc.ImageOptions.Image")));
+            this.barButtonBKNhapThuoc.Name = "barButtonBKNhapThuoc";
+            this.barButtonBKNhapThuoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonBKNhapThuoc_ItemClick);
+            // 
             // ribbonPageHeThong
             // 
             this.ribbonPageHeThong.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -410,6 +420,7 @@
             // 
             this.ribbonPageGroupHoSo.ItemLinks.Add(this.barButtonTTVienPhi);
             this.ribbonPageGroupHoSo.ItemLinks.Add(this.barButtonHSBenhAn);
+            this.ribbonPageGroupHoSo.ItemLinks.Add(this.barBITheoDoiRaVaoVie);
             this.ribbonPageGroupHoSo.Name = "ribbonPageGroupHoSo";
             this.ribbonPageGroupHoSo.ShowCaptionButton = false;
             // 
@@ -458,6 +469,11 @@
             this.ribbonPageGroupQuanLyDuoc.ItemLinks.Add(this.barButtonYCLinhThuoc);
             this.ribbonPageGroupQuanLyDuoc.Name = "ribbonPageGroupQuanLyDuoc";
             // 
+            // ribbonPageGroupBangKe
+            // 
+            this.ribbonPageGroupBangKe.ItemLinks.Add(this.barButtonBKNhapThuoc);
+            this.ribbonPageGroupBangKe.Name = "ribbonPageGroupBangKe";
+            // 
             // ribbonPageBaoCao
             // 
             this.ribbonPageBaoCao.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -502,18 +518,13 @@
             this.ribbonStatusBarMain.Ribbon = this.ribbonControlMain;
             this.ribbonStatusBarMain.Size = new System.Drawing.Size(1290, 31);
             // 
-            // ribbonPageGroupBangKe
+            // barBITheoDoiRaVaoVie
             // 
-            this.ribbonPageGroupBangKe.ItemLinks.Add(this.barButtonBKNhapThuoc);
-            this.ribbonPageGroupBangKe.Name = "ribbonPageGroupBangKe";
-            // 
-            // barButtonBKNhapThuoc
-            // 
-            this.barButtonBKNhapThuoc.Caption = "Bảng Kê Nhập Thuốc";
-            this.barButtonBKNhapThuoc.Id = 42;
-            this.barButtonBKNhapThuoc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonBKNhapThuoc.ImageOptions.Image")));
-            this.barButtonBKNhapThuoc.Name = "barButtonBKNhapThuoc";
-            this.barButtonBKNhapThuoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonBKNhapThuoc_ItemClick);
+            this.barBITheoDoiRaVaoVie.Caption = "Theo dõi ra vào viện";
+            this.barBITheoDoiRaVaoVie.Id = 43;
+            this.barBITheoDoiRaVaoVie.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barBITheoDoiRaVaoVien.ImageOptions.Image")));
+            this.barBITheoDoiRaVaoVie.Name = "barBITheoDoiRaVaoVie";
+            this.barBITheoDoiRaVaoVie.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBITheoDoiRaVaoVien_ItemClick);
             // 
             // FrmMain
             // 
@@ -591,5 +602,6 @@
         private DevExpress.XtraBars.BarButtonItem barBaoCaoTonKho;
         private DevExpress.XtraBars.BarButtonItem barButtonBKNhapThuoc;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupBangKe;
+        private DevExpress.XtraBars.BarButtonItem barBITheoDoiRaVaoVie;
     }
 }

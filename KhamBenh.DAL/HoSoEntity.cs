@@ -47,7 +47,7 @@ namespace KhamBenh.DAL
                 "MauSo,MaMay From" +
                 "(Select * From DichVuKyThuat Where TinhTrang =1 And Ma_CS ='" +
                 AppConfig.CoSoKCB + "') AS DV " +
-                "LEFT JOIN NhomCanLamSan ON NhomCanLamSan.MaNhom = DV.MaNhom", CommandType.Text, null);
+                "LEFT JOIN NhomCanLamSan ON NhomCanLamSan.MaNhom = DV.MaNhom and NhomCanLamSan.Ma = DV.MaNhomCLS", CommandType.Text, null);
         }
         public DataTable DSDichVuGiuongBenh()
         {

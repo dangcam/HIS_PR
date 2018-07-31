@@ -33,6 +33,11 @@ namespace DanhMuc.GUI
             repLookUpNhom.DataSource = dataNhom;
             repLookUpNhom.DisplayMember = "TenNhom";
             repLookUpNhom.ValueMember = "MaNhom";
+
+            
+            lookUpNhomCLS.Properties.ValueMember = "Ma";
+            lookUpNhomCLS.Properties.DisplayMember = "Ten";
+
         }
         private void CheckButton()
         {
@@ -107,6 +112,7 @@ namespace DanhMuc.GUI
         {
             dvkt.MaCS = lookUpCoSoKCB.EditValue.ToString();
             gridControl.DataSource = dvkt.DSDVKT();
+            lookUpNhomCLS.Properties.DataSource = dvkt.DSNhomCanLamSan();
         }
 
         private void gridView_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
@@ -118,6 +124,7 @@ namespace DanhMuc.GUI
                 txtTen.Text = dr["TenDVKT"].ToString();
                 txtDonGia.Text = dr["DonGia"].ToString();
                 lookUpNhom.EditValue = dr["MaNhom"];
+                lookUpNhomCLS.EditValue = dr["MaNhomCLS"];
                 checkTinhTrang.Checked = Utils.ToBoolean(dr["TinhTrang"]);
                 lookUpCoSoKCB.EditValue = dr["Ma_CS"];
                 txtTT50.Text = dr["TT50"].ToString();
@@ -157,6 +164,7 @@ namespace DanhMuc.GUI
             dvkt.DonGia = Utils.ToDecimal(txtDonGia.Text);
             dvkt.TinhTrang = checkTinhTrang.Checked;
             dvkt.MaNhom = Utils.ToInt(lookUpNhom.EditValue);
+            dvkt.MaNhomCLS = Utils.ToString(lookUpNhomCLS.EditValue);
             dvkt.TT50 = txtTT50.Text;
             string err = "";
             if (them)

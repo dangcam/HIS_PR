@@ -504,5 +504,11 @@ namespace HIS_PR
             FrmBangKeNhapThuoc frm = new FrmBangKeNhapThuoc();
             frm.ShowDialog();
         }
+
+        private void barBITheoDoiRaVaoVien_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FrmNopHoSo frm = new FrmNopHoSo();
+            frm.ShowDialog();
+        }
     }
 }

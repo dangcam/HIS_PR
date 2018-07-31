@@ -185,6 +185,12 @@
     <Compile Include="FrmLichSuKCB.Designer.cs">
       <DependentUpon>FrmLichSuKCB.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmNopHoSo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNopHoSo.Designer.cs">
+      <DependentUpon>FrmNopHoSo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmRaVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -356,6 +362,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLichSuKCB.resx">
       <DependentUpon>FrmLichSuKCB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNopHoSo.resx">
+      <DependentUpon>FrmNopHoSo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRaVien.resx">
       <DependentUpon>FrmRaVien.cs</DependentUpon>

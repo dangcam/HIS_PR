@@ -192,7 +192,11 @@ namespace KhamBenh.DAL
                 CommandType.Text, null);
 
         }
-        public DataTable CountSoLuongBN(string sql)
+        public DataTable DSTongHopKeVatTu(string maKhoa, DateTime tuNgay, DateTime denNgay)
+        {
+            return db.ExcuteQuery("Select * from DSTongHopKeVatTu('" + tuNgay + "','" + denNgay + "','" + maKhoa + "')", CommandType.Text, null);
+        }
+            public DataTable CountSoLuongBN(string sql)
         {
             return db.ExcuteQuery(sql,
                 CommandType.Text, null);
@@ -206,6 +210,35 @@ namespace KhamBenh.DAL
         {
             return db.ExcuteQuery("Select Ma_BS, Ten_NV From NhanVien Where TinhTrang=1 And CoSoKCB = '"
                 +AppConfig.CoSoKCB+ "' And LEN(Ma_BS) > 0 Order By Ten_NV DESC",
+                CommandType.Text, null);
+        }
+        public DataTable DSNopBenhAn(string MaKhoa, DateTime tuNgay,DateTime denNgay)
+        {
+            return db.ExcuteQuery("select ThongTinBNChiTiet.MaLK,HoTen,MaThe,NgaySinh,TenBenh,NgayVao,NgayRa,NgayNop," +
+                "case when NgayNop IS null then CONVERT(bit,0) else CONVERT(bit,1) end as Nop from ThongTinBNChiTiet " +
+                                    "left join NopBenhAn " +
+                                    "on NopBenhAn.MaLK = ThongTinBNChiTiet.MaLK " +
+                                    "where Convert(date,NgayVao) between '"+tuNgay+"' and '"+denNgay+"' and (MaKhoa = '"+MaKhoa+"')",
+                CommandType.Text, null);
+        }
+        public DataTable DSNopBenhAn(DateTime tuNgay, DateTime denNgay, string MaKhoa, int loaiIn)
+        {
+            string strloai = "";
+            if (loaiIn == 1)
+                strloai = " and NgayNop is not null";
+            if (loaiIn == 2)
+                strloai = " and NgayNop is null";
+            return db.ExcuteQuery("select *,ROW_NUMBER() OVER(ORDER BY NgayVao ASC) AS STT," +
+                "(DATEDIFF(DAY, NgayVao, NgayRa)+1) as SoNgayDT," +
+                                    "case when GioiTinh = 0 then SUBSTRING(NgaySinh,LEN(NgaySinh)-3,4) end as NgaySinhNam," +
+                                    "case when GioiTinh = 1 then SUBSTRING(NgaySinh,LEN(NgaySinh)-3,4) end as NgaySinhNu " +
+                                 "from(select MaLK, HoTen, MaThe, MaBenh, NgayVao, NgayRa, DiaChi, GioiTinh, CoThe, NgaySinh,"+
+                                    "KetQuaDieuTri, TinhTrangRaVien, TenKhoa from ThongTinBNChiTiet," +
+                                    "(select MaKhoa,TenKhoa from KhoaBan where (MaKhoa = '" + MaKhoa + "')) as KhoaBan " +
+                                    " where ThongTinBNChiTiet.MaKhoa = KhoaBan.MaKhoa ) " +
+                                     "as CT left join NopBenhAn " +
+                                 "on NopBenhAn.MaLK = CT.MaLK "+
+                                "Where (Convert(date,NgayVao) between '" + tuNgay + "' and '" + denNgay + "') " +strloai,
                 CommandType.Text, null);
         }
         public DataTable DSLichSuPhanMem(string MaBN, string HoTen, int GioiTinh, string NgaySinh)
@@ -277,6 +310,14 @@ namespace KhamBenh.DAL
                 new SqlParameter("@TenBenh", tenBenh),
                 new SqlParameter("@MaBenh", maBenh),
                 new SqlParameter("@MaBenhKhac", maBenhKhac));
+        }
+        public bool SpNopBenhAn(ref string err,string Action, string MaLK)
+        {
+            return db.MyExecuteNonQuery("SpNopBenhAn",
+                CommandType.StoredProcedure, ref err, 
+                new SqlParameter("@Action", Action),
+                new SqlParameter("@MaLK", MaLK),
+                new SqlParameter("@NgayNop", DateTime.Now));
         }
     }
 }

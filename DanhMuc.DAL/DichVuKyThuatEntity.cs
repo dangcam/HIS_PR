@@ -19,6 +19,7 @@ namespace DanhMuc.DAL
         public bool TinhTrang { get; set; }
         public int MaNhom { get; set; }
         public string TT50 { get; set; }
+        public string MaNhomCLS { get; set; }
         public DichVuKyThuatEntity()
         {
             db = new Connection();
@@ -40,6 +41,11 @@ namespace DanhMuc.DAL
             return db.ExcuteQuery("Select * From DichVuKyThuat Where Ma_CS = '"+MaCS+"'",
                 CommandType.Text, null);
         }
+        public DataTable DSNhomCanLamSan()
+        {
+            return db.ExcuteQuery("Select * From NhomCanLamSan Where MaCoSo = '" + MaCS + "'",
+                CommandType.Text, null);
+        }
         public bool SpDichVuKyThuat(ref string err, string Action)
         {
             return db.MyExecuteNonQuery("SpDichVuKyThuat",
@@ -51,7 +57,8 @@ namespace DanhMuc.DAL
                 new SqlParameter("@Ma_CS", MaCS),
                 new SqlParameter("@TinhTrang", TinhTrang),
                 new SqlParameter("@MaNhom", MaNhom),
-                new SqlParameter("@TT50",TT50));
+                new SqlParameter("@TT50",TT50),
+                new SqlParameter("@MaNhomCLS", MaNhomCLS));
         }
     }
 }
