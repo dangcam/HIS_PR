@@ -16,6 +16,7 @@ namespace HIS_PR
             InitializeComponent ();
             appConfig.Read ();
             dangnhap = new DangNhapEntity ();
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle(AppConfig.Theme);
         }
 
         private void FrmDangNhap_Load (object sender, EventArgs e)

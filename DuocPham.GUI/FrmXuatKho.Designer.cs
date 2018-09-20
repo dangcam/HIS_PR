@@ -135,6 +135,8 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtTKNo = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
@@ -209,6 +211,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTKNo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -713,6 +717,7 @@
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.txtTKNo);
             this.layoutControl1.Controls.Add(this.txtDiaChi);
             this.layoutControl1.Controls.Add(this.checkTraNhaCC);
             this.layoutControl1.Controls.Add(this.txtSoCTu);
@@ -867,7 +872,7 @@
             this.txtNoiDung.Name = "txtNoiDung";
             this.txtNoiDung.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNoiDung.Properties.Appearance.Options.UseFont = true;
-            this.txtNoiDung.Size = new System.Drawing.Size(511, 22);
+            this.txtNoiDung.Size = new System.Drawing.Size(389, 22);
             this.txtNoiDung.StyleController = this.layoutControl1;
             this.txtNoiDung.TabIndex = 7;
             this.txtNoiDung.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNoiDung_KeyPress);
@@ -1199,7 +1204,8 @@
             this.emptySpaceItem2,
             this.layoutControlItem24,
             this.layoutControlItem25,
-            this.layoutControlItem26});
+            this.layoutControlItem26,
+            this.layoutControlItem27});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(597, 188);
             this.layoutControlGroup1.TextVisible = false;
@@ -1263,7 +1269,7 @@
             this.layoutControlItem10.Control = this.txtNoiDung;
             this.layoutControlItem10.Location = new System.Drawing.Point(0, 78);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(577, 26);
+            this.layoutControlItem10.Size = new System.Drawing.Size(455, 26);
             this.layoutControlItem10.Text = "Nội dung:";
             this.layoutControlItem10.TextSize = new System.Drawing.Size(59, 13);
             // 
@@ -1425,6 +1431,26 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
+            // txtTKNo
+            // 
+            this.txtTKNo.Location = new System.Drawing.Point(529, 90);
+            this.txtTKNo.MenuManager = this.ribbonControl;
+            this.txtTKNo.Name = "txtTKNo";
+            this.txtTKNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTKNo.Properties.Appearance.Options.UseFont = true;
+            this.txtTKNo.Size = new System.Drawing.Size(56, 22);
+            this.txtTKNo.StyleController = this.layoutControl1;
+            this.txtTKNo.TabIndex = 19;
+            // 
+            // layoutControlItem27
+            // 
+            this.layoutControlItem27.Control = this.txtTKNo;
+            this.layoutControlItem27.Location = new System.Drawing.Point(455, 78);
+            this.layoutControlItem27.Name = "layoutControlItem27";
+            this.layoutControlItem27.Size = new System.Drawing.Size(122, 26);
+            this.layoutControlItem27.Text = "TK Nợ:";
+            this.layoutControlItem27.TextSize = new System.Drawing.Size(59, 13);
+            // 
             // FrmXuatKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1512,6 +1538,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTKNo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1620,5 +1648,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem25;
         private DevExpress.XtraEditors.TextEdit txtDiaChi;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem26;
+        private DevExpress.XtraEditors.TextEdit txtTKNo;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem27;
     }
 }

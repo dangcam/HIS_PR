@@ -50,6 +50,7 @@ namespace DanhMuc.GUI
         private void LoadData ()
         {
             them = false;
+            txtMaBV.Enabled = false;
             dt = vattu.DSVatTu ();
             gridControl.DataSource = dt;
             lblSoLuong.Text = dt.Rows.Count.ToString();
@@ -121,6 +122,7 @@ namespace DanhMuc.GUI
 
         private void btnThem_Click (object sender, EventArgs e)
         {
+            txtMaBV.Enabled = true;
             them = true;
             txtMaBV.ReadOnly = false;
             txtMaBV.Text = null;

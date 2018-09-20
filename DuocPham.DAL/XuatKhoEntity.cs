@@ -19,6 +19,7 @@ namespace DuocPham.DAL
         // phiếu xuất
         public int SoPhieu  { get;set;}
         public string TKCo { get;set;  }
+        public string TKNo { get; set; }
         public DateTime NgayXuat { get; set; }
         public string KhoXuat { get; set; }
         public string KhoNhan { get; set; }
@@ -143,7 +144,8 @@ namespace DuocPham.DAL
                 new SqlParameter("@NguoiTao", NguoiTao),
                 new SqlParameter("@NgayCapNhat", NgayCapNhat.ToString("MM/dd/yyyy")),
                 new SqlParameter("@NguoiCapNhat", NguoiCapNhat),
-                new SqlParameter("@DiaChi", DiaChi));
+                new SqlParameter("@DiaChi", DiaChi),
+                new SqlParameter("@TKNo", TKNo));
             this.SoPhieu = int.Parse (outSoPhieu.Value.ToString ());
             return f;
         }
@@ -162,7 +164,8 @@ namespace DuocPham.DAL
                 new SqlParameter("@NguoiTao", NguoiTao),
                 new SqlParameter("@NgayCapNhat", NgayCapNhat.ToString("MM/dd/yyyy")),
                 new SqlParameter("@NguoiCapNhat", NguoiCapNhat),
-                new SqlParameter("@DiaChi", DiaChi));
+                new SqlParameter("@DiaChi", DiaChi),
+                new SqlParameter("@TKNo", TKNo));
         }
         public bool SpThemPhieuXuatChiTiet (ref string err)
         {

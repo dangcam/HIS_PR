@@ -142,6 +142,7 @@ namespace TiepNhan.GUI
                 txtNgaySinh.Text = drThongTin["NgaySinh"].ToString();
                 txtMaBenhKhac.Text = drThongTin["MaBenhKhac"].ToString();
                 txtTenBenh.Text = drThongTin["TenBenh"].ToString();
+                txtGiuongBenh.Text = Utils.ToString(drThongTin["GiuongBenh"]);
                 if (Utils.ToBoolean(drThongTin["CoThe"]))
                 {
                     lblHanThe.Text = "Hạn thẻ BHYT còn: " + (Utils.ToDateTime(drThongTin["TheDen"].ToString()) - DateTime.Now).Days + " ngày";
@@ -366,10 +367,10 @@ namespace TiepNhan.GUI
                     return;
                 }
                 string err = "";
-                // cập nhật mã bệnh, bảng thông tin chi tiết
+                // cập nhật mã bệnh,giường bệnh, bảng thông tin chi tiết
                 khambenh.MaLK = drThongTin["MaLK"].ToString();
                 if (!khambenh.SpCapNhatBenh(ref err,
-                    txtTenBenh.Text, maBenhChinh, txtMaBenhKhac.Text))
+                    txtTenBenh.Text, maBenhChinh, txtMaBenhKhac.Text,txtGiuongBenh.Text))
                 {
                     XtraMessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

@@ -197,6 +197,7 @@ namespace DuocPham.GUI
             checkGiaBV.Checked = true;
             txtSoPhieu.Text = "0";
             txtTKCo.Text = "";
+            txtTKNo.Text = "141";
             dateNgayXuat.EditValue = DateTime.Now;
             lookUpKhoNhan.EditValue = "";
             txtNguoiNhan.Text = "";
@@ -248,7 +249,7 @@ namespace DuocPham.GUI
             {
                 xuatkho.SoPhieu = Utils.ToInt (txtSoPhieu.Text);
                 xuatkho.TKCo = txtTKCo.Text;
-
+                xuatkho.TKNo = txtTKNo.Text;
                 xuatkho.NgayXuat = dateNgayXuat.DateTime;
                 xuatkho.PheDuyet = true;
                 xuatkho.KhoXuat = lookUpKhoXuat.EditValue.ToString ();
@@ -371,6 +372,7 @@ namespace DuocPham.GUI
                 }
                 txtSoPhieu.Text = dr["SoPhieu"].ToString ();
                 txtTKCo.Text = dr["TKCo"].ToString ();
+                txtTKNo.Text = dr["TKNo"].ToString();
                 dateNgayXuat.DateTime = DateTime.Parse(dr["NgayXuat"].ToString ());
                 lookUpKhoNhan.EditValue = dr["KhoNhan"].ToString ();
                 lookUpKhoXuat.EditValue = dr["khoXuat"].ToString ();
@@ -406,7 +408,7 @@ namespace DuocPham.GUI
         {
             RptPhieuXuatKho rpt = new RptPhieuXuatKho ();
             rpt.lblSoPhieu.Text = txtSoPhieu.Text;
-            rpt.lblTKNo.Text = "141";
+            rpt.lblTKNo.Text = txtTKNo.Text;
             rpt.lblTKCo.Text = "";
             rpt.lblNgayXuat.Text = "Ngày " + dateNgayXuat.DateTime.Day + " tháng "
                 + dateNgayXuat.DateTime.Month + " năm " + dateNgayXuat.DateTime.Year;
@@ -774,7 +776,7 @@ namespace DuocPham.GUI
 
                     arr[dem, 3] = drow["NoiDung"];// +" "+((drow["KhoNhan"].Equals("K19_13")) ? "Khoa Ngoại" : "Khoa Nội") + " ngày " +
                     //    Utils.ToDateTime(drow["NgayXuat"].ToString()).ToString("dd/MM"); //dr[""];//DienGiai
-                    arr[dem, 4] = (drow["KhoNhan"].Equals("K01_13") || drow["KhoNhan"].Equals("KX")) ? "161" : "141";// dr[""];//MaTKNo Ngoại trú: 161, Nội trú: 141
+                    arr[dem, 4] = drow["TKNo"]; //(drow["KhoNhan"].Equals("K01_13") || drow["KhoNhan"].Equals("KX")) ? "161" : "141";// dr[""];//MaTKNo Ngoại trú: 161, Nội trú: 141
                     arr[dem, 5] = "156" + dr["LoaiVatTu"];//MaTKCo
                     arr[dem, 6] = "";//dr[""];//MaVTHHNo
                     if (maVatTu.ContainsKey(dr["MaBV"].ToString()))

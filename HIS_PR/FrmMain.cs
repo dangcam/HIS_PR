@@ -31,7 +31,7 @@ namespace HIS_PR
             //    barListColor.Strings.Add (color.ToString());
             //}
 
-            DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle (AppConfig.Theme);
+            //DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle (AppConfig.Theme);
         }
         private void LoadMenu ()
         {

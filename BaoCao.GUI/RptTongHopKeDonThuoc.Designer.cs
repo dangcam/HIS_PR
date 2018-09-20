@@ -34,9 +34,10 @@
             this.pivotGridField2 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.pivotGridField3 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.pivotGridField4 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
-            this.pivotGridField6 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.pivotGridField5 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.pivotGridField7 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
+            this.pivotGridField6 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
+            this.pivotGridField10 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.pivotGridField9 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.pivotGridField8 = new DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
@@ -80,11 +81,12 @@
             this.pivotGridField2,
             this.pivotGridField3,
             this.pivotGridField4,
-            this.pivotGridField6,
             this.pivotGridField5,
             this.pivotGridField7,
-            this.pivotGridField9,
-            this.pivotGridField8});
+            this.pivotGridField6,
+            this.pivotGridField10,
+            this.pivotGridField8,
+            this.pivotGridField9});
             this.xrPivotGrid.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrPivotGrid.Name = "xrPivotGrid";
             this.xrPivotGrid.OptionsData.AutoExpandGroups = DevExpress.Utils.DefaultBoolean.True;
@@ -93,13 +95,13 @@
             this.xrPivotGrid.OptionsPrint.FilterSeparatorBarPadding = 3;
             this.xrPivotGrid.OptionsPrint.PrintDataHeaders = DevExpress.Utils.DefaultBoolean.False;
             this.xrPivotGrid.OptionsPrint.PrintHeadersOnEveryPage = true;
+            this.xrPivotGrid.OptionsView.GroupFieldsInCustomizationWindow = false;
             this.xrPivotGrid.OptionsView.ShowColumnGrandTotalHeader = false;
             this.xrPivotGrid.OptionsView.ShowColumnGrandTotals = false;
             this.xrPivotGrid.OptionsView.ShowColumnTotals = false;
             this.xrPivotGrid.OptionsView.ShowFilterHeaders = false;
             this.xrPivotGrid.OptionsView.ShowRowGrandTotalHeader = false;
             this.xrPivotGrid.OptionsView.ShowRowGrandTotals = false;
-            this.xrPivotGrid.OptionsView.ShowRowTotals = false;
             this.xrPivotGrid.SizeF = new System.Drawing.SizeF(1109F, 45F);
             // 
             // pivotGridField1
@@ -152,33 +154,19 @@
             this.pivotGridField4.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
             this.pivotGridField4.AreaIndex = 3;
             this.pivotGridField4.Caption = "Giường bệnh";
-            this.pivotGridField4.FieldName = "TenDichVu";
+            this.pivotGridField4.FieldName = "GiuongBenh";
             this.pivotGridField4.Name = "pivotGridField4";
             this.pivotGridField4.Options.ShowCustomTotals = false;
             this.pivotGridField4.Options.ShowGrandTotal = false;
             this.pivotGridField4.Options.ShowTotals = false;
-            this.pivotGridField4.Width = 220;
-            // 
-            // pivotGridField6
-            // 
-            this.pivotGridField6.Appearance.FieldHeader.BackColor = System.Drawing.Color.White;
-            this.pivotGridField6.Appearance.FieldValue.BackColor = System.Drawing.Color.White;
-            this.pivotGridField6.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
-            this.pivotGridField6.AreaIndex = 4;
-            this.pivotGridField6.Caption = "Số G";
-            this.pivotGridField6.FieldName = "MaGiuong";
-            this.pivotGridField6.Name = "pivotGridField6";
-            this.pivotGridField6.Options.ShowCustomTotals = false;
-            this.pivotGridField6.Options.ShowGrandTotal = false;
-            this.pivotGridField6.Options.ShowTotals = false;
-            this.pivotGridField6.Width = 50;
+            this.pivotGridField4.Width = 150;
             // 
             // pivotGridField5
             // 
             this.pivotGridField5.Appearance.FieldHeader.BackColor = System.Drawing.Color.White;
             this.pivotGridField5.Appearance.FieldValue.BackColor = System.Drawing.Color.White;
             this.pivotGridField5.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
-            this.pivotGridField5.AreaIndex = 5;
+            this.pivotGridField5.AreaIndex = 4;
             this.pivotGridField5.Caption = "Ngày Y Lệnh";
             this.pivotGridField5.CellFormat.FormatString = "dd/MM/yy HH";
             this.pivotGridField5.CellFormat.FormatType = DevExpress.Utils.FormatType.Custom;
@@ -194,7 +182,7 @@
             this.pivotGridField7.Appearance.FieldHeader.BackColor = System.Drawing.Color.White;
             this.pivotGridField7.Appearance.FieldValue.BackColor = System.Drawing.Color.White;
             this.pivotGridField7.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
-            this.pivotGridField7.AreaIndex = 6;
+            this.pivotGridField7.AreaIndex = 5;
             this.pivotGridField7.Caption = "Tên thuốc";
             this.pivotGridField7.FieldName = "TenThuoc";
             this.pivotGridField7.Name = "pivotGridField7";
@@ -203,13 +191,41 @@
             this.pivotGridField7.Options.ShowTotals = false;
             this.pivotGridField7.Width = 200;
             // 
+            // pivotGridField6
+            // 
+            this.pivotGridField6.Appearance.FieldHeader.BackColor = System.Drawing.Color.White;
+            this.pivotGridField6.Appearance.FieldValue.BackColor = System.Drawing.Color.White;
+            this.pivotGridField6.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
+            this.pivotGridField6.AreaIndex = 6;
+            this.pivotGridField6.Caption = "ĐVT";
+            this.pivotGridField6.FieldName = "DonViTinh";
+            this.pivotGridField6.Name = "pivotGridField6";
+            this.pivotGridField6.Options.ShowCustomTotals = false;
+            this.pivotGridField6.Options.ShowGrandTotal = false;
+            this.pivotGridField6.Options.ShowTotals = false;
+            this.pivotGridField6.Width = 50;
+            // 
+            // pivotGridField10
+            // 
+            this.pivotGridField10.Appearance.FieldHeader.BackColor = System.Drawing.Color.White;
+            this.pivotGridField10.Appearance.FieldValue.BackColor = System.Drawing.Color.White;
+            this.pivotGridField10.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
+            this.pivotGridField10.AreaIndex = 7;
+            this.pivotGridField10.Caption = "Đường dùng";
+            this.pivotGridField10.FieldName = "Ten";
+            this.pivotGridField10.Name = "pivotGridField10";
+            this.pivotGridField10.Options.ShowCustomTotals = false;
+            this.pivotGridField10.Options.ShowGrandTotal = false;
+            this.pivotGridField10.Options.ShowTotals = false;
+            this.pivotGridField10.Width = 72;
+            // 
             // pivotGridField9
             // 
             this.pivotGridField9.Appearance.FieldHeader.BackColor = System.Drawing.Color.White;
             this.pivotGridField9.Appearance.FieldValue.BackColor = System.Drawing.Color.White;
             this.pivotGridField9.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
-            this.pivotGridField9.AreaIndex = 7;
-            this.pivotGridField9.Caption = "Liều dùng";
+            this.pivotGridField9.AreaIndex = 8;
+            this.pivotGridField9.Caption = "Điều dưỡng thực hiện";
             this.pivotGridField9.FieldName = "LieuDung";
             this.pivotGridField9.Name = "pivotGridField9";
             this.pivotGridField9.Options.ShowCustomTotals = false;
@@ -240,7 +256,7 @@
             // 
             // BottomMargin
             // 
-            this.BottomMargin.HeightF = 30F;
+            this.BottomMargin.HeightF = 29.99999F;
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -390,5 +406,6 @@
         public DevExpress.XtraReports.UI.XRPivotGrid xrPivotGrid;
         private DevExpress.XtraReports.UI.PageFooterBand PageFooter;
         private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField pivotGridField9;
+        private DevExpress.XtraReports.UI.PivotGrid.XRPivotGridField pivotGridField10;
     }
 }

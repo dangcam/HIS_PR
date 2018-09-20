@@ -177,19 +177,29 @@ namespace KhamBenh.DAL
         }
         public DataTable DSChiTietThuocAndGiuong(string maKhoa, DateTime tuNgay, DateTime denNgay)
         {
-            return db.ExcuteQuery("Select * from " +
-                                    "(Select STTNgay,HoTen,SUBSTRING(NgaySinh, Len(NgaySinh)-3, 4) as NgaySinh,ThongTinBNChiTiet.MaLK," +
-                                    "MaThe,CONVERT(VARCHAR,NgayYLenh,120) as NgayThanhToan,MaBenh,TenThuoc,SoLuong,LieuDung " +
-                                    "from ThongTinBNChiTiet,DonThuocChiTiet " +
+            return db.ExcuteQuery("Select STTNgay,HoTen,SUBSTRING(NgaySinh, Len(NgaySinh)-3, 4) as NgaySinh,ThongTinBNChiTiet.MaLK,GiuongBenh," +
+                                    "MaThe,CONVERT(VARCHAR,NgayYLenh,120) as NgayThanhToan,MaBenh,TenThuoc,SoLuong,LieuDung,DonViTinh,Ten " +
+                                    "from ThongTinBNChiTiet," +
+                                    "(select * from DonThuocChiTiet,DuongDung where DonThuocChiTiet.MaDuongDung = DuongDung.Ma) as DonThuocChiTiet " +
                                     "where ThongTinBNChiTiet.MaLK = DonThuocChiTiet.MaLK " +
                                     "And MaCoSoKCB='" + AppConfig.CoSoKCB + "' and ThongTinBNChiTiet.MaKhoa = '" + maKhoa + "' " +
                                     "And (NgayYLenh between '" + tuNgay + "' and '" + denNgay + "') " +
                                     "And ThongTinBNChiTiet.NgayRa is NULL " +
-                                    ") as Thuoc " +
-                                    "left outer join (Select MaLK,TenDichVu,MaGiuong from DichVuChiTiet where MaNhom=15) as Giuong " +
-                                    "on Thuoc.MaLK = Giuong.MaLK " +
                                     "order by STTNgay",
                 CommandType.Text, null);
+            //return db.ExcuteQuery("Select * from " +
+            //                        "(Select STTNgay,HoTen,SUBSTRING(NgaySinh, Len(NgaySinh)-3, 4) as NgaySinh,ThongTinBNChiTiet.MaLK," +
+            //                        "MaThe,CONVERT(VARCHAR,NgayYLenh,120) as NgayThanhToan,MaBenh,TenThuoc,SoLuong,LieuDung " +
+            //                        "from ThongTinBNChiTiet,DonThuocChiTiet " +
+            //                        "where ThongTinBNChiTiet.MaLK = DonThuocChiTiet.MaLK " +
+            //                        "And MaCoSoKCB='" + AppConfig.CoSoKCB + "' and ThongTinBNChiTiet.MaKhoa = '" + maKhoa + "' " +
+            //                        "And (NgayYLenh between '" + tuNgay + "' and '" + denNgay + "') " +
+            //                        "And ThongTinBNChiTiet.NgayRa is NULL " +
+            //                        ") as Thuoc " +
+            //                        "left outer join (Select MaLK,TenDichVu,MaGiuong from DichVuChiTiet where MaNhom=15) as Giuong " +
+            //                        "on Thuoc.MaLK = Giuong.MaLK " +
+            //                        "order by STTNgay",
+            //    CommandType.Text, null);
 
         }
         public DataTable DSTongHopKeVatTu(string maKhoa, DateTime tuNgay, DateTime denNgay)
@@ -302,14 +312,15 @@ namespace KhamBenh.DAL
                 new SqlParameter("@YeuCau", YeuCau),
                 new SqlParameter("@NgayChiDinh",NgayChiDinh ));
         }
-        public bool SpCapNhatBenh(ref string err,string tenBenh,string maBenh, string maBenhKhac)
+        public bool SpCapNhatBenh(ref string err,string tenBenh,string maBenh, string maBenhKhac, string giuongBenh)
         {
             return db.MyExecuteNonQuery("SpCapNhatBenh",
                 CommandType.StoredProcedure, ref err,
                 new SqlParameter("@MaLK", MaLK),
                 new SqlParameter("@TenBenh", tenBenh),
                 new SqlParameter("@MaBenh", maBenh),
-                new SqlParameter("@MaBenhKhac", maBenhKhac));
+                new SqlParameter("@MaBenhKhac", maBenhKhac),
+                new SqlParameter("@GiuongBenh",giuongBenh));
         }
         public bool SpNopBenhAn(ref string err,string Action, string MaLK)
         {
