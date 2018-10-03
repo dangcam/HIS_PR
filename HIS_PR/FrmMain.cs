@@ -510,5 +510,21 @@ namespace HIS_PR
             FrmNopHoSo frm = new FrmNopHoSo();
             frm.ShowDialog();
         }
+
+        private void barbtnPhanTichDT_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            foreach (Form frm in this.MdiChildren)
+            {
+                if (frm.GetType() == typeof(FrmPhanTichDonThuoc))
+                {
+                    frm.Activate();
+                    frm.WindowState = FormWindowState.Maximized;
+                    return;
+                }
+            }
+            FrmPhanTichDonThuoc frmPhanTichDonThuoc = new FrmPhanTichDonThuoc();
+            frmPhanTichDonThuoc.MdiParent = this;
+            frmPhanTichDonThuoc.Show();
+        }
     }
 }

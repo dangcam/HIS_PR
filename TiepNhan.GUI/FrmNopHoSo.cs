@@ -36,6 +36,7 @@ namespace TiepNhan.GUI
             //lookUpKhoa.EditValue = AppConfig.MaKhoa;
             cbLoaiIn.SelectedIndex = 0;
             cbKhoa.SelectedIndex = 0;
+            cbChonNgay.SelectedIndex = 0;
         }
         private string GetMaKhoa()
         {
@@ -51,13 +52,13 @@ namespace TiepNhan.GUI
         private void btnXem_Click(object sender, EventArgs e)
         {
             gridControl.DataSource = khambenh.DSNopBenhAn(GetMaKhoa(),
-                dateTuNgay.DateTime,dateDenNgay.DateTime);
+                dateTuNgay.DateTime,dateDenNgay.DateTime,cbChonNgay.SelectedIndex);
         }
 
         private void btnIn_Click(object sender, EventArgs e)
         {
             DataTable data = khambenh.DSNopBenhAn(//checkCoThe.Checked == true ? 1 : 0,
-                dateTuNgay.DateTime,dateDenNgay.DateTime, GetMaKhoa(), cbLoaiIn.SelectedIndex);
+                dateTuNgay.DateTime, dateDenNgay.DateTime, GetMaKhoa(), cbLoaiIn.SelectedIndex, cbChonNgay.SelectedIndex);
             RptTheoDoiRaVaoVien rpt = new RptTheoDoiRaVaoVien();
             rpt.xrlblTuNgayDenNgay.Text = "Từ ngày " + dateTuNgay.DateTime.ToString("dd/MM/yyyy") +
                 " đến ngày " + dateDenNgay.DateTime.ToString("dd/MM/yyyy");

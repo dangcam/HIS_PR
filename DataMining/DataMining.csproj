@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{71BB2B89-1AEC-4F03-9C91-D859AF7ACDA1}</ProjectGuid>
+    <ProjectGuid>{77902308-17C3-4EE0-8CC4-885AFBF2AF6A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DuocPham.DAL</RootNamespace>
-    <AssemblyName>DuocPham.DAL</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>DataMining</RootNamespace>
+    <AssemblyName>DataMining</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -40,24 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LinhThuocEntity.cs" />
-    <Compile Include="NhapKhoEntity.cs" />
-    <Compile Include="PhanTichDonThuocEntity.cs" />
+    <Compile Include="AssociationRule.cs" />
+    <Compile Include="Bit.cs" />
+    <Compile Include="Itemset.cs" />
+    <Compile Include="ItemsetCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XuatKhoEntity.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core.DAL\Core.DAL.csproj">
-      <Project>{C6E86929-31E5-41E4-99DE-E25F3FADB210}</Project>
-      <Name>Core.DAL</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

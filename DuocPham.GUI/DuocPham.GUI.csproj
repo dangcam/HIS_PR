@@ -95,6 +95,12 @@
     <Compile Include="FrmNhapKhoaTra.Designer.cs">
       <DependentUpon>FrmNhapKhoaTra.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPhanTichDonThuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPhanTichDonThuoc.Designer.cs">
+      <DependentUpon>FrmPhanTichDonThuoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPhieuLinhThuoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,9 @@
     <EmbeddedResource Include="FrmNhapKhoaTra.resx">
       <DependentUpon>FrmNhapKhoaTra.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPhanTichDonThuoc.resx">
+      <DependentUpon>FrmPhanTichDonThuoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPhieuLinhThuoc.resx">
       <DependentUpon>FrmPhieuLinhThuoc.cs</DependentUpon>
     </EmbeddedResource>
@@ -250,6 +259,10 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataMining\DataMining.csproj">
+      <Project>{77902308-17C3-4EE0-8CC4-885AFBF2AF6A}</Project>
+      <Name>DataMining</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DuocPham.DAL\DuocPham.DAL.csproj">
       <Project>{71BB2B89-1AEC-4F03-9C91-D859AF7ACDA1}</Project>
       <Name>DuocPham.DAL</Name>
