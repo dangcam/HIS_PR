@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent ()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNhapKho));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.layoutControlMain = new DevExpress.XtraLayout.LayoutControl();
             this.panelControlPhieu = new DevExpress.XtraEditors.PanelControl();
@@ -69,6 +69,7 @@
             this.buttonXoaVatu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnXoaVatu = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.SoPhieu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.STT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaVatTu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TenVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.KhoNhap = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -160,7 +161,8 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.STT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnBBNhapHang = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem39 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
@@ -258,6 +260,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem39)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -693,9 +696,9 @@
             // btnXoaVatu
             // 
             this.btnXoaVatu.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.btnXoaVatu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnXoaVatu.Name = "btnXoaVatu";
             this.btnXoaVatu.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.btnXoaVatu.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnXoaVatu_ButtonClick);
@@ -705,6 +708,12 @@
             this.SoPhieu.Caption = "SoPhieu";
             this.SoPhieu.FieldName = "SoPhieu";
             this.SoPhieu.Name = "SoPhieu";
+            // 
+            // STT
+            // 
+            this.STT.Caption = "STT";
+            this.STT.FieldName = "STT";
+            this.STT.Name = "STT";
             // 
             // MaVatTu
             // 
@@ -1134,6 +1143,7 @@
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.btnBBNhapHang);
             this.layoutControl1.Controls.Add(this.btnXuatExcel);
             this.layoutControl1.Controls.Add(this.txtSoCT);
             this.layoutControl1.Controls.Add(this.btnBBNghiemThu);
@@ -1164,7 +1174,7 @@
             // 
             this.btnXuatExcel.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXuatExcel.Appearance.Options.UseFont = true;
-            this.btnXuatExcel.Location = new System.Drawing.Point(156, 143);
+            this.btnXuatExcel.Location = new System.Drawing.Point(144, 143);
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.Size = new System.Drawing.Size(69, 23);
             this.btnXuatExcel.StyleController = this.layoutControl1;
@@ -1179,7 +1189,7 @@
             this.txtSoCT.Name = "txtSoCT";
             this.txtSoCT.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSoCT.Properties.Appearance.Options.UseFont = true;
-            this.txtSoCT.Size = new System.Drawing.Size(68, 22);
+            this.txtSoCT.Size = new System.Drawing.Size(56, 22);
             this.txtSoCT.StyleController = this.layoutControl1;
             this.txtSoCT.TabIndex = 25;
             // 
@@ -1544,7 +1554,8 @@
             this.emptySpaceItem1,
             this.layoutControlItem5,
             this.layoutControlItem25,
-            this.layoutControlItem38});
+            this.layoutControlItem38,
+            this.layoutControlItem39});
             this.layoutControlGroupNhap.Name = "Root";
             this.layoutControlGroupNhap.Size = new System.Drawing.Size(574, 182);
             this.layoutControlGroupNhap.TextVisible = false;
@@ -1710,9 +1721,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(217, 131);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(205, 131);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(110, 31);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(10, 31);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem5
@@ -1733,14 +1744,14 @@
             this.layoutControlItem25.CustomizationFormText = "Số CT:";
             this.layoutControlItem25.Location = new System.Drawing.Point(0, 131);
             this.layoutControlItem25.Name = "layoutControlItem25";
-            this.layoutControlItem25.Size = new System.Drawing.Size(144, 31);
+            this.layoutControlItem25.Size = new System.Drawing.Size(132, 31);
             this.layoutControlItem25.Text = "Số CT:";
             this.layoutControlItem25.TextSize = new System.Drawing.Size(69, 13);
             // 
             // layoutControlItem38
             // 
             this.layoutControlItem38.Control = this.btnXuatExcel;
-            this.layoutControlItem38.Location = new System.Drawing.Point(144, 131);
+            this.layoutControlItem38.Location = new System.Drawing.Point(132, 131);
             this.layoutControlItem38.MaxSize = new System.Drawing.Size(73, 27);
             this.layoutControlItem38.MinSize = new System.Drawing.Size(73, 27);
             this.layoutControlItem38.Name = "layoutControlItem38";
@@ -1790,11 +1801,30 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
-            // STT
+            // btnBBNhapHang
             // 
-            this.STT.Caption = "STT";
-            this.STT.FieldName = "STT";
-            this.STT.Name = "STT";
+            this.btnBBNhapHang.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBBNhapHang.Appearance.Options.UseFont = true;
+            this.btnBBNhapHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBBNhapHang.ImageOptions.Image")));
+            this.btnBBNhapHang.Location = new System.Drawing.Point(227, 143);
+            this.btnBBNhapHang.Name = "btnBBNhapHang";
+            this.btnBBNhapHang.Size = new System.Drawing.Size(108, 23);
+            this.btnBBNhapHang.StyleController = this.layoutControl1;
+            this.btnBBNhapHang.TabIndex = 27;
+            this.btnBBNhapHang.Text = "BB Nhập Hàng";
+            this.btnBBNhapHang.Click += new System.EventHandler(this.btnBBNhapHang_Click);
+            // 
+            // layoutControlItem39
+            // 
+            this.layoutControlItem39.Control = this.btnBBNhapHang;
+            this.layoutControlItem39.Location = new System.Drawing.Point(215, 131);
+            this.layoutControlItem39.MaxSize = new System.Drawing.Size(112, 27);
+            this.layoutControlItem39.MinSize = new System.Drawing.Size(112, 27);
+            this.layoutControlItem39.Name = "layoutControlItem39";
+            this.layoutControlItem39.Size = new System.Drawing.Size(112, 31);
+            this.layoutControlItem39.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem39.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem39.TextVisible = false;
             // 
             // FrmNhapKho
             // 
@@ -1906,6 +1936,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem39)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2040,5 +2071,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem38;
         private DevExpress.XtraGrid.Columns.GridColumn Chon;
         private DevExpress.XtraGrid.Columns.GridColumn STT;
+        private DevExpress.XtraEditors.SimpleButton btnBBNhapHang;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem39;
     }
 }

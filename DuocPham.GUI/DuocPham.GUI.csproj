@@ -138,6 +138,12 @@
     <Compile Include="RptBienBanGH.Designer.cs">
       <DependentUpon>RptBienBanGH.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptBienBanNhapKho.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptBienBanNhapKho.Designer.cs">
+      <DependentUpon>RptBienBanNhapKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptBienBanNT.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -209,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptBienBanGH.resx">
       <DependentUpon>RptBienBanGH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptBienBanNhapKho.resx">
+      <DependentUpon>RptBienBanNhapKho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptBienBanNT.resx">
       <DependentUpon>RptBienBanNT.cs</DependentUpon>

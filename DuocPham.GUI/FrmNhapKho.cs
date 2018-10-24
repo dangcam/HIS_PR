@@ -65,6 +65,7 @@ namespace DuocPham.GUI
             btnIn.Enabled = false;
             btnBBGiaoHang.Enabled = false;
             btnBBNghiemThu.Enabled = false;
+            btnBBNhapHang.Enabled = false;
         }
         private void LoadData ()
         {
@@ -140,6 +141,7 @@ namespace DuocPham.GUI
             btnIn.Enabled = false;
             btnBBGiaoHang.Enabled = false;
             btnBBNghiemThu.Enabled = false;
+            btnBBNhapHang.Enabled = false;
         }
         private bool checkInput()
         {
@@ -204,6 +206,7 @@ namespace DuocPham.GUI
             btnIn.Enabled = true;
             btnBBGiaoHang.Enabled = true;
             btnBBNghiemThu.Enabled = true;
+            btnBBNhapHang.Enabled = true;
         }
         private void LuuVatTu()
         {
@@ -373,6 +376,7 @@ namespace DuocPham.GUI
                 dr["ThanhTien"] = Math.Round(Utils.ToDecimal(txtThanhTien.Text));
                 dr["LoaiVatTu"] = txtTKNo.Text.Length > 4 ? txtTKNo.Text.Substring(3, 2) : txtTKNo.Text.Substring(3, 1);
                 dr["DonViTinh"] = drowVT[2];
+                dr["NuocSanXuat"] = drowVT["NuocSX"];
                 dr.EndEdit();
 
                 lookUpMaVatTu.EditValue = null;
@@ -469,6 +473,7 @@ namespace DuocPham.GUI
                     DataRow drowVT = dtVatTu.Select("MaBV = '" + drow["MaVatTu"].ToString() + "'")[0];
                     drow["TenVatTu"] = drowVT[1];
                     drow["DonViTinh"] = drowVT[2];
+                    drow["NuocSanXuat"] = drowVT["NuocSX"];
                     //(lookUpMaVatTu.Properties.GetRowByKeyValue (drow["MaVatTu"].ToString ()) as DataRowView)[1];
                     // lấy tên vật tư từ mã vật tư, từ lookUpMaVatTu (thay bằng data vật tư) dataVatTu.Select
                 }
@@ -477,6 +482,7 @@ namespace DuocPham.GUI
                 btnIn.Enabled = true;
                 btnBBGiaoHang.Enabled = true;
                 btnBBNghiemThu.Enabled = true;
+                btnBBNhapHang.Enabled = true;
             }
 
         }
@@ -1007,6 +1013,27 @@ namespace DuocPham.GUI
 
             //Điền dữ liệu vào vùng đã thiết lập
             range.Value2 = arr;
+        }
+
+        private void btnBBNhapHang_Click(object sender, EventArgs e)
+        {
+            SplashScreenManager.ShowForm(typeof(WaitFormLoad));
+            RptBienBanNhapKho rpt = new RptBienBanNhapKho();
+            string ten = "";
+            foreach(DataRow dr in dtPhieu.Rows)
+            {
+                ten += dr["TenVatTu"] + ", ";
+            }
+            rpt.xrlblNgayIn.Text = "Ngày " + dateNgayNhap.DateTime.Day + " tháng " + dateNgayNhap.DateTime.Month + " năm " + dateNgayNhap.DateTime.Year;
+            rpt.xrlblTenHang.Text ="Đã tiến hành nhập thực tế lô hàng: "+ten+ "theo hóa đơn hàng số: "+txtSoHoaDon.Text;
+            rpt.xrlblCongKhoan.Text = "Tổng cộng: "+dtPhieu.Rows.Count + " khoản.";
+            rpt.xrlblHomNay.Text = "Hôm nay ngày " + dateNgayNhap.DateTime.Day + " tháng " + dateNgayNhap.DateTime.Month + " năm " + dateNgayNhap.DateTime.Year +
+                " tại kho thuốc BVĐK cao su Phú Riềng chúng tôi gồm:";
+            rpt.xrlblThangNam.Text = "Tháng " + dateNgayNhap.DateTime.Month + " năm " + dateNgayNhap.DateTime.Year;
+            rpt.DataSource = dtPhieu;
+            rpt.CreateDocument();
+            rpt.ShowPreviewDialog();
+            SplashScreenManager.CloseForm();
         }
     }
 }

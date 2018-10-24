@@ -793,7 +793,7 @@ namespace DuocPham.GUI
                     arr[dem, 11] = dr["DonGiaBV"];//VNDDonGia
                     arr[dem, 12] = Math.Round(Utils.ToInt(dr["SoLuong"]) * Utils.ToDecimal(dr["DonGiaBV"]));//dr["ThanhTien"];//VNDThanhTien
                     arr[dem, 13] = drow["NguoiNhan"];//((drow["KhoNhan"].Equals("K19_13")) ? "LÊ THỊ THẢO LY" : "NGUYỄN TIẾN DŨNG");//drow["NguoiNhan"];//KhachHang
-                    arr[dem, 14] = lookUpKhoNhan.Properties.GetDisplayValueByKeyValue(drow["KhoNhan"]);// lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();// dr[""];//DiaChi
+                    arr[dem, 14] = drow["DiaChi"];//lookUpKhoNhan.Properties.GetDisplayValueByKeyValue(drow["KhoNhan"]);// lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();// dr[""];//DiaChi
                     arr[dem, 15] = Utils.ToDateTime(drow["NgayXuat"].ToString()).Month;//
                     arr[dem, 16] = drow["KhoNhan"].ToString();//
                     //TenKH

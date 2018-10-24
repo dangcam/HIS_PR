@@ -85,7 +85,7 @@ namespace DuocPham.DAL
         }
         public DataTable DSPhieuVatTu ()
         {
-            return db.ExcuteQuery ("Select *,'' as TenVatTu,'' as DonViTinh" +
+            return db.ExcuteQuery ("Select *,'' as TenVatTu,'' as DonViTinh, '' as NuocSanXuat" +
                 " From PhieuNhapChiTiet Where SoPhieu = " + this.SoPhieu+" Order By STT",
                 CommandType.Text, null);
         }
@@ -121,7 +121,7 @@ namespace DuocPham.DAL
         }
         public DataTable DSVatTu()
         {
-            return db.ExcuteQuery("Select MaBV,TenVatTu,DonViTinh,SoDK,GiaBHYT,LoaiVatTu,HamLuong,TinhTrang From VatTu",
+            return db.ExcuteQuery("Select MaBV,TenVatTu,DonViTinh,SoDK,GiaBHYT,LoaiVatTu,HamLuong,TinhTrang,NuocSX From VatTu",
                 CommandType.Text, null);
         }
         public DataTable DSVatTu (string loaiVatTu, string khoTra)
