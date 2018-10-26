@@ -176,13 +176,14 @@ namespace TiepNhan.GUI
                 lookUpTaiNan.EditValue = dr["MaTaiNan"];
                 dateNgayVao.DateTime = Utils.ToDateTime(dr["NgayVao"].ToString());
                 dateNgayRa.DateTime = Utils.ToDateTime(dr["NgayRa"].ToString());
-                txtSoNgayDTri.Text = Utils.ToInt(dr["SoNgayDieuTri"], (dateNgayRa.DateTime - dateNgayVao.DateTime).Days + 1).ToString();
                 cbKQDieuTri.SelectedIndex = Utils.ToInt(dr["KetQuaDieuTri"],1) - 1;
                 cbTTRaVien.SelectedIndex = Utils.ToInt(dr["TinhTrangRaVien"],1) - 1;
                 if (cbKQDieuTri.SelectedIndex < 0)
                     cbKQDieuTri.SelectedIndex = 0;
                 if (cbTTRaVien.SelectedIndex < 0)
                     cbTTRaVien.SelectedIndex = 0;
+                txtSoNgayDTri.Text = Utils.ToInt(dr["SoNgayDieuTri"], 
+                    (dateNgayRa.DateTime - dateNgayVao.DateTime).Days).ToString();
                 dateNgayTToan.DateTime = Utils.ToDateTime(dr["NgayThanhToan"].ToString());
                 txtMaBN.Text = dr["MaBN"].ToString();
                 txtSTTNgay.Text = dr["STTNgay"].ToString();
@@ -672,6 +673,31 @@ namespace TiepNhan.GUI
                 //dataThuoc = thanhtoan.DSThuocChiTiet();
                 dataVTYT = thanhtoan.DSVTYTChiTiet();
                 LoadCongKham();
+            }
+        }
+
+        private void gridView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.Name == "KetQuaDieuTri")
+            {
+                switch (e.DisplayText)
+                {
+                    case "1":
+                        e.DisplayText = "Khỏi";
+                        break;
+                    case "2":
+                        e.DisplayText = "Đỡ";
+                        break;
+                    case "3":
+                        e.DisplayText = "Không thay đổi";
+                        break;
+                    case "4":
+                        e.DisplayText = "Nặng hơn";
+                        break;
+                    case "5":
+                        e.DisplayText = "Tử vong";
+                        break;
+                }
             }
         }
 

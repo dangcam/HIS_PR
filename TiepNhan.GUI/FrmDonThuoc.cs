@@ -419,7 +419,7 @@ namespace TiepNhan.GUI
         {
             if(cbLoaiThuoc.SelectedIndex ==0)
             {
-                lookUpThuoc.Properties.DataSource = kedon.DSKeVatTuKhoChan("1");
+                lookUpThuoc.Properties.DataSource = kedon.DSKeDonTuTruc();//kedon.DSKeVatTuNoiTru("1");//kedon.DSKeVatTuKhoChan("1");
             }
             else
             {

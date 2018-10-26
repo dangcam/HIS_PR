@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+            this.xrLine1 = new DevExpress.XtraReports.UI.XRLine();
             this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow9 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell32 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -97,7 +99,6 @@
             this.xrTableRow10 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell3 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrControlStyle1 = new DevExpress.XtraReports.UI.XRControlStyle();
-            this.xrLine1 = new DevExpress.XtraReports.UI.XRLine();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
@@ -113,7 +114,7 @@
             this.xrLine1,
             this.xrTable1});
             this.Detail.ForeColor = System.Drawing.Color.DimGray;
-            this.Detail.HeightF = 27.08333F;
+            this.Detail.HeightF = 28F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.StylePriority.UseBorderColor = false;
@@ -121,6 +122,15 @@
             this.Detail.StylePriority.UseForeColor = false;
             this.Detail.StylePriority.UseTextAlignment = false;
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // xrLine1
+            // 
+            this.xrLine1.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dash;
+            this.xrLine1.LineStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+            this.xrLine1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 25F);
+            this.xrLine1.Name = "xrLine1";
+            this.xrLine1.SizeF = new System.Drawing.SizeF(1069F, 2.083334F);
+            this.xrLine1.StylePriority.UseBorderDashStyle = false;
             // 
             // xrTable1
             // 
@@ -161,9 +171,11 @@
             // 
             this.xrTableCell32.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.xrTableCell32.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[STT]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumRecordNumber([STT])")});
             this.xrTableCell32.Name = "xrTableCell32";
             this.xrTableCell32.StylePriority.UseBorderDashStyle = false;
+            xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
+            this.xrTableCell32.Summary = xrSummary1;
             this.xrTableCell32.Text = "xrTableCell19";
             this.xrTableCell32.Weight = 0.4D;
             // 
@@ -721,15 +733,6 @@
             // xrControlStyle1
             // 
             this.xrControlStyle1.Name = "xrControlStyle1";
-            // 
-            // xrLine1
-            // 
-            this.xrLine1.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dash;
-            this.xrLine1.LineStyle = System.Drawing.Drawing2D.DashStyle.Dot;
-            this.xrLine1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 25F);
-            this.xrLine1.Name = "xrLine1";
-            this.xrLine1.SizeF = new System.Drawing.SizeF(1069F, 2.083334F);
-            this.xrLine1.StylePriority.UseBorderDashStyle = false;
             // 
             // RptKiemKe
             // 

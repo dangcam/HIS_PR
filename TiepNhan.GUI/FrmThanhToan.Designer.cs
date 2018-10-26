@@ -47,6 +47,7 @@
             this.NgayRa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaKhoa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repLookUpKhoa = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.KetQuaDieuTri = new DevExpress.XtraGrid.Columns.GridColumn();
             this.checkTatCa = new DevExpress.XtraEditors.CheckEdit();
             this.checkDaTT = new DevExpress.XtraEditors.CheckEdit();
             this.checkRaVien = new DevExpress.XtraEditors.CheckEdit();
@@ -387,13 +388,15 @@
             this.TenBenh,
             this.NgayVao,
             this.NgayRa,
-            this.MaKhoa});
+            this.MaKhoa,
+            this.KetQuaDieuTri});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsFind.AlwaysVisible = true;
             this.gridView.OptionsFind.FindNullPrompt = "Nhập thông tin cần tìm";
             this.gridView.OptionsView.ShowAutoFilterRow = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
+            this.gridView.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridView_CustomColumnDisplayText);
             this.gridView.DoubleClick += new System.EventHandler(this.gridView_DoubleClick);
             // 
             // STT
@@ -406,7 +409,7 @@
             this.STT.OptionsColumn.AllowEdit = false;
             this.STT.Visible = true;
             this.STT.VisibleIndex = 0;
-            this.STT.Width = 29;
+            this.STT.Width = 33;
             // 
             // STTNgay
             // 
@@ -417,7 +420,7 @@
             this.STTNgay.Name = "STTNgay";
             this.STTNgay.Visible = true;
             this.STTNgay.VisibleIndex = 1;
-            this.STTNgay.Width = 80;
+            this.STTNgay.Width = 93;
             // 
             // MaBN
             // 
@@ -439,7 +442,7 @@
             this.HoTen.OptionsColumn.AllowEdit = false;
             this.HoTen.Visible = true;
             this.HoTen.VisibleIndex = 2;
-            this.HoTen.Width = 146;
+            this.HoTen.Width = 170;
             // 
             // NgaySinh
             // 
@@ -451,7 +454,7 @@
             this.NgaySinh.OptionsColumn.AllowEdit = false;
             this.NgaySinh.Visible = true;
             this.NgaySinh.VisibleIndex = 3;
-            this.NgaySinh.Width = 63;
+            this.NgaySinh.Width = 73;
             // 
             // DiaChi
             // 
@@ -463,7 +466,7 @@
             this.DiaChi.OptionsColumn.AllowEdit = false;
             this.DiaChi.Visible = true;
             this.DiaChi.VisibleIndex = 4;
-            this.DiaChi.Width = 165;
+            this.DiaChi.Width = 192;
             // 
             // MaThe
             // 
@@ -475,7 +478,7 @@
             this.MaThe.OptionsColumn.AllowEdit = false;
             this.MaThe.Visible = true;
             this.MaThe.VisibleIndex = 5;
-            this.MaThe.Width = 87;
+            this.MaThe.Width = 101;
             // 
             // TenBenh
             // 
@@ -487,7 +490,7 @@
             this.TenBenh.OptionsColumn.AllowEdit = false;
             this.TenBenh.Visible = true;
             this.TenBenh.VisibleIndex = 6;
-            this.TenBenh.Width = 172;
+            this.TenBenh.Width = 200;
             // 
             // NgayVao
             // 
@@ -501,7 +504,7 @@
             this.NgayVao.OptionsColumn.AllowEdit = false;
             this.NgayVao.Visible = true;
             this.NgayVao.VisibleIndex = 7;
-            this.NgayVao.Width = 63;
+            this.NgayVao.Width = 73;
             // 
             // NgayRa
             // 
@@ -515,7 +518,7 @@
             this.NgayRa.OptionsColumn.AllowEdit = false;
             this.NgayRa.Visible = true;
             this.NgayRa.VisibleIndex = 8;
-            this.NgayRa.Width = 63;
+            this.NgayRa.Width = 73;
             // 
             // MaKhoa
             // 
@@ -528,7 +531,7 @@
             this.MaKhoa.OptionsColumn.AllowEdit = false;
             this.MaKhoa.Visible = true;
             this.MaKhoa.VisibleIndex = 9;
-            this.MaKhoa.Width = 78;
+            this.MaKhoa.Width = 91;
             // 
             // repLookUpKhoa
             // 
@@ -537,6 +540,17 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repLookUpKhoa.Name = "repLookUpKhoa";
             this.repLookUpKhoa.NullText = "";
+            // 
+            // KetQuaDieuTri
+            // 
+            this.KetQuaDieuTri.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KetQuaDieuTri.AppearanceCell.Options.UseFont = true;
+            this.KetQuaDieuTri.Caption = "KQ Điều Trị";
+            this.KetQuaDieuTri.FieldName = "KetQuaDieuTri";
+            this.KetQuaDieuTri.Name = "KetQuaDieuTri";
+            this.KetQuaDieuTri.Visible = true;
+            this.KetQuaDieuTri.VisibleIndex = 10;
+            this.KetQuaDieuTri.Width = 50;
             // 
             // checkTatCa
             // 
@@ -2508,5 +2522,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem56;
         private DevExpress.XtraEditors.SimpleButton btnVatTuYTe;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem57;
+        private DevExpress.XtraGrid.Columns.GridColumn KetQuaDieuTri;
     }
 }

@@ -87,6 +87,16 @@ namespace KhamBenh.DAL
             return db.ExcuteQuery("Select * From DSKeVatTuKhoChan('" + loaiVatTu + "')",
                 CommandType.Text, null);
         }
+        public DataTable DSKeVatTuNoiTru(string loaiVatTu)
+        {
+            return db.ExcuteQuery("Select * From DSKeVatTuNoiTru('" + loaiVatTu + "','" + KhoNhan + "')",
+                CommandType.Text, null);
+        }
+        public DataTable DSKeDonTuTruc()
+        {
+            return db.ExcuteQuery("Select * From DSKeDonTuTruc('" + KhoNhan + "')",
+                CommandType.Text, null);
+        }
         public DataTable DSVatTuYTe()
         {
             return db.ExcuteQuery("Select *,'' as MaHoatChat,'' as HamLuong,0 as GiaBHYT,10 as SoLuongTon From VatTuYTe",

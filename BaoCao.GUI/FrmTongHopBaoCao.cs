@@ -134,12 +134,12 @@ namespace BaoCao.GUI
                 {
                     // Quý 3
                     thangDau = "07";
-                    thangCuoi = "10";
+                    thangCuoi = "09";
                 }
                 else
                 {
                     // Quý 4
-                    thangDau = "11";
+                    thangDau = "10";
                     thangCuoi = "12";
                 }
                 tuNgay = Utils.ToDateTime("01/" + thangDau + "/" + cbNam.SelectedItem, "dd/MM/yyyy");

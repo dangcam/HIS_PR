@@ -107,6 +107,12 @@
     <Compile Include="FrmPhieuLinhThuoc.Designer.cs">
       <DependentUpon>FrmPhieuLinhThuoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmTuTruc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTuTruc.Designer.cs">
+      <DependentUpon>FrmTuTruc.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmXuatExcel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     <EmbeddedResource Include="FrmPhieuLinhThuoc.resx">
       <DependentUpon>FrmPhieuLinhThuoc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmTuTruc.resx">
+      <DependentUpon>FrmTuTruc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmXuatExcel.resx">
       <DependentUpon>FrmXuatExcel.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,6 +284,10 @@
     <ProjectReference Include="..\DuocPham.DAL\DuocPham.DAL.csproj">
       <Project>{71BB2B89-1AEC-4F03-9C91-D859AF7ACDA1}</Project>
       <Name>DuocPham.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KhamBenh.DAL\KhamBenh.DAL.csproj">
+      <Project>{F0C49925-9660-4D7A-B777-A99B3EC3C4B6}</Project>
+      <Name>KhamBenh.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

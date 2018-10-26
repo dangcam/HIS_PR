@@ -526,5 +526,11 @@ namespace HIS_PR
             frmPhanTichDonThuoc.MdiParent = this;
             frmPhanTichDonThuoc.Show();
         }
+
+        private void barbntTuTruc_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FrmTuTruc frm = new FrmTuTruc();
+            frm.ShowDialog();
+        }
     }
 }

@@ -81,6 +81,7 @@
             this.ribbonPageGroupKhoLe = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupTongHop = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBarMain = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.barbntTuTruc = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,9 +121,10 @@
             this.barBaoCaoTonKho,
             this.barButtonBKNhapThuoc,
             this.barBITheoDoiRaVaoVie,
-            this.barbtnPhanTichDT});
+            this.barbtnPhanTichDT,
+            this.barbntTuTruc});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControlMain.MaxItemId = 45;
+            this.ribbonControlMain.MaxItemId = 46;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.barLinkSkin);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -485,6 +487,7 @@
             // ribbonPageGroupQuanLyDuoc
             // 
             this.ribbonPageGroupQuanLyDuoc.ItemLinks.Add(this.barButtonYCLinhThuoc);
+            this.ribbonPageGroupQuanLyDuoc.ItemLinks.Add(this.barbntTuTruc);
             this.ribbonPageGroupQuanLyDuoc.Name = "ribbonPageGroupQuanLyDuoc";
             // 
             // ribbonPageGroupBangKe
@@ -536,6 +539,14 @@
             this.ribbonStatusBarMain.Name = "ribbonStatusBarMain";
             this.ribbonStatusBarMain.Ribbon = this.ribbonControlMain;
             this.ribbonStatusBarMain.Size = new System.Drawing.Size(1290, 31);
+            // 
+            // barbntTuTruc
+            // 
+            this.barbntTuTruc.Caption = "Tủ Trực";
+            this.barbntTuTruc.Id = 45;
+            this.barbntTuTruc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barbntTuTruc.ImageOptions.Image")));
+            this.barbntTuTruc.Name = "barbntTuTruc";
+            this.barbntTuTruc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbntTuTruc_ItemClick);
             // 
             // FrmMain
             // 
@@ -615,5 +626,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupBangKe;
         private DevExpress.XtraBars.BarButtonItem barBITheoDoiRaVaoVie;
         private DevExpress.XtraBars.BarButtonItem barbtnPhanTichDT;
+        private DevExpress.XtraBars.BarButtonItem barbntTuTruc;
     }
 }

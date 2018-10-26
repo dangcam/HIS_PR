@@ -127,11 +127,11 @@ namespace KhamBenh.DAL
             return db.ExcuteQuery("Select * From DuongDung ",
                 CommandType.Text, null);
         }
-        public DataTable DSBenhNhan(DateTime tuNgay, DateTime denNgay, int maLoaiKCB,int timTheo)
+        public DataTable DSBenhNhan(DateTime tuNgay, DateTime denNgay, int maLoaiKCB, int timTheo)
         {
             string sql = "Select ROW_NUMBER() OVER(ORDER BY STTNgay) STT,* " +
                 "From ThongTinBNChiTiet Where MaCoSoKCB = '" + AppConfig.CoSoKCB + "' ";
-            if(maLoaiKCB==0)
+            if (maLoaiKCB == 0)
             {
                 sql += "And MaLoaiKCB = 1 ";
             }
@@ -139,11 +139,12 @@ namespace KhamBenh.DAL
             {
                 sql += "And MaLoaiKCB != 1 ";
             }
-            if(timTheo==0)
+            if (timTheo == 0)
             {
                 sql += "And CONVERT(Date,NgayVao) Between CONVERT(Date,'" + tuNgay + "') And CONVERT(Date,'" + denNgay + "')";
-            }else
-                if(timTheo==1)
+            }
+            else
+                if (timTheo == 1)
             {
                 sql += "And CONVERT(Date,NgayRa) Between CONVERT(Date,'" + tuNgay + "') And CONVERT(Date,'" + denNgay + "')";
             }

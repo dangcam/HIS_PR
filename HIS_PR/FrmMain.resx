@@ -454,6 +454,15 @@
         SUVORK5CYII=
 </value>
   </data>
+  <data name="barbntTuTruc.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAHXRFWHRUaXRsZQBGdWxsO1N0
+        YWNrZWQ7QmFyO0NoYXJ0O9PSAogAAABSSURBVDhPY/j//z9D2fLp/9EwUWIgvcPZgHdHiv4jY5AYmhoq
+        GoBNMTYxZM0gTJIB2NThNACIh5oBvk07/iNjoCRtDEBXh9MAbGJAPCgN+M8AAH8lwok2nQisAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAAAAAAAEAIADdjgAAZgAAADAwAAABACAAqCUAAEOPAAAgIAAAAQAgAKgQAADrtAAAGBgAAAEA
