@@ -111,7 +111,8 @@ namespace BaoCao.GUI
             int nam = Utils.ToInt(cbNam.EditValue);
             int thangBD = cbThangBD.SelectedIndex + 1;
             int thangKT = cbThangKT.SelectedIndex + 1;
-            DateTime dateKT = Utils.ToDateTime(lastDay(nam,thangKT)+"/"+cbThangKT.EditValue+"/"+cbNam.EditValue, "dd/MM/yyyy");
+            DateTime dateKT = Utils.ToDateTime(Utils.ToInt(txtNgayKT.Text,lastDay(nam, thangKT)) + "/" + cbThangKT.EditValue + "/" + cbNam.EditValue, "dd/MM/yyyy");
+            //Utils.ToDateTime(lastDay(nam,thangKT)+"/"+cbThangKT.EditValue+"/"+cbNam.EditValue, "dd/MM/yyyy");
             DateTime dateBD = Utils.ToDateTime("01/" + cbThangBD.EditValue + "/" + cbNam.EditValue, "dd/MM/yyyy");
             DataRow[] dr = dtLoaiVatTu.Select("Chon = 1", "");
            

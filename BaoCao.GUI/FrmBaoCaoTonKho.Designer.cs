@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBaoCaoTonKho));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.btnBangKe = new DevExpress.XtraEditors.SimpleButton();
             this.btnKiemKe = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -73,8 +74,9 @@
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnBangKe = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtNgayKT = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
@@ -101,6 +103,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNgayKT.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -121,6 +125,7 @@
             // 
             // layoutControl
             // 
+            this.layoutControl.Controls.Add(this.txtNgayKT);
             this.layoutControl.Controls.Add(this.btnBangKe);
             this.layoutControl.Controls.Add(this.btnKiemKe);
             this.layoutControl.Controls.Add(this.gridControl);
@@ -141,6 +146,19 @@
             this.layoutControl.TabIndex = 1;
             this.layoutControl.Text = "layoutControl1";
             // 
+            // btnBangKe
+            // 
+            this.btnBangKe.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBangKe.Appearance.Options.UseFont = true;
+            this.btnBangKe.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBangKe.ImageOptions.Image")));
+            this.btnBangKe.Location = new System.Drawing.Point(1089, 12);
+            this.btnBangKe.Name = "btnBangKe";
+            this.btnBangKe.Size = new System.Drawing.Size(89, 23);
+            this.btnBangKe.StyleController = this.layoutControl;
+            this.btnBangKe.TabIndex = 17;
+            this.btnBangKe.Text = "Bảng Kê";
+            this.btnBangKe.Click += new System.EventHandler(this.btnBangKe_Click);
+            // 
             // btnKiemKe
             // 
             this.btnKiemKe.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -156,11 +174,11 @@
             // 
             // gridControl
             // 
-            this.gridControl.Location = new System.Drawing.Point(152, 39);
+            this.gridControl.Location = new System.Drawing.Point(116, 39);
             this.gridControl.MainView = this.gridView;
             this.gridControl.MenuManager = this.ribbonControl;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1026, 417);
+            this.gridControl.Size = new System.Drawing.Size(1062, 417);
             this.gridControl.TabIndex = 15;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -355,7 +373,7 @@
             this.gridControlLoaiVT.MainView = this.gridViewLoaiVT;
             this.gridControlLoaiVT.MenuManager = this.ribbonControl;
             this.gridControlLoaiVT.Name = "gridControlLoaiVT";
-            this.gridControlLoaiVT.Size = new System.Drawing.Size(136, 444);
+            this.gridControlLoaiVT.Size = new System.Drawing.Size(100, 444);
             this.gridControlLoaiVT.TabIndex = 14;
             this.gridControlLoaiVT.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewLoaiVT});
@@ -406,7 +424,7 @@
             // 
             // cbTuThang
             // 
-            this.cbTuThang.Location = new System.Drawing.Point(206, 12);
+            this.cbTuThang.Location = new System.Drawing.Point(170, 12);
             this.cbTuThang.MenuManager = this.ribbonControl;
             this.cbTuThang.Name = "cbTuThang";
             this.cbTuThang.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -434,7 +452,7 @@
             // 
             // cbNamXuLy
             // 
-            this.cbNamXuLy.Location = new System.Drawing.Point(314, 12);
+            this.cbNamXuLy.Location = new System.Drawing.Point(278, 12);
             this.cbNamXuLy.MenuManager = this.ribbonControl;
             this.cbNamXuLy.Name = "cbNamXuLy";
             this.cbNamXuLy.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -475,7 +493,7 @@
             // 
             // cbThangBD
             // 
-            this.cbThangBD.Location = new System.Drawing.Point(584, 12);
+            this.cbThangBD.Location = new System.Drawing.Point(476, 12);
             this.cbThangBD.MenuManager = this.ribbonControl;
             this.cbThangBD.Name = "cbThangBD";
             this.cbThangBD.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -549,7 +567,7 @@
             this.btnXuLy.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXuLy.Appearance.Options.UseFont = true;
             this.btnXuLy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXuLy.ImageOptions.Image")));
-            this.btnXuLy.Location = new System.Drawing.Point(387, 12);
+            this.btnXuLy.Location = new System.Drawing.Point(351, 12);
             this.btnXuLy.Name = "btnXuLy";
             this.btnXuLy.Size = new System.Drawing.Size(57, 23);
             this.btnXuLy.StyleController = this.layoutControl;
@@ -574,7 +592,8 @@
             this.layoutControlItem9,
             this.layoutControlItem10,
             this.layoutControlItem11,
-            this.layoutControlItem12});
+            this.layoutControlItem12,
+            this.layoutControlItem13});
             this.layoutControlGroup.Name = "layoutControlGroup";
             this.layoutControlGroup.Size = new System.Drawing.Size(1190, 468);
             this.layoutControlGroup.TextVisible = false;
@@ -582,7 +601,7 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.btnXuLy;
-            this.layoutControlItem2.Location = new System.Drawing.Point(375, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(339, 0);
             this.layoutControlItem2.MaxSize = new System.Drawing.Size(61, 27);
             this.layoutControlItem2.MinSize = new System.Drawing.Size(61, 27);
             this.layoutControlItem2.Name = "layoutControlItem2";
@@ -594,9 +613,9 @@
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(436, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(400, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(82, 27);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(10, 27);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem4
@@ -626,7 +645,7 @@
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.cbThangBD;
-            this.layoutControlItem6.Location = new System.Drawing.Point(518, 0);
+            this.layoutControlItem6.Location = new System.Drawing.Point(410, 0);
             this.layoutControlItem6.MaxSize = new System.Drawing.Size(113, 26);
             this.layoutControlItem6.MinSize = new System.Drawing.Size(113, 26);
             this.layoutControlItem6.Name = "layoutControlItem6";
@@ -662,7 +681,7 @@
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.cbNamXuLy;
-            this.layoutControlItem1.Location = new System.Drawing.Point(248, 0);
+            this.layoutControlItem1.Location = new System.Drawing.Point(212, 0);
             this.layoutControlItem1.MaxSize = new System.Drawing.Size(127, 26);
             this.layoutControlItem1.MinSize = new System.Drawing.Size(127, 26);
             this.layoutControlItem1.Name = "layoutControlItem1";
@@ -674,7 +693,7 @@
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.cbTuThang;
-            this.layoutControlItem3.Location = new System.Drawing.Point(140, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(104, 0);
             this.layoutControlItem3.MaxSize = new System.Drawing.Size(108, 26);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(108, 26);
             this.layoutControlItem3.Name = "layoutControlItem3";
@@ -688,16 +707,16 @@
             this.layoutControlItem9.Control = this.gridControlLoaiVT;
             this.layoutControlItem9.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(140, 448);
+            this.layoutControlItem9.Size = new System.Drawing.Size(104, 448);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.gridControl;
-            this.layoutControlItem10.Location = new System.Drawing.Point(140, 27);
+            this.layoutControlItem10.Location = new System.Drawing.Point(104, 27);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(1030, 421);
+            this.layoutControlItem10.Size = new System.Drawing.Size(1066, 421);
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
             // 
@@ -713,19 +732,6 @@
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem11.TextVisible = false;
             // 
-            // btnBangKe
-            // 
-            this.btnBangKe.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBangKe.Appearance.Options.UseFont = true;
-            this.btnBangKe.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBangKe.ImageOptions.Image")));
-            this.btnBangKe.Location = new System.Drawing.Point(1089, 12);
-            this.btnBangKe.Name = "btnBangKe";
-            this.btnBangKe.Size = new System.Drawing.Size(89, 23);
-            this.btnBangKe.StyleController = this.layoutControl;
-            this.btnBangKe.TabIndex = 17;
-            this.btnBangKe.Text = "Bảng Kê";
-            this.btnBangKe.Click += new System.EventHandler(this.btnBangKe_Click);
-            // 
             // layoutControlItem12
             // 
             this.layoutControlItem12.Control = this.btnBangKe;
@@ -737,6 +743,29 @@
             this.layoutControlItem12.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem12.TextVisible = false;
+            // 
+            // txtNgayKT
+            // 
+            this.txtNgayKT.Location = new System.Drawing.Point(589, 12);
+            this.txtNgayKT.MenuManager = this.ribbonControl;
+            this.txtNgayKT.Name = "txtNgayKT";
+            this.txtNgayKT.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNgayKT.Properties.Appearance.Options.UseFont = true;
+            this.txtNgayKT.Size = new System.Drawing.Size(50, 22);
+            this.txtNgayKT.StyleController = this.layoutControl;
+            this.txtNgayKT.TabIndex = 18;
+            // 
+            // layoutControlItem13
+            // 
+            this.layoutControlItem13.Control = this.txtNgayKT;
+            this.layoutControlItem13.Location = new System.Drawing.Point(523, 0);
+            this.layoutControlItem13.MaxSize = new System.Drawing.Size(108, 26);
+            this.layoutControlItem13.MinSize = new System.Drawing.Size(108, 26);
+            this.layoutControlItem13.Name = "layoutControlItem13";
+            this.layoutControlItem13.Size = new System.Drawing.Size(108, 27);
+            this.layoutControlItem13.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem13.Text = "Ngày KT:";
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(51, 13);
             // 
             // FrmBaoCaoTonKho
             // 
@@ -777,6 +806,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNgayKT.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -830,5 +861,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
         private DevExpress.XtraEditors.SimpleButton btnBangKe;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
+        private DevExpress.XtraEditors.TextEdit txtNgayKT;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
     }
 }
