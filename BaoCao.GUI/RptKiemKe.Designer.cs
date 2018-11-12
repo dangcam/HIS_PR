@@ -580,7 +580,7 @@
             this.GroupHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrTable3});
             this.GroupHeader.GroupFields.AddRange(new DevExpress.XtraReports.UI.GroupField[] {
-            new DevExpress.XtraReports.UI.GroupField("Mau", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending),
+            new DevExpress.XtraReports.UI.GroupField("STTVT", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending),
             new DevExpress.XtraReports.UI.GroupField("LoaiVatTu", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)});
             this.GroupHeader.HeightF = 25F;
             this.GroupHeader.Name = "GroupHeader";

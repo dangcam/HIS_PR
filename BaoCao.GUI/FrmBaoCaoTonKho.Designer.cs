@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBaoCaoTonKho));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.txtNgayKT = new DevExpress.XtraEditors.TextEdit();
             this.btnBangKe = new DevExpress.XtraEditors.SimpleButton();
             this.btnKiemKe = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
@@ -75,11 +76,12 @@
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtNgayKT = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.STTVT = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNgayKT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlLoaiVT)).BeginInit();
@@ -103,7 +105,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNgayKT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,6 +146,17 @@
             this.layoutControl.Size = new System.Drawing.Size(1190, 468);
             this.layoutControl.TabIndex = 1;
             this.layoutControl.Text = "layoutControl1";
+            // 
+            // txtNgayKT
+            // 
+            this.txtNgayKT.Location = new System.Drawing.Point(589, 12);
+            this.txtNgayKT.MenuManager = this.ribbonControl;
+            this.txtNgayKT.Name = "txtNgayKT";
+            this.txtNgayKT.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNgayKT.Properties.Appearance.Options.UseFont = true;
+            this.txtNgayKT.Size = new System.Drawing.Size(50, 22);
+            this.txtNgayKT.StyleController = this.layoutControl;
+            this.txtNgayKT.TabIndex = 18;
             // 
             // btnBangKe
             // 
@@ -198,14 +210,15 @@
             this.GTXuat,
             this.SLTonCuoi,
             this.GTTonCuoi,
-            this.LoaiVatTu});
+            this.LoaiVatTu,
+            this.STTVT});
             this.gridView.GridControl = this.gridControl;
             this.gridView.GroupCount = 1;
             this.gridView.Name = "gridView";
             this.gridView.OptionsFind.AlwaysVisible = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.LoaiVatTu, DevExpress.Data.ColumnSortOrder.Ascending)});
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.STTVT, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // MaBV
             // 
@@ -216,7 +229,7 @@
             this.MaBV.Name = "MaBV";
             this.MaBV.Visible = true;
             this.MaBV.VisibleIndex = 0;
-            this.MaBV.Width = 55;
+            this.MaBV.Width = 65;
             // 
             // TenVatTu
             // 
@@ -227,7 +240,7 @@
             this.TenVatTu.Name = "TenVatTu";
             this.TenVatTu.Visible = true;
             this.TenVatTu.VisibleIndex = 1;
-            this.TenVatTu.Width = 164;
+            this.TenVatTu.Width = 195;
             // 
             // DonViTinh
             // 
@@ -238,7 +251,7 @@
             this.DonViTinh.Name = "DonViTinh";
             this.DonViTinh.Visible = true;
             this.DonViTinh.VisibleIndex = 2;
-            this.DonViTinh.Width = 46;
+            this.DonViTinh.Width = 54;
             // 
             // DonGia
             // 
@@ -251,7 +264,7 @@
             this.DonGia.Name = "DonGia";
             this.DonGia.Visible = true;
             this.DonGia.VisibleIndex = 3;
-            this.DonGia.Width = 54;
+            this.DonGia.Width = 64;
             // 
             // SLTonDau
             // 
@@ -264,7 +277,7 @@
             this.SLTonDau.Name = "SLTonDau";
             this.SLTonDau.Visible = true;
             this.SLTonDau.VisibleIndex = 4;
-            this.SLTonDau.Width = 58;
+            this.SLTonDau.Width = 69;
             // 
             // GTTonDau
             // 
@@ -277,7 +290,7 @@
             this.GTTonDau.Name = "GTTonDau";
             this.GTTonDau.Visible = true;
             this.GTTonDau.VisibleIndex = 5;
-            this.GTTonDau.Width = 69;
+            this.GTTonDau.Width = 82;
             // 
             // SLNhap
             // 
@@ -290,7 +303,7 @@
             this.SLNhap.Name = "SLNhap";
             this.SLNhap.Visible = true;
             this.SLNhap.VisibleIndex = 6;
-            this.SLNhap.Width = 49;
+            this.SLNhap.Width = 58;
             // 
             // GTNhap
             // 
@@ -303,7 +316,7 @@
             this.GTNhap.Name = "GTNhap";
             this.GTNhap.Visible = true;
             this.GTNhap.VisibleIndex = 7;
-            this.GTNhap.Width = 65;
+            this.GTNhap.Width = 77;
             // 
             // SLXuatTrong
             // 
@@ -316,7 +329,7 @@
             this.SLXuatTrong.Name = "SLXuatTrong";
             this.SLXuatTrong.Visible = true;
             this.SLXuatTrong.VisibleIndex = 8;
-            this.SLXuatTrong.Width = 65;
+            this.SLXuatTrong.Width = 77;
             // 
             // GTXuat
             // 
@@ -329,7 +342,7 @@
             this.GTXuat.Name = "GTXuat";
             this.GTXuat.Visible = true;
             this.GTXuat.VisibleIndex = 9;
-            this.GTXuat.Width = 62;
+            this.GTXuat.Width = 73;
             // 
             // SLTonCuoi
             // 
@@ -342,7 +355,7 @@
             this.SLTonCuoi.Name = "SLTonCuoi";
             this.SLTonCuoi.Visible = true;
             this.SLTonCuoi.VisibleIndex = 10;
-            this.SLTonCuoi.Width = 51;
+            this.SLTonCuoi.Width = 60;
             // 
             // GTTonCuoi
             // 
@@ -355,17 +368,17 @@
             this.GTTonCuoi.Name = "GTTonCuoi";
             this.GTTonCuoi.Visible = true;
             this.GTTonCuoi.VisibleIndex = 11;
-            this.GTTonCuoi.Width = 63;
             // 
             // LoaiVatTu
             // 
             this.LoaiVatTu.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoaiVatTu.AppearanceCell.Options.UseFont = true;
-            this.LoaiVatTu.Caption = "Loại vật tư";
+            this.LoaiVatTu.Caption = "LVT";
             this.LoaiVatTu.FieldName = "LoaiVatTu";
             this.LoaiVatTu.Name = "LoaiVatTu";
             this.LoaiVatTu.Visible = true;
             this.LoaiVatTu.VisibleIndex = 12;
+            this.LoaiVatTu.Width = 30;
             // 
             // gridControlLoaiVT
             // 
@@ -744,17 +757,6 @@
             this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem12.TextVisible = false;
             // 
-            // txtNgayKT
-            // 
-            this.txtNgayKT.Location = new System.Drawing.Point(589, 12);
-            this.txtNgayKT.MenuManager = this.ribbonControl;
-            this.txtNgayKT.Name = "txtNgayKT";
-            this.txtNgayKT.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNgayKT.Properties.Appearance.Options.UseFont = true;
-            this.txtNgayKT.Size = new System.Drawing.Size(50, 22);
-            this.txtNgayKT.StyleController = this.layoutControl;
-            this.txtNgayKT.TabIndex = 18;
-            // 
             // layoutControlItem13
             // 
             this.layoutControlItem13.Control = this.txtNgayKT;
@@ -766,6 +768,16 @@
             this.layoutControlItem13.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem13.Text = "Ngày KT:";
             this.layoutControlItem13.TextSize = new System.Drawing.Size(51, 13);
+            // 
+            // STTVT
+            // 
+            this.STTVT.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.STTVT.AppearanceHeader.Options.UseFont = true;
+            this.STTVT.Caption = "STTVT";
+            this.STTVT.FieldName = "STTVT";
+            this.STTVT.Name = "STTVT";
+            this.STTVT.Visible = true;
+            this.STTVT.VisibleIndex = 13;
             // 
             // FrmBaoCaoTonKho
             // 
@@ -783,6 +795,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtNgayKT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlLoaiVT)).EndInit();
@@ -806,7 +819,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNgayKT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -863,5 +875,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
         private DevExpress.XtraEditors.TextEdit txtNgayKT;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
+        private DevExpress.XtraGrid.Columns.GridColumn STTVT;
     }
 }
