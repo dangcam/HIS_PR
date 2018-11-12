@@ -190,6 +190,7 @@ namespace DuocPham.DAL
                 CommandType.StoredProcedure, ref err,
                 new SqlParameter("@SoPhieu", SoPhieu),
                 new SqlParameter("@SoPhieuNhap", SoPhieuNhap),
+                new SqlParameter("@KhoNhan", KhoNhan),
                 new SqlParameter("@MaVatTu", MaVatTu),
                 new SqlParameter("@DonGiaBHYT", DonGiaBHYT),
                 new SqlParameter("@DonGiaBV", DonGiaBV),
