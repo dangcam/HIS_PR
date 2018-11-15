@@ -113,13 +113,13 @@ namespace KhamBenh.DAL
             }
             return "";
         }
-        public DataTable DSTiepNhan(string ngayVao, int phong)
+        public DataTable DSTiepNhan(string ngayVao, int phong, string MaKhoa)
         {
             return db.ExcuteQuery("Select MaLK,MaBN,HoTen,NgaySinh,GioiTinh,DiaChi,MaThe,MaDKBD,TheTu,TheDen," +
                 "TenBenh,MaBenh,MaLyDoVaoVien,MaNoiChuyenDen,MaTaiNan,NgayVao,NgayRa,KetQuaDieuTri," +
                 "TinhTrangRaVien,NgayThanhToan,MucHuong,MaLoaiKCB,MaKhoa,MaCoSoKCB,MaKhuVuc,STTNgay," +
                 "STTPhong,Phong,TinhTrang,CoThe,CanNang From ThongTinBNChiTiet Where CAST(NgayVao AS DATE) = CAST('"
-                + ngayVao + "' AS DATE) And (Phong = "+phong+" Or "+phong+ " = 0) And MaCoSoKCB='"+AppConfig.CoSoKCB+"'  Order By STTNgay ASC",
+                + ngayVao + "' AS DATE) And (Phong = "+phong+" Or "+phong+ " = 0) And MaCoSoKCB='"+AppConfig.CoSoKCB+"' And MaKhoa='"+MaKhoa+"'  Order By STTNgay ASC",
                 CommandType.Text, null);
         }
         public DataTable DSBenhNhanNoiTru(string tuNgay, string denNgay, string maKhoa,int loai)
@@ -175,9 +175,13 @@ namespace KhamBenh.DAL
                 CommandType.Text, null);
 
         }
-        public DataTable DSChiTietThuocAndGiuong(string maKhoa, DateTime tuNgay, DateTime denNgay)
+        public DataTable DSChiTietThuocAndGiuong(string maKhoa, DateTime tuNgay, DateTime  denNgay)
         {
-            return db.ExcuteQuery("Select STTNgay,HoTen,SUBSTRING(NgaySinh, Len(NgaySinh)-3, 4) as NgaySinh,ThongTinBNChiTiet.MaLK,GiuongBenh," +
+            return db.ExcuteQuery("Select STTNgay,HoTen," +
+                                    "(Case when GioiTinh = 0 then SUBSTRING(NgaySinh, Len(NgaySinh)-3, 4) end) as Nam," +
+                                    "(Case when GioiTinh = 1 then SUBSTRING(NgaySinh, Len(NgaySinh)-3, 4) end) as Nu," +
+                                    "ThongTinBNChiTiet.MaLK,GiuongBenh," +
+                                    "TenBenh,HamLuong," +
                                     "MaThe,CONVERT(VARCHAR,NgayYLenh,120) as NgayThanhToan,MaBenh,TenThuoc,SoLuong,LieuDung,DonViTinh,Ten " +
                                     "from ThongTinBNChiTiet," +
                                     "(select * from DonThuocChiTiet,DuongDung where DonThuocChiTiet.MaDuongDung = DuongDung.Ma) as DonThuocChiTiet " +

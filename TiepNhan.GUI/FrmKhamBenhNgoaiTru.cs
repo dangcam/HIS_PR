@@ -81,8 +81,7 @@ namespace TiepNhan.GUI
             {
                 phong = 0;
             }
-            dataDanhSach = khambenh.DSTiepNhan(DateTime.Now.ToShortDateString(),phong
-                );
+            dataDanhSach = khambenh.DSTiepNhan(DateTime.Now.ToShortDateString(),phong,AppConfig.MaKhoa);
             checkChoKham.Checked = true;
         }
         private void btnNew_Click(object sender, EventArgs e)
