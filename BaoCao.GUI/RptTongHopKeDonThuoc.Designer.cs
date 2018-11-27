@@ -286,11 +286,12 @@
             this.pivotGridField9.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
             this.pivotGridField9.AreaIndex = 0;
             this.pivotGridField9.Caption = "ĐD Thực H";
+            this.pivotGridField9.MinWidth = 0;
             this.pivotGridField9.Name = "pivotGridField9";
             this.pivotGridField9.Options.ShowCustomTotals = false;
             this.pivotGridField9.Options.ShowGrandTotal = false;
             this.pivotGridField9.Options.ShowTotals = false;
-            this.pivotGridField9.Width = 61;
+            this.pivotGridField9.Width = 0;
             // 
             // TopMargin
             // 
@@ -429,7 +430,7 @@
             this.pivotGridField14.Caption = "Liều dùng";
             this.pivotGridField14.FieldName = "LieuDung";
             this.pivotGridField14.Name = "pivotGridField14";
-            this.pivotGridField14.Width = 165;
+            this.pivotGridField14.Width = 225;
             // 
             // RptTongHopKeDonThuoc
             // 
