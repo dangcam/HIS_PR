@@ -36,6 +36,7 @@ namespace Core.DAL
         public const string BenhNhanDaKhamRaVien = "Bệnh nhân đã khám hoặc đã ra viện.";
         public const string ChuyenBenhNhan = "Chuyển bệnh nhân sang phòng: ";
         public const string ChuyenTuyenBenhNhan = "Chuyển tuyến bệnh nhân này?";
+        public const string DaChuyenKhoa = "Bệnh nhân đã chuyển sang khoa khác.";
         // lưu thông tin
         public const string LuuThanhCong = "Đã lưu thông tin thành công.";
         // câu  lệnh sql

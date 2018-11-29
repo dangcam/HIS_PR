@@ -371,11 +371,11 @@ namespace TiepNhan.GUI
             DataRow dr = gridView.GetFocusedDataRow();
             if(dr!=null)
             {
-                //if(!string.IsNullOrEmpty(dr["NgayThanhToan"].ToString()))
-                //{
-                //    XtraMessageBox.Show(Library.BenhNhanDaKhamRaVien, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //}
-                //else // cho chỉnh sửa lại đơn
+                if (!dr["MaKhoa"].ToString().Equals(AppConfig.MaKhoa))
+                {
+                    XtraMessageBox.Show(Library.DaChuyenKhoa, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else // cho chỉnh sửa lại đơn
                 {
                     frmKeDon.MaLK = dr["MaLK"].ToString();
                     frmKeDon.HoTen = dr["HoTen"].ToString();

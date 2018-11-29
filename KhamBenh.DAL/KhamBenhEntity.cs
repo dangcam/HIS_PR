@@ -119,7 +119,8 @@ namespace KhamBenh.DAL
                 "TenBenh,MaBenh,MaLyDoVaoVien,MaNoiChuyenDen,MaTaiNan,NgayVao,NgayRa,KetQuaDieuTri," +
                 "TinhTrangRaVien,NgayThanhToan,MucHuong,MaLoaiKCB,MaKhoa,MaCoSoKCB,MaKhuVuc,STTNgay," +
                 "STTPhong,Phong,TinhTrang,CoThe,CanNang From ThongTinBNChiTiet Where CAST(NgayVao AS DATE) = CAST('"
-                + ngayVao + "' AS DATE) And (Phong = "+phong+" Or "+phong+ " = 0) And MaCoSoKCB='"+AppConfig.CoSoKCB+"' And MaKhoa='"+MaKhoa+"'  Order By STTNgay ASC",
+                //+ ngayVao + "' AS DATE) And (Phong = "+phong+" Or "+phong+ " = 0) And MaCoSoKCB='"+AppConfig.CoSoKCB+"' And MaKhoa='"+MaKhoa+"'  Order By STTNgay ASC",
+                 +ngayVao + "' AS DATE) And (Phong = " + phong + " Or " + phong + " = 0) And MaCoSoKCB='" + AppConfig.CoSoKCB + "'  Order By STTNgay ASC",
                 CommandType.Text, null);
         }
         public DataTable DSBenhNhanNoiTru(string tuNgay, string denNgay, string maKhoa,int loai)

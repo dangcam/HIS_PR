@@ -70,6 +70,7 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.MaKhoa = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
@@ -149,7 +150,8 @@
             this.NgayRa,
             this.STTPhongDS,
             this.PhongDS,
-            this.TinhTrang});
+            this.TinhTrang,
+            this.MaKhoa});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsFind.AlwaysVisible = true;
@@ -605,6 +607,12 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
+            // MaKhoa
+            // 
+            this.MaKhoa.Caption = "MaKhoa";
+            this.MaKhoa.FieldName = "MaKhoa";
+            this.MaKhoa.Name = "MaKhoa";
+            // 
             // FrmKhamBenhNgoaiTru
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -688,5 +696,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn PhongDS;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraGrid.Columns.GridColumn TinhTrang;
+        private DevExpress.XtraGrid.Columns.GridColumn MaKhoa;
     }
 }
