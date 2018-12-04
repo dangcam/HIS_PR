@@ -136,9 +136,9 @@ namespace KhamBenh.DAL
                 "And CONVERT(Date,NgayVao) Between CONVERT(Date,'" + tuNgay + "') And CONVERT(Date,'" + denNgay + "') And NgayRa is NULL " +
                 "And MaCoSoKCB = '" + AppConfig.CoSoKCB + "'",
                 CommandType.Text, null);
-            else
+            else // tính theo ngày ra
                 return db.ExcuteQuery("Select * From ThongTinBNChiTiet Where MaLoaiKCB > 1 And MaKhoa = '" + maKhoa + "' " +
-                "And CONVERT(Date,NgayVao) Between CONVERT(Date,'" + tuNgay + "') And CONVERT(Date,'" + denNgay + "') And NgayRa is not NULL " +
+                "And CONVERT(Date,NgayRa) Between CONVERT(Date,'" + tuNgay + "') And CONVERT(Date,'" + denNgay + "') And NgayRa is not NULL " +
                 "And MaCoSoKCB = '" + AppConfig.CoSoKCB + "'",
                 CommandType.Text, null);
 
