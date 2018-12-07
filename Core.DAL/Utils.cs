@@ -498,13 +498,25 @@ namespace Core.DAL
         }
         public static DateTime ToDateTime(string value)
         {
+            //try
+            //{
+            //    return DateTime.Parse(value);
+            //}
+            //catch
+            //{
+            //    return DateTime.Now;
+            //}
+            return ToDateTime(value, DateTime.Now);
+        }
+        public static DateTime ToDateTime(string value, DateTime dateTime)
+        {
             try
             {
                 return DateTime.Parse(value);
             }
             catch
             {
-                return DateTime.Now;
+                return dateTime;
             }
         }
         private static async Task<string> GetToken()

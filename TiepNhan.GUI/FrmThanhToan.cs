@@ -92,7 +92,7 @@ namespace TiepNhan.GUI
 
             thanhtoan.MaLK = null;
             maBacSi = null;
-            
+           
         }
         protected override void OnLoad(EventArgs e)
         {
@@ -129,10 +129,10 @@ namespace TiepNhan.GUI
         }
         private void LoadThongTin(int index)
         {
-           if(dataLoc!=null && dataLoc.Rows.Count>0)
+            if (dataLoc != null && dataLoc.Rows.Count > 0)
             {
                 DataRow dr = dataLoc.Rows[index];
-                if(Utils.ToBoolean(dr["CoThe"]))
+                if (Utils.ToBoolean(dr["CoThe"]))
                 {
 
                     checkCoThe.Checked = true;
@@ -175,24 +175,25 @@ namespace TiepNhan.GUI
                 lookUpNoiChuyenDen.EditValue = dr["MaNoiChuyenDen"];
                 lookUpTaiNan.EditValue = dr["MaTaiNan"];
                 dateNgayVao.DateTime = Utils.ToDateTime(dr["NgayVao"].ToString());
-                dateNgayRa.DateTime = Utils.ToDateTime(dr["NgayRa"].ToString());
-                cbKQDieuTri.SelectedIndex = Utils.ToInt(dr["KetQuaDieuTri"],1) - 1;
-                cbTTRaVien.SelectedIndex = Utils.ToInt(dr["TinhTrangRaVien"],1) - 1;
+                dateNgayRa.DateTime = Utils.ToDateTime(dr["NgayRa"].ToString(), DateTime.Now.AddMinutes(2));
+                cbKQDieuTri.SelectedIndex = Utils.ToInt(dr["KetQuaDieuTri"], 1) - 1;
+                cbTTRaVien.SelectedIndex = Utils.ToInt(dr["TinhTrangRaVien"], 1) - 1;
                 if (cbKQDieuTri.SelectedIndex < 0)
                     cbKQDieuTri.SelectedIndex = 0;
                 if (cbTTRaVien.SelectedIndex < 0)
                     cbTTRaVien.SelectedIndex = 0;
-                txtSoNgayDTri.Text = Utils.ToInt(dr["SoNgayDieuTri"], 
+                txtSoNgayDTri.Text = Utils.ToInt(dr["SoNgayDieuTri"],
                     (dateNgayRa.DateTime - dateNgayVao.DateTime).Days).ToString();
-                dateNgayTToan.DateTime = Utils.ToDateTime(dr["NgayThanhToan"].ToString());
+                dateNgayTToan.DateTime = Utils.ToDateTime(dr["NgayThanhToan"].ToString(),DateTime.Now.AddMinutes(2));
                 txtMaBN.Text = dr["MaBN"].ToString();
                 txtSTTNgay.Text = dr["STTNgay"].ToString();
                 lookUpKhoa.EditValue = dr["MaKhoa"];
                 //
                 thanhtoan.MaLK = dr["MaLK"].ToString();
                 LoadChiTiet();
+                
             }
-           else
+            else
             {
                 thanhtoan.MaLK = null;
             }

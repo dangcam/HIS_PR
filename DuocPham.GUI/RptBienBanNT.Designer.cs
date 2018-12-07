@@ -465,7 +465,7 @@
             // xrTableCell16
             // 
             this.xrTableCell16.Name = "xrTableCell16";
-            this.xrTableCell16.Text = "6. KT Nguyễn Thị Trà My";
+            this.xrTableCell16.Text = "6. KT Phạm Thị Ngọc Anh";
             this.xrTableCell16.Weight = 1.5016760049319133D;
             // 
             // xrTableCell17
