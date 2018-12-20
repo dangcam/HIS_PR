@@ -53,6 +53,11 @@ namespace TiepNhan.GUI
             dataChiTiet.Columns.Add("Mau01", typeof(float));
             dataChiTiet.Columns.Add("Mau02", typeof(float));
             dataChiTiet.Columns.Add("TyLe", typeof(string));
+            dataChiTiet.Columns.Add("NgayYLenh", typeof(DateTime));
+            dataChiTiet.Columns.Add("NgayKQ", typeof(DateTime));
+            dataChiTiet.Columns.Add("SoPhieu", typeof(string));
+            dataChiTiet.Columns.Add("SoPhieuNhap", typeof(string));
+            dataChiTiet.Columns.Add("MaVatTu", typeof(string));
             foreach (DataRow dr in thanhtoan.DSNhom().Rows)
             {
                 nhomChiPhi.Add(Utils.ToInt(dr["MaNhom"]),
@@ -214,7 +219,7 @@ namespace TiepNhan.GUI
             tienbntt = 0;
             DataRow dataRow;
             maBacSi = null;
-            
+            // vật tư
             foreach (DataRow dr in dataVTYT.Rows)
             {
                 if(Utils.ToInt(dr["TyLe"],100) == 0)
@@ -232,10 +237,15 @@ namespace TiepNhan.GUI
                 dataRow["TenNhom"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Ten;
                 dataRow["Mau01"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau1;
                 dataRow["Mau02"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau2;
+                dataRow["NgayYLenh"] = dr["NgayYLenh"];
+                dataRow["SoPhieu"] = dr["SoPhieu"];
+                dataRow["SoPhieuNhap"] = dr["SoPhieuNhap"];
+                dataRow["MaVatTu"] = dr["MaVatTu"];
                 dataRow["TyLe"] = dr["TyLe"];//
                 maBacSi = dr["MaBacSi"].ToString();
                 dataChiTiet.Rows.Add(dataRow);
             }
+            // dịch vụ
             foreach (DataRow dr in dataDichVu.Rows)
             {
                 if (Utils.ToInt(dr["TyLe"], 100) == 0)
@@ -253,10 +263,13 @@ namespace TiepNhan.GUI
                 dataRow["Mau01"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau1;
                 dataRow["Mau02"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau2;
                 dataRow["TenNhom"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Ten;
+                dataRow["NgayYLenh"] = dr["NgayYLenh"];
+                dataRow["NgayKQ"] = dr["NgayKQ"];
                 dataRow["TyLe"] = dr["TyLe"];//
                 maBacSi = dr["MaBacSi"].ToString();
                 dataChiTiet.Rows.Add(dataRow);
             }
+            // công khám
             foreach (DataRow dr in dataCongKham.Rows)
             {
                 if (Utils.ToInt(dr["TyLe"], 100) == 0)
@@ -274,10 +287,13 @@ namespace TiepNhan.GUI
                 dataRow["Mau01"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau1;
                 dataRow["Mau02"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau2;
                 dataRow["TenNhom"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Ten;
+                dataRow["NgayYLenh"] = dr["NgayYLenh"];
+                dataRow["NgayKQ"] = dr["NgayKQ"];
                 dataRow["TyLe"] = dr["TyLe"];//
                 maBacSi = dr["MaBacSi"].ToString();
                 dataChiTiet.Rows.Add(dataRow);
             }
+            // đơn thuốc
             foreach (DataRow dr in dataThuoc.Rows)
             {
                 if (Utils.ToInt(dr["TyLe"], 100) == 0)
@@ -295,6 +311,10 @@ namespace TiepNhan.GUI
                 dataRow["Mau01"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau1;
                 dataRow["Mau02"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau2;
                 dataRow["TenNhom"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Ten;
+                dataRow["NgayYLenh"] = dr["NgayYLenh"];
+                dataRow["SoPhieu"] = dr["SoPhieu"];
+                dataRow["SoPhieuNhap"] = dr["SoPhieuNhap"];
+                dataRow["MaVatTu"] = dr["MaVatTu"];
                 dataRow["TyLe"] = dr["TyLe"];//
                 maBacSi = dr["MaBacSi"].ToString();
                 dataChiTiet.Rows.Add(dataRow);
@@ -431,14 +451,26 @@ namespace TiepNhan.GUI
                 {
                     XtraMessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                thanhtoan.NgayKQ = DateTime.Now;
                 // cập nhật thuốc
-                foreach(DataRow dr in dataThuoc.Rows)
+                foreach (DataRow dr in dataThuoc.Rows)
                 {
                     err = null;
                     thanhtoan.SoPhieu = Utils.ToInt(dr["SoPhieu"]);
                     thanhtoan.SoPhieuNhap = Utils.ToInt(dr["SoPhieuNhap"]);
                     thanhtoan.MaVatTu = dr["MaVatTu"].ToString();
                     thanhtoan.TongChi = Utils.ToDecimal(dr["ThanhTien"]);
+                    // cập nhật lại ngày Y lệnh
+                    DataRow[] dataYLenh = 
+                        dataChiTiet.Select("SoPhieu = " + thanhtoan.SoPhieu + " and SoPhieuNhap = " + thanhtoan.SoPhieuNhap + " and MaVatTu = '" + thanhtoan.MaVatTu + "'");
+                    if(dataYLenh!=null && dataYLenh.Count()>0)
+                    {
+                        thanhtoan.NgayYLenh =Utils.ToDateTime( dataYLenh[0]["NgayYLenh"].ToString());
+                    }
+                    else
+                    {
+                        thanhtoan.NgayYLenh = Utils.ToDateTime(dr["NgayYLenh"].ToString());
+                    }
                     if (mucHuong != 0 && Utils.ToInt(dr["TyLe"], 100) == 0)
                     {
                         thanhtoan.TyLe = 0;
@@ -455,7 +487,7 @@ namespace TiepNhan.GUI
                     }
                     thanhtoan.TienNguonKhac = 0;
                     thanhtoan.TienNgoaiDS = 0;
-                    if (!thanhtoan.SpThanhToan(ref err, "Update_TH"))
+                    if (!thanhtoan.SpThanhToan(ref err, "Update_TH"))//(!thanhtoan.SpCapNhatThanhToan(ref err, "Update_TH"))
                     {
                         XtraMessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -468,6 +500,17 @@ namespace TiepNhan.GUI
                     thanhtoan.SoPhieuNhap = Utils.ToInt(dr["SoPhieuNhap"]);
                     thanhtoan.MaVatTu = dr["MaVatTu"].ToString();
                     thanhtoan.TongChi = Utils.ToDecimal(dr["ThanhTien"]);
+                    // cập nhật lại ngày Y lệnh
+                    DataRow[] dataYLenh =
+                        dataChiTiet.Select("SoPhieu = " + thanhtoan.SoPhieu + " and SoPhieuNhap = " + thanhtoan.SoPhieuNhap + " and MaVatTu = '" + thanhtoan.MaVatTu + "'");
+                    if (dataYLenh != null && dataYLenh.Count() > 0)
+                    {
+                        thanhtoan.NgayYLenh = Utils.ToDateTime(dataYLenh[0]["NgayYLenh"].ToString());
+                    }
+                    else
+                    {
+                        thanhtoan.NgayYLenh = Utils.ToDateTime(dr["NgayYLenh"].ToString());
+                    }
                     if (mucHuong != 0 && Utils.ToInt(dr["TyLe"], 100) == 0)
                     {
                         thanhtoan.TyLe = 0;
@@ -484,7 +527,7 @@ namespace TiepNhan.GUI
                     }
                     thanhtoan.TienNguonKhac = 0;
                     thanhtoan.TienNgoaiDS = 0;
-                    if (!thanhtoan.SpThanhToan(ref err, "Update_VT"))
+                    if (!thanhtoan.SpCapNhatThanhToan(ref err, "Update_VT"))
                     {
                         XtraMessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -503,6 +546,19 @@ namespace TiepNhan.GUI
                     err = null;
                     thanhtoan.MaVatTu = dr["MaDichVu"].ToString();
                     thanhtoan.TongChi = Utils.ToDecimal(dr["ThanhTien"]);
+                    // cập nhật lại ngày Y lệnh
+                    DataRow[] dataYLenh =
+                        dataChiTiet.Select("MaDichVu = '" + thanhtoan.MaVatTu + "'");
+                    if (dataYLenh != null && dataYLenh.Count() > 0)
+                    {
+                        thanhtoan.NgayYLenh = Utils.ToDateTime(dataYLenh[0]["NgayYLenh"].ToString());
+                        thanhtoan.NgayKQ = Utils.ToDateTime(dataYLenh[0]["NgayKQ"].ToString());
+                    }
+                    else
+                    {
+                        thanhtoan.NgayYLenh = Utils.ToDateTime(dr["NgayYLenh"].ToString());
+                        thanhtoan.NgayKQ = Utils.ToDateTime(dr["NgayKQ"].ToString());
+                    }
                     if (mucHuong != 0 && Utils.ToInt(dr["TyLe"], 100) == 0)
                     {
                         thanhtoan.TienBNTT = thanhtoan.TongChi;
@@ -517,7 +573,7 @@ namespace TiepNhan.GUI
                     }
                     thanhtoan.TienNguonKhac = 0;
                     thanhtoan.TienNgoaiDS = 0;
-                    if (!thanhtoan.SpThanhToan(ref err, "Update_DV"))
+                    if (!thanhtoan.SpCapNhatThanhToan(ref err, "Update_DV"))
                     {
                         XtraMessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -527,12 +583,25 @@ namespace TiepNhan.GUI
                     err = null;
                     thanhtoan.MaVatTu = dr["MaDichVu"].ToString();
                     thanhtoan.TongChi = Utils.ToDecimal(dr["ThanhTien"]);
+                    // cập nhật lại ngày Y lệnh
+                    DataRow[] dataYLenh =
+                        dataChiTiet.Select("MaDichVu = '" + thanhtoan.MaVatTu + "'");
+                    if (dataYLenh != null && dataYLenh.Count() > 0)
+                    {
+                        thanhtoan.NgayYLenh = Utils.ToDateTime(dataYLenh[0]["NgayYLenh"].ToString());
+                        thanhtoan.NgayKQ = Utils.ToDateTime(dataYLenh[0]["NgayKQ"].ToString());
+                    }
+                    else
+                    {
+                        thanhtoan.NgayYLenh = Utils.ToDateTime(dr["NgayYLenh"].ToString());
+                        thanhtoan.NgayKQ = Utils.ToDateTime(dr["NgayKQ"].ToString());
+                    }
                     thanhtoan.TienBNTT = 0;
                     thanhtoan.TienBNCCT = thanhtoan.TongChi * (1m - (mucHuong / 100m));
                     thanhtoan.TienBHTT = thanhtoan.TongChi * (mucHuong / 100m);
                     thanhtoan.TienNguonKhac = 0;
                     thanhtoan.TienNgoaiDS = 0;
-                    if (!thanhtoan.SpThanhToan(ref err, "Update_DV"))
+                    if (!thanhtoan.SpCapNhatThanhToan(ref err, "Update_DV"))
                     {
                         XtraMessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }

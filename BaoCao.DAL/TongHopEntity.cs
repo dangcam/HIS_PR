@@ -90,7 +90,7 @@ namespace BaoCao.DAL
         {
             if (maKhoa.IndexOf(',') < 0)
             {
-                maKhoa += "','','','','','";
+                maKhoa += "','','','','','','";
             }
             return db.ExcuteQuery("Select *,(SoLuong*DonGia) as ThanhTien from XuatExcelCoSo('" + 
                 tuNgay.ToString("MM/dd/yyyy") + "','" + denNgay.ToString("MM/dd/yyyy") + "','" + maKhoa + "') order by NgayYLenh,MaBV",
@@ -146,7 +146,7 @@ namespace BaoCao.DAL
         {
             if(maKhoa.IndexOf(',')<0)
             {
-                maKhoa += "','','','','','";
+                maKhoa += "','','','','','','";
             }
             return db.ExcuteQuery("Select * from BaoCaoMau7980ACoSo('"+tuNgay+"','"+denNgay+ "','" + maKhoa + "')",
                 CommandType.Text, null);

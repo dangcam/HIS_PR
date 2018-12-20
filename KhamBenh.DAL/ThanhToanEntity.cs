@@ -275,6 +275,26 @@ namespace KhamBenh.DAL
                 new SqlParameter("@MaVatTu", MaVatTu),
                 new SqlParameter("@TyLe", TyLe));
         }
+        public bool SpCapNhatThanhToan(ref string err, string Action)
+        {
+            return db.MyExecuteNonQuery("SpCapNhatThanhToan",
+                CommandType.StoredProcedure, ref err,
+                new SqlParameter("@Action", Action),
+                new SqlParameter("@MaLK", MaLK),
+                new SqlParameter("@MucHuong", MucHuong),
+                new SqlParameter("@TongChi", TongChi),
+                new SqlParameter("@TienBNTT", TienBNTT),
+                new SqlParameter("@TienBNCCT", TienBNCCT),
+                new SqlParameter("@TienBHTT", TienBHTT),
+                new SqlParameter("@TienNguonKhac", TienNguonKhac),
+                new SqlParameter("@TienNgoaiDS", TienNgoaiDS),
+                new SqlParameter("@SoPhieu", SoPhieu),
+                new SqlParameter("@SoPhieuNhap", SoPhieuNhap),
+                new SqlParameter("@MaVatTu", MaVatTu),
+                new SqlParameter("@TyLe", TyLe),
+                new SqlParameter("@NgayYLenh", NgayYLenh),
+                new SqlParameter("@NgayKQ", NgayKQ));
+        }
         // tạo XML 
         public DataTable DSThuoc(string maLK)
         {
