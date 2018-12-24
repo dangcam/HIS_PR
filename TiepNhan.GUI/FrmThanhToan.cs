@@ -460,17 +460,17 @@ namespace TiepNhan.GUI
                     thanhtoan.SoPhieuNhap = Utils.ToInt(dr["SoPhieuNhap"]);
                     thanhtoan.MaVatTu = dr["MaVatTu"].ToString();
                     thanhtoan.TongChi = Utils.ToDecimal(dr["ThanhTien"]);
-                    // cập nhật lại ngày Y lệnh
-                    DataRow[] dataYLenh = 
-                        dataChiTiet.Select("SoPhieu = " + thanhtoan.SoPhieu + " and SoPhieuNhap = " + thanhtoan.SoPhieuNhap + " and MaVatTu = '" + thanhtoan.MaVatTu + "'");
-                    if(dataYLenh!=null && dataYLenh.Count()>0)
-                    {
-                        thanhtoan.NgayYLenh =Utils.ToDateTime( dataYLenh[0]["NgayYLenh"].ToString());
-                    }
-                    else
-                    {
+                    // cập nhật lại ngày Y lệnh // Khoa Khám Bệnh
+                    //DataRow[] dataYLenh = 
+                    //    dataChiTiet.Select("SoPhieu = " + thanhtoan.SoPhieu + " and SoPhieuNhap = " + thanhtoan.SoPhieuNhap + " and MaVatTu = '" + thanhtoan.MaVatTu + "'");
+                    //if(dataYLenh!=null && dataYLenh.Count()>0)
+                    //{
+                    //    thanhtoan.NgayYLenh =Utils.ToDateTime( dataYLenh[0]["NgayYLenh"].ToString());
+                    //}
+                    //else
+                    //{
                         thanhtoan.NgayYLenh = Utils.ToDateTime(dr["NgayYLenh"].ToString());
-                    }
+                    //}
                     if (mucHuong != 0 && Utils.ToInt(dr["TyLe"], 100) == 0)
                     {
                         thanhtoan.TyLe = 0;
@@ -487,7 +487,7 @@ namespace TiepNhan.GUI
                     }
                     thanhtoan.TienNguonKhac = 0;
                     thanhtoan.TienNgoaiDS = 0;
-                    if (!thanhtoan.SpThanhToan(ref err, "Update_TH"))//(!thanhtoan.SpCapNhatThanhToan(ref err, "Update_TH"))
+                    if (!thanhtoan.SpThanhToan(ref err, "Update_TH"))//(!thanhtoan.SpCapNhatThanhToan(ref err, "Update_TH")) // Khoa Khám Bệnh
                     {
                         XtraMessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -502,7 +502,7 @@ namespace TiepNhan.GUI
                     thanhtoan.TongChi = Utils.ToDecimal(dr["ThanhTien"]);
                     // cập nhật lại ngày Y lệnh
                     DataRow[] dataYLenh =
-                        dataChiTiet.Select("SoPhieu = " + thanhtoan.SoPhieu + " and SoPhieuNhap = " + thanhtoan.SoPhieuNhap + " and MaVatTu = '" + thanhtoan.MaVatTu + "'");
+                        dataChiTiet.Select("SoPhieu = '" + thanhtoan.SoPhieu + "' and SoPhieuNhap = '" + thanhtoan.SoPhieuNhap + "' and MaVatTu = '" + thanhtoan.MaVatTu + "'");
                     if (dataYLenh != null && dataYLenh.Count() > 0)
                     {
                         thanhtoan.NgayYLenh = Utils.ToDateTime(dataYLenh[0]["NgayYLenh"].ToString());

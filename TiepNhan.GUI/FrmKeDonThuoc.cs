@@ -719,7 +719,8 @@ namespace TiepNhan.GUI
         private void btnLuuIn_Click(object sender, EventArgs e)
         {
             LuuKeDon();
-            TaoDonThuocA4();
+            //TaoDonThuocA4();
+            TaoDonThuocA5();
         }
 
         private void repbtnXoaThuoc_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)

@@ -371,7 +371,7 @@ namespace TiepNhan.GUI
             DataRow dr = gridView.GetFocusedDataRow();
             if(dr!=null)
             {
-                if (!dr["MaKhoa"].ToString().Equals(AppConfig.MaKhoa))
+                if (!dr["MaKhoa"].ToString().Equals("K01_13"))
                 {
                     XtraMessageBox.Show(Library.DaChuyenKhoa, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
