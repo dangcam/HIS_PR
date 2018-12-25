@@ -1183,14 +1183,14 @@
             // 
             // TopMargin
             // 
-            this.TopMargin.HeightF = 31.12501F;
+            this.TopMargin.HeightF = 31F;
             this.TopMargin.Name = "TopMargin";
             this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
             // BottomMargin
             // 
-            this.BottomMargin.HeightF = 37.28905F;
+            this.BottomMargin.HeightF = 37F;
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -1201,7 +1201,10 @@
             this.Detail,
             this.TopMargin,
             this.BottomMargin});
-            this.Margins = new System.Drawing.Printing.Margins(50, 51, 31, 37);
+            this.Margins = new System.Drawing.Printing.Margins(30, 30, 31, 37);
+            this.PageHeight = 1169;
+            this.PageWidth = 827;
+            this.PaperKind = System.Drawing.Printing.PaperKind.A4;
             this.Version = "17.2";
             this.ParametersRequestBeforeShow += new System.EventHandler<DevExpress.XtraReports.Parameters.ParametersRequestEventArgs>(this.rptChiPhi_ParametersRequestBeforeShow);
             ((System.ComponentModel.ISupportInitialize)(this.xrTableBHYT)).EndInit();

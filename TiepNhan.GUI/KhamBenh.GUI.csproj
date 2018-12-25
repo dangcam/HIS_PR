@@ -294,6 +294,12 @@
     <Compile Include="RptChiPhi.designer.cs">
       <DependentUpon>RptChiPhi.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptChiPhiKBCB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptChiPhiKBCB.Designer.cs">
+      <DependentUpon>RptChiPhiKBCB.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptDonThuoc.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -417,6 +423,9 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="RptChiPhi.resx">
       <DependentUpon>RptChiPhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptChiPhiKBCB.resx">
+      <DependentUpon>RptChiPhiKBCB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptDonThuoc.resx">
       <DependentUpon>RptDonThuoc.cs</DependentUpon>
