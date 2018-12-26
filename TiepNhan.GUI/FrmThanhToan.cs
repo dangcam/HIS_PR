@@ -52,6 +52,7 @@ namespace TiepNhan.GUI
             dataChiTiet.Columns.Add("TenNhom", typeof(string));
             dataChiTiet.Columns.Add("Mau01", typeof(float));
             dataChiTiet.Columns.Add("Mau02", typeof(float));
+            dataChiTiet.Columns.Add("Mau03", typeof(float));
             dataChiTiet.Columns.Add("TyLe", typeof(string));
             dataChiTiet.Columns.Add("NgayYLenh", typeof(DateTime));
             dataChiTiet.Columns.Add("NgayKQ", typeof(DateTime));
@@ -61,7 +62,7 @@ namespace TiepNhan.GUI
             foreach (DataRow dr in thanhtoan.DSNhom().Rows)
             {
                 nhomChiPhi.Add(Utils.ToInt(dr["MaNhom"]),
-                    new NhomChiPhi(dr["TenNhom"].ToString(), dr["Mau01"].ToString(), dr["Mau02"].ToString()));
+                    new NhomChiPhi(dr["TenNhom"].ToString(), dr["Mau01"].ToString(), dr["Mau02"].ToString(),dr["Mau03"].ToString()));
             }
         }
 
@@ -237,6 +238,7 @@ namespace TiepNhan.GUI
                 dataRow["TenNhom"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Ten;
                 dataRow["Mau01"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau1;
                 dataRow["Mau02"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau2;
+                dataRow["Mau03"]= nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau3;
                 dataRow["NgayYLenh"] = dr["NgayYLenh"];
                 dataRow["SoPhieu"] = dr["SoPhieu"];
                 dataRow["SoPhieuNhap"] = dr["SoPhieuNhap"];
@@ -262,6 +264,7 @@ namespace TiepNhan.GUI
                 dataRow["ThanhTien"] = dr["ThanhTien"];
                 dataRow["Mau01"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau1;
                 dataRow["Mau02"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau2;
+                dataRow["Mau03"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau3;
                 dataRow["TenNhom"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Ten;
                 dataRow["NgayYLenh"] = dr["NgayYLenh"];
                 dataRow["NgayKQ"] = dr["NgayKQ"];
@@ -286,6 +289,7 @@ namespace TiepNhan.GUI
                 dataRow["ThanhTien"] = dr["ThanhTien"];
                 dataRow["Mau01"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau1;
                 dataRow["Mau02"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau2;
+                dataRow["Mau03"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau3;
                 dataRow["TenNhom"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Ten;
                 dataRow["NgayYLenh"] = dr["NgayYLenh"];
                 dataRow["NgayKQ"] = dr["NgayKQ"];
@@ -310,6 +314,7 @@ namespace TiepNhan.GUI
                 dataRow["ThanhTien"] = dr["ThanhTien"];
                 dataRow["Mau01"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau1;
                 dataRow["Mau02"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau2;
+                dataRow["Mau03"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Mau3;
                 dataRow["TenNhom"] = nhomChiPhi[Utils.ToInt(dr["MaNhom"])].Ten;
                 dataRow["NgayYLenh"] = dr["NgayYLenh"];
                 dataRow["SoPhieu"] = dr["SoPhieu"];
@@ -607,7 +612,10 @@ namespace TiepNhan.GUI
                     }
                 }
                 if (inHoSo)
-                    InHoSo(xemHoSo);
+                {
+                    //InHoSo(xemHoSo);
+                    InHoSoKBCB(xemHoSo);
+                }
             }
 
         }
@@ -659,7 +667,8 @@ namespace TiepNhan.GUI
 
         private void btnLuuIn_Click(object sender, EventArgs e)
         {
-            LuuHoSo(true,true);
+            //LuuHoSo(true,true);
+            InHoSoKBCB(true);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -1143,6 +1152,378 @@ namespace TiepNhan.GUI
 
             cell = new XRTableCell();
             cell.Text =Utils.ToString (tongTien);
+            cell.Font = fontB;
+            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            cell.WidthF = 100;
+            row.Cells.Add(cell);
+
+            cell = new XRTableCell();
+            cell.Text = Utils.ToString(tienBHTT);
+            cell.Font = fontB;
+            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            cell.WidthF = 100;
+            row.Cells.Add(cell);
+
+            cell = new XRTableCell();
+            cell.Text = "00";
+            cell.Font = fontB;
+            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            cell.WidthF = 90;
+            row.Cells.Add(cell);
+
+            cell = new XRTableCell();
+            cell.Text = Utils.ToString(tongTien - tienBHTT);
+            cell.Font = fontB;
+            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            cell.WidthF = 99;
+            row.Cells.Add(cell);
+
+            rpt.xrTableChiPhi.Rows.Add(row);
+
+            rpt.xrLabelChuTongTien.Text = Utils.ChuyenSo(String.Format("{0:0}", tongTien));
+            rpt.xrLabelChuBHTT.Text = Utils.ChuyenSo(String.Format("{0:0}", tienBHTT));
+            rpt.xrLabelChuBNTT.Text = Utils.ChuyenSo(String.Format("{0:0}", tongTien - tienBHTT));
+            //
+            rpt.CreateDocument();
+            if (view)
+            {
+                rpt.ShowPreviewDialog();
+            }
+            else
+            {
+                rpt.PrintDialog();
+            }
+            SplashScreenManager.CloseForm();
+        }
+        private void InHoSoKBCB(bool view = false)
+        {
+            SplashScreenManager.ShowForm(typeof(WaitFormLoad));
+            TaoFileXML();
+            RptChiPhiKBCB rpt = new RptChiPhiKBCB();
+            rpt.DataSource = null;
+            string mau = "Mau01";
+            if (cbLoaiKCB.SelectedIndex > 0)
+            {
+                rpt.xrLabelDeMuc.Text = "BẢNG KÊ CHI PHÍ KHÁM, CHỮA BỆNH NỘI TRÚ";
+                //rpt.xrLabelMauSo.Text = "Mẫu số 02/BV";
+                mau = "Mau03";
+            }
+            else
+            {
+                rpt.xrLabelDeMuc.Text = "BẢNG KÊ CHI PHÍ KHÁM BỆNH, CHỮA BỆNH NGOẠI TRÚ";
+                //rpt.xrLabelMauSo.Text = "Mẫu số 01/BV";
+                mau = "Mau03";
+            }
+            if (lookUpKhoa.EditValue.ToString().Split('_')[0] == "K01")
+            {
+                rpt.xrLabelKhoa.Text = "Khoa Khám bệnh";
+            }
+            else
+                rpt.xrLabelKhoa.Text = lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();
+            rpt.xrLabelMaSoBN.Text = txtMaBN.Text;
+            rpt.xrLabelSoBenhAn.Text = txtSTTNgay.Text;
+            rpt.xrLabelHoTen.Text = txtHoTen.Text;
+            rpt.xrLabelDiaChi.Text = txtDiaChi.Text;
+            rpt.xrLabelNgaySinh.Text = txtNgaySinh.Text;
+            rpt.xrLabelMaKCBBanDau.Text = txtMaCoSoDKKCB.Text;
+            rpt.xrLabelKCBBanDau.Text = txtTenCoSoDKKCB.Text;
+            //rpt.lblCosoKCB.Text = (lookUpNoiChuyenDen.Properties.GetDisplayValueByKeyValue(AppConfig.CoSoKCB)).ToString().ToUpper();
+            if (cbGioiTinh.SelectedIndex == 0)
+            {
+                rpt.xrlblGioiTinh.Text = "Nam";
+            }
+            else
+            {
+                rpt.xrlblGioiTinh.Text = "Nữ";
+            }
+            if (checkCoThe.Checked)
+            {
+                rpt.xrTableBHYT.Rows[0].Cells[0].Text = txtTheBHYT.Text.Substring(0, 2);
+                rpt.xrTableBHYT.Rows[0].Cells[1].Text = txtTheBHYT.Text.Substring(2, 1);
+                rpt.xrTableBHYT.Rows[0].Cells[2].Text = txtTheBHYT.Text.Substring(3, 2);
+                rpt.xrTableBHYT.Rows[0].Cells[3].Text = txtTheBHYT.Text.Substring(5, 2);
+                rpt.xrTableBHYT.Rows[0].Cells[4].Text = txtTheBHYT.Text.Substring(7, 3);
+                rpt.xrTableBHYT.Rows[0].Cells[5].Text = txtTheBHYT.Text.Substring(10, 5);
+                rpt.xrLabelGTTu.Text = txtTheTu.Text;
+                rpt.xrLabelGTDen.Text = txtTheDen.Text;
+            }
+            else
+            {
+                rpt.xrTableBHYT.Rows[0].Cells[0].Text = "";
+                rpt.xrTableBHYT.Rows[0].Cells[1].Text = "";
+                rpt.xrTableBHYT.Rows[0].Cells[2].Text = "";
+                rpt.xrTableBHYT.Rows[0].Cells[3].Text = "";
+                rpt.xrTableBHYT.Rows[0].Cells[4].Text = "";
+                rpt.xrTableBHYT.Rows[0].Cells[5].Text = "";
+                rpt.xrLabelGTTu.Text = "";
+                rpt.xrLabelGTDen.Text = "";
+            }
+            rpt.xrLabelDenKham.Text = dateNgayVao.Text;
+            rpt.xrLabelDi.Text = dateNgayRa.Text;
+            if (cbLyDoVVien.SelectedIndex == 0)
+            {
+                rpt.xrCheckBoxDungTuyen.Checked = true;
+                rpt.xrCheckBoxCapCuu.Checked = false;
+                rpt.xrCheckBoxTraiTuyen.Checked = false;
+            }
+            if (cbLyDoVVien.SelectedIndex == 1)
+            {
+                rpt.xrCheckBoxDungTuyen.Checked = false;
+                rpt.xrCheckBoxCapCuu.Checked = true;
+                rpt.xrCheckBoxTraiTuyen.Checked = false;
+            }
+            if (cbLyDoVVien.SelectedIndex == 2)
+            {
+                rpt.xrCheckBoxDungTuyen.Checked = false;
+                rpt.xrCheckBoxCapCuu.Checked = false;
+                rpt.xrCheckBoxTraiTuyen.Checked = true;
+                rpt.xrLabelNoiChuyenDen.Text = lookUpNoiChuyenDen.EditValue.ToString();
+            }
+            else
+            {
+                rpt.xrLabelNoiChuyenDen.Text = "";
+            }
+            rpt.xrLabelSoNgay.Text = txtSoNgayDTri.Text;
+            rpt.xrLabelTenBenh.Text = txtTenBenh.Text;
+            rpt.xrLabelMaBenh.Text = string.IsNullOrEmpty(maBenhKhac) ? maBenh : maBenh + ";" + maBenhKhac;
+            try
+            {
+                rpt.xrLabelNgayLapHD1.Text = "Ngày " + dateNgayTToan.DateTime.Day + " tháng " + dateNgayTToan.DateTime.Month
+                    + " năm " + dateNgayTToan.DateTime.Year;
+                //20170512  "Ngày " +DateTime.Now.Day + " tháng "+DateTime.Now.Month + " năm "+DateTime.Now.Year;
+            }
+            catch
+            {
+                rpt.xrLabelNgayLapHD1.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            }
+            rpt.xrLabelNgayLapHD2.Text = rpt.xrLabelNgayLapHD1.Text;
+            // chèn dữ liệu
+            //DataRow[] dataRow = dataChiTiet.Select("", "Mau01,Mau02 ASC");
+            DataTable dataTable = dataChiTiet.AsEnumerable()
+                .GroupBy(r => new {
+                    col1 = r["MaDichVu"],
+                    col2 = r["TenDichVu"],
+                    col3 = r["DonViTinh"],
+                    col4 = r["DonGia"],
+                    col5 = r["TenNhom"],
+                    col6 = r["Mau01"],
+                    col7 = r["Mau02"],
+                    col8 = r["TyLe"]
+                })
+                .Select(g =>
+                {
+                    DataRow dtrow = dataChiTiet.NewRow();
+                    dtrow["MaDichVu"] = g.Key.col1;
+                    dtrow["TenDichVu"] = g.Key.col2;
+                    dtrow["DonViTinh"] = g.Key.col3;
+                    dtrow["SoLuong"] = g.Sum(r => r.Field<int>("SoLuong"));
+                    dtrow["DonGia"] = g.Key.col4;
+                    dtrow["ThanhTien"] = g.Sum(r => r.Field<decimal>("ThanhTien"));
+                    dtrow["TenNhom"] = g.Key.col5;
+                    dtrow["Mau01"] = g.Key.col6;
+                    dtrow["Mau02"] = g.Key.col7;
+                    dtrow["TyLe"] = g.Key.col8;
+                    return dtrow;
+                }).CopyToDataTable();
+            DataRow[] dataRow = dataTable.Select("", "Mau03,Mau01,Mau02 ASC");
+            string tennhom = null;
+            XRTableRow row = new XRTableRow();
+            XRTableCell cell = new XRTableCell();
+            decimal tongTien = 0, tienBNTT = 0, tienBHTT = 0, tienNgoaiBH = 0;
+            for (int i = 0; i < dataRow.Length; i++)
+            {
+                if (tennhom != dataRow[i]["TenNhom"].ToString())
+                {
+                    if (!string.IsNullOrEmpty(tennhom))
+                    {
+                        row = new XRTableRow();
+                        cell = new XRTableCell();
+                        cell.Text = "Cộng " + Utils.ToInt(dataRow[i - 1][mau]);
+                        cell.Font = font;
+                        cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+                        cell.WidthF = 360;
+                        row.Cells.Add(cell);
+
+                        cell = new XRTableCell();
+                        cell.Text = Utils.ToString(tongTien);
+                        cell.Font = fontB;
+                        cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                        cell.WidthF = 100;
+                        row.Cells.Add(cell);
+
+                        cell = new XRTableCell();
+                        cell.Text = Utils.ToString(tienBHTT);
+                        cell.Font = fontB;
+                        cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                        cell.WidthF = 100;
+                        row.Cells.Add(cell);
+
+                        cell = new XRTableCell();
+                        cell.Text = "00";
+                        cell.Font = fontB;
+                        cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                        cell.WidthF = 90;
+                        row.Cells.Add(cell);
+
+                        cell = new XRTableCell();
+                        cell.Text = Utils.ToString(tienBNTT + tienNgoaiBH);
+                        cell.Font = fontB;
+                        cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                        cell.WidthF = 99;
+                        row.Cells.Add(cell);
+
+                        rpt.xrTableChiPhi.Rows.Add(row);
+                    }
+                    // tạo tên nhóm
+                    tennhom = dataRow[i]["TenNhom"].ToString();
+                    tongTien = 0;
+                    tienBHTT = 0;
+                    tienBNTT = 0;
+                    tienNgoaiBH = 0;
+                    //
+                    row = new XRTableRow();
+                    cell = new XRTableCell();
+                    cell.Text = dataRow[i][mau] + ". " + tennhom;
+                    cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+                    cell.Font = fontB;
+                    cell.WidthF = 749;
+                    row.Cells.Add(cell);
+                    rpt.xrTableChiPhi.Rows.Add(row);
+                }
+                // dữ liệu
+                row = new XRTableRow();
+
+                cell = new XRTableCell();
+                cell.Text = dataRow[i]["TenDichVu"].ToString();
+                cell.Font = font;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+                cell.WidthF = 170;
+                row.Cells.Add(cell);
+
+                cell = new XRTableCell();
+                cell.Text = dataRow[i]["DonViTinh"].ToString();
+                cell.Font = font;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+                cell.WidthF = 50;
+                row.Cells.Add(cell);
+
+                cell = new XRTableCell();
+                cell.Text = dataRow[i]["SoLuong"].ToString();
+                cell.Font = font;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                cell.WidthF = 60;
+                row.Cells.Add(cell);
+
+                cell = new XRTableCell();
+                cell.Text = Utils.ToString(Utils.ToDecimal(dataRow[i]["DonGia"]));
+                cell.Font = font;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                cell.WidthF = 80;
+                row.Cells.Add(cell);
+
+                decimal t = Utils.ToDecimal(dataRow[i]["ThanhTien"]);
+                tongTien += t;
+                cell = new XRTableCell();
+                cell.Text = Utils.ToString(t);
+                cell.Font = font;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                cell.WidthF = 100;
+                row.Cells.Add(cell);
+                if (Utils.ToInt(dataRow[i]["TyLe"], 100) == 0)
+                {
+                    t = Utils.ToDecimal(dataRow[i]["ThanhTien"]);
+                    tienNgoaiBH += t;
+                    t = 0;
+                }
+                else
+                {
+                    t = Utils.ToDecimal(dataRow[i]["ThanhTien"]) * (mucHuong / 100m);
+                    tienBHTT += t;
+                }
+                cell = new XRTableCell();
+                cell.Text = Utils.ToString(t);
+                cell.Font = font;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                cell.WidthF = 100;
+                row.Cells.Add(cell);
+
+                cell = new XRTableCell();
+                cell.Text = "00";
+                cell.Font = font;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                cell.WidthF = 90;
+                row.Cells.Add(cell);
+                if (Utils.ToInt(dataRow[i]["TyLe"], 100) == 0)
+                {
+                    t = Utils.ToDecimal(dataRow[i]["ThanhTien"]);
+                }
+                else
+                {
+                    t = Utils.ToDecimal(dataRow[i]["ThanhTien"]) * (1m - (mucHuong / 100m));
+                    tienBNTT += t;
+                }
+                cell = new XRTableCell();
+                cell.Text = Utils.ToString(t);
+                cell.Font = font;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                cell.WidthF = 99;
+                row.Cells.Add(cell);
+
+                rpt.xrTableChiPhi.Rows.Add(row);
+            }
+            if (dataRow.Length > 0)
+            {
+                row = new XRTableRow();
+                cell = new XRTableCell();
+                cell.Text = "Cộng " + Utils.ToInt(dataRow[dataRow.Length - 1][mau]);
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+                cell.WidthF = 360;
+                row.Cells.Add(cell);
+
+                cell = new XRTableCell();
+                cell.Text = Utils.ToString(tongTien);
+                cell.Font = fontB;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                cell.WidthF = 100;
+                row.Cells.Add(cell);
+
+                cell = new XRTableCell();
+                cell.Text = Utils.ToString(tienBHTT);
+                cell.Font = fontB;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                cell.WidthF = 100;
+                row.Cells.Add(cell);
+
+                cell = new XRTableCell();
+                cell.Text = "00";
+                cell.Font = fontB;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                cell.WidthF = 90;
+                row.Cells.Add(cell);
+
+                cell = new XRTableCell();
+                cell.Text = Utils.ToString(tienBNTT + tienNgoaiBH);
+                cell.Font = fontB;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                cell.WidthF = 99;
+                row.Cells.Add(cell);
+
+                rpt.xrTableChiPhi.Rows.Add(row);
+            }
+            //
+            tongTien = tiendichvu + tienthuoc + tienvattu;
+            tienBHTT = (tiendichvu + tienthuoc + tienvattu - tienbntt) * (mucHuong / 100m);
+            tienBNTT = (tiendichvu + tienthuoc + tienvattu - tienbntt) * (1m - (mucHuong / 100m)) + tienbntt;
+            row = new XRTableRow();
+            cell = new XRTableCell();
+            cell.Text = "Tổng Cộng";
+            cell.Font = fontB;
+            cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            cell.WidthF = 360;
+            row.Cells.Add(cell);
+
+            cell = new XRTableCell();
+            cell.Text = Utils.ToString(tongTien);
             cell.Font = fontB;
             cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             cell.WidthF = 100;
