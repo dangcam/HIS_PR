@@ -100,6 +100,11 @@ namespace KhamBenh.DAL
             return db.ExcuteQuery("Select Ma From MaTinh ",
                 CommandType.Text, null);
         }
+        public DataTable DSDonGiaBHYT()
+        {
+            return db.ExcuteQuery("Select MaBV,GiaBHYT From VatTu ",
+                CommandType.Text, null);
+        }
         public DataTable DSKhoaBan(int loaiPhong)
         {
             string sql = "";

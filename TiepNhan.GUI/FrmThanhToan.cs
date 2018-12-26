@@ -821,6 +821,7 @@ namespace TiepNhan.GUI
             catch
             { }
         }
+
         private void InHoSo(bool view = false)
         {
             SplashScreenManager.ShowForm(typeof(WaitFormLoad));
@@ -1306,8 +1307,8 @@ namespace TiepNhan.GUI
                     col3 = r["DonViTinh"],
                     col4 = r["DonGia"],
                     col5 = r["TenNhom"],
-                    col6 = r["Mau01"],
-                    col7 = r["Mau02"],
+                    col6 = r["Mau03"],
+                    col7 = r["MaVatTu"],
                     col8 = r["TyLe"]
                 })
                 .Select(g =>
@@ -1320,12 +1321,12 @@ namespace TiepNhan.GUI
                     dtrow["DonGia"] = g.Key.col4;
                     dtrow["ThanhTien"] = g.Sum(r => r.Field<decimal>("ThanhTien"));
                     dtrow["TenNhom"] = g.Key.col5;
-                    dtrow["Mau01"] = g.Key.col6;
-                    dtrow["Mau02"] = g.Key.col7;
+                    dtrow["Mau03"] = g.Key.col6;
+                    dtrow["MaVatTu"] = g.Key.col7;
                     dtrow["TyLe"] = g.Key.col8;
                     return dtrow;
                 }).CopyToDataTable();
-            DataRow[] dataRow = dataTable.Select("", "Mau03,Mau01,Mau02 ASC");
+            DataRow[] dataRow = dataTable.Select("", "Mau03 ASC");
             string tennhom = null;
             XRTableRow row = new XRTableRow();
             XRTableCell cell = new XRTableCell();
@@ -1404,18 +1405,32 @@ namespace TiepNhan.GUI
                 cell.Text = dataRow[i]["DonViTinh"].ToString();
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-                cell.WidthF = 50;
+                cell.WidthF = 60;
                 row.Cells.Add(cell);
 
                 cell = new XRTableCell();
                 cell.Text = dataRow[i]["SoLuong"].ToString();
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-                cell.WidthF = 60;
+                cell.WidthF = 70;
                 row.Cells.Add(cell);
 
                 cell = new XRTableCell();
                 cell.Text = Utils.ToString(Utils.ToDecimal(dataRow[i]["DonGia"]));
+                cell.Font = font;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                cell.WidthF = 70;
+                row.Cells.Add(cell);
+
+                cell = new XRTableCell();
+                cell.Text = Utils.ToString(Utils.ToDecimal(dataRow[i]["DonGia"]));
+                cell.Font = font;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                cell.WidthF = 75;
+                row.Cells.Add(cell);
+
+                cell = new XRTableCell();
+                cell.Text = "100%";
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
                 cell.WidthF = 80;
@@ -1427,8 +1442,23 @@ namespace TiepNhan.GUI
                 cell.Text = Utils.ToString(t);
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-                cell.WidthF = 100;
+                cell.WidthF = 75;
                 row.Cells.Add(cell);
+
+                cell = new XRTableCell();
+                cell.Text = "100%";
+                cell.Font = font;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                cell.WidthF = 70;
+                row.Cells.Add(cell);
+
+                cell = new XRTableCell();
+                cell.Text = Utils.ToString(t);
+                cell.Font = font;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                cell.WidthF = 80;
+                row.Cells.Add(cell);
+
                 if (Utils.ToInt(dataRow[i]["TyLe"], 100) == 0)
                 {
                     t = Utils.ToDecimal(dataRow[i]["ThanhTien"]);
@@ -1444,15 +1474,16 @@ namespace TiepNhan.GUI
                 cell.Text = Utils.ToString(t);
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-                cell.WidthF = 100;
+                cell.WidthF = 70;
                 row.Cells.Add(cell);
 
                 cell = new XRTableCell();
                 cell.Text = "00";
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-                cell.WidthF = 90;
+                cell.WidthF = 80;
                 row.Cells.Add(cell);
+
                 if (Utils.ToInt(dataRow[i]["TyLe"], 100) == 0)
                 {
                     t = Utils.ToDecimal(dataRow[i]["ThanhTien"]);
@@ -1462,11 +1493,19 @@ namespace TiepNhan.GUI
                     t = Utils.ToDecimal(dataRow[i]["ThanhTien"]) * (1m - (mucHuong / 100m));
                     tienBNTT += t;
                 }
+
+                cell = new XRTableCell();
+                cell.Text = "00";
+                cell.Font = font;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+                cell.WidthF = 50;
+                row.Cells.Add(cell);
+
                 cell = new XRTableCell();
                 cell.Text = Utils.ToString(t);
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-                cell.WidthF = 99;
+                cell.WidthF = 83;
                 row.Cells.Add(cell);
 
                 rpt.xrTableChiPhi.Rows.Add(row);
