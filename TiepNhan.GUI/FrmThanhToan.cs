@@ -59,6 +59,10 @@ namespace TiepNhan.GUI
             dataChiTiet.Columns.Add("SoPhieu", typeof(string));
             dataChiTiet.Columns.Add("SoPhieuNhap", typeof(string));
             dataChiTiet.Columns.Add("MaVatTu", typeof(string));
+            dataChiTiet.Columns.Add("BHTT", typeof(decimal));
+            dataChiTiet.Columns.Add("BNTT", typeof(decimal));
+            dataChiTiet.Columns.Add("ThanhTienBH", typeof(decimal));
+            dataChiTiet.Columns.Add("BNTuTra", typeof(decimal));
             foreach (DataRow dr in thanhtoan.DSNhom().Rows)
             {
                 nhomChiPhi.Add(Utils.ToInt(dr["MaNhom"]),
@@ -613,7 +617,7 @@ namespace TiepNhan.GUI
                 }
                 if (inHoSo)
                 {
-                    //InHoSo(xemHoSo);
+                    InHoSo(xemHoSo);
                     InHoSoKBCB(xemHoSo);
                 }
             }
@@ -1201,7 +1205,7 @@ namespace TiepNhan.GUI
             SplashScreenManager.ShowForm(typeof(WaitFormLoad));
             TaoFileXML();
             RptChiPhiKBCB rpt = new RptChiPhiKBCB();
-            rpt.DataSource = null;
+            //rpt.DataSource = null;
             string mau = "Mau01";
             if (cbLoaiKCB.SelectedIndex > 0)
             {
@@ -1314,19 +1318,36 @@ namespace TiepNhan.GUI
                 .Select(g =>
                 {
                     DataRow dtrow = dataChiTiet.NewRow();
+                    
                     dtrow["MaDichVu"] = g.Key.col1;
                     dtrow["TenDichVu"] = g.Key.col2;
                     dtrow["DonViTinh"] = g.Key.col3;
                     dtrow["SoLuong"] = g.Sum(r => r.Field<int>("SoLuong"));
                     dtrow["DonGia"] = g.Key.col4;
                     dtrow["ThanhTien"] = g.Sum(r => r.Field<decimal>("ThanhTien"));
-                    dtrow["TenNhom"] = g.Key.col5;
+                    dtrow["TenNhom"] = g.Key.col6 + ". " + g.Key.col5;
                     dtrow["Mau03"] = g.Key.col6;
                     dtrow["MaVatTu"] = g.Key.col7;
-                    dtrow["TyLe"] = g.Key.col8;
+                    dtrow["TyLe"] = checkCoThe.Checked ? 100 : 0;
+                    if (checkCoThe.Checked)
+                    {
+                        dtrow["BHTT"] = (Utils.ToInt(dtrow["TyLe"], 100) == 0) ? 0 : Utils.ToDecimal(dtrow["ThanhTien"]) * (mucHuong / 100m);
+                        dtrow["BNTT"] = (Utils.ToInt(dtrow["TyLe"], 100) == 0) ? dtrow["ThanhTien"] : Utils.ToDecimal(dtrow["ThanhTien"]) * (1 - (mucHuong / 100m));
+                        dtrow["ThanhTienBH"] =  dtrow["ThanhTien"];
+                        dtrow["BNTuTra"] = 0;
+                    }
+                    else
+                    {
+                        dtrow["BNTuTra"] = dtrow["ThanhTien"];
+                        dtrow["BNTT"] = 0;
+                        dtrow["BHTT"] = 0;
+                        dtrow["ThanhTienBH"] = 0;
+                    }
                     return dtrow;
                 }).CopyToDataTable();
-            DataRow[] dataRow = dataTable.Select("", "Mau03 ASC");
+            //DataRow[] dataRow = dataTable.Select("", "Mau03 ASC");
+            rpt.DataSource = dataTable;
+            /*
             string tennhom = null;
             XRTableRow row = new XRTableRow();
             XRTableCell cell = new XRTableCell();
@@ -1595,6 +1616,7 @@ namespace TiepNhan.GUI
             rpt.xrLabelChuBHTT.Text = Utils.ChuyenSo(String.Format("{0:0}", tienBHTT));
             rpt.xrLabelChuBNTT.Text = Utils.ChuyenSo(String.Format("{0:0}", tongTien - tienBHTT));
             //
+            */
             rpt.CreateDocument();
             if (view)
             {
