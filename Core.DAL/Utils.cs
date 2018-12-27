@@ -203,6 +203,10 @@ namespace Core.DAL
                 return defaultvalue.ToString();
             }
         }
+        public static string ToString(DateTime value, string format)
+        {
+            return value.ToString(format);
+        }
         public static int ToInt(object value, int defaultvalue = 0)
         {
             try

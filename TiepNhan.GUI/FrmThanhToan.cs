@@ -617,7 +617,7 @@ namespace TiepNhan.GUI
                 }
                 if (inHoSo)
                 {
-                    InHoSo(xemHoSo);
+                    //InHoSo(xemHoSo);
                     InHoSoKBCB(xemHoSo);
                 }
             }
@@ -671,8 +671,8 @@ namespace TiepNhan.GUI
 
         private void btnLuuIn_Click(object sender, EventArgs e)
         {
-            //LuuHoSo(true,true);
-            InHoSoKBCB(true);
+            LuuHoSo(true,true);
+            //InHoSoKBCB(true);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -1206,18 +1206,18 @@ namespace TiepNhan.GUI
             TaoFileXML();
             RptChiPhiKBCB rpt = new RptChiPhiKBCB();
             //rpt.DataSource = null;
-            string mau = "Mau01";
+            //string mau = "Mau01";
             if (cbLoaiKCB.SelectedIndex > 0)
             {
                 rpt.xrLabelDeMuc.Text = "BẢNG KÊ CHI PHÍ KHÁM, CHỮA BỆNH NỘI TRÚ";
                 //rpt.xrLabelMauSo.Text = "Mẫu số 02/BV";
-                mau = "Mau03";
+                //mau = "Mau03";
             }
             else
             {
                 rpt.xrLabelDeMuc.Text = "BẢNG KÊ CHI PHÍ KHÁM BỆNH, CHỮA BỆNH NGOẠI TRÚ";
                 //rpt.xrLabelMauSo.Text = "Mẫu số 01/BV";
-                mau = "Mau03";
+                //mau = "Mau03";
             }
             if (lookUpKhoa.EditValue.ToString().Split('_')[0] == "K01")
             {
@@ -1251,6 +1251,16 @@ namespace TiepNhan.GUI
                 rpt.xrTableBHYT.Rows[0].Cells[5].Text = txtTheBHYT.Text.Substring(10, 5);
                 rpt.xrLabelGTTu.Text = txtTheTu.Text;
                 rpt.xrLabelGTDen.Text = txtTheDen.Text;
+                //
+                rpt.xrTableBHYT2.Rows[0].Cells[0].Text = txtTheBHYT.Text.Substring(0, 2);
+                rpt.xrTableBHYT2.Rows[0].Cells[1].Text = txtTheBHYT.Text.Substring(2, 1);
+                rpt.xrTableBHYT2.Rows[0].Cells[2].Text = txtTheBHYT.Text.Substring(3, 2);
+                rpt.xrTableBHYT2.Rows[0].Cells[3].Text = txtTheBHYT.Text.Substring(5, 2);
+                rpt.xrTableBHYT2.Rows[0].Cells[4].Text = txtTheBHYT.Text.Substring(7, 3);
+                rpt.xrTableBHYT2.Rows[0].Cells[5].Text = txtTheBHYT.Text.Substring(10, 5);
+                rpt.xrLabelGTTu2.Text = txtTheTu.Text;
+                rpt.xrLabelGTDen2.Text = txtTheDen.Text;
+                rpt.xrlblNgayTinhChiPhi.Text = "(Chi phí KBCB tính từ ngày "+dateTuNgay.Text+" đến ngày "+dateDenNgay.Text+")";
             }
             else
             {
@@ -1262,9 +1272,21 @@ namespace TiepNhan.GUI
                 rpt.xrTableBHYT.Rows[0].Cells[5].Text = "";
                 rpt.xrLabelGTTu.Text = "";
                 rpt.xrLabelGTDen.Text = "";
+                //
+                rpt.xrTableBHYT2.Rows[0].Cells[0].Text = "";
+                rpt.xrTableBHYT2.Rows[0].Cells[1].Text = "";
+                rpt.xrTableBHYT2.Rows[0].Cells[2].Text = "";
+                rpt.xrTableBHYT2.Rows[0].Cells[3].Text = "";
+                rpt.xrTableBHYT2.Rows[0].Cells[4].Text = "";
+                rpt.xrTableBHYT2.Rows[0].Cells[5].Text = "";
+                rpt.xrLabelGTTu2.Text = "";
+                rpt.xrLabelGTDen2.Text = "";
+                rpt.xrlblNgayTinhChiPhi.Text = "";
             }
-            rpt.xrLabelDenKham.Text = dateNgayVao.Text;
-            rpt.xrLabelDi.Text = dateNgayRa.Text;
+            rpt.xrLabelDenKham.Text = dateNgayVao.DateTime.Hour + " giờ " + dateNgayVao.DateTime.Minute + ", ngày " + dateNgayVao.DateTime.ToString("dd/MM/yyyy");
+            rpt.xrlblNgayDieuTri.Text = rpt.xrLabelDenKham.Text;
+            rpt.xrLabelDi.Text = dateNgayRa.DateTime.Hour + " giờ " + dateNgayRa.DateTime.Minute + ", ngày " + dateNgayRa.DateTime.ToString("dd/MM/yyyy");
+            rpt.xrlblMaKhuVuc.Text = cbKhuVuc.Text;
             if (cbLyDoVVien.SelectedIndex == 0)
             {
                 rpt.xrCheckBoxDungTuyen.Checked = true;
@@ -1289,8 +1311,24 @@ namespace TiepNhan.GUI
                 rpt.xrLabelNoiChuyenDen.Text = "";
             }
             rpt.xrLabelSoNgay.Text = txtSoNgayDTri.Text;
-            rpt.xrLabelTenBenh.Text = txtTenBenh.Text;
-            rpt.xrLabelMaBenh.Text = string.IsNullOrEmpty(maBenhKhac) ? maBenh : maBenh + ";" + maBenhKhac;
+            if (txtTenBenh.Text.IndexOf(';') > 0)
+            {
+                try
+                {
+                    rpt.xrLabelTenBenh.Text = txtTenBenh.Text.Substring(0, txtTenBenh.Text.IndexOf(';'));
+                    rpt.xrlblTenBenhKhac.Text = txtTenBenh.Text.Substring(txtTenBenh.Text.IndexOf(';') + 1, txtTenBenh.Text.Length - txtTenBenh.Text.IndexOf(';') - 1);
+                }
+                catch
+                {
+                    rpt.xrLabelTenBenh.Text = txtTenBenh.Text;
+                }
+            }
+            else
+                rpt.xrLabelTenBenh.Text = txtTenBenh.Text;
+            rpt.xrLabelMaBenh.Text = maBenh;
+            rpt.xrlblMaBenhKhac.Text = maBenhKhac;
+            rpt.xrlblDu5Nam.Text = txtDu5Nam.Text;
+            rpt.xrlblMucHuong.Text = mucHuong.ToString();
             try
             {
                 rpt.xrLabelNgayLapHD1.Text = "Ngày " + dateNgayTToan.DateTime.Day + " tháng " + dateNgayTToan.DateTime.Month
@@ -1617,6 +1655,7 @@ namespace TiepNhan.GUI
             rpt.xrLabelChuBNTT.Text = Utils.ChuyenSo(String.Format("{0:0}", tongTien - tienBHTT));
             //
             */
+            rpt.xrlblTongTienChu.Text = "(Viết bằng chữ: " + Utils.ChuyenSo(String.Format("{0:0}", dataTable.Compute("Sum(ThanhTien)", string.Empty))) + ")";
             rpt.CreateDocument();
             if (view)
             {
