@@ -524,7 +524,9 @@ namespace DuocPham.GUI
             rpt.xrlblNguoiGiaoHang.Text = txtNguoiGiaoHang.Text;
             rpt.lblNoiDungNhap.Text = txtNoiDung.Text;//Nhập thuốc tháng 7 cty Bình Phú
             rpt.lblNhapKho.Text = lookUpKhoNhap.Properties.GetDisplayValueByKeyValue(lookUpKhoNhap.EditValue).ToString();
-            rpt.lblNgayIn.Text = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+            rpt.lblNgayIn.Text = "Ngày " + dateNgayNhap.DateTime.Day + " tháng "
+                + dateNgayNhap.DateTime.Month + " năm " + dateNgayNhap.DateTime.Year;
+            //"Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
 
             this.thanhTien = 0;
             dsLoaiVatTu.Clear ();
@@ -810,7 +812,7 @@ namespace DuocPham.GUI
             SplashScreenManager.ShowForm(typeof(WaitFormLoad));
             RptBienBanNT rpt = new RptBienBanNT();
             rpt.xrlblTenCty.Text ="TÊN CTY: "+ lookUpNhaCungCap.Properties.GetDisplayValueByKeyValue(lookUpNhaCungCap.EditValue).ToString().ToUpper();
-            rpt.xrlblNgayThang.Text = "Ngày "+DateTime.Now.Day+" tháng "+DateTime.Now.Month+" năm "+DateTime.Now.Year;
+            rpt.xrlblNgayThang.Text = "Ngày " + dateNgayNhap.DateTime.Day + " tháng " + dateNgayNhap.DateTime.Month + " năm " + dateNgayNhap.DateTime.Year;
             rpt.xrlblSoHD.Text = txtSoHoaDon.Text;
 
             rpt.DataSource = dtPhieu;

@@ -1,6 +1,7 @@
 ﻿using Core.DAL;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using DevExpress.XtraSplashScreen;
 using KhamBenh.DAL;
 using System;
@@ -396,6 +397,13 @@ namespace TiepNhan.GUI
                     LoadData();
                 }
             }
+        }
+
+        private void btnCNNghiViec_Click(object sender, EventArgs e)
+        {
+            RptCNNghiViec rpt = new RptCNNghiViec();
+            rpt.CreateDocument();
+            rpt.ShowPreviewDialog();
         }
 
         private void btnCanLamSan_Click(object sender, EventArgs e)

@@ -300,6 +300,12 @@
     <Compile Include="RptChiPhiKBCB.Designer.cs">
       <DependentUpon>RptChiPhiKBCB.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptCNNghiViec.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptCNNghiViec.Designer.cs">
+      <DependentUpon>RptCNNghiViec.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptDonThuoc.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -426,6 +432,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptChiPhiKBCB.resx">
       <DependentUpon>RptChiPhiKBCB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptCNNghiViec.resx">
+      <DependentUpon>RptCNNghiViec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptDonThuoc.resx">
       <DependentUpon>RptDonThuoc.cs</DependentUpon>

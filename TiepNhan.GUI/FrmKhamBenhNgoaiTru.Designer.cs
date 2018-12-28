@@ -46,6 +46,7 @@
             this.STTPhongDS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.PhongDS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaKhoa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.flowLayoutPanelChuyenPhong = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnLichSuKCB = new DevExpress.XtraEditors.SimpleButton();
@@ -70,7 +71,9 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.MaKhoa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnCNNghiViec = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
@@ -92,6 +95,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -107,11 +112,12 @@
             this.ribbonControl.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
-            this.ribbonControl.Size = new System.Drawing.Size(892, 27);
+            this.ribbonControl.Size = new System.Drawing.Size(940, 27);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
             // 
             // layoutControlMain
             // 
+            this.layoutControlMain.Controls.Add(this.btnCNNghiViec);
             this.layoutControlMain.Controls.Add(this.gridControl);
             this.layoutControlMain.Controls.Add(this.flowLayoutPanelChuyenPhong);
             this.layoutControlMain.Controls.Add(this.flowLayoutPanel1);
@@ -121,7 +127,7 @@
             this.layoutControlMain.Location = new System.Drawing.Point(0, 27);
             this.layoutControlMain.Name = "layoutControlMain";
             this.layoutControlMain.Root = this.layoutControlGroupMain;
-            this.layoutControlMain.Size = new System.Drawing.Size(892, 469);
+            this.layoutControlMain.Size = new System.Drawing.Size(940, 469);
             this.layoutControlMain.TabIndex = 1;
             // 
             // gridControl
@@ -130,7 +136,7 @@
             this.gridControl.MainView = this.gridView;
             this.gridControl.MenuManager = this.ribbonControl;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(868, 381);
+            this.gridControl.Size = new System.Drawing.Size(916, 381);
             this.gridControl.TabIndex = 15;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -315,11 +321,17 @@
             this.TinhTrang.Visible = true;
             this.TinhTrang.VisibleIndex = 11;
             // 
+            // MaKhoa
+            // 
+            this.MaKhoa.Caption = "MaKhoa";
+            this.MaKhoa.FieldName = "MaKhoa";
+            this.MaKhoa.Name = "MaKhoa";
+            // 
             // flowLayoutPanelChuyenPhong
             // 
             this.flowLayoutPanelChuyenPhong.Location = new System.Drawing.Point(546, 43);
             this.flowLayoutPanelChuyenPhong.Name = "flowLayoutPanelChuyenPhong";
-            this.flowLayoutPanelChuyenPhong.Size = new System.Drawing.Size(334, 29);
+            this.flowLayoutPanelChuyenPhong.Size = new System.Drawing.Size(277, 29);
             this.flowLayoutPanelChuyenPhong.TabIndex = 11;
             // 
             // flowLayoutPanel1
@@ -521,7 +533,7 @@
             this.flowLayoutPanelSoLuong.Controls.Add(this.lblPhongKham);
             this.flowLayoutPanelSoLuong.Location = new System.Drawing.Point(546, 12);
             this.flowLayoutPanelSoLuong.Name = "flowLayoutPanelSoLuong";
-            this.flowLayoutPanelSoLuong.Size = new System.Drawing.Size(334, 27);
+            this.flowLayoutPanelSoLuong.Size = new System.Drawing.Size(277, 27);
             this.flowLayoutPanelSoLuong.TabIndex = 5;
             // 
             // lblPhongKham
@@ -543,9 +555,11 @@
             this.layoutControlItem32,
             this.layoutControlItem5,
             this.layoutControlItem2,
-            this.layoutControlItem3});
+            this.layoutControlItem3,
+            this.layoutControlItem1,
+            this.emptySpaceItem2});
             this.layoutControlGroupMain.Name = "layoutControlGroupMain";
-            this.layoutControlGroupMain.Size = new System.Drawing.Size(892, 469);
+            this.layoutControlGroupMain.Size = new System.Drawing.Size(940, 469);
             this.layoutControlGroupMain.TextVisible = false;
             // 
             // layoutControlItem31
@@ -569,7 +583,7 @@
             this.layoutControlItem32.MaxSize = new System.Drawing.Size(0, 31);
             this.layoutControlItem32.MinSize = new System.Drawing.Size(104, 31);
             this.layoutControlItem32.Name = "layoutControlItem32";
-            this.layoutControlItem32.Size = new System.Drawing.Size(338, 31);
+            this.layoutControlItem32.Size = new System.Drawing.Size(281, 31);
             this.layoutControlItem32.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem32.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem32.TextVisible = false;
@@ -593,7 +607,7 @@
             this.layoutControlItem2.MaxSize = new System.Drawing.Size(0, 33);
             this.layoutControlItem2.MinSize = new System.Drawing.Size(104, 33);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(338, 33);
+            this.layoutControlItem2.Size = new System.Drawing.Size(281, 33);
             this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
@@ -603,21 +617,48 @@
             this.layoutControlItem3.Control = this.gridControl;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 64);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(872, 385);
+            this.layoutControlItem3.Size = new System.Drawing.Size(920, 385);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
-            // MaKhoa
+            // btnCNNghiViec
             // 
-            this.MaKhoa.Caption = "MaKhoa";
-            this.MaKhoa.FieldName = "MaKhoa";
-            this.MaKhoa.Name = "MaKhoa";
+            this.btnCNNghiViec.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCNNghiViec.Appearance.Options.UseFont = true;
+            this.btnCNNghiViec.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCNNghiViec.ImageOptions.Image")));
+            this.btnCNNghiViec.Location = new System.Drawing.Point(827, 12);
+            this.btnCNNghiViec.Name = "btnCNNghiViec";
+            this.btnCNNghiViec.Size = new System.Drawing.Size(101, 23);
+            this.btnCNNghiViec.StyleController = this.layoutControlMain;
+            this.btnCNNghiViec.TabIndex = 16;
+            this.btnCNNghiViec.Text = "CN Nghỉ Việc";
+            this.btnCNNghiViec.Click += new System.EventHandler(this.btnCNNghiViec_Click);
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.btnCNNghiViec;
+            this.layoutControlItem1.Location = new System.Drawing.Point(815, 0);
+            this.layoutControlItem1.MaxSize = new System.Drawing.Size(105, 27);
+            this.layoutControlItem1.MinSize = new System.Drawing.Size(105, 27);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(105, 27);
+            this.layoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
+            // 
+            // emptySpaceItem2
+            // 
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.Location = new System.Drawing.Point(815, 27);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(105, 37);
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // FrmKhamBenhNgoaiTru
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 496);
+            this.ClientSize = new System.Drawing.Size(940, 496);
             this.Controls.Add(this.layoutControlMain);
             this.Controls.Add(this.ribbonControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -648,6 +689,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -697,5 +740,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraGrid.Columns.GridColumn TinhTrang;
         private DevExpress.XtraGrid.Columns.GridColumn MaKhoa;
+        private DevExpress.XtraEditors.SimpleButton btnCNNghiViec;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
     }
 }
