@@ -401,9 +401,19 @@ namespace TiepNhan.GUI
 
         private void btnCNNghiViec_Click(object sender, EventArgs e)
         {
-            RptCNNghiViec rpt = new RptCNNghiViec();
-            rpt.CreateDocument();
-            rpt.ShowPreviewDialog();
+            DataRow dr = gridView.GetFocusedDataRow();
+            if (dr != null)
+            {
+                RptCNNghiViec rpt = new RptCNNghiViec();
+                rpt.xrlblHoTen.Text = dr["HoTen"].ToString();
+                rpt.xrlblNgaySinh.Text = dr["NgaySinh"].ToString();
+                rpt.xrlblGioiTinh.Text = dr["GioiTinh"].ToString() == "0" ? "Nam" : "Nữ";
+                rpt.xrlblBHYT.Text = dr["MaThe"].ToString();
+                DateTime ngayIn = Utils.ToDateTime(dr["NgayVao"].ToString());
+                rpt.xrlblNgayThangNam.Text = "Ngày " + ngayIn.Day + " tháng " + ngayIn.Month + " năm " + ngayIn.Year;
+                rpt.CreateDocument();
+                rpt.ShowPreviewDialog();
+            }
         }
 
         private void btnCanLamSan_Click(object sender, EventArgs e)
