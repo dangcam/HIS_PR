@@ -92,7 +92,7 @@ namespace BaoCao.DAL
             {
                 maKhoa += "','','','','','','";
             }
-            return db.ExcuteQuery("Select *,(SoLuong*DonGia) as ThanhTien from XuatExcelCoSo('" + 
+            return db.ExcuteQuery("Select * from XuatExcelCoSo('" + 
                 tuNgay.ToString("MM/dd/yyyy") + "','" + denNgay.ToString("MM/dd/yyyy") + "','" + maKhoa + "') order by NgayYLenh,MaBV",
                 CommandType.Text, null);
             //return db.ExcuteQuery("Select *,(SoLuong*DonGia) as ThanhTien from XuatExcel('" +
