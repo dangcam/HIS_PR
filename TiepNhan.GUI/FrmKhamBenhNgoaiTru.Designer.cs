@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmKhamBenhNgoaiTru));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.layoutControlMain = new DevExpress.XtraLayout.LayoutControl();
+            this.btnCNNghiViec = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.STTNgayDS = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -71,9 +72,10 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnCNNghiViec = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.TheTu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TheDen = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
@@ -130,6 +132,19 @@
             this.layoutControlMain.Size = new System.Drawing.Size(940, 469);
             this.layoutControlMain.TabIndex = 1;
             // 
+            // btnCNNghiViec
+            // 
+            this.btnCNNghiViec.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCNNghiViec.Appearance.Options.UseFont = true;
+            this.btnCNNghiViec.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCNNghiViec.ImageOptions.Image")));
+            this.btnCNNghiViec.Location = new System.Drawing.Point(827, 12);
+            this.btnCNNghiViec.Name = "btnCNNghiViec";
+            this.btnCNNghiViec.Size = new System.Drawing.Size(101, 23);
+            this.btnCNNghiViec.StyleController = this.layoutControlMain;
+            this.btnCNNghiViec.TabIndex = 16;
+            this.btnCNNghiViec.Text = "CN Nghỉ Việc";
+            this.btnCNNghiViec.Click += new System.EventHandler(this.btnCNNghiViec_Click);
+            // 
             // gridControl
             // 
             this.gridControl.Location = new System.Drawing.Point(12, 76);
@@ -157,7 +172,9 @@
             this.STTPhongDS,
             this.PhongDS,
             this.TinhTrang,
-            this.MaKhoa});
+            this.MaKhoa,
+            this.TheTu,
+            this.TheDen});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsFind.AlwaysVisible = true;
@@ -621,19 +638,6 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
-            // btnCNNghiViec
-            // 
-            this.btnCNNghiViec.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCNNghiViec.Appearance.Options.UseFont = true;
-            this.btnCNNghiViec.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCNNghiViec.ImageOptions.Image")));
-            this.btnCNNghiViec.Location = new System.Drawing.Point(827, 12);
-            this.btnCNNghiViec.Name = "btnCNNghiViec";
-            this.btnCNNghiViec.Size = new System.Drawing.Size(101, 23);
-            this.btnCNNghiViec.StyleController = this.layoutControlMain;
-            this.btnCNNghiViec.TabIndex = 16;
-            this.btnCNNghiViec.Text = "CN Nghỉ Việc";
-            this.btnCNNghiViec.Click += new System.EventHandler(this.btnCNNghiViec_Click);
-            // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.btnCNNghiViec;
@@ -653,6 +657,18 @@
             this.emptySpaceItem2.Name = "emptySpaceItem2";
             this.emptySpaceItem2.Size = new System.Drawing.Size(105, 37);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // TheTu
+            // 
+            this.TheTu.Caption = "TheTu";
+            this.TheTu.FieldName = "TheTu";
+            this.TheTu.Name = "TheTu";
+            // 
+            // TheDen
+            // 
+            this.TheDen.Caption = "TheDen";
+            this.TheDen.FieldName = "TheDen";
+            this.TheDen.Name = "TheDen";
             // 
             // FrmKhamBenhNgoaiTru
             // 
@@ -743,5 +759,7 @@
         private DevExpress.XtraEditors.SimpleButton btnCNNghiViec;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
+        private DevExpress.XtraGrid.Columns.GridColumn TheTu;
+        private DevExpress.XtraGrid.Columns.GridColumn TheDen;
     }
 }

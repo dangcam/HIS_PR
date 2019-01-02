@@ -31,6 +31,8 @@ namespace TiepNhan.GUI.MauSo
         public string MauSo { get; set; }
         public string KetQua { get; set; }
         public string MauFile { get; set; }
+        public string TuNgay { get; set; }
+        public string DenNgay { get; set; }
         //
         public string SotRet { get; set; }// mẫu 28
         // mẫu số 33
@@ -75,6 +77,12 @@ namespace TiepNhan.GUI.MauSo
             ranges = snapControl.Document.FindAll("<SoThe>", SearchOptions.None);
             if (ranges.Length > 0)
                 this.snapControl.Document.Replace(ranges[0], SoThe);
+            ranges = snapControl.Document.FindAll("<TuNgay>", SearchOptions.None);
+            if (ranges.Length > 0)
+                this.snapControl.Document.Replace(ranges[0], TuNgay);
+            ranges = snapControl.Document.FindAll("<DenNgay>", SearchOptions.None);
+            if (ranges.Length > 0)
+                this.snapControl.Document.Replace(ranges[0], DenNgay);
             ranges = snapControl.Document.FindAll("<KhoaBan>", SearchOptions.None);
             if (ranges.Length > 0)
                 this.snapControl.Document.Replace(ranges[0], MaKhoa);

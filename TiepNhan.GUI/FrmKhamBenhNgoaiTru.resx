@@ -120,11 +120,10 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnCNNghiViec.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAEnRFWHRUaXRsZQBFeHBvcnQ7
-        RmlsZTtOlMS2AAAAXklEQVQ4T2P4//8/GLe0tPwnBcP0oRhALBg1AA7wG7B+4pH/k7PWg9kgGhkjie3F
-        aQAWxXA2jAZhkgzAJkaUAdgA0QYQwrQ3ABegnwGEMIoBMAwCG6ccw6oBFa/fDgBpuD4710hCYgAAAABJ
-        RU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAASdEVYdFRpdGxlAEV4cG9ydDtGaWxlO06UxLYAAABe
+        SURBVDhPY/j//z8Yt7S0/CcFw/ShGEAsGDUADvAbsH7ikf+Ts9aD2SAaGSOJ7cVpABbFcDaMBmGSDMAm
+        RpQB2ADRBhDCtDcAF6CfAYQwigEwDAIbpxzDqgEVr98OAGm4PjvXSEJiAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

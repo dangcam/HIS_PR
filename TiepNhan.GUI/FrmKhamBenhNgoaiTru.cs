@@ -334,6 +334,9 @@ namespace TiepNhan.GUI
                     frmMauPhieu.GioiTinh = dr["GioiTinh"].ToString() == "0" ? "Nam" : "Nữ";
                     frmMauPhieu.DiaChi = dr["DiaChi"].ToString();
                     frmMauPhieu.SoThe = dr["MaThe"].ToString();
+                    frmMauPhieu.TuNgay = Utils.ToDateTime(dr["TheTu"].ToString()).ToString("dd/MM/yyyy");
+                    frmMauPhieu.DenNgay = Utils.ToDateTime(dr["TheDen"].ToString()).ToString("dd/MM/yyyy");
+
 
                     frmMauPhieu.ShowDialog();
                     SplashScreenManager.CloseForm();
@@ -409,6 +412,7 @@ namespace TiepNhan.GUI
                 rpt.xrlblNgaySinh.Text = dr["NgaySinh"].ToString();
                 rpt.xrlblGioiTinh.Text = dr["GioiTinh"].ToString() == "0" ? "Nam" : "Nữ";
                 rpt.xrlblBHYT.Text = dr["MaThe"].ToString();
+                rpt.xrlblChuanDoan.Text = dr["TenBenh"].ToString();
                 DateTime ngayIn = Utils.ToDateTime(dr["NgayVao"].ToString());
                 rpt.xrlblNgayThangNam.Text = "Ngày " + ngayIn.Day + " tháng " + ngayIn.Month + " năm " + ngayIn.Year;
                 rpt.CreateDocument();
