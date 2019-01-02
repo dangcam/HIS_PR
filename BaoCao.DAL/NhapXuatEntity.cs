@@ -70,10 +70,13 @@ namespace BaoCao.DAL
         }
         public DataTable DSTonKhoThucLuyKe(string sql,int Thang,int Nam)
         {
-            return db.ExcuteQuery("Select *,((GTTonDau+GTNhap) - (SLTonCuoi*DonGia))" +
-                " as GTXuat,(SLTonCuoi*DonGia) as GTTonCuoi " +
+            return db.ExcuteQuery("Select * " +
                 "From BaoCaoTonThucLuyKe('"+Thang+"','"+Nam+"','" + TuNgay.ToString("MM/dd/yyyy") + "','" + DenNgay.ToString("MM/dd/yyyy") + "') Where " + sql,
                 CommandType.Text, null);
+            //return db.ExcuteQuery("Select *,((GTTonDau+GTNhap) - (SLTonCuoi*DonGia))" +
+            //   " as GTXuat,(SLTonCuoi*DonGia) as GTTonCuoi " +
+            //   "From BaoCaoTonThucLuyKe('" + Thang + "','" + Nam + "','" + TuNgay.ToString("MM/dd/yyyy") + "','" + DenNgay.ToString("MM/dd/yyyy") + "') Where " + sql,
+            //   CommandType.Text, null);
         }
     }
 }
