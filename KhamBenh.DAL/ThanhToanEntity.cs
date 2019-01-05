@@ -32,6 +32,7 @@ namespace KhamBenh.DAL
         //
         public int MucHuong { get; set; }
         public string MaBenh { get; set; }
+        public string MaBenhKhac { get; set; }
         public string TenBenh { get; set; }
         public DateTime NgayRa { get; set; }
         public DateTime NgayVao { get; set; }
@@ -255,6 +256,7 @@ namespace KhamBenh.DAL
                 new SqlParameter("@MienCungCT", MienCungCT),
                 new SqlParameter("@TenBenh", TenBenh),
                 new SqlParameter("@MaBenh", MaBenh),
+                new SqlParameter("@MaBenhKhac", MaBenhKhac),
                 new SqlParameter("@NgayRa", NgayRa),
                 new SqlParameter("@NgayVao", NgayVao),
                 new SqlParameter("@SoNgayDieuTri", SoNgayDieuTri),

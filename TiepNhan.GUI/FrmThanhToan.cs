@@ -24,7 +24,7 @@ namespace TiepNhan.GUI
         DataTable dataDanhSach, dataLoc, dataTinh, dataMucHuong, dataCoso;
         string maBenh,maBenhKhac, maBacSi;
         int index = -1;
-        DataTable dataDichVu, dataThuoc, dataCongKham, dataVTYT, dataChiTiet;
+        DataTable dataDichVu, dataThuoc, dataCongKham, dataVTYT, dataChiTiet, dtBenh;
         FrmCongKham frmCongKham;
         FrmLichSuKCB lichSuKCB;
         Dictionary<int, NhomChiPhi> nhomChiPhi = new Dictionary<int, NhomChiPhi>();
@@ -88,8 +88,13 @@ namespace TiepNhan.GUI
             lookUpNoiChuyenDen.Properties.ValueMember = "Ma_CS";
             lookUpNoiChuyenDen.Properties.DisplayMember = "Ten_CS";
 
-            lookUpMaBenh.Properties.DataSource = thanhtoan.DSBenh();
+            dtBenh = thanhtoan.DSBenh();
+
+            lookUpMaBenh.Properties.DataSource = dtBenh;
             lookUpMaBenh.Properties.DisplayMember = "MaBenh";
+
+            lookUpMaBenhKhac.Properties.DataSource = dtBenh;
+            lookUpMaBenhKhac.Properties.DisplayMember = "MaBenh";
 
             lookUpBacSi.Properties.DataSource = thanhtoan.DSBacSi();
             lookUpBacSi.Properties.DisplayMember = "Ten_NV";
@@ -180,6 +185,7 @@ namespace TiepNhan.GUI
                 txtDiaChi.Text = dr["DiaChi"].ToString();
                 maBenh = dr["MaBenh"].ToString();
                 maBenhKhac = dr["MaBenhKhac"].ToString();
+                txtMaBenhKhac.Text = maBenhKhac;
                 txtTenBenh.Text = dr["TenBenh"].ToString();
                 cbLyDoVVien.SelectedIndex = Utils.ToInt(dr["MaLyDoVaoVien"]) - 1;
                 lookUpNoiChuyenDen.EditValue = dr["MaNoiChuyenDen"];
@@ -435,6 +441,7 @@ namespace TiepNhan.GUI
                     thanhtoan.TyLe = 0;
                 }
                 thanhtoan.MaBenh = maBenh;
+                thanhtoan.MaBenhKhac = txtMaBenhKhac.Text;
                 thanhtoan.TenBenh = txtTenBenh.Text;
                 thanhtoan.LyDoVaoVien = cbLyDoVVien.SelectedIndex + 1;
                 thanhtoan.NgayRa = dateNgayRa.DateTime;
@@ -456,7 +463,7 @@ namespace TiepNhan.GUI
                 thanhtoan.ThangQT = dateNgayTToan.DateTime.ToString("MM");
                 thanhtoan.CanNang = Utils.ToFloat(txtCanNang.Text);
                 // cập nhật thông tin
-                if (!thanhtoan.SpThanhToan(ref err, "Update_TT"))
+                if (!thanhtoan.SpThanhToan(ref err, "Update_TT_up"))//Update_TT
                 {
                     XtraMessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -824,6 +831,66 @@ namespace TiepNhan.GUI
             }
             catch
             { }
+        }
+
+        private void lookUpMaBenhKhac_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(maBenh))
+            {
+                object dr = lookUpMaBenhKhac.GetSelectedDataRow();
+                if (dr is DataRowView && txtMaBenhKhac.Text.Split(';').Length < 10)
+                {
+                    string maBenhKhac = (dr as DataRowView)[0].ToString();
+                    if (maBenhKhac != maBenh && !txtMaBenhKhac.Text.Contains(maBenhKhac))
+                    {
+                        txtMaBenhKhac.Text += maBenhKhac + "; ";
+                        txtTenBenh.Text += "; " + (dr as DataRowView)[1].ToString();
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Mã bệnh đã được chọn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Chưa chọn bệnh chính!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                lookUpMaBenh.Focus();
+            }
+        }
+
+        private void txtMaBenhKhac_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (!string.IsNullOrEmpty(maBenh))
+                {
+                    List<string> list = new List<string>();
+                    foreach (string item in txtMaBenhKhac.Text.Split(';'))
+                    {
+                        if (!string.IsNullOrEmpty(item.Trim()) && !item.Trim().Equals(maBenh)
+                            && !list.Contains(item.Trim()))
+                        {
+                            list.Add(item.Trim());
+                        }
+                    }
+                    txtMaBenhKhac.Text = "";
+                    txtTenBenh.Text = dtBenh.Select("MaBenh = '" + maBenh + "'", "")[0][1].ToString();
+                    foreach (string item in list)
+                    {
+                        txtMaBenhKhac.Text += item + "; ";
+                        var dr = dtBenh.Select("MaBenh = '" + item + "'", "");
+                        if (dr != null)
+                            txtTenBenh.Text += "; " + dr[0][1].ToString();
+
+                    }
+                    lookUpBacSi.Focus();
+                }
+                else
+                {
+                    lookUpMaBenh.Focus();
+                }
+            }
         }
 
         private void InHoSo(bool view = false)
@@ -1695,11 +1762,24 @@ namespace TiepNhan.GUI
         }
         private void lookUpMaBenh_EditValueChanged(object sender, EventArgs e)
         {
+            //object dr = lookUpMaBenh.GetSelectedDataRow();
+            //if (dr is DataRowView)
+            //{
+            //    maBenh = (dr as DataRowView)[0].ToString();
+            //    txtTenBenh.Text = (dr as DataRowView)[1].ToString();
+            //}
             object dr = lookUpMaBenh.GetSelectedDataRow();
             if (dr is DataRowView)
             {
+                txtMaBenhKhac.Text = null;
                 maBenh = (dr as DataRowView)[0].ToString();
                 txtTenBenh.Text = (dr as DataRowView)[1].ToString();
+            }
+            else
+            {
+                txtMaBenhKhac.Text = null;
+                txtTenBenh.Text = null;
+                maBenh = null;
             }
         }
 
