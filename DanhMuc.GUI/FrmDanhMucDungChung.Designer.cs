@@ -46,6 +46,7 @@
             this.navBarDMNhomVatTu = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarDMVatTu = new DevExpress.XtraNavBar.NavBarItem();
             this.panelControl = new DevExpress.XtraEditors.PanelControl();
+            this.navBIVatTuDinhBenh = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).BeginInit();
             this.splitContainerControl.SuspendLayout();
@@ -101,7 +102,8 @@
             this.navBarDMNhaCC,
             this.navBarDMLoaiVatTu,
             this.navBarDMNhomVatTu,
-            this.navBarDMVatTu});
+            this.navBarDMVatTu,
+            this.navBIVatTuDinhBenh});
             this.navBarControl.Location = new System.Drawing.Point(0, 0);
             this.navBarControl.Name = "navBarControl";
             this.navBarControl.OptionsNavPane.ExpandedWidth = 192;
@@ -188,7 +190,8 @@
             this.navBarGroupDuoc.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarDMLoaiVatTu),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarDMNhomVatTu),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarDMVatTu)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarDMVatTu),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBIVatTuDinhBenh)});
             this.navBarGroupDuoc.Name = "navBarGroupDuoc";
             // 
             // navBarDMLoaiVatTu
@@ -219,6 +222,13 @@
             this.panelControl.Name = "panelControl";
             this.panelControl.Size = new System.Drawing.Size(691, 487);
             this.panelControl.TabIndex = 0;
+            // 
+            // navBIVatTuDinhBenh
+            // 
+            this.navBIVatTuDinhBenh.Caption = "Vật tư theo Định bệnh";
+            this.navBIVatTuDinhBenh.ImageOptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBIVatTuDinhBenh.ImageOptions.SmallImage")));
+            this.navBIVatTuDinhBenh.Name = "navBIVatTuDinhBenh";
+            this.navBIVatTuDinhBenh.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBIVatTuDinhBenh_LinkClicked);
             // 
             // FrmDanhMucDungChung
             // 
@@ -261,5 +271,6 @@
         private DevExpress.XtraNavBar.NavBarItem navBarDMNhomVatTu;
         private DevExpress.XtraNavBar.NavBarItem navBarDMNhaCC;
         private DevExpress.XtraNavBar.NavBarItem navBarDMVatTu;
+        private DevExpress.XtraNavBar.NavBarItem navBIVatTuDinhBenh;
     }
 }

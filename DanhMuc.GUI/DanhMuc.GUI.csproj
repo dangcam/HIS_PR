@@ -216,6 +216,12 @@
     <Compile Include="UC_VatTu.Designer.cs">
       <DependentUpon>UC_VatTu.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_VatTuDinhBenh.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_VatTuDinhBenh.Designer.cs">
+      <DependentUpon>UC_VatTuDinhBenh.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_VatTuYTe.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -278,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_VatTu.resx">
       <DependentUpon>UC_VatTu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_VatTuDinhBenh.resx">
+      <DependentUpon>UC_VatTuDinhBenh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_VatTuYTe.resx">
       <DependentUpon>UC_VatTuYTe.cs</DependentUpon>
