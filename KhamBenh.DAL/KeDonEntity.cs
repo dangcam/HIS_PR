@@ -65,6 +65,11 @@ namespace KhamBenh.DAL
             return db.ExcuteQuery("Select MaBenh,TenBenh From BenhICD ",
                 CommandType.Text, null);
         }
+        public DataTable DSDinhBenh(string maVatTu)
+        {
+            return db.ExcuteQuery("Select MaBenh From VatTuDinhBenh Where MaBV = '"+maVatTu+"'",
+                CommandType.Text, null);
+        }
         public DataTable DSDuongDung()
         {
             return db.ExcuteQuery("Select * From DuongDung ",

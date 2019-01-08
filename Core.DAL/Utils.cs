@@ -200,7 +200,7 @@ namespace Core.DAL
             }
             catch
             {
-                return defaultvalue.ToString();
+                return defaultvalue;
             }
         }
         public static string ToString(DateTime value, string format)

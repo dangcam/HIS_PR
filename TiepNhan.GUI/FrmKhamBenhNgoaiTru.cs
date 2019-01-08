@@ -375,7 +375,7 @@ namespace TiepNhan.GUI
             DataRow dr = gridView.GetFocusedDataRow();
             if(dr!=null)
             {
-                if (!dr["MaKhoa"].ToString().Equals("K01_13"))
+                if (!Utils.ToString(dr["MaKhoa"]).Split('_')[0].Equals("K01"))
                 {
                     XtraMessageBox.Show(Library.DaChuyenKhoa, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
@@ -390,6 +390,9 @@ namespace TiepNhan.GUI
                     frmKeDon.DiaChi = dr["DiaChi"].ToString();
                     frmKeDon.NgaySinh = dr["NgaySinh"].ToString();
                     frmKeDon.STTNgay = dr["STTNgay"].ToString();
+                    frmKeDon.frmMaBenhChinh = Utils.ToString(dr["MaBenh"]);
+                    frmKeDon.frmMaBenhKhac = Utils.ToString(dr["MaBenhKhac"]);
+                    frmKeDon.frmTenBenh = Utils.ToString(dr["TenBenh"]);
                     try
                     {
                         frmKeDon.TenCoSo = dataCoSo.Select("Ma_CS = '" + AppConfig.CoSoKCB + "'", "")[0]["Ten_CS"].ToString();

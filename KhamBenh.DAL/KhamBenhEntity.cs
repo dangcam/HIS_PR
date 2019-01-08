@@ -116,7 +116,7 @@ namespace KhamBenh.DAL
         public DataTable DSTiepNhan(string ngayVao, int phong, string MaKhoa)
         {
             return db.ExcuteQuery("Select MaLK,MaBN,HoTen,NgaySinh,GioiTinh,DiaChi,MaThe,MaDKBD,TheTu,TheDen," +
-                "TenBenh,MaBenh,MaLyDoVaoVien,MaNoiChuyenDen,MaTaiNan,NgayVao,NgayRa,KetQuaDieuTri," +
+                "TenBenh,MaBenh,MaBenhKhac,MaLyDoVaoVien,MaNoiChuyenDen,MaTaiNan,NgayVao,NgayRa,KetQuaDieuTri," +
                 "TinhTrangRaVien,NgayThanhToan,MucHuong,MaLoaiKCB,MaKhoa,MaCoSoKCB,MaKhuVuc,STTNgay," +
                 "STTPhong,Phong,TinhTrang,CoThe,CanNang From ThongTinBNChiTiet Where CAST(NgayVao AS DATE) = CAST('"
                 //+ ngayVao + "' AS DATE) And (Phong = "+phong+" Or "+phong+ " = 0) And MaCoSoKCB='"+AppConfig.CoSoKCB+"' And MaKhoa='"+MaKhoa+"'  Order By STTNgay ASC",

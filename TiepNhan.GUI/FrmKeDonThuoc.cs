@@ -28,6 +28,9 @@ namespace TiepNhan.GUI
         public string TenCoSo { get; set; }
         public string NoiDangKy { get; set; }
         public string STTNgay { get; set; }
+        public string frmMaBenhChinh { get; set; }
+        public string frmTenBenh { get; set; }
+        public string frmMaBenhKhac { get; set; }
 
         private KeDonEntity kedon;
         private string maBenhChinh = null;
@@ -59,12 +62,12 @@ namespace TiepNhan.GUI
 
         private void FrmKeDonThuoc_Load(object sender, EventArgs e)
         {
-            lookUpMaBenh.EditValue = null;
+            lookUpMaBenh.EditValue = frmMaBenhChinh;
             lookUpMaBenhKhac.EditValue = null;
             cbLoaiChiPhi.SelectedIndex = -1;
-            maBenhChinh = null;
-            txtMaBenhKhac.Text = null;
-            txtTenBenh.Text = null;
+            maBenhChinh = frmMaBenhChinh;
+            txtMaBenhKhac.Text = frmMaBenhKhac;
+            txtTenBenh.Text = frmTenBenh;
             lookUpMaKhoa.ItemIndex = 0;
             this.ActiveControl = lookUpMaBenh;
             //if(lookUpBacSi.ItemIndex <0)
@@ -413,7 +416,55 @@ namespace TiepNhan.GUI
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            LuuKeDon();
+            string err = "";
+            if (!KiemTraDonThuoc(ref err))
+            // check kiểm tra đơn thuốc
+            {
+                DialogResult traloi;
+                // Hiện hộp thoại hỏi đáp 
+                traloi = XtraMessageBox.Show(err, "Tiếp tục lưu mà không kê định bệnh thiếu?",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (traloi == DialogResult.Yes)
+                {
+                    LuuKeDon();
+                }
+            }
+            else
+                LuuKeDon();
+        }
+        private bool KiemTraDonThuoc(ref string err)
+        {
+            List<string> maBenh = (txtMaBenhKhac.Text + maBenhChinh).Split(';').ToList();
+            bool f = true;
+            foreach (DataRowView drv in dvThuoc)
+            {
+                string maVatTu = Utils.ToString(drv["MaVatTu"]);
+                DataTable dinhBenh = kedon.DSDinhBenh(maVatTu);
+                if(dinhBenh!=null && dinhBenh.Rows.Count>0)
+                {
+                    string loi = "";
+                    bool coBenh = true;
+                    foreach(DataRow dr in dinhBenh.Rows)
+                    {
+                        if (!maBenh.Any(s => s.Trim() == Utils.ToString(dr[0]).Trim()))
+                        {
+                            loi += Utils.ToString(drv["TenThuoc"]) + " kê cho mã bệnh " + Utils.ToString(dr[0]) + ". ";
+                            coBenh = false;
+                        }
+                        else
+                        {
+                            coBenh = true;
+                            break;
+                        }
+                    }
+                    if (!coBenh)
+                    {
+                        err += loi;
+                        f = false;
+                    }
+                }
+            }
+            return f;
         }
         private void LuuKeDon()
         {

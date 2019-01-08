@@ -48,6 +48,8 @@
             this.PhongDS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaKhoa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TheTu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TheDen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.flowLayoutPanelChuyenPhong = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnLichSuKCB = new DevExpress.XtraEditors.SimpleButton();
@@ -74,8 +76,8 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.TheTu = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TheDen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaBenh = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaBenhKhac = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
@@ -174,7 +176,9 @@
             this.TinhTrang,
             this.MaKhoa,
             this.TheTu,
-            this.TheDen});
+            this.TheDen,
+            this.MaBenh,
+            this.MaBenhKhac});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsFind.AlwaysVisible = true;
@@ -343,6 +347,18 @@
             this.MaKhoa.Caption = "MaKhoa";
             this.MaKhoa.FieldName = "MaKhoa";
             this.MaKhoa.Name = "MaKhoa";
+            // 
+            // TheTu
+            // 
+            this.TheTu.Caption = "TheTu";
+            this.TheTu.FieldName = "TheTu";
+            this.TheTu.Name = "TheTu";
+            // 
+            // TheDen
+            // 
+            this.TheDen.Caption = "TheDen";
+            this.TheDen.FieldName = "TheDen";
+            this.TheDen.Name = "TheDen";
             // 
             // flowLayoutPanelChuyenPhong
             // 
@@ -658,17 +674,17 @@
             this.emptySpaceItem2.Size = new System.Drawing.Size(105, 37);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // TheTu
+            // MaBenh
             // 
-            this.TheTu.Caption = "TheTu";
-            this.TheTu.FieldName = "TheTu";
-            this.TheTu.Name = "TheTu";
+            this.MaBenh.Caption = "MaBenh";
+            this.MaBenh.FieldName = "MaBenh";
+            this.MaBenh.Name = "MaBenh";
             // 
-            // TheDen
+            // MaBenhKhac
             // 
-            this.TheDen.Caption = "TheDen";
-            this.TheDen.FieldName = "TheDen";
-            this.TheDen.Name = "TheDen";
+            this.MaBenhKhac.Caption = "MaBenhKhac";
+            this.MaBenhKhac.FieldName = "MaBenhKhac";
+            this.MaBenhKhac.Name = "MaBenhKhac";
             // 
             // FrmKhamBenhNgoaiTru
             // 
@@ -761,5 +777,7 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private DevExpress.XtraGrid.Columns.GridColumn TheTu;
         private DevExpress.XtraGrid.Columns.GridColumn TheDen;
+        private DevExpress.XtraGrid.Columns.GridColumn MaBenh;
+        private DevExpress.XtraGrid.Columns.GridColumn MaBenhKhac;
     }
 }
