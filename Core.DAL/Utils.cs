@@ -203,6 +203,13 @@ namespace Core.DAL
                 return defaultvalue;
             }
         }
+        public static string ToLowerFirstChar(string input)
+        {
+            string newString = input;
+            if (!String.IsNullOrEmpty(newString) && Char.IsUpper(newString[0]))
+                newString = Char.ToLower(newString[0]) + newString.Substring(1);
+            return newString;
+        }
         public static string ToString(DateTime value, string format)
         {
             return value.ToString(format);

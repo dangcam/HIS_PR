@@ -825,7 +825,7 @@ namespace DuocPham.GUI
             {
                 try
                 {
-                    txtNoiDung.Text = "Xuất "+ lookUpKhoNhan.Properties.GetDisplayValueByKeyValue(lookUpKhoNhan.EditValue).ToString();
+                    txtNoiDung.Text = "Xuất " + Utils.ToLowerFirstChar(Utils.ToString(lookUpKhoNhan.Properties.GetDisplayValueByKeyValue(lookUpKhoNhan.EditValue)));
                     txtDiaChi.Text = lookUpKhoNhan.EditValue.ToString();
                 }
                 catch { }
