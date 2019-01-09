@@ -769,9 +769,27 @@ namespace TiepNhan.GUI
 
         private void btnLuuIn_Click(object sender, EventArgs e)
         {
-            LuuKeDon();
-            //TaoDonThuocA4();
-            TaoDonThuocA5();
+            string err = "";
+            if (!KiemTraDonThuoc(ref err))
+            // check kiểm tra đơn thuốc
+            {
+                DialogResult traloi;
+                // Hiện hộp thoại hỏi đáp 
+                traloi = XtraMessageBox.Show(err, "Tiếp tục lưu mà không kê định bệnh thiếu?",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (traloi == DialogResult.Yes)
+                {
+                    LuuKeDon();
+                    //TaoDonThuocA4();
+                    TaoDonThuocA5();
+                }
+            }
+            else
+            {
+                LuuKeDon();
+                //TaoDonThuocA4();
+                TaoDonThuocA5();
+            }
         }
 
         private void repbtnXoaThuoc_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)

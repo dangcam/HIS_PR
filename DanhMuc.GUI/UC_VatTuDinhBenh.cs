@@ -83,7 +83,6 @@ namespace DanhMuc.GUI
                 }
                 LoadDinhBenh();
             }
-            
         }
     }
 }

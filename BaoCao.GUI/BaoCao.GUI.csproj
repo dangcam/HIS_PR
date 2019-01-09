@@ -137,6 +137,12 @@
     <Compile Include="RptKiemKe.Designer.cs">
       <DependentUpon>RptKiemKe.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptDuTru.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptDuTru.Designer.cs">
+      <DependentUpon>RptDuTru.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptNguonNhap.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -256,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptKiemKe.resx">
       <DependentUpon>RptKiemKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptDuTru.resx">
+      <DependentUpon>RptDuTru.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptNguonNhap.resx">
       <DependentUpon>RptNguonNhap.cs</DependentUpon>
