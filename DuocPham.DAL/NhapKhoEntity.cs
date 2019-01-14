@@ -92,7 +92,7 @@ namespace DuocPham.DAL
         public DataTable DSPhieuVatTu(int SoPhieu)
         {
             return db.ExcuteQuery("Select * From PhieuNhapChiTiet,(select MaBV,TenVatTu,DonViTinh from VatTu) as " +
-                "VT Where VT.MaBV = PhieuNhapChiTiet.MaVatTu and SoPhieu = " + SoPhieu,
+                "VT Where VT.MaBV = PhieuNhapChiTiet.MaVatTu and SoPhieu = " + SoPhieu + " Order By STT",
                 CommandType.Text, null);
         }
         public DataTable DSPhieuVatTuTra ()
