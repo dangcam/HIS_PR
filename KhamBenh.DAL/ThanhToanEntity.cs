@@ -357,5 +357,14 @@ namespace KhamBenh.DAL
             + "AND '01/11/1994' = NgaySinh AND GioiTinh = " + GioiTinh + ")",
                 CommandType.Text, null);
         }
+        public bool SpRaVien(ref string err)
+        {
+            return db.MyExecuteNonQuery("SpRaVien",
+                CommandType.StoredProcedure, ref err,
+                new SqlParameter("@MaLK", MaLK),
+                new SqlParameter("@NgayRa", null),
+                new SqlParameter("@KetQuaDieuTri", null),
+                new SqlParameter("@TinhTrangRaVien", null));
+        }
     }
 }

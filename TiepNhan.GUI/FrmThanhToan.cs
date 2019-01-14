@@ -114,14 +114,13 @@ namespace TiepNhan.GUI
             base.OnLoad(e);
             this.WindowState = FormWindowState.Maximized;
         }
-
-        private void btnTim_Click(object sender, EventArgs e)
+        private void LoadData()
         {
             checkDaKham.Checked = false;
             checkRaVien.Checked = false;
-            dataDanhSach = thanhtoan.DSBenhNhan(dateTuNgay.DateTime,dateDenNgay.DateTime,
-                cbLoaiKCB.SelectedIndex,cbTimTheo.SelectedIndex);
-            if(cbLoaiKCB.SelectedIndex==0)
+            dataDanhSach = thanhtoan.DSBenhNhan(dateTuNgay.DateTime, dateDenNgay.DateTime,
+                cbLoaiKCB.SelectedIndex, cbTimTheo.SelectedIndex);
+            if (cbLoaiKCB.SelectedIndex == 0)
             {
                 checkDaKham.Checked = true;
             }
@@ -129,6 +128,10 @@ namespace TiepNhan.GUI
             {
                 checkRaVien.Checked = true;
             }
+        }
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
 
         private void gridView_DoubleClick(object sender, EventArgs e)
@@ -856,6 +859,29 @@ namespace TiepNhan.GUI
             {
                 XtraMessageBox.Show("Chưa chọn bệnh chính!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 lookUpMaBenh.Focus();
+            }
+        }
+
+        private void btnTraVeKhoa_Click(object sender, EventArgs e)
+        {
+            DataRow dr = gridView.GetFocusedDataRow();
+            if (dr != null)
+            {
+                DialogResult traloi;
+                // Hiện hộp thoại hỏi đáp 
+                traloi = XtraMessageBox.Show("Chắc chắn bạn muốn trả hồ sơ này?", "Trả lời",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (traloi == DialogResult.Yes)
+                {
+                    string err = "";
+                    thanhtoan.MaLK = dr["MaLK"].ToString();
+                    if (!thanhtoan.SpRaVien(ref err))
+                    {
+                        XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    LoadData();
+                }
             }
         }
 
