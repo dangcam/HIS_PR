@@ -508,7 +508,7 @@ namespace DuocPham.GUI
         private void inPhieuNhap()
         {
             RptPhieuNhapKho rpt = new RptPhieuNhapKho ();
-            rpt.lblSoPhieu.Text = txtSoPhieu.Text;
+            rpt.lblSoPhieu.Text = txtSoPhieu.Text.Substring(4, txtSoPhieu.Text.Length - 4);
             rpt.lblTKNo.Text = "";
             rpt.lblTKCo.Text = "331";
             rpt.lblNgayNhap.Text = "Ngày "+dateNgayNhap.DateTime.Day+" tháng "

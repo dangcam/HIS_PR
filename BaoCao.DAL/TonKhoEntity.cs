@@ -37,7 +37,7 @@ namespace BaoCao.DAL
                         "(select SoPhieu, SUM(ThanhTien) as ThanhTien " +
                         "from PhieuNhapChiTiet group by SoPhieu) as SoPhieu, " +
                         "(select SoPhieu, SoHoaDon, NgayNhap, NguoiGiaoHang, NhaCungCap " +
-                        "from PhieuNhap Where NgayNhap Between '" + tungay + "' And '" + denngay + "') as KhoNhap " +
+                        "from PhieuNhap Where NgayNhap Between '" + tungay.ToString("yyyy-MM-dd") + "' And '" + denngay.ToString("yyyy-MM-dd") + "') as KhoNhap " +
                         "where SoPhieu.SoPhieu = KhoNhap.SoPhieu and NhaCungCap != '' " +
                         "And NhaCungCap NOT IN (Select TenKhoa From KhoaBan Where TinhTrang = 1 And KhoVatTu = 1 And LoaiKho = 2)",
                 CommandType.Text, null);
@@ -52,7 +52,7 @@ namespace BaoCao.DAL
                         "group by TenVatTu, SoPhieu, DonViTinh) as PNCT "+
                         "where PhieuNhap.SoPhieu = PNCT.SoPhieu and NhaCungCap != '' "+
                         "    And NhaCungCap NOT IN(Select TenKhoa From KhoaBan Where TinhTrang = 1 And KhoVatTu = 1 And LoaiKho = 2) "+
-                        "    And NgayNhap between '" + tungay + "' And '" + denngay + "' " +
+                        "    And NgayNhap between '" + tungay.ToString("yyyy-MM-dd") + "' And '" + denngay.ToString("yyyy-MM-dd") + "' " +
                         "group by NhaCungCap,TenVatTu,DonViTinh ",
                 CommandType.Text, null);
         }
