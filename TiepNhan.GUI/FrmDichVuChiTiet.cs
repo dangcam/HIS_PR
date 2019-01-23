@@ -104,11 +104,11 @@ namespace TiepNhan.GUI
                 drvNew["SoLuong"] = txtSoLuong.Value;
                 drvNew["DonGia"] = dr["DonGia"];
                 drvNew["ThanhTien"] = txtSoLuong.Value * Utils.ToDecimal(dr["DonGia"]);
-                drvNew["NgayKQ"] = DateTime.Now;
+                drvNew["NgayKQ"] = dateNgayYLenh.DateTime;
                 drvNew["GiaTri"] = txtGiaTri.Text;
                 drvNew["MoTa"] = txtMoTa.Text;
                 drvNew["KetLuan"] = txtKetLuan.Text;
-                drvNew["NgayYLenh"] = DateTime.Now;
+                drvNew["NgayYLenh"] = dateNgayYLenh.DateTime;
                 drvNew["MaChiSo"] = dr["TT50"];
                 drvNew["MaMay"] = dr["MaMay"];
                 drvNew["MaNhom"] = dr["MaNhom"];
