@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiKey.cs" />
+    <Compile Include="ApiTheBHYT2018.cs" />
     <Compile Include="AppConfig.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="ConvertXML.cs" />
@@ -108,10 +109,13 @@
     <Compile Include="HoSoKCB.cs" />
     <Compile Include="ImportExcel.cs" />
     <Compile Include="KQGuiHoSo.cs" />
+    <Compile Include="KQNhanLichSuKCBBS.cs" />
     <Compile Include="KQPhienLamViec.cs" />
     <Compile Include="Library.cs" />
     <Compile Include="LichSuKCB.cs" />
+    <Compile Include="LichSuKCB2018.cs" />
     <Compile Include="LichSuKCBChiTiet.cs" />
+    <Compile Include="LichSuKT2018.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringConnection.cs" />
     <Compile Include="ThongTinLichSu.cs" />

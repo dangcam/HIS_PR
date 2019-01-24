@@ -376,34 +376,39 @@ namespace TiepNhan.GUI
                     // Lấy danh sách lịch sử trên cổng (trên phần mềm nếu cổng lỗi)
                     if (KiemTraThongTinTiepNhan(true))
                     {
-                        ThongTinThe thongtin = new ThongTinThe();
-                        thongtin.MaBN = null;
-                        thongtin.MaThe = txtTheBHYT.Text;
-                        thongtin.HoTen = txtHoTen.Text;
-                        thongtin.NgaySinh = txtNgaySinh.Text;
-                        thongtin.GioiTinh = cbGioiTinh.SelectedIndex;
-                        thongtin.MaCoSoDKKCB = txtMaDKKCB.Text;
-                        thongtin.TheTu = txtTheTu.Text;
-                        thongtin.TheDen = txtTheDen.Text;
-                        ThongTinLichSu thongTinLichSu = await Utils.LichSuKhamChuaBenhBHYT(thongtin);
-                        if (thongTinLichSu.maKetQua == "false")
+                        //ThongTinThe thongtin = new ThongTinThe();
+                        //thongtin.MaBN = null;
+                        //thongtin.MaThe = txtTheBHYT.Text;
+                        //thongtin.HoTen = txtHoTen.Text;
+                        //thongtin.NgaySinh = txtNgaySinh.Text;
+                        //thongtin.GioiTinh = cbGioiTinh.SelectedIndex;
+                        //thongtin.MaCoSoDKKCB = txtMaDKKCB.Text;
+                        //thongtin.TheTu = txtTheTu.Text;
+                        //thongtin.TheDen = txtTheDen.Text;
+                        //ThongTinLichSu thongTinLichSu = await Utils.LichSuKhamChuaBenhBHYT(thongtin);
+                        ApiTheBHYT2018 apiTheBHYT2018 = new ApiTheBHYT2018();
+                        apiTheBHYT2018.maThe = txtTheBHYT.Text;
+                        apiTheBHYT2018.hoTen = txtHoTen.Text;
+                        apiTheBHYT2018.ngaySinh = txtNgaySinh.Text;
+                        KQNhanLichSuKCBBS kQNhanLichSu = await Utils.NhanLichSuKCBBS(apiTheBHYT2018);
+                        if (kQNhanLichSu.maKetQua == "false")
                         {
                             // lỗi hệ thống
                             splashScreenManager.CloseWaitForm();
-                            XtraMessageBox.Show(thongtin.ThongBao, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            XtraMessageBox.Show(kQNhanLichSu.ghiChu, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         else
                         {
                             // hiện thông báo, lịch sử
-                            thongTinLichSu.ngaySinh = thongtin.NgaySinh;
-                            lichSuKCB.ThongTin = thongTinLichSu;
+                            //thongTinLichSu.ngaySinh = thongtin.NgaySinh;
+                            //lichSuKCB.ThongTin = kQNhanLichSu;
                             lichSuKCB.ShowDialog();
-                            txtDiaChi.Text = thongTinLichSu.diaChi;// chỉ có thể cập nhật lại từng này
-                            txtDu5Nam.Text = thongTinLichSu.ngayDu5Nam;
-                            cbKhuVuc.SelectedItem = thongTinLichSu.maKV;
-                            txtTheTu.Text = thongTinLichSu.gtTheTu;
-                            txtTheDen.Text = thongTinLichSu.gtTheDen;
+                            txtDiaChi.Text = kQNhanLichSu.diaChi;// chỉ có thể cập nhật lại từng này
+                            txtDu5Nam.Text = kQNhanLichSu.ngayDu5Nam;
+                            cbKhuVuc.SelectedItem = kQNhanLichSu.maKV;
+                            txtTheTu.Text = kQNhanLichSu.gtTheTu;
+                            txtTheDen.Text = kQNhanLichSu.gtTheDen;
                         }
                     }
                 }
