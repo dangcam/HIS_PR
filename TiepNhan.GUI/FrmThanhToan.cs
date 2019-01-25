@@ -1873,34 +1873,44 @@ namespace TiepNhan.GUI
                 // Lấy danh sách lịch sử trên cổng (trên phần mềm nếu cổng lỗi)
                 if (KiemTraThongTinTiepNhan(true))
                 {
-                    ThongTinThe thongtin = new ThongTinThe();
-                    thongtin.MaBN = null;
-                    thongtin.MaThe = txtTheBHYT.Text;
-                    thongtin.HoTen = txtHoTen.Text;
-                    thongtin.NgaySinh = txtNgaySinh.Text;
-                    thongtin.GioiTinh = cbGioiTinh.SelectedIndex;
-                    thongtin.MaCoSoDKKCB = txtMaCoSoDKKCB.Text;
-                    thongtin.TheTu = txtTheTu.Text;
-                    thongtin.TheDen = txtTheDen.Text;
-                    ThongTinLichSu thongTinLichSu = await Utils.LichSuKhamChuaBenhBHYT(thongtin);
-                    if (thongTinLichSu.maKetQua == "false")
+                    //ThongTinThe thongtin = new ThongTinThe();
+                    //thongtin.MaBN = null;
+                    //thongtin.MaThe = txtTheBHYT.Text;
+                    //thongtin.HoTen = txtHoTen.Text;
+                    //thongtin.NgaySinh = txtNgaySinh.Text;
+                    //thongtin.GioiTinh = cbGioiTinh.SelectedIndex;
+                    //thongtin.MaCoSoDKKCB = txtMaCoSoDKKCB.Text;
+                    //thongtin.TheTu = txtTheTu.Text;
+                    //thongtin.TheDen = txtTheDen.Text;
+                    //ThongTinLichSu thongTinLichSu = await Utils.LichSuKhamChuaBenhBHYT(thongtin);
+                    //
+                    ApiTheBHYT2018 apiTheBHYT2018 = new ApiTheBHYT2018();
+                    apiTheBHYT2018.maThe = txtTheBHYT.Text;
+                    apiTheBHYT2018.hoTen = txtHoTen.Text;
+                    apiTheBHYT2018.ngaySinh = txtNgaySinh.Text;
+                    KQNhanLichSuKCBBS kQNhanLichSu = await Utils.NhanLichSuKCBBS(apiTheBHYT2018);
+                    if (kQNhanLichSu.maKetQua == "false")
                     {
                         // lỗi hệ thống
                         SplashScreenManager.CloseForm();
-                        XtraMessageBox.Show(thongtin.ThongBao, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        XtraMessageBox.Show(kQNhanLichSu.ghiChu, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     else
                     {
                         // hiện thông báo, lịch sử
-                        thongTinLichSu.ngaySinh = thongtin.NgaySinh;
-                        lichSuKCB.ThongTin = thongTinLichSu;
+                        lichSuKCB.ThongTin = kQNhanLichSu;
                         lichSuKCB.ShowDialog();
-                        txtDiaChi.Text = thongTinLichSu.diaChi;// chỉ có thể cập nhật lại từng này
-                        txtDu5Nam.Text = thongTinLichSu.ngayDu5Nam;
-                        cbKhuVuc.SelectedItem = thongTinLichSu.maKV;
-                        txtTheTu.Text = thongTinLichSu.gtTheTu;
-                        txtTheDen.Text = thongTinLichSu.gtTheDen;
+                        txtTheBHYT.Text = kQNhanLichSu.maTheMoi.Length > 0 ? kQNhanLichSu.maTheMoi : kQNhanLichSu.maThe;
+                        txtHoTen.Text = kQNhanLichSu.hoTen;
+                        txtNgaySinh.Text = kQNhanLichSu.ngaySinh;
+                        cbGioiTinh.SelectedIndex = kQNhanLichSu.gioiTinh == "Nam" ? 0 : 1;
+                        txtDiaChi.Text = kQNhanLichSu.diaChi;
+                        txtMaCoSoDKKCB.Text = kQNhanLichSu.maDKBD;
+                        txtDu5Nam.Text = kQNhanLichSu.ngayDu5Nam;
+                        cbKhuVuc.SelectedItem = kQNhanLichSu.maKV;
+                        txtTheTu.Text = kQNhanLichSu.gtTheTuMoi.Length > 0 ? kQNhanLichSu.gtTheTuMoi : kQNhanLichSu.gtTheTu;
+                        txtTheDen.Text = kQNhanLichSu.gtTheDenMoi.Length > 0 ? kQNhanLichSu.gtTheDenMoi : kQNhanLichSu.gtTheDen;
                     }
                 }
             }
@@ -1908,7 +1918,7 @@ namespace TiepNhan.GUI
             if (KiemTraThongTinTiepNhan())
             {
                 // Lấy danh sách lịch sử từ phần mềm, dựa vào họ tên, ngày sinh, giới tính -> mã bệnh nhân
-                ThongTinLichSu thongtin = new ThongTinLichSu();
+                KQNhanLichSuKCBBS thongtin = new KQNhanLichSuKCBBS();
                 thongtin.MaBN = txtMaBN.Text;
                 thongtin.hoTen = txtHoTen.Text;
                 thongtin.ngaySinh = txtNgaySinh.Text;

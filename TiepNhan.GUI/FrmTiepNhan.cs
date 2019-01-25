@@ -402,13 +402,18 @@ namespace TiepNhan.GUI
                         {
                             // hiện thông báo, lịch sử
                             //thongTinLichSu.ngaySinh = thongtin.NgaySinh;
-                            //lichSuKCB.ThongTin = kQNhanLichSu;
+                            lichSuKCB.ThongTin = kQNhanLichSu;
                             lichSuKCB.ShowDialog();
-                            txtDiaChi.Text = kQNhanLichSu.diaChi;// chỉ có thể cập nhật lại từng này
+                            txtTheBHYT.Text = kQNhanLichSu.maTheMoi.Length > 0 ? kQNhanLichSu.maTheMoi : kQNhanLichSu.maThe;
+                            txtHoTen.Text = kQNhanLichSu.hoTen;
+                            txtNgaySinh.Text = kQNhanLichSu.ngaySinh;
+                            cbGioiTinh.SelectedIndex = kQNhanLichSu.gioiTinh == "Nam" ? 0 : 1;
+                            txtDiaChi.Text = kQNhanLichSu.diaChi;
+                            txtMaDKKCB.Text = kQNhanLichSu.maDKBD;
                             txtDu5Nam.Text = kQNhanLichSu.ngayDu5Nam;
                             cbKhuVuc.SelectedItem = kQNhanLichSu.maKV;
-                            txtTheTu.Text = kQNhanLichSu.gtTheTu;
-                            txtTheDen.Text = kQNhanLichSu.gtTheDen;
+                            txtTheTu.Text = kQNhanLichSu.gtTheTuMoi.Length > 0 ? kQNhanLichSu.gtTheTuMoi : kQNhanLichSu.gtTheTu;
+                            txtTheDen.Text = kQNhanLichSu.gtTheDenMoi.Length > 0 ? kQNhanLichSu.gtTheDenMoi : kQNhanLichSu.gtTheDen;
                         }
                     }
                 }
@@ -416,7 +421,7 @@ namespace TiepNhan.GUI
                 if (KiemTraThongTinTiepNhan())
                 {
                     // Lấy danh sách lịch sử từ phần mềm, dựa vào họ tên, ngày sinh, giới tính -> mã bệnh nhân
-                    ThongTinLichSu thongtin = new ThongTinLichSu();
+                    KQNhanLichSuKCBBS thongtin = new KQNhanLichSuKCBBS();
                     thongtin.MaBN = txtMaBN.Text;
                     thongtin.hoTen = txtHoTen.Text;
                     thongtin.ngaySinh = txtNgaySinh.Text;

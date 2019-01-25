@@ -229,35 +229,41 @@ namespace TiepNhan.GUI
             {
                 if (Utils.ToBoolean(dr["CoThe"]) == true)
                 {
-                    ThongTinThe thongtin = new ThongTinThe();
-                    thongtin.MaBN = null;
-                    thongtin.MaThe = dr["MaThe"].ToString();
-                    thongtin.HoTen = dr["HoTen"].ToString();
-                    thongtin.NgaySinh = dr["NgaySinh"].ToString();
-                    thongtin.GioiTinh = Utils.ToInt(dr["GioiTinh"]);
-                    thongtin.MaCoSoDKKCB = dr["MaDKBD"].ToString();
-                    thongtin.TheTu = dr["TheTu"].ToString(); 
-                    thongtin.TheDen = dr["TheDen"].ToString();
-                    ThongTinLichSu thongTinLichSu = await Utils.LichSuKhamChuaBenhBHYT(thongtin);
-                    if (thongTinLichSu.maKetQua == "false")
+                    //ThongTinThe thongtin = new ThongTinThe();
+                    //thongtin.MaBN = null;
+                    //thongtin.MaThe = dr["MaThe"].ToString();
+                    //thongtin.HoTen = dr["HoTen"].ToString();
+                    //thongtin.NgaySinh = dr["NgaySinh"].ToString();
+                    //thongtin.GioiTinh = Utils.ToInt(dr["GioiTinh"]);
+                    //thongtin.MaCoSoDKKCB = dr["MaDKBD"].ToString();
+                    //thongtin.TheTu = dr["TheTu"].ToString(); 
+                    //thongtin.TheDen = dr["TheDen"].ToString();
+                    //ThongTinLichSu thongTinLichSu = await Utils.LichSuKhamChuaBenhBHYT(thongtin);
+                    //
+                    ApiTheBHYT2018 apiTheBHYT2018 = new ApiTheBHYT2018();
+                    apiTheBHYT2018.maThe = Utils.ToString(dr["MaThe"]);
+                    apiTheBHYT2018.hoTen = Utils.ToString(dr["HoTen"]);
+                    apiTheBHYT2018.ngaySinh = Utils.ToString(dr["NgaySinh"]);
+                    KQNhanLichSuKCBBS kQNhanLichSu = await Utils.NhanLichSuKCBBS(apiTheBHYT2018);
+                    if (kQNhanLichSu.maKetQua == "false")
                     {
                         // lỗi hệ thống
                         SplashScreenManager.CloseForm();
-                        XtraMessageBox.Show(thongtin.ThongBao, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        XtraMessageBox.Show(kQNhanLichSu.ghiChu, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     else
                     {
                         // hiện thông báo, lịch sử
-                        thongTinLichSu.ngaySinh = thongtin.NgaySinh;
-                        frmLichSuKCB.ThongTin = thongTinLichSu;
+                        //thongTinLichSu.ngaySinh = thongtin.NgaySinh;
+                        frmLichSuKCB.ThongTin = kQNhanLichSu;
                         frmLichSuKCB.ShowDialog();
                     }
                 }
                 else
                 {
                     // Lấy danh sách lịch sử từ phần mềm, dựa vào họ tên, ngày sinh, giới tính -> mã bệnh nhân
-                    ThongTinLichSu thongtin = new ThongTinLichSu();
+                    KQNhanLichSuKCBBS thongtin = new KQNhanLichSuKCBBS();
                     thongtin.MaBN = dr["MaBN"].ToString();
                     //thongtin.MaThe = null;
                     thongtin.hoTen = dr["HoTen"].ToString();

@@ -28,5 +28,8 @@ namespace Core.DAL
         public string gtTheDenMoi { get; set; }
         public List<LichSuKCB2018> dsLichSuKCB2018 { get; set; }
         public List<LichSuKT2018> dsLichSuKT2018 { get; set; }
+        //
+        public System.Data.DataTable LichSuPhanMem { get; set; }
+        public string MaBN { get; set; }
     }
 }

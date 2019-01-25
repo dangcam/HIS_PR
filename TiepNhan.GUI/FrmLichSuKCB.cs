@@ -15,7 +15,7 @@ namespace TiepNhan.GUI
 {
     public partial class FrmLichSuKCB : RibbonForm
     {
-        public ThongTinLichSu ThongTin = new ThongTinLichSu();
+        public KQNhanLichSuKCBBS ThongTin = new KQNhanLichSuKCBBS();
         FrmThongTinHoSo frmHoSo = new FrmThongTinHoSo();
 
         public FrmLichSuKCB(DataTable dataCoSo)
@@ -40,7 +40,7 @@ namespace TiepNhan.GUI
                 {
                     case "000":
                         this.lblThongTin.ForeColor = System.Drawing.Color.Blue;
-                        lblThongTin.Text = "Thông tin thẻ chính xác.";
+                        lblThongTin.Text = "Thẻ còn giá trị sử dụng.";
                         break;
                     case "001":
                         this.lblThongTin.ForeColor = System.Drawing.Color.DarkRed;
@@ -50,9 +50,17 @@ namespace TiepNhan.GUI
                         this.lblThongTin.ForeColor = System.Drawing.Color.DarkRed;
                         lblThongTin.Text = "Thẻ do BHXH Bộ Công An quản lý, đề nghị kiểm tra thẻ và thông tin giấy tờ tùy thân.";
                         break;
+                    case "003":
+                        this.lblThongTin.ForeColor = System.Drawing.Color.DarkRed;
+                        lblThongTin.Text = "Thẻ cũ hết giá trị sử dụng nhưng đã được cấp thẻ mới.";
+                        break;
+                    case "004":
+                        this.lblThongTin.ForeColor = System.Drawing.Color.DarkRed;
+                        lblThongTin.Text = "Thẻ cũ còn giá trị sử dụng nhưng đã được cấp thẻ mới.";
+                        break;
                     case "010":
                         this.lblThongTin.ForeColor = System.Drawing.Color.DarkRed;
-                        lblThongTin.Text = "Thẻ hết hạn sử dụng.";
+                        lblThongTin.Text = "Thẻ hết giá trị sử dụng.";
                         break;
                     case "051":
                         this.lblThongTin.ForeColor = System.Drawing.Color.DarkRed;
@@ -68,7 +76,7 @@ namespace TiepNhan.GUI
                         break;
                     case "050":
                         this.lblThongTin.ForeColor = System.Drawing.Color.DarkRed;
-                        lblThongTin.Text = "Không thấy thông tin thẻ BHXH.";
+                        lblThongTin.Text = "Không thấy thông tin thẻ BHYT.";
                         break;
                     case "060":
                         this.lblThongTin.ForeColor = System.Drawing.Color.DarkRed;
@@ -130,7 +138,7 @@ namespace TiepNhan.GUI
                         lblThongTin.Text = "Mã kết quả: " + ThongTin.maKetQua;
                         break;
                 }
-                if (ThongTin.dsLichSuKCB !=null && ThongTin.dsLichSuKCB.Count > 0)
+                if (ThongTin.dsLichSuKCB2018 !=null && ThongTin.dsLichSuKCB2018.Count > 0)
                 {
                     //ThongTin.ThongBao = ThongTin.ThongBao.Substring(ThongTin.ThongBao.IndexOf('['),
                     //    ThongTin.ThongBao.IndexOf(']')).Replace("]", "").Replace("[", "");
@@ -143,15 +151,15 @@ namespace TiepNhan.GUI
                     data.Columns.Add("tenBenh", typeof(string));
                     data.Columns.Add("tinhTrang", typeof(string));
                     data.Columns.Add("kqDieuTri", typeof(string));
-                    foreach (var hoso in ThongTin.dsLichSuKCB)
+                    foreach (var hoso in ThongTin.dsLichSuKCB2018)
                     {
 
                         //string[] dulieu = hoso.Replace("}", "").Replace("{", "").Split(',');
                         DataRow dr = data.NewRow();
                         dr["maHoSo"] = hoso.maHoSo;
                         dr["maCSKCB"] = hoso.maCSKCB;
-                        dr["tuNgay"] = hoso.tuNgay;
-                        dr["denNgay"] = hoso.denNgay;
+                        dr["tuNgay"] =Utils.ToDateTime( hoso.ngayVao,"yyyyMMddHHmm").ToString("dd/MM/yyyy");
+                        dr["denNgay"] = Utils.ToDateTime(hoso.ngayRa, "yyyyMMddHHmm").ToString("dd/MM/yyyy");
                         dr["tenBenh"] = hoso.tenBenh;
                         dr["tinhTrang"] = hoso.tinhTrang;
                         dr["kqDieuTri"] = hoso.kqDieuTri;
