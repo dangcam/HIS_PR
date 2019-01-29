@@ -203,6 +203,10 @@ namespace Core.DAL
                 return defaultvalue;
             }
         }
+        public static string StringToString(string value, string defaultvalue = null)
+        {
+            return string.IsNullOrEmpty(value) ? defaultvalue : value;
+        }
         public static string ToLowerFirstChar(string input)
         {
             string newString = input;
