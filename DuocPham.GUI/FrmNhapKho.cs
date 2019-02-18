@@ -795,7 +795,7 @@ namespace DuocPham.GUI
             rpt.DataSource = dtPhieu;
             try
             {
-                rpt.xrlblHomNay.Text = "Hôm nay, ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year + ", chúng tôi gồm:";
+                rpt.xrlblHomNay.Text = "Hôm nay, ngày " + dateNgayNhap.DateTime.Day + " tháng " + dateNgayNhap.DateTime.Month + " năm " + dateNgayNhap.DateTime.Year + ", chúng tôi gồm:";
                 rpt.xrlblBenA.Text = lookUpNhaCungCap.Properties.GetDisplayValueByKeyValue(lookUpNhaCungCap.EditValue).ToString().ToUpper();
                 rpt.xrlblDiaChiBenA.Text = (lookUpNhaCungCap.Properties.GetRowByKeyValue(lookUpNhaCungCap.EditValue) as DataRowView)["DiaChi"].ToString();
             }
