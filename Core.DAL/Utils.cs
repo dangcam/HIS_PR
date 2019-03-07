@@ -721,6 +721,60 @@ namespace Core.DAL
                 }
             }
         }
+        public static async Task<KQLichSuKCB> NhanLichSuKCBBS2019(ApiTheBHYT2018 thongTinThe)
+        {
+            IEnumerable<KeyValuePair<string, string>> queries = new List<KeyValuePair<string, string>>()
+            {
+                new KeyValuePair<string, string>("maThe",thongTinThe.maThe),
+                new KeyValuePair<string, string>("hoTen",thongTinThe.hoTen),
+                new KeyValuePair<string, string>("ngaySinh",thongTinThe.ngaySinh)
+            };
+            HttpContent quer = new FormUrlEncodedContent(queries);
+            using (HttpClient client = new HttpClient())
+            {
+                KQLichSuKCB thongTinLichSu = new KQLichSuKCB();
+                try
+                {
+                    client.BaseAddress = new Uri(url);
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                    // lấy phiên làm việc
+                    string err = await GetToken();
+                    if (!string.IsNullOrEmpty(err))
+                    {
+                        thongTinLichSu.maKetQua = "false";
+                        thongTinLichSu.ghiChu = err;
+                        return thongTinLichSu;
+                    }
+                    // lấy lịch sử KCB
+                    string data = string.Format("token={0}&id_token={1}&username={2}&password={3}", phienLamViec.APIKey.access_token
+                        , phienLamViec.APIKey.id_token, AppConfig.UserLoginBHYT, Utils.ToMD5(AppConfig.PassWordBHYT));
+                    using (HttpResponseMessage response = await client.PostAsync("api/egw/KQNhanLichSuKCB2019?" + data, quer))
+                    {
+                        if (response.IsSuccessStatusCode)
+                        {
+                            using (HttpContent content = response.Content)
+                            {
+                                thongTinLichSu = await content.ReadAsAsync<KQLichSuKCB>();
+                                return thongTinLichSu;
+                            }
+                        }
+                        else
+                        {
+                            thongTinLichSu.ghiChu = Library.KetNoiCong + response.RequestMessage;
+                            thongTinLichSu.maKetQua = "false";
+                            return thongTinLichSu;
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    thongTinLichSu.ghiChu = e.Message;
+                    thongTinLichSu.maKetQua = "false";
+                    return thongTinLichSu;
+                }
+            }
+        }
         public static async Task<KQGuiHoSo> GuiHoSo4210(byte[] fileHS)
         {
             KQGuiHoSo kqGuiHoSo = new KQGuiHoSo();

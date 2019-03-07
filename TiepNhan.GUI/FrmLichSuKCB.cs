@@ -15,7 +15,7 @@ namespace TiepNhan.GUI
 {
     public partial class FrmLichSuKCB : RibbonForm
     {
-        public KQNhanLichSuKCBBS ThongTin = new KQNhanLichSuKCBBS();
+        public KQLichSuKCB ThongTin = new KQLichSuKCB();
         FrmThongTinHoSo frmHoSo = new FrmThongTinHoSo();
 
         public FrmLichSuKCB(DataTable dataCoSo)

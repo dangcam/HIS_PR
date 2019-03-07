@@ -244,7 +244,7 @@ namespace TiepNhan.GUI
                     apiTheBHYT2018.maThe = Utils.ToString(dr["MaThe"]);
                     apiTheBHYT2018.hoTen = Utils.ToString(dr["HoTen"]);
                     apiTheBHYT2018.ngaySinh = Utils.ToString(dr["NgaySinh"]);
-                    KQNhanLichSuKCBBS kQNhanLichSu = await Utils.NhanLichSuKCBBS(apiTheBHYT2018);
+                    KQLichSuKCB kQNhanLichSu = await Utils.NhanLichSuKCBBS2019(apiTheBHYT2018);
                     if (kQNhanLichSu.maKetQua == "false")
                     {
                         // lỗi hệ thống
@@ -263,7 +263,7 @@ namespace TiepNhan.GUI
                 else
                 {
                     // Lấy danh sách lịch sử từ phần mềm, dựa vào họ tên, ngày sinh, giới tính -> mã bệnh nhân
-                    KQNhanLichSuKCBBS thongtin = new KQNhanLichSuKCBBS();
+                    KQLichSuKCB thongtin = new KQLichSuKCB();
                     thongtin.MaBN = dr["MaBN"].ToString();
                     //thongtin.MaThe = null;
                     thongtin.hoTen = dr["HoTen"].ToString();

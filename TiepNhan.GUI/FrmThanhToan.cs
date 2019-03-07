@@ -1888,7 +1888,7 @@ namespace TiepNhan.GUI
                     apiTheBHYT2018.maThe = txtTheBHYT.Text;
                     apiTheBHYT2018.hoTen = txtHoTen.Text;
                     apiTheBHYT2018.ngaySinh = txtNgaySinh.Text;
-                    KQNhanLichSuKCBBS kQNhanLichSu = await Utils.NhanLichSuKCBBS(apiTheBHYT2018);
+                    KQLichSuKCB kQNhanLichSu = await Utils.NhanLichSuKCBBS2019(apiTheBHYT2018);
                     if (kQNhanLichSu.maKetQua == "false")
                     {
                         // lỗi hệ thống
@@ -1906,7 +1906,7 @@ namespace TiepNhan.GUI
                         txtNgaySinh.Text = kQNhanLichSu.ngaySinh;
                         cbGioiTinh.SelectedIndex = kQNhanLichSu.gioiTinh == "Nam" ? 0 : 1;
                         txtDiaChi.Text = kQNhanLichSu.diaChi;
-                        txtMaCoSoDKKCB.Text = kQNhanLichSu.maDKBD;
+                        txtMaCoSoDKKCB.Text = Utils.StringToString(kQNhanLichSu.maDKBDMoi, "").Length > 0 ? kQNhanLichSu.maDKBDMoi : kQNhanLichSu.maDKBD;
                         txtDu5Nam.Text = kQNhanLichSu.ngayDu5Nam;
                         cbKhuVuc.SelectedItem = kQNhanLichSu.maKV;
                         txtTheTu.Text = kQNhanLichSu.gtTheTuMoi.Length > 0 ? kQNhanLichSu.gtTheTuMoi : kQNhanLichSu.gtTheTu;
@@ -1918,7 +1918,7 @@ namespace TiepNhan.GUI
             if (KiemTraThongTinTiepNhan())
             {
                 // Lấy danh sách lịch sử từ phần mềm, dựa vào họ tên, ngày sinh, giới tính -> mã bệnh nhân
-                KQNhanLichSuKCBBS thongtin = new KQNhanLichSuKCBBS();
+                KQLichSuKCB thongtin = new KQLichSuKCB();
                 thongtin.MaBN = txtMaBN.Text;
                 thongtin.hoTen = txtHoTen.Text;
                 thongtin.ngaySinh = txtNgaySinh.Text;
