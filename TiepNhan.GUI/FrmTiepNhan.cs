@@ -374,7 +374,7 @@ namespace TiepNhan.GUI
                 if (checkBHYT.Checked == true)
                 {
                     // Lấy danh sách lịch sử trên cổng (trên phần mềm nếu cổng lỗi)
-                    if (KiemTraThongTinTiepNhan(true))
+                    if (KiemTraThongTinTiepNhan())//KiemTraThongTinTiepNhan(True)
                     {
                         //ThongTinThe thongtin = new ThongTinThe();
                         //thongtin.MaBN = null;
@@ -1121,21 +1121,21 @@ namespace TiepNhan.GUI
         }
         private bool KiemTraThongTinTiepNhan(bool ktraChiTiet = false)
         {
-            if(string.IsNullOrEmpty( txtTheBHYT.Text) && checkBHYT.Checked)
+            if (checkBHYT.Checked)
             {
-                XtraMessageBox.Show(Library.NhapMaThe, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtTheBHYT.Focus();
-                return false;
-            }
-            if (ktraChiTiet && checkBHYT.Checked)
-            {
-                if (string.IsNullOrEmpty(txtTheTu.Text))
+                if (string.IsNullOrEmpty(txtTheBHYT.Text))
+                {
+                    XtraMessageBox.Show(Library.NhapMaThe, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtTheBHYT.Focus();
+                    return false;
+                }
+                if (ktraChiTiet && string.IsNullOrEmpty(txtTheTu.Text))
                 {
                     XtraMessageBox.Show(Library.NhapTheTu, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtTheTu.Focus();
                     return false;
                 }
-                if (string.IsNullOrEmpty(txtTheDen.Text))
+                if (ktraChiTiet && string.IsNullOrEmpty(txtTheDen.Text))
                 {
                     XtraMessageBox.Show(Library.NhapTheDen, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtTheDen.Focus();
@@ -1143,25 +1143,25 @@ namespace TiepNhan.GUI
                 }
                 DateTime theTu = Utils.ToDateTime(txtTheTu.Text, "dd/MM/yyyy");
                 DateTime theDen = Utils.ToDateTime(txtTheDen.Text, "dd/MM/yyyy");
-                if (theTu > DateTime.Now)
+                if (ktraChiTiet && theTu > DateTime.Now)
                 {
                     XtraMessageBox.Show(Library.TheTuLonHonHienTai, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtTheTu.Focus();
                     return false;
                 }
-                if (theTu > theDen)
+                if (ktraChiTiet && theTu > theDen)
                 {
                     XtraMessageBox.Show(Library.TheTuLonHonTheDen, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtTheDen.Focus();
                     return false;
                 }
-                if(theDen<= DateTime.Now)
+                if(ktraChiTiet && theDen <= DateTime.Now)
                 {
                     XtraMessageBox.Show(Library.TheHetHan, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtTheDen.Focus();
                     return false;
                 }
-                if (string.IsNullOrEmpty(txtMaDKKCB.Text))
+                if (ktraChiTiet && string.IsNullOrEmpty(txtMaDKKCB.Text))
                 {
                     XtraMessageBox.Show(Library.NhapKCBBD, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtMaDKKCB.Focus();
