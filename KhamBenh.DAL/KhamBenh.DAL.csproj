@@ -45,6 +45,7 @@
     <Compile Include="HoSoEntity.cs" />
     <Compile Include="KeDonEntity.cs" />
     <Compile Include="KhamBenhEntity.cs" />
+    <Compile Include="NghiViecBHXHEntity.cs" />
     <Compile Include="NhomChiPhi.cs" />
     <Compile Include="ThanhToanEntity.cs" />
     <Compile Include="ThongTinHoSoEntity.cs" />

@@ -532,5 +532,21 @@ namespace HIS_PR
             FrmTuTruc frm = new FrmTuTruc();
             frm.ShowDialog();
         }
+
+        private void barbtnNghiViec_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            foreach (Form frm in this.MdiChildren)
+            {
+                if (frm.GetType() == typeof(FrmDSNghiViecBHXH))
+                {
+                    frm.Activate();
+                    frm.WindowState = FormWindowState.Maximized;
+                    return;
+                }
+            }
+            FrmDSNghiViecBHXH frmDSNghiViecBHXH = new FrmDSNghiViecBHXH();
+            frmDSNghiViecBHXH.MdiParent = this;
+            frmDSNghiViecBHXH.Show();
+        }
     }
 }

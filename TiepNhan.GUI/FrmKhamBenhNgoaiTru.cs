@@ -416,16 +416,10 @@ namespace TiepNhan.GUI
             DataRow dr = gridView.GetFocusedDataRow();
             if (dr != null)
             {
-                RptCNNghiViec rpt = new RptCNNghiViec();
-                rpt.xrlblHoTen.Text = dr["HoTen"].ToString();
-                rpt.xrlblNgaySinh.Text = dr["NgaySinh"].ToString();
-                rpt.xrlblGioiTinh.Text = dr["GioiTinh"].ToString() == "0" ? "Nam" : "Nữ";
-                rpt.xrlblBHYT.Text = dr["MaThe"].ToString();
-                rpt.xrlblChuanDoan.Text = dr["TenBenh"].ToString();
-                DateTime ngayIn = Utils.ToDateTime(dr["NgayVao"].ToString());
-                rpt.xrlblNgayThangNam.Text = "Ngày " + ngayIn.Day + " tháng " + ngayIn.Month + " năm " + ngayIn.Year;
-                rpt.CreateDocument();
-                rpt.ShowPreviewDialog();
+                FrmNghiViecBHXH frm = new FrmNghiViecBHXH(dr);
+                frm.ShowDialog();
+                LoadData();
+                
             }
         }
 

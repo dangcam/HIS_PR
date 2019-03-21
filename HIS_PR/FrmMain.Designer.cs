@@ -62,6 +62,7 @@
             this.barButtonBKNhapThuoc = new DevExpress.XtraBars.BarButtonItem();
             this.barBITheoDoiRaVaoVie = new DevExpress.XtraBars.BarButtonItem();
             this.barbtnPhanTichDT = new DevExpress.XtraBars.BarButtonItem();
+            this.barbntTuTruc = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageHeThong = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupHeThong = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageTiepNhan = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -81,7 +82,8 @@
             this.ribbonPageGroupKhoLe = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupTongHop = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBarMain = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.barbntTuTruc = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroupBHXH = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barbtnNghiViec = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -122,9 +124,10 @@
             this.barButtonBKNhapThuoc,
             this.barBITheoDoiRaVaoVie,
             this.barbtnPhanTichDT,
-            this.barbntTuTruc});
+            this.barbntTuTruc,
+            this.barbtnNghiViec});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControlMain.MaxItemId = 46;
+            this.ribbonControlMain.MaxItemId = 47;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.barLinkSkin);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -393,6 +396,14 @@
             this.barbtnPhanTichDT.Name = "barbtnPhanTichDT";
             this.barbtnPhanTichDT.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnPhanTichDT_ItemClick);
             // 
+            // barbntTuTruc
+            // 
+            this.barbntTuTruc.Caption = "Tủ Trực";
+            this.barbntTuTruc.Id = 45;
+            this.barbntTuTruc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barbntTuTruc.ImageOptions.Image")));
+            this.barbntTuTruc.Name = "barbntTuTruc";
+            this.barbntTuTruc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbntTuTruc_ItemClick);
+            // 
             // ribbonPageHeThong
             // 
             this.ribbonPageHeThong.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -424,7 +435,8 @@
             // 
             this.ribbonPageKhamBenh.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroupKhamBenh,
-            this.ribbonPageGroupHoSo});
+            this.ribbonPageGroupHoSo,
+            this.ribbonPageGroupBHXH});
             this.ribbonPageKhamBenh.Name = "ribbonPageKhamBenh";
             this.ribbonPageKhamBenh.Text = "Khám bệnh";
             // 
@@ -540,13 +552,19 @@
             this.ribbonStatusBarMain.Ribbon = this.ribbonControlMain;
             this.ribbonStatusBarMain.Size = new System.Drawing.Size(1290, 31);
             // 
-            // barbntTuTruc
+            // ribbonPageGroupBHXH
             // 
-            this.barbntTuTruc.Caption = "Tủ Trực";
-            this.barbntTuTruc.Id = 45;
-            this.barbntTuTruc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barbntTuTruc.ImageOptions.Image")));
-            this.barbntTuTruc.Name = "barbntTuTruc";
-            this.barbntTuTruc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbntTuTruc_ItemClick);
+            this.ribbonPageGroupBHXH.ItemLinks.Add(this.barbtnNghiViec);
+            this.ribbonPageGroupBHXH.Name = "ribbonPageGroupBHXH";
+            this.ribbonPageGroupBHXH.ShowCaptionButton = false;
+            // 
+            // barbtnNghiViec
+            // 
+            this.barbtnNghiViec.Caption = "Nghỉ việc BHXH";
+            this.barbtnNghiViec.Id = 46;
+            this.barbtnNghiViec.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barbtnNghiViec.ImageOptions.Image")));
+            this.barbtnNghiViec.Name = "barbtnNghiViec";
+            this.barbtnNghiViec.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnNghiViec_ItemClick);
             // 
             // FrmMain
             // 
@@ -627,5 +645,7 @@
         private DevExpress.XtraBars.BarButtonItem barBITheoDoiRaVaoVie;
         private DevExpress.XtraBars.BarButtonItem barbtnPhanTichDT;
         private DevExpress.XtraBars.BarButtonItem barbntTuTruc;
+        private DevExpress.XtraBars.BarButtonItem barbtnNghiViec;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupBHXH;
     }
 }
