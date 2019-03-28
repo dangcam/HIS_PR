@@ -37,9 +37,18 @@ namespace KhamBenh.DAL
             return db.ExcuteQuery("Select MaBenh,TenBenh From BenhICD ",
                 CommandType.Text, null);
         }
-        public DataTable DSNghiViec()
+        public DataTable NghiViec()
         {
             return db.ExcuteQuery("Select * From NghiViec Where MaLK = '"+MaLK+"' ",
+                CommandType.Text, null);
+        }
+        public DataTable DSNghiViec()
+        {
+            return db.ExcuteQuery("select NghiViec.MaLK, ROW_NUMBER() OVER(ORDER BY SoPhieu ASC) AS STT," +
+                "MaCT,SoPhieu,MaCoSoKCB,MaBS,MaSoBHXH,MaThe,HoTen,NgaySinh,MaBenh,NgayVao, " +
+                "(GioiTinh+1) as GioiTinh,PPDieuTri,MaDonVi,TenDonVi,TuNgay,DenNgay,SoNgay,TenCha,TenMe,NgayCT,NguoiDaiDien " +
+                "from ThongTinBNChiTiet,NghiViec where ThongTinBNChiTiet.MaLK = NghiViec.MaLK " +
+                "and NgayCT Between '" + TuNgay + "' And '" + DenNgay + "' ",
                 CommandType.Text, null);
         }
         public object SoChungTu()
@@ -54,8 +63,8 @@ namespace KhamBenh.DAL
         }
         public DataTable DSBacSi()
         {
-            return db.ExcuteQuery("Select Ma_BS, Ten_NV From NhanVien Where TinhTrang=1 And CoSoKCB = '"
-                + AppConfig.CoSoKCB + "' And LEN(Ma_BS) > 0 Order By Ten_NV DESC",
+            return db.ExcuteQuery("Select MaCC, Ten_NV From NhanVien Where TinhTrang=1 And CoSoKCB = '"
+                + AppConfig.CoSoKCB + "' And LEN(MaCC) > 0 Order By Ten_NV DESC",
                 CommandType.Text, null);
         }
         public bool SpCapNhatMaBenh(ref string err)

@@ -84,6 +84,9 @@
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtCCHN = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.MaCC = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
@@ -125,6 +128,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCCHN.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -145,6 +150,7 @@
             // 
             // layoutControl
             // 
+            this.layoutControl.Controls.Add(this.txtCCHN);
             this.layoutControl.Controls.Add(this.gridControl);
             this.layoutControl.Controls.Add(this.btnThem);
             this.layoutControl.Controls.Add(this.btnLuu);
@@ -198,7 +204,8 @@
             this.TinhTrang,
             this.MaBS,
             this.MatKhau,
-            this.CoSoKCB});
+            this.CoSoKCB,
+            this.MaCC});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsView.ShowGroupPanel = false;
@@ -533,7 +540,7 @@
             this.txtMaBS.Name = "txtMaBS";
             this.txtMaBS.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMaBS.Properties.Appearance.Options.UseFont = true;
-            this.txtMaBS.Size = new System.Drawing.Size(339, 22);
+            this.txtMaBS.Size = new System.Drawing.Size(149, 22);
             this.txtMaBS.StyleController = this.layoutControl;
             this.txtMaBS.TabIndex = 10;
             // 
@@ -615,7 +622,8 @@
             this.layoutControlItem15,
             this.layoutControlItem16,
             this.emptySpaceItem4,
-            this.layoutControlItem17});
+            this.layoutControlItem17,
+            this.layoutControlItem18});
             this.layoutControlGroup.Name = "layoutControlGroup";
             this.layoutControlGroup.Size = new System.Drawing.Size(896, 493);
             this.layoutControlGroup.TextVisible = false;
@@ -661,7 +669,7 @@
             this.layoutControlItem9.Control = this.txtMaBS;
             this.layoutControlItem9.Location = new System.Drawing.Point(450, 78);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(426, 26);
+            this.layoutControlItem9.Size = new System.Drawing.Size(236, 26);
             this.layoutControlItem9.Text = "Mã BS:";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(80, 13);
             // 
@@ -806,6 +814,36 @@
             this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem17.TextVisible = false;
             // 
+            // txtCCHN
+            // 
+            this.txtCCHN.Location = new System.Drawing.Point(781, 90);
+            this.txtCCHN.MenuManager = this.ribbonControl;
+            this.txtCCHN.Name = "txtCCHN";
+            this.txtCCHN.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCCHN.Properties.Appearance.Options.UseFont = true;
+            this.txtCCHN.Size = new System.Drawing.Size(103, 22);
+            this.txtCCHN.StyleController = this.layoutControl;
+            this.txtCCHN.TabIndex = 17;
+            // 
+            // layoutControlItem18
+            // 
+            this.layoutControlItem18.Control = this.txtCCHN;
+            this.layoutControlItem18.Location = new System.Drawing.Point(686, 78);
+            this.layoutControlItem18.Name = "layoutControlItem18";
+            this.layoutControlItem18.Size = new System.Drawing.Size(190, 26);
+            this.layoutControlItem18.Text = "Chứng chỉ HN:";
+            this.layoutControlItem18.TextSize = new System.Drawing.Size(80, 13);
+            // 
+            // MaCC
+            // 
+            this.MaCC.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaCC.AppearanceCell.Options.UseFont = true;
+            this.MaCC.Caption = "Chứng chỉ HN";
+            this.MaCC.FieldName = "MaCC";
+            this.MaCC.Name = "MaCC";
+            this.MaCC.Visible = true;
+            this.MaCC.VisibleIndex = 12;
+            // 
             // FrmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -860,6 +898,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCCHN.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -922,5 +962,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn MatKhau;
         private DevExpress.XtraGrid.Columns.GridColumn CoSoKCB;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheck;
+        private DevExpress.XtraEditors.TextEdit txtCCHN;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
+        private DevExpress.XtraGrid.Columns.GridColumn MaCC;
     }
 }

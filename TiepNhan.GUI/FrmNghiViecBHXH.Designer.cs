@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNghiViecBHXH));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.btnLaySoCT = new DevExpress.XtraEditors.SimpleButton();
             this.txtSoPhieu = new DevExpress.XtraEditors.TextEdit();
             this.btnIn = new DevExpress.XtraEditors.SimpleButton();
             this.txtNguoiDaiDien = new DevExpress.XtraEditors.TextEdit();
@@ -74,7 +75,6 @@
             this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnLaySoCT = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
@@ -168,6 +168,17 @@
             this.layoutControl.Size = new System.Drawing.Size(800, 288);
             this.layoutControl.TabIndex = 1;
             this.layoutControl.Text = "layoutControl1";
+            // 
+            // btnLaySoCT
+            // 
+            this.btnLaySoCT.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLaySoCT.ImageOptions.Image")));
+            this.btnLaySoCT.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnLaySoCT.Location = new System.Drawing.Point(756, 65);
+            this.btnLaySoCT.Name = "btnLaySoCT";
+            this.btnLaySoCT.Size = new System.Drawing.Size(32, 22);
+            this.btnLaySoCT.StyleController = this.layoutControl;
+            this.btnLaySoCT.TabIndex = 23;
+            this.btnLaySoCT.Click += new System.EventHandler(this.btnLaySoCT_Click);
             // 
             // txtSoPhieu
             // 
@@ -305,12 +316,12 @@
             this.lookUpBacSi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpBacSi.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Ma_BS", "Mã"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaCC", "Mã"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Ten_NV", "Tên", 60, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.lookUpBacSi.Properties.DisplayMember = "Ten_NV";
             this.lookUpBacSi.Properties.NullText = "";
             this.lookUpBacSi.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.lookUpBacSi.Properties.ValueMember = "Ma_BS";
+            this.lookUpBacSi.Properties.ValueMember = "MaCC";
             this.lookUpBacSi.Size = new System.Drawing.Size(262, 22);
             this.lookUpBacSi.StyleController = this.layoutControl;
             this.lookUpBacSi.TabIndex = 7;
@@ -690,17 +701,6 @@
             this.layoutControlItem13.Size = new System.Drawing.Size(211, 26);
             this.layoutControlItem13.Text = "đến ngày";
             this.layoutControlItem13.TextSize = new System.Drawing.Size(72, 13);
-            // 
-            // btnLaySoCT
-            // 
-            this.btnLaySoCT.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLaySoCT.ImageOptions.Image")));
-            this.btnLaySoCT.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnLaySoCT.Location = new System.Drawing.Point(756, 65);
-            this.btnLaySoCT.Name = "btnLaySoCT";
-            this.btnLaySoCT.Size = new System.Drawing.Size(32, 22);
-            this.btnLaySoCT.StyleController = this.layoutControl;
-            this.btnLaySoCT.TabIndex = 23;
-            this.btnLaySoCT.Click += new System.EventHandler(this.btnLaySoCT_Click);
             // 
             // layoutControlItem20
             // 

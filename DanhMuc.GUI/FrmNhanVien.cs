@@ -3,6 +3,7 @@ using DevExpress.XtraBars.Ribbon;
 using System.Windows.Forms;
 using DanhMuc.DAL;
 using System.Data;
+using Core.DAL;
 
 namespace DanhMuc.GUI
 {
@@ -109,6 +110,7 @@ namespace DanhMuc.GUI
             txtMatKhau.Text = "";
             txtMaBS.Text = "";
             checkTinhTrang.Checked = true;
+            txtCCHN.Text = "";
             Enabled_Luu ();
         }
         private bool checkInput()
@@ -142,6 +144,7 @@ namespace DanhMuc.GUI
             nhanvien.NgayVao = dateNgayVao.DateTime;
             nhanvien.TinhTrang = checkTinhTrang.Checked;
             nhanvien.MaBS = txtMaBS.Text;
+            nhanvien.MaCC = txtCCHN.Text;
             if (txtMatKhau.Text.Length > 0)
             {
                 nhanvien.MatKhau = Core.DAL.Utils.ToMD5 (txtMatKhau.Text);
@@ -208,7 +211,7 @@ namespace DanhMuc.GUI
                 checkTinhTrang.Checked = bool.Parse (dr["TinhTrang"].ToString ());
                 txtMaBS.Text = dr["Ma_BS"].ToString ();
                 lookUpCoSoKCB.EditValue = dr["CoSoKCB"].ToString ();
-
+                txtCCHN.Text = Utils.ToString(dr["MaCC"]);
                 nhanvien.MaNV = txtMa.Text;
                 nhanvien.MatKhau = dr["MatKhau"].ToString ();
                 txtMa.ReadOnly = true;

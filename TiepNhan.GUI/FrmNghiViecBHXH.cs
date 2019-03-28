@@ -39,7 +39,7 @@ namespace TiepNhan.GUI
             txtNgayChungTu.DateTime = txtTuNgay.DateTime;
             nghiViecBHXHEntity.MaLK = Utils.ToString(dataRow["MaLK"]);
             nghiViecBHXHEntity.NgayCT = txtNgayChungTu.DateTime;
-            DataTable data = nghiViecBHXHEntity.DSNghiViec();
+            DataTable data = nghiViecBHXHEntity.NghiViec();
             if(data!=null && data.Rows.Count>0)
             {
                 them = false;
@@ -80,6 +80,10 @@ namespace TiepNhan.GUI
             rpt.xrlblTenMe.Text = txtTenMe.Text;
             rpt.xrlblSoCT.Text = txtMaCT.Text;
             rpt.xrtxtSoPhieu.Text = "Số: "+txtSoPhieu.Text + "/ KCB";
+            rpt.xrlblSoNgayNghi.Text = txtSoNgayNghi.Text;
+            rpt.xrlblTuNgay.Text = txtTuNgay.DateTime.ToString("dd/MM/yyyy");
+            rpt.xrlblDenNgay.Text = txtDenNgay.DateTime.ToString("dd/MM/yyyy");
+            rpt.xrlblDonVi.Text =txtMaDonVi.Text +" "+ txtTenDonVi.Text;
             rpt.CreateDocument();
             rpt.ShowPreviewDialog();
         }
@@ -110,6 +114,7 @@ namespace TiepNhan.GUI
             nghiViecBHXHEntity.SoNgay = Utils.ToInt(txtSoNgayNghi.Text);
             nghiViecBHXHEntity.NgayCT = txtNgayChungTu.DateTime;
             nghiViecBHXHEntity.NguoiDaiDien = txtNguoiDaiDien.Text;
+            nghiViecBHXHEntity.MaBenh = Utils.ToString(lookUpBenh.EditValue);
             string err = "";
             if(!nghiViecBHXHEntity.SpCapNhatMaBenh(ref err))
             {
@@ -122,7 +127,9 @@ namespace TiepNhan.GUI
             if(!nghiViecBHXHEntity.SpNghiViec(ref err,action))
             {
                 XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+            them = false;
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

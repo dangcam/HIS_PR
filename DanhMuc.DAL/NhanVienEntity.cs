@@ -81,6 +81,7 @@ namespace DanhMuc.DAL
             get;
             set;
         }
+        public string MaCC { get; set; }
         public DataTable DSChucVu ()
         {
             return db.ExcuteQuery ("Select * From ChucVu",
@@ -126,39 +127,41 @@ namespace DanhMuc.DAL
         }
         public bool ThemNhanVien (ref string err)
         {
-            return db.MyExecuteNonQuery ("SpThemNhanVien",
+            return db.MyExecuteNonQuery("SpThemNhanVien",
                 CommandType.StoredProcedure, ref err,
-                new SqlParameter ("@Ma_NV", MaNV),
-                new SqlParameter ("@Ten_NV", TenNV),
-                new SqlParameter ("@GioiTinh", GioiTinh),
-                new SqlParameter ("@NamSinh", NamSinh),
-                new SqlParameter ("@MaKhoa", MaKhoa),
-                new SqlParameter ("@Ma_CV", MaCV),
-                new SqlParameter ("@HocHamHocVi", HocHamHocVi),
-                new SqlParameter ("@ChuyenMon", ChuyenMon),
-                new SqlParameter ("@NgayVao", NgayVao),
-                new SqlParameter ("@TinhTrang", TinhTrang),
-                new SqlParameter ("@Ma_BS", MaBS),
-                new SqlParameter ("@MatKhau", MatKhau),
-                new SqlParameter ("@CoSoKCB", CoSoKCB));
+                new SqlParameter("@Ma_NV", MaNV),
+                new SqlParameter("@Ten_NV", TenNV),
+                new SqlParameter("@GioiTinh", GioiTinh),
+                new SqlParameter("@NamSinh", NamSinh),
+                new SqlParameter("@MaKhoa", MaKhoa),
+                new SqlParameter("@Ma_CV", MaCV),
+                new SqlParameter("@HocHamHocVi", HocHamHocVi),
+                new SqlParameter("@ChuyenMon", ChuyenMon),
+                new SqlParameter("@NgayVao", NgayVao),
+                new SqlParameter("@TinhTrang", TinhTrang),
+                new SqlParameter("@Ma_BS", MaBS),
+                new SqlParameter("@MatKhau", MatKhau),
+                new SqlParameter("@CoSoKCB", CoSoKCB),
+                new SqlParameter("@MaCC", MaCC));
         }
         public bool SuaNhanVien (ref string err)
         {
-            return db.MyExecuteNonQuery ("SpSuaNhanVien",
+            return db.MyExecuteNonQuery("SpSuaNhanVien",
                 CommandType.StoredProcedure, ref err,
-                new SqlParameter ("@Ma_NV", MaNV),
-                new SqlParameter ("@Ten_NV", TenNV),
-                new SqlParameter ("@GioiTinh", GioiTinh),
-                new SqlParameter ("@NamSinh", NamSinh),
-                new SqlParameter ("@MaKhoa", MaKhoa),
-                new SqlParameter ("@Ma_CV", MaCV),
-                new SqlParameter ("@HocHamHocVi", HocHamHocVi),
-                new SqlParameter ("@ChuyenMon", ChuyenMon),
-                new SqlParameter ("@NgayVao", NgayVao),
-                new SqlParameter ("@TinhTrang", TinhTrang),
-                new SqlParameter ("@Ma_BS", MaBS),
-                new SqlParameter ("@MatKhau", MatKhau),
-                new SqlParameter ("@CoSoKCB", CoSoKCB));
+                new SqlParameter("@Ma_NV", MaNV),
+                new SqlParameter("@Ten_NV", TenNV),
+                new SqlParameter("@GioiTinh", GioiTinh),
+                new SqlParameter("@NamSinh", NamSinh),
+                new SqlParameter("@MaKhoa", MaKhoa),
+                new SqlParameter("@Ma_CV", MaCV),
+                new SqlParameter("@HocHamHocVi", HocHamHocVi),
+                new SqlParameter("@ChuyenMon", ChuyenMon),
+                new SqlParameter("@NgayVao", NgayVao),
+                new SqlParameter("@TinhTrang", TinhTrang),
+                new SqlParameter("@Ma_BS", MaBS),
+                new SqlParameter("@MatKhau", MatKhau),
+                new SqlParameter("@CoSoKCB", CoSoKCB),
+                new SqlParameter("@MaCC", MaCC));
         }
         public bool XoaNhanVien (ref string err)
         {

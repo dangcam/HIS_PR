@@ -700,6 +700,9 @@ namespace TiepNhan.GUI
                     MessageBox.Show(err);
                     return;
                 }
+                Utils.ThemHoatDong("DELETE | " + txtMaBN.Text + " | " + txtTheBHYT.Text + " | " + 
+                    txtHoTen.Text + " | " + dateNgayVao.DateTime.ToString("dd/MM/yyyy") + " | " + 
+                    dateNgayRa.DateTime.ToString("dd/MM/yyyy"));
                 thanhtoan.MaLK = null;
             }
         }
