@@ -381,7 +381,7 @@
             // 
             this.xrTableCell2.Name = "xrTableCell2";
             this.xrTableCell2.Text = "Mã hiệu";
-            this.xrTableCell2.Weight = 1D;
+            this.xrTableCell2.Weight = 0.8D;
             // 
             // xrTableCell3
             // 
@@ -393,19 +393,19 @@
             // 
             this.xrTableCell4.Name = "xrTableCell4";
             this.xrTableCell4.Text = "Đơn vị tính";
-            this.xrTableCell4.Weight = 0.99999999999999989D;
+            this.xrTableCell4.Weight = 1D;
             // 
             // xrTableCell5
             // 
             this.xrTableCell5.Name = "xrTableCell5";
             this.xrTableCell5.Text = "Số lượng";
-            this.xrTableCell5.Weight = 0.7D;
+            this.xrTableCell5.Weight = 0.6D;
             // 
             // xrTableCell6
             // 
             this.xrTableCell6.Name = "xrTableCell6";
             this.xrTableCell6.Text = "Đơn giá";
-            this.xrTableCell6.Weight = 0.79999999999999971D;
+            this.xrTableCell6.Weight = 0.99999999999999989D;
             // 
             // xrTableCell7
             // 
@@ -415,7 +415,7 @@
             this.xrTableCell7.Name = "xrTableCell7";
             this.xrTableCell7.StylePriority.UseBorders = false;
             this.xrTableCell7.Text = "Thành tiền";
-            this.xrTableCell7.Weight = 0.96000000000000008D;
+            this.xrTableCell7.Weight = 1.06D;
             // 
             // xrTableRow2
             // 
@@ -440,7 +440,7 @@
             // 
             this.xrTableCell9.Name = "xrTableCell9";
             this.xrTableCell9.Text = "B";
-            this.xrTableCell9.Weight = 1D;
+            this.xrTableCell9.Weight = 0.8D;
             // 
             // xrTableCell10
             // 
@@ -452,25 +452,25 @@
             // 
             this.xrTableCell11.Name = "xrTableCell11";
             this.xrTableCell11.Text = "D";
-            this.xrTableCell11.Weight = 0.99999999999999989D;
+            this.xrTableCell11.Weight = 1D;
             // 
             // xrTableCell12
             // 
             this.xrTableCell12.Name = "xrTableCell12";
             this.xrTableCell12.Text = "1";
-            this.xrTableCell12.Weight = 0.7D;
+            this.xrTableCell12.Weight = 0.59999999999999987D;
             // 
             // xrTableCell13
             // 
             this.xrTableCell13.Name = "xrTableCell13";
             this.xrTableCell13.Text = "2";
-            this.xrTableCell13.Weight = 0.79999999999999971D;
+            this.xrTableCell13.Weight = 0.99999999999999967D;
             // 
             // xrTableCell14
             // 
             this.xrTableCell14.Name = "xrTableCell14";
             this.xrTableCell14.Text = "3 = 1x2";
-            this.xrTableCell14.Weight = 0.96000000000000008D;
+            this.xrTableCell14.Weight = 1.06D;
             // 
             // lblNhapKho
             // 

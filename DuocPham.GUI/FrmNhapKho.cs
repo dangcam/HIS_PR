@@ -548,7 +548,7 @@ namespace DuocPham.GUI
                 cell.Text = drview["MaVatTu"].ToString();
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-                cell.WidthF = 100;
+                cell.WidthF = 80;
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();
@@ -570,14 +570,14 @@ namespace DuocPham.GUI
                 cell.Text = Utils.ToString (drview["SoLuongQuyDoi"].ToString ());
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-                cell.WidthF = 70;
+                cell.WidthF = 60;
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();
                 cell.Text = Utils.ToString (drview["DonGiaBV"].ToString (),null, "0,0.00");
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-                cell.WidthF = 80;
+                cell.WidthF = 100;
                 row.Cells.Add (cell);
 
                 this.thanhTien += Utils.ToDecimal (drview["ThanhTien"].ToString ());
@@ -585,7 +585,7 @@ namespace DuocPham.GUI
                 cell.Text = Utils.ToString (drview["ThanhTien"].ToString (),null, "0,0");
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-                cell.WidthF = 96;
+                cell.WidthF = 106;
                 row.Cells.Add (cell);
 
                 rpt.xrTable.Rows.Add (row);
@@ -596,14 +596,14 @@ namespace DuocPham.GUI
             cell.Text = "Tổng cộng";
             cell.Font = fontB;
             cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            cell.WidthF = 670;
+            cell.WidthF = 660;
             row.Cells.Add (cell);
 
             cell = new XRTableCell ();
             cell.Text = Utils.ToString (this.thanhTien);
             cell.Font = fontB;
             cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            cell.WidthF = 96;
+            cell.WidthF = 106;
             row.Cells.Add (cell);
             rpt.xrTable.Rows.Add (row);
 
