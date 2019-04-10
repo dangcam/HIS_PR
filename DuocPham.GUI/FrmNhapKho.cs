@@ -21,6 +21,7 @@ namespace DuocPham.GUI
         DataView data;
         DataTable dtPhieu;
         DataTable dtVatTu;
+        DataTable nvKhoaDuoc;
         Dictionary<string, bool> dsVatTu = new Dictionary<string, bool> ();
         SortedSet<string> dsLoaiVatTu = new SortedSet<string> ();
         decimal thanhTien = 0;
@@ -41,7 +42,7 @@ namespace DuocPham.GUI
         private void FrmNhapKho_Load (object sender, EventArgs e)
         {
             dtVatTu = nhapkho.DSVatTu();
-
+            nvKhoaDuoc = nhapkho.DSNVKhoaDuoc();
             lookUpKhoNhap.Properties.DataSource = nhapkho.DSKho ();
             lookUpKhoNhap.Properties.DisplayMember = "TenKhoa";
             lookUpKhoNhap.Properties.ValueMember = "MaKhoa";
@@ -527,7 +528,9 @@ namespace DuocPham.GUI
             rpt.lblNgayIn.Text = "Ngày " + dateNgayNhap.DateTime.Day + " tháng "
                 + dateNgayNhap.DateTime.Month + " năm " + dateNgayNhap.DateTime.Year;
             //"Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
-
+            rpt.xrlblTRKhoaDuoc.Text = Utils.ToString(nvKhoaDuoc.Rows[0]["HoTen"]);
+            rpt.xrlblThuKho.Text = Utils.ToString(nvKhoaDuoc.Rows[1]["HoTen"]);
+            rpt.xrlblKeToanDuoc.Text = Utils.ToString(nvKhoaDuoc.Rows[3]["HoTen"]);
             this.thanhTien = 0;
             dsLoaiVatTu.Clear ();
             XRTableRow row;
@@ -814,7 +817,9 @@ namespace DuocPham.GUI
             rpt.xrlblTenCty.Text ="TÊN CTY: "+ lookUpNhaCungCap.Properties.GetDisplayValueByKeyValue(lookUpNhaCungCap.EditValue).ToString().ToUpper();
             rpt.xrlblNgayThang.Text = "Ngày " + dateNgayNhap.DateTime.Day + " tháng " + dateNgayNhap.DateTime.Month + " năm " + dateNgayNhap.DateTime.Year;
             rpt.xrlblSoHD.Text = txtSoHoaDon.Text;
-
+            rpt.xrlblTRKhoaDuoc.Text = Utils.ToString( nvKhoaDuoc.Rows[0]["HoTen"]);
+            rpt.xrlblThuKho.Text = Utils.ToString(nvKhoaDuoc.Rows[1]["HoTen"]);
+            rpt.xrlblKeToanDuoc.Text = Utils.ToString(nvKhoaDuoc.Rows[3]["HoTen"]);
             rpt.DataSource = dtPhieu;
             rpt.CreateDocument();
             rpt.ShowPreviewDialog();

@@ -70,6 +70,11 @@ namespace DuocPham.DAL
             return db.ExcuteQuery ("Select Ma_NV,Ten_NV From NhanVien Where TinhTrang = 1",
                 CommandType.Text, null);
         }
+        public DataTable DSNVKhoaDuoc()
+        {
+            return db.ExcuteQuery("Select * From NVKhoaDuoc",
+                CommandType.Text, null);
+        }
         public DataTable DSNhaCungCap ()
         {
             return db.ExcuteQuery ("Select ID,Ten,DiaChi From NhaCungCap Where TinhTrang = 1",

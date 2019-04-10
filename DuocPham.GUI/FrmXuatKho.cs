@@ -26,6 +26,7 @@ namespace DuocPham.GUI
         DataRow dr;
         DataView dtPhieu;
         DataTable dataPhieu;
+        DataTable nvKhoaDuoc;
         SortedSet<string> dsLoaiVatTu = new SortedSet<string> ();
         decimal thanhTien = 0;
         CultureInfo elGR = CultureInfo.CreateSpecificCulture ("el-GR");
@@ -49,7 +50,7 @@ namespace DuocPham.GUI
         {
 
             dataNhaCC = xuatkho.DSTraNhaCungCap();
-
+            nvKhoaDuoc = xuatkho.DSNVKhoaDuoc();
             dataKhoLe = xuatkho.DSKhoNhan();
 
             lookUpKhoXuat.Properties.DataSource = xuatkho.DSKhoXuat();
@@ -417,7 +418,9 @@ namespace DuocPham.GUI
             rpt.lblNoiDungXuat.Text = txtNoiDung.Text;
             rpt.lblKhoXuat.Text = lookUpKhoXuat.Properties.GetDisplayValueByKeyValue (lookUpKhoXuat.EditValue).ToString ();
             rpt.lblNgayIn.Text = rpt.lblNgayXuat.Text;// "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
-
+            rpt.xrlblTRKhoaDuoc.Text = Utils.ToString(nvKhoaDuoc.Rows[0]["HoTen"]);
+            rpt.xrlblThuKho.Text = Utils.ToString(nvKhoaDuoc.Rows[1]["HoTen"]);
+            rpt.xrlblKeToanDuoc.Text = Utils.ToString(nvKhoaDuoc.Rows[3]["HoTen"]);
             this.thanhTien = 0;
             dsLoaiVatTu.Clear ();
             XRTableRow row;

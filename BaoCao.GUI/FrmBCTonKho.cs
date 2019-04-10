@@ -70,7 +70,7 @@ namespace BaoCao.GUI
                     row = new XRTableRow();
 
                     cell = new XRTableCell();
-                    cell.Text = dr["Id"]+". "+ dr["HoTen"];
+                    cell.Text = dr["Id"]+". Đ/c "+ dr["HoTen"];
                     cell.WidthF = 200;
                     row.Cells.Add(cell);
                     cell = new XRTableCell();
@@ -86,7 +86,7 @@ namespace BaoCao.GUI
                     cell.WidthF =  columnWitdh;
                     rpt.xrTableNV.Rows.FirstRow.Cells.Add(cell);
                     cell = new XRTableCell();
-                    cell.Text = dr["HoTen"].ToString().Replace("Đ/c ","");
+                    cell.Text = dr["HoTen"].ToString();
                     cell.WidthF =  columnWitdh;
                     rpt.xrTableNV.Rows.LastRow.Cells.Add(cell);
                    

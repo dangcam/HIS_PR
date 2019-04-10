@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -753,11 +754,14 @@ namespace Core.DAL
                     {
                         if (response.IsSuccessStatusCode)
                         {
-                            using (HttpContent content = response.Content)
-                            {
-                                thongTinLichSu = await content.ReadAsAsync<KQLichSuKCB>();
-                                return thongTinLichSu;
-                            }
+                            //using (HttpContent content = response.Content)
+                            //{
+                            //    thongTinLichSu = await content.ReadAsAsync<KQLichSuKCB>();
+                            //    return thongTinLichSu;
+                            //}
+                            string result = response.Content.ReadAsStringAsync().Result;
+                            thongTinLichSu = (KQLichSuKCB)JsonConvert.DeserializeObject<KQLichSuKCB>(result);
+                            return thongTinLichSu;
                         }
                         else
                         {
