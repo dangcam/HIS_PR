@@ -1904,16 +1904,16 @@ namespace TiepNhan.GUI
                         // hiện thông báo, lịch sử
                         lichSuKCB.ThongTin = kQNhanLichSu;
                         lichSuKCB.ShowDialog();
-                        txtTheBHYT.Text = kQNhanLichSu.maTheMoi.Length > 0 ? kQNhanLichSu.maTheMoi : kQNhanLichSu.maThe;
+                        txtTheBHYT.Text = kQNhanLichSu.maThe;// kQNhanLichSu.maTheMoi.Length > 0 ? kQNhanLichSu.maTheMoi : kQNhanLichSu.maThe;
                         txtHoTen.Text = kQNhanLichSu.hoTen;
                         txtNgaySinh.Text = kQNhanLichSu.ngaySinh;
                         cbGioiTinh.SelectedIndex = kQNhanLichSu.gioiTinh == "Nam" ? 0 : 1;
                         txtDiaChi.Text = kQNhanLichSu.diaChi;
-                        txtMaCoSoDKKCB.Text = Utils.StringToString(kQNhanLichSu.maDKBDMoi, "").Length > 0 ? kQNhanLichSu.maDKBDMoi : kQNhanLichSu.maDKBD;
+                        txtMaCoSoDKKCB.Text = kQNhanLichSu.maDKBD;// Utils.StringToString(kQNhanLichSu.maDKBDMoi, "").Length > 0 ? kQNhanLichSu.maDKBDMoi : kQNhanLichSu.maDKBD;
                         txtDu5Nam.Text = kQNhanLichSu.ngayDu5Nam;
                         cbKhuVuc.SelectedItem = kQNhanLichSu.maKV;
-                        txtTheTu.Text = kQNhanLichSu.gtTheTuMoi.Length > 0 ? kQNhanLichSu.gtTheTuMoi : kQNhanLichSu.gtTheTu;
-                        txtTheDen.Text = kQNhanLichSu.gtTheDenMoi.Length > 0 ? kQNhanLichSu.gtTheDenMoi : kQNhanLichSu.gtTheDen;
+                        txtTheTu.Text = kQNhanLichSu.gtTheTu;// kQNhanLichSu.gtTheTuMoi.Length > 0 ? kQNhanLichSu.gtTheTuMoi : kQNhanLichSu.gtTheTu;
+                        txtTheDen.Text = kQNhanLichSu.gtTheDen;// kQNhanLichSu.gtTheDenMoi.Length > 0 ? kQNhanLichSu.gtTheDenMoi : kQNhanLichSu.gtTheDen;
                     }
                 }
             }
