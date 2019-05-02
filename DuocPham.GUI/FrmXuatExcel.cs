@@ -13,10 +13,21 @@ namespace DuocPham.GUI
     {
         XuatKhoEntity xuatkho;
         Dictionary<string, string> maVatTu = new Dictionary<string, string>();
+        Dictionary<string, string> dTPNNo = new Dictionary<string, string>();
         public FrmXuatExcel()
         {
             InitializeComponent();
             xuatkho = new XuatKhoEntity();
+            dTPNNo.Add("1", "BVDK");
+            dTPNNo.Add("2", "VTBV");
+            dTPNNo.Add("3", "GT");
+            dTPNNo.Add("4", "CD");
+            dTPNNo.Add("5", "HC");
+            dTPNNo.Add("6", "NS");
+            dTPNNo.Add("7", "SR");
+            dTPNNo.Add("8", "CKR");
+            dTPNNo.Add("9", "HC");
+            dTPNNo.Add("CB", "XT");
         }
 
         private void FrmXuatExcel_Load(object sender, EventArgs e)
@@ -177,7 +188,7 @@ namespace DuocPham.GUI
                 arr[r, 14] = lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue);
                 // lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();// dr[""];//DiaChi
                 arr[r, 15] = dateDenNgay.DateTime.Month;// tháng
-                arr[r, 16] = "BVPR";// ngoại trú
+                arr[r, 16] = dTPNNo[Utils.ToString(dr["LoaiVatTu"])];// ngoại trú
 
             }
             //Thiết lập vùng điền dữ liệu
