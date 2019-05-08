@@ -67,7 +67,8 @@ namespace DuocPham.GUI
         }
         private void btnPhanTich_Click(object sender, EventArgs e)
         {
-            splashScreenManager.ShowWaitForm();
+            if (!splashScreenManager.IsSplashFormVisible)
+                splashScreenManager.ShowWaitForm();
             //
             string[] database = System.IO.File.ReadAllLines("InputFPGrowth.txt");
             ItemsetCollection db = new ItemsetCollection();
@@ -111,7 +112,8 @@ namespace DuocPham.GUI
                 dataThuoc.Rows.Add(ToString(rule));
             }
             gridControl.DataSource = dataThuoc;
-            splashScreenManager.CloseWaitForm();
+            if (splashScreenManager.IsSplashFormVisible)
+                splashScreenManager.CloseWaitForm();
         }
         private string ToString(AssociationRule rule)
         {

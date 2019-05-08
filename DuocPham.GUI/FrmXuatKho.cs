@@ -35,11 +35,22 @@ namespace DuocPham.GUI
         Dictionary<string, string> maVatTu = new Dictionary<string, string>();
         DataTable dataKhoLe, dataNhaCC;
         Dictionary<string, bool> dsVatTu = new Dictionary<string, bool>();
+        Dictionary<string, string> dTPNNo = new Dictionary<string, string>();
         public FrmXuatKho ()
         {
             InitializeComponent ();
             xuatkho = new XuatKhoEntity ();
             maVatTu = xuatkho.DSMaVatTu().AsEnumerable().ToDictionary(row => row["MaBV"].ToString(), row => row["MaCu"].ToString());
+            dTPNNo.Add("1", "BVPR");
+            dTPNNo.Add("2", "VTBV");
+            dTPNNo.Add("3", "GT");
+            dTPNNo.Add("4", "CD");
+            dTPNNo.Add("5", "HC");
+            dTPNNo.Add("6", "NS");
+            dTPNNo.Add("7", "SR");
+            dTPNNo.Add("8", "CKR");
+            dTPNNo.Add("9", "HC");
+            dTPNNo.Add("CB", "XT");
         }
         protected override void OnLoad (EventArgs e)
         {
@@ -798,7 +809,8 @@ namespace DuocPham.GUI
                     arr[dem, 13] = drow["NguoiNhan"];//((drow["KhoNhan"].Equals("K19_13")) ? "LÊ THỊ THẢO LY" : "NGUYỄN TIẾN DŨNG");//drow["NguoiNhan"];//KhachHang
                     arr[dem, 14] = drow["DiaChi"];//lookUpKhoNhan.Properties.GetDisplayValueByKeyValue(drow["KhoNhan"]);// lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();// dr[""];//DiaChi
                     arr[dem, 15] = Utils.ToDateTime(drow["NgayXuat"].ToString()).Month;//
-                    arr[dem, 16] = drow["KhoNhan"].ToString();//
+                    //   arr[dem, 16] = drow["KhoNhan"].ToString();//
+                    arr[dem, 16] = dTPNNo[Utils.ToString(dr["LoaiVatTu"])];
                     //TenKH
                     dem++;
                 }

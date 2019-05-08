@@ -18,7 +18,7 @@ namespace DuocPham.GUI
         {
             InitializeComponent();
             xuatkho = new XuatKhoEntity();
-            dTPNNo.Add("1", "BVDK");
+            dTPNNo.Add("1", "BVPR");
             dTPNNo.Add("2", "VTBV");
             dTPNNo.Add("3", "GT");
             dTPNNo.Add("4", "CD");
