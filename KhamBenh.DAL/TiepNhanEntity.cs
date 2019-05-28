@@ -275,6 +275,11 @@ namespace KhamBenh.DAL
                new SqlParameter("@TinhTrang", TinhTrang),
                new SqlParameter("@CoThe", CoThe));
         }
+        public DataTable LayLichSuNamVien(string maThe)
+        {
+            return db.ExcuteQuery("Select * From ThongTinBNChiTiet Where MaThe = '" + maThe + "' And NgayThanhToan is null",
+               CommandType.Text, null);
+        }
         public void LayThongTinCoThe(string maThe, string ngayVao)
         {
             DataTable data = db.ExcuteQuery("Select * From LayThongTinCoThe('" + maThe + "','" + ngayVao + "')",

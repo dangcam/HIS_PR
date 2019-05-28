@@ -14,6 +14,7 @@ namespace TiepNhan.GUI
     public partial class FrmChonKhoa : RibbonForm
     {
         public string MaKhoa;
+        public int MaLoaiKCB;
         DataTable dataKhoa;
         public FrmChonKhoa(DataTable data)
         {
@@ -36,6 +37,12 @@ namespace TiepNhan.GUI
         private void btnOK_Click(object sender, EventArgs e)
         {
             MaKhoa = lookUpKhoaBan.EditValue.ToString();
+            if (MaKhoa == "K01_13")
+            {
+                MaLoaiKCB = 1;
+            }
+            else
+                MaLoaiKCB = 3;
             this.DialogResult = DialogResult.OK;
         }
 

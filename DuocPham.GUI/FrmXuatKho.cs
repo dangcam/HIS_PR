@@ -36,6 +36,7 @@ namespace DuocPham.GUI
         DataTable dataKhoLe, dataNhaCC;
         Dictionary<string, bool> dsVatTu = new Dictionary<string, bool>();
         Dictionary<string, string> dTPNNo = new Dictionary<string, string>();
+        string[] listKho = new string[] { "NT1","NT2","NT3","NT4","NT5","NT6", "NT8","NT9","MH","NT","TS","PRD","NM","XT","CKR","XQ"}; 
         public FrmXuatKho ()
         {
             InitializeComponent ();
@@ -50,6 +51,7 @@ namespace DuocPham.GUI
             dTPNNo.Add("7", "SR");
             dTPNNo.Add("8", "CKR");
             dTPNNo.Add("9", "HC");
+            dTPNNo.Add("B", "XQ");
             dTPNNo.Add("CB", "XT");
         }
         protected override void OnLoad (EventArgs e)
@@ -810,7 +812,14 @@ namespace DuocPham.GUI
                     arr[dem, 14] = drow["DiaChi"];//lookUpKhoNhan.Properties.GetDisplayValueByKeyValue(drow["KhoNhan"]);// lookUpKhoa.Properties.GetDisplayValueByKeyValue(lookUpKhoa.EditValue).ToString();// dr[""];//DiaChi
                     arr[dem, 15] = Utils.ToDateTime(drow["NgayXuat"].ToString()).Month;//
                     //   arr[dem, 16] = drow["KhoNhan"].ToString();//
-                    arr[dem, 16] = dTPNNo[Utils.ToString(dr["LoaiVatTu"])];
+                    if (!listKho.Contains(Utils.ToString(drow["KhoNhan"])))
+                    {
+                        arr[dem, 16] = dTPNNo[Utils.ToString(dr["LoaiVatTu"])];
+                    }
+                    else
+                    {
+                        arr[dem, 16] = drow["KhoNhan"].ToString();
+                    }
                     //TenKH
                     dem++;
                 }

@@ -187,6 +187,9 @@ namespace TiepNhan.GUI
                 cbGioiTinh.SelectedIndex = Utils.ToInt(dr["GioiTinh"]);
                 txtDiaChi.Text = dr["DiaChi"].ToString();
                 maBenh = dr["MaBenh"].ToString();
+                //this.lookUpMaBenhKhac.EditValueChanged -= new System.EventHandler(this.lookUpMaBenhKhac_EditValueChanged);
+                //lookUpMaBenh.EditValue = maBenh;
+                //this.lookUpMaBenhKhac.EditValueChanged += new System.EventHandler(this.lookUpMaBenhKhac_EditValueChanged);
                 maBenhKhac = dr["MaBenhKhac"].ToString();
                 txtMaBenhKhac.Text = maBenhKhac;
                 txtTenBenh.Text = dr["TenBenh"].ToString();

@@ -201,7 +201,7 @@ namespace TiepNhan.GUI
                 {
                     string err = "";
                     khambenh.MaLK = dr["MaLK"].ToString();
-                    khambenh.MaLoaiKCB = 3;
+                    khambenh.MaLoaiKCB = frm.MaLoaiKCB;
                     khambenh.MaKhoa = frm.MaKhoa;
                     if (!khambenh.SpNhapVien(ref err))
                     {

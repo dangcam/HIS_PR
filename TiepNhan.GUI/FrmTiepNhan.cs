@@ -622,18 +622,18 @@ namespace TiepNhan.GUI
                     this.txtTheBHYT.Leave += new System.EventHandler(this.txtTheBHYT_Leave);
                     return;
                 }
-                LayThongTinBenhNhan();
+                LayThongTinBenhNhan(themMoi);
             }
             this.txtTheBHYT.Leave += new System.EventHandler(this.txtTheBHYT_Leave);
         }
 
         private void txtTheBHYT_EditValueChanged(object sender, EventArgs e)
         {
-                LayThongTinBenhNhan();
+                LayThongTinBenhNhan(true);
         }
-        private void LayThongTinBenhNhan()
+        private void LayThongTinBenhNhan(bool KiemTra = true)
         {
-            if (txtTheBHYT.Text.Length == 15 && themMoi)
+            if (txtTheBHYT.Text.Length == 15 && KiemTra)
             {
                 // kiểm tra thông tin thẻ (3 ký tự đầu)
                 if (CheckMaThe(txtTheBHYT.Text) == false)

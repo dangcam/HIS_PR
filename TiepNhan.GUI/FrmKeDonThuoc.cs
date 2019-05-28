@@ -757,6 +757,7 @@ namespace TiepNhan.GUI
                     {
                         XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         listVatTu[dr["MaVatTu"].ToString()] = 0;
+                        return;
                     }
                     else
                         listVatTu.Remove(dr["MaVatTu"].ToString());
@@ -808,6 +809,7 @@ namespace TiepNhan.GUI
                     {
                         XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         listThuoc[dr["MaVatTu"].ToString()] = 0;
+                        return;
                     }
                     else
                         listThuoc.Remove(dr["MaVatTu"].ToString());
