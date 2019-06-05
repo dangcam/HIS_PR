@@ -402,6 +402,8 @@ namespace TiepNhan.GUI
                         {
                             // hiện thông báo, lịch sử
                             //thongTinLichSu.ngaySinh = thongtin.NgaySinh;
+                            tiepnhan.MaBN = txtMaBN.Text;
+                            kQNhanLichSu.LichSuPhanMem = tiepnhan.DSLichSuPhanMem(txtTheBHYT.Text);
                             lichSuKCB.ThongTin = kQNhanLichSu;
                             lichSuKCB.ShowDialog();
                             txtTheBHYT.Text = kQNhanLichSu.maThe;// Utils.StringToString(kQNhanLichSu.maTheMoi, "").Length > 0 ? kQNhanLichSu.maTheMoi : kQNhanLichSu.maThe;

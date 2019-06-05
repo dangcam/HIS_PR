@@ -256,6 +256,7 @@ namespace TiepNhan.GUI
                     {
                         // hiện thông báo, lịch sử
                         //thongTinLichSu.ngaySinh = thongtin.NgaySinh;
+                        kQNhanLichSu.LichSuPhanMem = khambenh.DSLichSuPhanMem(Utils.ToString(dr["MaThe"]));
                         frmLichSuKCB.ThongTin = kQNhanLichSu;
                         frmLichSuKCB.ShowDialog();
                     }

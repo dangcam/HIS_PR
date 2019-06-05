@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <VPN>
-  <LINK>
-  \\192.168.1.40\Soft\HIS_PR
-  </LINK>
-  <VER>1</VER>
+  <Server>192.168.1.40</Server>
+  <User>administrator</User>
+  <Pass>bvdk</Pass>
+  <Folder>Soft\HIS_PR</Folder>
+  <Ver>1</Ver>
 </VPN>
 

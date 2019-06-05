@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.lblTienTrinh = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -56,6 +57,8 @@
             this.ControlBox = false;
             this.Controls.Add(this.lblTienTrinh);
             this.Controls.Add(this.progressBar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cập nhật phần mềm HIS";

@@ -278,6 +278,17 @@ namespace KhamBenh.DAL
             //+ "AND '"+NgaySinh+"' = NgaySinh AND GioiTinh = " + GioiTinh + ")",
                 CommandType.Text, null);
         }
+        public DataTable DSLichSuPhanMem(string MaThe)
+        {
+            return db.ExcuteQuery("select MaLK as maHoSo,MaCoSoKCB as maCSKCB,"
+            + "NgayVao as tuNgay, NgayRa as denNgay, TenBenh as tenBenh, "
+            + "TinhTrangRaVien as tinhTrang, KetQuaDieuTri as kqDieuTri "
+            + "from ThongTinBNChiTiet "
+            + "where MaThe = '" + MaThe + "' and YEAR(NgayVao) = " + DateTime.Now.Year,
+            //+ "or(dbo.ChangeVietnameseWord(N'"+HoTen+"') = dbo.ChangeVietnameseWord(HoTen) "
+            //+ "AND '"+NgaySinh+"' = NgaySinh AND GioiTinh = "+GioiTinh+")",
+                CommandType.Text, null);
+        }
         public bool SpChuyenPhong(ref string err)
         {
             return db.MyExecuteNonQuery("SpChuyenPhong",

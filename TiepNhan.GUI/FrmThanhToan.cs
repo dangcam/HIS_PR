@@ -1905,6 +1905,7 @@ namespace TiepNhan.GUI
                     else
                     {
                         // hiện thông báo, lịch sử
+                        kQNhanLichSu.LichSuPhanMem = thanhtoan.DSLichSuPhanMem(txtMaBN.Text);
                         lichSuKCB.ThongTin = kQNhanLichSu;
                         lichSuKCB.ShowDialog();
                         txtTheBHYT.Text = kQNhanLichSu.maThe;// kQNhanLichSu.maTheMoi.Length > 0 ? kQNhanLichSu.maTheMoi : kQNhanLichSu.maThe;

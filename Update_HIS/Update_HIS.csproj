@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Large-Home-Drugstore.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,6 +54,7 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="NetworkConnection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmMain.resx">
@@ -79,9 +83,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Large-Home-Drugstore.ico" />
     <Content Include="VPN.xml">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(ProjectDir)VPN.xml" "$(ProjectDir)bin\$(ConfigurationName)"
+copy "$(ProjectDir)VPN.xml" "$(SolutionDir)HIS_PR\bin\$(ConfigurationName)"
+copy "$(ProjectDir)bin\$(ConfigurationName)\Update_HIS.exe" "$(SolutionDir)HIS_PR\bin\$(ConfigurationName)"
+copy "$(ProjectDir)bin\$(ConfigurationName)\Update_HIS.pdb" "$(SolutionDir)HIS_PR\bin\$(ConfigurationName)"
+copy "$(ProjectDir)bin\$(ConfigurationName)\Update_HIS.exe.config" "$(SolutionDir)HIS_PR\bin\$(ConfigurationName)"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

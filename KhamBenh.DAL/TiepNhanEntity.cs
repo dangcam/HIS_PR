@@ -103,6 +103,15 @@ namespace KhamBenh.DAL
             //+ "AND '"+NgaySinh+"' = NgaySinh AND GioiTinh = "+GioiTinh+")",
                 CommandType.Text, null);
         }
+        public DataTable DSLichSuPhanMem(string MaThe)
+        {
+            return db.ExcuteQuery("select MaLK as maHoSo,MaCoSoKCB as maCSKCB,"
+            + "NgayVao as tuNgay, NgayRa as denNgay, TenBenh as tenBenh, "
+            + "TinhTrangRaVien as tinhTrang, KetQuaDieuTri as kqDieuTri "
+            + "from ThongTinBNChiTiet "
+            + "where MaThe = '" + MaThe + "' and YEAR(NgayVao) = "+DateTime.Now.Year,
+                CommandType.Text, null);
+        }
         public bool SpThongTinBN(ref string err, string Action)
         {
             return db.MyExecuteNonQuery("SpThongTinBN",

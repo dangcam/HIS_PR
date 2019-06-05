@@ -22,13 +22,15 @@ namespace TiepNhan.GUI
         {
             InitializeComponent();
             repositoryItemLookUpEdit.DataSource = dataCoSo;
-            repositoryItemLookUpEdit.DisplayMember = "Ten_CS";
-            repositoryItemLookUpEdit.ValueMember = "Ma_CS";
+            //repositoryItemLookUpEdit.DisplayMember = "Ten_CS";
+            //repositoryItemLookUpEdit.ValueMember = "Ma_CS";
+            repLookUpCSKCB.DataSource = dataCoSo;
         }
 
         private void FrmLichSuKCB_Load(object sender, EventArgs e)
         {
             gridControl.DataSource = null;
+            gridControlLocal.DataSource = null;
             lblHoTen.Text = ThongTin.hoTen;
             lblNamSinh.Text = ThongTin.ngaySinh;
             lblGioiTinh.Text = ThongTin.gioiTinh;
@@ -175,6 +177,7 @@ namespace TiepNhan.GUI
                 lblThongTin.Text = "Thông tin lịch sử khám chữa bệnh tại bệnh viện.";
                 gridControl.DataSource = ThongTin.LichSuPhanMem;
             }
+            gridControlLocal.DataSource = ThongTin.LichSuPhanMem;
         }
 
         private void gridView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
@@ -243,6 +246,14 @@ namespace TiepNhan.GUI
                 frmHoSo.BHYT = false;
                 frmHoSo.MaHoSo = maHoSo;
             }
+            frmHoSo.ShowDialog();
+        }
+
+        private void repbtnChiTietLocal_Click(object sender, EventArgs e)
+        {
+            string maHoSo = gridViewLocal.GetFocusedDataRow()["maHoSo"].ToString();
+            frmHoSo.BHYT = false;
+            frmHoSo.MaHoSo = maHoSo;
             frmHoSo.ShowDialog();
         }
     }
