@@ -317,22 +317,24 @@ namespace DanhMuc.GUI
                         vattu.QuyetDinh = dtRow[18].ToString ();
                         vattu.CongBo = dtRow[19].ToString ();
                         vattu.LoaiThuoc = dtRow[21].ToString ();
-                        vattu.LoaiThau = Utils.ToInt(dtRow[22]);
-                        vattu.NhomThau = dtRow[23].ToString();
-                        vattu.GoiThau = dtRow[24].ToString();
+                        vattu.LoaiThau = Utils.ToInt(dtRow[23]);
+                        vattu.NhomThau = dtRow[24].ToString();
+                        vattu.GoiThau = dtRow[22].ToString();
                         vattu.GiaBHYT = Utils.ToDecimal(dtRow[12]);
                         vattu.TinhTrang = true;
+                        vattu.KeDon = true;
 
                         if(!vattu.SpVatTu(ref err, "INSERT"))
                         {
-                            err = "";
-                            vattu.SpVatTu (ref err, "UPDATE");
+                            //err = "";
+                            //vattu.SpVatTu (ref err, "UPDATE");
+                            XtraMessageBox.Show(err);
                         }
 
-                        if (!string.IsNullOrEmpty (err))
-                        {
-                            XtraMessageBox.Show (err);
-                        }
+                        //if (!string.IsNullOrEmpty (err))
+                        //{
+                        //    XtraMessageBox.Show (err);
+                        //}
                     }
                     LoadData ();
                 }

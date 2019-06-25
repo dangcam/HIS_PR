@@ -65,9 +65,12 @@ namespace Update_HIS
                     this.Close();
                 }
             }
-            catch (Exception ex) { Console.WriteLine("{0}", ex.Message); }
-            ChayLai();
-            this.Close();
+            catch (Exception ex) {
+                Console.WriteLine("{0}", ex.Message);
+                ChayLai();
+                this.Close();
+            }
+           
         }
         private void LoadXML(string file)
         {
@@ -78,6 +81,7 @@ namespace Update_HIS
             this.server = xmlfile.SelectSingleNode("VPN/Server").InnerText.ToString();
             this.user = xmlfile.SelectSingleNode("VPN/User").InnerText.ToString();
             this.pass = xmlfile.SelectSingleNode("VPN/Pass").InnerText.ToString();
+
         }
         private void LoadXMLServer()
         {
@@ -127,7 +131,11 @@ namespace Update_HIS
                 // Use static Path methods to extract only the file name from the path.
                 fileName = System.IO.Path.GetFileName(s);
                 destFile = System.IO.Path.Combine(startupPath, fileName);
-                System.IO.File.Copy(s, destFile, true);
+                try
+                {
+                    System.IO.File.Copy(s, destFile, true);
+                }
+                catch { }
                 i++;
                 bw.ReportProgress((int)(100.0 / len * i));
             }
