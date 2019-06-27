@@ -170,7 +170,7 @@ namespace TiepNhan.GUI
             if (dr != null)
             {
                 RptDonThuoc rpt = new RptDonThuoc();
-                rpt.lblCoSo.Text = dr["MaCoSoKCB"].ToString();
+                //rpt.lblCoSo.Text = dr["MaCoSoKCB"].ToString();
                 rpt.xrlblSoHoSo.Text = "Số hồ sơ:" + dr["STTNgay"];
                 rpt.lblHoTen.Text = dr["HoTen"].ToString();
                 rpt.lblNamSinh.Text = dr["NgaySinh"].ToString();
@@ -221,14 +221,14 @@ namespace TiepNhan.GUI
             if (dr != null)
             {
                 RptDonThuocA4 rpt = new RptDonThuocA4();
-                rpt.lblCoSo.Text = dr["MaCoSoKCB"].ToString();
+                //rpt.lblCoSo.Text = dr["MaCoSoKCB"].ToString();
                 rpt.xrlblSoHoSo.Text = "Số hồ sơ:" + dr["STTNgay"];
                 rpt.lblHoTen.Text = dr["HoTen"].ToString();
                 rpt.lblNamSinh.Text = dr["NgaySinh"].ToString();
                 rpt.lblGioiTinh.Text = dr["GioiTinh"].ToString() == "0" ? "Nam" : "Nữ";
                 rpt.lblDiaChi.Text = dr["DiaChi"].ToString();
                 //
-                rpt.lblCoSo1.Text = dr["MaCoSoKCB"].ToString();
+                //rpt.lblCoSo1.Text = dr["MaCoSoKCB"].ToString();
                 rpt.xrlblSoHoSo1.Text = "Số hồ sơ:" + dr["STTNgay"];
                 rpt.lblHoTen1.Text = dr["HoTen"].ToString();
                 rpt.lblNamSinh1.Text = dr["NgaySinh"].ToString();

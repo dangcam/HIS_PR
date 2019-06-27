@@ -537,7 +537,6 @@
         public DevExpress.XtraReports.UI.XRLabel lblNamSinh;
         private DevExpress.XtraReports.UI.XRLabel xrLabel5;
         public DevExpress.XtraReports.UI.XRLabel lblHoTen;
-        public DevExpress.XtraReports.UI.XRLabel lblCoSo;
         private DevExpress.XtraReports.UI.XRLabel xrLabel3;
         private DevExpress.XtraReports.UI.XRLabel xrLabel4;
         private DevExpress.XtraReports.UI.XRTable xrTable1;
@@ -557,5 +556,6 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel14;
         private DevExpress.XtraReports.UI.XRLabel xrLabel15;
         public DevExpress.XtraReports.UI.XRLabel xrlblSoHoSo;
+        public DevExpress.XtraReports.UI.XRLabel lblCoSo;
     }
 }

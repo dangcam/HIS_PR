@@ -306,7 +306,7 @@ namespace TiepNhan.GUI
         private void InDon()
         {
             RptDonThuoc rpt = new RptDonThuoc();
-            rpt.lblCoSo.Text = this.TenCoSo.ToUpper();
+            //rpt.lblCoSo.Text = this.TenCoSo.ToUpper();
             rpt.lblHoTen.Text = this.HoTen;
             rpt.lblNamSinh.Text = this.NgaySinh;
             rpt.lblGioiTinh.Text = this.GioiTinh == "0" ? "Nam" : "Nữ";

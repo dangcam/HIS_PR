@@ -631,7 +631,7 @@ namespace TiepNhan.GUI
         private void TaoDonThuocA5()
         {
             RptDonThuoc rpt = new RptDonThuoc();
-            rpt.lblCoSo.Text = this.TenCoSo.ToUpper();
+            //rpt.lblCoSo.Text = this.TenCoSo.ToUpper();
             rpt.xrlblSoHoSo.Text = "Số hồ sơ:" + STTNgay ;
             rpt.lblHoTen.Text = this.HoTen;
             rpt.lblNamSinh.Text = this.NgaySinh;
