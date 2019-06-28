@@ -705,7 +705,7 @@ namespace TiepNhan.GUI
                 }
                 Utils.ThemHoatDong("DELETE | " + txtMaBN.Text + " | " + txtTheBHYT.Text + " | " + 
                     txtHoTen.Text + " | " + dateNgayVao.DateTime.ToString("dd/MM/yyyy") + " | " + 
-                    dateNgayRa.DateTime.ToString("dd/MM/yyyy"));
+                    dateNgayRa.DateTime.ToString("dd/MM/yyyy")+" | "+Utils.ToString(lookUpKhoa.EditValue));
                 thanhtoan.MaLK = null;
             }
         }
