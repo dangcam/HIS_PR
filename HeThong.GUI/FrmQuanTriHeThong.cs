@@ -13,6 +13,7 @@ namespace HeThong.GUI
         UC_SoDoToChuc ucSoDoToChuc;
         UC_PhanQuyen ucPhanQuyen;
         UC_NhatKy ucNhatKy;
+        UC_DonThuoc ucDonThuoc;
         public FrmQuanTriHeThong ()
         {
             InitializeComponent ();
@@ -94,6 +95,17 @@ namespace HeThong.GUI
                 panelControl.Controls.Add (ucNhatKy);
             }
             ucNhatKy.BringToFront ();
+        }
+
+        private void navBarDonThuoc_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            if (!panelControl.Controls.Contains(ucDonThuoc))
+            {
+                ucDonThuoc = new UC_DonThuoc();
+                ucDonThuoc.Dock = DockStyle.Fill;
+                panelControl.Controls.Add(ucDonThuoc);
+            }
+            ucDonThuoc.BringToFront();
         }
     }
 }

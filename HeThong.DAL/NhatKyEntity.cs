@@ -32,6 +32,12 @@ namespace HeThong.DAL
                 +"' AS DATE) AND CAST('"+denNgay+"' AS DATE)",
                 CommandType.Text, null);
         }
+        public DataTable DSDonThuoc(DateTime tuNgay, DateTime denNgay)
+        {
+            return db.ExcuteQuery("Select * From DonThuocXoa Where NgayXoa BETWEEN CAST('" + tuNgay
+                + "' AS DATE) AND CAST('" + denNgay + "' AS DATE)",
+                CommandType.Text, null);
+        }
         public bool XoaHoatDong (ref string err)
         {
             return db.MyExecuteNonQuery ("SpXoaHoatDong",

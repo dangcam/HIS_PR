@@ -40,6 +40,7 @@
             this.navBarPhanQuyen = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarNhatKy = new DevExpress.XtraNavBar.NavBarItem();
             this.panelControl = new DevExpress.XtraEditors.PanelControl();
+            this.navBarDonThuoc = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).BeginInit();
             this.splitContainerControl.SuspendLayout();
@@ -94,7 +95,8 @@
             this.navBarMenu,
             this.navBarSoDoToChuc,
             this.navBarPhanQuyen,
-            this.navBarNhatKy});
+            this.navBarNhatKy,
+            this.navBarDonThuoc});
             this.navBarControl.Location = new System.Drawing.Point(0, 0);
             this.navBarControl.Name = "navBarControl";
             this.navBarControl.OptionsNavPane.ExpandedWidth = 169;
@@ -106,48 +108,49 @@
             // 
             this.navBarHeThong.Caption = "Quản trị hệ thống";
             this.navBarHeThong.Expanded = true;
+            this.navBarHeThong.ImageOptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarHeThong.ImageOptions.SmallImage")));
             this.navBarHeThong.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarChucNang),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarMenu),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarSoDoToChuc),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarPhanQuyen),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarNhatKy)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarNhatKy),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarDonThuoc)});
             this.navBarHeThong.Name = "navBarHeThong";
-            this.navBarHeThong.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarHeThong.SmallImage")));
             // 
             // navBarChucNang
             // 
             this.navBarChucNang.Caption = "Chức năng";
+            this.navBarChucNang.ImageOptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarChucNang.ImageOptions.SmallImage")));
             this.navBarChucNang.Name = "navBarChucNang";
-            this.navBarChucNang.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarChucNang.SmallImage")));
             this.navBarChucNang.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarChucNang_LinkClicked);
             // 
             // navBarMenu
             // 
             this.navBarMenu.Caption = "Menu";
+            this.navBarMenu.ImageOptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarMenu.ImageOptions.SmallImage")));
             this.navBarMenu.Name = "navBarMenu";
-            this.navBarMenu.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarMenu.SmallImage")));
             this.navBarMenu.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarMenu_LinkClicked);
             // 
             // navBarSoDoToChuc
             // 
             this.navBarSoDoToChuc.Caption = "Sơ đồ tổ chức";
+            this.navBarSoDoToChuc.ImageOptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarSoDoToChuc.ImageOptions.SmallImage")));
             this.navBarSoDoToChuc.Name = "navBarSoDoToChuc";
-            this.navBarSoDoToChuc.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarSoDoToChuc.SmallImage")));
             this.navBarSoDoToChuc.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarSoDoToChuc_LinkClicked);
             // 
             // navBarPhanQuyen
             // 
             this.navBarPhanQuyen.Caption = "Phân quyền";
+            this.navBarPhanQuyen.ImageOptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarPhanQuyen.ImageOptions.SmallImage")));
             this.navBarPhanQuyen.Name = "navBarPhanQuyen";
-            this.navBarPhanQuyen.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarPhanQuyen.SmallImage")));
             this.navBarPhanQuyen.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarPhanQuyen_LinkClicked);
             // 
             // navBarNhatKy
             // 
             this.navBarNhatKy.Caption = "Nhật ký";
+            this.navBarNhatKy.ImageOptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarNhatKy.ImageOptions.SmallImage")));
             this.navBarNhatKy.Name = "navBarNhatKy";
-            this.navBarNhatKy.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarNhatKy.SmallImage")));
             this.navBarNhatKy.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarNhatKy_LinkClicked);
             // 
             // panelControl
@@ -157,6 +160,13 @@
             this.panelControl.Name = "panelControl";
             this.panelControl.Size = new System.Drawing.Size(716, 468);
             this.panelControl.TabIndex = 0;
+            // 
+            // navBarDonThuoc
+            // 
+            this.navBarDonThuoc.Caption = "Đơn thuốc xóa";
+            this.navBarDonThuoc.ImageOptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarDonThuoc.ImageOptions.SmallImage")));
+            this.navBarDonThuoc.Name = "navBarDonThuoc";
+            this.navBarDonThuoc.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarDonThuoc_LinkClicked);
             // 
             // FrmQuanTriHeThong
             // 
@@ -195,5 +205,6 @@
         private DevExpress.XtraNavBar.NavBarItem navBarSoDoToChuc;
         private DevExpress.XtraNavBar.NavBarItem navBarPhanQuyen;
         private DevExpress.XtraNavBar.NavBarItem navBarNhatKy;
+        private DevExpress.XtraNavBar.NavBarItem navBarDonThuoc;
     }
 }

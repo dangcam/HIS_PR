@@ -1,6 +1,6 @@
 ﻿namespace HeThong.GUI
 {
-    partial class UC_NhatKy
+    partial class UC_DonThuoc
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,25 +28,12 @@
         /// </summary>
         private void InitializeComponent ()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_NhatKy));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
-            this.btnXoaHet = new DevExpress.XtraEditors.SimpleButton();
             this.btnTim = new DevExpress.XtraEditors.SimpleButton();
             this.dateDenNgay = new DevExpress.XtraEditors.DateEdit();
             this.dateTuNgay = new DevExpress.XtraEditors.DateEdit();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.MaNV = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TenMay = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.NguoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Ngay = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.HoatDong = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Xoa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnXoa = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.layoutControlGroup = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -55,7 +42,6 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateDenNgay.Properties.CalendarTimeProperties)).BeginInit();
@@ -72,12 +58,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl
             // 
-            this.layoutControl.Controls.Add(this.btnXoaHet);
             this.layoutControl.Controls.Add(this.btnTim);
             this.layoutControl.Controls.Add(this.dateDenNgay);
             this.layoutControl.Controls.Add(this.dateTuNgay);
@@ -89,19 +73,6 @@
             this.layoutControl.Size = new System.Drawing.Size(834, 488);
             this.layoutControl.TabIndex = 0;
             this.layoutControl.Text = "layoutControl1";
-            // 
-            // btnXoaHet
-            // 
-            this.btnXoaHet.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoaHet.Appearance.Options.UseFont = true;
-            this.btnXoaHet.ImageOptions.ImageUri.Uri = "Close;Size16x16";
-            this.btnXoaHet.Location = new System.Drawing.Point(726, 12);
-            this.btnXoaHet.Name = "btnXoaHet";
-            this.btnXoaHet.Size = new System.Drawing.Size(96, 23);
-            this.btnXoaHet.StyleController = this.layoutControl;
-            this.btnXoaHet.TabIndex = 8;
-            this.btnXoaHet.Text = "Xóa hết";
-            this.btnXoaHet.Click += new System.EventHandler(this.btnXoaHet_Click);
             // 
             // btnTim
             // 
@@ -127,6 +98,11 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateDenNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateDenNgay.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.dateDenNgay.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateDenNgay.Properties.EditFormat.FormatString = "dd/MM/yyyy";
+            this.dateDenNgay.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateDenNgay.Properties.Mask.EditMask = "dd/MM/yyyy";
             this.dateDenNgay.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.dateDenNgay.Size = new System.Drawing.Size(195, 22);
             this.dateDenNgay.StyleController = this.layoutControl;
@@ -143,7 +119,11 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateTuNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateTuNgay.Properties.Mask.EditMask = "";
+            this.dateTuNgay.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.dateTuNgay.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateTuNgay.Properties.EditFormat.FormatString = "dd/MM/yyyy";
+            this.dateTuNgay.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateTuNgay.Properties.Mask.EditMask = "dd/MM/yyyy";
             this.dateTuNgay.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.dateTuNgay.Size = new System.Drawing.Size(202, 22);
             this.dateTuNgay.StyleController = this.layoutControl;
@@ -163,90 +143,15 @@
             // 
             // gridView
             // 
-            this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.MaNV,
-            this.TenMay,
-            this.NguoiDung,
-            this.Ngay,
-            this.HoatDong,
-            this.Xoa});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsFind.AlwaysVisible = true;
             this.gridView.OptionsFind.FindNullPrompt = "Nhập thông tin cần tìm";
             this.gridView.OptionsView.ShowGroupPanel = false;
             // 
-            // MaNV
-            // 
-            this.MaNV.Caption = "Mã nhân viên";
-            this.MaNV.FieldName = "Ma_NV";
-            this.MaNV.Name = "MaNV";
-            this.MaNV.OptionsColumn.AllowEdit = false;
-            this.MaNV.Visible = true;
-            this.MaNV.VisibleIndex = 0;
-            this.MaNV.Width = 132;
-            // 
-            // TenMay
-            // 
-            this.TenMay.Caption = "Tên máy";
-            this.TenMay.FieldName = "Ten_May";
-            this.TenMay.Name = "TenMay";
-            this.TenMay.OptionsColumn.AllowEdit = false;
-            this.TenMay.Visible = true;
-            this.TenMay.VisibleIndex = 1;
-            this.TenMay.Width = 132;
-            // 
-            // NguoiDung
-            // 
-            this.NguoiDung.Caption = "Người dùng";
-            this.NguoiDung.FieldName = "NguoiDung";
-            this.NguoiDung.Name = "NguoiDung";
-            this.NguoiDung.OptionsColumn.AllowEdit = false;
-            this.NguoiDung.Visible = true;
-            this.NguoiDung.VisibleIndex = 2;
-            this.NguoiDung.Width = 132;
-            // 
-            // Ngay
-            // 
-            this.Ngay.Caption = "Ngày";
-            this.Ngay.DisplayFormat.FormatString = "dd/MM/yyy HH:mm:ss";
-            this.Ngay.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.Ngay.FieldName = "Ngay";
-            this.Ngay.Name = "Ngay";
-            this.Ngay.OptionsColumn.AllowEdit = false;
-            this.Ngay.Visible = true;
-            this.Ngay.VisibleIndex = 3;
-            this.Ngay.Width = 132;
-            // 
-            // HoatDong
-            // 
-            this.HoatDong.Caption = "Nội dung";
-            this.HoatDong.FieldName = "HoatDong";
-            this.HoatDong.Name = "HoatDong";
-            this.HoatDong.OptionsColumn.AllowEdit = false;
-            this.HoatDong.Visible = true;
-            this.HoatDong.VisibleIndex = 4;
-            this.HoatDong.Width = 132;
-            // 
-            // Xoa
-            // 
-            this.Xoa.Caption = "Xóa";
-            this.Xoa.ColumnEdit = this.btnXoa;
-            this.Xoa.Name = "Xoa";
-            this.Xoa.OptionsColumn.FixedWidth = true;
-            this.Xoa.Visible = true;
-            this.Xoa.VisibleIndex = 5;
-            this.Xoa.Width = 30;
-            // 
             // btnXoa
             // 
-            this.btnXoa.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
-            this.btnXoa.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.btnXoa.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnXoa_ButtonClick);
             // 
             // layoutControlGroup
             // 
@@ -258,8 +163,7 @@
             this.layoutControlItem3,
             this.layoutControlItem4,
             this.emptySpaceItem1,
-            this.emptySpaceItem2,
-            this.layoutControlItem5});
+            this.emptySpaceItem2});
             this.layoutControlGroup.Name = "layoutControlGroup";
             this.layoutControlGroup.Size = new System.Drawing.Size(834, 488);
             this.layoutControlGroup.TextVisible = false;
@@ -319,29 +223,17 @@
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(602, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(112, 27);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(212, 27);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.Control = this.btnXoaHet;
-            this.layoutControlItem5.Location = new System.Drawing.Point(714, 0);
-            this.layoutControlItem5.MaxSize = new System.Drawing.Size(100, 27);
-            this.layoutControlItem5.MinSize = new System.Drawing.Size(100, 27);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(100, 27);
-            this.layoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem5.TextVisible = false;
-            // 
-            // UC_NhatKy
+            // UC_DonThuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.layoutControl);
-            this.Name = "UC_NhatKy";
+            this.Name = "UC_DonThuoc";
             this.Size = new System.Drawing.Size(834, 488);
-            this.Load += new System.EventHandler(this.UC_NhatKy_Load);
+            this.Load += new System.EventHandler(this.UC_DonThuoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dateDenNgay.Properties.CalendarTimeProperties)).EndInit();
@@ -358,7 +250,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -370,11 +261,6 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraGrid.Columns.GridColumn MaNV;
-        private DevExpress.XtraGrid.Columns.GridColumn TenMay;
-        private DevExpress.XtraGrid.Columns.GridColumn NguoiDung;
-        private DevExpress.XtraGrid.Columns.GridColumn Ngay;
-        private DevExpress.XtraGrid.Columns.GridColumn HoatDong;
         private DevExpress.XtraEditors.SimpleButton btnTim;
         private DevExpress.XtraEditors.DateEdit dateDenNgay;
         private DevExpress.XtraEditors.DateEdit dateTuNgay;
@@ -383,9 +269,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
-        private DevExpress.XtraGrid.Columns.GridColumn Xoa;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnXoa;
-        private DevExpress.XtraEditors.SimpleButton btnXoaHet;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
     }
 }
