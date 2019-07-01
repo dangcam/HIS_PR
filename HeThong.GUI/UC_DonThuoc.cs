@@ -24,8 +24,8 @@ namespace HeThong.GUI
         {
             quyen = Core.DAL.Utils.GetQuyen (this.Name);
             Enabled_Xoa ();
-            dateTuNgay.Text = DateTime.Now.ToShortDateString ();
-            dateDenNgay.Text = DateTime.Now.ToShortDateString ();
+            dateTuNgay.DateTime = DateTime.Now;
+            dateDenNgay.DateTime = DateTime.Now;
             LoadData (DateTime.Now, DateTime.Now);
         }
         private void Enabled_Xoa ()

@@ -71,7 +71,7 @@ namespace DuocPham.GUI
         private void LoadData ()
         {
             them = false;
-
+            txtSoPhieu.ReadOnly = true;
             gridControlPhieu.DataSource = nhapkho.DSPhieu (dateTuNgay.DateTime, dateDenNgay.DateTime);
         }
 
@@ -119,7 +119,7 @@ namespace DuocPham.GUI
         private void btnThem_Click (object sender, EventArgs e)
         {
             them = true;
-
+            txtSoPhieu.ReadOnly = false;
             txtSoPhieu.Text = "0";
             txtSoHoaDon.Text = "";
             txtTKNo.Text = "";
@@ -433,9 +433,31 @@ namespace DuocPham.GUI
 
         private void btnXoaVatu_ButtonClick (object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (them)
+            DialogResult traloi;
+            string err = "";
+            traloi = XtraMessageBox.Show("Chắc chắn bạn muốn xóa mục này?", "Trả lời",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (traloi == DialogResult.Yes)
             {
-                (gridControlDS.DataSource as DataView).Delete (gridViewDS.GetFocusedDataSourceRowIndex ());
+                if (them)
+                {
+                    (gridControlDS.DataSource as DataView).Delete(gridViewDS.GetFocusedDataSourceRowIndex());
+                }
+                else
+                {
+                    err = "";
+                    DataRow dr = gridViewDS.GetDataRow(gridViewDS.GetFocusedDataSourceRowIndex());
+                    nhapkho.MaVatTu = dr["MaVatTu"].ToString();
+                    nhapkho.SoDangKy = dr["SoDangKy"].ToString();
+                    nhapkho.SpPhieuNhapChiTiet(ref err, "DELETE");
+                    if (!string.IsNullOrEmpty(err))
+                    {
+                        XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    (gridControlDS.DataSource as DataView).Delete(gridViewDS.GetFocusedDataSourceRowIndex());
+                    dsVatTu.Remove(nhapkho.MaVatTu + "|" + nhapkho.SoLo);
+                }
             }
         }
 
@@ -461,6 +483,7 @@ namespace DuocPham.GUI
                 nhapkho.NguoiTao = dr["NguoiTao"].ToString ();
 
                 them = false;
+                txtSoPhieu.ReadOnly = true;
                 Enabled_Xoa ();
                 Enabled_Luu ();
                 // danh sách
