@@ -1,0 +1,1 @@
+sqlcmd -S SERVERBVDK\BVDKCSPR -E -i"E:\Databackup\dailyBackupScript.sql"
