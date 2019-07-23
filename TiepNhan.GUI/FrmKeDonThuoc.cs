@@ -654,22 +654,23 @@ namespace TiepNhan.GUI
             {
                 dr["STT"] = i+")";
                 i++;
-                string hamLuong = dr["HamLuong"].ToString();
-                int index = 0;
-                int space = hamLuong.Length;
-                while(index>-1&&hamLuong.Length>15)
-                {
-                    index = hamLuong.IndexOf(' ', index+1);
-                    if(index > 15 || index == -1)
-                    {
-                        index = -1;
-                    }
-                    else
-                    {
-                        space = index;
-                    }
-                }
-                dr["HamLuong"] = hamLuong.Substring(0, space);
+                //string hamLuong = dr["HamLuong"].ToString();
+                //int index = 0;
+                //int space = hamLuong.Length;
+                //while(index>-1&&hamLuong.Length>15)
+                //{
+                //    index = hamLuong.IndexOf(' ', index+1);
+                //    if(index > 15 || index == -1)
+                //    {
+                //        index = -1;
+                //    }
+                //    else
+                //    {
+                //        space = index;
+                //    }
+                //}
+                //dr["HamLuong"] = hamLuong.Substring(0, space);
+                dr["HamLuong"] = Utils.TachHamLuong(dr["HamLuong"].ToString());
             }
 
             rpt.DataSource = dtThuoc;

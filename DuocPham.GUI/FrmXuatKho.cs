@@ -36,12 +36,15 @@ namespace DuocPham.GUI
         DataTable dataKhoLe, dataNhaCC;
         Dictionary<string, bool> dsVatTu = new Dictionary<string, bool>();
         Dictionary<string, string> dTPNNo = new Dictionary<string, string>();
+        Dictionary<string, string> hamLuong = new Dictionary<string, string>();
         string[] listKho = new string[] { "NT1","NT2","NT3","NT4","NT5","NT6", "NT8","NT9","MH","NT","TS","PRD","NM","XT","CKR","XQ"}; 
         public FrmXuatKho ()
         {
             InitializeComponent ();
             xuatkho = new XuatKhoEntity ();
-            maVatTu = xuatkho.DSMaVatTu().AsEnumerable().ToDictionary(row => row["MaBV"].ToString(), row => row["MaCu"].ToString());
+            DataTable mvt = xuatkho.DSMaVatTu();
+            maVatTu = mvt.AsEnumerable().ToDictionary(row => row["MaBV"].ToString(), row => row["MaCu"].ToString());
+            hamLuong = mvt.AsEnumerable().ToDictionary(row => row["MaBV"].ToString(), row => row["HamLuong"].ToString());
             dTPNNo.Add("1", "BVPR");
             dTPNNo.Add("2", "VTBV");
             dTPNNo.Add("3", "GT");
@@ -803,7 +806,7 @@ namespace DuocPham.GUI
                     {
                         arr[dem, 7] = dr["MaBV"];//MaVTHHCo
                     }
-                    arr[dem, 8] = dr["TenVatTu"];//TenHangHoa
+                    arr[dem, 8] = dr["TenVatTu"] + (hamLuong.ContainsKey(dr["MaBV"].ToString()) ? " " + hamLuong[dr["MaBV"].ToString()] : "");//TenHangHoa
                     arr[dem, 9] = dr["DonViTinh"];//DonViTinh
                     arr[dem, 10] = dr["SoLuong"];//SoLuong
                     arr[dem, 11] = dr["DonGiaBV"];//VNDDonGia

@@ -14,6 +14,7 @@ namespace DuocPham.GUI
         XuatKhoEntity xuatkho;
         Dictionary<string, string> maVatTu = new Dictionary<string, string>();
         Dictionary<string, string> dTPNNo = new Dictionary<string, string>();
+        Dictionary<string, string> hamLuong = new Dictionary<string, string>();
         public FrmXuatExcel()
         {
             InitializeComponent();
@@ -39,11 +40,14 @@ namespace DuocPham.GUI
             dateTuNgay.DateTime = DateTime.Now;
             dateDenNgay.DateTime = DateTime.Now;
             txtSoCTu.Text = "10";
+            DataTable mvt = xuatkho.DSMaVatTu();
+            hamLuong = mvt.AsEnumerable().ToDictionary(row => row["MaBV"].ToString(), row => row["HamLuong"].ToString());
             maVatTu = xuatkho.DSMaVatTu().AsEnumerable().ToDictionary(row => row["MaBV"].ToString(), row => row["MaCu"].ToString());
         }
 
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
+
             SplashScreenManager.ShowForm(typeof(WaitFormLoad));
             DataTable dataTable = xuatkho.DSXuatExcel(dateTuNgay.DateTime,
                 dateDenNgay.DateTime,lookUpKhoa.EditValue.ToString());
@@ -179,7 +183,7 @@ namespace DuocPham.GUI
                 {
                     arr[r, 7] = dr["MaVatTu"];//MaVTHHCo
                 }
-                arr[r, 8] = dr["TenVatTu"];//TenHangHoa
+                arr[r, 8] = dr["TenVatTu"] + (hamLuong.ContainsKey(dr["MaBV"].ToString()) ? " " + hamLuong[dr["MaBV"].ToString()] : "");//TenHangHoa
                 arr[r, 9] = dr["DonViTinh"];//DonViTinh
                 arr[r, 10] = dr["SoLuong"];//SoLuong
                 arr[r, 11] = Math.Round(Utils.ToDecimal(dr["DonGia"]),2);//VNDDonGia

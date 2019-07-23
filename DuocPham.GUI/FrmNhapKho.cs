@@ -28,11 +28,14 @@ namespace DuocPham.GUI
         System.Drawing.Font fontB = new System.Drawing.Font ("Times New Roman", 11, System.Drawing.FontStyle.Bold);
         System.Drawing.Font font = new System.Drawing.Font ("Times New Roman", 11);
         Dictionary<string, string> maVatTu = new Dictionary<string, string>();
+        Dictionary<string, string> hamLuong = new Dictionary<string, string>();
         public FrmNhapKho ()
         {
             InitializeComponent ();
             nhapkho = new NhapKhoEntity ();
-            maVatTu = nhapkho.DSMaVatTu().AsEnumerable().ToDictionary(row => row["MaBV"].ToString(), row => row["MaCu"].ToString());
+            DataTable mvt = nhapkho.DSMaVatTu();
+            maVatTu = mvt.AsEnumerable().ToDictionary(row => row["MaBV"].ToString(), row => row["MaCu"].ToString());
+            hamLuong = mvt.AsEnumerable().ToDictionary(row => row["MaBV"].ToString(), row => row["HamLuong"].ToString());
         }
         protected override void OnLoad (EventArgs e)
         {
@@ -578,7 +581,7 @@ namespace DuocPham.GUI
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();
-                cell.Text = drview["TenVatTu"].ToString ();
+                cell.Text = drview["TenVatTu"]+ (hamLuong.ContainsKey(drview["MaVatTu"].ToString()) ? " " + hamLuong[drview["MaVatTu"].ToString()] : ""); ;
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
                 cell.WidthF = 280;
@@ -818,7 +821,13 @@ namespace DuocPham.GUI
         {
             SplashScreenManager.ShowForm(typeof(WaitFormLoad));
             RptBienBanGH rpt = new RptBienBanGH();
-            rpt.DataSource = dtPhieu;
+            DataTable data = new DataTable();
+            data = dtPhieu.Copy();
+            foreach (DataRow dr in data.Rows)
+            {
+                dr["TenVatTu"] += (hamLuong.ContainsKey(dr["MaVatTu"].ToString()) ? " " + hamLuong[dr["MaVatTu"].ToString()] : "");
+            }
+            rpt.DataSource = data;
             try
             {
                 rpt.xrlblHomNay.Text = "Hôm nay, ngày " + dateNgayNhap.DateTime.Day + " tháng " + dateNgayNhap.DateTime.Month + " năm " + dateNgayNhap.DateTime.Year + ", chúng tôi gồm:";
@@ -837,13 +846,18 @@ namespace DuocPham.GUI
         {
             SplashScreenManager.ShowForm(typeof(WaitFormLoad));
             RptBienBanNT rpt = new RptBienBanNT();
+            DataTable data = dtPhieu.Copy();
+            foreach (DataRow dr in data.Rows)
+            {
+                dr["TenVatTu"] += (hamLuong.ContainsKey(dr["MaVatTu"].ToString()) ? " " + hamLuong[dr["MaVatTu"].ToString()] : "");
+            }
             rpt.xrlblTenCty.Text ="TÊN CTY: "+ lookUpNhaCungCap.Properties.GetDisplayValueByKeyValue(lookUpNhaCungCap.EditValue).ToString().ToUpper();
             rpt.xrlblNgayThang.Text = "Ngày " + dateNgayNhap.DateTime.Day + " tháng " + dateNgayNhap.DateTime.Month + " năm " + dateNgayNhap.DateTime.Year;
             rpt.xrlblSoHD.Text = txtSoHoaDon.Text;
             rpt.xrlblTRKhoaDuoc.Text = Utils.ToString( nvKhoaDuoc.Rows[0]["HoTen"]);
             rpt.xrlblThuKho.Text = Utils.ToString(nvKhoaDuoc.Rows[1]["HoTen"]);
             rpt.xrlblKeToanDuoc.Text = Utils.ToString(nvKhoaDuoc.Rows[3]["HoTen"]);
-            rpt.DataSource = dtPhieu;
+            rpt.DataSource = data;
             rpt.CreateDocument();
             rpt.ShowPreviewDialog();
             SplashScreenManager.CloseForm();
@@ -1009,7 +1023,7 @@ namespace DuocPham.GUI
                     {
                         arr[dem, 6] = dr["MaBV"];//MaVTHHCo
                     }
-                    arr[dem, 8] = dr["TenVatTu"];//TenHangHoa
+                    arr[dem, 8] = dr["TenVatTu"]  + (hamLuong.ContainsKey(dr["MaBV"].ToString()) ?" "+ hamLuong[dr["MaBV"].ToString()]:"");//TenHangHoa
                     arr[dem, 9] = dr["DonViTinh"];//DonViTinh
                     arr[dem, 10] = dr["SoLuongQuyDoi"];//SoLuong
                     arr[dem, 11] = dr["DonGiaBV"];//VNDDonGia
@@ -1050,9 +1064,12 @@ namespace DuocPham.GUI
             SplashScreenManager.ShowForm(typeof(WaitFormLoad));
             RptBienBanNhapKho rpt = new RptBienBanNhapKho();
             string ten = "";
-            foreach(DataRow dr in dtPhieu.Rows)
+            DataTable data = new DataTable();
+            data = dtPhieu.Copy();
+            foreach (DataRow dr in data.Rows)
             {
                 ten += dr["TenVatTu"] + ", ";
+                dr["TenVatTu"]  += (hamLuong.ContainsKey(dr["MaVatTu"].ToString()) ? " " + hamLuong[dr["MaVatTu"].ToString()] : "");
             }
             rpt.xrlblNgayIn.Text = "Ngày " + dateNgayNhap.DateTime.Day + " tháng " + dateNgayNhap.DateTime.Month + " năm " + dateNgayNhap.DateTime.Year;
             rpt.xrlblTenHang.Text ="Đã tiến hành nhập thực tế lô hàng: "+ten+ "theo hóa đơn hàng số: "+txtSoHoaDon.Text;
@@ -1060,8 +1077,7 @@ namespace DuocPham.GUI
             rpt.xrlblHomNay.Text = "Hôm nay ngày " + dateNgayNhap.DateTime.Day + " tháng " + dateNgayNhap.DateTime.Month + " năm " + dateNgayNhap.DateTime.Year +
                 " tại kho thuốc BVĐK cao su Phú Riềng chúng tôi gồm:";
             rpt.xrlblThangNam.Text = "Tháng " + dateNgayNhap.DateTime.Month + " năm " + dateNgayNhap.DateTime.Year;
-            rpt.DataSource = dtPhieu;
-            rpt.CreateDocument();
+            rpt.DataSource = data;
             rpt.ShowPreviewDialog();
             SplashScreenManager.CloseForm();
         }

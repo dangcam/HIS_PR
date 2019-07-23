@@ -192,22 +192,23 @@ namespace TiepNhan.GUI
                 {
                     //drrow["STT"]  += ")";
                     //i++;
-                    string hamLuong = drrow["HamLuong"].ToString();
-                    int index = 0;
-                    int space = hamLuong.Length;
-                    while (index > -1 && hamLuong.Length > 15)
-                    {
-                        index = hamLuong.IndexOf(' ', index + 1);
-                        if (index > 15 || index == -1)
-                        {
-                            index = -1;
-                        }
-                        else
-                        {
-                            space = index;
-                        }
-                    }
-                    drrow["HamLuong"] = hamLuong.Substring(0, space);
+                    //string hamLuong = drrow["HamLuong"].ToString();
+                    //int index = 0;
+                    //int space = hamLuong.Length;
+                    //while (index > -1 && hamLuong.Length > 15)
+                    //{
+                    //    index = hamLuong.IndexOf(' ', index + 1);
+                    //    if (index > 15 || index == -1)
+                    //    {
+                    //        index = -1;
+                    //    }
+                    //    else
+                    //    {
+                    //        space = index;
+                    //    }
+                    //}
+                    //drrow["HamLuong"] = hamLuong.Substring(0, space);
+                    dr["HamLuong"] = Utils.TachHamLuong(dr["HamLuong"].ToString());
                 }
 
                 rpt.DataSource = dtThuoc;

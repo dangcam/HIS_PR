@@ -20,6 +20,7 @@ namespace BaoCao.GUI
         TongHopEntity tongHop;
         DataTable dataTongHop;
         Dictionary<string, string> maVatTu = new Dictionary<string, string>();
+        Dictionary<string, string> hamLuong = new Dictionary<string, string>();
         public FrmTongHopBaoCao()
         {
             InitializeComponent();
@@ -44,7 +45,9 @@ namespace BaoCao.GUI
             lookUpKhoa.ItemIndex = 0;
             cbQuy.SelectedIndex = (DateTime.Now.Month+5) / 3-2;
             cbThoiGian.SelectedIndex = 0;
-            maVatTu = tongHop.DSMaVatTu().AsEnumerable().ToDictionary(row=>row["MaBV"].ToString(),row=>row["MaCu"].ToString());
+            DataTable mvt = tongHop.DSMaVatTu();
+            maVatTu = mvt.AsEnumerable().ToDictionary(row=>row["MaBV"].ToString(),row=>row["MaCu"].ToString());
+            hamLuong = mvt.AsEnumerable().ToDictionary(row => row["MaBV"].ToString(), row => row["HamLuong"].ToString());
         }
         private void cbThoiGian_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -418,7 +421,7 @@ namespace BaoCao.GUI
                     arr[r, 7] = maVatTu[dr["MaBV"].ToString()];//MaVTHHCo
                 else
                     arr[r, 7] = dr["MaBV"].ToString();
-                arr[r, 8] = dr["TenVatTu"];//TenHangHoa
+                arr[r, 8] = dr["TenVatTu"] + (hamLuong.ContainsKey(dr["MaBV"].ToString()) ? " " + hamLuong[dr["MaBV"].ToString()] : "");//TenHangHoa
                 arr[r, 9] = dr["DonViTinh"];//DonViTinh
                 arr[r, 10] = dr["SoLuong"];//SoLuong
                 arr[r, 11] = Math.Round(Utils.ToDecimal(dr["DonGia"]),2); //dr["DonGia"];//VNDDonGia

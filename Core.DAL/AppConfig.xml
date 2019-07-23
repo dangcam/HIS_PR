@@ -11,7 +11,7 @@
   </Connection>
   <Config>
     <LoginMaNV>admin</LoginMaNV>
-    <LoginPass>123456</LoginPass>
+    <LoginPass>admin@123</LoginPass>
     <NhoTT>true</NhoTT>
   </Config>
   <BHYT>

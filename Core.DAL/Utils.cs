@@ -204,6 +204,24 @@ namespace Core.DAL
                 return defaultvalue;
             }
         }
+        public static string TachHamLuong(string hamLuong, int defaultvalue = 15)
+        {
+            int index = 0;
+            int space = hamLuong.Length;
+            while (index > -1 && hamLuong.Length > defaultvalue)
+            {
+                index = hamLuong.IndexOf(' ', index + 1);
+                if (index > defaultvalue || index == -1)
+                {
+                    index = -1;
+                }
+                else
+                {
+                    space = index;
+                }
+            }
+            return hamLuong.Substring(0, space);
+        }
         public static string StringToString(string value, string defaultvalue = null)
         {
             return string.IsNullOrEmpty(value) ? defaultvalue : value;
