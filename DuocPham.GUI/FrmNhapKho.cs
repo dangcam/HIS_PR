@@ -581,7 +581,7 @@ namespace DuocPham.GUI
                 row.Cells.Add (cell);
 
                 cell = new XRTableCell ();
-                cell.Text = drview["TenVatTu"]+ (hamLuong.ContainsKey(drview["MaVatTu"].ToString()) ? " " + hamLuong[drview["MaVatTu"].ToString()] : ""); ;
+                cell.Text = drview["TenVatTu"]+ (hamLuong.ContainsKey(drview["MaVatTu"].ToString()) ? " " + hamLuong[drview["MaVatTu"].ToString()] : ""); 
                 cell.Font = font;
                 cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
                 cell.WidthF = 280;

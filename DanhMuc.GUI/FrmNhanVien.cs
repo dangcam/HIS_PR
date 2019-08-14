@@ -145,6 +145,7 @@ namespace DanhMuc.GUI
             nhanvien.TinhTrang = checkTinhTrang.Checked;
             nhanvien.MaBS = txtMaBS.Text;
             nhanvien.MaCC = txtCCHN.Text;
+            nhanvien.KeDon = Utils.ToInt(txtKeDon.Text);
             if (txtMatKhau.Text.Length > 0)
             {
                 nhanvien.MatKhau = Core.DAL.Utils.ToMD5 (txtMatKhau.Text);
@@ -212,6 +213,7 @@ namespace DanhMuc.GUI
                 txtMaBS.Text = dr["Ma_BS"].ToString ();
                 lookUpCoSoKCB.EditValue = dr["CoSoKCB"].ToString ();
                 txtCCHN.Text = Utils.ToString(dr["MaCC"]);
+                txtKeDon.Text = Utils.ToString(dr["KeDon"]);
                 nhanvien.MaNV = txtMa.Text;
                 nhanvien.MatKhau = dr["MatKhau"].ToString ();
                 txtMa.ReadOnly = true;

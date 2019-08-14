@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNhanVien));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.txtCCHN = new DevExpress.XtraEditors.TextEdit();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Ma_NV = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -47,6 +48,7 @@
             this.MaBS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MatKhau = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CoSoKCB = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaCC = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
             this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
@@ -84,12 +86,14 @@
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtCCHN = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.MaCC = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.txtKeDon = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.KeDon = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCCHN.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheck)).BeginInit();
@@ -128,8 +132,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCCHN.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKeDon.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -150,6 +155,7 @@
             // 
             // layoutControl
             // 
+            this.layoutControl.Controls.Add(this.txtKeDon);
             this.layoutControl.Controls.Add(this.txtCCHN);
             this.layoutControl.Controls.Add(this.gridControl);
             this.layoutControl.Controls.Add(this.btnThem);
@@ -175,6 +181,17 @@
             this.layoutControl.Size = new System.Drawing.Size(896, 493);
             this.layoutControl.TabIndex = 1;
             this.layoutControl.Text = "layoutControl1";
+            // 
+            // txtCCHN
+            // 
+            this.txtCCHN.Location = new System.Drawing.Point(781, 90);
+            this.txtCCHN.MenuManager = this.ribbonControl;
+            this.txtCCHN.Name = "txtCCHN";
+            this.txtCCHN.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCCHN.Properties.Appearance.Options.UseFont = true;
+            this.txtCCHN.Size = new System.Drawing.Size(103, 22);
+            this.txtCCHN.StyleController = this.layoutControl;
+            this.txtCCHN.TabIndex = 17;
             // 
             // gridControl
             // 
@@ -205,7 +222,8 @@
             this.MaBS,
             this.MatKhau,
             this.CoSoKCB,
-            this.MaCC});
+            this.MaCC,
+            this.KeDon});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsView.ShowGroupPanel = false;
@@ -221,7 +239,7 @@
             this.Ma_NV.OptionsColumn.AllowEdit = false;
             this.Ma_NV.Visible = true;
             this.Ma_NV.VisibleIndex = 0;
-            this.Ma_NV.Width = 72;
+            this.Ma_NV.Width = 62;
             // 
             // TenNV
             // 
@@ -233,7 +251,7 @@
             this.TenNV.OptionsColumn.AllowEdit = false;
             this.TenNV.Visible = true;
             this.TenNV.VisibleIndex = 1;
-            this.TenNV.Width = 108;
+            this.TenNV.Width = 95;
             // 
             // GioiTinh
             // 
@@ -243,7 +261,7 @@
             this.GioiTinh.OptionsColumn.AllowEdit = false;
             this.GioiTinh.Visible = true;
             this.GioiTinh.VisibleIndex = 2;
-            this.GioiTinh.Width = 53;
+            this.GioiTinh.Width = 45;
             // 
             // NamSinh
             // 
@@ -257,7 +275,7 @@
             this.NamSinh.OptionsColumn.AllowEdit = false;
             this.NamSinh.Visible = true;
             this.NamSinh.VisibleIndex = 3;
-            this.NamSinh.Width = 73;
+            this.NamSinh.Width = 63;
             // 
             // MaKhoa
             // 
@@ -269,7 +287,7 @@
             this.MaKhoa.OptionsColumn.AllowEdit = false;
             this.MaKhoa.Visible = true;
             this.MaKhoa.VisibleIndex = 4;
-            this.MaKhoa.Width = 73;
+            this.MaKhoa.Width = 63;
             // 
             // MaCV
             // 
@@ -281,7 +299,7 @@
             this.MaCV.OptionsColumn.AllowEdit = false;
             this.MaCV.Visible = true;
             this.MaCV.VisibleIndex = 5;
-            this.MaCV.Width = 73;
+            this.MaCV.Width = 63;
             // 
             // HocHamHocVi
             // 
@@ -293,7 +311,7 @@
             this.HocHamHocVi.OptionsColumn.AllowEdit = false;
             this.HocHamHocVi.Visible = true;
             this.HocHamHocVi.VisibleIndex = 6;
-            this.HocHamHocVi.Width = 73;
+            this.HocHamHocVi.Width = 63;
             // 
             // ChuyenMon
             // 
@@ -305,7 +323,7 @@
             this.ChuyenMon.OptionsColumn.AllowEdit = false;
             this.ChuyenMon.Visible = true;
             this.ChuyenMon.VisibleIndex = 7;
-            this.ChuyenMon.Width = 73;
+            this.ChuyenMon.Width = 63;
             // 
             // NgayVao
             // 
@@ -319,7 +337,7 @@
             this.NgayVao.OptionsColumn.AllowEdit = false;
             this.NgayVao.Visible = true;
             this.NgayVao.VisibleIndex = 8;
-            this.NgayVao.Width = 73;
+            this.NgayVao.Width = 63;
             // 
             // TinhTrang
             // 
@@ -348,7 +366,7 @@
             this.MaBS.OptionsColumn.AllowEdit = false;
             this.MaBS.Visible = true;
             this.MaBS.VisibleIndex = 10;
-            this.MaBS.Width = 64;
+            this.MaBS.Width = 56;
             // 
             // MatKhau
             // 
@@ -367,7 +385,19 @@
             this.CoSoKCB.OptionsColumn.AllowEdit = false;
             this.CoSoKCB.Visible = true;
             this.CoSoKCB.VisibleIndex = 11;
-            this.CoSoKCB.Width = 94;
+            this.CoSoKCB.Width = 83;
+            // 
+            // MaCC
+            // 
+            this.MaCC.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaCC.AppearanceCell.Options.UseFont = true;
+            this.MaCC.Caption = "Chứng chỉ HN";
+            this.MaCC.FieldName = "MaCC";
+            this.MaCC.Name = "MaCC";
+            this.MaCC.OptionsColumn.AllowEdit = false;
+            this.MaCC.Visible = true;
+            this.MaCC.VisibleIndex = 12;
+            this.MaCC.Width = 65;
             // 
             // btnThem
             // 
@@ -623,7 +653,8 @@
             this.layoutControlItem16,
             this.emptySpaceItem4,
             this.layoutControlItem17,
-            this.layoutControlItem18});
+            this.layoutControlItem18,
+            this.layoutControlItem19});
             this.layoutControlGroup.Name = "layoutControlGroup";
             this.layoutControlGroup.Size = new System.Drawing.Size(896, 493);
             this.layoutControlGroup.TextVisible = false;
@@ -800,9 +831,9 @@
             // emptySpaceItem4
             // 
             this.emptySpaceItem4.AllowHotTrack = false;
-            this.emptySpaceItem4.Location = new System.Drawing.Point(450, 130);
+            this.emptySpaceItem4.Location = new System.Drawing.Point(598, 130);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(169, 27);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(21, 27);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem17
@@ -814,17 +845,6 @@
             this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem17.TextVisible = false;
             // 
-            // txtCCHN
-            // 
-            this.txtCCHN.Location = new System.Drawing.Point(781, 90);
-            this.txtCCHN.MenuManager = this.ribbonControl;
-            this.txtCCHN.Name = "txtCCHN";
-            this.txtCCHN.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCCHN.Properties.Appearance.Options.UseFont = true;
-            this.txtCCHN.Size = new System.Drawing.Size(103, 22);
-            this.txtCCHN.StyleController = this.layoutControl;
-            this.txtCCHN.TabIndex = 17;
-            // 
             // layoutControlItem18
             // 
             this.layoutControlItem18.Control = this.txtCCHN;
@@ -834,15 +854,39 @@
             this.layoutControlItem18.Text = "Chứng chỉ HN:";
             this.layoutControlItem18.TextSize = new System.Drawing.Size(80, 13);
             // 
-            // MaCC
+            // txtKeDon
             // 
-            this.MaCC.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaCC.AppearanceCell.Options.UseFont = true;
-            this.MaCC.Caption = "Chứng chỉ HN";
-            this.MaCC.FieldName = "MaCC";
-            this.MaCC.Name = "MaCC";
-            this.MaCC.Visible = true;
-            this.MaCC.VisibleIndex = 12;
+            this.txtKeDon.Location = new System.Drawing.Point(545, 142);
+            this.txtKeDon.MenuManager = this.ribbonControl;
+            this.txtKeDon.Name = "txtKeDon";
+            this.txtKeDon.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKeDon.Properties.Appearance.Options.UseFont = true;
+            this.txtKeDon.Properties.Mask.EditMask = "d";
+            this.txtKeDon.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtKeDon.Size = new System.Drawing.Size(61, 22);
+            this.txtKeDon.StyleController = this.layoutControl;
+            this.txtKeDon.TabIndex = 18;
+            // 
+            // layoutControlItem19
+            // 
+            this.layoutControlItem19.Control = this.txtKeDon;
+            this.layoutControlItem19.Location = new System.Drawing.Point(450, 130);
+            this.layoutControlItem19.Name = "layoutControlItem19";
+            this.layoutControlItem19.Size = new System.Drawing.Size(148, 27);
+            this.layoutControlItem19.Text = "Số lượng kê đơn";
+            this.layoutControlItem19.TextSize = new System.Drawing.Size(80, 13);
+            // 
+            // KeDon
+            // 
+            this.KeDon.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KeDon.AppearanceCell.Options.UseFont = true;
+            this.KeDon.Caption = "SL Kê Đơn";
+            this.KeDon.FieldName = "KeDon";
+            this.KeDon.Name = "KeDon";
+            this.KeDon.OptionsColumn.AllowEdit = false;
+            this.KeDon.Visible = true;
+            this.KeDon.VisibleIndex = 13;
+            this.KeDon.Width = 35;
             // 
             // FrmNhanVien
             // 
@@ -860,6 +904,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtCCHN.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheck)).EndInit();
@@ -898,8 +943,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCCHN.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKeDon.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -965,5 +1011,8 @@
         private DevExpress.XtraEditors.TextEdit txtCCHN;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
         private DevExpress.XtraGrid.Columns.GridColumn MaCC;
+        private DevExpress.XtraEditors.TextEdit txtKeDon;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem19;
+        private DevExpress.XtraGrid.Columns.GridColumn KeDon;
     }
 }

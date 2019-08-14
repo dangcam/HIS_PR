@@ -44,9 +44,9 @@ namespace TiepNhan.GUI
         {
             InitializeComponent();
             kedon = new KeDonEntity();
-            lookUpBacSi.Properties.DataSource = kedon.DSBacSi();
-            lookUpBacSi.Properties.DisplayMember = "Ten_NV";
-            lookUpBacSi.Properties.ValueMember = "Ma_BS";
+            //lookUpBacSi.Properties.DataSource = kedon.DSBacSi();
+            //lookUpBacSi.Properties.DisplayMember = "Ten_NV";
+            //lookUpBacSi.Properties.ValueMember = "Ma_BS";
             lookUpMaKhoa.Properties.DataSource = kedon.DSKhoaBan(1);
             lookUpMaKhoa.Properties.ValueMember = "MaKhoa";
             lookUpMaKhoa.Properties.DisplayMember = "TenKhoa";
@@ -62,6 +62,7 @@ namespace TiepNhan.GUI
 
         private void FrmKeDonThuoc_Load(object sender, EventArgs e)
         {
+           
             lookUpMaBenh.EditValue = frmMaBenhChinh;
             lookUpMaBenhKhac.EditValue = null;
             cbLoaiChiPhi.SelectedIndex = -1;
@@ -70,13 +71,14 @@ namespace TiepNhan.GUI
             txtTenBenh.Text = frmTenBenh;
             lookUpMaKhoa.ItemIndex = 0;
             this.ActiveControl = lookUpMaBenh;
+            dateYLenh.DateTime = DateTime.Now;
+            lookUpBacSi.Properties.DataSource = kedon.DSBacSi("K01",DateTime.Now);
             //if(lookUpBacSi.ItemIndex <0)
             //{
             //    lookUpBacSi.ItemIndex = 0;
             //}
             txtHoTen.Text = this.HoTen;
             lblHanThe.Text = "Hạn thẻ BHYT còn: " + (Utils.ToDateTime(this.TheDen) - DateTime.Now).Days + " ngày";
-            dateYLenh.DateTime = DateTime.Now;
             cbLoaiChiPhi.SelectedIndex = 0;
             listThuoc = new Dictionary<string, int>();
             listVatTu = new Dictionary<string, int>();
@@ -791,6 +793,19 @@ namespace TiepNhan.GUI
                 LuuKeDon();
                 //TaoDonThuocA4();
                 TaoDonThuocA5();
+            }
+        }
+
+        private void lookUpBacSi_EditValueChanged(object sender, EventArgs e)
+        {
+            DataRowView drv = (lookUpBacSi.GetSelectedDataRow() as DataRowView);
+            int SoLan = Utils.ToInt(drv["KeDon"]);
+            if(SoLan<1)
+            {
+                XtraMessageBox.Show("Số lần kê đơn của bác sĩ đã hết, vui lòng chọn lại bác sĩ khác!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.lookUpBacSi.EditValueChanged -= new System.EventHandler(this.lookUpBacSi_EditValueChanged);
+                lookUpBacSi.EditValue = null;
+                this.lookUpBacSi.EditValueChanged += new System.EventHandler(this.lookUpBacSi_EditValueChanged);
             }
         }
 

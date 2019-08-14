@@ -81,6 +81,7 @@ namespace DanhMuc.DAL
             get;
             set;
         }
+        public int KeDon { get; set; }
         public string MaCC { get; set; }
         public DataTable DSChucVu ()
         {
@@ -142,7 +143,8 @@ namespace DanhMuc.DAL
                 new SqlParameter("@Ma_BS", MaBS),
                 new SqlParameter("@MatKhau", MatKhau),
                 new SqlParameter("@CoSoKCB", CoSoKCB),
-                new SqlParameter("@MaCC", MaCC));
+                new SqlParameter("@MaCC", MaCC),
+                new SqlParameter("@KeDon", KeDon));
         }
         public bool SuaNhanVien (ref string err)
         {
@@ -161,7 +163,8 @@ namespace DanhMuc.DAL
                 new SqlParameter("@Ma_BS", MaBS),
                 new SqlParameter("@MatKhau", MatKhau),
                 new SqlParameter("@CoSoKCB", CoSoKCB),
-                new SqlParameter("@MaCC", MaCC));
+                new SqlParameter("@MaCC", MaCC),
+                new SqlParameter("@KeDon", KeDon));
         }
         public bool XoaNhanVien (ref string err)
         {

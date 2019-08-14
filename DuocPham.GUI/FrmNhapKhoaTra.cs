@@ -171,6 +171,7 @@ namespace DuocPham.GUI
             {
                 XtraMessageBox.Show ("Nhập vật tư!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 lookUpMaVatTu.Focus ();
+
                 return false;
             }
 

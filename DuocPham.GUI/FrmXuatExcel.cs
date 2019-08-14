@@ -183,7 +183,7 @@ namespace DuocPham.GUI
                 {
                     arr[r, 7] = dr["MaVatTu"];//MaVTHHCo
                 }
-                arr[r, 8] = dr["TenVatTu"] + (hamLuong.ContainsKey(dr["MaBV"].ToString()) ? " " + hamLuong[dr["MaBV"].ToString()] : "");//TenHangHoa
+                arr[r, 8] = dr["TenVatTu"] + (hamLuong.ContainsKey(dr["MaVatTu"].ToString()) ? " " + hamLuong[dr["MaVatTu"].ToString()] : "");//TenHangHoa
                 arr[r, 9] = dr["DonViTinh"];//DonViTinh
                 arr[r, 10] = dr["SoLuong"];//SoLuong
                 arr[r, 11] = Math.Round(Utils.ToDecimal(dr["DonGia"]),2);//VNDDonGia

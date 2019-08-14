@@ -77,6 +77,7 @@
             this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             this.panelControlThongTin = new DevExpress.XtraEditors.PanelControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtTKNo = new DevExpress.XtraEditors.TextEdit();
             this.txtDiaChi = new DevExpress.XtraEditors.TextEdit();
             this.checkTraNhaCC = new DevExpress.XtraEditors.CheckEdit();
             this.txtSoCTu = new DevExpress.XtraEditors.TextEdit();
@@ -131,12 +132,11 @@
             this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem25 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem26 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroupMain = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtTKNo = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
@@ -169,6 +169,7 @@
             this.panelControlThongTin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTKNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkTraNhaCC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoCTu.Properties)).BeginInit();
@@ -207,12 +208,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTKNo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -553,6 +553,8 @@
             // 
             // gridView
             // 
+            this.gridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView.Appearance.Row.Options.UseFont = true;
             this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.SoPhieuDS,
             this.KhoNhanDS,
@@ -743,6 +745,17 @@
             this.layoutControl1.Size = new System.Drawing.Size(597, 188);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // txtTKNo
+            // 
+            this.txtTKNo.Location = new System.Drawing.Point(529, 90);
+            this.txtTKNo.MenuManager = this.ribbonControl;
+            this.txtTKNo.Name = "txtTKNo";
+            this.txtTKNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTKNo.Properties.Appearance.Options.UseFont = true;
+            this.txtTKNo.Size = new System.Drawing.Size(56, 22);
+            this.txtTKNo.StyleController = this.layoutControl1;
+            this.txtTKNo.TabIndex = 19;
             // 
             // txtDiaChi
             // 
@@ -1392,6 +1405,15 @@
             this.layoutControlItem26.Text = "Địa chỉ:";
             this.layoutControlItem26.TextSize = new System.Drawing.Size(59, 13);
             // 
+            // layoutControlItem27
+            // 
+            this.layoutControlItem27.Control = this.txtTKNo;
+            this.layoutControlItem27.Location = new System.Drawing.Point(455, 78);
+            this.layoutControlItem27.Name = "layoutControlItem27";
+            this.layoutControlItem27.Size = new System.Drawing.Size(122, 26);
+            this.layoutControlItem27.Text = "TK Nợ:";
+            this.layoutControlItem27.TextSize = new System.Drawing.Size(59, 13);
+            // 
             // layoutControlGroupMain
             // 
             this.layoutControlGroupMain.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -1430,26 +1452,6 @@
             this.layoutControlItem3.Size = new System.Drawing.Size(959, 297);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
-            // 
-            // txtTKNo
-            // 
-            this.txtTKNo.Location = new System.Drawing.Point(529, 90);
-            this.txtTKNo.MenuManager = this.ribbonControl;
-            this.txtTKNo.Name = "txtTKNo";
-            this.txtTKNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTKNo.Properties.Appearance.Options.UseFont = true;
-            this.txtTKNo.Size = new System.Drawing.Size(56, 22);
-            this.txtTKNo.StyleController = this.layoutControl1;
-            this.txtTKNo.TabIndex = 19;
-            // 
-            // layoutControlItem27
-            // 
-            this.layoutControlItem27.Control = this.txtTKNo;
-            this.layoutControlItem27.Location = new System.Drawing.Point(455, 78);
-            this.layoutControlItem27.Name = "layoutControlItem27";
-            this.layoutControlItem27.Size = new System.Drawing.Size(122, 26);
-            this.layoutControlItem27.Text = "TK Nợ:";
-            this.layoutControlItem27.TextSize = new System.Drawing.Size(59, 13);
             // 
             // FrmXuatKho
             // 
@@ -1496,6 +1498,7 @@
             this.panelControlThongTin.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtTKNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkTraNhaCC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoCTu.Properties)).EndInit();
@@ -1534,12 +1537,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTKNo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
