@@ -72,7 +72,7 @@ namespace TiepNhan.GUI
             lookUpMaKhoa.ItemIndex = 0;
             this.ActiveControl = lookUpMaBenh;
             dateYLenh.DateTime = DateTime.Now;
-            lookUpBacSi.Properties.DataSource = kedon.DSBacSi("K01",DateTime.Now);
+            lookUpBacSi.Properties.DataSource = kedon.DSBacSi(Utils.ToString(lookUpMaKhoa.EditValue).Substring(0,3),DateTime.Now);
             //if(lookUpBacSi.ItemIndex <0)
             //{
             //    lookUpBacSi.ItemIndex = 0;

@@ -63,6 +63,7 @@
             this.barBITheoDoiRaVaoVie = new DevExpress.XtraBars.BarButtonItem();
             this.barbtnPhanTichDT = new DevExpress.XtraBars.BarButtonItem();
             this.barbntTuTruc = new DevExpress.XtraBars.BarButtonItem();
+            this.barbtnNghiViec = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageHeThong = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupHeThong = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageTiepNhan = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -70,6 +71,7 @@
             this.ribbonPageKhamBenh = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupKhamBenh = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupHoSo = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupBHXH = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageDanhMuc = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupDanhMuc = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupCSKCB = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -82,8 +84,7 @@
             this.ribbonPageGroupKhoLe = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupTongHop = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBarMain = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.ribbonPageGroupBHXH = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barbtnNghiViec = new DevExpress.XtraBars.BarButtonItem();
+            this.barbtnTHKeDon = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,9 +126,10 @@
             this.barBITheoDoiRaVaoVie,
             this.barbtnPhanTichDT,
             this.barbntTuTruc,
-            this.barbtnNghiViec});
+            this.barbtnNghiViec,
+            this.barbtnTHKeDon});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControlMain.MaxItemId = 47;
+            this.ribbonControlMain.MaxItemId = 48;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.PageHeaderItemLinks.Add(this.barLinkSkin);
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -404,6 +406,14 @@
             this.barbntTuTruc.Name = "barbntTuTruc";
             this.barbntTuTruc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbntTuTruc_ItemClick);
             // 
+            // barbtnNghiViec
+            // 
+            this.barbtnNghiViec.Caption = "Nghỉ việc BHXH";
+            this.barbtnNghiViec.Id = 46;
+            this.barbtnNghiViec.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barbtnNghiViec.ImageOptions.Image")));
+            this.barbtnNghiViec.Name = "barbtnNghiViec";
+            this.barbtnNghiViec.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnNghiViec_ItemClick);
+            // 
             // ribbonPageHeThong
             // 
             this.ribbonPageHeThong.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -455,6 +465,12 @@
             this.ribbonPageGroupHoSo.ItemLinks.Add(this.barBITheoDoiRaVaoVie);
             this.ribbonPageGroupHoSo.Name = "ribbonPageGroupHoSo";
             this.ribbonPageGroupHoSo.ShowCaptionButton = false;
+            // 
+            // ribbonPageGroupBHXH
+            // 
+            this.ribbonPageGroupBHXH.ItemLinks.Add(this.barbtnNghiViec);
+            this.ribbonPageGroupBHXH.Name = "ribbonPageGroupBHXH";
+            this.ribbonPageGroupBHXH.ShowCaptionButton = false;
             // 
             // ribbonPageDanhMuc
             // 
@@ -539,6 +555,7 @@
             // ribbonPageGroupTongHop
             // 
             this.ribbonPageGroupTongHop.ItemLinks.Add(this.barButtonTongHopBC);
+            this.ribbonPageGroupTongHop.ItemLinks.Add(this.barbtnTHKeDon);
             this.ribbonPageGroupTongHop.Name = "ribbonPageGroupTongHop";
             this.ribbonPageGroupTongHop.ShowCaptionButton = false;
             this.ribbonPageGroupTongHop.Text = "Tổng hợp";
@@ -552,19 +569,13 @@
             this.ribbonStatusBarMain.Ribbon = this.ribbonControlMain;
             this.ribbonStatusBarMain.Size = new System.Drawing.Size(1290, 31);
             // 
-            // ribbonPageGroupBHXH
+            // barbtnTHKeDon
             // 
-            this.ribbonPageGroupBHXH.ItemLinks.Add(this.barbtnNghiViec);
-            this.ribbonPageGroupBHXH.Name = "ribbonPageGroupBHXH";
-            this.ribbonPageGroupBHXH.ShowCaptionButton = false;
-            // 
-            // barbtnNghiViec
-            // 
-            this.barbtnNghiViec.Caption = "Nghỉ việc BHXH";
-            this.barbtnNghiViec.Id = 46;
-            this.barbtnNghiViec.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barbtnNghiViec.ImageOptions.Image")));
-            this.barbtnNghiViec.Name = "barbtnNghiViec";
-            this.barbtnNghiViec.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnNghiViec_ItemClick);
+            this.barbtnTHKeDon.Caption = "Tổng hợp kê đơn";
+            this.barbtnTHKeDon.Id = 47;
+            this.barbtnTHKeDon.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barbtnTHKeDon.ImageOptions.Image")));
+            this.barbtnTHKeDon.Name = "barbtnTHKeDon";
+            this.barbtnTHKeDon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnTHKeDon_ItemClick);
             // 
             // FrmMain
             // 
@@ -647,5 +658,6 @@
         private DevExpress.XtraBars.BarButtonItem barbntTuTruc;
         private DevExpress.XtraBars.BarButtonItem barbtnNghiViec;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupBHXH;
+        private DevExpress.XtraBars.BarButtonItem barbtnTHKeDon;
     }
 }

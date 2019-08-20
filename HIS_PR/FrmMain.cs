@@ -548,5 +548,21 @@ namespace HIS_PR
             frmDSNghiViecBHXH.MdiParent = this;
             frmDSNghiViecBHXH.Show();
         }
+
+        private void barbtnTHKeDon_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            foreach (Form frm in this.MdiChildren)
+            {
+                if (frm.GetType() == typeof(FrmTongHopKeDon))
+                {
+                    frm.Activate();
+                    frm.WindowState = FormWindowState.Maximized;
+                    return;
+                }
+            }
+            FrmTongHopKeDon frmTongHopKeDon = new FrmTongHopKeDon();
+            frmTongHopKeDon.MdiParent = this;
+            frmTongHopKeDon.Show();
+        }
     }
 }

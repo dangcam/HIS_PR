@@ -43,6 +43,7 @@
     <Compile Include="NhapXuatEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TongHopEntity.cs" />
+    <Compile Include="TongHopKeDonEntity.cs" />
     <Compile Include="TonKhoEntity.cs" />
     <Compile Include="TonKhoLeEntity.cs" />
   </ItemGroup>
