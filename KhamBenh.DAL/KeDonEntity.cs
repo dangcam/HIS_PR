@@ -121,10 +121,10 @@ namespace KhamBenh.DAL
         }
         public DataTable DSThuoc()
         {
-            return db.ExcuteQuery("Select MaVatTu, MaThuoc, TenThuoc, HamLuong, DonViTinh, DonGia,MaDuongDung, "
+            return db.ExcuteQuery("Select MaVatTu, MaThuoc, TenThuoc, HamLuong, DonViTinh, DonGia,MaDuongDung,MaBacSi, "
                 + "LieuDung, SUM(SoLuong) as SoLuong, SUM(ThanhTien) as ThanhTien,SoDK,TTinThau,NgayYLenh,convert(varchar, NgayYLenh, 120) as NhomYLenh,TyLe "
                 + "From DonThuocChiTiet Where MaLK = '"+MaLK+"' GROUP BY MaVatTu, MaThuoc,MaDuongDung, "
-                + "TenThuoc, HamLuong, DonViTinh, DonGia, LieuDung,SoDK,TTinThau,NgayYLenh,TyLe",
+                + "TenThuoc, HamLuong, DonViTinh, DonGia, LieuDung,SoDK,TTinThau,NgayYLenh,TyLe,MaBacSi",
                 CommandType.Text, null);
         }
         public DataTable DSVatTu()

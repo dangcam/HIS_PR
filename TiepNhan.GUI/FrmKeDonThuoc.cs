@@ -94,10 +94,15 @@ namespace TiepNhan.GUI
                 // lấy danh sách thuốc
                 dvThuoc = kedon.DSThuoc().AsDataView();
                 gridControlThuoc.DataSource = dvThuoc;
+                string maBacSi = "";
                 foreach(DataRowView drv in dvThuoc)
                 {
                     listThuoc.Add(drv["MaVatTu"].ToString(), 1);
+                    maBacSi = Utils.ToString(drv["MaBacSi"]);
                 }
+                this.lookUpBacSi.EditValueChanged -= new System.EventHandler(this.lookUpBacSi_EditValueChanged);
+                lookUpBacSi.EditValue = maBacSi;
+                this.lookUpBacSi.EditValueChanged += new System.EventHandler(this.lookUpBacSi_EditValueChanged);
                 // lấy danh sách vật tư
                 dvVatTu = kedon.DSVatTu().AsDataView();
                 gridControlVTYT.DataSource = dvVatTu;
