@@ -49,9 +49,22 @@ namespace Core.DAL
             element.AppendChild(doc.CreateCDataSection(dataRow["HoTen"].ToString()));
             tonghop.AppendChild(element);
 
-            DateTime ngaysinh = dataRow["NgaySinh"].ToString().Length > 4 ?
-                Utils.ToDateTime(dataRow["NgaySinh"].ToString(), "dd/MM/yyyy") : 
-                Utils.ToDateTime(dataRow["NgaySinh"].ToString(), "yyyy");
+            string sngaysinh = Utils.ToString(dataRow["NgaySinh"]);
+            //DateTime ngaysinh = dataRow["NgaySinh"].ToString().Length > 4 ?
+            //    Utils.ToDateTime(dataRow["NgaySinh"].ToString(), "dd/MM/yyyy") : 
+            //    Utils.ToDateTime(dataRow["NgaySinh"].ToString(), "yyyy");
+            DateTime ngaysinh;
+            if (sngaysinh.Length == 4)
+            {
+                ngaysinh = Utils.ToDateTime(sngaysinh, "yyyy");
+            }else if(sngaysinh.Length < 10)
+            {
+                ngaysinh = Utils.ToDateTime(sngaysinh, "MM/yyyy");
+            }
+            else
+            {
+                ngaysinh = Utils.ToDateTime(sngaysinh, "dd/MM/yyyy");
+            }
 
             element = doc.CreateElement("NGAY_SINH");
             element.AppendChild(doc.CreateTextNode(ngaysinh.ToString("yyyyMMdd")));
