@@ -17,6 +17,7 @@ namespace DuocPham.GUI
         NhapKhoEntity nhapkho = new NhapKhoEntity ();
         string quyen = "";
         bool them = false;
+        DataTable nvKhoaDuoc;
         public FrmNhapKhoaTra ()
         {
             InitializeComponent ();
@@ -30,6 +31,7 @@ namespace DuocPham.GUI
         {
             dateTuNgay.DateTime = DateTime.Now;
             dateDenNgay.DateTime = DateTime.Now;
+            nvKhoaDuoc = nhapkho.DSNVKhoaDuoc();
 
             lookUpKhoNhan.Properties.DataSource = nhapkho.DSKho ();
             lookUpKhoNhan.Properties.DisplayMember = "TenKhoa";
@@ -275,6 +277,7 @@ namespace DuocPham.GUI
             rpt.xrlblNgayThangNam.Text = rpt.xrlblNgayIn.Text;
             rpt.xrlblNoiDung.Text = "Nội dung: "+ txtNoiDung.Text;
             rpt.xrlblKhoa.Text = lookUpKhoaTra.Properties.GetDisplayValueByKeyValue(lookUpKhoaTra.EditValue).ToString();
+            rpt.xrlblNguoiLinh.Text = Utils.ToString(nvKhoaDuoc.Rows[1]["HoTen"]);
             rpt.xrlblNguoiTra.Text = txtNguoiTra.Text;
             rpt.DataSource = (gridControlDS.DataSource as DataView);
             rpt.CreateDocument();

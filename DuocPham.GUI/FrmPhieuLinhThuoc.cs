@@ -23,6 +23,7 @@ namespace DuocPham.GUI
         string quyen = "";
         SortedSet<string> dsLoaiVatTu = new SortedSet<string> ();
         decimal thanhTien = 0;
+        DataTable nvKhoaDuoc;
         CultureInfo elGR = CultureInfo.CreateSpecificCulture ("el-GR");
         System.Drawing.Font fontB = new System.Drawing.Font ("Times New Roman", 11, System.Drawing.FontStyle.Bold);
         System.Drawing.Font font = new System.Drawing.Font ("Times New Roman", 11);
@@ -42,6 +43,7 @@ namespace DuocPham.GUI
             dateTuNgay.DateTime = DateTime.Now;
             gridControlDS.DataSource = linhthuoc.DSPhieu (dateTuNgay.DateTime, dateDenNgay.DateTime);
             lookUpKhoaBan.DataSource = linhthuoc.DSKhoaBan ();
+            nvKhoaDuoc = linhthuoc.DSNVKhoaDuoc();
             lookUpKhoaBan.DisplayMember = "TenKhoa";
             lookUpKhoaBan.ValueMember = "MaKhoa";
 
@@ -105,6 +107,7 @@ namespace DuocPham.GUI
             rpt.lblKhoaNhan.Text = lookUpKhoaBan.GetDisplayValueByKeyValue (dr["KhoNhan"]).ToString ();
             rpt.lblNgayIn.Text = rpt.lblNgayXuat.Text;// "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
             rpt.xrlblNguoiLinh.Text = dr["NguoiNhan"].ToString();
+            rpt.xrlblNguoiPhat.Text = Utils.ToString(nvKhoaDuoc.Rows[1]["HoTen"]);
             DataRow drow = linhthuoc.MauPhieu();
             if(drow!=null)
             {
@@ -242,7 +245,7 @@ namespace DuocPham.GUI
             rpt.lblNoiDungXuat.Text = txtNoiDung.Text;
             rpt.lblKhoXuat.Text = lookUpKhoaBan.GetDisplayValueByKeyValue (dr["KhoXuat"]).ToString ();
             rpt.lblNgayIn.Text = rpt.lblNgayXuat.Text;// "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
-
+            rpt.xrlblThuKho.Text = Utils.ToString(nvKhoaDuoc.Rows[1]["HoTen"]);
             this.thanhTien = 0;
             dsLoaiVatTu.Clear ();
             XRTableRow row;

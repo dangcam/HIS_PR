@@ -56,19 +56,19 @@
             this.xrTableCell5 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell6 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell7 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrcellTRKhoaDuoc = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell8 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell9 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow4 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell10 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrcellKeToanDuoc = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow5 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell13 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrcellThuKho = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell14 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell15 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow6 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell16 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrcellKeToan = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell17 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell18 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
@@ -104,7 +104,7 @@
             this.xrlblKeToanDuoc = new DevExpress.XtraReports.UI.XRLabel();
             this.xrlblThuKho = new DevExpress.XtraReports.UI.XRLabel();
             this.xrlblTRKhoaDuoc = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrlblKeToan = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel9 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel7 = new DevExpress.XtraReports.UI.XRLabel();
@@ -375,17 +375,17 @@
             // xrTableRow3
             // 
             this.xrTableRow3.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell7,
+            this.xrcellTRKhoaDuoc,
             this.xrTableCell8,
             this.xrTableCell9});
             this.xrTableRow3.Name = "xrTableRow3";
             this.xrTableRow3.Weight = 1D;
             // 
-            // xrTableCell7
+            // xrcellTRKhoaDuoc
             // 
-            this.xrTableCell7.Name = "xrTableCell7";
-            this.xrTableCell7.Text = "3. Ds Cao Thị Tâm";
-            this.xrTableCell7.Weight = 1.5016760049319133D;
+            this.xrcellTRKhoaDuoc.Name = "xrcellTRKhoaDuoc";
+            this.xrcellTRKhoaDuoc.Text = "3. Ds Cao Thị Tâm";
+            this.xrcellTRKhoaDuoc.Weight = 1.5016760049319133D;
             // 
             // xrTableCell8
             // 
@@ -402,17 +402,17 @@
             // xrTableRow4
             // 
             this.xrTableRow4.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell10,
+            this.xrcellKeToanDuoc,
             this.xrTableCell11,
             this.xrTableCell12});
             this.xrTableRow4.Name = "xrTableRow4";
             this.xrTableRow4.Weight = 1D;
             // 
-            // xrTableCell10
+            // xrcellKeToanDuoc
             // 
-            this.xrTableCell10.Name = "xrTableCell10";
-            this.xrTableCell10.Text = "4. Ds Nguyễn Thị Nga";
-            this.xrTableCell10.Weight = 1.5016760049319133D;
+            this.xrcellKeToanDuoc.Name = "xrcellKeToanDuoc";
+            this.xrcellKeToanDuoc.Text = "4. Ds Nguyễn Thị Nga";
+            this.xrcellKeToanDuoc.Weight = 1.5016760049319133D;
             // 
             // xrTableCell11
             // 
@@ -429,17 +429,17 @@
             // xrTableRow5
             // 
             this.xrTableRow5.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell13,
+            this.xrcellThuKho,
             this.xrTableCell14,
             this.xrTableCell15});
             this.xrTableRow5.Name = "xrTableRow5";
             this.xrTableRow5.Weight = 1D;
             // 
-            // xrTableCell13
+            // xrcellThuKho
             // 
-            this.xrTableCell13.Name = "xrTableCell13";
-            this.xrTableCell13.Text = "5. Ds Lê Thị Thùy Dương";
-            this.xrTableCell13.Weight = 1.5016760049319133D;
+            this.xrcellThuKho.Name = "xrcellThuKho";
+            this.xrcellThuKho.Text = "5. Ds Lê Thị Thùy Dương";
+            this.xrcellThuKho.Weight = 1.5016760049319133D;
             // 
             // xrTableCell14
             // 
@@ -456,17 +456,17 @@
             // xrTableRow6
             // 
             this.xrTableRow6.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell16,
+            this.xrcellKeToan,
             this.xrTableCell17,
             this.xrTableCell18});
             this.xrTableRow6.Name = "xrTableRow6";
             this.xrTableRow6.Weight = 1D;
             // 
-            // xrTableCell16
+            // xrcellKeToan
             // 
-            this.xrTableCell16.Name = "xrTableCell16";
-            this.xrTableCell16.Text = "6. KT Phạm Thị Ngọc Anh";
-            this.xrTableCell16.Weight = 1.5016760049319133D;
+            this.xrcellKeToan.Name = "xrcellKeToan";
+            this.xrcellKeToan.Text = "6. KT Phạm Thị Ngọc Anh";
+            this.xrcellKeToan.Weight = 1.5016760049319133D;
             // 
             // xrTableCell17
             // 
@@ -709,7 +709,7 @@
             this.xrlblKeToanDuoc,
             this.xrlblThuKho,
             this.xrlblTRKhoaDuoc,
-            this.xrLabel10,
+            this.xrlblKeToan,
             this.xrLabel9,
             this.xrLabel8,
             this.xrLabel7,
@@ -805,18 +805,18 @@
             this.xrlblTRKhoaDuoc.Text = "Cao Thị Tâm";
             this.xrlblTRKhoaDuoc.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
-            // xrLabel10
+            // xrlblKeToan
             // 
-            this.xrLabel10.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel10.LocationFloat = new DevExpress.Utils.PointFloat(5.000067F, 178F);
-            this.xrLabel10.Multiline = true;
-            this.xrLabel10.Name = "xrLabel10";
-            this.xrLabel10.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel10.SizeF = new System.Drawing.SizeF(140F, 23F);
-            this.xrLabel10.StylePriority.UseFont = false;
-            this.xrLabel10.StylePriority.UseTextAlignment = false;
-            this.xrLabel10.Text = "Phạm Thị Ngọc Anh";
-            this.xrLabel10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrlblKeToan.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrlblKeToan.LocationFloat = new DevExpress.Utils.PointFloat(5.000067F, 178F);
+            this.xrlblKeToan.Multiline = true;
+            this.xrlblKeToan.Name = "xrlblKeToan";
+            this.xrlblKeToan.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrlblKeToan.SizeF = new System.Drawing.SizeF(140F, 23F);
+            this.xrlblKeToan.StylePriority.UseFont = false;
+            this.xrlblKeToan.StylePriority.UseTextAlignment = false;
+            this.xrlblKeToan.Text = "Phạm Thị Ngọc Anh";
+            this.xrlblKeToan.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel9
             // 
@@ -1002,19 +1002,15 @@
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell5;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell6;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow3;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell7;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell8;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell9;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow4;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell10;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell11;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell12;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow5;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell13;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell14;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell15;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow6;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell16;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell17;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell18;
         private DevExpress.XtraReports.UI.XRLabel xrLabel5;
@@ -1070,7 +1066,6 @@
         public DevExpress.XtraReports.UI.XRLabel xrlblNgayThang;
         private DevExpress.XtraReports.UI.XRLabel xrLabel15;
         private DevExpress.XtraReports.UI.XRLabel xrLabel14;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel10;
         private DevExpress.XtraReports.UI.XRLabel xrLabel9;
         private DevExpress.XtraReports.UI.XRLabel xrLabel8;
         private DevExpress.XtraReports.UI.XRLabel xrLabel7;
@@ -1080,5 +1075,10 @@
         public DevExpress.XtraReports.UI.XRLabel xrlblThuKho;
         public DevExpress.XtraReports.UI.XRLabel xrlblTRKhoaDuoc;
         public DevExpress.XtraReports.UI.XRLabel xrlblKeToanDuoc;
+        public DevExpress.XtraReports.UI.XRLabel xrlblKeToan;
+        public DevExpress.XtraReports.UI.XRTableCell xrcellTRKhoaDuoc;
+        public DevExpress.XtraReports.UI.XRTableCell xrcellKeToanDuoc;
+        public DevExpress.XtraReports.UI.XRTableCell xrcellThuKho;
+        public DevExpress.XtraReports.UI.XRTableCell xrcellKeToan;
     }
 }

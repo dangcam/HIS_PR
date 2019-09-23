@@ -557,6 +557,7 @@ namespace DuocPham.GUI
             rpt.xrlblTRKhoaDuoc.Text = Utils.ToString(nvKhoaDuoc.Rows[0]["HoTen"]);
             rpt.xrlblThuKho.Text = Utils.ToString(nvKhoaDuoc.Rows[1]["HoTen"]);
             rpt.xrlblKeToanDuoc.Text = Utils.ToString(nvKhoaDuoc.Rows[3]["HoTen"]);
+            rpt.xrlblNguoiGiaoHang.Text = Utils.ToString(nvKhoaDuoc.Rows[4]["HoTen"]);
             this.thanhTien = 0;
             dsLoaiVatTu.Clear ();
             XRTableRow row;
@@ -591,7 +592,7 @@ namespace DuocPham.GUI
                 cell.Text = dtVatTu.Select("MaBV = '" + drview["MaVatTu"].ToString() + "'")[0][2].ToString();
                 //(lookUpMaVatTu.Properties.GetRowByKeyValue (drview["MaVatTu"].ToString ()) as DataRowView)[2].ToString ();
                 cell.Font = font;
-                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+                cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
                 cell.WidthF = 100;
                 row.Cells.Add (cell);
 
@@ -857,6 +858,12 @@ namespace DuocPham.GUI
             rpt.xrlblTRKhoaDuoc.Text = Utils.ToString( nvKhoaDuoc.Rows[0]["HoTen"]);
             rpt.xrlblThuKho.Text = Utils.ToString(nvKhoaDuoc.Rows[1]["HoTen"]);
             rpt.xrlblKeToanDuoc.Text = Utils.ToString(nvKhoaDuoc.Rows[3]["HoTen"]);
+            rpt.xrlblKeToan.Text = Utils.ToString(nvKhoaDuoc.Rows[5]["HoTen"]);
+            //
+            rpt.xrcellTRKhoaDuoc.Text ="3. Ds "+ Utils.ToString(nvKhoaDuoc.Rows[0]["HoTen"]);
+            rpt.xrcellThuKho.Text = "5. Ds " + Utils.ToString(nvKhoaDuoc.Rows[1]["HoTen"]);
+            rpt.xrcellKeToanDuoc.Text ="4. Ds "+ Utils.ToString(nvKhoaDuoc.Rows[3]["HoTen"]);
+            rpt.xrcellKeToan.Text = "6. Ds " + Utils.ToString(nvKhoaDuoc.Rows[5]["HoTen"]);
             rpt.DataSource = data;
             rpt.CreateDocument();
             rpt.ShowPreviewDialog();
@@ -1066,6 +1073,10 @@ namespace DuocPham.GUI
             string ten = "";
             DataTable data = new DataTable();
             data = dtPhieu.Copy();
+            rpt.xrlblTruongKhoaDuoc.Text = "2. Ds "+ Utils.ToString(nvKhoaDuoc.Rows[0]["HoTen"]) + " - TR Khoa Dược";
+            rpt.xrlblThuKho.Text = "3. Ds " + Utils.ToString(nvKhoaDuoc.Rows[1]["HoTen"]) + " - Thủ Kho";
+            rpt.xrlblNguoiGiao.Text = "4. " + Utils.ToString(nvKhoaDuoc.Rows[4]["HoTen"]) + " - Người Giao";
+            rpt.xrlblThongKe.Text = "5. Ds " + Utils.ToString(nvKhoaDuoc.Rows[3]["HoTen"]) + " - Thống Kê";
             foreach (DataRow dr in data.Rows)
             {
                 ten += dr["TenVatTu"] + ", ";

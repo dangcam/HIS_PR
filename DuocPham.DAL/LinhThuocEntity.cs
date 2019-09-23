@@ -77,6 +77,11 @@ namespace DuocPham.DAL
             }
             return false;
         }
+        public DataTable DSNVKhoaDuoc()
+        {
+            return db.ExcuteQuery("Select * From NVKhoaDuoc",
+                CommandType.Text, null);
+        }
         public DataTable DSKhoaBan ()
         {
             return db.ExcuteQuery ("Select MaKhoa,TenKhoa From KhoaBan Where TinhTrang = 1 and KhoVatTu = 1",
