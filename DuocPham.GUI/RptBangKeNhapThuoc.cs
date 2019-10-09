@@ -12,6 +12,5 @@ namespace DuocPham.GUI
         {
             InitializeComponent();
         }
-
     }
 }

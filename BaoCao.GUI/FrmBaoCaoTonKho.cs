@@ -185,37 +185,63 @@ namespace BaoCao.GUI
                 rpt.DataSource = dataTonKho.Select("SLTonCuoi > 0","STT ASC").CopyToDataTable();
                 float UsablePageWidth = rpt.PageWidth - rpt.Margins.Left - rpt.Margins.Right;
 
-                float columnWitdh = UsablePageWidth / (dataNV.Rows.Count + 1);
+                float columnWitdh = UsablePageWidth / (dataNV.Rows.Count -1);
                 rpt.xrTableNV.WidthF = columnWitdh;
                 int i = 2;
-                foreach (DataRow dr in dataNV.Rows)
+                //foreach (DataRow dr in dataNV.Rows)
+                //{
+                //    row = new XRTableRow();
+
+                //    cell = new XRTableCell();
+                //    cell.Text = dr["Id"] + ". Đ/c " + dr["HoTen"];
+                //    cell.WidthF = 200;
+                //    row.Cells.Add(cell);
+                //    cell = new XRTableCell();
+                //    cell.Text = dr["ChucVu"].ToString();
+                //    cell.WidthF = 200;
+                //    row.Cells.Add(cell);
+
+                //    rpt.xrTable.Rows.Add(row);
+                //    rpt.xrTableNV.WidthF = columnWitdh * i;
+                //    cell = new XRTableCell();
+                //    cell.Text = dr["ChucVu"].ToString().ToUpper();
+                //    cell.Font = fontB;
+                //    cell.WidthF = columnWitdh;
+                //    rpt.xrTableNV.Rows.FirstRow.Cells.Add(cell);
+                //    cell = new XRTableCell();
+                //    cell.Text = dr["HoTen"].ToString();
+                //    cell.WidthF = columnWitdh;
+                //    rpt.xrTableNV.Rows.LastRow.Cells.Add(cell);
+
+                //    i++;
+                //}
+                for (int j = 0; j < dataNV.Rows.Count - 2; j++)
                 {
                     row = new XRTableRow();
 
                     cell = new XRTableCell();
-                    cell.Text = dr["Id"] + ". Đ/c " + dr["HoTen"];
+                    cell.Text = dataNV.Rows[j]["Id"] + ". Đ/c " + dataNV.Rows[j]["HoTen"];
                     cell.WidthF = 200;
                     row.Cells.Add(cell);
                     cell = new XRTableCell();
-                    cell.Text = dr["ChucVu"].ToString();
+                    cell.Text = dataNV.Rows[j]["ChucVu"].ToString();
                     cell.WidthF = 200;
                     row.Cells.Add(cell);
 
                     rpt.xrTable.Rows.Add(row);
                     rpt.xrTableNV.WidthF = columnWitdh * i;
                     cell = new XRTableCell();
-                    cell.Text = dr["ChucVu"].ToString().ToUpper();
+                    cell.Text = dataNV.Rows[j]["ChucVu"].ToString().ToUpper();
                     cell.Font = fontB;
                     cell.WidthF = columnWitdh;
                     rpt.xrTableNV.Rows.FirstRow.Cells.Add(cell);
                     cell = new XRTableCell();
-                    cell.Text = dr["HoTen"].ToString();
+                    cell.Text = dataNV.Rows[j]["HoTen"].ToString();
                     cell.WidthF = columnWitdh;
                     rpt.xrTableNV.Rows.LastRow.Cells.Add(cell);
 
                     i++;
                 }
-
                 rpt.CreateDocument();
                 rpt.ShowPreviewDialog();
                 //

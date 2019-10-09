@@ -305,7 +305,7 @@ namespace TiepNhan.GUI
                 lookUpVatTu.Properties.DataSource =
                     kedon.DSKeDon("2");
             }
-            else
+            else if (cbLoaiChiPhi.SelectedIndex == 2)
             {
                 // thuốc ngoài DM
                 this.gridViewVatTu.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -318,6 +318,27 @@ namespace TiepNhan.GUI
                 this.GiaBHYT.VisibleIndex = 2;
                 this.TyLeTT.VisibleIndex = 3;
                 lookUpVatTu.Properties.DataSource = thuocNgoaiDM;
+            }
+            else
+            {
+                // thuốc chuyên khoa răng
+                this.gridViewVatTu.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+                this.MaVatTu,
+                this.MaHoatChat,
+                this.TenVatTu,
+                this.HamLuong,
+                this.DonViTinh,
+                this.GiaBHYT,
+                this.SoLuongTon});
+                this.MaVatTu.VisibleIndex = 0;
+                this.MaHoatChat.VisibleIndex = 1;
+                this.TenVatTu.VisibleIndex = 2;
+                this.HamLuong.VisibleIndex = 3;
+                this.DonViTinh.VisibleIndex = 4;
+                this.GiaBHYT.VisibleIndex = 5;
+                this.SoLuongTon.VisibleIndex = 6;
+                lookUpVatTu.Properties.DataSource =
+                    kedon.DSKeDon("8");
             }
         }
 

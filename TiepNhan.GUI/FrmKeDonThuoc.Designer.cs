@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmKeDonThuoc));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject21 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.layoutControlMain = new DevExpress.XtraLayout.LayoutControl();
             this.gridControlDVKT = new DevExpress.XtraGrid.GridControl();
@@ -106,6 +106,11 @@
             this.GiaBHYT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoLuongTon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TyLeTT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lookUpBacSi = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.Ma_BS = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Ten_NV = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SLKeDon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroupMain = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -128,11 +133,6 @@
             this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.lookUpBacSi = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.Ten_NV = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.SLKeDon = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Ma_BS = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
@@ -159,6 +159,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewMaBenhKhac)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpVatTu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewVatTu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpBacSi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -180,8 +182,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpBacSi.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -361,9 +361,9 @@
             // repbtnXoaVT
             // 
             this.repbtnXoaVT.AutoHeight = false;
-            editorButtonImageOptions5.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions5.Image")));
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.repbtnXoaVT.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repbtnXoaVT.Name = "repbtnXoaVT";
             this.repbtnXoaVT.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repbtnXoaVT.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repbtnXoaVT_ButtonClick);
@@ -531,9 +531,9 @@
             // repbtnXoaThuoc
             // 
             this.repbtnXoaThuoc.AutoHeight = false;
-            editorButtonImageOptions6.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions6.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.repbtnXoaThuoc.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repbtnXoaThuoc.Name = "repbtnXoaThuoc";
             this.repbtnXoaThuoc.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repbtnXoaThuoc.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repbtnXoaThuoc_ButtonClick);
@@ -759,7 +759,8 @@
             this.cbLoaiChiPhi.Properties.Items.AddRange(new object[] {
             "1. Thuốc",
             "2. Vật tư y tế",
-            "3. Thuốc ngoài DM"});
+            "3. Thuốc ngoài DM",
+            "4. Thuốc chuyên khoa răng"});
             this.cbLoaiChiPhi.Size = new System.Drawing.Size(181, 22);
             this.cbLoaiChiPhi.StyleController = this.layoutControlMain;
             this.cbLoaiChiPhi.TabIndex = 14;
@@ -1068,6 +1069,70 @@
             this.TyLeTT.VisibleIndex = 7;
             this.TyLeTT.Width = 30;
             // 
+            // lookUpBacSi
+            // 
+            this.lookUpBacSi.Location = new System.Drawing.Point(458, 64);
+            this.lookUpBacSi.MenuManager = this.ribbonControl;
+            this.lookUpBacSi.Name = "lookUpBacSi";
+            this.lookUpBacSi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookUpBacSi.Properties.Appearance.Options.UseFont = true;
+            this.lookUpBacSi.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookUpBacSi.Properties.AppearanceDropDown.Options.UseFont = true;
+            this.lookUpBacSi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpBacSi.Properties.DisplayMember = "Ten_NV";
+            this.lookUpBacSi.Properties.NullText = "";
+            this.lookUpBacSi.Properties.PopupView = this.gridView1;
+            this.lookUpBacSi.Properties.ValueMember = "Ma_BS";
+            this.lookUpBacSi.Size = new System.Drawing.Size(141, 22);
+            this.lookUpBacSi.StyleController = this.layoutControlMain;
+            this.lookUpBacSi.TabIndex = 13;
+            this.lookUpBacSi.EditValueChanged += new System.EventHandler(this.lookUpBacSi_EditValueChanged);
+            this.lookUpBacSi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lookUpBacSi_KeyPress);
+            // 
+            // gridView1
+            // 
+            this.gridView1.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView1.Appearance.Row.Options.UseFont = true;
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.Ma_BS,
+            this.Ten_NV,
+            this.SLKeDon});
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // Ma_BS
+            // 
+            this.Ma_BS.Caption = "Mã BS";
+            this.Ma_BS.FieldName = "Ma_BS";
+            this.Ma_BS.Name = "Ma_BS";
+            this.Ma_BS.OptionsColumn.AllowEdit = false;
+            this.Ma_BS.Visible = true;
+            this.Ma_BS.VisibleIndex = 2;
+            this.Ma_BS.Width = 40;
+            // 
+            // Ten_NV
+            // 
+            this.Ten_NV.Caption = "Bác sĩ";
+            this.Ten_NV.FieldName = "Ten_NV";
+            this.Ten_NV.Name = "Ten_NV";
+            this.Ten_NV.OptionsColumn.AllowEdit = false;
+            this.Ten_NV.Visible = true;
+            this.Ten_NV.VisibleIndex = 0;
+            this.Ten_NV.Width = 192;
+            // 
+            // SLKeDon
+            // 
+            this.SLKeDon.Caption = "Lần kê còn lại";
+            this.SLKeDon.FieldName = "KeDon";
+            this.SLKeDon.Name = "SLKeDon";
+            this.SLKeDon.OptionsColumn.AllowEdit = false;
+            this.SLKeDon.Visible = true;
+            this.SLKeDon.VisibleIndex = 1;
+            this.SLKeDon.Width = 50;
+            // 
             // layoutControlGroupMain
             // 
             this.layoutControlGroupMain.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -1286,70 +1351,6 @@
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
             // 
-            // lookUpBacSi
-            // 
-            this.lookUpBacSi.Location = new System.Drawing.Point(458, 64);
-            this.lookUpBacSi.MenuManager = this.ribbonControl;
-            this.lookUpBacSi.Name = "lookUpBacSi";
-            this.lookUpBacSi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpBacSi.Properties.Appearance.Options.UseFont = true;
-            this.lookUpBacSi.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpBacSi.Properties.AppearanceDropDown.Options.UseFont = true;
-            this.lookUpBacSi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpBacSi.Properties.DisplayMember = "Ten_NV";
-            this.lookUpBacSi.Properties.NullText = "";
-            this.lookUpBacSi.Properties.PopupView = this.gridView1;
-            this.lookUpBacSi.Properties.ValueMember = "Ma_BS";
-            this.lookUpBacSi.Size = new System.Drawing.Size(141, 22);
-            this.lookUpBacSi.StyleController = this.layoutControlMain;
-            this.lookUpBacSi.TabIndex = 13;
-            this.lookUpBacSi.EditValueChanged += new System.EventHandler(this.lookUpBacSi_EditValueChanged);
-            this.lookUpBacSi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lookUpBacSi_KeyPress);
-            // 
-            // gridView1
-            // 
-            this.gridView1.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridView1.Appearance.Row.Options.UseFont = true;
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.Ma_BS,
-            this.Ten_NV,
-            this.SLKeDon});
-            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            // 
-            // Ten_NV
-            // 
-            this.Ten_NV.Caption = "Bác sĩ";
-            this.Ten_NV.FieldName = "Ten_NV";
-            this.Ten_NV.Name = "Ten_NV";
-            this.Ten_NV.OptionsColumn.AllowEdit = false;
-            this.Ten_NV.Visible = true;
-            this.Ten_NV.VisibleIndex = 0;
-            this.Ten_NV.Width = 192;
-            // 
-            // SLKeDon
-            // 
-            this.SLKeDon.Caption = "Lần kê còn lại";
-            this.SLKeDon.FieldName = "KeDon";
-            this.SLKeDon.Name = "SLKeDon";
-            this.SLKeDon.OptionsColumn.AllowEdit = false;
-            this.SLKeDon.Visible = true;
-            this.SLKeDon.VisibleIndex = 1;
-            this.SLKeDon.Width = 50;
-            // 
-            // Ma_BS
-            // 
-            this.Ma_BS.Caption = "Mã BS";
-            this.Ma_BS.FieldName = "Ma_BS";
-            this.Ma_BS.Name = "Ma_BS";
-            this.Ma_BS.OptionsColumn.AllowEdit = false;
-            this.Ma_BS.Visible = true;
-            this.Ma_BS.VisibleIndex = 2;
-            this.Ma_BS.Width = 40;
-            // 
             // FrmKeDonThuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1389,6 +1390,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewMaBenhKhac)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpVatTu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewVatTu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpBacSi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
@@ -1410,8 +1413,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpBacSi.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

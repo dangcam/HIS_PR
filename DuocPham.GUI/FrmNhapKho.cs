@@ -128,7 +128,7 @@ namespace DuocPham.GUI
             txtTKNo.Text = "";
             dateNgayNhap.EditValue = DateTime.Now;
             lookUpNhaCungCap.EditValue = "";
-            txtNguoiGiaoHang.Text = "Lý Văn Thép";
+            txtNguoiGiaoHang.Text = Utils.ToString(nvKhoaDuoc.Rows[4]["HoTen"]);
             lookUpKhoNhap.EditValue = "";
             lookUpNguoiNhan.EditValue = "";
             txtNoiDung.Text = "";
