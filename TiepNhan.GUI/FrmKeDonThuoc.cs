@@ -354,7 +354,7 @@ namespace TiepNhan.GUI
             if (lookUpVatTu.EditValue is DataRowView)
             {
                 DataRowView dr = (lookUpVatTu.EditValue as DataRowView);
-                if (cbLoaiChiPhi.SelectedIndex == 0 || cbLoaiChiPhi.SelectedIndex ==2)
+                if (cbLoaiChiPhi.SelectedIndex == 0 || cbLoaiChiPhi.SelectedIndex ==2 || cbLoaiChiPhi.SelectedIndex == 3)
                 {
                     //kiểm tra số lượng tồn thuốc
                     if(listThuoc.ContainsKey(dr["MaVatTu"].ToString()))
@@ -392,13 +392,19 @@ namespace TiepNhan.GUI
                         drvNew["TyLe"] = 100;
                     }
                     else
+                    if(cbLoaiChiPhi.SelectedIndex == 3)
+                    {
+                        drvNew["TTinThau"] = "";
+                        drvNew["TyLe"] = 0;
+                    }
+                    else
                     {
                         drvNew["TTinThau"] = dr["TTinThau"];
                         drvNew["TyLe"] = dr["TyLeTT"];
                     }
                     drvNew.EndEdit();
                 }
-                else if (cbLoaiChiPhi.SelectedIndex == 1)
+                else if (cbLoaiChiPhi.SelectedIndex == 1 )
                 {
                     //kiểm tra số lượng tồn vật tư
                     if(listVatTu.ContainsKey(dr["MaVatTu"].ToString()))
