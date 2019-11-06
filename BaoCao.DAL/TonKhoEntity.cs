@@ -33,7 +33,7 @@ namespace BaoCao.DAL
         }
         public DataTable DSKhoNhap(DateTime tungay, DateTime denngay)
         {
-            return db.ExcuteQuery("Select *, ROW_NUMBER() OVER(ORDER BY NhaCungCap ASC) As STT from " +
+            return db.ExcuteQuery("Select *, ROW_NUMBER() OVER(ORDER BY NhaCungCap,SoPhieu.SoPhieu ASC) As STT from " +
                         "(select SoPhieu, SUM(ThanhTien) as ThanhTien " +
                         "from PhieuNhapChiTiet group by SoPhieu) as SoPhieu, " +
                         "(select SoPhieu, SoHoaDon, NgayNhap, NguoiGiaoHang, NhaCungCap " +
