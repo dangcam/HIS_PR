@@ -29,16 +29,19 @@ namespace Core.DAL
             get;
             set;
         }
-        public bool CheckLogin ()
+        public int CheckLogin ()
         {
             DataTable data = db.ExcuteQuery ("Select * From NhanVien Where Ma_NV = '"+MaNV+"' And MatKhau = '"+MatKhau+"' And TinhTrang = 1",
                 CommandType.Text, null);
 
-            if(data == null || data.Rows.Count == 0)
+            if(data == null )
             {
-                return false;
+                return -1;
             }
-
+            if (data.Rows.Count == 0)
+            {
+                return 0;
+            }
             AppConfig.MaNV = data.Rows[0]["Ma_NV"].ToString ();
             AppConfig.MatKhau = data.Rows[0]["MatKhau"].ToString ();
             AppConfig.CoSoKCB = data.Rows[0]["CoSoKCB"].ToString ();
@@ -47,7 +50,7 @@ namespace Core.DAL
             
             Utils.ThemHoatDong (Library.DANGNHAP);
 
-            return true;
+            return 1;
         }
        
     }

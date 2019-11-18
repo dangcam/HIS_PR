@@ -26,39 +26,41 @@ namespace HIS_PR
             checkLuu.Checked = AppConfig.NhoTT;
         }
 
-        private void btnOK_Click (object sender, EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)
         {
-            if(txtTenDN.Text.Length ==0)
+            if (txtTenDN.Text.Length == 0)
             {
-                txtTenDN.Focus ();
+                txtTenDN.Focus();
                 return;
             }
             if (txtMatKhau.Text.Length == 0)
             {
-                txtMatKhau.Focus ();
+                txtMatKhau.Focus();
                 return;
             }
             dangnhap.MaNV = txtTenDN.Text;
-            dangnhap.MatKhau = Utils.ToMD5 (txtMatKhau.Text);
+            dangnhap.MatKhau = Utils.ToMD5(txtMatKhau.Text);
             AppConfig.LoginMaNV = "";
             AppConfig.LoginPass = "";
             AppConfig.NhoTT = false;
-            if(checkLuu.Checked == true)
+            if (checkLuu.Checked == true)
             {
                 AppConfig.LoginMaNV = txtTenDN.Text;
                 AppConfig.LoginPass = txtMatKhau.Text;
                 AppConfig.NhoTT = true;
             }
-            appConfig.WriteLogin ();
-            if (dangnhap.CheckLogin ())
+            appConfig.WriteLogin();
+            int login = dangnhap.CheckLogin();
+            if (login == 1)
             {
-                this.Hide ();
-                frmMain = new FrmMain (this);
-                frmMain.Show ();
+                this.Hide();
+                frmMain = new FrmMain(this);
+                frmMain.Show();
             }
             else
+            if (login == 0)
             {
-                XtraMessageBox.Show("Sai thông tin đăng nhập", "Thông tin",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Sai thông tin đăng nhập", "Thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
