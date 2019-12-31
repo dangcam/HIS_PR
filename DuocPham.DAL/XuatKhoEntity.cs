@@ -114,7 +114,10 @@ namespace DuocPham.DAL
         }
         public DataTable DSPhieuVatTu(int soPhieu)
         {
-            return db.ExcuteQuery("Select * From PhieuXuatChiTiet,(select MaBV,TenVatTu,DonViTinh,HamLuong from VatTu) as VT Where VT.MaBV = PhieuXuatChiTiet.MaVatTu and SoPhieu = " + soPhieu,
+            //return db.ExcuteQuery("Select * From PhieuXuatChiTiet,(select MaBV,TenVatTu,DonViTinh,HamLuong from VatTu) as VT Where VT.MaBV = PhieuXuatChiTiet.MaVatTu and SoPhieu = " + soPhieu,
+            //    CommandType.Text, null);
+
+            return db.ExcuteQuery("Select * From DSPhieuVatTu('"+soPhieu+"')",
                 CommandType.Text, null);
         }
         public DataTable DSXuatExcel(DateTime tuNgay,DateTime denNgay, string maKhoa)

@@ -37,7 +37,7 @@ namespace DuocPham.GUI
         Dictionary<string, bool> dsVatTu = new Dictionary<string, bool>();
         Dictionary<string, string> dTPNNo = new Dictionary<string, string>();
         Dictionary<string, string> hamLuong = new Dictionary<string, string>();
-        string[] listKho = new string[] { "NT1","NT2","NT3","NT4","NT5","NT6", "NT8","NT9","MH","NT","TS","PRD","NM","XT","CKR","XQ"}; 
+        string[] listKho = new string[] { "NT1","NT2","NT3","NT4","NT5","NT6", "NT8","NT9","MH","NT","TS","PRD","NM","XT","CKR","XQ","LH"}; 
         public FrmXuatKho ()
         {
             InitializeComponent ();
