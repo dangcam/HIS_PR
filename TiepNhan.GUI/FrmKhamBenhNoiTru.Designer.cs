@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmKhamBenhNoiTru));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject21 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.layoutControlMain = new DevExpress.XtraLayout.LayoutControl();
             this.btnNopHS = new DevExpress.XtraEditors.SimpleButton();
@@ -74,6 +74,7 @@
             this.STTNgay = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPageThongTin = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControlChiTiet = new DevExpress.XtraLayout.LayoutControl();
+            this.txtGiuongBenh = new DevExpress.XtraEditors.TextEdit();
             this.btnPhieuDieuTri = new DevExpress.XtraEditors.SimpleButton();
             this.btnLamMoi = new DevExpress.XtraEditors.SimpleButton();
             this.gridControlThuoc = new DevExpress.XtraGrid.GridControl();
@@ -148,6 +149,7 @@
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem30 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem33 = new DevExpress.XtraLayout.LayoutControlItem();
             this.lookUpKhoa = new DevExpress.XtraEditors.LookUpEdit();
             this.btnNhapHoSo = new DevExpress.XtraEditors.SimpleButton();
             this.btnCanLamSan = new DevExpress.XtraEditors.SimpleButton();
@@ -170,8 +172,8 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem32 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.txtGiuongBenh = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem33 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnChungSinh = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem34 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
@@ -184,6 +186,7 @@
             this.xtraTabPageThongTin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlChiTiet)).BeginInit();
             this.layoutControlChiTiet.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGiuongBenh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlThuoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewThuoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repbtnXoaThuoc)).BeginInit();
@@ -220,6 +223,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem33)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateDenNgay.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateDenNgay.Properties)).BeginInit();
@@ -241,8 +245,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGiuongBenh.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem33)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem34)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -263,6 +266,7 @@
             // 
             // layoutControlMain
             // 
+            this.layoutControlMain.Controls.Add(this.btnChungSinh);
             this.layoutControlMain.Controls.Add(this.btnNopHS);
             this.layoutControlMain.Controls.Add(this.btnTHVatTu);
             this.layoutControlMain.Controls.Add(this.cbLoai);
@@ -655,6 +659,17 @@
             this.layoutControlChiTiet.TabIndex = 0;
             this.layoutControlChiTiet.Text = "layoutControl1";
             // 
+            // txtGiuongBenh
+            // 
+            this.txtGiuongBenh.Location = new System.Drawing.Point(362, 64);
+            this.txtGiuongBenh.MenuManager = this.ribbonControl;
+            this.txtGiuongBenh.Name = "txtGiuongBenh";
+            this.txtGiuongBenh.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGiuongBenh.Properties.Appearance.Options.UseFont = true;
+            this.txtGiuongBenh.Size = new System.Drawing.Size(201, 22);
+            this.txtGiuongBenh.StyleController = this.layoutControlChiTiet;
+            this.txtGiuongBenh.TabIndex = 33;
+            // 
             // btnPhieuDieuTri
             // 
             this.btnPhieuDieuTri.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -826,9 +841,9 @@
             // repbtnXoaThuoc
             // 
             this.repbtnXoaThuoc.AutoHeight = false;
-            editorButtonImageOptions5.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions5.Image")));
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.repbtnXoaThuoc.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repbtnXoaThuoc.Name = "repbtnXoaThuoc";
             this.repbtnXoaThuoc.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -944,9 +959,9 @@
             // repbtnXoaVT
             // 
             this.repbtnXoaVT.AutoHeight = false;
-            editorButtonImageOptions6.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions6.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.repbtnXoaVT.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repbtnXoaVT.Name = "repbtnXoaVT";
             this.repbtnXoaVT.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -1521,6 +1536,15 @@
             this.layoutControlItem30.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem30.TextVisible = false;
             // 
+            // layoutControlItem33
+            // 
+            this.layoutControlItem33.Control = this.txtGiuongBenh;
+            this.layoutControlItem33.Location = new System.Drawing.Point(282, 52);
+            this.layoutControlItem33.Name = "layoutControlItem33";
+            this.layoutControlItem33.Size = new System.Drawing.Size(273, 27);
+            this.layoutControlItem33.Text = "Giường bệnh:";
+            this.layoutControlItem33.TextSize = new System.Drawing.Size(65, 13);
+            // 
             // lookUpKhoa
             // 
             this.lookUpKhoa.Location = new System.Drawing.Point(64, 12);
@@ -1641,7 +1665,8 @@
             this.layoutControlItem31,
             this.layoutControlItem3,
             this.layoutControlItem32,
-            this.emptySpaceItem4});
+            this.emptySpaceItem4,
+            this.layoutControlItem34});
             this.layoutControlGroupMain.Name = "layoutControlGroupMain";
             this.layoutControlGroupMain.Size = new System.Drawing.Size(1288, 568);
             this.layoutControlGroupMain.TextVisible = false;
@@ -1805,28 +1830,33 @@
             this.emptySpaceItem4.AllowHotTrack = false;
             this.emptySpaceItem4.Location = new System.Drawing.Point(0, 27);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(1188, 27);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(1062, 27);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // txtGiuongBenh
+            // btnChungSinh
             // 
-            this.txtGiuongBenh.Location = new System.Drawing.Point(362, 64);
-            this.txtGiuongBenh.MenuManager = this.ribbonControl;
-            this.txtGiuongBenh.Name = "txtGiuongBenh";
-            this.txtGiuongBenh.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGiuongBenh.Properties.Appearance.Options.UseFont = true;
-            this.txtGiuongBenh.Size = new System.Drawing.Size(201, 22);
-            this.txtGiuongBenh.StyleController = this.layoutControlChiTiet;
-            this.txtGiuongBenh.TabIndex = 33;
+            this.btnChungSinh.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChungSinh.Appearance.Options.UseFont = true;
+            this.btnChungSinh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnChungSinh.ImageOptions.Image")));
+            this.btnChungSinh.Location = new System.Drawing.Point(1074, 39);
+            this.btnChungSinh.Name = "btnChungSinh";
+            this.btnChungSinh.Size = new System.Drawing.Size(122, 23);
+            this.btnChungSinh.StyleController = this.layoutControlMain;
+            this.btnChungSinh.TabIndex = 19;
+            this.btnChungSinh.Text = "Giấy Chứng Sinh";
+            this.btnChungSinh.Click += new System.EventHandler(this.btnChungSinh_Click);
             // 
-            // layoutControlItem33
+            // layoutControlItem34
             // 
-            this.layoutControlItem33.Control = this.txtGiuongBenh;
-            this.layoutControlItem33.Location = new System.Drawing.Point(282, 52);
-            this.layoutControlItem33.Name = "layoutControlItem33";
-            this.layoutControlItem33.Size = new System.Drawing.Size(273, 27);
-            this.layoutControlItem33.Text = "Giường bệnh:";
-            this.layoutControlItem33.TextSize = new System.Drawing.Size(65, 13);
+            this.layoutControlItem34.Control = this.btnChungSinh;
+            this.layoutControlItem34.Location = new System.Drawing.Point(1062, 27);
+            this.layoutControlItem34.MaxSize = new System.Drawing.Size(126, 27);
+            this.layoutControlItem34.MinSize = new System.Drawing.Size(126, 27);
+            this.layoutControlItem34.Name = "layoutControlItem34";
+            this.layoutControlItem34.Size = new System.Drawing.Size(126, 27);
+            this.layoutControlItem34.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem34.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem34.TextVisible = false;
             // 
             // FrmKhamBenhNoiTru
             // 
@@ -1853,6 +1883,7 @@
             this.xtraTabPageThongTin.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlChiTiet)).EndInit();
             this.layoutControlChiTiet.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtGiuongBenh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlThuoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewThuoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repbtnXoaThuoc)).EndInit();
@@ -1889,6 +1920,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem33)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateDenNgay.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateDenNgay.Properties)).EndInit();
@@ -1910,8 +1942,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGiuongBenh.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem33)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem34)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2052,5 +2083,7 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem4;
         private DevExpress.XtraEditors.TextEdit txtGiuongBenh;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem33;
+        private DevExpress.XtraEditors.SimpleButton btnChungSinh;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem34;
     }
 }

@@ -218,7 +218,7 @@ namespace TiepNhan.GUI
             DataRow dr = gridView.GetFocusedDataRow();
             if (dr != null)
             {
-                FrmRaVien frm = new FrmRaVien();
+                FrmRaVien frm = new FrmRaVien(dr);
                 if (frm.ShowDialog(this) == DialogResult.OK)
                 {
                     string err = "";
@@ -516,6 +516,16 @@ namespace TiepNhan.GUI
         {
             FrmNopHoSo frmNopHoSo = new FrmNopHoSo();
             frmNopHoSo.ShowDialog();
+        }
+
+        private void btnChungSinh_Click(object sender, EventArgs e)
+        {
+            DataRow dr = gridView.GetFocusedDataRow();
+            if (dr != null)
+            {
+                FrmGiayChungSinh frmGiayChungSinh = new FrmGiayChungSinh(dr);
+                frmGiayChungSinh.ShowDialog();
+            }
         }
     }
 }

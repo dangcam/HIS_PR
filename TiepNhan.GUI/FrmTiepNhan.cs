@@ -858,6 +858,7 @@ namespace TiepNhan.GUI
                 //
                 txtMaBN.Text = dr["MaBN"].ToString();
                 txtHoTen.Text = dr["HoTen"].ToString();
+                txtNgayTN.Text = Utils.ToDateTime(dr["NgayVao"].ToString()).ToString("dd/MM/yyyy HH:mm");
                 txtNgaySinh.Text = dr["NgaySinh"].ToString();
                 txtDiaChi.Text = dr["DiaChi"].ToString();
                 cbGioiTinh.SelectedIndex = Utils.ToInt(dr["GioiTinh"]);
@@ -953,7 +954,15 @@ namespace TiepNhan.GUI
                 tiepnhan.MucHuong = Utils.ToInt(txtTyLe.Text);
                 //tiepnhan.MaLoaiKCB = 1;
                 string err = "";
-                if(!tiepnhan.SpThongTinChiTietTiepNhan(ref err, "UpdateTiepNhan"))
+                //
+                //tiepnhan.MaBN = null;
+                //if (tiepnhan.SpThongTinTiepNhan(ref err))
+                //{
+                //    txtMaBN.Text = tiepnhan.MaBN;
+                //}
+                //tiepnhan.MaBN = txtMaBN.Text;
+                //
+                if (!tiepnhan.SpThongTinChiTietTiepNhan(ref err, "UpdateTiepNhan"))
                 {
                     XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

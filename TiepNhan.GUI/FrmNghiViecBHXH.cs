@@ -39,7 +39,8 @@ namespace TiepNhan.GUI
             txtNgayChungTu.DateTime = txtTuNgay.DateTime;
             nghiViecBHXHEntity.MaLK = Utils.ToString(dataRow["MaLK"]);
             nghiViecBHXHEntity.NgayCT = txtNgayChungTu.DateTime;
-            DataTable data = nghiViecBHXHEntity.NghiViec();
+            txtBHXH.Text = Utils.LaySoBHXH(dataRow["MaThe"]);
+            DataTable data = nghiViecBHXHEntity.ThongTin(0);
             if(data!=null && data.Rows.Count>0)
             {
                 them = false;
@@ -61,7 +62,7 @@ namespace TiepNhan.GUI
             else
             {
                 them = true;
-                txtSoPhieu.Text = Utils.ToString(nghiViecBHXHEntity.SoChungTu());
+                txtSoPhieu.Text = Utils.ToString(nghiViecBHXHEntity.SoChungTu(0));
             }
         }
 
@@ -115,6 +116,7 @@ namespace TiepNhan.GUI
             nghiViecBHXHEntity.NgayCT = txtNgayChungTu.DateTime;
             nghiViecBHXHEntity.NguoiDaiDien = txtNguoiDaiDien.Text;
             nghiViecBHXHEntity.MaBenh = Utils.ToString(lookUpBenh.EditValue);
+            nghiViecBHXHEntity.LoaiCT = 0;
             string err = "";
             if(!nghiViecBHXHEntity.SpCapNhatMaBenh(ref err))
             {

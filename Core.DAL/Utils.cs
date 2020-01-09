@@ -204,6 +204,23 @@ namespace Core.DAL
                 return defaultvalue;
             }
         }
+        public static string LaySoBHXH(object value, string defaultvalue = "")
+        {
+            try
+            {
+                string maThe = ToString(value,"");
+                if(maThe.Length>0)
+                {
+                    return maThe.Substring(maThe.Length - 10, 10);
+                }
+                return maThe;
+
+            }
+            catch
+            {
+                return defaultvalue;
+            }
+        }
         public static string TachHamLuong(string hamLuong, int defaultvalue = 15)
         {
             int index = 0;

@@ -26,20 +26,42 @@ namespace KhamBenh.DAL
         public string PPDieuTri { get; set; }
         public string MaDonVi { get; set; }
         public string TenDonVi { get; set; }
-        public DateTime TuNgay { get; set; }
-        public DateTime DenNgay { get; set; }
+        public DateTime TuNgay { get; set; }// Ngày Cấp CMND
+        public DateTime DenNgay { get; set; } // Ngày Sinh Con
         public int SoNgay { get; set; }
         public DateTime NgayCT { get; set; }
         public string NguoiDaiDien { get; set; }
         public string MaBenh { get; set; }
+        public string TenBS { get; set; }
+        public int DanToc { get; set; }
+        public string NgheNghiep { get; set; }
+        public string GhiChu { get; set; }
+        public string CMND { get; set; }
+        public string NoiCap { get; set; }
+        public string NoiSinhCon { get; set; }
+        public string TenCon { get; set; }
+        public int SoCon { get; set; }
+        public int GioiTinhCon { get; set; }
+        public int CanNangCon { get; set; }
+        public string NguoiDoDe { get; set; }
+        public string NguoiGhiPhieu { get; set; }
+        public bool SinhConPhauThuat { get; set; }
+        public bool SinhConDuoi32Tuan { get; set; }
+        public string TinhTrangCon { get; set; }
+        public int LoaiCT { get; set; } // 0. Nghỉ hưởng BHXH, 1. Ra viện, 2. Sinh con
         public DataTable DSBenh()
         {
             return db.ExcuteQuery("Select MaBenh,TenBenh From BenhICD ",
                 CommandType.Text, null);
         }
-        public DataTable NghiViec()
+        public DataTable DSDanToc()
         {
-            return db.ExcuteQuery("Select * From NghiViec Where MaLK = '"+MaLK+"' ",
+            return db.ExcuteQuery("Select * From DanToc ",
+                CommandType.Text, null);
+        }
+        public DataTable ThongTin(int LoaiCT)
+        {
+            return db.ExcuteQuery("Select * From NghiViec Where MaLK = '"+MaLK+"' and LoaiCT="+LoaiCT,
                 CommandType.Text, null);
         }
         public DataTable DSNghiViec()
@@ -51,9 +73,9 @@ namespace KhamBenh.DAL
                 "and NgayCT Between '" + TuNgay + "' And '" + DenNgay + "' ",
                 CommandType.Text, null);
         }
-        public object SoChungTu()
+        public object SoChungTu(int loaiCT = 0)
         {
-            DataTable dataTable = db.ExcuteQuery("Select (ISNULL(MAX(SoPhieu),0)+1) as SoCT from NghiViec where YEAR(NgayCT) = " + NgayCT.Year + " ",
+            DataTable dataTable = db.ExcuteQuery("Select (ISNULL(MAX(SoPhieu),0)+1) as SoCT from NghiViec where YEAR(NgayCT) = " + NgayCT.Year + " and LoaiCT = "+loaiCT,
                 CommandType.Text, null);
             if(dataTable!=null && dataTable.Rows.Count>0)
             {
@@ -93,7 +115,24 @@ namespace KhamBenh.DAL
                 new SqlParameter("@DenNgay", DenNgay),
                 new SqlParameter("@SoNgay", SoNgay),
                 new SqlParameter("@NgayCT", NgayCT),
-                new SqlParameter("@NguoiDaiDien", NguoiDaiDien));
+                new SqlParameter("@NguoiDaiDien", NguoiDaiDien),
+                new SqlParameter("@TenBS", TenBS),
+                new SqlParameter("@DanToc", DanToc),
+                new SqlParameter("@NgheNghiep", NgheNghiep),
+                new SqlParameter("@GhiChu", GhiChu),
+                new SqlParameter("@CMND", CMND),
+                new SqlParameter("@NoiCap", NoiCap),
+                new SqlParameter("@NoiSinhCon", NoiSinhCon),
+                new SqlParameter("@TenCon", TenCon),
+                new SqlParameter("@SoCon", SoCon),
+                new SqlParameter("@GioiTinhCon", GioiTinhCon),
+                new SqlParameter("@CanNangCon", CanNangCon),
+                new SqlParameter("@TinhTrangCon", TinhTrangCon),
+                new SqlParameter("@NguoiDoDe", NguoiDoDe),
+                new SqlParameter("@NguoiGhiPhieu", NguoiGhiPhieu),
+                new SqlParameter("@SinhConPhauThuat", SinhConPhauThuat),
+                new SqlParameter("@SinhConDuoi32Tuan", SinhConDuoi32Tuan),
+                new SqlParameter("@LoaiCT", LoaiCT));
         }
     }
 }

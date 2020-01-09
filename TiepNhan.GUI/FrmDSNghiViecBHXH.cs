@@ -37,7 +37,12 @@ namespace TiepNhan.GUI
         {
             nghiViecBHXHEntity.TuNgay = dateTuNgay.DateTime;
             nghiViecBHXHEntity.DenNgay = dateDenNgay.DateTime;
+            if(cbLoaiCT.SelectedIndex==0)
             gridControl.DataSource = nghiViecBHXHEntity.DSNghiViec();
+            if(cbLoaiCT.SelectedIndex == 1)
+                gridControl.DataSource = nghiViecBHXHEntity.DSNghiViec();
+            else
+                gridControl.DataSource = nghiViecBHXHEntity.DSNghiViec();
         }
         private void btnTim_Click(object sender, EventArgs e)
         {
@@ -47,7 +52,19 @@ namespace TiepNhan.GUI
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
             //gridControl.ExportToXlsx("file path");
-            string dummyFileName = "NghiBHXH_"+dateTuNgay.DateTime.ToString("ddMMyyyy");
+            string dummyFileName;
+            if (cbLoaiCT.SelectedIndex == 0)
+            {
+                dummyFileName = "NghiBHXH_" + dateTuNgay.DateTime.ToString("ddMMyyyy");
+            }
+            if (cbLoaiCT.SelectedIndex == 1)
+            {
+                dummyFileName = "RaVien_" + dateTuNgay.DateTime.ToString("ddMMyyyy");
+            }
+            else
+            {
+                dummyFileName = "ChungSinh_" + dateTuNgay.DateTime.ToString("ddMMyyyy");
+            }
 
             SaveFileDialog sf = new SaveFileDialog();
             // Feed the dummy name to the save dialog
@@ -91,8 +108,21 @@ namespace TiepNhan.GUI
             DataRow dr = gridView.GetFocusedDataRow();
             if (dr != null)
             {
-                FrmNghiViecBHXH frm = new FrmNghiViecBHXH(dr);
-                frm.ShowDialog();
+                if (cbLoaiCT.SelectedIndex == 0)
+                {
+                    FrmNghiViecBHXH frm = new FrmNghiViecBHXH(dr);
+                    frm.ShowDialog();
+                }
+                if (cbLoaiCT.SelectedIndex == 1)
+                {
+                    FrmRaVien frm = new FrmRaVien(dr);
+                    frm.ShowDialog();
+                }else
+                {
+                    FrmGiayChungSinh frm = new FrmGiayChungSinh(dr);
+                    frm.ShowDialog();
+                }
+
                 LoadData();
 
             }

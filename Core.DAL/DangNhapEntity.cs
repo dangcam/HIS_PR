@@ -31,7 +31,8 @@ namespace Core.DAL
         }
         public int CheckLogin ()
         {
-            DataTable data = db.ExcuteQuery ("Select * From NhanVien Where Ma_NV = '"+MaNV+"' And MatKhau = '"+MatKhau+"' And TinhTrang = 1",
+            DataTable data = db.ExcuteQuery ("Select Ma_NV,MatKhau,CoSoKCB,MaKhoa,Ten_CS" +
+                " From NhanVien,CoSoKCB Where Ma_NV = '"+MaNV+"' And MatKhau = '"+MatKhau+"' And TinhTrang = 1 and CoSoKCB.Ma_CS = NhanVien.CoSoKCB",
                 CommandType.Text, null);
 
             if(data == null )
@@ -46,6 +47,7 @@ namespace Core.DAL
             AppConfig.MatKhau = data.Rows[0]["MatKhau"].ToString ();
             AppConfig.CoSoKCB = data.Rows[0]["CoSoKCB"].ToString ();
             AppConfig.MaKhoa = data.Rows[0]["MaKhoa"].ToString();
+            AppConfig.TenCoSoKCB = Utils.ToString(data.Rows[0]["Ten_CS"]);
 
             
             Utils.ThemHoatDong (Library.DANGNHAP);

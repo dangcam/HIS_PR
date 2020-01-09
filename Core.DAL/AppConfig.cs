@@ -16,6 +16,7 @@ namespace Core.DAL
         private static string userName = "";
         private static string password = "";
         private static string coSoKCB = "70013";
+        private static string tenCoSoKCB = "";
         private static string maNV = "";
         private static string matKhau = "";
         private static string loginMaNV = "";
@@ -106,7 +107,18 @@ namespace Core.DAL
                 coSoKCB = value;
             }
         }
+        public static string TenCoSoKCB
+        {
+            get
+            {
+                return tenCoSoKCB;
+            }
 
+            set
+            {
+                tenCoSoKCB = value;
+            }
+        }
         public static string MaNV
         {
             get

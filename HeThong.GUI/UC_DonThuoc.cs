@@ -9,7 +9,7 @@ namespace HeThong.GUI
     public partial class UC_DonThuoc : UserControl
     {
         NhatKyEntity nhatky;
-        DataRow dr;
+        //DataRow dr;
         string quyen = "";
         public UC_DonThuoc()
         {

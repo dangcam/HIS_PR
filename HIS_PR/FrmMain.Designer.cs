@@ -64,6 +64,7 @@
             this.barbtnPhanTichDT = new DevExpress.XtraBars.BarButtonItem();
             this.barbntTuTruc = new DevExpress.XtraBars.BarButtonItem();
             this.barbtnNghiViec = new DevExpress.XtraBars.BarButtonItem();
+            this.barbtnTHKeDon = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageHeThong = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupHeThong = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageTiepNhan = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -84,7 +85,6 @@
             this.ribbonPageGroupKhoLe = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupTongHop = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBarMain = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.barbtnTHKeDon = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -408,11 +408,19 @@
             // 
             // barbtnNghiViec
             // 
-            this.barbtnNghiViec.Caption = "Nghỉ việc BHXH";
+            this.barbtnNghiViec.Caption = "Chứng từ";
             this.barbtnNghiViec.Id = 46;
             this.barbtnNghiViec.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barbtnNghiViec.ImageOptions.Image")));
             this.barbtnNghiViec.Name = "barbtnNghiViec";
             this.barbtnNghiViec.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnNghiViec_ItemClick);
+            // 
+            // barbtnTHKeDon
+            // 
+            this.barbtnTHKeDon.Caption = "Tổng hợp kê đơn";
+            this.barbtnTHKeDon.Id = 47;
+            this.barbtnTHKeDon.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barbtnTHKeDon.ImageOptions.Image")));
+            this.barbtnTHKeDon.Name = "barbtnTHKeDon";
+            this.barbtnTHKeDon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnTHKeDon_ItemClick);
             // 
             // ribbonPageHeThong
             // 
@@ -568,14 +576,6 @@
             this.ribbonStatusBarMain.Name = "ribbonStatusBarMain";
             this.ribbonStatusBarMain.Ribbon = this.ribbonControlMain;
             this.ribbonStatusBarMain.Size = new System.Drawing.Size(1290, 31);
-            // 
-            // barbtnTHKeDon
-            // 
-            this.barbtnTHKeDon.Caption = "Tổng hợp kê đơn";
-            this.barbtnTHKeDon.Id = 47;
-            this.barbtnTHKeDon.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barbtnTHKeDon.ImageOptions.Image")));
-            this.barbtnTHKeDon.Name = "barbtnTHKeDon";
-            this.barbtnTHKeDon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnTHKeDon_ItemClick);
             // 
             // FrmMain
             // 
