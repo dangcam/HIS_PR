@@ -59,6 +59,13 @@ namespace KhamBenh.DAL
             return db.ExcuteQuery("Select * From DanToc ",
                 CommandType.Text, null);
         }
+        public DataTable DSKhoaBan(int loaiPhong)
+        {
+            string sql = "";
+            sql = "EXEC SpGetKhoaBan '" + AppConfig.CoSoKCB + "'," + loaiPhong;
+            return db.ExcuteQuery(sql,
+                CommandType.Text, null);
+        }
         public DataTable ThongTin(int LoaiCT)
         {
             return db.ExcuteQuery("Select * From NghiViec Where MaLK = '"+MaLK+"' and LoaiCT="+LoaiCT,
@@ -66,11 +73,16 @@ namespace KhamBenh.DAL
         }
         public DataTable DSNghiViec()
         {
-            return db.ExcuteQuery("select NghiViec.MaLK, ROW_NUMBER() OVER(ORDER BY SoPhieu ASC) AS STT," +
+            return db.ExcuteQuery("select  ROW_NUMBER() OVER(ORDER BY SoPhieu ASC) AS STT," +//NghiViec.MaLK,
                 "MaCT,SoPhieu,MaCoSoKCB,MaBS,MaSoBHXH,MaThe,HoTen,NgaySinh,MaBenh,NgayVao, " +
                 "(GioiTinh+1) as GioiTinh,PPDieuTri,MaDonVi,TenDonVi,TuNgay,DenNgay,SoNgay,TenCha,TenMe,NgayCT,NguoiDaiDien " +
                 "from ThongTinBNChiTiet,NghiViec where ThongTinBNChiTiet.MaLK = NghiViec.MaLK " +
                 "and NgayCT Between '" + TuNgay + "' And '" + DenNgay + "' ",
+                CommandType.Text, null);
+        }
+        public DataTable DSChungTuBHXH()
+        {
+            return db.ExcuteQuery("select  * From DSChungTuBHXH('" + TuNgay + "','" + DenNgay + "')",
                 CommandType.Text, null);
         }
         public object SoChungTu(int loaiCT = 0)

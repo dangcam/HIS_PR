@@ -1,6 +1,7 @@
 ﻿using Core.DAL;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using KhamBenh.DAL;
 using System;
 using System.Collections.Generic;
@@ -19,11 +20,14 @@ namespace TiepNhan.GUI
         NghiViecBHXHEntity nghiViecBHXHEntity;
         DataRow dataRow;
         private bool them = true;
+        Dictionary<string, string> khoaBan = new Dictionary<string, string>();
         public FrmRaVien(DataRow dr)
         {
             InitializeComponent();
             dataRow = dr;
             nghiViecBHXHEntity = new NghiViecBHXHEntity();
+            khoaBan = nghiViecBHXHEntity.DSKhoaBan(1).AsEnumerable().ToDictionary<DataRow, string, string>
+                (row=>row["MaKhoa"].ToString(),row=>row["TenKhoa"].ToString());
         }
         public int KetQuaDieuTri { get; set; }
         public int TinhTrangRaVien { get; set; }
@@ -59,8 +63,7 @@ namespace TiepNhan.GUI
                 txtNgayChungTu.DateTime = DateTime.Now;
             }
         }
-
-        private void btnChon_Click(object sender, EventArgs e)
+        private void Luu()
         {
             this.KetQuaDieuTri = cbKetQua.SelectedIndex + 1;
             this.TinhTrangRaVien = cbTinhTrangRaVien.SelectedIndex + 1;
@@ -91,9 +94,58 @@ namespace TiepNhan.GUI
             this.DialogResult = DialogResult.OK;
         }
 
+        private void btnChon_Click(object sender, EventArgs e)
+        {
+            Luu();
+        }
+
         private void btnHuy_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void btnLuuIn_Click(object sender, EventArgs e)
+        {
+            //Luu();
+            In();
+        }
+        private void In()
+        {
+            RptRaVien rpt = new RptRaVien();
+            rpt.xrlblHoTen.Text = "Họ tên người bệnh :"+Utils.ToString(dataRow["HoTen"]);
+            rpt.xrlblTuoi.Text = "Tuổi: " + (DateTime.Now.Year - Utils.ToNgaySinh(dataRow["NgaySinh"]).Year);
+            rpt.xrlblGioiTinh.Text = Utils.ToString(dataRow["GioiTinh"]) == "0" ? "Nam" : "Nữ";
+            rpt.xrlblSoBHYT.Text = "Số: "+ Utils.ToString(dataRow["MaThe"]);
+            rpt.xrlblDanToc.Text ="- Dân tộc: "+ Utils.ToString(txtDanToc.Properties.GetDisplayValueByKeyValue(txtDanToc.EditValue));
+            rpt.xrlblNgheNghiep.Text = "Nghề nghiệp: " + txtNgheNghiep.Text;
+            rpt.xrlblChuanDoan.Text = "- Chuẩn đoán: "+ Utils.ToString(dataRow["TenBenh"]);// + ". " + txtPPDieuTri.Text;
+            DateTime ngayIn = Utils.ToDateTime(txtNgayChungTu.Text,"dd/MM/yyyy");
+            rpt.xrlblNgayRa.Text = "Ngày " + ngayIn.Day + " tháng " + ngayIn.Month + " năm " + ngayIn.Year;// ngày chứng từ
+            rpt.xrlblNgayRa2.Text = rpt.xrlblNgayRa.Text;
+            rpt.xrlblGiatriBHYT.Text = "- BHYT: giá trị từ "+ Utils.ToDateTime(dataRow["TheTu"]).ToString("dd/MM/yyyy") + " đến " 
+                + Utils.ToDateTime(dataRow["TheDen"]).ToString("dd/MM/yyyy");
+            rpt.xrlblDiaChi.Text = "- Địa chỉ: "+ Utils.ToString(dataRow["DiaChi"]);
+            DateTime ngayVao = Utils.ToDateTime(dataRow["NgayVao"]);
+            rpt.xrlblVaoVien.Text = "- Vào viện lúc: "+ngayVao.Hour+" giờ "+ngayVao.Minute+" phút, ngày " 
+                + ngayVao.Day + " tháng " + ngayVao.Month + " năm " + ngayVao.Year;
+            DateTime ngayRa;
+            if (Utils.ToString(dataRow["NgayRa"]).Length > 0)
+            {
+                ngayRa = Utils.ToDateTime(dataRow["NgayRa"]);
+            }
+            else
+                ngayRa = DateTime.Now;
+            rpt.xrlblRaVien.Text = "- Ra viện lúc: " + ngayRa.Hour + " giờ " + ngayRa.Minute + " phút, ngày "
+                + ngayRa.Day + " tháng " + ngayRa.Month + " năm " + ngayRa.Year;
+            rpt.xrlblSoPhieu.Text = "Số lưu trữ: " + txtSoPhieu.Text;
+            rpt.xrlblTenCoSo.Text = AppConfig.TenCoSoKCB.ToUpper();
+            string makhoa = Utils.ToString(dataRow["MaKhoa"]);
+            if(khoaBan.ContainsKey(makhoa))
+            {
+                rpt.xrlblKhoa.Text = "Khoa: " + khoaBan[makhoa];
+            }
+            rpt.CreateDocument();
+            rpt.ShowPreviewDialog();
         }
     }
 }

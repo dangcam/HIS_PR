@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDSNghiViecBHXH));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.cbLoaiCT = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.MaLK = new DevExpress.XtraGrid.Columns.GridColumn();
             this.STT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaCT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoPhieu = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -71,11 +71,15 @@
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.cbLoaiCT = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.MaLK = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TenBS = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SERI = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MAU_SO = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbLoaiCT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateDenNgay.Properties.CalendarTimeProperties)).BeginInit();
@@ -91,7 +95,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbLoaiCT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,6 +131,25 @@
             this.layoutControl.Size = new System.Drawing.Size(800, 423);
             this.layoutControl.TabIndex = 1;
             this.layoutControl.Text = "layoutControl1";
+            // 
+            // cbLoaiCT
+            // 
+            this.cbLoaiCT.Location = new System.Drawing.Point(112, 12);
+            this.cbLoaiCT.MenuManager = this.ribbonControl;
+            this.cbLoaiCT.Name = "cbLoaiCT";
+            this.cbLoaiCT.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLoaiCT.Properties.Appearance.Options.UseFont = true;
+            this.cbLoaiCT.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLoaiCT.Properties.AppearanceDropDown.Options.UseFont = true;
+            this.cbLoaiCT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbLoaiCT.Properties.Items.AddRange(new object[] {
+            "1. CT nghỉ hưởng BHXH",
+            "2. CT ra viện",
+            "3. CT chứng sinh"});
+            this.cbLoaiCT.Size = new System.Drawing.Size(65, 22);
+            this.cbLoaiCT.StyleController = this.layoutControl;
+            this.cbLoaiCT.TabIndex = 11;
             // 
             // btnSua
             // 
@@ -168,40 +190,11 @@
             // 
             // gridView
             // 
-            this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.MaLK,
-            this.STT,
-            this.MaCT,
-            this.SoPhieu,
-            this.MaCoSoKCB,
-            this.MaBS,
-            this.MaSoBHXH,
-            this.MaThe,
-            this.HoTen,
-            this.NgaySinh,
-            this.GioiTinh,
-            this.PPDieuTri,
-            this.MaDonVi,
-            this.TenDonVi,
-            this.TuNgay,
-            this.DenNgay,
-            this.SoNgay,
-            this.TenCha,
-            this.TenMe,
-            this.NgayCT,
-            this.NguoiDaiDien,
-            this.MaBenh,
-            this.NgayVao});
+            
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsView.ShowAutoFilterRow = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
-            // 
-            // MaLK
-            // 
-            this.MaLK.Caption = "MaLK";
-            this.MaLK.FieldName = "MaLK";
-            this.MaLK.Name = "MaLK";
             // 
             // STT
             // 
@@ -338,6 +331,8 @@
             this.TuNgay.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TuNgay.AppearanceCell.Options.UseFont = true;
             this.TuNgay.Caption = "TU_NGAY";
+            this.TuNgay.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.TuNgay.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.TuNgay.FieldName = "TuNgay";
             this.TuNgay.Name = "TuNgay";
             this.TuNgay.Visible = true;
@@ -348,6 +343,8 @@
             this.DenNgay.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DenNgay.AppearanceCell.Options.UseFont = true;
             this.DenNgay.Caption = "DEN_NGAY";
+            this.DenNgay.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.DenNgay.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.DenNgay.FieldName = "DenNgay";
             this.DenNgay.Name = "DenNgay";
             this.DenNgay.Visible = true;
@@ -388,6 +385,8 @@
             this.NgayCT.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NgayCT.AppearanceCell.Options.UseFont = true;
             this.NgayCT.Caption = "NGAY_CT";
+            this.NgayCT.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.NgayCT.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.NgayCT.FieldName = "NgayCT";
             this.NgayCT.Name = "NgayCT";
             this.NgayCT.Visible = true;
@@ -584,25 +583,6 @@
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
-            // cbLoaiCT
-            // 
-            this.cbLoaiCT.Location = new System.Drawing.Point(112, 12);
-            this.cbLoaiCT.MenuManager = this.ribbonControl;
-            this.cbLoaiCT.Name = "cbLoaiCT";
-            this.cbLoaiCT.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbLoaiCT.Properties.Appearance.Options.UseFont = true;
-            this.cbLoaiCT.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbLoaiCT.Properties.AppearanceDropDown.Options.UseFont = true;
-            this.cbLoaiCT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbLoaiCT.Properties.Items.AddRange(new object[] {
-            "1. CT nghỉ hưởng BHXH",
-            "2. CT ra viện",
-            "3. CT chứng sinh"});
-            this.cbLoaiCT.Size = new System.Drawing.Size(65, 22);
-            this.cbLoaiCT.StyleController = this.layoutControl;
-            this.cbLoaiCT.TabIndex = 11;
-            // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.cbLoaiCT;
@@ -611,6 +591,36 @@
             this.layoutControlItem8.Size = new System.Drawing.Size(144, 27);
             this.layoutControlItem8.Text = "Loại CT";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(72, 13);
+            // 
+            // MaLK
+            // 
+            this.MaLK.Caption = "MaLK";
+            this.MaLK.FieldName = "MaLK";
+            this.MaLK.Name = "MaLK";
+            // 
+            // TenBS
+            // 
+            this.TenBS.Caption = "TEN_BSY";
+            this.TenBS.FieldName = "TenBS";
+            this.TenBS.Name = "TenBS";
+            this.TenBS.Visible = true;
+            this.TenBS.VisibleIndex = 20;
+            // 
+            // SERI
+            // 
+            this.SERI.Caption = "SERI";
+            this.SERI.FieldName = "SERI";
+            this.SERI.Name = "SERI";
+            this.SERI.Visible = true;
+            this.SERI.VisibleIndex = 21;
+            // 
+            // MAU_SO
+            // 
+            this.MAU_SO.Caption = "MAU_SO";
+            this.MAU_SO.FieldName = "MAU_SO";
+            this.MAU_SO.Name = "MAU_SO";
+            this.MAU_SO.Visible = true;
+            this.MAU_SO.VisibleIndex = 22;
             // 
             // FrmDSNghiViecBHXH
             // 
@@ -628,6 +638,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cbLoaiCT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateDenNgay.Properties.CalendarTimeProperties)).EndInit();
@@ -643,7 +654,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbLoaiCT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -670,8 +680,7 @@
         private DevExpress.XtraEditors.SimpleButton btnXoa;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraEditors.SimpleButton btnSua;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
-        private DevExpress.XtraGrid.Columns.GridColumn MaLK;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7; 
         private DevExpress.XtraGrid.Columns.GridColumn STT;
         private DevExpress.XtraGrid.Columns.GridColumn MaCT;
         private DevExpress.XtraGrid.Columns.GridColumn SoPhieu;
@@ -696,5 +705,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn NgayVao;
         private DevExpress.XtraEditors.ComboBoxEdit cbLoaiCT;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private DevExpress.XtraGrid.Columns.GridColumn MaLK;
+        private DevExpress.XtraGrid.Columns.GridColumn TenBS;
+        private DevExpress.XtraGrid.Columns.GridColumn SERI;
+        private DevExpress.XtraGrid.Columns.GridColumn MAU_SO;
     }
 }

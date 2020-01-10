@@ -221,6 +221,24 @@ namespace Core.DAL
                 return defaultvalue;
             }
         }
+        public static DateTime ToNgaySinh(object NgaySinh)
+        {
+            string sngaysinh = Utils.ToString(NgaySinh);
+            DateTime ngaysinh;
+            if (sngaysinh.Length == 4)
+            {
+                ngaysinh = Utils.ToDateTime(sngaysinh, "yyyy");
+            }
+            else if (sngaysinh.Length < 10)
+            {
+                ngaysinh = Utils.ToDateTime(sngaysinh, "MM/yyyy");
+            }
+            else
+            {
+                ngaysinh = Utils.ToDateTime(sngaysinh, "dd/MM/yyyy");
+            }
+            return ngaysinh;
+        }
         public static string TachHamLuong(string hamLuong, int defaultvalue = 15)
         {
             int index = 0;
@@ -547,17 +565,25 @@ namespace Core.DAL
                 return DateTime.Now;
             }
         }
+        public static DateTime ToDateTime(object value, string format)
+        {
+            try
+            {
+                return DateTime.ParseExact(ToString(value), format, System.Globalization.CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                return DateTime.Now;
+            }
+        }
         public static DateTime ToDateTime(string value)
         {
-            //try
-            //{
-            //    return DateTime.Parse(value);
-            //}
-            //catch
-            //{
-            //    return DateTime.Now;
-            //}
             return ToDateTime(value, DateTime.Now);
+        }
+        public static DateTime ToDateTime(object value)
+        {
+            string date = ToString(value);
+            return ToDateTime(date, DateTime.Now);
         }
         public static DateTime ToDateTime(string value, DateTime dateTime)
         {

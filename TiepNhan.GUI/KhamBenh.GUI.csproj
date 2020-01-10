@@ -348,6 +348,12 @@
     <Compile Include="RptPhieuYeuCau.Designer.cs">
       <DependentUpon>RptPhieuYeuCau.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptRaVien.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptRaVien.Designer.cs">
+      <DependentUpon>RptRaVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptSoPhieu.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -474,6 +480,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptPhieuYeuCau.resx">
       <DependentUpon>RptPhieuYeuCau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptRaVien.resx">
+      <DependentUpon>RptRaVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptSoPhieu.resx">
       <DependentUpon>RptSoPhieu.cs</DependentUpon>
