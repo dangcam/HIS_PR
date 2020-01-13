@@ -97,11 +97,120 @@ namespace TiepNhan.GUI
                 this.MAU_SO.VisibleIndex = 22;
                 //
                 gridControl.DataSource = nghiViecBHXHEntity.DSChungTuBHXH();
-            }else
-            if(cbLoaiCT.SelectedIndex == 1)
-                gridControl.DataSource = nghiViecBHXHEntity.DSChungTuBHXH();
+            }
             else
-                gridControl.DataSource = nghiViecBHXHEntity.DSChungTuBHXH();
+            if (cbLoaiCT.SelectedIndex == 1)
+            {
+                this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+                this.STT,
+                this.MaCT,
+                this.MaCSKCB,
+                this.SERI,
+                this.MaKhoa,
+                this.MaSoBHXH,
+                this.MaThe,
+                this.HoTen,
+                this.DiaChi,
+                this.NgaySinh,
+                this.GioiTinh,
+                this.NgheNghiep,
+                this.NgayVao,
+                this.NgayRa,
+                this.TuoiThai,
+                this.TenBenh,
+                this.PPDieuTri,
+                this.GhiChu,
+                this.NguoiDaiDien,
+                this.MaTruongKhoa,
+                this.NgayCT,
+                this.TenTruongKhoa});
+                this.STT.VisibleIndex = 0;
+                this.MaCT.VisibleIndex = 1;
+                this.MaCSKCB.VisibleIndex = 2;
+                this.SERI.VisibleIndex = 3;
+                this.MaKhoa.VisibleIndex = 4;
+                this.MaSoBHXH.VisibleIndex = 5;
+                this.MaThe.VisibleIndex = 6;
+                this.HoTen.VisibleIndex = 7;
+                this.DiaChi.VisibleIndex = 8;
+                this.NgaySinh.VisibleIndex = 9;
+                this.GioiTinh.VisibleIndex = 10;
+                this.NgheNghiep.VisibleIndex = 11;
+                this.NgayVao.VisibleIndex = 12;
+                this.NgayRa.VisibleIndex = 13;
+                this.TuoiThai.VisibleIndex = 14;
+                this.TenBenh.VisibleIndex = 15;
+                this.PPDieuTri.VisibleIndex = 16;
+                this.GhiChu.VisibleIndex = 17;
+                this.NguoiDaiDien.VisibleIndex = 18;
+                this.MaTruongKhoa.VisibleIndex = 19;
+                this.NgayCT.VisibleIndex = 20;
+                this.TenTruongKhoa.VisibleIndex = 21;
+                gridControl.DataSource = nghiViecBHXHEntity.DSChungTuRaVien();
+            }
+            else
+            {
+                this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+                this.STT,
+                this.MaCT,
+                this.MaCSKCB,
+                this.MaThe,
+                this.SERI,
+                this.MaSoBHXH,
+                this.TenMe,
+                this.NgaySinh,
+                this.DiaChi,
+                this.CMND,
+                this.NgayCapCMND,
+                this.NoiCapCMND,
+                this.DanToc,
+                this.TenCha,
+                this.NgaySinhCon,
+                this.NoiSinhCon,
+                this.TenCon,
+                this.SoCon,
+                this.GioiTinhCon,
+                this.CanNangCon,
+                this.TinhTrangCon,
+                this.GhiChu,
+                this.NguoiDoDe,
+                this.NguoiGhiPhieu,
+                this.NguoiDaiDien,
+                this.NgayCT,
+                this.SinhConPhauThuat,
+                this.SinhConDuoi32Tuan,
+                this.HoTen});
+                this.STT.VisibleIndex = 0;
+                this.MaCT.VisibleIndex = 1;
+                this.MaCSKCB.VisibleIndex = 2;
+                this.MaThe.VisibleIndex = 3;
+                this.SERI.VisibleIndex = 4;
+                this.MaSoBHXH.VisibleIndex = 5;
+                this.TenMe.VisibleIndex = 6;
+                this.NgaySinh.VisibleIndex = 7;
+                this.DiaChi.VisibleIndex = 8;
+                this.CMND.VisibleIndex = 9;
+                this.NgayCapCMND.VisibleIndex = 10;
+                this.NoiCapCMND.VisibleIndex = 11;
+                this.DanToc.VisibleIndex = 12;
+                this.TenCha.VisibleIndex = 13;
+                this.NgaySinhCon.VisibleIndex = 14;
+                this.NoiSinhCon.VisibleIndex = 15;
+                this.TenCon.VisibleIndex = 16;
+                this.SoCon.VisibleIndex = 17;
+                this.GioiTinhCon.VisibleIndex = 18;
+                this.CanNangCon.VisibleIndex = 19;
+                this.TinhTrangCon.VisibleIndex = 20;
+                this.GhiChu.VisibleIndex = 21;
+                this.NguoiDoDe.VisibleIndex = 22;
+                this.NguoiGhiPhieu.VisibleIndex = 23;
+                this.NguoiDaiDien.VisibleIndex = 24;
+                this.NgayCT.VisibleIndex = 25;
+                this.SinhConPhauThuat.VisibleIndex = 26;
+                this.SinhConDuoi32Tuan.VisibleIndex = 27;
+                this.HoTen.VisibleIndex = -1;
+                gridControl.DataSource = nghiViecBHXHEntity.DSChungTuChungSinh();
+            }
 
 
         }
@@ -173,7 +282,7 @@ namespace TiepNhan.GUI
                 {
                     FrmNghiViecBHXH frm = new FrmNghiViecBHXH(dr);
                     frm.ShowDialog();
-                }
+                }else
                 if (cbLoaiCT.SelectedIndex == 1)
                 {
                     FrmRaVien frm = new FrmRaVien(dr);

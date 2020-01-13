@@ -36,6 +36,7 @@ namespace TiepNhan.GUI
             cbTinhTrangRaVien.SelectedIndex = 0;
             cbKetQua.SelectedIndex = 0;          
             txtHoTen.Text = Utils.ToString(dataRow["HoTen"]);
+            txtDanToc.EditValue = 1;
             
             nghiViecBHXHEntity.MaLK = Utils.ToString(dataRow["MaLK"]);
             DataTable data = nghiViecBHXHEntity.ThongTin(1);
@@ -54,6 +55,7 @@ namespace TiepNhan.GUI
                 txtNguoiDaiDien.Text = Utils.ToString(data.Rows[0]["NguoiDaiDien"]);
                 txtGhiChu.Text = Utils.ToString(data.Rows[0]["GhiChu"]);
                 lookUpBacSi.EditValue = data.Rows[0]["MaBS"];
+                txtTuoiThai.Text = Utils.ToString(data.Rows[0]["TuoiThai"]);
             }
             else
             {
@@ -77,9 +79,10 @@ namespace TiepNhan.GUI
             nghiViecBHXHEntity.TenBS = Utils.ToString(lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue));
             nghiViecBHXHEntity.GhiChu = txtGhiChu.Text;
             nghiViecBHXHEntity.TuNgay = Utils.ToDateTime(dataRow["NgayVao"].ToString());
-            nghiViecBHXHEntity.DenNgay = DateTime.Now;
+            nghiViecBHXHEntity.DenNgay = Utils.ToDateTime(dataRow["NgayRa"].ToString()); ;
             nghiViecBHXHEntity.NgayCT = txtNgayChungTu.DateTime;
             nghiViecBHXHEntity.NguoiDaiDien = txtNguoiDaiDien.Text;
+            nghiViecBHXHEntity.TuoiThai = Utils.ToInt(txtTuoiThai.Text);
             nghiViecBHXHEntity.LoaiCT = 1;//
             string err = "";
             string action = "UPDATE_RaVien";
@@ -106,7 +109,7 @@ namespace TiepNhan.GUI
 
         private void btnLuuIn_Click(object sender, EventArgs e)
         {
-            //Luu();
+            Luu();
             In();
         }
         private void In()

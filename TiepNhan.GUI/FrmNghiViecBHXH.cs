@@ -104,6 +104,7 @@ namespace TiepNhan.GUI
             nghiViecBHXHEntity.MaCT = txtMaCT.Text;
             nghiViecBHXHEntity.SoPhieu = Utils.ToInt(txtSoPhieu.Text);
             nghiViecBHXHEntity.MaBS = Utils.ToString(lookUpBacSi.EditValue);
+            nghiViecBHXHEntity.TenBS = Utils.ToString(lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue)); ;
             nghiViecBHXHEntity.MaSoBHXH = txtBHXH.Text;
             nghiViecBHXHEntity.TenCha = txtTenCha.Text;
             nghiViecBHXHEntity.TenMe = txtTenMe.Text;

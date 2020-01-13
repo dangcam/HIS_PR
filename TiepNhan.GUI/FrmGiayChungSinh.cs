@@ -97,11 +97,11 @@ namespace TiepNhan.GUI
             nghiViecBHXHEntity.SinhConDuoi32Tuan = checkDuoi32Tuan.Checked;
             nghiViecBHXHEntity.LoaiCT = 2;
             string err = "";
-            if (!nghiViecBHXHEntity.SpCapNhatMaBenh(ref err))
-            {
-                XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (!nghiViecBHXHEntity.SpCapNhatMaBenh(ref err))
+            //{
+            //    XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
             string action = "UPDATE_ChungSinh";
             if (them)
                 action = "INSERT";

@@ -48,6 +48,7 @@ namespace KhamBenh.DAL
         public bool SinhConPhauThuat { get; set; }
         public bool SinhConDuoi32Tuan { get; set; }
         public string TinhTrangCon { get; set; }
+        public int TuoiThai { get; set; }
         public int LoaiCT { get; set; } // 0. Nghỉ hưởng BHXH, 1. Ra viện, 2. Sinh con
         public DataTable DSBenh()
         {
@@ -83,6 +84,16 @@ namespace KhamBenh.DAL
         public DataTable DSChungTuBHXH()
         {
             return db.ExcuteQuery("select  * From DSChungTuBHXH('" + TuNgay + "','" + DenNgay + "')",
+                CommandType.Text, null);
+        }
+        public DataTable DSChungTuChungSinh()
+        {
+            return db.ExcuteQuery("select  * From DSChungTuChungSinh('" + TuNgay + "','" + DenNgay + "')",
+                CommandType.Text, null);
+        }
+        public DataTable DSChungTuRaVien()
+        {
+            return db.ExcuteQuery("select  * From DSChungTuRaVien('" + TuNgay + "','" + DenNgay + "')",
                 CommandType.Text, null);
         }
         public object SoChungTu(int loaiCT = 0)
@@ -144,6 +155,7 @@ namespace KhamBenh.DAL
                 new SqlParameter("@NguoiGhiPhieu", NguoiGhiPhieu),
                 new SqlParameter("@SinhConPhauThuat", SinhConPhauThuat),
                 new SqlParameter("@SinhConDuoi32Tuan", SinhConDuoi32Tuan),
+                new SqlParameter("@TuoiThai", TuoiThai),
                 new SqlParameter("@LoaiCT", LoaiCT));
         }
     }
