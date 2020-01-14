@@ -336,6 +336,12 @@
     <Compile Include="RptDonThuocA4.Designer.cs">
       <DependentUpon>RptDonThuocA4.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptGiayChungSinh.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptGiayChungSinh.Designer.cs">
+      <DependentUpon>RptGiayChungSinh.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptPhieuDieuTri.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -474,6 +480,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptDonThuocA4.resx">
       <DependentUpon>RptDonThuocA4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptGiayChungSinh.resx">
+      <DependentUpon>RptGiayChungSinh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptPhieuDieuTri.resx">
       <DependentUpon>RptPhieuDieuTri.cs</DependentUpon>

@@ -122,8 +122,9 @@ namespace TiepNhan.GUI
             rpt.xrlblDanToc.Text ="- Dân tộc: "+ Utils.ToString(txtDanToc.Properties.GetDisplayValueByKeyValue(txtDanToc.EditValue));
             rpt.xrlblNgheNghiep.Text = "Nghề nghiệp: " + txtNgheNghiep.Text;
             rpt.xrlblChuanDoan.Text = "- Chuẩn đoán: "+ Utils.ToString(dataRow["TenBenh"]);// + ". " + txtPPDieuTri.Text;
-            DateTime ngayIn = Utils.ToDateTime(txtNgayChungTu.Text,"dd/MM/yyyy");
-            rpt.xrlblNgayRa.Text = "Ngày " + ngayIn.Day + " tháng " + ngayIn.Month + " năm " + ngayIn.Year;// ngày chứng từ
+            //DateTime ngayIn = Utils.ToDateTime(txtNgayChungTu.Text,"dd/MM/yyyy");
+            rpt.xrlblNgayRa.Text = "Ngày " + txtNgayChungTu.DateTime.Day + " tháng "
+                + txtNgayChungTu.DateTime.Month + " năm " + txtNgayChungTu.DateTime.Year;// ngày chứng từ
             rpt.xrlblNgayRa2.Text = rpt.xrlblNgayRa.Text;
             rpt.xrlblGiatriBHYT.Text = "- BHYT: giá trị từ "+ Utils.ToDateTime(dataRow["TheTu"]).ToString("dd/MM/yyyy") + " đến " 
                 + Utils.ToDateTime(dataRow["TheDen"]).ToString("dd/MM/yyyy");

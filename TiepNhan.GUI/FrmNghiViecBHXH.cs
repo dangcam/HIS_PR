@@ -75,8 +75,9 @@ namespace TiepNhan.GUI
             rpt.xrlblGioiTinh.Text = Utils.ToString(dataRow["GioiTinh"]) == "0" ? "Nam" : "Nữ";
             rpt.xrlblBHYT.Text = Utils.ToString(dataRow["MaThe"]);
             rpt.xrlblChuanDoan.Text = Utils.ToString(lookUpBenh.Properties.GetDisplayValueByKeyValue(lookUpBenh.EditValue)) + ". "+ txtPPDieuTri.Text;
-            DateTime ngayIn = Utils.ToDateTime(txtNgayChungTu.Text,"dd/MM/yyyy");
-            rpt.xrlblNgayThangNam.Text = "Ngày " + ngayIn.Day + " tháng " + ngayIn.Month + " năm " + ngayIn.Year;// ngày chứng từ
+            //DateTime ngayIn = Utils.ToDateTime(txtNgayChungTu.Text,"dd/MM/yyyy");
+            rpt.xrlblNgayThangNam.Text = "Ngày " + txtNgayChungTu.DateTime.Day +
+                " tháng " + txtNgayChungTu.DateTime.Month + " năm " + txtNgayChungTu.DateTime.Year;// ngày chứng từ
             rpt.xrlblTenCha.Text = txtTenCha.Text;
             rpt.xrlblTenMe.Text = txtTenMe.Text;
             rpt.xrlblSoCT.Text = txtMaCT.Text;

@@ -1,5 +1,6 @@
 ﻿using Core.DAL;
 using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using KhamBenh.DAL;
 using System;
 using System.Collections.Generic;
@@ -120,6 +121,30 @@ namespace TiepNhan.GUI
         private void btnLuuIn_Click(object sender, EventArgs e)
         {
             Luu();
+            In();
+        }
+        private void In()
+        {
+            RptGiayChungSinh rpt = new RptGiayChungSinh();
+            rpt.xrlblTenCoSo.Text = AppConfig.TenCoSoKCB.ToUpper();
+            rpt.xrlblHoTen.Text = "Họ và tên mẹ/Người nuôi dưỡng: "+ txtHoTenMe.Text;
+            rpt.xrlblNamSinh.Text ="Năm sinh: "+ Utils.ToString(dataRow["NgaySinh"]);
+            rpt.xrlblDiaChi.Text = "Nơi đăng ký thường trú: "+ Utils.ToString(dataRow["DiaChi"]);
+            rpt.xrlblCMND.Text = "Số CMND/Hộ chiếu: " + txtCMND.Text;
+            rpt.xrlblDanToc.Text ="Dân tộc: "+ Utils.ToString(lookupDanToc.Properties.GetDisplayValueByKeyValue(lookupDanToc.EditValue));
+            rpt.xrlblNgaySinhCon.Text ="Đã sinh con vào lúc: "+dateNgaySinhCon.DateTime.Hour+" giờ " +dateNgaySinhCon.DateTime. Minute +
+                " phút, ngày " + dateNgaySinhCon.DateTime.Day + " tháng " + dateNgaySinhCon.DateTime.Month + " năm " + dateNgaySinhCon.DateTime.Year;
+            rpt.xrlblNoiSinh.Text = "Tại: " + txtNoiSinhCon.Text;
+            //rpt.xrlblSoLanSinh.Text = "Số lần sinh: "+" Số con hiện sống: ";
+            rpt.xrlblSoCon.Text = "Số con trong lần sinh này: "+txtSoCon.Text;
+            rpt.xrlblGioiTinhCon.Text = "Giới tính của con: " + (txtGioiTinhCon.SelectedIndex == 0 ? "Nam" : "Nữ") +
+                " Cân nặng: "+txtCanNang.Text;
+            rpt.xrlblSucKhoe.Text = "Hiện trạng sức khỏe của con: "+txtTinhTrangCon.Text;
+            rpt.xrlblTenCon.Text = "Dự định đặt tên con là: " + txtTenCon.Text;
+            rpt.xrlblNguoiDoDe.Text = "Người đỡ đẻ: " + txtNguoiDoDe.Text;
+            rpt.xrlblNgayCT.Text = "Phú Riềng, ngày "+dateNgayCT.DateTime.Day + " tháng "+dateNgayCT.DateTime.Month + " năm "+dateNgayCT.DateTime.Year;
+            rpt.CreateDocument();
+            rpt.ShowPreviewDialog();
         }
     }
 }
