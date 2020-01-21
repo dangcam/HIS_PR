@@ -468,6 +468,7 @@ namespace TiepNhan.GUI
                 thanhtoan.NamQT = dateNgayTToan.DateTime.ToString("yyyy");
                 thanhtoan.ThangQT = dateNgayTToan.DateTime.ToString("MM");
                 thanhtoan.CanNang = Utils.ToFloat(txtCanNang.Text);
+                thanhtoan.MaTaiNan = lookUpTaiNan.ItemIndex;
                 // cập nhật thông tin
                 if (!thanhtoan.SpThanhToan(ref err, "Update_TT_up"))//Update_TT
                 {

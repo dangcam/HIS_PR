@@ -143,6 +143,7 @@ namespace TiepNhan.GUI
             rpt.xrlblTenCon.Text = "Dự định đặt tên con là: " + txtTenCon.Text;
             rpt.xrlblNguoiDoDe.Text = "Người đỡ đẻ: " + txtNguoiDoDe.Text;
             rpt.xrlblNgayCT.Text = "Phú Riềng, ngày "+dateNgayCT.DateTime.Day + " tháng "+dateNgayCT.DateTime.Month + " năm "+dateNgayCT.DateTime.Year;
+            rpt.xrlblSo.Text = "Số: "+txtSoPhieu.Text;
             rpt.CreateDocument();
             rpt.ShowPreviewDialog();
         }

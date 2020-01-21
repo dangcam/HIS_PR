@@ -67,6 +67,7 @@ namespace KhamBenh.DAL
         public int SoPhieu { get; set; }
         public int SoPhieuNhap { get; set; }
         public string MaVatTu { get; set; }
+        public int MaTaiNan { get; set; }
         //
         public DataTable DSTaiNan()
         {
@@ -280,7 +281,8 @@ namespace KhamBenh.DAL
                 new SqlParameter("@SoPhieu", SoPhieu),
                 new SqlParameter("@SoPhieuNhap", SoPhieuNhap),
                 new SqlParameter("@MaVatTu", MaVatTu),
-                new SqlParameter("@TyLe", TyLe));
+                new SqlParameter("@TyLe", TyLe),
+                new SqlParameter("@MaTaiNan", MaTaiNan));
         }
         public bool SpCapNhatThanhToan(ref string err, string Action)
         {
