@@ -38,7 +38,7 @@ namespace BaoCao.DAL
         {
             return db.ExcuteQuery("Select *,(SLTonDau*DonGia) as GTTonDau,(SLNhap*DonGia) as GTNhap, " +
                 "(SLXuatTrong*DonGia) as GTXuat,(SLTonCuoi*DonGia) as GTTonCuoi " +
-                "From BaoCaoTonThuc('" + TuNgay.ToString("MM/dd/yyyy") + "','" + DenNgay.ToString("MM/dd/yyyy") + "') Where "+sql,
+                "From BaoCaoTonThuc('" + TuNgay.ToString("MM/dd/yyyy") + "','" + DenNgay.ToString("MM/dd/yyyy") + "') Where "+sql+" order by STT",
                 CommandType.Text, null);
         }
         public DataTable DSVatTu ()

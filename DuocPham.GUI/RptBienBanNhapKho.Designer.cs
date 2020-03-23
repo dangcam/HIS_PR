@@ -656,7 +656,7 @@
             this.xrLabel19.SizeF = new System.Drawing.SizeF(600F, 25.00001F);
             this.xrLabel19.StylePriority.UseFont = false;
             this.xrLabel19.StylePriority.UseTextAlignment = false;
-            this.xrLabel19.Text = "Chứng từ kèm theo hàng hóa: .............................................";
+            this.xrLabel19.Text = "Chứng từ kèm theo hàng hóa: Hóa đơn, Biên bản giao nhận";
             this.xrLabel19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // xrLabel18
@@ -668,8 +668,7 @@
             this.xrLabel18.SizeF = new System.Drawing.SizeF(600F, 25.00001F);
             this.xrLabel18.StylePriority.UseFont = false;
             this.xrLabel18.StylePriority.UseTextAlignment = false;
-            this.xrLabel18.Text = "Kết quả kiểm tra:................................................................" +
-    "..";
+            this.xrLabel18.Text = "Kết quả kiểm tra: Đủ số lượng";
             this.xrLabel18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // xrLabel17

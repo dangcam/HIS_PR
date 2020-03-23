@@ -74,6 +74,7 @@
             this.layctrlThang = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.STT = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).BeginInit();
             this.splitContainerControl.SuspendLayout();
@@ -387,6 +388,7 @@
             // gridView
             // 
             this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.STT,
             this.MaBV,
             this.TenVatTu,
             this.DonViTinh,
@@ -416,8 +418,8 @@
             this.MaBV.FieldName = "MaBV";
             this.MaBV.Name = "MaBV";
             this.MaBV.Visible = true;
-            this.MaBV.VisibleIndex = 0;
-            this.MaBV.Width = 70;
+            this.MaBV.VisibleIndex = 1;
+            this.MaBV.Width = 66;
             // 
             // TenVatTu
             // 
@@ -427,8 +429,8 @@
             this.TenVatTu.FieldName = "TenVatTu";
             this.TenVatTu.Name = "TenVatTu";
             this.TenVatTu.Visible = true;
-            this.TenVatTu.VisibleIndex = 1;
-            this.TenVatTu.Width = 201;
+            this.TenVatTu.VisibleIndex = 2;
+            this.TenVatTu.Width = 191;
             // 
             // DonViTinh
             // 
@@ -438,8 +440,8 @@
             this.DonViTinh.FieldName = "DonViTinh";
             this.DonViTinh.Name = "DonViTinh";
             this.DonViTinh.Visible = true;
-            this.DonViTinh.VisibleIndex = 2;
-            this.DonViTinh.Width = 58;
+            this.DonViTinh.VisibleIndex = 3;
+            this.DonViTinh.Width = 54;
             // 
             // DonGia
             // 
@@ -451,8 +453,8 @@
             this.DonGia.FieldName = "DonGia";
             this.DonGia.Name = "DonGia";
             this.DonGia.Visible = true;
-            this.DonGia.VisibleIndex = 3;
-            this.DonGia.Width = 68;
+            this.DonGia.VisibleIndex = 4;
+            this.DonGia.Width = 64;
             // 
             // SLTonDau
             // 
@@ -464,8 +466,8 @@
             this.SLTonDau.FieldName = "SLTonDau";
             this.SLTonDau.Name = "SLTonDau";
             this.SLTonDau.Visible = true;
-            this.SLTonDau.VisibleIndex = 4;
-            this.SLTonDau.Width = 72;
+            this.SLTonDau.VisibleIndex = 5;
+            this.SLTonDau.Width = 68;
             // 
             // GTTonDau
             // 
@@ -477,8 +479,8 @@
             this.GTTonDau.FieldName = "GTTonDau";
             this.GTTonDau.Name = "GTTonDau";
             this.GTTonDau.Visible = true;
-            this.GTTonDau.VisibleIndex = 5;
-            this.GTTonDau.Width = 85;
+            this.GTTonDau.VisibleIndex = 6;
+            this.GTTonDau.Width = 80;
             // 
             // SLNhap
             // 
@@ -490,8 +492,8 @@
             this.SLNhap.FieldName = "SLNhap";
             this.SLNhap.Name = "SLNhap";
             this.SLNhap.Visible = true;
-            this.SLNhap.VisibleIndex = 6;
-            this.SLNhap.Width = 62;
+            this.SLNhap.VisibleIndex = 7;
+            this.SLNhap.Width = 58;
             // 
             // GTNhap
             // 
@@ -503,8 +505,8 @@
             this.GTNhap.FieldName = "GTNhap";
             this.GTNhap.Name = "GTNhap";
             this.GTNhap.Visible = true;
-            this.GTNhap.VisibleIndex = 7;
-            this.GTNhap.Width = 80;
+            this.GTNhap.VisibleIndex = 8;
+            this.GTNhap.Width = 76;
             // 
             // SLXuatTrong
             // 
@@ -516,8 +518,8 @@
             this.SLXuatTrong.FieldName = "SLXuatTrong";
             this.SLXuatTrong.Name = "SLXuatTrong";
             this.SLXuatTrong.Visible = true;
-            this.SLXuatTrong.VisibleIndex = 8;
-            this.SLXuatTrong.Width = 57;
+            this.SLXuatTrong.VisibleIndex = 9;
+            this.SLXuatTrong.Width = 53;
             // 
             // GTXuat
             // 
@@ -529,8 +531,8 @@
             this.GTXuat.FieldName = "GTXuat";
             this.GTXuat.Name = "GTXuat";
             this.GTXuat.Visible = true;
-            this.GTXuat.VisibleIndex = 9;
-            this.GTXuat.Width = 65;
+            this.GTXuat.VisibleIndex = 10;
+            this.GTXuat.Width = 61;
             // 
             // SLTonCuoi
             // 
@@ -542,8 +544,8 @@
             this.SLTonCuoi.FieldName = "SLTonCuoi";
             this.SLTonCuoi.Name = "SLTonCuoi";
             this.SLTonCuoi.Visible = true;
-            this.SLTonCuoi.VisibleIndex = 10;
-            this.SLTonCuoi.Width = 80;
+            this.SLTonCuoi.VisibleIndex = 11;
+            this.SLTonCuoi.Width = 76;
             // 
             // GTTonCuoi
             // 
@@ -555,8 +557,8 @@
             this.GTTonCuoi.FieldName = "GTTonCuoi";
             this.GTTonCuoi.Name = "GTTonCuoi";
             this.GTTonCuoi.Visible = true;
-            this.GTTonCuoi.VisibleIndex = 11;
-            this.GTTonCuoi.Width = 83;
+            this.GTTonCuoi.VisibleIndex = 12;
+            this.GTTonCuoi.Width = 93;
             // 
             // LoaiVatTu
             // 
@@ -715,6 +717,17 @@
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
+            // STT
+            // 
+            this.STT.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.STT.AppearanceCell.Options.UseFont = true;
+            this.STT.Caption = "STT";
+            this.STT.FieldName = "STT";
+            this.STT.Name = "STT";
+            this.STT.Visible = true;
+            this.STT.VisibleIndex = 0;
+            this.STT.Width = 41;
+            // 
             // FrmBCTonThucTe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -726,7 +739,7 @@
             this.Name = "FrmBCTonThucTe";
             this.Ribbon = this.ribbonControl;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Tồn thực tế bệnh viện";
+            this.Text = "  ";
             this.Load += new System.EventHandler(this.FrmBCTonThucTe_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).EndInit();
@@ -812,5 +825,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn Ma;
         private DevExpress.XtraGrid.Columns.GridColumn Ten;
         private DevExpress.XtraGrid.Columns.GridColumn Chon;
+        private DevExpress.XtraGrid.Columns.GridColumn STT;
     }
 }
