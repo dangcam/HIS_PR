@@ -412,7 +412,7 @@ namespace Core.DAL
                 chitiet.AppendChild(element);
 
                 element = doc.CreateElement("TT_THAU");
-                element.AppendChild(doc.CreateTextNode(dr["TTinThau"].ToString()));
+                element.AppendChild(doc.CreateCDataSection(dr["TTinThau"].ToString()));
                 chitiet.AppendChild(element);
 
                 element = doc.CreateElement("TYLE_TT");
