@@ -169,9 +169,11 @@
             // 
             // xrTableCell16
             // 
+            this.xrTableCell16.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell16.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[HetHan]")});
             this.xrTableCell16.Name = "xrTableCell16";
+            this.xrTableCell16.StylePriority.UseBackColor = false;
             this.xrTableCell16.Text = "HẠN DÙNG";
             this.xrTableCell16.TextFormatString = "{0:MM/yyyy}";
             this.xrTableCell16.Weight = 1D;

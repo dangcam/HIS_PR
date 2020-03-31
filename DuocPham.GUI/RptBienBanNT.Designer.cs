@@ -225,7 +225,7 @@
             // 
             this.xrTableCell35.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[HetHan]")});
-            this.xrTableCell35.ForeColor = System.Drawing.Color.White;
+            this.xrTableCell35.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell35.Name = "xrTableCell35";
             this.xrTableCell35.StylePriority.UseForeColor = false;
             this.xrTableCell35.StylePriority.UseTextAlignment = false;
