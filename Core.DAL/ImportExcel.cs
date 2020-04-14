@@ -48,14 +48,28 @@ namespace Core.DAL
                 }
                 catch
                 {
-                    // excel 2016->
-                    connectionString = string.Format ("Provider= Microsoft.ACE.OLEDB.14.0; data source={0}; Extended Properties=Excel 14.0 Xml;", filePath);
-                    using (OleDbConnection con = new OleDbConnection (connectionString))
+                    try
                     {
-                        con.Open ();
-                        DataTable dt = con.GetSchema ("Tables");
-                        firstSheet = dt.Rows[0]["TABLE_NAME"].ToString ();
-                        con.Close ();
+                        // excel 2016->
+                        connectionString = string.Format("Provider= Microsoft.ACE.OLEDB.14.0; data source={0}; Extended Properties=Excel 14.0 Xml;", filePath);
+                        using (OleDbConnection con = new OleDbConnection(connectionString))
+                        {
+                            con.Open();
+                            DataTable dt = con.GetSchema("Tables");
+                            firstSheet = dt.Rows[0]["TABLE_NAME"].ToString();
+                            con.Close();
+                        }
+                    }catch
+                    {
+                        // excel 2019->
+                        connectionString = string.Format("Provider= Microsoft.ACE.OLEDB.16.0; data source={0}; Extended Properties=Excel 16.0 Xml;", filePath);
+                        using (OleDbConnection con = new OleDbConnection(connectionString))
+                        {
+                            con.Open();
+                            DataTable dt = con.GetSchema("Tables");
+                            firstSheet = dt.Rows[0]["TABLE_NAME"].ToString();
+                            con.Close();
+                        }
                     }
                 }
             }
