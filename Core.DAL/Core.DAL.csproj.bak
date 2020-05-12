@@ -68,16 +68,27 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraEditors.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.BonusSkins.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v17.2.Export, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -86,29 +97,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiKey.cs" />
+    <Compile Include="ApiTheBHYT2018.cs" />
     <Compile Include="AppConfig.cs" />
     <Compile Include="Connection.cs" />
+    <Compile Include="ConvertXML.cs" />
     <Compile Include="DangNhapEntity.cs" />
-    <Compile Include="FrmLoad.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmLoad.Designer.cs">
-      <DependentUpon>FrmLoad.cs</DependentUpon>
-    </Compile>
+    <Compile Include="DanhSachHoSo.cs" />
+    <Compile Include="FileHoSo.cs" />
+    <Compile Include="HoSo.cs" />
+    <Compile Include="HoSoKCB.cs" />
     <Compile Include="ImportExcel.cs" />
+    <Compile Include="KQGuiHoSo.cs" />
+    <Compile Include="KQLichSuKCB.cs" />
+    <Compile Include="KQNhanLichSuKCBBS.cs" />
+    <Compile Include="KQPhienLamViec.cs" />
     <Compile Include="Library.cs" />
+    <Compile Include="LichSuKCB.cs" />
+    <Compile Include="LichSuKCB2018.cs" />
+    <Compile Include="LichSuKCBChiTiet.cs" />
+    <Compile Include="LichSuKhamChuaBenh.cs" />
+    <Compile Include="LichSuKT2018.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SplashScreen.cs" />
     <Compile Include="StringConnection.cs" />
+    <Compile Include="ThongTinLichSu.cs" />
     <Compile Include="ThongTinThe.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="WaitFormLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaitFormLoad.Designer.cs">
+      <DependentUpon>WaitFormLoad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XML2.cs" />
+    <Compile Include="XML3.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppConfig.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FrmLoad.resx">
-      <DependentUpon>FrmLoad.cs</DependentUpon>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="WaitFormLoad.resx">
+      <DependentUpon>WaitFormLoad.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

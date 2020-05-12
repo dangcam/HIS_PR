@@ -30,26 +30,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Charts.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Images.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.Charts.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Office.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Pdf.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.PivotGrid.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.RichEdit.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraBars.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraGauges.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraReports.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v17.2.Export, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.SpellChecker.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v17.2.Wizard, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.CodeParser.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v17.2.UI, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v17.2.Extensions, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraSpellChecker.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -63,6 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmBaoCaoTonKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBaoCaoTonKho.Designer.cs">
+      <DependentUpon>FrmBaoCaoTonKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmBCNhapXuat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +88,42 @@
     <Compile Include="FrmBCTonKho.Designer.cs">
       <DependentUpon>FrmBCTonKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmBCTonThucTe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBCTonThucTe.Designer.cs">
+      <DependentUpon>FrmBCTonThucTe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNguonNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNguonNhap.Designer.cs">
+      <DependentUpon>FrmNguonNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTongHopBaoCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTongHopBaoCao.Designer.cs">
+      <DependentUpon>FrmTongHopBaoCao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTongHopKeDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTongHopKeDon.Designer.cs">
+      <DependentUpon>FrmTongHopKeDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTongHopXuatKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTongHopXuatKho.Designer.cs">
+      <DependentUpon>FrmTongHopXuatKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTonKhoLe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTonKhoLe.Designer.cs">
+      <DependentUpon>FrmTonKhoLe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RptBaoCaoNhapXuat.cs">
       <SubType>Component</SubType>
@@ -82,17 +131,191 @@
     <Compile Include="RptBaoCaoNhapXuat.Designer.cs">
       <DependentUpon>RptBaoCaoNhapXuat.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptBCTonThucTe.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptBCTonThucTe.Designer.cs">
+      <DependentUpon>RptBCTonThucTe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptKiemKe.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptKiemKe.Designer.cs">
+      <DependentUpon>RptKiemKe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptDuTru.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptDuTru.Designer.cs">
+      <DependentUpon>RptDuTru.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptNguonNhap.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptNguonNhap.Designer.cs">
+      <DependentUpon>RptNguonNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptSoLieuMau7980A.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptSoLieuMau7980A.Designer.cs">
+      <DependentUpon>RptSoLieuMau7980A.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptSoLuongThuoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptSoLuongThuoc.Designer.cs">
+      <DependentUpon>RptSoLuongThuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptTheoDoiRaVaoVien.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTheoDoiRaVaoVien.Designer.cs">
+      <DependentUpon>RptTheoDoiRaVaoVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptTongHopBNTT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTongHopBNTT.Designer.cs">
+      <DependentUpon>RptTongHopBNTT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptTongHopKeDonThuoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTongHopKeDonThuoc.Designer.cs">
+      <DependentUpon>RptTongHopKeDonThuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptTongHopChiTietThuoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTongHopChiTietThuoc.Designer.cs">
+      <DependentUpon>RptTongHopChiTietThuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptTongHopDichVu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTongHopDichVu.Designer.cs">
+      <DependentUpon>RptTongHopDichVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptTongHopKeVatTu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTongHopKeVatTu.Designer.cs">
+      <DependentUpon>RptTongHopKeVatTu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptTongHopThuoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTongHopThuoc.Designer.cs">
+      <DependentUpon>RptTongHopThuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptTongHopVienPhi.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTongHopVienPhi.Designer.cs">
+      <DependentUpon>RptTongHopVienPhi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptTongHopXuatKho.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTongHopXuatKho.Designer.cs">
+      <DependentUpon>RptTongHopXuatKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptTonKhoLe.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTonKhoLe.Designer.cs">
+      <DependentUpon>RptTonKhoLe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptTongHopVatTu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptTongHopVatTu.Designer.cs">
+      <DependentUpon>RptTongHopVatTu.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmBaoCaoTonKho.resx">
+      <DependentUpon>FrmBaoCaoTonKho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmBCNhapXuat.resx">
       <DependentUpon>FrmBCNhapXuat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBCTonKho.resx">
       <DependentUpon>FrmBCTonKho.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmBCTonThucTe.resx">
+      <DependentUpon>FrmBCTonThucTe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNguonNhap.resx">
+      <DependentUpon>FrmNguonNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTongHopBaoCao.resx">
+      <DependentUpon>FrmTongHopBaoCao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTongHopKeDon.resx">
+      <DependentUpon>FrmTongHopKeDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTongHopXuatKho.resx">
+      <DependentUpon>FrmTongHopXuatKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTonKhoLe.resx">
+      <DependentUpon>FrmTonKhoLe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="RptBaoCaoNhapXuat.resx">
       <DependentUpon>RptBaoCaoNhapXuat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptBCTonThucTe.resx">
+      <DependentUpon>RptBCTonThucTe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptKiemKe.resx">
+      <DependentUpon>RptKiemKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptDuTru.resx">
+      <DependentUpon>RptDuTru.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptNguonNhap.resx">
+      <DependentUpon>RptNguonNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptSoLieuMau7980A.resx">
+      <DependentUpon>RptSoLieuMau7980A.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptSoLuongThuoc.resx">
+      <DependentUpon>RptSoLuongThuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTheoDoiRaVaoVien.resx">
+      <DependentUpon>RptTheoDoiRaVaoVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTongHopBNTT.resx">
+      <DependentUpon>RptTongHopBNTT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTongHopKeDonThuoc.resx">
+      <DependentUpon>RptTongHopKeDonThuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTongHopChiTietThuoc.resx">
+      <DependentUpon>RptTongHopChiTietThuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTongHopDichVu.resx">
+      <DependentUpon>RptTongHopDichVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTongHopKeVatTu.resx">
+      <DependentUpon>RptTongHopKeVatTu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTongHopThuoc.resx">
+      <DependentUpon>RptTongHopThuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTongHopVienPhi.resx">
+      <DependentUpon>RptTongHopVienPhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTongHopXuatKho.resx">
+      <DependentUpon>RptTongHopXuatKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTonKhoLe.resx">
+      <DependentUpon>RptTonKhoLe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptTongHopVatTu.resx">
+      <DependentUpon>RptTongHopVatTu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +327,35 @@
       <Project>{C6E86929-31E5-41E4-99DE-E25F3FADB210}</Project>
       <Name>Core.DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
