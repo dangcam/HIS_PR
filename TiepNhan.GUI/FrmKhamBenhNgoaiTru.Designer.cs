@@ -50,6 +50,8 @@
             this.MaKhoa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TheTu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TheDen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaBenh = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaBenhKhac = new DevExpress.XtraGrid.Columns.GridColumn();
             this.flowLayoutPanelChuyenPhong = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnLichSuKCB = new DevExpress.XtraEditors.SimpleButton();
@@ -76,8 +78,6 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.MaBenh = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.MaBenhKhac = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlMain)).BeginInit();
             this.layoutControlMain.SuspendLayout();
@@ -107,7 +107,8 @@
             // 
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbonControl.ExpandCollapseItem});
+            this.ribbonControl.ExpandCollapseItem,
+            this.ribbonControl.SearchEditItem});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl.MaxItemId = 1;
             this.ribbonControl.Name = "ribbonControl";
@@ -116,7 +117,7 @@
             this.ribbonControl.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
-            this.ribbonControl.Size = new System.Drawing.Size(940, 27);
+            this.ribbonControl.Size = new System.Drawing.Size(940, 32);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
             // 
             // layoutControlMain
@@ -128,10 +129,10 @@
             this.layoutControlMain.Controls.Add(this.flowLayoutPanel3);
             this.layoutControlMain.Controls.Add(this.flowLayoutPanelSoLuong);
             this.layoutControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControlMain.Location = new System.Drawing.Point(0, 27);
+            this.layoutControlMain.Location = new System.Drawing.Point(0, 32);
             this.layoutControlMain.Name = "layoutControlMain";
             this.layoutControlMain.Root = this.layoutControlGroupMain;
-            this.layoutControlMain.Size = new System.Drawing.Size(940, 469);
+            this.layoutControlMain.Size = new System.Drawing.Size(940, 464);
             this.layoutControlMain.TabIndex = 1;
             // 
             // btnCNNghiViec
@@ -153,7 +154,7 @@
             this.gridControl.MainView = this.gridView;
             this.gridControl.MenuManager = this.ribbonControl;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(916, 381);
+            this.gridControl.Size = new System.Drawing.Size(916, 376);
             this.gridControl.TabIndex = 15;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -360,6 +361,18 @@
             this.TheDen.FieldName = "TheDen";
             this.TheDen.Name = "TheDen";
             // 
+            // MaBenh
+            // 
+            this.MaBenh.Caption = "MaBenh";
+            this.MaBenh.FieldName = "MaBenh";
+            this.MaBenh.Name = "MaBenh";
+            // 
+            // MaBenhKhac
+            // 
+            this.MaBenhKhac.Caption = "MaBenhKhac";
+            this.MaBenhKhac.FieldName = "MaBenhKhac";
+            this.MaBenhKhac.Name = "MaBenhKhac";
+            // 
             // flowLayoutPanelChuyenPhong
             // 
             this.flowLayoutPanelChuyenPhong.Location = new System.Drawing.Point(546, 43);
@@ -464,7 +477,7 @@
             this.checkTatCa.Properties.Caption = "Tất cả";
             this.checkTatCa.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.checkTatCa.Properties.RadioGroupIndex = 0;
-            this.checkTatCa.Size = new System.Drawing.Size(55, 19);
+            this.checkTatCa.Size = new System.Drawing.Size(55, 20);
             this.checkTatCa.TabIndex = 0;
             this.checkTatCa.CheckedChanged += new System.EventHandler(this.checkTatCa_CheckedChanged);
             // 
@@ -472,7 +485,8 @@
             // 
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbonControl1.ExpandCollapseItem});
+            this.ribbonControl1.ExpandCollapseItem,
+            this.ribbonControl1.SearchEditItem});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.MaxItemId = 1;
             this.ribbonControl1.Name = "ribbonControl1";
@@ -481,7 +495,7 @@
             this.ribbonControl1.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl1.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             this.ribbonControl1.ShowToolbarCustomizeItem = false;
-            this.ribbonControl1.Size = new System.Drawing.Size(1190, 25);
+            this.ribbonControl1.Size = new System.Drawing.Size(1190, 24);
             this.ribbonControl1.Toolbar.ShowCustomizeItem = false;
             // 
             // checkChoKham
@@ -492,7 +506,7 @@
             this.checkChoKham.Properties.Caption = "Chờ khám";
             this.checkChoKham.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.checkChoKham.Properties.RadioGroupIndex = 0;
-            this.checkChoKham.Size = new System.Drawing.Size(70, 19);
+            this.checkChoKham.Size = new System.Drawing.Size(70, 20);
             this.checkChoKham.TabIndex = 1;
             this.checkChoKham.TabStop = false;
             this.checkChoKham.CheckedChanged += new System.EventHandler(this.checkChoKham_CheckedChanged);
@@ -505,7 +519,7 @@
             this.checkDaKham.Properties.Caption = "Đã khám";
             this.checkDaKham.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.checkDaKham.Properties.RadioGroupIndex = 0;
-            this.checkDaKham.Size = new System.Drawing.Size(62, 19);
+            this.checkDaKham.Size = new System.Drawing.Size(62, 20);
             this.checkDaKham.TabIndex = 2;
             this.checkDaKham.TabStop = false;
             this.checkDaKham.CheckedChanged += new System.EventHandler(this.checkDaKham_CheckedChanged);
@@ -518,7 +532,7 @@
             this.checkChuyenTuyen.Properties.Caption = "Chuyển tuyến";
             this.checkChuyenTuyen.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.checkChuyenTuyen.Properties.RadioGroupIndex = 0;
-            this.checkChuyenTuyen.Size = new System.Drawing.Size(90, 19);
+            this.checkChuyenTuyen.Size = new System.Drawing.Size(90, 20);
             this.checkChuyenTuyen.TabIndex = 3;
             this.checkChuyenTuyen.TabStop = false;
             this.checkChuyenTuyen.CheckedChanged += new System.EventHandler(this.checkChuyenTuyen_CheckedChanged);
@@ -531,7 +545,7 @@
             this.checkNhapVien.Properties.Caption = "Nhập viện";
             this.checkNhapVien.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.checkNhapVien.Properties.RadioGroupIndex = 0;
-            this.checkNhapVien.Size = new System.Drawing.Size(75, 19);
+            this.checkNhapVien.Size = new System.Drawing.Size(75, 20);
             this.checkNhapVien.TabIndex = 4;
             this.checkNhapVien.TabStop = false;
             this.checkNhapVien.CheckedChanged += new System.EventHandler(this.checkNhapVien_CheckedChanged);
@@ -544,7 +558,7 @@
             this.checkRaVien.Properties.Caption = "Ra viện";
             this.checkRaVien.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.checkRaVien.Properties.RadioGroupIndex = 0;
-            this.checkRaVien.Size = new System.Drawing.Size(60, 19);
+            this.checkRaVien.Size = new System.Drawing.Size(60, 20);
             this.checkRaVien.TabIndex = 5;
             this.checkRaVien.TabStop = false;
             this.checkRaVien.CheckedChanged += new System.EventHandler(this.checkRaVien_CheckedChanged);
@@ -592,7 +606,7 @@
             this.layoutControlItem1,
             this.emptySpaceItem2});
             this.layoutControlGroupMain.Name = "layoutControlGroupMain";
-            this.layoutControlGroupMain.Size = new System.Drawing.Size(940, 469);
+            this.layoutControlGroupMain.Size = new System.Drawing.Size(940, 464);
             this.layoutControlGroupMain.TextVisible = false;
             // 
             // layoutControlItem31
@@ -650,7 +664,7 @@
             this.layoutControlItem3.Control = this.gridControl;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 64);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(920, 385);
+            this.layoutControlItem3.Size = new System.Drawing.Size(920, 380);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -674,18 +688,6 @@
             this.emptySpaceItem2.Size = new System.Drawing.Size(105, 37);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // MaBenh
-            // 
-            this.MaBenh.Caption = "MaBenh";
-            this.MaBenh.FieldName = "MaBenh";
-            this.MaBenh.Name = "MaBenh";
-            // 
-            // MaBenhKhac
-            // 
-            this.MaBenhKhac.Caption = "MaBenhKhac";
-            this.MaBenhKhac.FieldName = "MaBenhKhac";
-            this.MaBenhKhac.Name = "MaBenhKhac";
-            // 
             // FrmKhamBenhNgoaiTru
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -693,7 +695,7 @@
             this.ClientSize = new System.Drawing.Size(940, 496);
             this.Controls.Add(this.layoutControlMain);
             this.Controls.Add(this.ribbonControl);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("FrmKhamBenhNgoaiTru.IconOptions.Icon")));
             this.Name = "FrmKhamBenhNgoaiTru";
             this.Ribbon = this.ribbonControl;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
