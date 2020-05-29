@@ -29,7 +29,7 @@ namespace DuocPham.GUI
         DataTable nvKhoaDuoc;
         SortedSet<string> dsLoaiVatTu = new SortedSet<string> ();
         decimal thanhTien = 0;
-        CultureInfo elGR = CultureInfo.CreateSpecificCulture ("el-GR");
+        CultureInfo viVN = CultureInfo.CreateSpecificCulture ("vi-VN");
         System.Drawing.Font fontB = new System.Drawing.Font ("Times New Roman", 11, System.Drawing.FontStyle.Bold);
         System.Drawing.Font font = new System.Drawing.Font ("Times New Roman", 11);
         Dictionary<string, string> maVatTu = new Dictionary<string, string>();
@@ -528,7 +528,7 @@ namespace DuocPham.GUI
             row.Cells.Add (cell);
 
             cell = new XRTableCell ();
-            cell.Text = this.thanhTien.ToString ("0,0", elGR);
+            cell.Text = this.thanhTien.ToString ("0,0", viVN);
             cell.Font = fontB;
             cell.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             cell.WidthF = 96;
