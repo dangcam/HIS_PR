@@ -22,7 +22,7 @@ namespace DanhMuc.GUI
         {
             InitializeComponent();
             dvkt = new DichVuKyThuatEntity();
-            lookUpCoSoKCB.Properties.DataSource = dvkt.DSCoSo();
+            lookUpCoSoKCB.Properties.DataSource = dvkt.DSToChuc();
             lookUpCoSoKCB.Properties.ValueMember = "Ma_CS";
             lookUpCoSoKCB.Properties.DisplayMember = "Ten_CS";
             DataTable dataNhom = dvkt.DSNhom();

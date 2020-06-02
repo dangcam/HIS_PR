@@ -125,16 +125,20 @@
             // 
             // xrLine1
             // 
+            this.xrLine1.BorderColor = System.Drawing.Color.Black;
             this.xrLine1.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dash;
+            this.xrLine1.ForeColor = System.Drawing.Color.Black;
             this.xrLine1.LineStyle = System.Drawing.Drawing2D.DashStyle.Dot;
             this.xrLine1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 25F);
             this.xrLine1.Name = "xrLine1";
             this.xrLine1.SizeF = new System.Drawing.SizeF(1069F, 2.083334F);
+            this.xrLine1.StylePriority.UseBorderColor = false;
             this.xrLine1.StylePriority.UseBorderDashStyle = false;
+            this.xrLine1.StylePriority.UseForeColor = false;
             // 
             // xrTable1
             // 
-            this.xrTable1.BorderColor = System.Drawing.Color.DimGray;
+            this.xrTable1.BorderColor = System.Drawing.Color.Black;
             this.xrTable1.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
             this.xrTable1.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrTable1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -420,7 +424,7 @@
             // 
             // xrTable2
             // 
-            this.xrTable2.BorderColor = System.Drawing.Color.DimGray;
+            this.xrTable2.BorderColor = System.Drawing.Color.Black;
             this.xrTable2.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
@@ -587,7 +591,7 @@
             // 
             // xrTable3
             // 
-            this.xrTable3.BorderColor = System.Drawing.Color.DimGray;
+            this.xrTable3.BorderColor = System.Drawing.Color.Black;
             this.xrTable3.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
@@ -751,7 +755,7 @@
             this.PaperKind = System.Drawing.Printing.PaperKind.A4;
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.xrControlStyle1});
-            this.Version = "17.2";
+            this.Version = "20.1";
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();

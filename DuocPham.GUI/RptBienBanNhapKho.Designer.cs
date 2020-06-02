@@ -200,6 +200,7 @@
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SoLuongQuyDoi]")});
             this.xrTableCell19.Name = "xrTableCell19";
             this.xrTableCell19.Text = "SL HÓA ĐƠN";
+            this.xrTableCell19.TextFormatString = "{0:#,###}";
             this.xrTableCell19.Weight = 0.8D;
             // 
             // xrTableCell20
@@ -208,6 +209,7 @@
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SoLuongQuyDoi]")});
             this.xrTableCell20.Name = "xrTableCell20";
             this.xrTableCell20.Text = "SL THỰC NHẬN";
+            this.xrTableCell20.TextFormatString = "{0:#,###}";
             this.xrTableCell20.Weight = 0.8D;
             // 
             // xrTableCell21
@@ -269,6 +271,7 @@
             this.xrLabel1});
             this.ReportHeader.HeightF = 375F;
             this.ReportHeader.Name = "ReportHeader";
+            this.ReportHeader.AfterPrint += new System.EventHandler(this.ReportHeader_AfterPrint);
             // 
             // xrlblThangNam
             // 
@@ -711,7 +714,7 @@
             this.PageHeight = 827;
             this.PageWidth = 1169;
             this.PaperKind = System.Drawing.Printing.PaperKind.A4;
-            this.Version = "17.2";
+            this.Version = "20.1";
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
