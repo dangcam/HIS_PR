@@ -30,6 +30,8 @@ namespace Core.DAL
             xmlfile = new XmlDocument ();
             xmlfile.Load ("AppConfig.xml");
         }
+        public static string NumberDecimalSeparator = ",";
+        public static string NumberGroupSeparator = ".";
         public static string Theme
         {
             get

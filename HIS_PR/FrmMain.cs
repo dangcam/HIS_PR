@@ -8,6 +8,7 @@ using DevExpress.XtraSplashScreen;
 using DuocPham.GUI;
 using HeThong.GUI;
 using System;
+using System.Globalization;
 using System.Windows.Forms;
 using TiepNhan.GUI;
 
@@ -32,6 +33,11 @@ namespace HIS_PR
             //}
 
             //DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle (AppConfig.Theme);
+            //System.Globalization.CultureInfo viVN = System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN");
+            CultureInfo c = new CultureInfo(System.Threading.Thread.CurrentThread.CurrentCulture.Name);
+            c.NumberFormat.NumberDecimalSeparator = AppConfig.NumberDecimalSeparator;
+            c.NumberFormat.NumberGroupSeparator = AppConfig.NumberGroupSeparator;
+            System.Threading.Thread.CurrentThread.CurrentCulture = c;
         }
         private void LoadMenu ()
         {

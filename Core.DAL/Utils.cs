@@ -20,7 +20,6 @@ namespace Core.DAL
         private static string url = "https://egw.baohiemxahoi.gov.vn";
         private static KQPhienLamViec phienLamViec = new KQPhienLamViec();
         //
-        private static System.Globalization.CultureInfo viVN = System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN");
         public static Connection db = new Connection();
         public static string ToMD5(string matKhau)
         {
@@ -123,7 +122,7 @@ namespace Core.DAL
         {
             try
             {
-                value = value.Replace(",", "");
+                value = value.Replace(AppConfig.NumberGroupSeparator, "");
                 return Convert.ToDouble(value);
             }
             catch
@@ -136,7 +135,7 @@ namespace Core.DAL
         {
             try
             {
-                value = value.Replace(",", "");
+                value = value.Replace(AppConfig.NumberGroupSeparator, "");
                 return Convert.ToDecimal(value);
             }
             catch
@@ -175,7 +174,7 @@ namespace Core.DAL
                 {
                     return null;
                 }
-                return t.ToString(format, viVN);
+                return t.ToString(format);
             }
             catch
             {
@@ -186,7 +185,7 @@ namespace Core.DAL
         {
             try
             {
-                return value.ToString("0,0", viVN);
+                return value.ToString("0,0");
             }
             catch
             {
@@ -288,7 +287,7 @@ namespace Core.DAL
         {
             try
             {
-                value = value.Replace(",", "");
+                value = value.Replace(AppConfig.NumberGroupSeparator, "");
                 return Convert.ToInt32(value);
             }
             catch

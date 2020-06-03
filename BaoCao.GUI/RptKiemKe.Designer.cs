@@ -128,7 +128,7 @@
             this.xrLine1.BorderColor = System.Drawing.Color.Black;
             this.xrLine1.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dash;
             this.xrLine1.ForeColor = System.Drawing.Color.Black;
-            this.xrLine1.LineStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+            this.xrLine1.LineStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.xrLine1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 25F);
             this.xrLine1.Name = "xrLine1";
             this.xrLine1.SizeF = new System.Drawing.SizeF(1069F, 2.083334F);
