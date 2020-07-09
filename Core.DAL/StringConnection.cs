@@ -9,7 +9,7 @@ namespace Core.DAL
 {
     public class StringConnection
     {
-        public static SqlConnection getNetwork ()
+        public static SqlConnection getNetwork()
         {
             SqlConnection conn = new SqlConnection ();
             conn.ConnectionString = "Data Source=" + AppConfig.ServerName + ";Network Library=DBMSSOCN;"
