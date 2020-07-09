@@ -122,7 +122,7 @@ namespace Core.DAL
         {
             try
             {
-                value = value.Replace(AppConfig.NumberGroupSeparator, "");
+                value = value.Replace(AppConfig.NumberGroupSeparator.ToString(), "");
                 return Convert.ToDouble(value);
             }
             catch
@@ -135,7 +135,7 @@ namespace Core.DAL
         {
             try
             {
-                value = value.Replace(AppConfig.NumberGroupSeparator, "");
+                value = value.Replace(AppConfig.NumberGroupSeparator.ToString(), "");
                 return Convert.ToDecimal(value);
             }
             catch
@@ -287,7 +287,7 @@ namespace Core.DAL
         {
             try
             {
-                value = value.Replace(AppConfig.NumberGroupSeparator, "");
+                value = value.Replace(AppConfig.NumberGroupSeparator.ToString(), "");
                 return Convert.ToInt32(value);
             }
             catch

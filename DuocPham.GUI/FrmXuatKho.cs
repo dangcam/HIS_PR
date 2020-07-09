@@ -534,8 +534,8 @@ namespace DuocPham.GUI
             cell.WidthF = 96;
             row.Cells.Add (cell);
             rpt.xrTable.Rows.Add (row);
-
-            rpt.lblTongTien.Text = Utils.ChuyenSo (this.thanhTien.ToString ().Split('.')[0]);
+            rpt.lblTongTien.Text = //Utils.ChuyenSo(Utils.ToInt(this.thanhTien.ToString()).ToString());
+             Utils.ChuyenSo (this.thanhTien.ToString ().Split(AppConfig.NumberDecimalSeparator)[0]);
             rpt.lblTKCo.Text = "";
             foreach (string loai in dsLoaiVatTu)
             {

@@ -637,7 +637,7 @@ namespace DuocPham.GUI
             row.Cells.Add (cell);
             rpt.xrTable.Rows.Add (row);
 
-            rpt.lblTongTien.Text = Utils.ChuyenSo (Utils.ToInt(this.thanhTien.ToString()).ToString());
+            rpt.lblTongTien.Text = Utils.ChuyenSo(this.thanhTien.ToString().Split(AppConfig.NumberDecimalSeparator)[0]);
             rpt.lblTKNo.Text = "";
             foreach(string loai in dsLoaiVatTu)
             {

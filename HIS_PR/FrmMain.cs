@@ -35,8 +35,8 @@ namespace HIS_PR
             //DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle (AppConfig.Theme);
             //System.Globalization.CultureInfo viVN = System.Globalization.CultureInfo.CreateSpecificCulture("vi-VN");
             CultureInfo c = new CultureInfo(System.Threading.Thread.CurrentThread.CurrentCulture.Name);
-            c.NumberFormat.NumberDecimalSeparator = AppConfig.NumberDecimalSeparator;
-            c.NumberFormat.NumberGroupSeparator = AppConfig.NumberGroupSeparator;
+            c.NumberFormat.NumberDecimalSeparator = AppConfig.NumberDecimalSeparator.ToString();
+            c.NumberFormat.NumberGroupSeparator = AppConfig.NumberGroupSeparator.ToString();
             System.Threading.Thread.CurrentThread.CurrentCulture = c;
         }
         private void LoadMenu ()
