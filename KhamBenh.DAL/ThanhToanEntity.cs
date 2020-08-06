@@ -148,16 +148,16 @@ namespace KhamBenh.DAL
             }
             if (timTheo == 0)
             {
-                sql += "And CONVERT(Date,NgayVao) Between CONVERT(Date,'" + tuNgay + "') And CONVERT(Date,'" + denNgay + "')";
+                sql += "And CONVERT(Date,NgayVao) Between '" + tuNgay.ToString("MM/dd/yyyy") + "' And '" + denNgay.ToString("MM/dd/yyyy") + "' ";
             }
             else
                 if (timTheo == 1)
             {
-                sql += "And CONVERT(Date,NgayRa) Between CONVERT(Date,'" + tuNgay + "') And CONVERT(Date,'" + denNgay + "')";
+                sql += "And CONVERT(Date,NgayRa) Between '" + tuNgay.ToString("MM/dd/yyyy") + "' And '" + denNgay.ToString("MM/dd/yyyy") + "') ";
             }
             else
             {
-                sql += "And CONVERT(Date,NgayThanhToan) Between CONVERT(Date,'" + tuNgay + "') And CONVERT(Date,'" + denNgay + "')";
+                sql += "And CONVERT(Date,NgayThanhToan) Between '" + tuNgay.ToString("MM/dd/yyyy") + "' And '" + denNgay.ToString("MM/dd/yyyy") + "' ";
             }
 
             return db.ExcuteQuery(sql,

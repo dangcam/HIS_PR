@@ -19,7 +19,7 @@ namespace KhamBenh.DAL
         {
             return db.ExcuteQuery("Select *,(~DaGui) as Chon,ROW_NUMBER() OVER(ORDER BY STTNgay) STT " +
                 "From ThongTinBNChiTiet " +
-                "Where CONVERT(Date,NgayThanhToan) between CONVERT(Date, '"+tuNgay+"') and CONVERT(Date, '"+denNgay+ "') " +
+                "Where CONVERT(Date,NgayThanhToan) between '"+tuNgay.ToString("MM/dd/yyyy")  + "' and '"+denNgay.ToString("MM/dd/yyyy") + "' " +
                 "And MaCoSoKCB = '" + AppConfig.CoSoKCB + "' And MaKhoa = '"+maKhoa+"'",
                 CommandType.Text, null);
         }

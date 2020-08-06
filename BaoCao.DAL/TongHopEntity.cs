@@ -31,7 +31,7 @@ namespace BaoCao.DAL
                     "SUM(SoLuong) as SoLuong, (SUM(SoLuong) * DonGia) as ThanhTien "+
                     "from DichVuChiTiet,(select MaLK from ThongTinBNChiTiet) as ThongTin " +
                     "where ThongTin.MaLK = DichVuChiTiet.MaLK and MaKhoa in ('" + maKhoa+"') " +
-                    "and(convert(date,NgayYLenh) between convert(date,'"+tuNgay+"') and convert(date,'"+denNgay+"')) "+
+                    "and(convert(date,NgayYLenh) between '"+tuNgay.ToString("MM/dd/yyyy") + "' and '"+denNgay.ToString("MM/dd/yyyy") + "') "+
                     "group by MaDichVu, TenDichVu, DonGia, MaNhom,TyLe) "+
                     "as DichVu "+
                     "where Nhom.MaNhom = DichVu.MaNhom",
@@ -55,7 +55,7 @@ namespace BaoCao.DAL
                 "MaThuoc,TenThuoc,DonViTinh,DonGia,TyLe,SUM(SoLuong) as SoLuong,SUM(ThanhTien) as ThanhTien " +
                 "from DonThuocChiTiet,(select MaLK from ThongTinBNChiTiet) as ThongTin " +
                 "where ThongTin.MaLK = DonThuocChiTiet.MaLK and MaKhoa in ('" + maKhoa + "') " +
-                "and(convert(date,NgayYLenh) between convert(date,'" + tuNgay + "') and convert(date,'" + denNgay + "')) " +
+                "and(convert(date,NgayYLenh) between '" + tuNgay.ToString("MM/dd/yyyy") + "' and '" + denNgay.ToString("MM/dd/yyyy") + "') " +
                 " group by MaThuoc,TenThuoc,DonViTinh,DonGia,TyLe",
                 CommandType.Text, null);
             //return db.ExcuteQuery("select ROW_NUMBER() OVER (ORDER By TenThuoc) as STT," +
@@ -74,7 +74,7 @@ namespace BaoCao.DAL
                 "from DonThuocChiTiet,(select MaLK,(CASE WHEN NgayThanhToan is null THEN 0 ELSE 1 END) AS TT " +
                 "from ThongTinBNChiTiet) as ThongTin " +
                 "where ThongTin.MaLK = DonThuocChiTiet.MaLK and MaKhoa in ('" + maKhoa + "') " +
-                "and(convert(date,NgayYLenh) between convert(date,'" + tuNgay + "') and convert(date,'" + denNgay + "')) " +
+                "and(convert(date,NgayYLenh) between '" + tuNgay.ToString("MM/dd/yyyy") + "' and '" + denNgay.ToString("MM/dd/yyyy") + "') " +
                 " group by MaVatTu,TenThuoc,DonViTinh,DonGia,TT",
                 CommandType.Text, null);
             //return db.ExcuteQuery("select ROW_NUMBER() OVER (ORDER By TenThuoc) as STT,DonGia, " +
@@ -110,7 +110,7 @@ namespace BaoCao.DAL
                 "MaVT,TenVatTu,DonViTinh,DonGia,TyLe,SUM(SoLuong) as SoLuong,SUM(ThanhTien) as ThanhTien " +
                 "from VatTuChiTiet,(select MaLK from ThongTinBNChiTiet) as ThongTin " +
                 "where ThongTin.MaLK = VatTuChiTiet.MaLK and MaKhoa in ('" + maKhoa + "') " +
-                "and(convert(date,NgayYLenh) between convert(date,'" + tuNgay + "') and convert(date,'" + denNgay + "')) " +
+                "and(convert(date,NgayYLenh) between '" + tuNgay.ToString("MM/dd/yyyy") + "' and '" + denNgay.ToString("MM/dd/yyyy") + "') " +
                 " group by MaVT,TenVatTu,DonViTinh,DonGia,TyLe",
                 CommandType.Text, null);
             //return db.ExcuteQuery("select ROW_NUMBER() OVER (ORDER By TenVatTu) as STT," +
@@ -129,7 +129,7 @@ namespace BaoCao.DAL
                                     "from ThongTinBNChiTiet,DonThuocChiTiet " +
                                     "where ThongTinBNChiTiet.MaLK = DonThuocChiTiet.MaLK " +
                                     "And DonThuocChiTiet.MaKhoa in ('" + maKhoa + "') " +
-                                    "And (convert(date,NgayThanhToan) between convert(date,'" + tuNgay + "') and convert(date,'" + denNgay + "')) " +
+                                    "And (convert(date,NgayThanhToan) between '" + tuNgay.ToString("MM/dd/yyyy") + "' and '" + denNgay.ToString("MM/dd/yyyy") + "') " +
                                     "order by STTNgay",
                 CommandType.Text, null);
             //return db.ExcuteQuery("Select STTNgay,HoTen,SUBSTRING(NgaySinh, Len(NgaySinh)-3, 4) as NgaySinh," +
@@ -148,7 +148,7 @@ namespace BaoCao.DAL
             {
                 maKhoa += "','','','','','','";
             }
-            return db.ExcuteQuery("Select * from BaoCaoMau7980ACoSo('"+tuNgay+"','"+denNgay+ "','" + maKhoa + "')",
+            return db.ExcuteQuery("Select * from BaoCaoMau7980ACoSo('"+tuNgay.ToString("MM/dd/yyyy")+"','"+denNgay.ToString("MM/dd/yyyy") + "','" + maKhoa + "')",
                 CommandType.Text, null);
             //return db.ExcuteQuery("Select * from BaoCaoMau7980A('" + maKhoa + "','" + AppConfig.CoSoKCB + "','" + tuNgay + "','" + denNgay + "')",
             //    CommandType.Text, null);
@@ -159,7 +159,7 @@ namespace BaoCao.DAL
                 "MaBN,HoTen,NgaySinh,MucHuong,(TienBNCCT+TienBNTT) as TienBNCCT,NgayThanhToan " +
                 "from ThongTinBNChiTiet where (TienBNCCT+TienBNTT) > 0 " +
                 "and MaKhoa in ('" + maKhoa + "') "+
-                "and(convert(date,NgayThanhToan) between convert(date,'" + tuNgay + "') and convert(date,'" + denNgay + "'))",
+                "and(convert(date,NgayThanhToan) between '" + tuNgay.ToString("MM/dd/yyyy") + "' and '" + denNgay.ToString("MM/dd/yyyy") + "')",
                 CommandType.Text, null);
         }
         public DataTable DSVienPhi(string maKhoa, DateTime tuNgay, DateTime denNgay)
@@ -174,7 +174,7 @@ namespace BaoCao.DAL
         {
             string sql = "";
             //sql = "EXEC SpgetVienPhiDan '" + maKhoa + "','" + AppConfig.CoSoKCB + "','" + tuNgay + "','" + denNgay + "'";
-            sql = "EXEC SpgetVienPhiDanCoSo '" + tuNgay + "','" + denNgay + "','" + maKhoa + "'";
+            sql = "EXEC SpgetVienPhiDanCoSo '" + tuNgay.ToString("MM/dd/yyyy") + "','" + denNgay.ToString("MM/dd/yyyy") + "','" + maKhoa + "'";
             return db.ExcuteQuery(sql,
                 CommandType.Text, null);
         }
