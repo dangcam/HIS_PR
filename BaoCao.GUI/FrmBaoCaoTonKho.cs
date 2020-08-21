@@ -37,13 +37,15 @@ namespace BaoCao.GUI
             dataNV = nhapxuat.DSNVKhoDuoc();
             for (int i = DateTime.Now.Year - 5;i<DateTime.Now.Year+5;i++)
             {
-                cbNam.Properties.Items.Add(i);
+                cbNamKT.Properties.Items.Add(i);
+                cbNamBD.Properties.Items.Add(i);
                 cbNamXuLy.Properties.Items.Add(i);
             }
             cbTuThang.SelectedIndex = DateTime.Now.Month - 1;
             cbThangBD.SelectedIndex = DateTime.Now.Month - 1;
             cbThangKT.SelectedIndex = DateTime.Now.Month - 1;
-            cbNam.SelectedIndex = 5;
+            cbNamKT.SelectedIndex = 5;
+            cbNamBD.SelectedIndex = 5;
             cbNamXuLy.SelectedIndex = 5;
             //
             gridControlLoaiVT.DataSource = dtLoaiVatTu;
@@ -108,12 +110,12 @@ namespace BaoCao.GUI
         private void btnXem_Click(object sender, EventArgs e)
         {
             // chuyển qua dạng date
-            int nam = Utils.ToInt(cbNam.EditValue);
+            int nam = Utils.ToInt(cbNamBD.EditValue);
             int thangBD = cbThangBD.SelectedIndex + 1;
             int thangKT = cbThangKT.SelectedIndex + 1;
-            DateTime dateKT = Utils.ToDateTime(Utils.ToInt(txtNgayKT.Text,lastDay(nam, thangKT)) + "/" + cbThangKT.EditValue + "/" + cbNam.EditValue, "dd/MM/yyyy");
+            DateTime dateKT = Utils.ToDateTime(Utils.ToInt(txtNgayKT.Text,lastDay(nam, thangKT)) + "/" + cbThangKT.EditValue + "/" + cbNamKT.EditValue, "dd/MM/yyyy");
             //Utils.ToDateTime(lastDay(nam,thangKT)+"/"+cbThangKT.EditValue+"/"+cbNam.EditValue, "dd/MM/yyyy");
-            DateTime dateBD = Utils.ToDateTime("01/" + cbThangBD.EditValue + "/" + cbNam.EditValue, "dd/MM/yyyy");
+            DateTime dateBD = Utils.ToDateTime("01/" + cbThangBD.EditValue + "/" + cbNamBD.EditValue, "dd/MM/yyyy");
             DataRow[] dr = dtLoaiVatTu.Select("Chon = 1", "");
            
             nhapxuat.TuNgay = dateBD;

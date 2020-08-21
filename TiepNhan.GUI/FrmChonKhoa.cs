@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraBars.Ribbon;
+﻿using Core.DAL;
+using DevExpress.XtraBars.Ribbon;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,8 +37,8 @@ namespace TiepNhan.GUI
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            MaKhoa = lookUpKhoaBan.EditValue.ToString();
-            if (MaKhoa == "K01_13")
+            MaKhoa = Utils.ToString(lookUpKhoaBan.EditValue);
+            if (MaKhoa.Substring(0,3) == "K01")
             {
                 MaLoaiKCB = 1;
             }

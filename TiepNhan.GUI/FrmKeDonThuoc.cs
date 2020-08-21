@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -40,6 +41,8 @@ namespace TiepNhan.GUI
         Dictionary<string, string> dicDuongDung = new Dictionary<string, string>();
         DataView dvThuoc,dvVatTu;
         DataTable thuocNgoaiDM;
+        private string maBacSi = null;
+        //private bool addNew = true;
         public FrmKeDonThuoc()
         {
             InitializeComponent();
@@ -84,6 +87,7 @@ namespace TiepNhan.GUI
             listVatTu = new Dictionary<string, int>();
             if(!string.IsNullOrEmpty(MaLK))
             {
+                //addNew = false;
                 kedon.MaLK = MaLK;
                 if(kedon.LayThongTinMaBenh() && !string.IsNullOrEmpty(kedon.MaBenh))
                 {
@@ -94,15 +98,26 @@ namespace TiepNhan.GUI
                 // lấy danh sách thuốc
                 dvThuoc = kedon.DSThuoc().AsDataView();
                 gridControlThuoc.DataSource = dvThuoc;
-                string maBacSi = "";
+                string maBacSiCu = null;
                 foreach(DataRowView drv in dvThuoc)
                 {
                     listThuoc.Add(drv["MaVatTu"].ToString(), 1);
-                    maBacSi = Utils.ToString(drv["MaBacSi"]);
+                    maBacSiCu = Utils.ToString(drv["MaBacSi"]);
                 }
-                this.lookUpBacSi.EditValueChanged -= new System.EventHandler(this.lookUpBacSi_EditValueChanged);
-                lookUpBacSi.EditValue = maBacSi;
-                this.lookUpBacSi.EditValueChanged += new System.EventHandler(this.lookUpBacSi_EditValueChanged);
+                if (!string.IsNullOrEmpty(maBacSiCu))
+                {
+                    this.lookUpBacSi.EditValueChanged -= new System.EventHandler(this.lookUpBacSi_EditValueChanged);
+                    lookUpBacSi.EditValue = maBacSiCu;
+                    this.lookUpBacSi.EditValueChanged += new System.EventHandler(this.lookUpBacSi_EditValueChanged);
+                }
+                else
+                {
+                    this.lookUpBacSi.EditValueChanged -= new System.EventHandler(this.lookUpBacSi_EditValueChanged);
+                    lookUpBacSi.EditValue = null;
+                    this.lookUpBacSi.EditValueChanged += new System.EventHandler(this.lookUpBacSi_EditValueChanged);
+                    //addNew = true;
+                    lookUpBacSi.EditValue = maBacSi;
+                }
                 // lấy danh sách vật tư
                 dvVatTu = kedon.DSVatTu().AsDataView();
                 gridControlVTYT.DataSource = dvVatTu;
@@ -113,6 +128,7 @@ namespace TiepNhan.GUI
                 // dịch vụ kỹ thuật
                 gridControlDVKT.DataSource = kedon.DSDichVuKyThuat();
             }
+
             thuocNgoaiDM = kedon.DSKeDonNgoaiDM();
         }
 
@@ -565,6 +581,7 @@ namespace TiepNhan.GUI
                 kedon.MaBacSi = Utils.ToString(lookUpBacSi.EditValue);
                 kedon.NgayYLenh = Utils.ToDateTime(drv["NgayYLenh"].ToString());
                 kedon.MaPTTT = 0;
+                maBacSi = kedon.MaBacSi;
                 if (listThuoc[drv["MaVatTu"].ToString()] == 1)
                 {
                     //lưu lại đường dùng, không lưu lại số lượng
@@ -830,17 +847,22 @@ namespace TiepNhan.GUI
 
         private void lookUpBacSi_EditValueChanged(object sender, EventArgs e)
         {
+            CheckSoLanKe();
+        }
+        private bool CheckSoLanKe()
+        {
             DataRowView drv = (lookUpBacSi.GetSelectedDataRow() as DataRowView);
             int SoLan = Utils.ToInt(drv["KeDon"]);
-            if(SoLan<1)
+            if (SoLan < 1)
             {
                 XtraMessageBox.Show("Số lần kê đơn của bác sĩ đã hết, vui lòng chọn lại bác sĩ khác!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.lookUpBacSi.EditValueChanged -= new System.EventHandler(this.lookUpBacSi_EditValueChanged);
                 lookUpBacSi.EditValue = null;
                 this.lookUpBacSi.EditValueChanged += new System.EventHandler(this.lookUpBacSi_EditValueChanged);
+                return false;
             }
+            return true;
         }
-
         private void repbtnXoaThuoc_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             int index = gridViewThuoc.GetFocusedDataSourceRowIndex();
