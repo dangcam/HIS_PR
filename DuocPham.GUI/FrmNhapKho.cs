@@ -1,5 +1,4 @@
 ﻿using DevExpress.XtraBars.Ribbon;
-using Core.DAL;
 using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraSplashScreen;
@@ -9,6 +8,7 @@ using System.Data;
 using System.Windows.Forms;
 using System;
 using System.Linq;
+using Core.DAL;
 
 namespace DuocPham.GUI
 {

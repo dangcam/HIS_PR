@@ -52,7 +52,7 @@ namespace KhamBenh.DAL
         public int LoaiCT { get; set; } // 0. Nghỉ hưởng BHXH, 1. Ra viện, 2. Sinh con
         public DataTable DSBenh()
         {
-            return db.ExcuteQuery("Select MaBenh,TenBenh From BenhICD ",
+            return db.ExcuteQuery("Select MaBenh,TenBenh From BenhICD Where HieuLuc = 1",
                 CommandType.Text, null);
         }
         public DataTable DSDanToc()

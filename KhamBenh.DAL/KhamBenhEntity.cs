@@ -42,7 +42,7 @@ namespace KhamBenh.DAL
         }
         public DataTable DSBenh()
         {
-            return db.ExcuteQuery("Select MaBenh,TenBenh From BenhICD ",
+            return db.ExcuteQuery("Select MaBenh,TenBenh From BenhICD Where HieuLuc = 1",
                 CommandType.Text, null);
         }
         public DataTable DSVatTuChiTiet()
