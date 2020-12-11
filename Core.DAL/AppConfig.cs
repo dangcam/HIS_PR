@@ -30,8 +30,8 @@ namespace Core.DAL
             xmlfile = new XmlDocument ();
             xmlfile.Load ("AppConfig.xml");
         }
-        public static char NumberDecimalSeparator = ',';
-        public static char NumberGroupSeparator = '.';
+        public static char NumberDecimalSeparator = '.';
+        public static char NumberGroupSeparator = ',';
         public static string Theme
         {
             get
@@ -238,6 +238,8 @@ namespace Core.DAL
             AppConfig.NhoTT = bool.Parse(xmlfile.SelectSingleNode ("AppConfig/Config/NhoTT").InnerText.ToString ());
             AppConfig.UserLoginBHYT = xmlfile.SelectSingleNode("AppConfig/BHYT/UserLogin").InnerText.ToString();
             AppConfig.PassWordBHYT = (xmlfile.SelectSingleNode("AppConfig/BHYT/PassWord").InnerText.ToString());
+            AppConfig.NumberDecimalSeparator = Convert.ToChar((xmlfile.SelectSingleNode("AppConfig/Config/NumberDecimalSeparator").InnerText));
+            AppConfig.NumberGroupSeparator = Convert.ToChar((xmlfile.SelectSingleNode("AppConfig/Config/NumberGroupSeparator").InnerText));
         }
         public void WriteTheme()
         {

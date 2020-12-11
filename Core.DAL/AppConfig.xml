@@ -13,7 +13,9 @@
     <LoginMaNV>admin</LoginMaNV>
     <LoginPass>admin@123</LoginPass>
     <NhoTT>true</NhoTT>
-	<DateFormat>dd/MM/yyyy</DateFormat>
+    <DateFormat>dd/MM/yyyy</DateFormat>
+    <NumberDecimalSeparator>.</NumberDecimalSeparator>
+    <NumberGroupSeparator>,</NumberGroupSeparator>
   </Config>
   <BHYT>
     <UserLogin>70013_BV</UserLogin>
