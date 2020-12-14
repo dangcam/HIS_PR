@@ -221,11 +221,15 @@ namespace TiepNhan.GUI
 
         private void cbLoaiVatTu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbLoaiVatTu.SelectedIndex==0)
+            if (cbLoaiVatTu.SelectedIndex == 0)
             {
                 lookUpVatTu.Properties.DataSource = kedon.DSKeDon("2");
             }
-            else if(cbLoaiVatTu.SelectedIndex==1)
+            else if (cbLoaiVatTu.SelectedIndex == 1)
+            {
+                lookUpVatTu.Properties.DataSource = kedon.DSKeVatTuKhoChan("2");
+            }
+            else if (cbLoaiVatTu.SelectedIndex == 2)
             {
                 lookUpVatTu.Properties.DataSource = kedon.DSKeDon("3");
             }

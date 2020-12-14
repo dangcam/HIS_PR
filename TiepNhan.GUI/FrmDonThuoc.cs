@@ -419,13 +419,17 @@ namespace TiepNhan.GUI
         }
         private void cbLoaiThuoc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbLoaiThuoc.SelectedIndex ==0)
+            if (cbLoaiThuoc.SelectedIndex == 0)
             {
-                lookUpThuoc.Properties.DataSource = kedon.DSKeDonTuTruc();//kedon.DSKeVatTuNoiTru("1");//kedon.DSKeVatTuKhoChan("1");
+                lookUpThuoc.Properties.DataSource = kedon.DSKeVatTuKhoChan("1");//kedon.DSKeVatTuNoiTru("1");//
+            }
+            else if (cbLoaiThuoc.SelectedIndex == 1)
+            {
+                lookUpThuoc.Properties.DataSource = kedon.DSKeDonTuTruc();
             }
             else
             {
-                lookUpThuoc.Properties.DataSource = thuocNgoaiDM; 
+                lookUpThuoc.Properties.DataSource = thuocNgoaiDM;
             }
         }
     }
