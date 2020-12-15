@@ -55,7 +55,7 @@ namespace TiepNhan.GUI
             lookUpBacSi.ItemIndex = 0;
             lookUpKhoa.EditValue = AppConfig.MaKhoa;
             dateTuNgay.DateTime = dateDenNgay.DateTime = DateTime.Now;
-            LamMoiDS();
+            //LamMoiDS();
         }
         private void LoadData()
         {
