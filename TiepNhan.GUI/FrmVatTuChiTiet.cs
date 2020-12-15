@@ -91,7 +91,7 @@ namespace TiepNhan.GUI
                 {
                     drvNew["DonGia"] = dr["DonGiaBV"];
                     drvNew["TyLe"] = 0;
-                    if(cbLoaiVatTu.SelectedIndex==2)
+                    if(cbLoaiVatTu.SelectedIndex==3)
                     {
                         drvNew["TyLe"] = -10;// Vật tư khác
                     }

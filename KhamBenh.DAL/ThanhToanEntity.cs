@@ -153,7 +153,7 @@ namespace KhamBenh.DAL
             else
                 if (timTheo == 1)
             {
-                sql += "And CONVERT(Date,NgayRa) Between '" + tuNgay.ToString("MM/dd/yyyy") + "' And '" + denNgay.ToString("MM/dd/yyyy") + "') ";
+                sql += "And CONVERT(Date,NgayRa) Between '" + tuNgay.ToString("MM/dd/yyyy") + "' And '" + denNgay.ToString("MM/dd/yyyy") + "' ";
             }
             else
             {
