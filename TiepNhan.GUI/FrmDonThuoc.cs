@@ -164,7 +164,6 @@ namespace TiepNhan.GUI
             int index = gridViewThuoc.GetFocusedDataSourceRowIndex();
             if (index > -1)
             {
-
                 DataRow dr = dvThuoc.ToTable().Rows[index];
                 if (listThuoc[dr["MaVatTu"] + "|" + dr["NhomYLenh"]] == 1)
                 {
