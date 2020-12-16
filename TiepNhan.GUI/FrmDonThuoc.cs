@@ -130,7 +130,7 @@ namespace TiepNhan.GUI
                 drvNew["NhomYLenh"] = dateNgayYLenh.DateTime.ToString("yyyy-mm-dd hh:mm:ss");
                 drvNew["MaDuongDung"] = dr["MaDuongDung"];
                 drvNew["SoDK"] = dr["SoDK"];
-                if (cbLoaiThuoc.SelectedIndex == 0)
+                if (cbLoaiThuoc.SelectedIndex <= 1)
                 {
                     drvNew["TyLe"] = 100;
                     drvNew["TTinThau"] = dr["QuyetDinh"] + ";" + dr["GoiThau"] + ";" + dr["NhomThau"];
