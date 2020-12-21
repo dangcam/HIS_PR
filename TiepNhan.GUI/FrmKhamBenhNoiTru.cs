@@ -491,8 +491,8 @@ namespace TiepNhan.GUI
             if(lookUpKhoa.EditValue.ToString() != AppConfig.MaKhoa)
             {
                 XtraMessageBox.Show("Khoa bạn chọn không phù hợp với tài khoản, vui lòng chọn lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                if (AppConfig.LoginMaNV != "admin")
-                    lookUpKhoa.EditValue = AppConfig.MaKhoa;
+                //if (AppConfig.LoginMaNV != "admin") chỉ có admin mới có quyền
+                //    lookUpKhoa.EditValue = AppConfig.MaKhoa;
             }
         }
 

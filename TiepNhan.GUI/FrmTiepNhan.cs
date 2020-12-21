@@ -643,6 +643,8 @@ namespace TiepNhan.GUI
                     txtTheBHYT.Focus();
                     return;
                 }
+                //lưu lại MaLK
+                string MaLKcu = tiepnhan.MaLK;
                 // Lấy thông tin thẻ nếu có trong csdl
                 // Hồ sơ bệnh án khám trong ngày, kiểm tra lại nội trú
                 // Lấy mã bệnh nhân
@@ -655,6 +657,9 @@ namespace TiepNhan.GUI
                     txtTheBHYT.Text = null;
                     return;
                 }
+                // lấy lại MaLK
+                if (themMoi == false)
+                    tiepnhan.MaLK = MaLKcu;
                 txtMaBN.Text = tiepnhan.MaBN;
                 if (string.IsNullOrEmpty(txtMaQR.Text) && !string.IsNullOrEmpty(tiepnhan.MaBN))
                 {
