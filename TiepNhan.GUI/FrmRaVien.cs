@@ -110,7 +110,8 @@ namespace TiepNhan.GUI
         private void btnLuuIn_Click(object sender, EventArgs e)
         {
             Luu();
-            In();
+            //In();
+            InA5();
         }
         private void In()
         {
@@ -145,6 +146,50 @@ namespace TiepNhan.GUI
             rpt.xrlblTenCoSo.Text = AppConfig.TenCoSoKCB.ToUpper();
             string makhoa = Utils.ToString(dataRow["MaKhoa"]);
             if(khoaBan.ContainsKey(makhoa))
+            {
+                rpt.xrlblKhoa.Text = "Khoa: " + khoaBan[makhoa];
+            }
+            rpt.CreateDocument();
+            rpt.ShowPreviewDialog();
+        }
+        private void InA5()
+        {
+            RptRaVienA5 rpt = new RptRaVienA5();
+            rpt.xrlblHoTen.Text = "Họ tên người bệnh :" + Utils.ToString(dataRow["HoTen"]);
+            rpt.xrlblTuoi.Text = "Tuổi: " + (DateTime.Now.Year - Utils.ToNgaySinh(dataRow["NgaySinh"]).Year);
+            rpt.xrlblGioiTinh.Text = Utils.ToString(dataRow["GioiTinh"]) == "0" ? "Nam" : "Nữ";
+            rpt.xrlblMaSoBHXH.Text = "- Mã số BHXH: " + txtBHXH.Text;
+            rpt.xrlblDanToc.Text = "- Dân tộc: " + Utils.ToString(txtDanToc.Properties.GetDisplayValueByKeyValue(txtDanToc.EditValue));
+            rpt.xrlblNgheNghiep.Text = "Nghề nghiệp: " + txtNgheNghiep.Text;
+            rpt.xrlblChuanDoan.Text = "- Chuẩn đoán: " + Utils.ToString(dataRow["TenBenh"]);// + ". " + txtPPDieuTri.Text;
+            //DateTime ngayIn = Utils.ToDateTime(txtNgayChungTu.Text,"dd/MM/yyyy");
+            rpt.xrlblNgayRa.Text = "Ngày " + txtNgayChungTu.DateTime.Day + " tháng "
+                + txtNgayChungTu.DateTime.Month + " năm " + txtNgayChungTu.DateTime.Year;// ngày chứng từ
+            rpt.xrlblNgayRa2.Text = rpt.xrlblNgayRa.Text;
+            //
+            string maThe = Utils.ToString(dataRow["MaThe"]);
+            rpt.xrTableBHYT.Rows[0].Cells[0].Text = maThe.Substring(0, 2);
+            rpt.xrTableBHYT.Rows[0].Cells[1].Text = maThe.Substring(2, 1);
+            rpt.xrTableBHYT.Rows[0].Cells[2].Text = maThe.Substring(3, 2);
+            rpt.xrTableBHYT.Rows[0].Cells[3].Text = maThe.Substring(5, 10);
+            //
+            rpt.xrlblDiaChi.Text = "- Địa chỉ: " + Utils.ToString(dataRow["DiaChi"]);
+            DateTime ngayVao = Utils.ToDateTime(dataRow["NgayVao"]);
+            rpt.xrlblVaoVien.Text = "- Vào viện lúc: " + ngayVao.Hour + " giờ " + ngayVao.Minute + " phút, ngày "
+                + ngayVao.Day + " tháng " + ngayVao.Month + " năm " + ngayVao.Year;
+            DateTime ngayRa;
+            if (Utils.ToString(dataRow["NgayRa"]).Length > 0)
+            {
+                ngayRa = Utils.ToDateTime(dataRow["NgayRa"]);
+            }
+            else
+                ngayRa = DateTime.Now;
+            rpt.xrlblRaVien.Text = "- Ra viện lúc: " + ngayRa.Hour + " giờ " + ngayRa.Minute + " phút, ngày "
+                + ngayRa.Day + " tháng " + ngayRa.Month + " năm " + ngayRa.Year;
+            rpt.xrlblSoPhieu.Text = "Số lưu trữ: " + txtSoPhieu.Text;
+            rpt.xrlblTenCoSo.Text = AppConfig.TenCoSoKCB.ToUpper();
+            string makhoa = Utils.ToString(dataRow["MaKhoa"]);
+            if (khoaBan.ContainsKey(makhoa))
             {
                 rpt.xrlblKhoa.Text = "Khoa: " + khoaBan[makhoa];
             }
