@@ -69,6 +69,8 @@ namespace TiepNhan.GUI
                 txtBHXH.Text = Utils.LaySoBHXH(dataRow["MaThe"]);
                 txtHoTenMe.Text = Utils.ToString(dataRow["HoTen"]);
                 lookupDanToc.EditValue = 1;
+                dateNgaySinhCon.DateTime = DateTime.Now;
+                txtNgayCap.DateTime = DateTime.Now;
             }
         }
         private void Luu()
@@ -121,7 +123,7 @@ namespace TiepNhan.GUI
         private void btnLuuIn_Click(object sender, EventArgs e)
         {
             Luu();
-            In();
+            InA5();
         }
         private void In()
         {
@@ -144,6 +146,39 @@ namespace TiepNhan.GUI
             rpt.xrlblNguoiDoDe.Text = "Người đỡ đẻ: " + txtNguoiDoDe.Text;
             rpt.xrlblNgayCT.Text = "Phú Riềng, ngày "+dateNgayCT.DateTime.Day + " tháng "+dateNgayCT.DateTime.Month + " năm "+dateNgayCT.DateTime.Year;
             rpt.xrlblSo.Text = "Số: "+txtSoPhieu.Text;
+            rpt.CreateDocument();
+            rpt.ShowPreviewDialog();
+        }
+        private void InA5()
+        {
+            RptGiayChungSinhA5 rpt = new RptGiayChungSinhA5();
+            rpt.xrlblTenCoSo.Text = AppConfig.TenCoSoKCB.ToUpper();
+            rpt.xrlblHoTen.Text = "Họ và tên mẹ/Người nuôi dưỡng: " + txtHoTenMe.Text;
+            rpt.xrlblNamSinh.Text = "Năm sinh: " + Utils.ToString(dataRow["NgaySinh"]);
+            rpt.xrlblDiaChi.Text = "Nơi đăng ký thường trú: " + Utils.ToString(dataRow["DiaChi"]);
+            rpt.xrlblSoBHXH.Text = "MS BHXH: "+ txtBHXH.Text;
+            //
+            string maThe = Utils.ToString(dataRow["MaThe"]);
+            rpt.xrTableBHYT.Rows[0].Cells[0].Text = maThe.Substring(0, 2);
+            rpt.xrTableBHYT.Rows[0].Cells[1].Text = maThe.Substring(2, 1);
+            rpt.xrTableBHYT.Rows[0].Cells[2].Text = maThe.Substring(3, 2);
+            rpt.xrTableBHYT.Rows[0].Cells[3].Text = maThe.Substring(5, 10);
+            //
+            rpt.xrlblCMND.Text = "Giấy CMND/Thẻ căn cước/Hộ chiếu số: " + txtCMND.Text;
+            rpt.xrlblDanToc.Text = "Dân tộc: " + Utils.ToString(lookupDanToc.Properties.GetDisplayValueByKeyValue(lookupDanToc.EditValue));
+            rpt.xrlblTenCha.Text ="Tên cha: "+ txtHoTenCha.Text;
+            rpt.xrlblNgaySinhCon.Text = "Đã sinh con vào lúc: " + dateNgaySinhCon.DateTime.ToString("dd/MM/yyyy HH:mm");
+            rpt.xrlblNoiSinh.Text = "Tại: " + txtNoiSinhCon.Text;
+            rpt.xrlblNgayCap.Text = "Ngày cấp: " + txtNgayCap.DateTime.ToString("dd/MM/yyyy");
+            rpt.xrlblNoiCap.Text = "Nơi cấp: " + txtNoiCap.Text;
+            //rpt.xrlblSoLanSinh.Text = "Số lần sinh: "+" Số con hiện sống: ";
+            rpt.xrlblSoCon.Text = "Số con trong lần sinh này: " + txtSoCon.Text;
+            rpt.xrlblGioiTinhCon.Text = "Giới tính của con: " + (txtGioiTinhCon.SelectedIndex == 0 ? "Nam" : "Nữ") +
+                "      Cân nặng: " + txtCanNang.Text;
+            rpt.xrlblTenCon.Text = "Dự định đặt tên con là: " + txtTenCon.Text;
+            rpt.xrlblGhiChu.Text = "Ghi chú: " + txtGhiChu.Text;
+            rpt.xrlblNgayCT.Text = "Phú Riềng, ngày " + dateNgayCT.DateTime.Day + " tháng " + dateNgayCT.DateTime.Month + " năm " + dateNgayCT.DateTime.Year;
+            rpt.xrlblSo.Text = "Số: " + txtSoPhieu.Text;
             rpt.CreateDocument();
             rpt.ShowPreviewDialog();
         }
