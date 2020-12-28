@@ -200,7 +200,10 @@ namespace TiepNhan.GUI
                 txtDu5Nam.Text = null;
                 cbKhuVuc.ReadOnly = true;
                 cbKhuVuc.SelectedItem = null;
-                txtMaBN.ReadOnly = false;
+                if (themMoi == true)
+                    txtMaBN.ReadOnly = false;
+                else
+                    txtMaBN.ReadOnly = true;
                 txtMucHuong.Text = "0";
                 txtTyLe.Text = "0";
                 btnKtraThongTuyen.Enabled = false;
