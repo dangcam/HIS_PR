@@ -40,7 +40,7 @@ namespace TiepNhan.GUI
             nghiViecBHXHEntity.MaLK = Utils.ToString(dataRow["MaLK"]);
             nghiViecBHXHEntity.NgayCT = txtNgayChungTu.DateTime;
             txtBHXH.Text = Utils.LaySoBHXH(dataRow["MaThe"]);
-            DataTable data = nghiViecBHXHEntity.ThongTin(0);
+            DataTable data = nghiViecBHXHEntity.ThongTin(); //nghiViecBHXHEntity.ThongTin(0);
             if(data!=null && data.Rows.Count>0)
             {
                 them = false;

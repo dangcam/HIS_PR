@@ -29,7 +29,7 @@ namespace TiepNhan.GUI
         private void FrmGiayChungSinh_Load(object sender, EventArgs e)
         {
             nghiViecBHXHEntity.MaLK = Utils.ToString(dataRow["MaLK"]);
-            DataTable data = nghiViecBHXHEntity.ThongTin(2);
+            DataTable data = nghiViecBHXHEntity.ThongTin();// nghiViecBHXHEntity.ThongTin(2);
             txtHoTen.Text = Utils.ToString(dataRow["HoTen"]);
             lookupDanToc.Properties.DataSource = nghiViecBHXHEntity.DSDanToc();
             if (data != null && data.Rows.Count > 0)
@@ -159,10 +159,13 @@ namespace TiepNhan.GUI
             rpt.xrlblSoBHXH.Text = "MS BHXH: "+ txtBHXH.Text;
             //
             string maThe = Utils.ToString(dataRow["MaThe"]);
-            rpt.xrTableBHYT.Rows[0].Cells[0].Text = maThe.Substring(0, 2);
-            rpt.xrTableBHYT.Rows[0].Cells[1].Text = maThe.Substring(2, 1);
-            rpt.xrTableBHYT.Rows[0].Cells[2].Text = maThe.Substring(3, 2);
-            rpt.xrTableBHYT.Rows[0].Cells[3].Text = maThe.Substring(5, 10);
+            if (maThe.Length > 0)
+            {
+                rpt.xrTableBHYT.Rows[0].Cells[0].Text = maThe.Substring(0, 2);
+                rpt.xrTableBHYT.Rows[0].Cells[1].Text = maThe.Substring(2, 1);
+                rpt.xrTableBHYT.Rows[0].Cells[2].Text = maThe.Substring(3, 2);
+                rpt.xrTableBHYT.Rows[0].Cells[3].Text = maThe.Substring(5, 10);
+            }
             //
             rpt.xrlblCMND.Text = "Giấy CMND/Thẻ căn cước/Hộ chiếu số: " + txtCMND.Text;
             rpt.xrlblDanToc.Text = "Dân tộc: " + Utils.ToString(lookupDanToc.Properties.GetDisplayValueByKeyValue(lookupDanToc.EditValue));

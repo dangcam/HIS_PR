@@ -72,6 +72,11 @@ namespace KhamBenh.DAL
             return db.ExcuteQuery("Select * From NghiViec Where MaLK = '"+MaLK+"' and LoaiCT="+LoaiCT,
                 CommandType.Text, null);
         }
+        public DataTable ThongTin()
+        {
+            return db.ExcuteQuery("Select * From NghiViec Where MaLK = '" + MaLK + "' " ,
+                CommandType.Text, null);
+        }
         public DataTable DSNghiViec()
         {
             return db.ExcuteQuery("select  ROW_NUMBER() OVER(ORDER BY SoPhieu ASC) AS STT," +//NghiViec.MaLK,

@@ -1,6 +1,7 @@
 ﻿using Core.DAL;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Filtering.Templates;
 using DevExpress.XtraReports.UI;
 using KhamBenh.DAL;
 using System;
@@ -39,7 +40,7 @@ namespace TiepNhan.GUI
             txtDanToc.EditValue = 1;
             
             nghiViecBHXHEntity.MaLK = Utils.ToString(dataRow["MaLK"]);
-            DataTable data = nghiViecBHXHEntity.ThongTin(1);
+            DataTable data = nghiViecBHXHEntity.ThongTin();//nghiViecBHXHEntity.ThongTin(1);
             txtDanToc.Properties.DataSource = nghiViecBHXHEntity.DSDanToc();
             lookUpBacSi.Properties.DataSource = nghiViecBHXHEntity.DSBacSi();
             if (data != null && data.Rows.Count > 0)
@@ -56,6 +57,7 @@ namespace TiepNhan.GUI
                 txtGhiChu.Text = Utils.ToString(data.Rows[0]["GhiChu"]);
                 lookUpBacSi.EditValue = data.Rows[0]["MaBS"];
                 txtTuoiThai.Text = Utils.ToString(data.Rows[0]["TuoiThai"]);
+                dateNgayRa.DateTime = Utils.ToDateTime(dataRow["NgayRa"]);
             }
             else
             {
@@ -63,6 +65,7 @@ namespace TiepNhan.GUI
                 txtSoPhieu.Text = Utils.ToString(nghiViecBHXHEntity.SoChungTu(1));
                 txtBHXH.Text = Utils.LaySoBHXH(dataRow["MaThe"]);
                 txtNgayChungTu.DateTime = DateTime.Now;
+                dateNgayRa.DateTime = DateTime.Now;
             }
         }
         private void Luu()
@@ -79,7 +82,7 @@ namespace TiepNhan.GUI
             nghiViecBHXHEntity.TenBS = Utils.ToString(lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue));
             nghiViecBHXHEntity.GhiChu = txtGhiChu.Text;
             nghiViecBHXHEntity.TuNgay = Utils.ToDateTime(dataRow["NgayVao"].ToString());
-            nghiViecBHXHEntity.DenNgay = Utils.ToDateTime(dataRow["NgayRa"].ToString()); ;
+            nghiViecBHXHEntity.DenNgay = dateNgayRa.DateTime;
             nghiViecBHXHEntity.NgayCT = txtNgayChungTu.DateTime;
             nghiViecBHXHEntity.NguoiDaiDien = txtNguoiDaiDien.Text;
             nghiViecBHXHEntity.TuoiThai = Utils.ToInt(txtTuoiThai.Text);
@@ -168,22 +171,20 @@ namespace TiepNhan.GUI
             rpt.xrlblNgayRa2.Text = rpt.xrlblNgayRa.Text;
             //
             string maThe = Utils.ToString(dataRow["MaThe"]);
-            rpt.xrTableBHYT.Rows[0].Cells[0].Text = maThe.Substring(0, 2);
-            rpt.xrTableBHYT.Rows[0].Cells[1].Text = maThe.Substring(2, 1);
-            rpt.xrTableBHYT.Rows[0].Cells[2].Text = maThe.Substring(3, 2);
-            rpt.xrTableBHYT.Rows[0].Cells[3].Text = maThe.Substring(5, 10);
+            if (maThe.Length > 1)
+            {
+                rpt.xrTableBHYT.Rows[0].Cells[0].Text = maThe.Substring(0, 2);
+                rpt.xrTableBHYT.Rows[0].Cells[1].Text = maThe.Substring(2, 1);
+                rpt.xrTableBHYT.Rows[0].Cells[2].Text = maThe.Substring(3, 2);
+                rpt.xrTableBHYT.Rows[0].Cells[3].Text = maThe.Substring(5, 10);
+            }
             //
             rpt.xrlblDiaChi.Text = "- Địa chỉ: " + Utils.ToString(dataRow["DiaChi"]);
             DateTime ngayVao = Utils.ToDateTime(dataRow["NgayVao"]);
             rpt.xrlblVaoVien.Text = "- Vào viện lúc: " + ngayVao.Hour + " giờ " + ngayVao.Minute + " phút, ngày "
                 + ngayVao.Day + " tháng " + ngayVao.Month + " năm " + ngayVao.Year;
             DateTime ngayRa;
-            if (Utils.ToString(dataRow["NgayRa"]).Length > 0)
-            {
-                ngayRa = Utils.ToDateTime(dataRow["NgayRa"]);
-            }
-            else
-                ngayRa = DateTime.Now;
+                ngayRa = dateNgayRa.DateTime;
             rpt.xrlblRaVien.Text = "- Ra viện lúc: " + ngayRa.Hour + " giờ " + ngayRa.Minute + " phút, ngày "
                 + ngayRa.Day + " tháng " + ngayRa.Month + " năm " + ngayRa.Year;
             rpt.xrlblSoPhieu.Text = "Số lưu trữ: " + txtSoPhieu.Text;

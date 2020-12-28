@@ -151,7 +151,8 @@
             // 
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbonControl.ExpandCollapseItem});
+            this.ribbonControl.ExpandCollapseItem,
+            this.ribbonControl.SearchEditItem});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl.MaxItemId = 1;
             this.ribbonControl.Name = "ribbonControl";
@@ -160,7 +161,7 @@
             this.ribbonControl.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             this.ribbonControl.ShowToolbarCustomizeItem = false;
-            this.ribbonControl.Size = new System.Drawing.Size(550, 27);
+            this.ribbonControl.Size = new System.Drawing.Size(550, 32);
             this.ribbonControl.Toolbar.ShowCustomizeItem = false;
             // 
             // layoutControl1
@@ -192,10 +193,10 @@
             this.layoutControl1.Controls.Add(this.dateNgaySinhCon);
             this.layoutControl1.Controls.Add(this.txtGioiTinhCon);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 27);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 32);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(550, 496);
+            this.layoutControl1.Size = new System.Drawing.Size(550, 491);
             this.layoutControl1.TabIndex = 1;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -217,7 +218,7 @@
             this.btnLuuIn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLuuIn.ImageOptions.Image")));
             this.btnLuuIn.Location = new System.Drawing.Point(289, 454);
             this.btnLuuIn.Name = "btnLuuIn";
-            this.btnLuuIn.Size = new System.Drawing.Size(96, 23);
+            this.btnLuuIn.Size = new System.Drawing.Size(96, 22);
             this.btnLuuIn.StyleController = this.layoutControl1;
             this.btnLuuIn.TabIndex = 28;
             this.btnLuuIn.Text = "Lưu In";
@@ -230,7 +231,7 @@
             this.btnLuu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.ImageOptions.Image")));
             this.btnLuu.Location = new System.Drawing.Point(198, 454);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(87, 23);
+            this.btnLuu.Size = new System.Drawing.Size(87, 22);
             this.btnLuu.StyleController = this.layoutControl1;
             this.btnLuu.TabIndex = 27;
             this.btnLuu.Text = "Lưu";
@@ -242,7 +243,7 @@
             this.checkDuoi32Tuan.MenuManager = this.ribbonControl;
             this.checkDuoi32Tuan.Name = "checkDuoi32Tuan";
             this.checkDuoi32Tuan.Properties.Caption = "Sinh con dưới 32 tuần";
-            this.checkDuoi32Tuan.Size = new System.Drawing.Size(140, 19);
+            this.checkDuoi32Tuan.Size = new System.Drawing.Size(140, 20);
             this.checkDuoi32Tuan.StyleController = this.layoutControl1;
             this.checkDuoi32Tuan.TabIndex = 26;
             // 
@@ -252,7 +253,7 @@
             this.checkPhauThuat.MenuManager = this.ribbonControl;
             this.checkPhauThuat.Name = "checkPhauThuat";
             this.checkPhauThuat.Properties.Caption = "Sinh con phẫu thuật";
-            this.checkPhauThuat.Size = new System.Drawing.Size(131, 19);
+            this.checkPhauThuat.Size = new System.Drawing.Size(131, 20);
             this.checkPhauThuat.StyleController = this.layoutControl1;
             this.checkPhauThuat.TabIndex = 25;
             // 
@@ -512,7 +513,6 @@
             this.dateNgaySinhCon.Properties.EditFormat.FormatString = "dd/MM/yyyy HH:mm";
             this.dateNgaySinhCon.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dateNgaySinhCon.Properties.Mask.EditMask = "dd/MM/yyyy HH:mm";
-            this.dateNgaySinhCon.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.dateNgaySinhCon.Size = new System.Drawing.Size(138, 22);
             this.dateNgaySinhCon.StyleController = this.layoutControl1;
             this.dateNgaySinhCon.TabIndex = 13;
@@ -568,7 +568,7 @@
             this.layoutControlItem9,
             this.layoutControlItem26});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(550, 496);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(550, 491);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -585,7 +585,7 @@
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(377, 442);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(153, 34);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(153, 29);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem2
@@ -773,7 +773,7 @@
             this.layoutControlItem24.Control = this.btnLuu;
             this.layoutControlItem24.Location = new System.Drawing.Point(186, 442);
             this.layoutControlItem24.Name = "layoutControlItem24";
-            this.layoutControlItem24.Size = new System.Drawing.Size(91, 34);
+            this.layoutControlItem24.Size = new System.Drawing.Size(91, 29);
             this.layoutControlItem24.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem24.TextVisible = false;
             // 
@@ -782,7 +782,7 @@
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(0, 442);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(186, 34);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(186, 29);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem25
@@ -790,7 +790,7 @@
             this.layoutControlItem25.Control = this.btnLuuIn;
             this.layoutControlItem25.Location = new System.Drawing.Point(277, 442);
             this.layoutControlItem25.Name = "layoutControlItem25";
-            this.layoutControlItem25.Size = new System.Drawing.Size(100, 34);
+            this.layoutControlItem25.Size = new System.Drawing.Size(100, 29);
             this.layoutControlItem25.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem25.TextVisible = false;
             // 
@@ -828,7 +828,7 @@
             this.ClientSize = new System.Drawing.Size(550, 523);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.ribbonControl);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("FrmGiayChungSinh.IconOptions.Icon")));
             this.Name = "FrmGiayChungSinh";
             this.Ribbon = this.ribbonControl;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
