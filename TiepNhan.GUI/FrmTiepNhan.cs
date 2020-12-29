@@ -646,8 +646,9 @@ namespace TiepNhan.GUI
                     txtTheBHYT.Focus();
                     return;
                 }
-                //lưu lại MaLK
+                //lưu lại MaLK, MaBN
                 string MaLKcu = tiepnhan.MaLK;
+                string MaBNcu = tiepnhan.MaBN;
                 // Lấy thông tin thẻ nếu có trong csdl
                 // Hồ sơ bệnh án khám trong ngày, kiểm tra lại nội trú
                 // Lấy mã bệnh nhân
@@ -662,8 +663,12 @@ namespace TiepNhan.GUI
                 }
                 // lấy lại MaLK
                 if (themMoi == false)
+                {
                     tiepnhan.MaLK = MaLKcu;
+                    tiepnhan.MaBN = MaBNcu;
+                }
                 txtMaBN.Text = tiepnhan.MaBN;
+
                 if (string.IsNullOrEmpty(txtMaQR.Text) && !string.IsNullOrEmpty(tiepnhan.MaBN))
                 {
                     // gán thông tin, nếu không quyét bằng mã QR
@@ -1024,6 +1029,7 @@ namespace TiepNhan.GUI
                 btnInLai.Enabled = true;
                 Enabled_Luu();
                 tiepnhan.MaLK = dr["MaLK"].ToString();
+                tiepnhan.MaBN = dr["MaBN"].ToString();
                 //
                 txtMaBN.Text = dr["MaBN"].ToString();
                 txtHoTen.Text = dr["HoTen"].ToString();
