@@ -265,5 +265,28 @@ namespace BaoCao.GUI
             rpt.ShowPreviewDialog();
             SplashScreenManager.CloseForm();
         }
+
+        private void btnKKNam_Click(object sender, EventArgs e)
+        {
+            if (dataTonKho != null)
+            {
+                SplashScreenManager.ShowForm(typeof(WaitFormLoad));
+                //
+                System.Drawing.Font fontB = new System.Drawing.Font("Times New Roman", 11, System.Drawing.FontStyle.Bold);
+                RptKiemKeNam rpt = new RptKiemKeNam();
+                rpt.xrlblNgayTonKho.Text = "Ngày " + nhapxuat.DenNgay.Day + " tháng " +
+                    nhapxuat.DenNgay.Month + " năm " + nhapxuat.DenNgay.Year;
+
+                rpt.xrlblNoiDung.Text = "Hôm nay " + rpt.xrlblNgayTonKho.Text.ToLower() + ". Tại kho thuốc đc Nguyễn Thị Việt Phương - BVĐK Cao su Phú Riềng";
+                rpt.xrlblNgayKy.Text = rpt.xrlblNgayTonKho.Text;
+                rpt.DataSource = dataTonKho.Select("SLTonCuoi > 0", "STT ASC").CopyToDataTable();
+
+
+                rpt.CreateDocument();
+                rpt.ShowPreviewDialog();
+                //
+                SplashScreenManager.CloseForm();
+            }
+        }
     }
 }

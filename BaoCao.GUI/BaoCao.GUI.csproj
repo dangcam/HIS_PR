@@ -126,6 +126,11 @@
       <DependentUpon>FrmTonKhoLe.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RptBaoCaoNhapXuat.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -137,6 +142,12 @@
     </Compile>
     <Compile Include="RptBCTonThucTe.Designer.cs">
       <DependentUpon>RptBCTonThucTe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptKiemKeNam.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptKiemKeNam.Designer.cs">
+      <DependentUpon>RptKiemKeNam.cs</DependentUpon>
     </Compile>
     <Compile Include="RptKiemKe.cs">
       <SubType>Component</SubType>
@@ -264,11 +275,18 @@
       <DependentUpon>FrmTonKhoLe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="RptBaoCaoNhapXuat.resx">
       <DependentUpon>RptBaoCaoNhapXuat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptBCTonThucTe.resx">
       <DependentUpon>RptBCTonThucTe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptKiemKeNam.resx">
+      <DependentUpon>RptKiemKeNam.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptKiemKe.resx">
       <DependentUpon>RptKiemKe.cs</DependentUpon>

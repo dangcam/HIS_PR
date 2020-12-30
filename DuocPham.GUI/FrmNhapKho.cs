@@ -863,7 +863,7 @@ namespace DuocPham.GUI
             rpt.xrcellTRKhoaDuoc.Text ="3. Ds "+ Utils.ToString(nvKhoaDuoc.Rows[0]["HoTen"]);
             rpt.xrcellThuKho.Text = "5. Ds " + Utils.ToString(nvKhoaDuoc.Rows[1]["HoTen"]);
             rpt.xrcellKeToanDuoc.Text ="4. Ds "+ Utils.ToString(nvKhoaDuoc.Rows[3]["HoTen"]);
-            rpt.xrcellKeToan.Text = "6. Ds " + Utils.ToString(nvKhoaDuoc.Rows[5]["HoTen"]);
+            rpt.xrcellKeToan.Text = "6. CN " + Utils.ToString(nvKhoaDuoc.Rows[5]["HoTen"]);
             rpt.DataSource = data;
             rpt.CreateDocument();
             rpt.ShowPreviewDialog();
