@@ -279,6 +279,12 @@ namespace BaoCao.GUI
 
                 rpt.xrlblNoiDung.Text = "Hôm nay " + rpt.xrlblNgayTonKho.Text.ToLower() + ". Tại kho thuốc đc Nguyễn Thị Việt Phương - BVĐK Cao su Phú Riềng";
                 rpt.xrlblNgayKy.Text = rpt.xrlblNgayTonKho.Text;
+
+                rpt.xrTableCell36.ExpressionBindings.Clear();
+                rpt.xrTableCell36.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SLTonCuoi]")});
+                rpt.xrTableCell2.ExpressionBindings.Clear();
+
                 rpt.DataSource = dataTonKho.Select("SLTonCuoi > 0", "STT ASC").CopyToDataTable();
 
 
