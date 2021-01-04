@@ -473,7 +473,6 @@
             this.txtNgayCap.Properties.EditFormat.FormatString = "dd/MM/yyyy";
             this.txtNgayCap.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtNgayCap.Properties.Mask.EditMask = "dd/MM/yyyy";
-            this.txtNgayCap.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.txtNgayCap.Size = new System.Drawing.Size(183, 22);
             this.txtNgayCap.StyleController = this.layoutControl1;
             this.txtNgayCap.TabIndex = 9;
