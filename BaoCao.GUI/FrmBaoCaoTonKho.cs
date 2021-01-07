@@ -20,7 +20,7 @@ namespace BaoCao.GUI
         DAL.NhapXuatEntity nhapxuat;
         DataTable dtLoaiVatTu;
         DataTable dataTonKho;
-        DataTable dataNV;
+        DataTable dataNV,dataNVReport;
         public FrmBaoCaoTonKho()
         {
             InitializeComponent();
@@ -272,6 +272,7 @@ namespace BaoCao.GUI
             {
                 SplashScreenManager.ShowForm(typeof(WaitFormLoad));
                 //
+                dataNVReport = nhapxuat.DSNVReport("KiemKeNam");
                 System.Drawing.Font fontB = new System.Drawing.Font("Times New Roman", 11, System.Drawing.FontStyle.Bold);
                 RptKiemKeNam rpt = new RptKiemKeNam();
                 rpt.xrlblNgayTonKho.Text = "Ngày " + nhapxuat.DenNgay.Day + " tháng " +
@@ -282,12 +283,27 @@ namespace BaoCao.GUI
 
                 rpt.xrTableCell36.ExpressionBindings.Clear();
                 rpt.xrTableCell36.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SLTonCuoi]")});
+                    new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SLTonCuoi]")});
                 rpt.xrTableCell2.ExpressionBindings.Clear();
 
+                rpt.xrTableDS.Rows.Clear();
+                XRTableRow row;
+                XRTableCell cell;
+                for (int i=0;i<dataNVReport.Rows.Count;i++)
+                {
+                    row = new XRTableRow();
+
+                    cell = new XRTableCell();
+                    cell.Text = (i+1) + ". "+dataNVReport.Rows[i]["HocHam"]+" " + dataNVReport.Rows[i]["HoTen"];
+                    cell.WidthF = 220;
+                    row.Cells.Add(cell);
+
+
+                    rpt.xrTable.Rows.Add(row);
+
+                }
+
                 rpt.DataSource = dataTonKho.Select("SLTonCuoi > 0", "STT ASC").CopyToDataTable();
-
-
                 rpt.CreateDocument();
                 rpt.ShowPreviewDialog();
                 //

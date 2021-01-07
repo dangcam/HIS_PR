@@ -141,8 +141,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbLoaiVatTu.Properties.Items.AddRange(new object[] {
             "1. Vật Tư tại Khoa",
-            "2. Vật Tư từ kho Dược",
-            "3. Giấy Tờ",
+            "2. Giấy Tờ",
+            "3. Vật Tư từ kho Dược",
             "4. Vật Tư khác"});
             this.cbLoaiVatTu.Size = new System.Drawing.Size(134, 22);
             this.cbLoaiVatTu.StyleController = this.layoutControlMain;

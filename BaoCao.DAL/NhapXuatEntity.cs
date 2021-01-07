@@ -24,6 +24,11 @@ namespace BaoCao.DAL
             return db.ExcuteQuery("Select * From NVKhoaDuoc ",
                 CommandType.Text, null);
         }
+        public DataTable DSNVReport(string report)
+        {
+            return db.ExcuteQuery("Select * From DSNVReport('"+report+"')",
+                CommandType.Text, null);
+        }
         public DataTable DSLoaiVatTu ()
         {
             return db.ExcuteQuery ("Select Ma,Ten From LoaiVattu Where TinhTrang = 1 ",

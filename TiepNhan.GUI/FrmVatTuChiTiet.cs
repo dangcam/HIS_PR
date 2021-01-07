@@ -91,9 +91,9 @@ namespace TiepNhan.GUI
                 {
                     drvNew["DonGia"] = dr["DonGiaBV"];
                     drvNew["TyLe"] = 0;
-                    if(cbLoaiVatTu.SelectedIndex==3)
+                    if(cbLoaiVatTu.SelectedIndex>=2)
                     {
-                        drvNew["TyLe"] = -10;// Vật tư khác
+                        drvNew["TyLe"] = -10;// Vật tư khác, kê từ kho Dược
                     }
                 }
                 drvNew["ThanhTien"] = Utils.ToDecimal(drvNew["DonGia"].ToString()) * txtSoLuong.Value;
