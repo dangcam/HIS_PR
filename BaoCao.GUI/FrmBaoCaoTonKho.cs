@@ -170,6 +170,7 @@ namespace BaoCao.GUI
             {
                 SplashScreenManager.ShowForm(typeof(WaitFormLoad));
                 //
+                dataNVReport = nhapxuat.DSNVReport("KiemKe,");
                 System.Drawing.Font fontB = new System.Drawing.Font("Times New Roman", 11, System.Drawing.FontStyle.Bold);
                 RptKiemKe rpt = new RptKiemKe();
                 rpt.xrlblNgayTonKho.Text = "Ngày " + nhapxuat.DenNgay.Day + " tháng " +
@@ -187,9 +188,9 @@ namespace BaoCao.GUI
                 rpt.DataSource = dataTonKho.Select("SLTonCuoi > 0","STT ASC").CopyToDataTable();
                 float UsablePageWidth = rpt.PageWidth - rpt.Margins.Left - rpt.Margins.Right;
 
-                float columnWitdh = UsablePageWidth / (dataNV.Rows.Count -1);
+                float columnWitdh = UsablePageWidth / (dataNVReport.Rows.Count -1);
                 rpt.xrTableNV.WidthF = columnWitdh;
-                int i = 2;
+                int i = 0;
                 //foreach (DataRow dr in dataNV.Rows)
                 //{
                 //    row = new XRTableRow();
@@ -217,28 +218,28 @@ namespace BaoCao.GUI
 
                 //    i++;
                 //}
-                for (int j = 0; j < dataNV.Rows.Count - 2; j++)
+                for (int j = 0; j < dataNVReport.Rows.Count; j++)
                 {
                     row = new XRTableRow();
 
                     cell = new XRTableCell();
-                    cell.Text = dataNV.Rows[j]["Id"] + ". Đ/c " + dataNV.Rows[j]["HoTen"];
+                    cell.Text = (j+1) + ". Đ/c " + dataNVReport.Rows[j]["HoTen"];
                     cell.WidthF = 200;
                     row.Cells.Add(cell);
                     cell = new XRTableCell();
-                    cell.Text = dataNV.Rows[j]["ChucVu"].ToString();
+                    cell.Text = dataNVReport.Rows[j]["ChucVu"].ToString();
                     cell.WidthF = 200;
                     row.Cells.Add(cell);
 
                     rpt.xrTable.Rows.Add(row);
                     rpt.xrTableNV.WidthF = columnWitdh * i;
                     cell = new XRTableCell();
-                    cell.Text = dataNV.Rows[j]["ChucVu"].ToString().ToUpper();
+                    cell.Text = dataNVReport.Rows[j]["ChucVu"].ToString().ToUpper();
                     cell.Font = fontB;
                     cell.WidthF = columnWitdh;
                     rpt.xrTableNV.Rows.FirstRow.Cells.Add(cell);
                     cell = new XRTableCell();
-                    cell.Text = dataNV.Rows[j]["HoTen"].ToString();
+                    cell.Text = dataNVReport.Rows[j]["HoTen"].ToString();
                     cell.WidthF = columnWitdh;
                     rpt.xrTableNV.Rows.LastRow.Cells.Add(cell);
 
@@ -298,8 +299,17 @@ namespace BaoCao.GUI
                     cell.WidthF = 220;
                     row.Cells.Add(cell);
 
+                    cell = new XRTableCell();
+                    cell.Text = "_" + dataNVReport.Rows[i]["ChucVu"];
+                    cell.WidthF = 180;
+                    row.Cells.Add(cell);
 
-                    rpt.xrTable.Rows.Add(row);
+                    cell = new XRTableCell();
+                    cell.Text = "_ " + dataNVReport.Rows[i]["GhiChu1"];
+                    cell.WidthF = 230;
+                    row.Cells.Add(cell);
+
+                    rpt.xrTableDS.Rows.Add(row);
 
                 }
 

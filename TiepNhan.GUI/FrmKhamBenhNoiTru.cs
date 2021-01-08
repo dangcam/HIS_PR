@@ -385,6 +385,7 @@ namespace TiepNhan.GUI
                 frm.MaLK = drThongTin["MaLK"].ToString();
                 frm.MaKhoa = lookUpKhoa.EditValue.ToString();
                 frm.MaBacSi = lookUpBacSi.EditValue.ToString();
+                frm.NgayRa = Utils.ToString(drThongTin["NgayRa"]);
                 frm.ShowDialog();
                 LoadDataChiTiet();
             }
@@ -407,6 +408,7 @@ namespace TiepNhan.GUI
                 frm.TheTu = drThongTin["TheTu"].ToString();
                 frm.TheDen = drThongTin["TheDen"].ToString();
                 frm.STTNgay = drThongTin["STTNgay"].ToString();
+                frm.NgayRa = Utils.ToString(drThongTin["NgayRa"]);
                 frm.TenBacSi = lookUpBacSi.Properties.GetDisplayValueByKeyValue(lookUpBacSi.EditValue).ToString();
                 try
                 {
@@ -427,6 +429,7 @@ namespace TiepNhan.GUI
                 frm.MaLK = drThongTin["MaLK"].ToString();
                 frm.MaKhoa = lookUpKhoa.EditValue.ToString();
                 frm.MaBacSi = lookUpBacSi.EditValue.ToString();
+                frm.NgayRa = Utils.ToString(drThongTin["NgayRa"]);
                 frm.ShowDialog();
                 LoadDataChiTiet();
             }

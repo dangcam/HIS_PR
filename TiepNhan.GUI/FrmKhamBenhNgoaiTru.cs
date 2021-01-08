@@ -397,6 +397,7 @@ namespace TiepNhan.GUI
                     frmKeDon.DiaChi = dr["DiaChi"].ToString();
                     frmKeDon.NgaySinh = dr["NgaySinh"].ToString();
                     frmKeDon.STTNgay = dr["STTNgay"].ToString();
+                    frmKeDon.NgayRa = Utils.ToString(dr["NgayRa"]);
                     frmKeDon.frmMaBenhChinh = Utils.ToString(dr["MaBenh"]);
                     frmKeDon.frmMaBenhKhac = Utils.ToString(dr["MaBenhKhac"]);
                     frmKeDon.frmTenBenh = Utils.ToString(dr["TenBenh"]);

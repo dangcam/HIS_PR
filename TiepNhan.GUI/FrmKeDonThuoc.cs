@@ -32,6 +32,7 @@ namespace TiepNhan.GUI
         public string frmMaBenhChinh { get; set; }
         public string frmTenBenh { get; set; }
         public string frmMaBenhKhac { get; set; }
+        public string NgayRa { get; set; }
 
         private KeDonEntity kedon;
         private string maBenhChinh = null;
@@ -41,6 +42,7 @@ namespace TiepNhan.GUI
         Dictionary<string, string> dicDuongDung = new Dictionary<string, string>();
         DataView dvThuoc,dvVatTu;
         DataTable thuocNgoaiDM;
+        DateTime ngayRa;
         private string maBacSi = null;
         //private bool addNew = true;
         public FrmKeDonThuoc()
@@ -75,6 +77,7 @@ namespace TiepNhan.GUI
             lookUpMaKhoa.ItemIndex = 0;
             this.ActiveControl = lookUpMaBenh;
             dateYLenh.DateTime = DateTime.Now;
+            ngayRa = Utils.ToDateTime(NgayRa,DateTime.Now.AddMinutes(1));
             lookUpBacSi.Properties.DataSource = kedon.DSBacSi(Utils.ToString(lookUpMaKhoa.EditValue).Substring(0,3),DateTime.Now);
             //if(lookUpBacSi.ItemIndex <0)
             //{
@@ -372,6 +375,7 @@ namespace TiepNhan.GUI
                 DataRowView dr = (lookUpVatTu.EditValue as DataRowView);
                 if (cbLoaiChiPhi.SelectedIndex == 0 || cbLoaiChiPhi.SelectedIndex ==2 || cbLoaiChiPhi.SelectedIndex == 3)
                 {
+
                     //kiểm tra số lượng tồn thuốc
                     if(listThuoc.ContainsKey(dr["MaVatTu"].ToString()))
                     {
@@ -383,6 +387,12 @@ namespace TiepNhan.GUI
                     {
                         XtraMessageBox.Show(Library.SoLuongThuocKhongDu, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtSoLuong.Focus();
+                        return;
+                    }
+                    if (dateYLenh.DateTime > ngayRa || dateYLenh.DateTime > DateTime.Now)
+                    {
+                        XtraMessageBox.Show(Library.NgayRaYLenh, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        dateYLenh.Focus();
                         return;
                     }
                     // 2: thuốc mới đc thêm vào, 1 thuốc đã có

@@ -4,18 +4,18 @@
     <Theme>Office 2010 Blue</Theme>
   </ThemeConfig>
   <Connection>
-    <ServerName>192.168.1.40</ServerName>
+    <ServerName>serverbvdk</ServerName>
     <Database>HIS_PR</Database>
-    <UserName>bvdk</UserName>
-    <Password>123456</Password>
+    <UserName>sa</UserName>
+    <Password>bvdk@2021</Password>
   </Connection>
   <Config>
     <LoginMaNV>admin</LoginMaNV>
     <LoginPass>Bvdk@2021</LoginPass>
     <NhoTT>true</NhoTT>
     <DateFormat>dd/MM/yyyy</DateFormat>
-    <NumberDecimalSeparator>.</NumberDecimalSeparator>
-    <NumberGroupSeparator>,</NumberGroupSeparator>
+    <NumberDecimalSeparator>,</NumberDecimalSeparator>
+    <NumberGroupSeparator>.</NumberGroupSeparator>
   </Config>
   <BHYT>
     <UserLogin>70013_BV</UserLogin>

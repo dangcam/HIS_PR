@@ -21,6 +21,7 @@ namespace TiepNhan.GUI
         Dictionary<string, int> listThuoc;
         DataView dvThuoc;
         DataTable thuocNgoaiDM;
+        DateTime ngayRa;
         Dictionary<string, string> dicDuongDung = new Dictionary<string, string>();
         public FrmDonThuoc(string khoNhan)
         {
@@ -48,9 +49,11 @@ namespace TiepNhan.GUI
         public string TenCoSo { get; set; }
         public string NoiDangKy { get; set; }
         public string STTNgay { get; set; }
+        public string NgayRa { get; set; }
         private void FrmDonThuoc_Load(object sender, EventArgs e)
         {
             dateNgayYLenh.DateTime = DateTime.Now;
+            ngayRa = Utils.ToDateTime(NgayRa, DateTime.Now.AddMinutes(1));
             kedon.MaLK = this.MaLK;
             kedon.MaKhoa = this.MaKhoa;
             kedon.MaBacSi = this.MaBacSi;
@@ -111,6 +114,12 @@ namespace TiepNhan.GUI
                 {
                     XtraMessageBox.Show(Library.SoLuongThuocKhongDu, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtSoLuong.Focus();
+                    return;
+                }
+                if (dateNgayYLenh.DateTime > ngayRa || dateNgayYLenh.DateTime > DateTime.Now)
+                {
+                    XtraMessageBox.Show(Library.NgayRaYLenh, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dateNgayYLenh.Focus();
                     return;
                 }
                 // 2: thuốc mới đc thêm vào, 1 thuốc đã có

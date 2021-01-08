@@ -19,6 +19,7 @@ namespace TiepNhan.GUI
         Dictionary<string, int> listVatTu;
         KeDonEntity kedon;
         DataView dvVatTu;
+        DateTime ngayRa;
         public FrmVatTuChiTiet()
         {
             InitializeComponent();
@@ -28,12 +29,15 @@ namespace TiepNhan.GUI
         public string MaLK { get; set; }
         public string MaKhoa { get; set; }
         public string MaBacSi { get; set; }
+        public string NgayRa { get; set; }
         private void FrmVatTuChiTiet_Load(object sender, EventArgs e)
         {
             kedon.KhoNhan = this.MaKhoa;
             kedon.MaLK = this.MaLK;
             this.ActiveControl = lookUpVatTu;
             dateNgayYLenh.DateTime = DateTime.Now;
+            ngayRa = Utils.ToDateTime(NgayRa, DateTime.Now.AddMinutes(1));
+            ngayRa = Utils.ToDateTime(NgayRa, DateTime.Now.AddMinutes(1));
             dvVatTu = kedon.DSVatTu().AsDataView();
             gridControlVTYT.DataSource = dvVatTu;
             listVatTu = new Dictionary<string, int>();
@@ -73,6 +77,12 @@ namespace TiepNhan.GUI
                 {
                     XtraMessageBox.Show(Library.VatTuKhongDuSoLuong, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtSoLuong.Focus();
+                    return;
+                }
+                if (dateNgayYLenh.DateTime > ngayRa || dateNgayYLenh.DateTime > DateTime.Now)
+                {
+                    XtraMessageBox.Show(Library.NgayRaYLenh, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dateNgayYLenh.Focus();
                     return;
                 }
                 listVatTu.Add(dr["MaVatTu"].ToString(), 2);
@@ -227,11 +237,11 @@ namespace TiepNhan.GUI
             }
             else if (cbLoaiVatTu.SelectedIndex == 1)
             {
-                lookUpVatTu.Properties.DataSource = kedon.DSKeVatTuKhoChan("2");
+                lookUpVatTu.Properties.DataSource = kedon.DSKeDon("3");
             }
             else if (cbLoaiVatTu.SelectedIndex == 2)
             {
-                lookUpVatTu.Properties.DataSource = kedon.DSKeDon("3");
+                lookUpVatTu.Properties.DataSource = kedon.DSKeVatTuKhoChan("2");
             }
             else// Loại vật tư khác
             {

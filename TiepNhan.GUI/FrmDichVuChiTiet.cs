@@ -19,6 +19,7 @@ namespace TiepNhan.GUI
         HoSoEntity hoso ;
         Dictionary<string, int> listDichVu;
         DataView dvDichVu;
+        DateTime ngayRa;
         public FrmDichVuChiTiet()
         {
             InitializeComponent();
@@ -27,11 +28,13 @@ namespace TiepNhan.GUI
         public string MaLK { get; set; }
         public string MaKhoa { get; set; }
         public string MaBacSi { get; set; }
+        public string NgayRa { get; set; }
 
         private void FrmDichVuChiTiet_Load(object sender, EventArgs e)
         {
             this.ActiveControl = lookUpDichVu;
             dateNgayYLenh.DateTime = DateTime.Now;
+            ngayRa = Utils.ToDateTime(NgayRa, DateTime.Now.AddMinutes(1));
             hoso.MaLK = this.MaLK;
             dvDichVu = hoso.DSDichVuChiTiet().AsDataView();
             gridControl.DataSource = dvDichVu;
@@ -97,6 +100,12 @@ namespace TiepNhan.GUI
                 else
                 {
                     listDichVu.Add(maDichVu, 2);// 2. thêm mới
+                }
+                if (dateNgayYLenh.DateTime > ngayRa || dateNgayYLenh.DateTime > DateTime.Now)
+                {
+                    XtraMessageBox.Show(Library.NgayRaYLenh, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dateNgayYLenh.Focus();
+                    return;
                 }
                 DataRowView drvNew = (gridControl.DataSource as DataView).AddNew();
                 drvNew["MaDichVu"] = maDichVu;
