@@ -233,7 +233,7 @@
             this.xrlblChuanDoan.SizeF = new System.Drawing.SizeF(532.0001F, 30F);
             this.xrlblChuanDoan.StylePriority.UseFont = false;
             this.xrlblChuanDoan.StylePriority.UseTextAlignment = false;
-            this.xrlblChuanDoan.Text = "- Chuẩn đoán:";
+            this.xrlblChuanDoan.Text = "- Chẩn đoán:";
             this.xrlblChuanDoan.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // xrlblRaVien

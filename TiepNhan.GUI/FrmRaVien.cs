@@ -164,7 +164,7 @@ namespace TiepNhan.GUI
             rpt.xrlblMaSoBHXH.Text = "- Mã số BHXH: " + txtBHXH.Text;
             rpt.xrlblDanToc.Text = "- Dân tộc: " + Utils.ToString(txtDanToc.Properties.GetDisplayValueByKeyValue(txtDanToc.EditValue));
             rpt.xrlblNgheNghiep.Text = "Nghề nghiệp: " + txtNgheNghiep.Text;
-            rpt.xrlblChuanDoan.Text = "- Chuẩn đoán: " + Utils.ToString(dataRow["TenBenh"]);// + ". " + txtPPDieuTri.Text;
+            rpt.xrlblChuanDoan.Text = "- Chẩn đoán: " + Utils.ToString(dataRow["TenBenh"]);// + ". " + txtPPDieuTri.Text;
             //DateTime ngayIn = Utils.ToDateTime(txtNgayChungTu.Text,"dd/MM/yyyy");
             rpt.xrlblNgayRa.Text = "Ngày " + txtNgayChungTu.DateTime.Day + " tháng "
                 + txtNgayChungTu.DateTime.Month + " năm " + txtNgayChungTu.DateTime.Year;// ngày chứng từ
@@ -189,6 +189,7 @@ namespace TiepNhan.GUI
                 + ngayRa.Day + " tháng " + ngayRa.Month + " năm " + ngayRa.Year;
             rpt.xrlblSoPhieu.Text = "Số lưu trữ: " + txtSoPhieu.Text;
             rpt.xrlblTenCoSo.Text = AppConfig.TenCoSoKCB.ToUpper();
+            rpt.xrlblGhiChu.Text ="- Ghi chú: "+ txtGhiChu.Text;
             string makhoa = Utils.ToString(dataRow["MaKhoa"]);
             if (khoaBan.ContainsKey(makhoa))
             {
