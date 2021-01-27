@@ -34,7 +34,7 @@ namespace TiepNhan.GUI
         {
             this.ActiveControl = lookUpDichVu;
             dateNgayYLenh.DateTime = DateTime.Now;
-            ngayRa = Utils.ToDateTime(NgayRa, DateTime.Now.AddMinutes(1));
+            ngayRa = Utils.ToDateTime(NgayRa, DateTime.Now.AddDays(3));
             hoso.MaLK = this.MaLK;
             dvDichVu = hoso.DSDichVuChiTiet().AsDataView();
             gridControl.DataSource = dvDichVu;
@@ -101,7 +101,7 @@ namespace TiepNhan.GUI
                 {
                     listDichVu.Add(maDichVu, 2);// 2. thêm mới
                 }
-                if (dateNgayYLenh.DateTime > ngayRa || dateNgayYLenh.DateTime > DateTime.Now)
+                if (dateNgayYLenh.DateTime > ngayRa)
                 {
                     XtraMessageBox.Show(Library.NgayRaYLenh, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     dateNgayYLenh.Focus();

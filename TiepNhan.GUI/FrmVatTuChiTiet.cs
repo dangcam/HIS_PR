@@ -36,8 +36,7 @@ namespace TiepNhan.GUI
             kedon.MaLK = this.MaLK;
             this.ActiveControl = lookUpVatTu;
             dateNgayYLenh.DateTime = DateTime.Now;
-            ngayRa = Utils.ToDateTime(NgayRa, DateTime.Now.AddMinutes(1));
-            ngayRa = Utils.ToDateTime(NgayRa, DateTime.Now.AddMinutes(1));
+            ngayRa = Utils.ToDateTime(NgayRa, DateTime.Now.AddDays(3));
             dvVatTu = kedon.DSVatTu().AsDataView();
             gridControlVTYT.DataSource = dvVatTu;
             listVatTu = new Dictionary<string, int>();
@@ -79,7 +78,7 @@ namespace TiepNhan.GUI
                     txtSoLuong.Focus();
                     return;
                 }
-                if (dateNgayYLenh.DateTime > ngayRa || dateNgayYLenh.DateTime > DateTime.Now)
+                if (dateNgayYLenh.DateTime > ngayRa)
                 {
                     XtraMessageBox.Show(Library.NgayRaYLenh, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     dateNgayYLenh.Focus();

@@ -53,7 +53,7 @@ namespace TiepNhan.GUI
         private void FrmDonThuoc_Load(object sender, EventArgs e)
         {
             dateNgayYLenh.DateTime = DateTime.Now;
-            ngayRa = Utils.ToDateTime(NgayRa, DateTime.Now.AddMinutes(1));
+            ngayRa = Utils.ToDateTime(NgayRa, DateTime.Now.AddDays(3));
             kedon.MaLK = this.MaLK;
             kedon.MaKhoa = this.MaKhoa;
             kedon.MaBacSi = this.MaBacSi;
@@ -116,7 +116,7 @@ namespace TiepNhan.GUI
                     txtSoLuong.Focus();
                     return;
                 }
-                if (dateNgayYLenh.DateTime > ngayRa || dateNgayYLenh.DateTime > DateTime.Now)
+                if (dateNgayYLenh.DateTime > ngayRa)
                 {
                     XtraMessageBox.Show(Library.NgayRaYLenh, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     dateNgayYLenh.Focus();

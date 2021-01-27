@@ -53,6 +53,6 @@ namespace Core.DAL
         public const string VatTuDaDuocChon = "Vật tư đã được chọn!";
         public const string VatTuKhongDuSoLuong = "Số lượng vật tư không đủ!";
         public const string DichVuDaDuocChon = "Dịch vụ đã chọn, vui lòng chọn lại số lượng!.";
-        public const string NgayRaYLenh = "Ngày Y Lệnh không thể lớn hơn Ngày Ra Viện hoặc lớn hơn thời gian hiện tại!.";
+        public const string NgayRaYLenh = "Ngày Y Lệnh không thể lớn hơn Ngày Ra Viện!.";
     }
 }
