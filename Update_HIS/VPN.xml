@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <VPN>
-  <Server>serverbvdk</Server>
+  <Server>192.168.1.40</Server>
   <User>user_update</User>
   <Pass>bvdk@2021</Pass>
   <Folder>Update</Folder>
-  <Ver>20</Ver>
+  <Ver>21</Ver>
 </VPN>
 

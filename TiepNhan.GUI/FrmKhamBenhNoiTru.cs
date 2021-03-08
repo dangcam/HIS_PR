@@ -137,6 +137,11 @@ namespace TiepNhan.GUI
             drThongTin = gridView.GetFocusedDataRow();
             if (drThongTin != null)
             {
+                if (!string.IsNullOrEmpty(drThongTin["NgayRa"].ToString()))
+                {
+                    XtraMessageBox.Show(Library.BenhNhanDaKhamRaVien, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 xtraTabControl.SelectedTabPageIndex = 1;
                 txtHoTen.Text = drThongTin["HoTen"].ToString();
                 txtNgaySinh.Text = drThongTin["NgaySinh"].ToString();

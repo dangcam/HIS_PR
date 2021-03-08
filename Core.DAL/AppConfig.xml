@@ -4,7 +4,7 @@
     <Theme>Office 2010 Blue</Theme>
   </ThemeConfig>
   <Connection>
-    <ServerName>serverbvdk</ServerName>
+    <ServerName>192.168.1.40</ServerName>
     <Database>HIS_PR</Database>
     <UserName>sa</UserName>
     <Password>bvdk@2021</Password>
