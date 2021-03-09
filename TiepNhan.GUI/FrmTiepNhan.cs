@@ -661,13 +661,7 @@ namespace TiepNhan.GUI
                     txtTheBHYT.Text = null;
                     return;
                 }
-                // lấy lại MaLK
-                if (themMoi == false)
-                {
-                    tiepnhan.MaLK = MaLKcu;
-                    tiepnhan.MaBN = MaBNcu;
-                }
-                txtMaBN.Text = tiepnhan.MaBN;
+               
 
                 if (string.IsNullOrEmpty(txtMaQR.Text) && !string.IsNullOrEmpty(tiepnhan.MaBN))
                 {
@@ -688,8 +682,14 @@ namespace TiepNhan.GUI
                     txtDu5Nam.Text = tiepnhan.Du5Nam.ToString("dd/MM/yyyy");
                     cbKhuVuc.SelectedItem = tiepnhan.MaKhuVuc;
                     btnKtraThongTuyen.Focus();
-                    return;
                 }
+                // lấy lại MaLK
+                if (themMoi == false)
+                {
+                    tiepnhan.MaLK = MaLKcu;
+                    tiepnhan.MaBN = MaBNcu;
+                }
+                txtMaBN.Text = tiepnhan.MaBN;
             }
         }
 
