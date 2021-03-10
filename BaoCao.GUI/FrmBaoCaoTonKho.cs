@@ -188,9 +188,9 @@ namespace BaoCao.GUI
                 rpt.DataSource = dataTonKho.Select("SLTonCuoi > 0","STT ASC").CopyToDataTable();
                 float UsablePageWidth = rpt.PageWidth - rpt.Margins.Left - rpt.Margins.Right;
 
-                float columnWitdh = UsablePageWidth / (dataNVReport.Rows.Count -1);
+                float columnWitdh = UsablePageWidth / (dataNVReport.Rows.Count + 1);
                 rpt.xrTableNV.WidthF = columnWitdh;
-                int i = 0;
+                int i = 1;
                 //foreach (DataRow dr in dataNV.Rows)
                 //{
                 //    row = new XRTableRow();
@@ -226,13 +226,15 @@ namespace BaoCao.GUI
                     cell.Text = (j+1) + ". Đ/c " + dataNVReport.Rows[j]["HoTen"];
                     cell.WidthF = 200;
                     row.Cells.Add(cell);
+
                     cell = new XRTableCell();
                     cell.Text = dataNVReport.Rows[j]["ChucVu"].ToString();
                     cell.WidthF = 200;
                     row.Cells.Add(cell);
 
                     rpt.xrTable.Rows.Add(row);
-                    rpt.xrTableNV.WidthF = columnWitdh * i;
+
+                    rpt.xrTableNV.WidthF = columnWitdh * (i+1);
                     cell = new XRTableCell();
                     cell.Text = dataNVReport.Rows[j]["ChucVu"].ToString().ToUpper();
                     cell.Font = fontB;
