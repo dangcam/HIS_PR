@@ -108,7 +108,6 @@
             this.btnThem.Location = new System.Drawing.Point(597, 64);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(60, 23);
-            this.btnThem.StyleController = this.layoutControlMain;
             this.btnThem.TabIndex = 5;
             this.btnThem.Text = "Mới";
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -121,7 +120,6 @@
             this.btnLuu.Location = new System.Drawing.Point(661, 64);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(57, 23);
-            this.btnLuu.StyleController = this.layoutControlMain;
             this.btnLuu.TabIndex = 6;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
@@ -134,7 +132,6 @@
             this.btnXoa.Location = new System.Drawing.Point(722, 64);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(66, 22);
-            this.btnXoa.StyleController = this.layoutControlMain;
             this.btnXoa.TabIndex = 7;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -235,8 +232,7 @@
             this.checkChoPhep.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkChoPhep.Properties.Appearance.Options.UseFont = true;
             this.checkChoPhep.Properties.Caption = "";
-            this.checkChoPhep.Size = new System.Drawing.Size(119, 19);
-            this.checkChoPhep.StyleController = this.layoutControlMain;
+            this.checkChoPhep.Size = new System.Drawing.Size(119, 20);
             this.checkChoPhep.TabIndex = 4;
             // 
             // txtMoTa
@@ -246,7 +242,6 @@
             this.txtMoTa.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMoTa.Properties.Appearance.Options.UseFont = true;
             this.txtMoTa.Size = new System.Drawing.Size(409, 48);
-            this.txtMoTa.StyleController = this.layoutControlMain;
             this.txtMoTa.TabIndex = 3;
             // 
             // txtLop
@@ -256,7 +251,6 @@
             this.txtLop.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLop.Properties.Appearance.Options.UseFont = true;
             this.txtLop.Size = new System.Drawing.Size(273, 22);
-            this.txtLop.StyleController = this.layoutControlMain;
             this.txtLop.TabIndex = 2;
             // 
             // txtTen
@@ -266,7 +260,6 @@
             this.txtTen.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTen.Properties.Appearance.Options.UseFont = true;
             this.txtTen.Size = new System.Drawing.Size(273, 22);
-            this.txtTen.StyleController = this.layoutControlMain;
             this.txtTen.TabIndex = 1;
             // 
             // txtMa
@@ -276,7 +269,6 @@
             this.txtMa.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMa.Properties.Appearance.Options.UseFont = true;
             this.txtMa.Size = new System.Drawing.Size(273, 22);
-            this.txtMa.StyleController = this.layoutControlMain;
             this.txtMa.TabIndex = 0;
             // 
             // layoutControlGroupMain
@@ -295,7 +287,7 @@
             this.emptySpaceItem3,
             this.layoutControlItem7,
             this.layoutControlItem8});
-            this.layoutControlGroupMain.Name = "layoutControlGroupMain";
+            this.layoutControlGroupMain.Name = "Root";
             this.layoutControlGroupMain.Size = new System.Drawing.Size(800, 500);
             this.layoutControlGroupMain.TextVisible = false;
             // 
