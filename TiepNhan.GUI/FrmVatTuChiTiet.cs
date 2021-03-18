@@ -94,16 +94,20 @@ namespace TiepNhan.GUI
                 if (Utils.ToDecimal(dr["GiaBHYT"]) > 0)
                 {
                     drvNew["DonGia"] = dr["GiaBHYT"];
-                    drvNew["TyLe"] = 100;
+                    drvNew["TyLe"] = 100;// Thanh toán BHYT
+                    if (cbLoaiVatTu.SelectedIndex == 2) // Thanh toán BHYT kê từ kho Dược
+                    {
+                        drvNew["TyLe"] = -1;// Vật tư kê từ kho Dược
+                    }
                 }
                 else
                 {
                     drvNew["DonGia"] = dr["DonGiaBV"];
-                    drvNew["TyLe"] = 0;
-                }
-                if (cbLoaiVatTu.SelectedIndex >= 2)
-                {
-                    drvNew["TyLe"] = -10;// Vật tư khác, kê từ kho Dược
+                    drvNew["TyLe"] = 0;// Không thanh toán BHYT
+                    if (cbLoaiVatTu.SelectedIndex >= 2)
+                    {
+                        drvNew["TyLe"] = -2;// Vật tư khác, kê từ kho Dược
+                    }
                 }
                 drvNew["ThanhTien"] = Utils.ToDecimal(drvNew["DonGia"].ToString()) * txtSoLuong.Value;
                 drvNew["NgayYLenh"] = dateNgayYLenh.DateTime;
@@ -142,7 +146,8 @@ namespace TiepNhan.GUI
                 err = "";
                 kedon.MaVatTu = drv["MaVatTu"].ToString();
                 kedon.MaVT = drv["MaVT"].ToString();
-                if (Utils.ToInt(drv["TyLe"]) == 100)
+
+                if (Utils.ToInt(drv["TyLe"]) == 100 || Utils.ToInt(drv["TyLe"]) ==-1)
                 {
                     kedon.MaNhom = 10;// Vật tư trong danh mục BHYT 
                     kedon.PhamVi = 1;
@@ -172,7 +177,11 @@ namespace TiepNhan.GUI
                     if (kedon.TyLe < 0)
                     {
                         // vật tư khác
-                        kedon.TyLe = 0;
+                        
+                        if (kedon.TyLe == -1)
+                            kedon.TyLe = 100;// Vật tư thanh toán BHYT, được kê từ kho Dược
+                        else
+                            kedon.TyLe = 0;
                         kedon.SpKeVatTu(ref err, "INSERT_NgoaiDM");
                     }
                     else
