@@ -11,7 +11,7 @@
   </Connection>
   <Config>
     <LoginMaNV>admin</LoginMaNV>
-    <LoginPass>Bvdk@2021</LoginPass>
+    <LoginPass>Bvdk@2020</LoginPass>
     <NhoTT>true</NhoTT>
     <DateFormat>dd/MM/yyyy</DateFormat>
     <NumberDecimalSeparator>,</NumberDecimalSeparator>

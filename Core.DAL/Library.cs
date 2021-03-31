@@ -11,7 +11,7 @@ namespace Core.DAL
         public const string DANGNHAP = "Đăng nhập hệ thống.";
         public const string DANGXUAT = "Đăng xuất hệ thống.";
         // Lỗi thẻ BHYT
-        public const string KyTuTheBHYT = "Mã thẻ bắt buộc 15 ký tự!";
+        public const string KyTuTheBHYT = "Mã thẻ bắt buộc 15 hoặc 10 ký tự!";
         public const string HaiKyTuDau = "Hai ký tự đầu mã thẻ không hợp lệ!";
         public const string BaKyTuDau = "Ba ký tự đầu mã thẻ không hợp lệ!";
         public const string HaiKyTuTinh = "Hai ký mã tỉnh không hợp lệ!";

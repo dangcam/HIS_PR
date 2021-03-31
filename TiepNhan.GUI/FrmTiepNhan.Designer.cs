@@ -684,7 +684,8 @@ namespace TiepNhan.GUI
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbGioiTinh.Properties.Items.AddRange(new object[] {
             "1. Nam",
-            "2. Nữ"});
+            "2. Nữ",
+            "3. Chưa xác định"});
             this.cbGioiTinh.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbGioiTinh.Size = new System.Drawing.Size(62, 22);
             this.cbGioiTinh.StyleController = this.layoutControl1;
@@ -1515,7 +1516,7 @@ namespace TiepNhan.GUI
             // 
             // checkRaVien
             // 
-            this.checkRaVien.Location = new System.Drawing.Point(3, 28);
+            this.checkRaVien.Location = new System.Drawing.Point(3, 29);
             this.checkRaVien.MenuManager = this.ribbonControl;
             this.checkRaVien.Name = "checkRaVien";
             this.checkRaVien.Properties.Caption = "Ra viện";
@@ -1607,7 +1608,7 @@ namespace TiepNhan.GUI
             // 
             this.xtraTabPageDanhSach.Controls.Add(this.layoutControl3);
             this.xtraTabPageDanhSach.Name = "xtraTabPageDanhSach";
-            this.xtraTabPageDanhSach.Size = new System.Drawing.Size(1032, 464);
+            this.xtraTabPageDanhSach.Size = new System.Drawing.Size(1032, 459);
             this.xtraTabPageDanhSach.Text = "Danh sách tiếp nhận";
             // 
             // layoutControl3
@@ -1628,7 +1629,7 @@ namespace TiepNhan.GUI
             this.layoutControl3.Location = new System.Drawing.Point(0, 0);
             this.layoutControl3.Name = "layoutControl3";
             this.layoutControl3.Root = this.layoutControlGroup3;
-            this.layoutControl3.Size = new System.Drawing.Size(1032, 464);
+            this.layoutControl3.Size = new System.Drawing.Size(1032, 459);
             this.layoutControl3.TabIndex = 0;
             this.layoutControl3.Text = "layoutControl3";
             // 
@@ -1662,7 +1663,7 @@ namespace TiepNhan.GUI
             this.gridControlDS.MainView = this.gridViewDS;
             this.gridControlDS.MenuManager = this.ribbonControl;
             this.gridControlDS.Name = "gridControlDS";
-            this.gridControlDS.Size = new System.Drawing.Size(1008, 413);
+            this.gridControlDS.Size = new System.Drawing.Size(1008, 408);
             this.gridControlDS.TabIndex = 14;
             this.gridControlDS.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewDS});
@@ -1999,7 +2000,7 @@ namespace TiepNhan.GUI
             this.layoutControlItem45,
             this.layoutControlItem47});
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(1032, 464);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(1032, 459);
             this.layoutControlGroup3.TextVisible = false;
             // 
             // layoutControlItem36
@@ -2079,7 +2080,7 @@ namespace TiepNhan.GUI
             this.layoutControlItem46.Control = this.gridControlDS;
             this.layoutControlItem46.Location = new System.Drawing.Point(0, 27);
             this.layoutControlItem46.Name = "layoutControlItem46";
-            this.layoutControlItem46.Size = new System.Drawing.Size(1012, 417);
+            this.layoutControlItem46.Size = new System.Drawing.Size(1012, 412);
             this.layoutControlItem46.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem46.TextVisible = false;
             // 

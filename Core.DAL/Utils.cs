@@ -441,6 +441,7 @@ namespace Core.DAL
             string utf8result = System.Text.Encoding.UTF8.GetString(bytes);
             return utf8result;
         }
+
         public static async Task<ThongTinThe> KiemTraThongTuyen(string maThe, string hoTen, string ngaySinh)
         {
             ThongTinThe thongtin = new ThongTinThe();

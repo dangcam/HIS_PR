@@ -547,6 +547,71 @@ namespace TiepNhan.GUI
                 txtHoTen.Focus();
             }
         }
+        private void kiemTraQR1666(string[] qr)
+        {
+            // Thẻ BHYT 10 ký tự
+            txtTheBHYT.Text = qr[0];
+            txtHoTen.Text = Utils.HexToText(qr[1]);
+            txtNgaySinh.Text = qr[2];
+            cbGioiTinh.SelectedIndex = Utils.ToInt(qr[3], 0);
+            txtDiaChi.Text = Utils.HexToText(qr[4]);
+            txtMaDKKCB.Text = qr[5].Remove(2, 3);
+            // lấy tên CoSo
+            object ten = lookUpNoiChuyenDen.Properties.GetDisplayValueByKeyValue(txtMaDKKCB.Text);
+            if (ten != null)
+                txtTenDKKCB.Text = ten.ToString();
+            else
+                txtTenDKKCB.Text = null;
+            txtTheTu.Text = qr[6];
+            txtTheDen.Text = qr[7];
+
+
+
+            btnKtraThongTuyen.Focus();
+        }
+        private void kiemTraQR1313(string[] qr)
+        {
+            // Thẻ BHYT 15 ký tự
+            txtTheBHYT.Text = qr[0];
+
+            txtHoTen.Text = Utils.HexToText(qr[1]);
+            txtNgaySinh.Text = qr[2];
+            if (int.Parse(qr[3]) == 1)
+            {
+                cbGioiTinh.SelectedIndex = 0;
+            }
+            else
+            {
+                cbGioiTinh.SelectedIndex = 1;
+            }
+            txtDiaChi.Text = Utils.HexToText(qr[4]);
+            txtMaDKKCB.Text = qr[5].Remove(2, 3);
+            // lấy tên CoSo
+            object ten = lookUpNoiChuyenDen.Properties.GetDisplayValueByKeyValue(txtMaDKKCB.Text);
+            if (ten != null)
+                txtTenDKKCB.Text = ten.ToString();
+            else
+                txtTenDKKCB.Text = null;
+            txtTheTu.Text = qr[6];
+            txtTheDen.Text = qr[7];
+            txtDu5Nam.Text = qr[12];
+
+            if (qr[11] == "5")
+            {
+                cbKhuVuc.SelectedIndex = 0;
+            }
+            else
+            if (qr[11] == "6")
+            {
+                cbKhuVuc.SelectedIndex = 1;
+            }
+            else
+            if (qr[11] == "7")
+            {
+                cbKhuVuc.SelectedIndex = 2;
+            }
+            btnKtraThongTuyen.Focus();
+        }
         private void kiemTraQR()
         {
             if (txtMaQR.Text.Length > 0)
@@ -560,57 +625,21 @@ namespace TiepNhan.GUI
                 {
                     qr = txtMaQR.Text.Split('|');
                 }
-                if (qr != null && qr.Length == 15)
-                {
-                    
-                    txtTheBHYT.Text = qr[0];
-                    
-                    txtHoTen.Text = Utils.HexToText(qr[1]);
-                    txtNgaySinh.Text = qr[2];
-                    if (int.Parse(qr[3]) == 1)
+                if (qr != null)
+                    if (qr.Length == 17)
                     {
-                        cbGioiTinh.SelectedIndex = 0;
+                        kiemTraQR1666(qr);
+                        return;
                     }
-                    else
+                    else if (qr.Length == 15)
                     {
-                        cbGioiTinh.SelectedIndex = 1;
+                        kiemTraQR1313(qr);
+                        return;
                     }
-                    txtDiaChi.Text = Utils.HexToText(qr[4]);
-                    txtMaDKKCB.Text = qr[5].Remove(2, 3);
-                    // lấy tên CoSo
-                    object ten = lookUpNoiChuyenDen.Properties.GetDisplayValueByKeyValue(txtMaDKKCB.Text);
-                    if (ten != null)
-                        txtTenDKKCB.Text = ten.ToString();
-                    else
-                        txtTenDKKCB.Text = null;
-                    txtTheTu.Text = qr[6];
-                    txtTheDen.Text = qr[7];
-                    txtDu5Nam.Text = qr[12];
-
-                    if (qr[11] == "5")
-                    {
-                        cbKhuVuc.SelectedIndex = 0;
-                    }
-                    else
-                    if (qr[11] == "6")
-                    {
-                        cbKhuVuc.SelectedIndex = 1;
-                    }
-                    else
-                    if (qr[11] == "7")
-                    {
-                        cbKhuVuc.SelectedIndex = 2;
-                    }
-                    btnKtraThongTuyen.Focus();
-
-                    return;
-                }
-                else
-                {
-                    XtraMessageBox.Show("Sai mã QR!","Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtMaQR.SelectAll();
-                    txtMaQR.Focus();
-                }
+                XtraMessageBox.Show("Sai mã QR!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtMaQR.SelectAll();
+                txtMaQR.Focus();
+                return;
             }
             txtTheBHYT.Focus();
         }
@@ -620,7 +649,7 @@ namespace TiepNhan.GUI
             this.txtTheBHYT.Leave -= new System.EventHandler(this.txtTheBHYT_Leave);
             if (checkBHYT.Checked == true && txtTheBHYT.Text.Length > 0)
             {
-                if (txtTheBHYT.Text.Length != 15)
+                if (txtTheBHYT.Text.Length != 15 || txtTheBHYT.Text.Length != 10)
                 {
                     XtraMessageBox.Show(Library.KyTuTheBHYT, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtTheBHYT.Focus();
@@ -638,10 +667,10 @@ namespace TiepNhan.GUI
         }
         private void LayThongTinBenhNhan(bool KiemTra = true)
         {
-            if (txtTheBHYT.Text.Length == 15 && KiemTra)
+            if ((txtTheBHYT.Text.Length == 10 || txtTheBHYT.Text.Length == 15) && KiemTra)
             {
                 // kiểm tra thông tin thẻ (3 ký tự đầu)
-                if (CheckMaThe(txtTheBHYT.Text) == false)
+                if (txtTheBHYT.Text.Length == 15 || CheckMaThe(txtTheBHYT.Text) == false)
                 {
                     txtTheBHYT.Focus();
                     return;
