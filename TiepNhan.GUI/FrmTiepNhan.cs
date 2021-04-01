@@ -553,7 +553,7 @@ namespace TiepNhan.GUI
             txtTheBHYT.Text = qr[0];
             txtHoTen.Text = Utils.HexToText(qr[1]);
             txtNgaySinh.Text = qr[2];
-            cbGioiTinh.SelectedIndex = Utils.ToInt(qr[3], 0);
+            cbGioiTinh.SelectedIndex = Utils.ToInt(qr[3], 1) - 1;// 1 Nam, 2 Nữ, 3 Không xác định
             txtDiaChi.Text = Utils.HexToText(qr[4]);
             txtMaDKKCB.Text = qr[5].Remove(2, 3);
             // lấy tên CoSo
@@ -564,8 +564,11 @@ namespace TiepNhan.GUI
                 txtTenDKKCB.Text = null;
             txtTheTu.Text = qr[6];
             txtTheDen.Text = qr[7];
+            cbKhuVuc.SelectedIndex = Utils.ToInt(qr[11], 4) - 5;// 4: Không có, 5: K1, 6:K2, 7:K3
+            txtDu5Nam.Text = qr[12];
+            //1,2,5 là 100%; 3 là 95%; 4 là 80%
 
-
+            txtMucHuong.Text = qr[14];
 
             btnKtraThongTuyen.Focus();
         }
@@ -649,7 +652,7 @@ namespace TiepNhan.GUI
             this.txtTheBHYT.Leave -= new System.EventHandler(this.txtTheBHYT_Leave);
             if (checkBHYT.Checked == true && txtTheBHYT.Text.Length > 0)
             {
-                if (txtTheBHYT.Text.Length != 15 || txtTheBHYT.Text.Length != 10)
+                if (txtTheBHYT.Text.Length != 15 && txtTheBHYT.Text.Length != 10)
                 {
                     XtraMessageBox.Show(Library.KyTuTheBHYT, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtTheBHYT.Focus();
@@ -670,11 +673,12 @@ namespace TiepNhan.GUI
             if ((txtTheBHYT.Text.Length == 10 || txtTheBHYT.Text.Length == 15) && KiemTra)
             {
                 // kiểm tra thông tin thẻ (3 ký tự đầu)
-                if (txtTheBHYT.Text.Length == 15 || CheckMaThe(txtTheBHYT.Text) == false)
-                {
-                    txtTheBHYT.Focus();
-                    return;
-                }
+                if (txtTheBHYT.Text.Length == 15)
+                    if (CheckMaThe(txtTheBHYT.Text) == false)
+                    {
+                        txtTheBHYT.Focus();
+                        return;
+                    }
                 //lưu lại MaLK, MaBN
                 string MaLKcu = tiepnhan.MaLK;
                 string MaBNcu = tiepnhan.MaBN;
@@ -925,7 +929,8 @@ namespace TiepNhan.GUI
                     txtTheTu.Text = Utils.ToDateTime(dr["TheTu"].ToString()).ToString("dd/MM/yyyy");
                     txtTheDen.Text = Utils.ToDateTime(dr["TheDen"].ToString()).ToString("dd/MM/yyyy");
                     txtTyLe.Text = dr["MucHuong"].ToString();
-                    txtMucHuong.Text = txtTheBHYT.Text.Substring(2, 1);
+                    if (txtTheBHYT.Text.Length == 15)
+                        txtMucHuong.Text = txtTheBHYT.Text.Substring(2, 1);
                     cbKhuVuc.SelectedItem = dr["MaKhuVuc"];
                     txtMaDKKCB.Text = dr["MaDKBD"].ToString();
                     // lấy tên cơ sở
@@ -1088,7 +1093,8 @@ namespace TiepNhan.GUI
                     txtTheTu.Text = Utils.ToDateTime(dr["TheTu"].ToString()).ToString("dd/MM/yyyy");
                     txtTheDen.Text = Utils.ToDateTime(dr["TheDen"].ToString()).ToString("dd/MM/yyyy");
                     txtTyLe.Text = dr["MucHuong"].ToString();
-                    txtMucHuong.Text = txtTheBHYT.Text.Substring(2, 1);
+                    if (txtTheBHYT.Text.Length == 15)
+                        txtMucHuong.Text = txtTheBHYT.Text.Substring(2, 1);
                     cbKhuVuc.SelectedItem = dr["MaKhuVuc"];
                     txtMaDKKCB.Text = dr["MaDKBD"].ToString();
                     // lấy tên cơ sở
