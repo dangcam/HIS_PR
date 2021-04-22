@@ -24,7 +24,14 @@ namespace BaoCao.GUI
         }
         private void FrmTongHop7980A_Load(object sender, EventArgs e)
         {
-
+            cbThang.SelectedIndex = DateTime.Now.Month - 1;
+            int nam = DateTime.Now.Year;
+            for(int i = nam - 5; i < nam + 6; i++)
+            {
+                cbNam.Properties.Items.Add(i);
+            }
+            cbNam.SelectedIndex = 5;
+            cbBaoCao.SelectedIndex = 0;
         }
     }
 }
