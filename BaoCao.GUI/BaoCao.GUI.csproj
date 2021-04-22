@@ -101,6 +101,12 @@
     <Compile Include="FrmNguonNhap.Designer.cs">
       <DependentUpon>FrmNguonNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmTongHop7980A.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTongHop7980A.Designer.cs">
+      <DependentUpon>FrmTongHop7980A.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTongHopBaoCao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNguonNhap.resx">
       <DependentUpon>FrmNguonNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTongHop7980A.resx">
+      <DependentUpon>FrmTongHop7980A.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTongHopBaoCao.resx">
       <DependentUpon>FrmTongHopBaoCao.cs</DependentUpon>
