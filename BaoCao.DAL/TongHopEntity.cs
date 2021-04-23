@@ -153,6 +153,14 @@ namespace BaoCao.DAL
             //return db.ExcuteQuery("Select * from BaoCaoMau7980A('" + maKhoa + "','" + AppConfig.CoSoKCB + "','" + tuNgay + "','" + denNgay + "')",
             //    CommandType.Text, null);
         }
+        public DataTable TongHop7980A(string maKhoa01, string maKhoa03, string maKhoa19,string maCS, int thang, int nam, int quy)
+        {
+
+            return db.ExcuteQuery("Select * from TongHop7980A('" + maKhoa01 + "','" +
+                maKhoa03 + "','" + maKhoa19 + "','" + maCS + "','" + thang +
+                "','" + nam + "','" + quy + "')",
+                CommandType.Text, null);
+        }
         public DataTable DSBenhNhan(string maKhoa, DateTime tuNgay, DateTime denNgay)
         {
             return db.ExcuteQuery("select ROW_NUMBER() OVER (ORDER By MaBN) as STT," +
