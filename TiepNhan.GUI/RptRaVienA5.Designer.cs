@@ -139,28 +139,24 @@
             // 
             this.xrTableCell1.Multiline = true;
             this.xrTableCell1.Name = "xrTableCell1";
-            this.xrTableCell1.Text = "CN";
             this.xrTableCell1.Weight = 0.5D;
             // 
             // xrTableCell2
             // 
             this.xrTableCell2.Multiline = true;
             this.xrTableCell2.Name = "xrTableCell2";
-            this.xrTableCell2.Text = "3";
             this.xrTableCell2.Weight = 0.29999999999999993D;
             // 
             // xrTableCell3
             // 
             this.xrTableCell3.Multiline = true;
             this.xrTableCell3.Name = "xrTableCell3";
-            this.xrTableCell3.Text = "01";
             this.xrTableCell3.Weight = 0.5D;
             // 
             // xrTableCell4
             // 
             this.xrTableCell4.Multiline = true;
             this.xrTableCell4.Name = "xrTableCell4";
-            this.xrTableCell4.Text = "0003500099";
             this.xrTableCell4.Weight = 1.020001220703125D;
             // 
             // xrLabel24
@@ -293,7 +289,7 @@
             this.xrlblMaSoBHXH.SizeF = new System.Drawing.SizeF(200F, 30F);
             this.xrlblMaSoBHXH.StylePriority.UseFont = false;
             this.xrlblMaSoBHXH.StylePriority.UseTextAlignment = false;
-            this.xrlblMaSoBHXH.Text = "- Mã số BHXH: 0123456789";
+            this.xrlblMaSoBHXH.Text = "- Mã số BHXH: ";
             this.xrlblMaSoBHXH.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // xrlblNgheNghiep
