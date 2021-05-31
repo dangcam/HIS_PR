@@ -179,7 +179,7 @@ namespace TiepNhan.GUI
                 txtDu5Nam.ReadOnly = false;
                 cbKhuVuc.ReadOnly = false;
                 txtMaBN.ReadOnly = true;
-                btnKtraThongTuyen.Enabled = true;
+                btnVSSID.Enabled = true;
                 txtMaQR.Focus();
             }
             else
@@ -206,7 +206,7 @@ namespace TiepNhan.GUI
                     txtMaBN.ReadOnly = true;
                 txtMucHuong.Text = "0";
                 txtTyLe.Text = "0";
-                btnKtraThongTuyen.Enabled = false;
+                btnVSSID.Enabled = false;
                 txtMaBN.Focus();
             }
         }
@@ -332,7 +332,7 @@ namespace TiepNhan.GUI
         {
             ResetForm();
         }
-
+        // hàm này không còn sử dụng được nữa
         private async void btnKtraThongTuyen_Click(object sender, EventArgs e)
         {
             if (KiemTraThongTinTiepNhan() == false)
@@ -365,6 +365,11 @@ namespace TiepNhan.GUI
                     XtraMessageBox.Show(thongtin.ThongBao.Replace(":", ""), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
+        }
+        private void btnVSSID_Click(object sender, EventArgs e)
+        {
+            FromVSSID fromVSSID = new FromVSSID(txtMaBN.Text,txtHoTen.Text);
+            fromVSSID.ShowDialog();
         }
 
         private async void btnLichSuKCB_Click(object sender, EventArgs e)
@@ -528,7 +533,7 @@ namespace TiepNhan.GUI
             {
                 txtDiaChi.Text = Utils.VietHoaTuDong(txtDiaChi.Text);
                 if (checkBHYT.Checked)
-                    btnKtraThongTuyen.Focus();
+                    btnVSSID.Focus();
                 else
                     btnLichSuKCB.Focus();
             }
@@ -570,7 +575,7 @@ namespace TiepNhan.GUI
 
             txtMucHuong.Text = qr[14];
 
-            btnKtraThongTuyen.Focus();
+            btnVSSID.Focus();
         }
         private void kiemTraQR1313(string[] qr)
         {
@@ -613,7 +618,7 @@ namespace TiepNhan.GUI
             {
                 cbKhuVuc.SelectedIndex = 2;
             }
-            btnKtraThongTuyen.Focus();
+            btnVSSID.Focus();
         }
         private void kiemTraQR()
         {
@@ -714,7 +719,7 @@ namespace TiepNhan.GUI
                         txtTenDKKCB.Text = null;
                     txtDu5Nam.Text = tiepnhan.Du5Nam.ToString("dd/MM/yyyy");
                     cbKhuVuc.SelectedItem = tiepnhan.MaKhuVuc;
-                    btnKtraThongTuyen.Focus();
+                    btnVSSID.Focus();
                 }
                 // lấy lại MaLK
                 if (themMoi == false)
@@ -1113,6 +1118,7 @@ namespace TiepNhan.GUI
             }
         }
 
+      
         private void btnTim_Click(object sender, EventArgs e)
         {
             dataDanhSach2 = tiepnhan.DSTiepNhan(dateTuNgay.DateTime.ToShortDateString(), 
