@@ -368,8 +368,15 @@ namespace TiepNhan.GUI
         }
         private void btnVSSID_Click(object sender, EventArgs e)
         {
-            FromVSSID fromVSSID = new FromVSSID(txtMaBN.Text,txtHoTen.Text);
-            fromVSSID.ShowDialog();
+            if (txtMaBN.Text.Length > 0)
+            {
+                FromVSSID fromVSSID = new FromVSSID(txtMaBN.Text, txtHoTen.Text);
+                fromVSSID.ShowDialog();
+            }
+            else
+            {
+                XtraMessageBox.Show("Chưa có mã bệnh nhân, vui lòng tiếp nhận trước khi chụp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private async void btnLichSuKCB_Click(object sender, EventArgs e)
