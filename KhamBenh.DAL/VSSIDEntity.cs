@@ -19,9 +19,9 @@ namespace KhamBenh.DAL
         public string MaBN { get; set; }
         public string CCCD { get; set; }
         public string SDT { get; set; }
-        public byte[] ChanDung { get; set; }
-        public byte[] MatTruoc { get; set; }
-        public byte[] MatSau { get; set; }
+        public string ChanDung { get; set; }
+        public string MatTruoc { get; set; }
+        public string MatSau { get; set; }
         public DataTable DSVSSID()
         {
             return db.ExcuteQuery("Select * From VSSID Where MaBN = '" + MaBN + "'",

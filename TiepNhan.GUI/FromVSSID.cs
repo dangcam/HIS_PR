@@ -21,12 +21,16 @@ namespace TiepNhan.GUI
         string hoTen;
         VSSIDEntity vSSIDEntity;
         string action;
-        public FromVSSID(string maBN,string hoTen)
+        string Server, VSSID,BHXH;
+        public FromVSSID(string maBN,string bhxh,string hoTen, string server, string vssid)
         {
             InitializeComponent();
             maBenhNhan = maBN;
             this.hoTen = hoTen;
             vSSIDEntity = new VSSIDEntity();
+            Server = server;
+            VSSID = vssid;
+            BHXH = bhxh;
         }
 
         private void FromVSSID_Load(object sender, EventArgs e)
@@ -39,9 +43,23 @@ namespace TiepNhan.GUI
                 action = "UPDATE";
                 txtCCCD.Text = Utils.ToString(dt.Rows[0]["CCCD"]);
                 txtSDT.Text = Utils.ToString(dt.Rows[0]["SDT"]);
-                picChanDung.Image = byteArrayToImage((byte[])dt.Rows[0]["ChanDung"]);
-                picMatTruoc.Image = byteArrayToImage((byte[])dt.Rows[0]["MatTruoc"]);
-                picMatSau.Image = byteArrayToImage((byte[])dt.Rows[0]["MatSau"]);
+                string link = Utils.ToString(dt.Rows[0]["ChanDung"]);
+                if (link.Length > 0)
+                    picChanDung.Image = Image.FromFile(link);
+                else
+                    picChanDung.Image = null;
+                //
+                link = Utils.ToString(dt.Rows[0]["MatTruoc"]);
+                if (link.Length > 0)
+                    picMatTruoc.Image = Image.FromFile(link);
+                else
+                    picMatTruoc.Image = null;
+                //
+                link = Utils.ToString(dt.Rows[0]["MatSau"]);
+                if (link.Length > 0)
+                    picMatSau.Image = Image.FromFile(link);
+                else
+                    picMatSau.Image = null;
             }
             else
             {
@@ -53,15 +71,6 @@ namespace TiepNhan.GUI
                 picMatSau.Image = null;
             }
 
-        }
-        public Image byteArrayToImage(byte[] byteArrayIn)
-        {
-            Image returnImage = null;
-            using (MemoryStream ms = new MemoryStream(byteArrayIn))
-            {
-                returnImage = Image.FromStream(ms);
-            }
-            return returnImage;
         }
         private void btnAnhChanDung_Click(object sender, EventArgs e)
         {
@@ -82,22 +91,45 @@ namespace TiepNhan.GUI
         {
             vSSIDEntity.CCCD = txtCCCD.Text;
             vSSIDEntity.SDT = txtSDT.Text;
-            vSSIDEntity.ChanDung = ImageToByteArray(picChanDung.Image);
-            vSSIDEntity.MatTruoc = ImageToByteArray(picMatTruoc.Image);
-            vSSIDEntity.MatSau = ImageToByteArray(picMatSau.Image);
+            string link = "";
+            if (picChanDung.Image != null)
+            {
+                link = @"\\" + Server + @"\" + VSSID + @"\" + maBenhNhan +"_ChanDung";
+                vSSIDEntity.ChanDung = link;
+                if (System.IO.File.Exists(link))
+                    System.IO.File.Delete(link);
+                picChanDung.Image.Save(link);//ImageFormat
+            }
+            else
+                vSSIDEntity.ChanDung = null;
+            //
+            if (picMatTruoc.Image != null)
+            {
+                link = @"\\" + Server + @"\" + VSSID + @"\" + maBenhNhan + "_" + txtSDT.Text;
+                vSSIDEntity.MatTruoc = link;
+                if (System.IO.File.Exists(link))
+                    System.IO.File.Delete(link);
+                picMatTruoc.Image.Save(link);
+            }
+            else
+                vSSIDEntity.MatTruoc = null;
+            //
+            if (picMatSau.Image != null)
+            {
+                link = @"\\" + Server + @"\" + VSSID + @"\" + maBenhNhan + "_" + BHXH;
+                vSSIDEntity.MatSau = link;
+                if (System.IO.File.Exists(link))
+                    System.IO.File.Delete(link);
+                picMatSau.Image.Save(link);
+            }
+            else
+                vSSIDEntity.MatSau = null;
             string err = "";
             if (!vSSIDEntity.SpVSSID(ref err, action))
             {
                 XtraMessageBox.Show(err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
-        {
-            using (var ms = new MemoryStream())
-            {
-                imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
-                return ms.ToArray();
-            }
-        }
+       
     }
 }

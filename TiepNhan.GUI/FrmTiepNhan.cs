@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraSplashScreen;
+using System.Xml;
 
 namespace TiepNhan.GUI
 {
@@ -22,6 +23,8 @@ namespace TiepNhan.GUI
         RptSoPhieu rptSoPhieu = new RptSoPhieu();
         private string quyen = "";
         SplashScreenManager splashScreenManager;
+        private string server = "";
+        private string vssid = "";
         public FrmTiepNhan()
         {
             
@@ -87,6 +90,7 @@ namespace TiepNhan.GUI
         private void FrmTiepNhan_Load(object sender, EventArgs e)
         {
             ResetForm();
+            LoadXML();
             this.ActiveControl = txtMaQR;
             this.LoadData();
         }
@@ -370,7 +374,7 @@ namespace TiepNhan.GUI
         {
             if (txtMaBN.Text.Length > 0)
             {
-                FromVSSID fromVSSID = new FromVSSID(txtMaBN.Text, txtHoTen.Text);
+                FromVSSID fromVSSID = new FromVSSID(txtMaBN.Text,Utils.LaySoBHXH(txtTheBHYT.Text), txtHoTen.Text,server,vssid);
                 fromVSSID.ShowDialog();
             }
             else
@@ -378,7 +382,14 @@ namespace TiepNhan.GUI
                 XtraMessageBox.Show("Chưa có mã bệnh nhân, vui lòng tiếp nhận trước khi chụp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void LoadXML()
+        {
+            XmlDocument xmlfile = new XmlDocument();
+            xmlfile.Load("VPN.xml");
+            this.server = xmlfile.SelectSingleNode("VPN/Server").InnerText.ToString();
+            this.vssid = xmlfile.SelectSingleNode("VPN/VSSID").InnerText.ToString();
 
+        }
         private async void btnLichSuKCB_Click(object sender, EventArgs e)
         {
             if (!splashScreenManager.IsSplashFormVisible)

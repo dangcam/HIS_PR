@@ -203,6 +203,17 @@ namespace Core.DAL
                 return defaultvalue;
             }
         }
+        public static byte[] ToByteArray(object value, byte[] defaultvalue = null)
+        {
+            try
+            {
+                return (byte[])value;
+            }
+            catch
+            {
+                return defaultvalue;
+            }
+        }
         public static string LaySoBHXH(object value, string defaultvalue = "")
         {
             try
