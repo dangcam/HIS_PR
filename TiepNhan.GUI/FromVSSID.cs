@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -94,33 +95,33 @@ namespace TiepNhan.GUI
             string link = "";
             if (picChanDung.Image != null)
             {
-                link = @"\\" + Server + @"\" + VSSID + @"\" + maBenhNhan +"_ChanDung";
+                link = @"\\" + Server + @"\" + VSSID + @"\" + maBenhNhan +"_ChanDung.jpg";
                 vSSIDEntity.ChanDung = link;
                 if (System.IO.File.Exists(link))
                     System.IO.File.Delete(link);
-                picChanDung.Image.Save(link);//ImageFormat
+                picChanDung.Image.Save(link, ImageFormat.Jpeg);//ImageFormat
             }
             else
                 vSSIDEntity.ChanDung = null;
             //
             if (picMatTruoc.Image != null)
             {
-                link = @"\\" + Server + @"\" + VSSID + @"\" + maBenhNhan + "_" + txtSDT.Text;
+                link = @"\\" + Server + @"\" + VSSID + @"\" + maBenhNhan + "_" + txtSDT.Text+".jpg";
                 vSSIDEntity.MatTruoc = link;
                 if (System.IO.File.Exists(link))
                     System.IO.File.Delete(link);
-                picMatTruoc.Image.Save(link);
+                picMatTruoc.Image.Save(link, ImageFormat.Jpeg);
             }
             else
                 vSSIDEntity.MatTruoc = null;
             //
             if (picMatSau.Image != null)
             {
-                link = @"\\" + Server + @"\" + VSSID + @"\" + maBenhNhan + "_" + BHXH;
+                link = @"\\" + Server + @"\" + VSSID + @"\" + maBenhNhan + "_" + BHXH+".jpg";
                 vSSIDEntity.MatSau = link;
                 if (System.IO.File.Exists(link))
                     System.IO.File.Delete(link);
-                picMatSau.Image.Save(link);
+                picMatSau.Image.Save(link,ImageFormat.Jpeg);
             }
             else
                 vSSIDEntity.MatSau = null;
